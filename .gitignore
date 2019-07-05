@@ -1,0 +1,11 @@
+# eclipse
+/.classpath
+/.project
+/.settings
+/bin/
+/build/
+
+# idea
+/.idea/
+/*.iml
+/out/
