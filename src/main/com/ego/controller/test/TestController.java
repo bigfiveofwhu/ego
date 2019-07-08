@@ -13,5 +13,4 @@ public class TestController implements Controller{
 		request.setAttribute("testData", "test controller work well");
 		return "test";
 	}
-
 }
