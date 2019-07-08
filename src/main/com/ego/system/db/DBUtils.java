@@ -71,49 +71,6 @@ public class DBUtils
 	}
 
 	
-	// =======================以下为实用方法================================
-	/**
-	 * 注意每次调用都会将相应值加一，所以不要直接调用，应该放在事务中，当插入失败时需要回滚
-	 * 
-	 * @param idName 自增键的名字
-	 * @return 自增键的值，自动加一
-	 * @throws SQLException
-	 */
-	public static int getIncrementId(String idName) throws SQLException 
-	{
-		String name="pkname";
-		String value="pkvalue";
-		String sql="select * from sequence where "+ name+ " = ? ";
-		
-		PreparedStatement pStatement= DBUtils.getConnection().prepareStatement(sql,
-				ResultSet.TYPE_FORWARD_ONLY,ResultSet.CONCUR_UPDATABLE,ResultSet.CLOSE_CURSORS_AT_COMMIT);
-		pStatement.setString(1, idName);
-		ResultSet set=pStatement.executeQuery();
-		try
-		{
-			if (set.next()) {//有相应的id
-				int id=set.getInt(value);
-				set.updateInt(value, ++id);
-				set.updateRow();
-				return id;
-				
-			}else {//没有相应的id，则插入一个新的
-				
-				int startNumber=1;//定义起始的主键值
-				set.moveToInsertRow();
-				set.updateString(name, idName);
-				set.updateInt(value, startNumber);
-				set.insertRow();
-				return startNumber;
-			}
-		}
-		finally 
-		{
-			DBUtils.close(pStatement);
-			DBUtils.close(set);
-		}
-	}
-	
 	
 	
 	
@@ -222,7 +179,6 @@ public class DBUtils
 			// 2.判断连接是否需要销毁
 			if (conn != null && !conn.isClosed())
 			{
-				System.out.println("---------Close Connection---------------------");
 				// 3.解除连接与线程的绑定
 				threadLocal.remove();
 				// 4.连接销毁

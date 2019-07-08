@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-${testData}
+${ins.pkname}<br>
+${ins.pkvalue}
 
 </body>
 </html>
