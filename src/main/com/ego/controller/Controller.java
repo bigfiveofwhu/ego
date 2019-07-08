@@ -11,7 +11,7 @@ public interface Controller
 	void setMapDto(Map<String,Object> dto);
 	
     String execute()throws Exception;
-    
+
     Map<String,Object> getAttribute();
     
 }

@@ -5,6 +5,7 @@ import java.util.Map;
 
 public interface BaseServices
 {
+	
 	default Map<String, String> findById() throws Exception 
 	{
 		return null;
