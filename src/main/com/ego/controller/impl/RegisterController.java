@@ -5,12 +5,14 @@ import com.ego.services.impl.Aa01Service;
 
 public class RegisterController extends ControllerSupport 
 {
-
+	public RegisterController() 
+	{
+		this.setServices(new Aa01Service());
+	}
 	@Override
 	public String execute() throws Exception 
 	{
-		this.setServices(new Aa01Service());
-		this.update("", "×¢²á³É¹¦");
+		this.update("", "×¢²á");
 		return "home/register";
 	}
 

@@ -159,14 +159,16 @@ public class Tools
 		ResultSet set=pStatement.executeQuery();
 		try
 		{
-			if (set.next()) {//有相应的id
+			if (set.next()) 
+			{	//有相应的id
 				int id=set.getInt(value);
 				set.updateInt(value, ++id);
 				set.updateRow();
 				return id;
 				
-			}else {//没有相应的id，则插入一个新的
-				
+			}else 
+			{	
+				//没有相应的id，则插入一个新的
 				int startNumber=1;//定义起始的主键值
 				set.moveToInsertRow();
 				set.updateString(name, idName);

@@ -24,6 +24,7 @@ public class ConnectionFilter extends HttpServlet implements Filter
 		try 
 		{
 			request.setCharacterEncoding("GBK");
+			response.setCharacterEncoding("UTF-8");
 			chain.doFilter(request, response);
 		} 
 		finally 

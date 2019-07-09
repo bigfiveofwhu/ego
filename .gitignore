@@ -9,3 +9,7 @@
 /.idea/
 /*.iml
 /out/
+/output/
+
+/output
+/.git

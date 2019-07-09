@@ -45,9 +45,61 @@ h3.title{text-align: center;padding:8px;font-weight: 600;}
 /*主题*/
 .login-form{background:#fff ;width: 100%;}
 form{max-width:320px;margin:20px auto ;}
-.user-name,.user-pass,.user-email,.user-phone,.verification{position: relative;height: 42px;margin-bottom:5px;}
-form label{position:absolute;display: block;width: 40px;height: 40px;line-height: 40px;background:#fff;text-align: center;top:1px;left:1px}
-form input{font-size: 14px;line-height: 18px;height:42px;padding: 11px 8px 11px 50px;width:73%;border:1px solid #fff;}
+.user_element{
+	position: relative;
+	height: 42px;
+	margin-bottom:10px;
+}
+form label{
+	position: absolute;
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	background:#fff;
+	text-align: center;
+	top:1px;
+	left:1px
+}
+form .input_block{
+	font-size: 14px;
+	line-height: 18px;
+	height:42px;
+	padding: 11px 8px 11px 50px;
+	width:73%;
+	border:1px solid #fff;
+}
+form .input_group{
+	font-size: 14px;
+	line-height: 18px;
+	height:42px;
+	padding: 11px 8px 11px 50px;
+	width:73%;
+	border:1px solid #fff;
+}
+form .input_group input{
+	margin-top: 15px;
+	margin-left: 15px;
+}
+#addr_1{
+	margin-top: 2px;
+	margin-left: 46px;
+	height:38px;
+	border:0px;
+}
+.childs{
+	margin-top: 2px;
+	margin-left: -6px;
+	height:38px;
+	border: 0px;
+}
+#addr_4{
+	font-size: 14px;
+	line-height: 18px;
+	height:42px;
+	padding: 11px 8px 11px 50px;
+	border:1px solid #fff;
+}
 input:-webkit-autofill { -webkit-box-shadow: 0 0 0px 1000px #fff inset;}
 .am-cf{width: 100%;max-width:320px;margin:0px auto ;}
 .am-cf input{width: 100%;font-size: 14px;}
@@ -98,7 +150,7 @@ form,.am-cf,.partner{max-width:640px;margin:20px auto ;}
 }
 @media screen and (min-width:1025px){
 
-.login-box,.login-box2 {width: 100%;max-width:400px;height: 430px;position: absolute;margin-top:20px;margin-left:0px;background:#f8f8f8;right:2%;padding:10px 20px;}
+.login-box,.login-box2 {width: 100%;max-width:500px;height: 700px;position: absolute;margin-top:20px;margin-left:0px;background:#f8f8f8;right:2%;padding:10px 20px;}
 .login-box2 {height:430px;}
 .login-boxtitle {max-width: 1000px;margin: 0px auto;height: 60px;}
 .login-boxtitle img{height:60px;}

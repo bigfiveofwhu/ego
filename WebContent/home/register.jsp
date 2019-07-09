@@ -1,10 +1,10 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%@ include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 	<head lang="en">
 		<meta charset="UTF-8">
-		<title>æ³¨å†Œ</title>
+		<title>×¢²á</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<meta name="format-detection" content="telephone=no">
@@ -21,26 +21,6 @@
         {
 		  document.getElementById("randomCodeImg").src="<%=path%>/randomCode?"+new Date().getTime();
 	     }
-	     
-	     function check(){
-	        //alert(1111);
-	     	var count=$("#phone").val();
-	     	var tel_reg=/^1[3|4|5|7|8]\d{9}$/;
-	       	//var tel_reg=new RegExp("1[3|4|5|7|8]\\d{9}]$");
-	     	if(count.trim()=="")
-	     	{
-		  		//alert("æ‰‹æœºå·ç ä¸èƒ½ä¸ºç©º");
-		  		$("#prop").html("äº²ï¼Œæ‰‹æœºå·ç ä¸èƒ½ä¸ºç©º");
-	   		}
-	       	else if(!tel_reg.test(count))
-	       	{
-				//alert("è¾“å…¥æ‰‹æœºå·ç æ ¼å¼ä¸æ­£ç¡®");
-				$("#prop").html("äº²ï¼Œè¾“å…¥æ‰‹æœºå·ç æ ¼å¼ä¸æ­£ç¡®");
-	   	    }else
-	   	    {
-	   			 $("#prop").css("visibility","hidden");	
-	    	}
-		}
         </script>
 	</head>
 	<body>
@@ -55,64 +35,101 @@
 				<div class="login-box">
 						<div class="am-tabs" id="doc-my-tabs">
 							<ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
-								<li class="am-active"><a href="">æ™®é€šä¼šå‘˜æ³¨å†Œ</a></li>
-								<li><a href="">æ‰‹æœºå·æ³¨å†Œ</a></li>
+								<li class="am-active"><a href="">ÆÕÍ¨»áÔ±×¢²á</a></li>
+								<li><a href="">ÊÖ»úºÅ×¢²á</a></li>
 							</ul>
 							<div class="am-tabs-bd">
 								<div class="am-tab-panel am-active">
 									<span style="color:red">${msg}</span>	
-									<!-- é‚®ç®±æ³¨å†Œ -->
+									<!-- ÓÊÏä×¢²á -->
 									<form action="<%=path%>/register.html" method="post">	 
-									   <div class="user-email">
-											<label for="text"><i class="am-icon-user"></i></label>
-											<input type="text" name="username" id="username" onblur="checkUserFormat()" placeholder="è¯·è¾“å…¥é‚®ç®±æˆ–æ‰‹æœºå·ç ">
-											<button type="button" class="am-btn am-btn-default am-btn-xs sendVerifyCode">å‘é€éªŒè¯ç </button>
+										<div class="user_element">
+											<label for="name"><i class="am-icon-user"></i></label>
+											<input type="text" class="input_block" name="username" id="username" placeholder="ÇëÊäÈëêÇ³Æ" required="required">
 		                 			   </div>
-	                                   <div class="user-pass" style="display: flex;">
-										    <label for="text"><i class="am-icon-rocket"></i></label>
-										    <input type="text" name="verifyCode" id="verifyCode" onblur="checkVerify()" placeholder="è¯·è¾“å…¥éªŒè¯ç ">
+									   <div class="user_element">
+											<label for="email"><i class="am-icon-envelope-o"></i></label>
+											<input type="email" class="input_block" name="email" id="email" onblur="checkEmailFormat()" 
+												   placeholder="ÇëÊäÈëÓÊÏäµØÖ·" required="required">
+											<button type="button" class="am-btn am-btn-default am-btn-xs sendVerifyCode">·¢ËÍÑéÖ¤Âë</button>
+		                 			   </div>
+	                                   <div class="user_element" style="display: flex;">
+										    <label for="code"><i class="am-icon-rocket"></i></label>
+										    <input type="text" class="input_block" name="verifyCode" id="verifyCode" onblur="checkVerify()" 
+										    	   maxlength="6" placeholder="ÇëÊäÈëÑéÖ¤Âë">
 										    <div style="width:40px;height:30px;font-size:12px;padding-top:11px">
-										    	<span class="successIcon"><i class="am-icon-check-circle-o" style="color:green"></i>æˆåŠŸ</span>
-										    	<span class="failIcon"><i class="am-icon-close" style="color:red"></i>å¤±è´¥</span>
+										    	<span class="successIcon"><i class="am-icon-check-circle-o" style="color:green"></i>³É¹¦</span>
+										    	<span class="failIcon"><i class="am-icon-close" style="color:red"></i>Ê§°Ü</span>
 										    </div>
 						               </div>
-	                 				   <div class="user-pass">
+						               <div class="user_element">
+											<label for="phone"><i class="am-icon-phone"></i></label>
+											<input type="text" class="input_block" name="phone" id="phone" 
+											       onblur="check()" maxlength="11" placeholder="ÇëÊäÈëÊÖ»úºÅÂë" required="required">
+											<button style="display:none" type="button" class="am-btn am-btn-default am-btn-xs sendVerifyCode">·¢ËÍÑéÖ¤Âë</button>
+		                 			   </div>
+	                 				   <div class="user_element">
 										    <label for="password"><i class="am-icon-lock"></i></label>
-										    <input type="password" name="pwd" id="password" onblur="checkPwd()" placeholder="è®¾ç½®å¯†ç ">
+										    <input type="password" class="input_block" name="pwd" id="password" onblur="checkPwd()" placeholder="ÉèÖÃÃÜÂë" required="required">
 	                                   </div>										
-	                				   <div class="user-pass">
+	                				   <div class="user_element">
 										    <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
-										    <input type="password" name="pwdRep" id="passwordRepeat" onblur="verifyPwd()" placeholder="ç¡®è®¤å¯†ç ">
+										    <input type="password" class="input_block" name="pwdRep" id="passwordRepeat" onblur="verifyPwd()" placeholder="È·ÈÏÃÜÂë" required="required">
+	                                   </div>
+	                                    <div class="user_element">
+										    <label for="realname"><i class="am-icon-child"></i></label>
+										    <input type="realname" class="input_block" name="realname" id="realname" placeholder="ÕæÊµÃû³Æ" required="required">
+	                                   </div>
+	                                   <div class="user_element">
+										    <label for="gender"><i class="am-icon-female"></i></label>
+										    <span class="input_group">
+											    <input type="radio" name="gender" class="gender" value="1">ÄĞ
+											    <input type="radio" name="gender" class="gender" value="2">Å®
+											    <input type="radio" name="gender" class="gender" value="3" checked="checked">±£ÃÜ
+										    </span>
+	                                   </div>
+	                                   <div class="user_element">
+										    <label for="birthday"><i class="am-icon-birthday-cake"></i></label>
+										    <input type="date" class="input_block" name="birthday" id="birthday" placeholder="È·ÈÏÃÜÂë" required="required">
+	                                   </div>
+	                                    <div class="user_element">
+										    <label for="addr"><i class="am-icon-area-chart"></i></label>
+										    <span class=""input_block"">
+											    <select name="addr_1" id="addr_1" required="required"></select>
+											    <select name="addr_2" id="addr_2" class="childs" required="required"></select>
+											    <select name="addr_3" id="addr_3" class="childs" required="required"></select>
+											    <input type="text" name="addr_4" id="addr_4" required="required" placeholder="²¹³äµØÖ·" maxlength="50"/>
+										    </span>
 	                                   </div>
 									   <div class="am-cf">
-											<input type="submit" name="" value="æ³¨å†Œ" onclick="return check()" class="am-btn am-btn-primary am-btn-sm am-fl">
+											<input type="submit" name="" value="×¢²á" onclick="return check()" class="am-btn am-btn-primary am-btn-sm am-fl">
 									   </div>
 	                               </form>
 							   </div>
 								<div class="am-tab-panel">
-								<!-- æ‰‹æœºå·ç æ³¨å†Œ -->
+								<!-- ÊÖ»úºÅÂë×¢²á -->
 									<form action="<%=path%>/register?cmd=mob" method="post">
 										<p id="prop" style="color:red;font-size:12px"/>
 	                			        <div class="user-phone">
 										    <label for="phone"><i class="am-icon-mobile-phone am-icon-md"></i></label>
-										    <input type="text" name="phone" id="phone" placeholder="è¯·è¾“å…¥æ‰‹æœºå·ç " onchange="check()" onblur="dis()">
+										    <input type="text" name="phone" id="phone" placeholder="ÇëÊäÈëÊÖ»úºÅÂë" onchange="check()" onblur="dis()">
 	                                    </div>																			
 										<div class="verification">
 											<label for="code"><i class="am-icon-code-fork"></i></label>
-											<input type="text" name="verifyCode" id="code" placeholder="è¯·è¾“å…¥éªŒè¯ç ">
-											<img alt="åŠ è½½å¤±è´¥" onclick="javascript:getchang();" title="çœ‹ä¸æ¸…,æ¢ä¸€å¼ " name="verifyImage"
+											<input type="text" name="verifyCode" id="code" placeholder="ÇëÊäÈëÑéÖ¤Âë">
+											<img alt="¼ÓÔØÊ§°Ü" onclick="javascript:getchang();" title="¿´²»Çå,»»Ò»ÕÅ" name="verifyImage"
 									             id="verifyCodeImg" src="${pageContext.request.contextPath}/verifyCode" width="53px" 
 									             height="38px" border="1" align="absmiddle" style="margin-bottom:-16px">
 										</div>
 	                                    <div class="user-pass">
 										    <label for="password"><i class="am-icon-lock"></i></label>
-										    <input type="password" name="pwd" id="password" placeholder="è¯·è¾“å…¥å¯†ç ">
+										    <input type="password" name="pwd" id="password" placeholder="ÇëÊäÈëÃÜÂë">
 	                                    </div>										
 	                                    <div class="user-pass">
 										    <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
-										    <input type="password" name="pwdRep" id="" placeholder="è¯·è¾“å…¥å¯†ç ">
+										    <input type="password" name="pwdRep" id="" placeholder="ÇëÊäÈëÃÜÂë">
 										    <div class="am-cf">
-												<input type="submit" name="" value="æ³¨å†Œ" class="am-btn am-btn-primary am-btn-sm am-fl">
+												<input type="submit" name="" value="×¢²á" class="am-btn am-btn-primary am-btn-sm am-fl">
 											</div>
 	                                    </div>	
 									</form>
@@ -132,11 +149,34 @@
 		<script type="text/javascript">
 		var isVerify=false;
 		
-		function checkUserFormat()
+		function checkEmailFormat()
 		{
-			//æ£€æŸ¥è¾“å…¥æ ¼å¼
+			//¼ì²éÊäÈë¸ñÊ½
 		}
 		
+		function checkUserFormat()
+		{
+			//¼ì²éÊäÈë¸ñÊ½
+		}
+		function check()
+		{
+	     	var count=$("#phone").val();
+	     	var tel_reg=/^1[3|4|5|7|8]\d{9}$/;
+	       	//var tel_reg=new RegExp("1[3|4|5|7|8]\\d{9}]$");
+	     	if(count.trim()=="")
+	     	{
+		  		alert("ÊÖ»úºÅÂë²»ÄÜÎª¿Õ");
+		  		$("#prop").html("Ç×£¬ÊÖ»úºÅÂë²»ÄÜÎª¿Õ");
+	   		}
+	       	else if(!tel_reg.test(count))
+	       	{
+				alert("ÊäÈëÊÖ»úºÅÂë¸ñÊ½²»ÕıÈ·");
+				$("#prop").html("Ç×£¬ÊäÈëÊÖ»úºÅÂë¸ñÊ½²»ÕıÈ·");
+	   	    }else
+	   	    {
+	   			 $("#prop").css("visibility","hidden");	
+	    	}
+		}
 		function checkVerify()
 		{
 			var verCode=$("#verifyCode").val();
@@ -151,7 +191,7 @@
 				},
 				dataType:"json",
 				success:function(res,status){
-					console.log("è¿”å›");
+					console.log("·µ»Ø");
 					if(res.status=='200'){
 						$(".successIcon").css("display","inline");
 						$(".failIcon").css("display","none");
@@ -170,27 +210,30 @@
 		var pwd="";
 		function checkPwd(){
 			pwd=$("#password").val();
-			if(pwd=="") alert("å¯†ç ä¸èƒ½ä¸ºç©º");
+			if(pwd=="") alert("ÃÜÂë²»ÄÜÎª¿Õ");
 		}
 		
 		function verifyPwd(){
 			var verPwd=$("#passwordRepeat").val();
-			if(verPwd!=pwd) alert("ä¸¤æ¬¡å¯†ç ä¸ä¸€æ ·");
+			if(verPwd!=pwd){
+				alert("Á½´ÎÃÜÂë²»Ò»Ñù");
+				$("#passwordRepeat").val("");
+			}
 		}
 		
 		function check(){
 			var user=$("#username").val();
 			if(user==""){
-				alert("è´¦æˆ·ä¸èƒ½ä¸ºç©º");
+				alert("ÕË»§²»ÄÜÎª¿Õ");
 				return false;
 			}
-			if(!isVerify)       ///////////////////////////////æ­¤å¤„è®°å¾—æ›´æ”¹servletå‡ºå®‰å…¨è®¾ç½®
+			if(!isVerify)       ///////////////////////////////´Ë´¦¼ÇµÃ¸ü¸Äservlet³ö°²È«ÉèÖÃ
 			{
-				alert("è¯·è¾“å…¥æ­£ç¡®çš„éªŒè¯ç ");
+				alert("ÇëÊäÈëÕıÈ·µÄÑéÖ¤Âë");
 				return false;
 			}
 			if(pwd==""){
-				alert(å¯†ç ä¸èƒ½ä¸ºç©º);
+				alert(ÃÜÂë²»ÄÜÎª¿Õ);
 				return false;
 			}
 			return true;
@@ -199,22 +242,24 @@
 		var count=60;
 		function countTime(){
 			var button=$(".sendVerifyCode");
-			button.text((count--)+"ç§’åé‡æ–°å‘é€");
+			button.text((count--)+"ÃëºóÖØĞÂ·¢ËÍ");
 			if(count>=0){
 				setTimeout(countTime,1000);
 			}else{
 				setTimeout(function(){
-					button.text("å‘é€éªŒè¯ç ");
+					button.text("·¢ËÍÑéÖ¤Âë");
 					button.attr("disabled",false);
 					count=60;
 				},1000);
 			}
 		}
 		$(function(){
+			
+			<%-- ÑéÖ¤ÂëµÄÒì²½·¢ËÍ--%>
 			$(".sendVerifyCode").click(function(){
 				$(".sendVerifyCode").attr("disabled",true);
-				$(".sendVerifyCode").text("æ­£åœ¨å‘é€...");
-				console.log("å‘é€éªŒè¯ç ...");
+				$(".sendVerifyCode").text("ÕıÔÚ·¢ËÍ...");
+				console.log("·¢ËÍÑéÖ¤Âë...");
 				
 				$.ajax({
 					url:"<%=basePath%>/verifyCode.ajax",
@@ -222,25 +267,44 @@
 					timeout:20000,
 					dataType:"json",
 					data:{
-						"object":$("#username").val()
+						"object":$("#email").val()
 					},
 					success:function(res,status){
 						console.log(res.status);
-						console.log(res[0].status=='200');
-						 if(res[0].status=='200'){
-							 //$(".sendVerifyCode").text("60ç§’åé‡æ–°å‘é€");
+						console.log(res.status=='200');
+						 if(res.status=='200'){
+							 //$(".sendVerifyCode").text("60ÃëºóÖØĞÂ·¢ËÍ");
 							 countTime();
 						 }else{
-							 $(".sendVerifyCode").text("å‘é€å¤±è´¥,é‡æ–°å‘é€");
+							 $(".sendVerifyCode").text("·¢ËÍÊ§°Ü,ÖØĞÂ·¢ËÍ");
 							 $(".sendVerifyCode").attr("disabled",false);
 						 }
 					},
 					error:function(res,status){
-						console.log("è¿”å›å€¼:"+res+";  è¿”å›çŠ¶æ€:"+status);
-						$(".sendVerifyCode").text("å‘é€å¤±è´¥,é‡æ–°å‘é€");
+						console.log("·µ»ØÖµ:"+res+";  ·µ»Ø×´Ì¬:"+status);
+						$(".sendVerifyCode").text("·¢ËÍÊ§°Ü,ÖØĞÂ·¢ËÍ");
 						$(".sendVerifyCode").attr("disabled",false);
 					}
 				});
+			});
+			
+			<%-- µØÖ·³õÊ¼»¯µÄÒì²½¼ÓÔØ--%>
+			$.ajax({
+				url:"<%=basePath%>/getAddr.ajax",
+				type:"post",
+				timeout:20000,
+				dataType:"json",
+				data:{
+					"type":"-1"
+				},
+				success:function(res,status){
+					var addrs=res.addrs;
+					var n=addrs.length;
+					console.log(addrs);
+				},
+				error:function(res,status){
+					
+				}
 			});
 		});
 		</script>
