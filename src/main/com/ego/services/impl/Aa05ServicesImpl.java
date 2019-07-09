@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.ego.services.JdbcServicesSupport;
-
+//用户卡券包
 public class Aa05ServicesImpl extends JdbcServicesSupport{
 	static Aa05ServicesImpl instance;
 	static {
@@ -28,9 +28,9 @@ public class Aa05ServicesImpl extends JdbcServicesSupport{
 	public boolean update(String utype) throws Exception {
 		// TODO Auto-generated method stub
 		switch (utype) {
-		case "addCoupon":
+		case "addUserCoupon":
 			return addCoupon();
-		case "removeCoupon":
+		case "useCoupons":
 			return removeCoupon();
 		default:
 			throw new Exception("不支持的类型");

@@ -28,6 +28,8 @@ public abstract class ControllerSupport implements Controller
 		return this.services;
 	}
 
+	
+	
 	/*****************************************
 	 * 子类业务流程封装
 	 *****************************************/
@@ -119,6 +121,12 @@ public abstract class ControllerSupport implements Controller
 	 *****************************************/
 	private Map<String, Object> dto = null;
 
+	//可以改变sevice
+	protected void changeService(BaseServices service) {
+		this.setServices(service);
+		this.getServices().setMapDto(dto);
+	}
+	
 	@Override
 	public final void setMapDto(Map<String, Object> dto) 
 	{
@@ -148,4 +156,10 @@ public abstract class ControllerSupport implements Controller
 		return this.attribute;
 	}
 
+	/*****************************************
+	 * 给子类提供的获取dto中数据的方法
+	 *****************************************/
+	protected Object get(String key) {
+		return dto.get(key);
+	}
 }
