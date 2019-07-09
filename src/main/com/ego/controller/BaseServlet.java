@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Collections;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -17,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 
@@ -26,7 +28,7 @@ public class BaseServlet extends HttpServlet
 	
 	private static final long serialVersionUID = 3420016669290706542L;
 	
-	
+	public static final String prefix="WEB-INF/views/";
 	//加载映射文件
 	private static Properties mapping=new Properties();
 	static {
@@ -58,6 +60,7 @@ public class BaseServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException 
 	{
+		
 		System.out.println("base servlet is called");
 		String toPath = null; // 跳转的目标页面
 		try 
@@ -96,13 +99,13 @@ public class BaseServlet extends HttpServlet
 			Map<String, Object> rueqestAttribute = controller.getAttribute();
 			// 织入属性处理切片
 			this.parseRueqestAttribute(request, rueqestAttribute);
-		} 
+		}
 		catch (Exception ex)
 		{
 			request.setAttribute("msg", "提示:网络故障!");
 			ex.printStackTrace();
 		}
-		request.getRequestDispatcher("/WEB-INF/views/" + toPath + ".jsp").forward(request, response);
+		request.getRequestDispatcher("/" + toPath + ".jsp").forward(request, response);
 	}
 
 	private void parseRueqestAttribute(HttpServletRequest request, Map<String, Object> rueqestAttribute) 
@@ -129,6 +132,7 @@ public class BaseServlet extends HttpServlet
 	{
 		// 1.获取页面数据
 		Map<String, String[]> tem = request.getParameterMap();
+		
 		int initSize = ((int) (tem.size() / 0.75)) + 1;
 		// 2.导出所有键值对,形成键值对集合
 		Set<Entry<String, String[]>> entrySet = tem.entrySet();
@@ -156,6 +160,14 @@ public class BaseServlet extends HttpServlet
 				dto.put(entry.getKey(), value);
 			}
 		}
+		HttpSession session=request.getSession();
+		Enumeration<String> attributes=session.getAttributeNames();
+		while (attributes.hasMoreElements()) {
+			String name = attributes.nextElement();
+			dto.put(name, session.getAttribute(name));
+		}
+		//放入request对象
+		dto.put("request", request);
 		// System.out.println(dto);
 		return dto;
 	}
