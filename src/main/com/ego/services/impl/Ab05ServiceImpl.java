@@ -8,7 +8,13 @@ import com.ego.services.JdbcServicesSupport;
 //商家用户卡券包
 public class Ab05ServiceImpl extends JdbcServicesSupport{
 		
-	String errorMessage = null ;
+	static Ab05ServiceImpl instance;
+	static {
+		instance=new Ab05ServiceImpl();
+	}
+	public static Ab05ServiceImpl getInstance() {
+		return instance;
+	}
 	
 	@Override
 	public boolean update(String utype) throws Exception {
@@ -16,18 +22,22 @@ public class Ab05ServiceImpl extends JdbcServicesSupport{
 		switch (utype) {
 		case "addDiscount":
 			return addDiscount();
+		case "delete":
+			return delete();
+		case "changeAmount":
+			return changeAmount();
 		default:
 			throw new Exception("不支持的类型");
 		}
 	}
 	
 	@Override
-	public List<Map<String, String>> query() throws Exception {
+	public List<Map<String, String>> query(String qtype) throws Exception {
 		// TODO Auto-generated method stub
-		return super.query();
+		return query();
 	}
 	
-	private List<Map<String, String>> queryForShop() throws Exception {
+	public List<Map<String, String>> query() throws Exception {
 		StringBuilder sql=new StringBuilder()
 				.append("select aab501,aab502,aab503,aabb504,aab505,aab506 ")
 				.append(" from ab05 where aab102=?");
@@ -47,7 +57,7 @@ public class Ab05ServiceImpl extends JdbcServicesSupport{
 				.append("where aab501=?");
 		Object[] parameter=new Object[] {
 			this.get("aab506"),
-			this.get("aab507")
+			this.get("aab501")
 		};
 		return this.executeUpdate(sql.toString(),parameter);
 	}
