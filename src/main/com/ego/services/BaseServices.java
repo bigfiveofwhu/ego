@@ -11,6 +11,11 @@ public interface BaseServices
 		return null;
 	}
 
+	default List<Map<String,String>> query(String qtyep)throws Exception
+	{
+		return null;
+	}
+
 	default List<Map<String, String>> query() throws Exception 
 	{
 		return null;

@@ -409,7 +409,7 @@ public abstract class JdbcServicesSupport implements BaseServices
 	 * @return
 	 * @throws Exception
 	 */
-	protected final int executeUpdate(final String sql, final Object... args) throws Exception 
+	protected final boolean executeUpdate(final String sql, final Object... args) throws Exception 
 	{
 		// 1.定义JDBC接口变量
 		PreparedStatement pstm = null;
@@ -424,7 +424,7 @@ public abstract class JdbcServicesSupport implements BaseServices
 				pstm.setObject(index++, param);
 			}
 			// 5.执行SQL语句
-			return pstm.executeUpdate();
+			return pstm.executeUpdate()>0;
 		} 
 		finally 
 		{
