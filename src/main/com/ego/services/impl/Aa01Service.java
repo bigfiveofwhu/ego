@@ -51,6 +51,6 @@ public class Aa01Service extends JdbcServicesSupport
 				addr,
 				gender
 		};
-		return this.executeUpdate(sql.toString(), args)>0;
+		return this.executeUpdate(sql.toString(), args);
 	}
 }
