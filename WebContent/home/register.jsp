@@ -98,7 +98,7 @@
 											    <select name="addr_1" id="addr_1" required="required"></select>
 											    <select name="addr_2" id="addr_2" class="childs" required="required"></select>
 											    <select name="addr_3" id="addr_3" class="childs" required="required"></select>
-											    <input type="text" name="addr_4" id="addr_4" required="required" placeholder="补充地址" maxlength="50"/>
+											    <input type="text" name="addr_4" id="addr_4" required="required" placeholder="街道地址" maxlength="50"/>
 										    </span>
 	                                   </div>
 									   <div class="am-cf">
@@ -288,24 +288,45 @@
 				});
 			});
 			
-			<%-- 地址初始化的异步加载--%>
-			$.ajax({
-				url:"<%=basePath%>/getAddr.ajax",
-				type:"post",
-				timeout:20000,
-				dataType:"json",
-				data:{
-					"type":"-1"
-				},
-				success:function(res,status){
-					var addrs=res.addrs;
-					var n=addrs.length;
-					console.log(addrs);
-				},
-				error:function(res,status){
-					
-				}
+			$("#addr_1").change(function(){
+				var A_id=$(this).children("option:selected").attr("A_id");
+				loadAddr(A_id,2);
 			});
+			$("#addr_2").change(function(){
+				var A_id=$(this).children("option:selected").attr("A_id");
+				loadAddr(A_id,3);
+			});
+			
+			<%-- 地址初始化的异步加载--%>
+			function loadAddr(type,index){
+				if(index>3) return;
+				$.ajax({
+					url:"<%=basePath%>/getAddr.ajax",
+					type:"post",
+					timeout:20000,
+					dataType:"json",
+					data:{
+						"type":type
+					},
+					success:function(res,status){
+						var addrs=res.addrs;
+						var n=addrs.length;
+						var html="";
+						if(n>0){
+							html="<option value='"+addrs[0].areaname+"' A_id='"+addrs[0].areaid+"' selected='selected'>"+addrs[0].areaname+"</option>";
+							for(var i=1;i<n;i++){
+								html+="<option value='"+addrs[i].areaname+"' A_id='"+addrs[i].areaid+"'>"+addrs[i].areaname+"</option>";
+							}
+						}
+						$("#addr_"+index).html(html);
+						loadAddr(addrs[0].areaid,++index);
+					},
+					error:function(res,status){
+						console.log("#addr_"+index+"地址异步加载错误");
+					}
+				});
+			}
+			loadAddr("-1",1);
 		});
 		</script>
 	</body>
