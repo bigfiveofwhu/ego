@@ -15,7 +15,7 @@ public class Ab05ServiceImpl extends JdbcServicesSupport{
 	public static Ab05ServiceImpl getInstance() {
 		return instance;
 	}
-	
+
 	@Override
 	public boolean update(String utype) throws Exception {
 		// TODO Auto-generated method stub
@@ -30,31 +30,56 @@ public class Ab05ServiceImpl extends JdbcServicesSupport{
 			throw new Exception("不支持的类型");
 		}
 	}
-	
+
 	@Override
 	public List<Map<String, String>> query(String qtype) throws Exception {
 		// TODO Auto-generated method stub
 		return query();
 	}
 	
+	@Override
+	public Map<String, String> findById(String ftype) throws Exception {
+		// TODO Auto-generated method stub
+		switch (ftype) {
+		case "getPOV":
+			return getPOV();
+		case "getCoupon":
+			return getCoupon();
+		default:
+			throw new Exception("不支持的类型");
+		}
+	}
+	
+	private Map<String, String> getCoupon() throws Exception{
+		String sql="select * from ab05 where aab501=?";
+		return this.queryForMap(sql, this.get("aab501"));
+	}
+
+	private Map<String, String> getPOV() throws Exception {
+		String sql="select aab505 from ab05 where aab501=?";
+		return this.queryForMap(sql, this.get("aab501"));
+	}
+	
 	public List<Map<String, String>> query() throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append("select aab501,aab502,aab503,aabb504,aab505,aab506 ")
+				.append("select aab501,aab502,aab503,aab504,aab505,aab506 ")
 				.append(" from ab05 where aab102=?");
 		return this.queryForList(sql.toString(), this.get("aab102"));
 	}
+
 	
 	private boolean delete() throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append("delete from ab05 ")
+				.append(" delete from ab05 ")
 				.append(" where aab501=? ");
 		return this.executeUpdate(sql.toString(), this.get("aab501"));
 	}
+	
 	private boolean changeAmount() throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append("update ab05 ")
-				.append("set aab506=?")
-				.append("where aab501=?");
+				.append(" update ab05 ")
+				.append(" set aab506=?")
+				.append(" where aab501=?");
 		Object[] parameter=new Object[] {
 			this.get("aab506"),
 			this.get("aab501")
@@ -72,7 +97,7 @@ public class Ab05ServiceImpl extends JdbcServicesSupport{
 		case 1://无条件
 			StringBuilder sql1=new StringBuilder()
 			.append("insert into ab05(aab102,aab502,aab503,aab505,aab506)")  
-			.append(" value(?,?,?,?)");
+			.append(" value(?,?,?,?,?)");
 			parameter= new Object[]{
 					this.get("aab102"),
 					this.get("aab502"),
@@ -85,7 +110,7 @@ public class Ab05ServiceImpl extends JdbcServicesSupport{
 		case 2://无条件
 			StringBuilder sql2=new StringBuilder()
 			.append("insert into ab05(aab102,aab502,aab503,aab504,aab505,aab506)")
-			.append(" value(?,?,?,?,?)");
+			.append(" value(?,?,?,?,?,?)");
 			try {
 				int man=Integer.parseInt(this.get("aab504").toString()) ;
 				int jian=Integer.parseInt(this.get("aab503").toString()) ;
