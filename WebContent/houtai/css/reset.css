@@ -1,0 +1,36 @@
+html,body,div,span,form,table,ul,li,ol, li,dl,dt,dd{
+	padding:0;
+	margin:0;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+ }
+
+ a {
+ 	color:#333;
+ 	text-decoration: none;
+ }
+
+ input {
+ 	outline: none;
+ 	border:0;
+ }
+ ul , ol {
+ 	list-style:none;
+ }
+
+ /* common css */
+ /*清除浮动*/
+ .clearfix:after {
+ 	content: "";
+ 	display: block;
+ 	clear:both;
+ 	height: 0;
+ 	visibility: hidden;
+ }
+ /* 浮动 */
+ .fl {
+ 	float: left;
+ }
+ .fr {
+ 	float: right;
+ }

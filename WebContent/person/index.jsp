@@ -16,8 +16,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
 		<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 		<link href="../css/personal.css" rel="stylesheet" type="text/css">
-		<link href="../css/systyle.css" rel="stylesheet" type="text/css">
-
+		<link href="../css/vipstyle.css" rel="stylesheet" type="text/css">
+		<script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 	</head>
 
 	<body>
@@ -71,23 +72,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</article>
 		</header>
-            <div class="nav-table">
-					   <div class="long-title"><span class="all-goods">全部分类</span></div>
-					   <div class="nav-cont">
-							<ul>
-								<li class="index"><a href="#">首页</a></li>
-                                <li class="qc"><a href="#">闪购</a></li>
-                                <li class="qc"><a href="#">限时抢</a></li>
-                                <li class="qc"><a href="#">团购</a></li>
-                                <li class="qc last"><a href="#">大包装</a></li>
-							</ul>
-						    <div class="nav-extra">
-						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-						    </div>
-						</div>
+		<div class="nav-table">
+			<div class="long-title"><span class="all-goods">全部分类</span></div>
+			<div class="nav-cont">
+				<ul>
+					<li class="index"><a href="#">首页</a></li>
+					<li class="qc"><a href="#">闪购</a></li>
+					<li class="qc"><a href="#">限时抢</a></li>
+					<li class="qc"><a href="#">团购</a></li>
+					<li class="qc last"><a href="#">大包装</a></li>
+				</ul>
+				<div class="nav-extra">
+					<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+					<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
+				</div>
 			</div>
-			<b class="line"></b>
+		</div>
+		<b class="line"></b>
 		<div class="center">
 			<div class="col-main">
 				<div class="main-wrap">
@@ -95,23 +96,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="wrap-list">
 							<div class="m-user">
 								<!--个人信息 -->
-								<div class="m-bg"></div>
+
 								<div class="m-userinfo">
+									<a href="news.html">
+										<div class="tipsBox"><i class="am-icon-envelope"></i></div>
+									</a>
 									<div class="m-baseinfo">
-										<a href="information.html">
+										<a class="m-pic" href="information.html">
 											<img src="../images/getAvatar.do.jpg">
 										</a>
-										<em class="s-name">(小叮当)<span class="vip1"></em>
-										<div class="s-prestige am-btn am-round">
-											</span>会员福利</div>
+										<div class="m-info">
+											<em class="s-name">小叮当</em>
+											<div class="vip1"><a href="#"><span></span><em>会员专享</em></a></div>
+											<div class="safeText"><a href="safety.html">账户安全:<em style="margin-left:20px ;">60</em>分</a>
+												<div class="progressBar"><span style="left: -95px;" class="progress"></span></div>
+											</div>
+											<div class="m-address">
+												<a href="address.html" class="i-trigger">收货地址<i class="am-icon-angle-right" style="padding-left:5px ;"></i></a>
+											</div>
+										</div>
 									</div>
 									<div class="m-right">
 										<div class="m-new">
-											<a href="news.html"><i class="am-icon-bell-o"></i>消息</a>
+											<a href="news.html"><i class="am-icon-dropbox  am-icon-md" style="padding-right:5px ;"></i>消息盒子</a>
 										</div>
-										<div class="m-address">
-											<a href="address.html" class="i-trigger">我的收货地址</a>
-										</div>
+
 									</div>
 								</div>
 
@@ -120,40 +129,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<div class="s-bar">
 										<i class="s-icon"></i>个人资产
 									</div>
-									<p class="m-bonus">
-										<a href="bonus.html">
-											<i><img src="../images/bonus.png"/></i>
-											<span class="m-title">红包</span>
-											<em class="m-num">2</em>
-										</a>
-									</p>
 									<p class="m-coupon">
 										<a href="coupon.html">
-											<i><img src="../images/coupon.png"/></i>
-											<span class="m-title">优惠券</span>
 											<em class="m-num">2</em>
+											<span class="m-title">优惠券</span>
+										</a>
+									</p>
+									<p class="m-wallet">
+										<a href="wallet.html">
+											<em class="m-num">0.00</em>
+											<span class="m-title">账户余额</span>
 										</a>
 									</p>
 									<p class="m-bill">
-										<a href="bill.html">
-											<i><img src="../images/wallet.png"/></i>
-											<span class="m-title">钱包</span>
-											<em class="m-num">2</em>
-										</a>
-									</p>
-									<p class="m-big">
-										<a href="#">
-											<i><img src="../images/day-to.png"/></i>
-											<span class="m-title">签到有礼</span>
-										</a>
-									</p>
-									<p class="m-big">
-										<a href="#">
-											<i><img src="../images/72h.png"/></i>
-											<span class="m-title">72小时发货</span>
+										<a href="pointnew.html">
+											<em class="m-num">10</em>
+											<span class="m-title">总积分</span>
 										</a>
 									</p>
 								</div>
+
+								<!--我的钱包-->
+								<div class="wallet">
+									<div class="s-bar">
+										<i class="s-icon"></i>商城钱包
+									</div>
+									<p class="m-big squareS">
+										<a href="#">
+											<i><img src="../images/shopping.png"/></i>
+											<span class="m-title">能购物</span>
+										</a>
+									</p>
+									<p class="m-big squareA">
+										<a href="#">
+											<i><img src="../images/safe.png"/></i>
+											<span class="m-title">够安全</span>
+										</a>
+									</p>
+									<p class="m-big squareL">
+										<a href="#">
+											<i><img src="../images/profit.png"/></i>
+											<span class="m-title">很灵活</span>
+										</a>
+									</p>
+								</div>
+
 							</div>
 							<div class="box-container-bottom"></div>
 
@@ -170,250 +190,136 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<li><a href="order.html"><i><img src="../images/comment.png"/></i><span>待评价<em class="m-num">3</em></span></a></li>
 									<li><a href="change.html"><i><img src="../images/refund.png"/></i><span>退换货</span></a></li>
 								</ul>
+								<div class="orderContentBox">
+									<div class="orderContent">
+										<div class="orderContentpic">
+											<div class="imgBox">
+												<a href="orderinfo.html"><img src="../images/youzi.jpg"></a>
+											</div>
+										</div>
+										<div class="detailContent">
+											<a href="orderinfo.html" class="delivery">签收</a>
+											<div class="orderID">
+												<span class="time">2016-03-09</span>
+												<span class="splitBorder">|</span>
+												<span class="time">21:52:47</span>
+											</div>
+											<div class="orderID">
+												<span class="num">共1件商品</span>
+											</div>
+										</div>
+										<div class="state">待评价</div>
+										<div class="price"><span class="sym">¥</span>23.<span class="sym">80</span></div>
+
+									</div>
+									<a href="javascript:void(0);" class="btnPay">再次购买</a>
+								</div>
+
+								<div class="orderContentBox">
+									<div class="orderContent">
+										<div class="orderContentpic">
+											<div class="imgBox">
+												<a href="orderinfo.html"><img src="../images/heart.jpg"></a>
+											</div>
+										</div>
+										<div class="detailContent">
+											<a href="orderinfo.html" class="delivery">派件</a>
+											<div class="orderID">
+												<span class="time">2016-03-09</span>
+												<span class="splitBorder">|</span>
+												<span class="time">21:52:47</span>
+											</div>
+											<div class="orderID">
+												<span class="num">共2件商品</span>
+											</div>
+										</div>
+										<div class="state">已发货</div>
+										<div class="price"><span class="sym">¥</span>246.<span class="sym">50</span></div>
+
+									</div>
+									<a href="javascript:void(0);" class="btnPay">再次购买</a>
+								</div>
 							</div>
 							<!--九宫格-->
-							<div class="user-patternIcon">
+							<div class="user-squaredIcon">
 								<div class="s-bar">
 									<i class="s-icon"></i>我的常用
 								</div>
 								<ul>
+									<a href="order.html">
+										<li class="am-u-sm-4"><i class="am-icon-truck am-icon-md"></i>
+											<p>物流查询</p>
+										</li>
+									</a>
+									<a href="collection.html">
+										<li class="am-u-sm-4"><i class="am-icon-heart am-icon-md"></i>
+											<p>我的收藏</p>
+										</li>
+									</a>
+									<a href="foot.html">
+										<li class="am-u-sm-4"><i class="am-icon-paw am-icon-md"></i>
+											<p>我的足迹</p>
+										</li>
+									</a>
+									<a href="#">
+										<li class="am-u-sm-4"><i class="am-icon-gift am-icon-md"></i>
+											<p>为你推荐</p>
+										</li>
+									</a>
+									<a href="blog.html">
+										<li class="am-u-sm-4"><i class="am-icon-share-alt am-icon-md"></i>
+											<p>我的分享</p>
+										</li>
+									</a>
+									<a href="../home/home2.html">
+										<li class="am-u-sm-4"><i class="am-icon-clock-o am-icon-md"></i>
+											<p>限时活动</p>
+										</li>
+									</a>
 
-									<a href="../home/shopcart.html"><li class="am-u-sm-4"><i class="am-icon-shopping-basket am-icon-md"></i><img src="../images/iconbig.png"/><p>购物车</p></li></a>
-									<a href="collection.html"><li class="am-u-sm-4"><i class="am-icon-heart am-icon-md"></i><img src="../images/iconsmall1.png"/><p>我的收藏</p></li></a>
-									<a href="../home/home.html"><li class="am-u-sm-4"><i class="am-icon-gift am-icon-md"></i><img src="../images/iconsmall0.png"/><p>为你推荐</p></li></a>
-									<a href="comment.html"><li class="am-u-sm-4"><i class="am-icon-pencil am-icon-md"></i><img src="../images/iconsmall3.png"/><p>好评宝贝</p></li></a>
-									<a href="foot.html"><li class="am-u-sm-4"><i class="am-icon-clock-o am-icon-md"></i><img src="../images/iconsmall2.png"/><p>我的足迹</p></li></a>                                                                        
 								</ul>
 							</div>
-							<!--物流 -->
-							<div class="m-logistics">
 
+							<div class="user-suggestion">
 								<div class="s-bar">
-									<i class="s-icon"></i>我的物流
+									<i class="s-icon"></i>会员中心
 								</div>
-								<div class="s-content">
-									<ul class="lg-list">
-
-										<li class="lg-item">
-											<div class="item-info">
-												<a href="#">
-													<img src="../images/65.jpg_120x120xz.jpg" alt="抗严寒冬天保暖隔凉羊毛毡底鞋垫超薄0.35厘米厚吸汗排湿气舒适">
-												</a>
-
-											</div>
-											<div class="lg-info">
-
-												<p>快件已从 义乌 发出</p>
-												<time>2015-12-20 17:58:05</time>
-
-												<div class="lg-detail-wrap">
-													<a class="lg-detail i-tip-trigger" href="logistics.html">查看物流明细</a>
-													<div class="J_TipsCon hide">
-														<div class="s-tip-bar">中通快递&nbsp;&nbsp;&nbsp;&nbsp;运单号：373269427686</div>
-														<div class="s-tip-content">
-															<ul>
-																<li>快件已从 义乌 发出2015-12-20 17:58:05</li>
-																<li>义乌 的 义乌总部直发车 已揽件2015-12-20 17:54:49</li>
-																<li class="s-omit"><a data-spm-anchor-id="a1z02.1.1998049142.3" target="_blank" href="#">··· 查看全部</a></li>
-																<li>您的订单开始处理2015-12-20 08:13:48</li>
-
-															</ul>
-														</div>
-													</div>
-												</div>
-
-											</div>
-											<div class="lg-confirm">
-												<a class="i-btn-typical" href="#">确认收货</a>
-											</div>
-										</li>
-										<div class="clear"></div>
-
-										<li class="lg-item">
-											<div class="item-info">
-												<a href="#">
-													<img src="../images/88.jpg_120x120xz.jpg" alt="礼盒袜子女秋冬 纯棉袜加厚 女式中筒袜子 韩国可爱 女袜 女棉袜">
-												</a>
-
-											</div>
-											<div class="lg-info">
-
-												<p>已签收,签收人是青年城签收</p>
-												<time>2015-12-19 15:35:42</time>
-
-												<div class="lg-detail-wrap">
-													<a class="lg-detail i-tip-trigger" href="logistics.html">查看物流明细</a>
-													<div class="J_TipsCon hide">
-														<div class="s-tip-bar">天天快递&nbsp;&nbsp;&nbsp;&nbsp;运单号：666287461069</div>
-														<div class="s-tip-content">
-															<ul>
-
-																<li>已签收,签收人是青年城签收2015-12-19 15:35:42</li>
-																<li>【光谷关山分部】的派件员【关山代派】正在派件 电话:*2015-12-19 14:27:28</li>
-																<li class="s-omit"><a data-spm-anchor-id="a1z02.1.1998049142.7" target="_blank" href="//wuliu.taobao.com/user/order_detail_new.htm?spm=a1z02.1.1998049142.7.8BJBiJ&amp;trade_id=1479374251166800&amp;seller_id=1651462988&amp;tracelog=yimaidaologistics">··· 查看全部</a></li>
-																<li>您的订单开始处理2015-12-17 14:27:50</li>
-
-															</ul>
-														</div>
-													</div>
-												</div>
-
-											</div>
-											<div class="lg-confirm">
-												<a class="i-btn-typical" href="#">确认收货</a>
-											</div>
-										</li>
-
-									</ul>
-
+								<div class="s-bar">
+									<a href="suggest.html"><i class="s-icon"></i>意见反馈</a>
 								</div>
-
 							</div>
 
-							<!--收藏夹 -->
-							<div class="you-like">
-								<div class="s-bar">我的收藏
-									<a class="am-badge am-badge-danger am-round">降价</a>
-									<a class="am-badge am-badge-danger am-round">下架</a>
-									<a class="i-load-more-item-shadow" href="#"><i class="am-icon-refresh am-icon-fw"></i>换一组</a>
+							<!--优惠券积分-->
+							<div class="twoTab">
+								<div class="twoTabModel Coupon">
+									<h5 class="squareTitle"><a href="#"><span class="splitBorder"></span>优惠券<i class="am-icon-angle-right"></i></a></h5>
+									<div class="Box">
+										<div class="CouponList">
+											<span class="price">¥<strong class="num">50</strong></span>
+	                                        <p class="brandName"><a href="#">ABC品牌499减50</a></p>
+	                                        <p class="discount">满<span>499</span>元抵扣</p>
+                                            <a  href="#" class="btnReceive">立即领取</a>
+										</div>
+									</div>
 								</div>
-								<div class="s-content">
-									<div class="s-item-wrap">
-										<div class="s-item">
-
-											<div class="s-pic">
-												<a href="#" class="s-pic-link">
-													<img src="../images/0-item_pic.jpg_220x220.jpg" alt="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰" title="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰" class="s-pic-img s-guess-item-img">
-												</a>
-											</div>
-											<div class="s-price-box">
-												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">42.50</em></span>
-												<span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">68.00</em></span>
-
-											</div>
-											<div class="s-title"><a href="#" title="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰">包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰</a></div>
-											<div class="s-extra-box">
-												<span class="s-comment">好评: 98.03%</span>
-												<span class="s-sales">月销: 219</span>
-
-											</div>
+								<div class="twoTabModel credit">
+									<h5 class="squareTitle"><a href="#"><span class="splitBorder"></span>积分商城<i class="am-icon-angle-right"></i></a></h5>
+									<div class="Box">
+										<p class="countDown">
+											<span class="hour">12</span>：<span class="minute">09</span>：<span class="second">02</span><em class="txtStart">即将开始</em>
+										</p>
+										<div class="am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth:108, itemMargin:3, slideshow: false}">
+											<ul class="am-slides">
+												<li><a href="#"><img src="../images/333.jpg" /></a></li>
+												<li><a href="#"><img src="../images/222.jpg" /></a></li>
+												<li><a href="#"><img src="../images/111.jpg" /></a></li>
+												<li><a href="#"><img src="../images/333.jpg" /></a></li>
+												<li><a href="#"><img src="../images/222.jpg" /></a></li>
+												<li><a href="#"><img src="../images/111.jpg" /></a></li>
+											</ul>
 										</div>
 									</div>
-
-									<div class="s-item-wrap">
-										<div class="s-item">
-
-											<div class="s-pic">
-												<a href="#" class="s-pic-link">
-													<img src="../images/1-item_pic.jpg_220x220.jpg" alt="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰" title="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰" class="s-pic-img s-guess-item-img">
-												</a>
-											</div>
-											<div class="s-price-box">
-												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">49.90</em></span>
-												<span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">88.00</em></span>
-
-											</div>
-											<div class="s-title"><a href="#" title="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰">s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰</a></div>
-											<div class="s-extra-box">
-												<span class="s-comment">好评: 99.74%</span>
-												<span class="s-sales">月销: 69</span>
-
-											</div>
-										</div>
-									</div>
-
-									<div class="s-item-wrap">
-										<div class="s-item">
-
-											<div class="s-pic">
-												<a href="#" class="s-pic-link">
-													<img src="../images/-0-saturn_solar.jpg_220x220.jpg" alt="4折抢购!十二生肖925银女戒指,时尚开口女戒" title="4折抢购!十二生肖925银女戒指,时尚开口女戒" class="s-pic-img s-guess-item-img">
-												</a>
-											</div>
-											<div class="s-price-box">
-												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">378.00</em></span>
-												<span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">1888.00</em></span>
-
-											</div>
-											<div class="s-title"><a href="#" title="4折抢购!十二生肖925银女戒指,时尚开口女戒">4折抢购!十二生肖925银女戒指,时尚开口女戒</a></div>
-											<div class="s-extra-box">
-												<span class="s-comment">好评: 99.93%</span>
-												<span class="s-sales">月销: 278</span>
-
-											</div>
-										</div>
-									</div>
-
-									<div class="s-item-wrap">
-										<div class="s-item">
-
-											<div class="s-pic">
-												<a href="#" class="s-pic-link">
-													<img src="../images/0-item_pic.jpg_220x220.jpg" alt="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰" title="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰" class="s-pic-img s-guess-item-img">
-												</a>
-											</div>
-											<div class="s-price-box">
-												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">42.50</em></span>
-												<span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">68.00</em></span>
-
-											</div>
-											<div class="s-title"><a href="#" title="包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰">包邮s925纯银项链女吊坠短款锁骨链颈链日韩猫咪银饰简约夏配饰</a></div>
-											<div class="s-extra-box">
-												<span class="s-comment">好评: 98.03%</span>
-												<span class="s-sales">月销: 219</span>
-
-											</div>
-										</div>
-									</div>
-
-									<div class="s-item-wrap">
-										<div class="s-item">
-
-											<div class="s-pic">
-												<a href="#" class="s-pic-link">
-													<img src="../images/1-item_pic.jpg_220x220.jpg" alt="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰" title="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰" class="s-pic-img s-guess-item-img">
-												</a>
-											</div>
-											<div class="s-price-box">
-												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">49.90</em></span>
-												<span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">88.00</em></span>
-
-											</div>
-											<div class="s-title"><a href="#" title="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰">s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰</a></div>
-											<div class="s-extra-box">
-												<span class="s-comment">好评: 99.74%</span>
-												<span class="s-sales">月销: 69</span>
-
-											</div>
-										</div>
-									</div>
-
-									<div class="s-item-wrap">
-										<div class="s-item">
-
-											<div class="s-pic">
-												<a href="#" class="s-pic-link">
-													<img src="../images/-0-saturn_solar.jpg_220x220.jpg" alt="4折抢购!十二生肖925银女戒指,时尚开口女戒" title="4折抢购!十二生肖925银女戒指,时尚开口女戒" class="s-pic-img s-guess-item-img">
-												</a>
-											</div>
-											<div class="s-price-box">
-												<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">378.00</em></span>
-												<span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">1888.00</em></span>
-
-											</div>
-											<div class="s-title"><a href="#" title="4折抢购!十二生肖925银女戒指,时尚开口女戒">4折抢购!十二生肖925银女戒指,时尚开口女戒</a></div>
-											<div class="s-extra-box">
-												<span class="s-comment">好评: 99.93%</span>
-												<span class="s-sales">月销: 278</span>
-
-											</div>
-										</div>
-									</div>
-
 								</div>
-
-								<div class="s-more-btn i-load-more-item" data-screen="0"><i class="am-icon-refresh am-icon-fw"></i>更多</div>
-
 							</div>
 
 						</div>
@@ -422,16 +328,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 						<!-- 日历-->
 						<div class="day-list">
-							<div class="s-bar">
-								<a class="i-history-trigger s-icon" href="#"></a>我的日历
-								<a class="i-setting-trigger s-icon" href="#"></a>
+							<div class="s-title">
+								每日新鲜事
 							</div>
-							<div class="s-care s-care-noweather">
-								<div class="s-date">
-									<em>21</em>
-									<span>星期一</span>
-									<span>2015.12</span>
-								</div>
+							<div class="s-box">
+								<ul>
+									<li><a><p>粮油冲锋周 满128减18</p></a></li>
+									<li><a><p>防晒这么重要的事怎能随意</p></a></li>
+									<li><a><p>春日护肤面膜不可少，你选对了吗？</p></a></li>
+									<li><a><p>纯粹时尚，摩登出游，吸睛美衣</p></a></li>
+									<li><a><p>粮油冲锋周 满128减18</p></a></li>
+									<li><a><p>春日护肤面膜不可少，你选对了吗？</p></a></li>									
+								</ul>
 							</div>
 						</div>
 						<!--新品 -->
@@ -441,16 +349,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<a class="i-load-more-item-shadow">15款新品</a>
 							</div>
 							<div class="new-goods-info">
-								<a class="shop-info" href="#" target="_blank">
+								<a class="shop-info" href="#">
 									<div class="face-img-panel">
 										<img src="../images/imgsearch1.jpg" alt="">
 									</div>
 									<span class="new-goods-num ">4</span>
 									<span class="shop-title">剥壳松子</span>
 								</a>
-								<a class="follow " target="_blank">关注</a>
+								<a class="follow">收藏</a>
 							</div>
-						</div>
+						</div>						
 
 						<!--热卖推荐 -->
 						<div class="new-goods">
@@ -460,14 +368,104 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="new-goods-info">
 								<a class="shop-info" href="#" target="_blank">
 									<div >
-										<img src="../images/imgsearch1.jpg" alt="">
+										<img src="../images/666.jpg" alt="">
 									</div>
-                                    <span class="one-hot-goods">￥9.20</span>
+                                    <span class="one-hot-goods">￥189.60</span>
 								</a>
 							</div>
-						</div>
+						</div>						
+     				</div>
+     				<div class="clear"></div>
+     				
+     				<!--收藏和足迹-->
+     				 <div data-am-widget="tabs" class="am-tabs collection">
+                         <ul class="am-tabs-nav am-cf">
+                         	<li class="am-active"><a href="[data-tab-panel-0]"><i class="am-icon-heart"></i>商品收藏</a></li>
+                            <li class=""><a href="[data-tab-panel-1]"><i class="am-icon-paw"></i>购物足迹</a></li>
+                        </ul>
+                        <div class="am-tabs-bd">
 
-					</div>
+                            <div data-tab-panel-0 class="am-tab-panel am-active">
+                        		<div class="am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth:155,slideshow: false}">
+									<ul class="am-slides">
+                                       <li>
+                                       	  <a><img class="am-thumbnail" src="../images/EZA27501.jpg" /></a>
+                                       	  <strong class="price">¥32.9</strong>
+                                       </li>
+                                       <li>
+                                       	  <a><img class="am-thumbnail" src="../images/BxJk6.jpg" /></a>
+                                       	  <strong class="price">¥32.9</strong>
+                                       </li>
+                                       <li>
+                                       	  <a><img class="am-thumbnail" src="../images/Hxcag60.jpg" /></a>
+                                       	  <strong class="price">¥32.9</strong>
+                                       </li>
+                                       <li>
+                                       	  <a><img class="am-thumbnail" src="../images/youzi.jpg" /></a>
+                                       	  <strong class="price">¥32.9</strong>
+                                       </li>
+                                       <li>
+                                       	  <a><img class="am-thumbnail" src="../images/EZA27501.jpg" /></a>
+                                       	  <strong class="price">¥32.9</strong>
+                                       </li>
+                                       <li>
+                                       	  <a><img class="am-thumbnail" src="../images/BxJk6.jpg" /></a>
+                                       	  <strong class="price">¥32.9</strong>
+                                       </li>
+                                       <li>
+                                       	  <a><img class="am-thumbnail" src="../images/Hxcag60.jpg" /></a>
+                                       	  <strong class="price">¥32.9</strong>
+                                       </li>
+                                       <li>
+                                       	  <a><img class="am-thumbnail" src="../images/youzi.jpg" /></a>
+                                       	  <strong class="price">¥32.9</strong>
+                                       </li>
+
+									</ul>
+								</div>
+                            </div>
+                            <div data-tab-panel-1 class="am-tab-panel "> 
+                        		<div class="am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth:155, slideshow: false}">
+									<ul class="am-slides">
+                                       <li>
+                                       	  <a><img class="am-thumbnail" src="../images/BxJk6.jpg" /></a>
+                                       	  <strong class="price">¥32.9</strong>
+                                       </li>
+                                       <li>
+                                       	  <a><img class="am-thumbnail" src="../images/Hxcag60.jpg" /></a>
+                                       	  <strong class="price">¥32.9</strong>
+                                       </li>
+                                       <li>
+                                       	  <a><img class="am-thumbnail" src="../images/youzi.jpg" /></a>
+                                       	  <strong class="price">¥32.9</strong>
+                                       </li>
+                                       <li>
+                                       	  <a><img class="am-thumbnail" src="../images/EZA27501.jpg" /></a>
+                                       	  <strong class="price">¥32.9</strong>
+                                       </li>
+                                       <li>
+                                       	  <a><img class="am-thumbnail" src="../images/BxJk6.jpg" /></a>
+                                       	  <strong class="price">¥32.9</strong>
+                                       </li>
+                                       <li>
+                                       	  <a><img class="am-thumbnail" src="../images/Hxcag60.jpg" /></a>
+                                       	  <strong class="price">¥32.9</strong>
+                                       </li>
+                                       <li>
+                                       	  <a><img class="am-thumbnail" src="../images/youzi.jpg" /></a>
+                                       	  <strong class="price">¥32.9</strong>
+                                       </li>
+                                       <li>
+                                       	  <a><img class="am-thumbnail" src="../images/EZA27501.jpg" /></a>
+                                       	  <strong class="price">¥32.9</strong>
+                                       </li>
+									</ul>
+								</div>                            	
+                            </div>
+                        </div>
+                     </div>
+
+
 				</div>
 				<!--底部-->
 				<div class="footer">
@@ -498,52 +496,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<aside class="menu">
 				<ul>
 					<li class="person active">
-						<a href="index.html">个人中心</a>
+						<a href="#"><i class="am-icon-user"></i>个人中心</a>
 					</li>
 					<li class="person">
-						<a href="#">个人资料</a>
-						<ul>
-							<li> <a href="information.html">个人信息</a></li>
-							<li> <a href="safety.html">安全设置</a></li>
-							<li> <a href="address.html">收货地址</a></li>
+						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
+					<ul>
+							<li> <a href="showUserInfo.html">个人信息</a></li>
+							<li> <a href="<%=path%>/person/safety.jsp">安全设置</a></li>
+							<li> <a href="<%=path%>/person/address.jsp">地址管理</a></li>
+							<li> <a href="<%=path%>/person/cardlist.jsp">快捷支付</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<a href="#">我的交易</a>
+						<p><i class="am-icon-balance-scale"></i>我的交易</p>
 						<ul>
 							<li><a href="order.html">订单管理</a></li>
 							<li> <a href="change.html">退款售后</a></li>
+							<li> <a href="comment.html">评价商品</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<a href="#">我的资产</a>
+						<p><i class="am-icon-dollar"></i>我的资产</p>
 						<ul>
+							<li> <a href="points.html">我的积分</a></li>
 							<li> <a href="coupon.html">优惠券 </a></li>
 							<li> <a href="bonus.html">红包</a></li>
+							<li> <a href="walletlist.html">账户余额</a></li>
 							<li> <a href="bill.html">账单明细</a></li>
 						</ul>
 					</li>
 
 					<li class="person">
-						<a href="#">我的小窝</a>
+						<p><i class="am-icon-tags"></i>我的收藏</p>
 						<ul>
 							<li> <a href="collection.html">收藏</a></li>
-							<li> <a href="foot.html">足迹</a></li>
-							<li> <a href="comment.html">评价</a></li>
-							<li> <a href="news.html">消息</a></li>
+							<li> <a href="foot.html">足迹</a></li>														
 						</ul>
 					</li>
 
+					<li class="person">
+						<p><i class="am-icon-qq"></i>在线客服</p>
+						<ul>
+							<li> <a href="consultation.html">商品咨询</a></li>
+							<li> <a href="suggest.html">意见反馈</a></li>							
+							
+							<li> <a href="news.html">我的消息</a></li>
+						</ul>
+					</li>
 				</ul>
 
 			</aside>
 		</div>
 		<!--引导 -->
 		<div class="navCir">
-			<li><a href="../home/home.html"><i class="am-icon-home "></i>首页</a></li>
+			<li><a href="../home/home2.html"><i class="am-icon-home "></i>首页</a></li>
 			<li><a href="../home/sort.html"><i class="am-icon-list"></i>分类</a></li>
-			<li><a href="../home/shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>	
-			<li class="active"><a href="index.html"><i class="am-icon-user"></i>我的</a></li>					
+			<li><a href="../home/shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>
+			<li class="active"><a href="index.html"><i class="am-icon-user"></i>我的</a></li>
 		</div>
 	</body>
 

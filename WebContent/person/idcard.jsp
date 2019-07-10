@@ -19,9 +19,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link href="../css/personal.css" rel="stylesheet" type="text/css">
 		<link href="../css/stepstyle.css" rel="stylesheet" type="text/css">
 
-		<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
-		<script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
-
 	</head>
 
 	<body>
@@ -75,23 +72,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</article>
 		</header>
-            <div class="nav-table">
-					   <div class="long-title"><span class="all-goods">全部分类</span></div>
-					   <div class="nav-cont">
-							<ul>
-								<li class="index"><a href="#">首页</a></li>
-                                <li class="qc"><a href="#">闪购</a></li>
-                                <li class="qc"><a href="#">限时抢</a></li>
-                                <li class="qc"><a href="#">团购</a></li>
-                                <li class="qc last"><a href="#">大包装</a></li>
-							</ul>
-						    <div class="nav-extra">
-						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-						    </div>
-						</div>
+		<div class="nav-table">
+			<div class="long-title"><span class="all-goods">全部分类</span></div>
+			<div class="nav-cont">
+				<ul>
+					<li class="index"><a href="#">首页</a></li>
+					<li class="qc"><a href="#">闪购</a></li>
+					<li class="qc"><a href="#">限时抢</a></li>
+					<li class="qc"><a href="#">团购</a></li>
+					<li class="qc last"><a href="#">大包装</a></li>
+				</ul>
+				<div class="nav-extra">
+					<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+					<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
+				</div>
 			</div>
-			<b class="line"></b>
+		</div>
+		<b class="line"></b>
 		<div class="center">
 			<div class="col-main">
 				<div class="main-wrap">
@@ -100,50 +97,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">实名认证</strong> / <small>Real&nbsp;authentication</small></div>
 					</div>
 					<hr/>
-					<!--进度条-->
-					<div class="m-progress">
-						<div class="m-progress-list">
-							<span class="step-1 step">
-                                <em class="u-progress-stage-bg"></em>
-                                <i class="u-stage-icon-inner">1<em class="bg"></em></i>
-                                <p class="stage-name">实名认证</p>
-                            </span>
-							<span class="step-2 step">
-                                <em class="u-progress-stage-bg"></em>
-                                <i class="u-stage-icon-inner">2<em class="bg"></em></i>
-                                <p class="stage-name">完成</p>
-                            </span>
-							<span class="u-progress-placeholder"></span>
-						</div>
-						<div class="u-progress-bar total-steps-2">
-							<div class="u-progress-bar-inner"></div>
-						</div>
-					</div>
-					<form class="am-form am-form-horizontal">
-						<div class="am-form-group bind">
-							<label for="user-info" class="am-form-label">账户名</label>
-							<div class="am-form-content">
-								<span id="user-info">186XXXX0531</span>
+					<div class="authentication">
+						<p class="tip">请填写您身份证上的真实信息，以用于报关审核</p>
+						<div class="authenticationInfo">
+							<p class="title">填写个人信息</p>
+
+							<div class="am-form-group">
+								<label for="user-name" class="am-form-label">真实姓名</label>
+								<div class="am-form-content">
+									<input type="text" id="user-name" placeholder="请输入您的真实姓名">
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="user-IDcard" class="am-form-label">身份证号</label>
+								<div class="am-form-content">
+									<input type="tel" id="user-IDcard" placeholder="请输入您的身份证信息">
+								</div>
 							</div>
 						</div>
-						<div class="am-form-group">
-							<label for="user-name" class="am-form-label">真实姓名</label>
-							<div class="am-form-content">
-								<input type="text" id="user-name" placeholder="请输入您的真实姓名">
-							</div>
-						</div>
-						<div class="am-form-group">
-							<label for="user-IDcard" class="am-form-label">身份证号</label>
-							<div class="am-form-content">
-								<input type="tel" id="user-IDcard" placeholder="请输入您的身份证信息">
-							</div>
+						<div class="authenticationPic">
+							<p class="title">上传身份证照片</p>
+							<p class="tip">请按要求上传身份证</p>
+							<ul class="cardlist">
+								<li>
+									<div class="cardPic">
+										<img src="../images/cardbg.jpg">
+										<div class="cardText"><i class="am-icon-plus"></i>
+											<p>正面照片</p>
+										</div>
+										<p class="titleText">身份证正面</p>
+									</div>
+									<div class="cardExample">
+										<img src="../images/cardbg.jpg">
+										<p class="titleText">示例</p>										
+									</div>
+									
+								</li>
+								<li>
+									<div class="cardPic">
+										<img src="../images/cardbg.jpg">
+										<div class="cardText"><i class="am-icon-plus"></i>
+											<p>背面照片</p>
+										</div>
+										<p class="titleText">身份证背面</p>
+									</div>
+									<div class="cardExample">
+										<img src="../images/cardbg.jpg">
+										<p class="titleText">示例</p>										
+									</div>
+									
+								</li>
+							</ul>
 						</div>
 						<div class="info-btn">
-							<div class="am-btn am-btn-danger">保存修改</div>
+							<div class="am-btn am-btn-danger">提交</div>
 						</div>
-
-					</form>
-
+					</div>
 				</div>
 				<!--底部-->
 				<div class="footer">
@@ -172,43 +181,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			<aside class="menu">
 				<ul>
-					<li class="person">
-						<a href="index.html">个人中心</a>
+					<li class="person active">
+						<a href="index.html"><i class="am-icon-user"></i>个人中心</a>
 					</li>
 					<li class="person">
-						<a href="#">个人资料</a>
+						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
 						<ul>
 							<li> <a href="information.html">个人信息</a></li>
 							<li> <a href="safety.html">安全设置</a></li>
-							<li> <a href="address.html">收货地址</a></li>
+							<li> <a href="address.html">地址管理</a></li>
+							<li> <a href="cardlist.html">快捷支付</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<a href="#">我的交易</a>
+						<p><i class="am-icon-balance-scale"></i>我的交易</p>
 						<ul>
 							<li><a href="order.html">订单管理</a></li>
 							<li> <a href="change.html">退款售后</a></li>
+							<li> <a href="comment.html">评价商品</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<a href="#">我的资产</a>
+						<p><i class="am-icon-dollar"></i>我的资产</p>
 						<ul>
+							<li> <a href="points.html">我的积分</a></li>
 							<li> <a href="coupon.html">优惠券 </a></li>
 							<li> <a href="bonus.html">红包</a></li>
+							<li> <a href="walletlist.html">账户余额</a></li>
 							<li> <a href="bill.html">账单明细</a></li>
 						</ul>
 					</li>
 
 					<li class="person">
-						<a href="#">我的小窝</a>
+						<p><i class="am-icon-tags"></i>我的收藏</p>
 						<ul>
 							<li> <a href="collection.html">收藏</a></li>
 							<li> <a href="foot.html">足迹</a></li>
-							<li> <a href="comment.html">评价</a></li>
-							<li> <a href="news.html">消息</a></li>
 						</ul>
 					</li>
 
+					<li class="person">
+						<p><i class="am-icon-qq"></i>在线客服</p>
+						<ul>
+							<li> <a href="consultation.html">商品咨询</a></li>
+							<li> <a href="suggest.html">意见反馈</a></li>
+
+							<li> <a href="news.html">我的消息</a></li>
+						</ul>
+					</li>
 				</ul>
 
 			</aside>

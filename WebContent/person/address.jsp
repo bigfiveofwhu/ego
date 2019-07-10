@@ -20,7 +20,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link href="../css/addstyle.css" rel="stylesheet" type="text/css">
 		<script src="../AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
 		<script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
-
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/Popt.js"></script>
+		<script type="text/javascript" src="../js/city.json.js"></script>
+		<script type="text/javascript" src="../js/citySet.js"></script>
+        <style type="text/css">
+		* { -ms-word-wrap: break-word; word-wrap: break-word; }
+		html { -webkit-text-size-adjust: none; text-size-adjust: none; }
+		html, body {height:99%;width:99%; }
+		.wrap{width:px;height:34px;margin:20px auto;border:0;position:relative;}
+		.input{position:absolute;top:0;left:0;width:457px;margin:0;padding-left:5px;height:30px;line-height:30px;font-size:12px;border:1px solid #c9cacb;}
+		._citys { width: 450px; display: inline-block; border: 2px solid #eee; padding: 5px; position: relative; }
+		._citys span { color: #05920a; height: 15px; width: 15px; line-height: 15px; text-align: center; border-radius: 3px; position: absolute; right: 10px; top: 10px; border: 1px solid #05920a; cursor: pointer; }
+		._citys0 { width: 95%; height: 34px; line-height: 34px; display: inline-block; border-bottom: 2px solid #05920a; padding: 0px 5px; font-size:14px; font-weight:bold; margin-left:6px; }
+		._citys0 li { display: inline-block; line-height: 34px; font-size: 15px; color: #888; width: 80px; text-align: center; cursor: pointer; }
+		._citys1 { width: 100%; display: inline-block; padding: 10px 0; }
+		._citys1 a { width: 83px; height: 35px; display: inline-block; background-color: #f5f5f5; color: #666; margin-left: 6px; margin-top: 3px; line-height: 35px; text-align: center; cursor: pointer; font-size: 12px; border-radius: 5px; overflow: hidden; }
+		._citys1 a:hover { color: #fff; background-color: #05920a; }
+		.AreaS { background-color: #05920a !important; color: #fff !important; }
+       </style>
 	</head>
 
 	<body>
@@ -198,21 +216,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</div>
 										<div class="am-form-group">
 											<label for="user-address" class="am-form-label">所在地</label>
-											<div class="am-form-content address">
-												<select data-am-selected>
-													<option value="a">浙江省</option>
-													<option value="b" selected>湖北省</option>
-												</select>
-												<select data-am-selected>
-													<option value="a">温州市</option>
-													<option value="b" selected>武汉市</option>
-												</select>
-												<select data-am-selected>
-													<option value="a">瑞安区</option>
-													<option value="b" selected>洪山区</option>
-												</select>
-											</div>
-										</div>
+											<!-- 地址插件 -->
+										  <div  class="am-form-content address">
+										    <div class="wrap"><input class="input" name="" id="city" type="text" placeholder="请选择" autocomplete="off" readonly="true"></div>
+										    </div>
+										  </div>
 
 										<div class="am-form-group">
 											<label for="user-intro" class="am-form-label">详细地址</label>
@@ -249,6 +257,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							}
 							
 						})
+			
+							$("#city").click(function (e) {
+								SelCity(this,e);
+							});
+							$("s").click(function (e) {
+								SelCity(document.getElementById("city"),e);
+							});
 					</script>
 
 					<div class="clear"></div>
@@ -281,43 +296,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			<aside class="menu">
 				<ul>
-					<li class="person">
-						<a href="index.jsp">个人中心</a>
+					<li class="person active">
+						<a href="index.html"><i class="am-icon-user"></i>个人中心</a>
 					</li>
 					<li class="person">
-						<a href="#">个人资料</a>
-						<ul>
-							<li> <a href="information.jsp">个人信息</a></li>
-							<li> <a href="safety.jsp">安全设置</a></li>
-							<li class="active"> <a href="address.jsp">收货地址</a></li>
+						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
+					<ul>
+							<li> <a href="showUserInfo.html">个人信息</a></li>
+							<li> <a href="<%=path%>/person/safety.jsp">安全设置</a></li>
+							<li> <a href="<%=path%>/person/address.jsp">地址管理</a></li>
+							<li> <a href="<%=path%>/person/cardlist.jsp">快捷支付</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<a href="#">我的交易</a>
+						<p><i class="am-icon-balance-scale"></i>我的交易</p>
 						<ul>
-							<li><a href="order.jsp">订单管理</a></li>
-							<li> <a href="change.jsp">退款售后</a></li>
+							<li><a href="order.html">订单管理</a></li>
+							<li> <a href="change.html">退款售后</a></li>
+							<li> <a href="comment.html">评价商品</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<a href="#">我的资产</a>
+						<p><i class="am-icon-dollar"></i>我的资产</p>
 						<ul>
-							<li> <a href="coupon.jsp">优惠券 </a></li>
-							<li> <a href="bonus.jsp">红包</a></li>
-							<li> <a href="bill.jsp">账单明细</a></li>
+							<li> <a href="points.html">我的积分</a></li>
+							<li> <a href="coupon.html">优惠券 </a></li>
+							<li> <a href="bonus.html">红包</a></li>
+							<li> <a href="walletlist.html">账户余额</a></li>
+							<li> <a href="bill.html">账单明细</a></li>
+						</ul>
+					</li>
+
+					<li class="person">
+						<p><i class="am-icon-tags"></i>我的收藏</p>
+						<ul>
+							<li> <a href="collection.html">收藏</a></li>
+							<li> <a href="foot.html">足迹</a></li>														
 						</ul>
 					</li>
 
 					<li class="person">
-						<a href="#">我的小窝</a>
+						<p><i class="am-icon-qq"></i>在线客服</p>
 						<ul>
-							<li> <a href="collection.jsp">收藏</a></li>
-							<li> <a href="foot.jsp">足迹</a></li>
-							<li> <a href="comment.jsp">评价</a></li>
-							<li> <a href="news.jsp">消息</a></li>
+							<li> <a href="consultation.html">商品咨询</a></li>
+							<li> <a href="suggest.html">意见反馈</a></li>							
+							
+							<li> <a href="news.html">我的消息</a></li>
 						</ul>
 					</li>
-
 				</ul>
 
 			</aside>

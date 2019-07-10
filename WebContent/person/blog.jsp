@@ -196,5 +196,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 <!--<![endif]-->
 <script src="../AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+
 </body>
 </html>

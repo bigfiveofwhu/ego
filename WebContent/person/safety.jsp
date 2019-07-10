@@ -110,16 +110,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 							<div class="info-m">
 								<div><b>用户名：<i>小叮当</i></b></div>
-								<div class="u-level">
-									<span class="rank r2">
-							             <s class="vip1"></s><a class="classes" href="#">铜牌会员</a>
-						            </span>
-								</div>
-								<div class="u-safety">
-									<a href="safety.jsp">
-									 账户安全
-									<span class="u-profile"><i class="bc_ee0000" style="width: 60px;" width="0">60分</i></span>
-									</a>
+                                <div class="safeText">
+                                  	<a href="safety.html">账户安全:<em style="margin-left:20px ;">60</em>分</a>
+									<div class="progressBar"><span style="left: -95px;" class="progress"></span></div>
 								</div>
 							</div>
 						</div>
@@ -133,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<div class="fore2"><small>为保证您购物安全，建议您定期更改密码以保护账户安全。</small></div>
 									</div>
 									<div class="fore3">
-										<a href="password.jsp">
+										<a href="password.html">
 											<div class="am-btn am-btn-secondary">修改</div>
 										</a>
 									</div>
@@ -145,7 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<div class="fore2"><small>启用支付密码功能，为您资产账户安全加把锁。</small></div>
 									</div>
 									<div class="fore3">
-										<a href="setpay.jsp">
+										<a href="setpay.html">
 											<div class="am-btn am-btn-secondary">立即启用</div>
 										</a>
 									</div>
@@ -157,7 +150,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<div class="fore2"><small>您验证的手机：186XXXXXXXX 若已丢失或停用，请立即更换</small></div>
 									</div>
 									<div class="fore3">
-										<a href="bindphone.jsp">
+										<a href="bindphone.html">
 											<div class="am-btn am-btn-secondary">换绑</div>
 										</a>
 									</div>
@@ -169,7 +162,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<div class="fore2"><small>您验证的邮箱：5831XXX@qq.com 可用于快速找回登录密码</small></div>
 									</div>
 									<div class="fore3">
-										<a href="email.jsp">
+										<a href="email.html">
 											<div class="am-btn am-btn-secondary">换绑</div>
 										</a>
 									</div>
@@ -181,7 +174,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<div class="fore2"><small>用于提升账号的安全性和信任级别，认证后不能修改认证信息。</small></div>
 									</div>
 									<div class="fore3">
-										<a href="idcard.jsp">
+										<a href="idcard.html">
 											<div class="am-btn am-btn-secondary">认证</div>
 										</a>
 									</div>
@@ -193,7 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<div class="fore2"><small>保护账户安全，验证您身份的工具之一。</small></div>
 									</div>
 									<div class="fore3">
-										<a href="question.jsp">
+										<a href="question.html">
 											<div class="am-btn am-btn-secondary">认证</div>
 										</a>
 									</div>
@@ -230,43 +223,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			<aside class="menu">
 				<ul>
-					<li class="person">
-						<a href="index.jsp">个人中心</a>
+					<li class="person active">
+						<a href="index.html"><i class="am-icon-user"></i>个人中心</a>
 					</li>
 					<li class="person">
-						<a href="#">个人资料</a>
-						<ul>
-							<li> <a href="information.jsp">个人信息</a></li>
-							<li class="active"> <a href="safety.jsp">安全设置</a></li>
-							<li> <a href="address.jsp">收货地址</a></li>
+						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
+					<ul>
+							<li> <a href="showUserInfo.html">个人信息</a></li>
+							<li> <a href="<%=path%>/person/safety.jsp">安全设置</a></li>
+							<li> <a href="<%=path%>/person/address.jsp">地址管理</a></li>
+							<li> <a href="<%=path%>/person/cardlist.jsp">快捷支付</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<a href="#">我的交易</a>
+						<p><i class="am-icon-balance-scale"></i>我的交易</p>
 						<ul>
-							<li><a href="order.jsp">订单管理</a></li>
-							<li> <a href="change.jsp">退款售后</a></li>
+							<li><a href="order.html">订单管理</a></li>
+							<li> <a href="change.html">退款售后</a></li>
+							<li> <a href="comment.html">评价商品</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<a href="#">我的资产</a>
+						<p><i class="am-icon-dollar"></i>我的资产</p>
 						<ul>
-							<li> <a href="coupon.jsp">优惠券 </a></li>
-							<li> <a href="bonus.jsp">红包</a></li>
-							<li> <a href="bill.jsp">账单明细</a></li>
+							<li> <a href="points.html">我的积分</a></li>
+							<li> <a href="coupon.html">优惠券 </a></li>
+							<li> <a href="bonus.html">红包</a></li>
+							<li> <a href="walletlist.html">账户余额</a></li>
+							<li> <a href="bill.html">账单明细</a></li>
+						</ul>
+					</li>
+
+					<li class="person">
+						<p><i class="am-icon-tags"></i>我的收藏</p>
+						<ul>
+							<li> <a href="collection.html">收藏</a></li>
+							<li> <a href="foot.html">足迹</a></li>
 						</ul>
 					</li>
 
 					<li class="person">
-						<a href="#">我的小窝</a>
+						<p><i class="am-icon-qq"></i>在线客服</p>
 						<ul>
-							<li> <a href="collection.jsp">收藏</a></li>
-							<li> <a href="foot.jsp">足迹</a></li>
-							<li> <a href="comment.jsp">评价</a></li>
-							<li> <a href="news.jsp">消息</a></li>
+							<li> <a href="consultation.html">商品咨询</a></li>
+							<li> <a href="suggest.html">意见反馈</a></li>							
+							
+							<li> <a href="news.html">我的消息</a></li>
 						</ul>
 					</li>
-
 				</ul>
 
 			</aside>
