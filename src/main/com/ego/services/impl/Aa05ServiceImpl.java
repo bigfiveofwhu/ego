@@ -1,16 +1,18 @@
 package com.ego.services.impl;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
 import com.ego.services.JdbcServicesSupport;
 //用户卡券包
-public class Aa05ServicesImpl extends JdbcServicesSupport{
-	static Aa05ServicesImpl instance;
+public class Aa05ServiceImpl extends JdbcServicesSupport{
+	static Aa05ServiceImpl instance;
 	static {
-		instance=new Aa05ServicesImpl();
+		instance=new Aa05ServiceImpl();
 	}
-	public static Aa05ServicesImpl getInstance() {
+	public static Aa05ServiceImpl getInstance() {
 		return instance;
 	}
 	
@@ -30,7 +32,7 @@ public class Aa05ServicesImpl extends JdbcServicesSupport{
 		switch (utype) {
 		case "addUserCoupon":
 			return addCoupon();
-		case "useCoupons":
+		case "useCoupon":
 			return removeCoupon();
 		default:
 			throw new Exception("不支持的类型");
@@ -43,24 +45,29 @@ public class Aa05ServicesImpl extends JdbcServicesSupport{
 		return this.executeUpdate(sql, this.get("aaa501"));
 	}
 	
-	
-	
 	private boolean addCoupon() throws Exception {
-		int type=Integer.getInteger((String)get("aaa502"));
+				
+		int type=Integer.parseInt(get("aaa502").toString());
 		Object[] parameter;
+		Date currentDate=new Date(System.currentTimeMillis());
+		int rollDay=Integer.parseInt(this.get("aab505").toString());
+		Calendar calendar=Calendar.getInstance();
+		calendar.setTime(currentDate);
+		calendar.add(Calendar.DATE,rollDay);
 		//aab504为使用条件
 		switch (type) {
 		case 1://无条件
 			StringBuilder sql1=new StringBuilder()
 			.append("insert into aa05 (aaa102,aab102,aaa502,aaa503,aaa505,aaa506)")
 			.append(" value(?,?,?,?,?,?)");
+			
 			parameter= new Object[]{
 					this.get("aaa102"),
 					this.get("aab102"),
 					this.get("aaa502"),
 					this.get("aaa503"),
-					this.get("aab505"),
-					this.get("aab506")
+					currentDate,
+					new Date(calendar.getTimeInMillis())
 				};
 			return this.executeUpdate(sql1.toString(), parameter);
 		case 2://满减
@@ -74,8 +81,8 @@ public class Aa05ServicesImpl extends JdbcServicesSupport{
 					this.get("aaa502"),
 					this.get("aaa503"),
 					this.get("aaa504"),
-					this.get("aab505"),
-					this.get("aab506")
+					currentDate,
+					new Date(calendar.getTimeInMillis())
 				};
 			return this.executeUpdate(sql2.toString(), parameter);
 		default:

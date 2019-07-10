@@ -119,16 +119,11 @@ public abstract class ControllerSupport implements Controller
 	/*****************************************
 	 * 数据输入流
 	 *****************************************/
-	private Map<String, Object> dto = null;
+	protected Map<String, Object> dto = null;
 
-	//可以改变sevice
-	protected void changeService(BaseServices service) {
-		this.setServices(service);
-		this.getServices().setMapDto(dto);
-	}
 	
 	@Override
-	public final void setMapDto(Map<String, Object> dto) 
+	public void setMapDto(Map<String, Object> dto) 
 	{
 		this.dto = dto;
 		// 同步为Services传递DTO

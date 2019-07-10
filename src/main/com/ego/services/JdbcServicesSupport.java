@@ -376,7 +376,7 @@ public abstract class JdbcServicesSupport implements BaseServices
 				// 循环当前行的所有列
 				for (int i = 1; i <= count; i++) 
 				{
-					// 完成列级映射
+					// 完成列级映射,列名小写为key，列值的string为value
 					ins.put(rsmd.getColumnLabel(i).toLowerCase(), rs.getString(i));
 				}
 				// 向list中放入当前行数据
