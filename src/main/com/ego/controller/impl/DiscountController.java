@@ -6,7 +6,7 @@ import org.eclipse.jdt.internal.compiler.ast.ThisReference;
 
 import com.ego.controller.BaseServlet;
 import com.ego.controller.ControllerSupport;
-import com.ego.services.BaseServices;
+import com.ego.services.impl.Aa05ServicesImpl;
 import com.ego.services.impl.Ab05ServiceImpl;
 
 public class DiscountController extends ControllerSupport{
@@ -19,10 +19,11 @@ public class DiscountController extends ControllerSupport{
 	@Override
 	public String execute() throws Exception {
 		String servletPath=((HttpServletRequest)get("request")).getServletPath();
-		String mapping=servletPath.substring(servletPath.indexOf('/')+1
+		String mapping=servletPath.substring(servletPath.lastIndexOf('/')+1
 				,servletPath.indexOf('.'));
-		switch (servletPath) {
+		switch (mapping) {
 		case "getCustomerCoupons":
+			this.changeService(Aa05ServicesImpl.getInstance());
 			this.saveAttribute("coupons", this.getServices().query());
 			return BaseServlet.prefix+"discount";
 		default:

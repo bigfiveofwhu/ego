@@ -10,9 +10,19 @@
 <link rel="stylesheet" href="/ego/css/bootstrap.css">
 </head>
 <body>
+
 <ul>
-
-
+<c:forEach  items="${coupons }" var="item">
+<li>
+流水号：${item.aaa501}<br>
+店铺id: ${item.aab102 }<br>
+卡券类型:${item.aaa502 }<br>
+优惠值:${item.aaa503 }<br>
+条件:${item.aaa504 }<br>
+领取日期:${item.aaa505 }<br>
+有效期:${item.aaa506 }<br>
+</li>
+</c:forEach>
 </ul>
 
 
