@@ -290,10 +290,13 @@
 			
 			$("#addr_1").change(function(){
 				var A_id=$(this).children("option:selected").attr("A_id");
+				$("#addr_2").html("");
+				$("#addr_3").html("");
 				loadAddr(A_id,2);
 			});
 			$("#addr_2").change(function(){
 				var A_id=$(this).children("option:selected").attr("A_id");
+				$("#addr_3").html("");
 				loadAddr(A_id,3);
 			});
 			

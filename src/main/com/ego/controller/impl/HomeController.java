@@ -23,7 +23,7 @@ public class HomeController extends ControllerSupport
 	{
 		//初始化商品分类
 		//File file=new File("WebContent/home/productType.jsp");
-		GeneJSP.geneJSP(this.getServices());
+		//GeneJSP.geneJSP(this.getServices());
 		this.saveAttribute("products", "");
 		//初始化轮播图片
 		//初始化新品推荐
