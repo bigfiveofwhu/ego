@@ -27,7 +27,7 @@ public class ConnectionFilter extends HttpServlet implements Filter
 			response.setCharacterEncoding("UTF-8");
 			chain.doFilter(request, response);
 		} 
-		finally 
+		finally
 		{
 			DBUtils.close();
 		}
