@@ -4,33 +4,55 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.eclipse.jdt.internal.compiler.ast.ThisReference;
 
 import com.ego.controller.BaseServlet;
 import com.ego.controller.ControllerSupport;
-import com.ego.services.impl.Aa05ServicesImpl;
+import com.ego.services.BaseServices;
+import com.ego.services.impl.Aa05ServiceImpl;
 import com.ego.services.impl.Ab05ServiceImpl;
 
 public class DiscountController extends ControllerSupport{
 
-	public DiscountController() {
-		// TODO Auto-generated constructor stub
-		this.setServices(new Ab05ServiceImpl());
+	BaseServices ab05Service=Ab05ServiceImpl.getInstance();
+	BaseServices aa05Service=Aa05ServiceImpl.getInstance();
+
+	@Override
+	public void setMapDto(Map<String,Object> dto) {
+		// TODO Auto-generated method stub
+		this.dto=dto;
+		ab05Service.setMapDto(dto);
+		aa05Service.setMapDto(dto);
 	}
 	
 	@Override
 	public String execute() throws Exception {
-		String servletPath=((HttpServletRequest)get("request")).getServletPath();
+		String prefix=BaseServlet.prefix+"discount/";
+		
+		String servletPath=((HttpServletRequest)this.dto.get("request")).getServletPath();
 		String mapping=servletPath.substring(servletPath.lastIndexOf('/')+1
 				,servletPath.indexOf('.'));
 		switch (mapping) {
 		case "getCustomerCoupons":
-			this.changeService(Aa05ServicesImpl.getInstance());
-			this.saveAttribute("coupons", this.getServices().query());
-			Object a=this.get("coupons");
-			return BaseServlet.prefix+"discount";
+			this.saveAttribute("coupons", aa05Service.query());
+			this.saveAttribute("shopCoupons", ab05Service.query());
+			return prefix+"discount";
+		case "addUserCoupon":
+			Map<String, String> ins=ab05Service.findById("getCoupon");
+			dto.put("aab102", ins.get("aab102"));//店铺id
+			dto.put("aaa502", ins.get("aab502"));//卡券类型
+			dto.put("aaa503", ins.get("aab503"));//优惠值
+			dto.put("aaa504", ins.get("aab504"));//条件
+			dto.put("aab505", ins.get("aab505"));//持续时间
+			this.saveAttribute("msg", aa05Service.update("addUserCoupon")?"成功":"失败");
+			return prefix+"result";
+			
+		case "useCoupon":
+			this.saveAttribute("msg", aa05Service.update("useCoupon")?"成功":"update无影响");
+			return prefix+"result";
+		case "getShopCoupons":
+			return prefix+"discount";
 		default:
-			return null;
+			throw new Exception("DiscountController无法处理此类请求");
 		}
 	}
 

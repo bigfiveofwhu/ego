@@ -100,7 +100,7 @@ public class BaseServlet extends HttpServlet
 		}
 		catch (Exception ex)
 		{
-			request.setAttribute("msg", "Ã· æ:Õ¯¬Áπ ’œ!");
+			request.setAttribute("msg", ex.getMessage());
 			ex.printStackTrace();
 			toPath=BaseServlet.prefix+"error";
 		}

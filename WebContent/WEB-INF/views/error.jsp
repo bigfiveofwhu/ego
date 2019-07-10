@@ -7,6 +7,6 @@
 <title>error page</title>
 </head>
 <body>
-${msg}
+ ß∞‹‘≠“Ú£∫${msg}
 </body>
 </html>

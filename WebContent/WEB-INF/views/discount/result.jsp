@@ -5,6 +5,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-${msg}
+Ö´ÐÐ½á¹û£º${msg}
 </body>
 </html>
