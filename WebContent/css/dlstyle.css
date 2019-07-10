@@ -86,12 +86,14 @@ form .input_group input{
 	margin-left: 46px;
 	height:38px;
 	border:0px;
+	width:70px;
 }
 .childs{
 	margin-top: 2px;
 	margin-left: -6px;
 	height:38px;
 	border: 0px;
+	width:70px;
 }
 #addr_4{
 	font-size: 14px;
@@ -99,6 +101,7 @@ form .input_group input{
 	height:42px;
 	padding: 11px 8px 11px 50px;
 	border:1px solid #fff;
+	width:150px;
 }
 input:-webkit-autofill { -webkit-box-shadow: 0 0 0px 1000px #fff inset;}
 .am-cf{width: 100%;max-width:320px;margin:0px auto ;}

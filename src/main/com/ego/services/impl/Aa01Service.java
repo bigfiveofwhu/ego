@@ -29,10 +29,11 @@ public class Aa01Service extends JdbcServicesSupport
 		
 		StringBuilder sql=new StringBuilder()
 				.append("insert into aa01(aaa102,aaa103,aaa104,aaa105,aaa106,")
-				.append("				  aaa107,aaa108,aaa109,aaa110,aaa111,)")
-				.append("                 aaa113")
+				.append("				  aaa107,aaa108,aaa109,aaa110,aaa111,")
+				.append("                 aaa113)")
 				.append("		   values(?,?,?,?,?,")
-				.append("				  ?,?);")
+				.append("				  ?,?,?,?,?,")
+				.append("                 ?)")
 				;
 		
 		int aaa102=Tools.getIncrementId("aa01");
