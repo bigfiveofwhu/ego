@@ -102,7 +102,9 @@ public class BaseServlet extends HttpServlet
 		{
 			request.setAttribute("msg", "ÌáÊ¾:ÍøÂç¹ÊÕÏ!");
 			ex.printStackTrace();
+			toPath=BaseServlet.prefix+"error";
 		}
+		
 		request.getRequestDispatcher("/" + toPath + ".jsp").forward(request, response);
 	}
 
