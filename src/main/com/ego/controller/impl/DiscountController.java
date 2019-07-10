@@ -1,5 +1,7 @@
 package com.ego.controller.impl;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.eclipse.jdt.internal.compiler.ast.ThisReference;
@@ -25,6 +27,7 @@ public class DiscountController extends ControllerSupport{
 		case "getCustomerCoupons":
 			this.changeService(Aa05ServicesImpl.getInstance());
 			this.saveAttribute("coupons", this.getServices().query());
+			Object a=this.get("coupons");
 			return BaseServlet.prefix+"discount";
 		default:
 			return null;

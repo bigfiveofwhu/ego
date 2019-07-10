@@ -12,7 +12,7 @@
 <body>
 
 <ul>
-<c:forEach  items="${coupons }" var="item">
+<c:forEach  items="${coupons}" var="item">
 <li>
 Á÷Ë®ºÅ£º${item.aaa501}<br>
 µêÆÌid: ${item.aab102 }<br>
