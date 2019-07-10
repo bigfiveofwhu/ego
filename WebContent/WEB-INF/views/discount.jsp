@@ -9,8 +9,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/ego/css/bootstrap.css">
 </head>
-<body>
 
+<body>
 <ul>
 <c:forEach  items="${coupons}" var="item">
 <li>
