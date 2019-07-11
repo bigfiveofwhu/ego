@@ -121,6 +121,14 @@ public abstract class ControllerSupport implements Controller
 	 *****************************************/
 	protected Map<String, Object> dto = null;
 
+
+	//可以改变sevice
+	protected void changeService(BaseServices service) 
+	{
+		this.setServices(service);
+		this.getServices().setMapDto(dto);
+	}
+
 	
 	@Override
 	public void setMapDto(Map<String, Object> dto) 
@@ -154,7 +162,8 @@ public abstract class ControllerSupport implements Controller
 	/*****************************************
 	 * 给子类提供的获取dto中数据的方法
 	 *****************************************/
-	protected Object get(String key) {
+	protected Object get(String key)
+	{
 		return dto.get(key);
 	}
 }

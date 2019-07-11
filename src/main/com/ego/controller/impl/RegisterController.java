@@ -13,7 +13,7 @@ public class RegisterController extends ControllerSupport
 	public String execute() throws Exception 
 	{
 		this.update("", "зЂВс");
-		return "home/register";
+		return "home/home";
 	}
 
 }

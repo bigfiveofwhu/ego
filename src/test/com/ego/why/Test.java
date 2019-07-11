@@ -8,6 +8,7 @@ import com.ego.services.BaseServices;
 import com.ego.services.impl.Ab05ServiceImpl;
 import com.ego.system.tools.Tools;
 
+
 public class Test {
 	public static void main(String args[]) {
 		Map<String, Object> dto=new HashMap<String, Object>();
