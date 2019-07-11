@@ -132,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<input type="tel" id="user-code" placeholder="验证码">
 							</div>
 							<a class="btn" href="javascript:void(0);" onclick="sendMobileCode();" id="sendMobileCode">
-								<div class="am-btn am-btn-danger">验证码</div>
+								<div class="am-btn am-btn-danger">发送验证码</div>
 							</a>
 						</div>
 						<div class="info-btn">

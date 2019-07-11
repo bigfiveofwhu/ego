@@ -138,7 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<div class="fore2"><small>启用支付密码功能，为您资产账户安全加把锁。</small></div>
 									</div>
 									<div class="fore3">
-										<a href="setpay.html">
+										<a href="#">
 											<div class="am-btn am-btn-secondary">立即启用</div>
 										</a>
 									</div>
@@ -150,7 +150,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<div class="fore2"><small>您验证的手机：186XXXXXXXX 若已丢失或停用，请立即更换</small></div>
 									</div>
 									<div class="fore3">
-										<a href="bindphone.html">
+										<a href="#">
 											<div class="am-btn am-btn-secondary">换绑</div>
 										</a>
 									</div>
@@ -162,7 +162,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<div class="fore2"><small>您验证的邮箱：5831XXX@qq.com 可用于快速找回登录密码</small></div>
 									</div>
 									<div class="fore3">
-										<a href="email.html">
+										<a href="email.jsp">
 											<div class="am-btn am-btn-secondary">换绑</div>
 										</a>
 									</div>

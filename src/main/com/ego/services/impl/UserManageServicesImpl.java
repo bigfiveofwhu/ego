@@ -16,35 +16,22 @@
 性别                 aaa113
  * */
 
-/*表aa04
- *Name	    Code	
-地址流水号	aaa401	
-用户id	    aaa102	
-编码地址	    aaa402	
-详细地址	    aaa403	
-地址备注	    aaa404	
-收货人姓名	aaa405	
-电话	        aaa406	
-是否默认	    aaa407
- * */
 package com.ego.services.impl;
 
+import java.lang.reflect.Method;
+import java.util.List;
 import java.util.Map;
 
 import com.ego.services.JdbcServicesSupport;
-import com.ego.system.tools.Tools;
 
 public class UserManageServicesImpl extends JdbcServicesSupport 
 {
 	public boolean update(String utype) throws Exception 
     {
-    	if(utype.equalsIgnoreCase("modifyUserInfo"))
-    	{
-    		return this.modifyUserInfo();
-    	}
-    	{
-    		throw new Exception("在类[ UserManageServices ]中进行了未定义的动作调用,动作名称是  "+utype);
-    	}	
+		//System.out.println("执行反射");
+		Method method=this.getClass().getDeclaredMethod(utype);
+		method.setAccessible(true);
+		return (boolean)method.invoke(this);
     }
 	/****个人信息管理*****/
 	//按id查询
@@ -62,6 +49,7 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 	    }
 	    
 	//修改用户信息
+	@SuppressWarnings("unused")
 	private boolean modifyUserInfo()throws Exception
 	    {
 	    	StringBuilder sql=new StringBuilder()
@@ -87,12 +75,11 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 	    	return this.executeUpdate(sql.toString(), args);	    	
 	    }
 	
-	/*********地址管理***********/
-	private boolean addAddress()
-	{
-		
-		return false;
-	}
 	
-	    
+	   @SuppressWarnings("unused")
+	 private boolean updateEmail() throws Exception
+	   {
+		   
+		   return false;
+	   }
 }

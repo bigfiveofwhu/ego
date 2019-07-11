@@ -22,7 +22,7 @@ public abstract class JdbcServicesSupport implements BaseServices
 	// 语句列表
 	private final List<PstmMetaData> pstmList = new ArrayList<>();
 
-	private Map<String, Object> dto = null;
+	protected Map<String, Object> dto = null;
 
 	/**
 	 * 为Services传递DTO

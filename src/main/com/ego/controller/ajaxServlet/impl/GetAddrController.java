@@ -20,7 +20,7 @@ public class GetAddrController extends AjaxControllerSupport
 		{
 			List<Map<String,String>> rows=services.query();
 			this.put("addrs", rows);
-			System.out.println(rows);
+			//System.out.println(rows);
 		} catch (Exception e) 
 		{
 			e.printStackTrace();

@@ -1,9 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-
+<%@include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 
@@ -20,27 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link href="../css/addstyle.css" rel="stylesheet" type="text/css">
 		<script src="../AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
 		<script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
-		<script type="text/javascript" src="../js/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/Popt.js"></script>
-		<script type="text/javascript" src="../js/city.json.js"></script>
-		<script type="text/javascript" src="../js/citySet.js"></script>
-        <style type="text/css">
-		* { -ms-word-wrap: break-word; word-wrap: break-word; }
-		html { -webkit-text-size-adjust: none; text-size-adjust: none; }
-		html, body {height:99%;width:99%; }
-		.wrap{width:px;height:34px;margin:20px auto;border:0;position:relative;}
-		.input{position:absolute;top:0;left:0;width:457px;margin:0;padding-left:5px;height:30px;line-height:30px;font-size:12px;border:1px solid #c9cacb;}
-		._citys { width: 450px; display: inline-block; border: 2px solid #eee; padding: 5px; position: relative; }
-		._citys span { color: #05920a; height: 15px; width: 15px; line-height: 15px; text-align: center; border-radius: 3px; position: absolute; right: 10px; top: 10px; border: 1px solid #05920a; cursor: pointer; }
-		._citys0 { width: 95%; height: 34px; line-height: 34px; display: inline-block; border-bottom: 2px solid #05920a; padding: 0px 5px; font-size:14px; font-weight:bold; margin-left:6px; }
-		._citys0 li { display: inline-block; line-height: 34px; font-size: 15px; color: #888; width: 80px; text-align: center; cursor: pointer; }
-		._citys1 { width: 100%; display: inline-block; padding: 10px 0; }
-		._citys1 a { width: 83px; height: 35px; display: inline-block; background-color: #f5f5f5; color: #666; margin-left: 6px; margin-top: 3px; line-height: 35px; text-align: center; cursor: pointer; font-size: 12px; border-radius: 5px; overflow: hidden; }
-		._citys1 a:hover { color: #fff; background-color: #05920a; }
-		.AreaS { background-color: #05920a !important; color: #fff !important; }
-       </style>
 	</head>
-
 	<body>
 		<!--头 -->
 		<header>
@@ -122,68 +98,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<hr/>
 						<ul class="am-avg-sm-1 am-avg-md-3 am-thumbnails">
+                               <c:forEach items="${addrlist }" var="ins" varStatus="vs">
+							   <c:choose>
+							   <c:when test="${ins.aaa407 > 0 }">
+							   	<li class="user-addresslist defaultAddr">
+							   </c:when>
+							   <c:otherwise>
+							   <li   class="user-addresslist">
+							   </c:otherwise>
+							    </c:choose>
+								<span class="new-option-r" value="${ins.aaa401 }"><i class="am-icon-check-circle"></i>默认地址</span>
+								<p class="new-tit new-p-re">
+									<span class="new-txt">${ins.aaa405 }</span>
+									<span class="new-txt-rd2">${ins.aaa406}</span>
+								</p>
+								<div class="new-mu_l2a new-p-re">
+									<p class="new-mu_l2cw">
+										<span class="title">地址:</span>
+										<span class="province">${ins.aaa402 }</span>
+										<span class="street">${ins.aaa403 }</span>
+									</p>
+								</div>
+								<div class="new-addr-btn">
+									<a onclick="window.location.href='editAddress.html?aaa401=${ins.aaa401}';return false;"   href="javascript:void(0);"><i class="am-icon-edit"></i>编辑</a>
+									<span class="new-addr-bar">|</span>
+									<a onclick="window.location.href='deleteAddress.html?aaa401=${ins.aaa401}';return false;"   href="javascript:void(0);" ><i class="am-icon-trash"></i>删除</a>
+								</div>
+							</li>
+							</c:forEach>
 
-							<li class="user-addresslist defaultAddr">
-								<span class="new-option-r"><i class="am-icon-check-circle"></i>默认地址</span>
-								<p class="new-tit new-p-re">
-									<span class="new-txt">小叮当</span>
-									<span class="new-txt-rd2">159****1622</span>
-								</p>
-								<div class="new-mu_l2a new-p-re">
-									<p class="new-mu_l2cw">
-										<span class="title">地址：</span>
-										<span class="province">湖北</span>省
-										<span class="city">武汉</span>市
-										<span class="dist">洪山</span>区
-										<span class="street">雄楚大道666号(中南财经政法大学)</span></p>
-								</div>
-								<div class="new-addr-btn">
-									<a href="#"><i class="am-icon-edit"></i>编辑</a>
-									<span class="new-addr-bar">|</span>
-									<a href="javascript:void(0);" onclick="delClick(this);"><i class="am-icon-trash"></i>删除</a>
-								</div>
-							</li>
-
-							<li class="user-addresslist">
-								<span class="new-option-r"><i class="am-icon-check-circle"></i>设为默认</span>
-								<p class="new-tit new-p-re">
-									<span class="new-txt">小叮当</span>
-									<span class="new-txt-rd2">159****1622</span>
-								</p>
-								<div class="new-mu_l2a new-p-re">
-									<p class="new-mu_l2cw">
-										<span class="title">地址：</span>
-										<span class="province">湖北</span>省
-										<span class="city">武汉</span>市
-										<span class="dist">洪山</span>区
-										<span class="street">雄楚大道666号(中南财经政法大学)</span></p>
-								</div>
-								<div class="new-addr-btn">
-									<a href="#"><i class="am-icon-edit"></i>编辑</a>
-									<span class="new-addr-bar">|</span>
-									<a href="javascript:void(0);" onclick="delClick(this);"><i class="am-icon-trash"></i>删除</a>
-								</div>
-							</li>
-							<li class="user-addresslist">
-								<span class="new-option-r"><i class="am-icon-check-circle"></i>设为默认</span>
-								<p class="new-tit new-p-re">
-									<span class="new-txt">小叮当</span>
-									<span class="new-txt-rd2">159****1622</span>
-								</p>
-								<div class="new-mu_l2a new-p-re">
-									<p class="new-mu_l2cw">
-										<span class="title">地址：</span>
-										<span class="province">湖北</span>省
-										<span class="city">武汉</span>市
-										<span class="dist">洪山</span>区
-										<span class="street">雄楚大道666号(中南财经政法大学)</span></p>
-								</div>
-								<div class="new-addr-btn">
-									<a href="#"><i class="am-icon-edit"></i>编辑</a>
-									<span class="new-addr-bar">|</span>
-									<a href="javascript:void(0);" onclick="delClick(this);"><i class="am-icon-trash"></i>删除</a>
-								</div>
-							</li>
 						</ul>
 						<div class="clear"></div>
 						<a class="new-abtn-type" data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0}">添加新地址</a>
@@ -199,40 +142,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<hr/>
 
 								<div class="am-u-md-12 am-u-lg-8" style="margin-top: 20px;">
-									<form class="am-form am-form-horizontal">
+									<form  action="addAddress.html" class="am-form am-form-horizontal">
 
 										<div class="am-form-group">
 											<label for="user-name" class="am-form-label">收货人</label>
 											<div class="am-form-content">
-												<input type="text" id="user-name" placeholder="收货人">
+												<input type="text" name="aaa405"  id="user-name" required="required" placeholder="收货人">
 											</div>
 										</div>
 
 										<div class="am-form-group">
-											<label for="user-phone" class="am-form-label">手机号码</label>
+											<label for="user-phone"  class="am-form-label">手机号码</label>
 											<div class="am-form-content">
-												<input id="user-phone" placeholder="手机号必填" type="email">
+												<input  name= "aaa406" placeholder="手机号必填" required="required" type="text">
 											</div>
 										</div>
 										<div class="am-form-group">
 											<label for="user-address" class="am-form-label">所在地</label>
 											<!-- 地址插件 -->
-										  <div  class="am-form-content address">
-										    <div class="wrap"><input class="input" name="" id="city" type="text" placeholder="请选择" autocomplete="off" readonly="true"></div>
-										    </div>
+											<div class="am-form-content address">
+												<select name="addr_1" id="addr_1" >
+												</select>
+												<select name="addr_2" id="addr_2" class="childs" >
+												</select>
+												<select name="addr_3" id="addr_3" class="childs" >
+												</select>
+											</div>
 										  </div>
-
+                                      <div class="am-form-group">
+											<label  class="am-form-label">备注</label>
+											<div class="am-form-content">
+												<input name="aaa404" placeholder="备注" type="text">
+											</div>
+										</div>
 										<div class="am-form-group">
 											<label for="user-intro" class="am-form-label">详细地址</label>
 											<div class="am-form-content">
-												<textarea class="" rows="3" id="user-intro" placeholder="输入详细地址"></textarea>
+												<textarea name="aaa403" class="" rows="3" id="user-intro" placeholder="输入详细地址" required="required"></textarea>
 												<small>100字以内写出你的详细地址...</small>
 											</div>
 										</div>
 
 										<div class="am-form-group">
 											<div class="am-u-sm-9 am-u-sm-push-3">
-												<a class="am-btn am-btn-danger">保存</a>
+												<input type="submit"  value = "保存"class="am-btn am-btn-danger"></input>
 												<a href="javascript: void(0)" class="am-close am-btn am-btn-danger" data-am-modal-close>取消</a>
 											</div>
 										</div>
@@ -249,21 +202,74 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$(document).ready(function() {							
 							$(".new-option-r").click(function() {
 								$(this).parent('.user-addresslist').addClass("defaultAddr").siblings().removeClass("defaultAddr");
+								$.ajax({
+									url:"<%=basePath%>/setDefAddr.ajax",
+									type:"post",
+									dataType:"json",
+									timeout:20000,
+									data:{
+										"aaa401":$(this).attr("value")
+									},
+									success:function(res,status){
+		                              console.log("修改默认地址成功");
+									},
+									error:function(res,status){
+										console.log("修改默认地址失败");
+									}
+								});
 							});
-							
 							var $ww = $(window).width();
 							if($ww>640) {
 								$("#doc-modal-1").removeClass("am-modal am-modal-no-btn")
 							}
 							
-						})
+						});
+						
+					
+						
 			
-							$("#city").click(function (e) {
-								SelCity(this,e);
-							});
-							$("s").click(function (e) {
-								SelCity(document.getElementById("city"),e);
-							});
+			$("#addr_1").change(function(){
+				var A_id=$(this).children("option:selected").attr("A_id");
+				$("#addr_2").html("");
+				$("#addr_3").html("");
+				loadAddr(A_id,2);
+			});
+			$("#addr_2").change(function(){
+				var A_id=$(this).children("option:selected").attr("A_id");
+				$("#addr_3").html("");
+				loadAddr(A_id,3);
+			});
+			
+			<%-- 地址初始化的异步加载--%>
+			function loadAddr(type,index){
+				if(index>3) return;
+				$.ajax({
+					url:"<%=basePath%>/getAddr.ajax",
+					type:"post",
+					timeout:20000,
+					dataType:"json",
+					data:{
+						"type":type
+					},
+					success:function(res,status){
+						var addrs=res.addrs;
+						var n=addrs.length;
+						var html="";
+						if(n>0){
+							html="<option value='"+addrs[0].areaname+"' A_id='"+addrs[0].areaid+"' selected='selected'>"+addrs[0].areaname+"</option>";
+							for(var i=1;i<n;i++){
+								html+="<option value='"+addrs[i].areaname+"' A_id='"+addrs[i].areaid+"'>"+addrs[i].areaname+"</option>";
+							}
+						}
+						$("#addr_"+index).html(html);
+						loadAddr(addrs[0].areaid,++index);
+					},
+					error:function(res,status){
+						console.log("#addr_"+index+"地址异步加载错误");
+					}
+				});
+			}
+			loadAddr("-1",1);
 					</script>
 
 					<div class="clear"></div>
