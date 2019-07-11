@@ -196,4 +196,14 @@ public class Tools
 	public static double changeDouble(Object obj) {
 		return Double.parseDouble(obj.toString());
 	}
+	
+	public static String getparentCode(String code,String name) throws SQLException {
+		String sql="select pfcode from syscode where fcode=? and fname=?";
+		PreparedStatement pstm=DBUtils.getConnection().prepareStatement(sql);
+		pstm.setObject(1, code);
+		pstm.setObject(2, name);
+		ResultSet result=pstm.executeQuery();
+		result.next();
+		return result.getString("pfcode");
+	}
 }

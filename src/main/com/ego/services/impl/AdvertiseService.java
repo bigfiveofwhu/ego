@@ -7,14 +7,15 @@ import com.ego.services.JdbcServicesSupport;
 import com.ego.system.tools.Tools;
 
 public class AdvertiseService extends JdbcServicesSupport{
+
 	public static final String productAd="00";
 	public static final String shoptAd="01";
 	
-	public static final String headLine="00";
-	public static final String search="01";
-	public static final String AIads="10";
-	public static final String homePage="11";
-	
+	public static final String headLine="00";//首页轮播
+	public static final String search="01";//搜索靠前
+	public static final String AIads="10";//猜你喜欢
+	public static final String homePage="11";//首页热门商品
+
 	@Override
 	public List<Map<String, String>> query(String qtyep) throws Exception {
 		// TODO Auto-generated method stub
