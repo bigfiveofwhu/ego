@@ -7,14 +7,47 @@ import com.ego.services.JdbcServicesSupport;
 import com.ego.system.tools.Tools;
 
 public class AdvertiseService extends JdbcServicesSupport{
-	static final String productAd="00";
-	static final String shoptAd="01";
+	public static final String productAd="00";
+	public static final String shoptAd="01";
 	
-	static final String headLine="00";
-	static final String search="01";
-	static final String AIads="10";
-	static final String homePage="11";
+	public static final String headLine="00";
+	public static final String search="01";
+	public static final String AIads="10";
+	public static final String homePage="11";
 	
+	@Override
+	public List<Map<String, String>> query(String qtyep) throws Exception {
+		// TODO Auto-generated method stub
+		switch (qtyep) {
+		case "queryAdsByAccountId":
+			return queryAdsByAccountId();
+		case "getAdByType":
+			return this.getAdByType();
+		default:
+			throw new Exception("不支持的类型");
+		}
+	}
+	@Override
+	public boolean update(String utype) throws Exception {
+		// TODO Auto-generated method stub
+		switch (utype) {
+		case "insertAdAccount":
+			return this.insertAdAccount();
+		case "recharge":
+			return this.recharge();
+		case "chargeMoney":
+			return this.chargeMoney();
+		case "insertAd":
+			return this.insertAd();
+		case "addMoney":
+			return this.addMoney();
+		case "reduceMoney":
+			return this.reduceMoney();
+		
+		default:
+			throw new Exception("不支持的类型");
+		}
+	}
 	
 	
 	private List<Map<String,String>> queryAdsByAccountId() throws Exception {
@@ -22,10 +55,11 @@ public class AdvertiseService extends JdbcServicesSupport{
 				.append(" select aad301,aad302,aad303,aad304,aad305,aad306,aad307")
 				.append(" from ad03 where aad402=?");
 		
-		return this.queryForList(sql.toString(),this.get("add402") );
+		return this.queryForList(sql.toString(),this.get("aad402") );
 	}
 	
 	private List<Map<String, String>> getAdByType() throws Exception {
+		//获取广告id，物品类型，广告内容和ref
 		StringBuilder sql=new StringBuilder()
 				.append(" select aad302,aad303,aad306,aad307")
 				.append(" from ad03 where aad305=?")
@@ -39,11 +73,11 @@ public class AdvertiseService extends JdbcServicesSupport{
 	private  boolean insertAd() throws Exception {
 		StringBuilder sql=new StringBuilder()
 				.append(" insert into ad03(aad402,aad302,aad303,aad304,aad305,")
-				.append(" aad306,aad307")
-				.append(" value(?,?,?,?,?,?,?)");
+				.append(" aad306,aad307)")
+				.append(" values(?,?,?,?,?,?,?)");
 		Object[] parameter=new Object[] {
 				this.get("aad402"),
-				this.get("aad302"),
+				Tools.getIncrementId("aad302"),
 				this.get("aad303"),
 				this.get("aad304"),
 				this.get("aad305"),
@@ -52,7 +86,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 		};
 		return this.executeUpdate(sql.toString(), parameter);
 	}
-	
+	//添加广告的钱
 	private boolean	addMoney() throws Exception {
 		StringBuilder sql=new StringBuilder()
 				.append(" update ad03 set")
@@ -60,6 +94,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 				.append(" where aad302=?");
 		return this.executeUpdate(sql.toString(),this.get("increment"),this.get("aad302") );
 	}
+	//减少广告的钱
 	private boolean reduceMoney()throws Exception {
 		StringBuilder sql=new StringBuilder()
 				.append("update ad03 set")
@@ -84,7 +119,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 		int idNumber=Tools.getIncrementId("aad402");
 		StringBuilder sql=new StringBuilder()
 				.append(" insert into ad04(aad402,aad403,aaa102)")
-				.append(" value(?,?,?,?)");
+				.append(" value(?,?,?)");
 		double initMoney= Double.parseDouble(this.get("aad403").toString());
 		if (initMoney<initMin) {
 			throw new Exception("初始充值不能少于"+initMin);
@@ -92,12 +127,12 @@ public class AdvertiseService extends JdbcServicesSupport{
 		Object[] parameter=new Object[] {
 				idNumber,
 				this.get("aad403"),
-				this.get("aad102")
+				this.get("aaa102")
 		};
 		
 		return this.executeUpdate(sql.toString(),parameter);
 	}
-	
+	//对账户进行充值
 	private boolean recharge() throws Exception{
 		StringBuilder sql=new StringBuilder()
 				.append(" update ad04 set")
@@ -109,7 +144,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 		}
 		return this.executeUpdate(sql.toString(),increse,this.get("aad402"));
 	}
-	
+	//收取广告费，减少账户的钱
 	private boolean chargeMoney() throws Exception{
 		StringBuilder sql=new StringBuilder()
 				.append(" update ad04 set")
