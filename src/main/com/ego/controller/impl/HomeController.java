@@ -21,14 +21,13 @@ public class HomeController extends ControllerSupport
 	@Override
 	public String execute() throws Exception 
 	{
+		//初始化用户信息
 		//初始化商品分类
 		//File file=new File("WebContent/home/productType.jsp");
 		//GeneJSP.geneJSP(this.getServices());
-		this.saveAttribute("products", "");
 		//初始化轮播图片
 		//初始化新品推荐
 		//初始化热门活动
-		//初始化广告
 		return "home/home";
 	}
 }

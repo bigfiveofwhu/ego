@@ -1,0 +1,161 @@
+
+html , body {
+	font-size: 14px;
+	font-family: "微软雅黑";
+	color:#333;
+	width:100%;
+	height: 100%;
+	overflow: hidden;
+}
+.container {
+	width:100%;
+	height: 100%;
+}
+/*头部样式*/
+.jd_sort_header {
+	width: 100%;
+	height: 44px;
+	background:url("../images/header-bg.png") repeat-x;
+	background-size:1px 44px;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+.jd_sort_header .sort_header_box {
+	width: 100%; 
+	height: 44px;
+	position: relative;
+	overflow: hidden;/* 形成一个绝缘的容器 */
+	padding: 0 40px 0 40px;
+}
+
+.jd_sort_header .sort_header_box .back_btn{
+	
+	/*display: block;*/
+	width: 20px;
+	height: 26px;
+	background: url("../images/sprites.png");
+	background-size: 200px 200px;
+	background-position: -20px 4px;
+	position: absolute;
+	left: 10px;
+	top: 9px;
+}
+.jd_sort_header .sort_header_box form {
+	width: 100%;
+	height: 36px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	/*transform:translateY(4px);*/
+}
+.jd_sort_header .sort_header_box form input{
+	line-height: 36px;
+	width: 100%;
+	background: transparent;
+	padding: 0 6px;
+
+	-webkit-box-sizing:border-box; /* 改变盒子大小的计算方式 */
+	box-sizing:border-box;
+}
+.jd_sort_header .sort_header_box .sort_btn{
+	/*display: block;*/
+	width: 20px;
+	height: 26px;
+	background: url("../images/sprites.png");
+	background-size: 200px 200px;
+	background-position: -60px 4px;
+	position: absolute;
+	right: 10px;
+	top: 9px;
+}
+
+/* 主体样式  */
+.jd_sort_main {
+	width:100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+
+.jd_sort_main .left_silde {
+	width: 90px;
+	height: 100%;
+	background: #ccc;
+	float: left;
+}
+
+.jd_sort_main .left_silde ul {
+	width: 90px;
+}
+.jd_sort_main .left_silde ul li a {
+	display: block;
+	width: 90px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: #f3f4f6;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+
+}
+.jd_sort_main .left_silde ul li.now a{
+	display: block;
+	background: #fff;
+	color:red;
+	border-right: 0;
+}
+
+
+.jd_sort_main .right_box {
+	/*  2.0 侧栏自适应  calc(100% - 90px)  动态计算元素的宽度*/
+	width: calc(100% - 90px);
+	height: 100%;
+	background: #fff;
+	float: left;
+	padding: 0 10px 0 10px;
+
+}
+.jd_sort_main .right_box > div {
+	width: 100%;
+	display: table;
+}
+.jd_sort_main .right_box > div  .top_bar {
+	width: 100%;
+}
+.jd_sort_main .right_box  > div .top_bar a {
+	display: block;
+	width: 100%;
+}
+.jd_sort_main .right_box > div  .top_bar a img {
+	width: 100%;
+}
+.jd_sort_main .right_box  > div h3 {
+	height: 28px;
+	line-height: 28px;
+	font-size: 14px;
+	padding: 0;
+	margin: 0;
+}
+.jd_sort_main .right_box  > div ul  {
+	width:100%;
+}
+.jd_sort_main .right_box  > div ul li  {
+	width:33.3333%;
+	float: left;
+	
+}
+.jd_sort_main .right_box   > div ul li a  {
+	display: block;
+	width: 100%;
+	padding: 5px;
+	text-align: center;
+}
+
+.jd_sort_main .right_box   > div ul li a img {
+	width: 62px;
+	height: 62px;
+}

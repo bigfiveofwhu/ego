@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<title>商家后台登录</title>
+		<link rel="icon" href="assets/img/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="../../css/webbase.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/pages-shoplogin.css" />
+		<link rel="stylesheet" href="../../plugins/jquery-front-end-verify/css/verify.css" />
+	</head>
+
+	<body ng-app="shopping" ng-controller="SellerLoginController">
+		<div class="login-box">
+			<!--head-->
+			<div class="py-container logoArea">
+
+			</div>
+			<!--loginArea-->
+			<div class="loginArea">
+				<div class="login ">
+					<div class="py-container">
+						<div class="loginform">
+							<ul class="sui-nav nav-tabs tab-wraped">
+								<li>
+									<a href="#index" data-toggle="tab">
+										<h3>扫描登录</h3>
+									</a>
+								</li>
+								<li class="active">
+									<a href="#profile" data-toggle="tab">
+										<h3>账户登录</h3>
+									</a>
+								</li>
+							</ul>
+							<div class="tab-content tab-wraped">
+								<div id="index" class="tab-pane">
+									<p>二维码登录，暂为官网二维码</p>
+									<img src="" />
+								</div>
+								<div id="profile" class="tab-pane  active">
+									<form class="sui-form" name="myForm">
+										<div class="input-prepend"><span class="add-on loginname"></span>
+											<input ng-model="entity.sellerId" type="text" placeholder="用户名" class="span2 input-xfat" required>
+										</div>
+										<div class="input-prepend"><span class="add-on loginpwd"></span>
+											<input ng-model="entity.password" type="password" placeholder="请输入密码" class="span2 input-xfat" required>
+										</div>
+										<div id="mpanel5" style="margin-bottom: 10px;">
+										</div>
+										
+										<div class="logined" id="loginBtn" hidden="true">
+											<a class="sui-btn btn-block btn-xlarge btn-danger" ng-disabled="!myForm.$valid" ng-click="login(entity)">登&nbsp;&nbsp;录</a>
+										</div>
+										<div >
+											<span class=" fr register"><a href="register.html" >立即注册</a></span>
+										</div>
+									</form>
+									
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!--foot-->
+			<div class="py-container copyright">
+				<ul>
+					<li>关于我们</li>
+					<li>联系我们</li>
+					<li>联系客服</li>
+					<li>商家入驻</li>
+					<li>营销中心</li>
+					<li>手机App</li>
+					<li>销售联盟</li>
+					<li>购物社区</li>
+				</ul>
+				<div class="address">地址：广州番禺职业技术学院 邮编：515644 电话：110-100-110 </div>
+				<div class="beian">广州番禺区
+				</div>
+			</div>
+		</div>
+	</body>
+
+	
+	<script src="../../plugins/angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="../../js/base/Base.js"></script>
+	<script type="text/javascript" src="../../js/base/BaseController.js"></script>
+	<script type="text/javascript" src="../../js/base/BaseService_Seller.js"></script>
+	<script type="text/javascript" src="../../js/controller/SellerLoginController.js"></script>
+	<script type="text/javascript" src="../../js/service/SellerService.js"></script>
+	<script type="text/javascript" src="../../plugins/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../../plugins/jquery.easing/jquery.easing.min.js"></script>
+	<script type="text/javascript" src="../../plugins/sui/sui.min.js"></script>
+	<script type="text/javascript" src="../../plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
+	<script type="text/javascript" src="../../js/pages/shoplogin.js"></script>
+	<script type="text/javascript" src="../../plugins/jquery-front-end-verify/js/verify.js" ></script>
+	<script>
+		$('#mpanel5').pointsVerify({
+			defaultNum : 8,	//默认的文字数量
+			checkNum : 4,	//校对的文字数量
+			vSpace : 5,	//间隔
+			imgName : ['../../../img/1.jpg', '../../../img/2.jpg'],
+			imgSize : {
+				width: '335px',
+				height: '140px',
+			},
+			barSize : {
+				width : '335px',
+				height : '40px',
+			},
+			ready : function() {
+			},
+			success : function() {
+				 $("#loginBtn").show();
+			},
+			error : function() {
+	//		    alert('验证失败！');
+			}
+		});
+	</script>
+
+</html>

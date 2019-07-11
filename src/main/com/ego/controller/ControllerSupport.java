@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import com.ego.services.BaseServices;
 
 public abstract class ControllerSupport implements Controller 
@@ -129,7 +132,6 @@ public abstract class ControllerSupport implements Controller
 		this.getServices().setMapDto(dto);
 	}
 
-	
 	@Override
 	public void setMapDto(Map<String, Object> dto) 
 	{
@@ -165,5 +167,29 @@ public abstract class ControllerSupport implements Controller
 	protected Object get(String key)
 	{
 		return dto.get(key);
+	}
+	
+	/**
+	 * 获取session对象
+	 * @return
+	 */
+	protected HttpSession getSession()
+	{
+		return ((HttpServletRequest)this.get("request")).getSession();
+	}
+	
+	/**
+	 * 检测相应的用户是否登录
+	 * @param uid  --从客户端传来的uid
+	 * @return  --true  已登录    --false  未登录
+	 */
+	protected boolean detectionLogin(String uid)
+	{
+		String session_uid=(String)this.getSession().getAttribute("session_uid");
+		if(session_uid!=null && session_uid.equals(uid))
+		{
+			return true;
+		}
+		return false;
 	}
 }
