@@ -1,12 +1,9 @@
 package com.ego.controller.ajaxServlet.impl;
 
-import java.io.PrintWriter;
 import java.util.Date;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import com.alibaba.fastjson.JSONObject;
 import com.ego.controller.ajaxServlet.AjaxControllerSupport;
 
 public class VerifyController extends AjaxControllerSupport 
@@ -26,7 +23,7 @@ public class VerifyController extends AjaxControllerSupport
 	    {
 	    	if(verCode.equals(code))
 	    	{
-		    	this.put("status", "200");	
+		    	this.put("status", "200");
 	    	}
 	    	else
 	    	{

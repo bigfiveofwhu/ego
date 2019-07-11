@@ -12,7 +12,7 @@
 		<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 		<link rel="stylesheet" href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.min.css" />
-		<link href="<%=path%>/css/dlstyle.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/css/shop/dlstyle.css" rel="stylesheet" type="text/css">
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
 
@@ -35,25 +35,18 @@
 				<div class="login-box">
 						<div class="am-tabs" id="doc-my-tabs">
 							<ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
-								<li class="am-active"><a href="">普通会员注册</a></li>
-								<li><a href="">手机号注册</a></li>
+								<li class="am-active"><a href="">店铺注册</a></li>
 							</ul>
 							<div class="am-tabs-bd">
 								<div class="am-tab-panel am-active">
 									<span style="color:red">${msg}</span>	
-									<!-- 邮箱注册 -->
+									<!-- 店铺资格认证信息 -->
 									<form action="<%=path%>/register.html" method="post">	 
-										<div class="user_element">
+										<div class="shop_element">
 											<label for="name"><i class="am-icon-user"></i></label>
-											<input type="text" class="input_block" name="username" id="username" placeholder="请输入昵称" required="required">
+											<input type="text" class="input_block" name="shopname" id="shopname" placeholder="请输入店铺名称" required="required">
 		                 			   </div>
-									   <div class="user_element">
-											<label for="email"><i class="am-icon-envelope-o"></i></label>
-											<input type="email" class="input_block" name="email" id="email" onblur="checkEmailFormat()" 
-												   placeholder="请输入邮箱地址" required="required">
-											<button type="button" class="am-btn am-btn-default am-btn-xs sendVerifyCode">发送验证码</button>
-		                 			   </div>
-	                                   <div class="user_element" style="display: flex;">
+	                                   <div class="shop_element" style="display: flex;">
 										    <label for="code"><i class="am-icon-rocket"></i></label>
 										    <input type="text" class="input_block" name="verifyCode" id="verifyCode" onblur="checkVerify()" 
 										    	   maxlength="6" placeholder="请输入验证码">
@@ -62,37 +55,25 @@
 										    	<span class="failIcon"><i class="am-icon-close" style="color:red"></i>失败</span>
 										    </div>
 						               </div>
-						               <div class="user_element">
+						               <div class="shop_element">
 											<label for="phone"><i class="am-icon-phone"></i></label>
 											<input type="text" class="input_block" name="phone" id="phone" 
 											       onblur="check()" maxlength="11" placeholder="请输入手机号码" required="required">
 											<button style="display:none" type="button" class="am-btn am-btn-default am-btn-xs sendVerifyCode">发送验证码</button>
 		                 			   </div>
-	                 				   <div class="user_element">
+	                 				   <div class="shop_element">
 										    <label for="password"><i class="am-icon-lock"></i></label>
 										    <input type="password" class="input_block" name="pwd" id="password" onblur="checkPwd()" placeholder="设置密码" required="required">
-	                                   </div>										
-	                				   <div class="user_element">
+	                                   </div>								
+	                				   <div class="shop_element">
 										    <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
 										    <input type="password" class="input_block" name="pwdRep" id="passwordRepeat" onblur="verifyPwd()" placeholder="确认密码" required="required">
 	                                   </div>
-	                                    <div class="user_element">
+	                                    <div class="shop_element">
 										    <label for="realname"><i class="am-icon-child"></i></label>
-										    <input type="text" class="input_block" name="realname" id="realname" placeholder="真实名称" required="required">
+										    <textarea class="input_block" cols="50" rows="10" name="subscribe" id="subscribe" placeholder="店铺描述" required="required"></textarea>
 	                                   </div>
-	                                   <div class="user_element">
-										    <label for="gender"><i class="am-icon-female"></i></label>
-										    <span class="input_group">
-											    <input type="radio" name="gender" class="gender" value="1">男
-											    <input type="radio" name="gender" class="gender" value="2">女
-											    <input type="radio" name="gender" class="gender" value="3" checked="checked">保密
-										    </span>
-	                                   </div>
-	                                   <div class="user_element">
-										    <label for="birthday"><i class="am-icon-birthday-cake"></i></label>
-										    <input type="date" class="input_block" name="birthday" id="birthday" placeholder="确认密码" required="required">
-	                                   </div>
-	                                    <div class="user_element">
+	                                   <div class="shop_element">
 										    <label for="addr"><i class="am-icon-area-chart"></i></label>
 										    <span class="input_block">
 											    <select name="addr_1" id="addr_1" required="required"></select>
@@ -107,32 +88,6 @@
 	                               </form>
 							   </div>
 								<div class="am-tab-panel">
-								<!-- 手机号码注册 -->
-									<form action="<%=path%>/register?cmd=mob" method="post">
-										<p id="prop" style="color:red;font-size:12px"/>
-	                			        <div class="user-phone">
-										    <label for="phone"><i class="am-icon-mobile-phone am-icon-md"></i></label>
-										    <input type="text" name="phone" id="phone" placeholder="请输入手机号码" onchange="check()" onblur="dis()">
-	                                    </div>																			
-										<div class="verification">
-											<label for="code"><i class="am-icon-code-fork"></i></label>
-											<input type="text" name="verifyCode" id="code" placeholder="请输入验证码">
-											<img alt="加载失败" onclick="javascript:getchang();" title="看不清,换一张" name="verifyImage"
-									             id="verifyCodeImg" src="${pageContext.request.contextPath}/verifyCode" width="53px" 
-									             height="38px" border="1" align="absmiddle" style="margin-bottom:-16px">
-										</div>
-	                                    <div class="user-pass">
-										    <label for="password"><i class="am-icon-lock"></i></label>
-										    <input type="password" name="pwd" id="password" placeholder="请输入密码">
-	                                    </div>										
-	                                    <div class="user-pass">
-										    <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
-										    <input type="password" name="pwdRep" id="" placeholder="请输入密码">
-										    <div class="am-cf">
-												<input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
-											</div>
-	                                    </div>	
-									</form>
 									<hr>
 								</div>
 								<script>
