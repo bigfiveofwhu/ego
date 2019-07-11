@@ -1,5 +1,6 @@
 package com.ego.system.tools;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -151,6 +152,7 @@ public class Tools
 	{
 		String name="pkname";
 		String value="pkvalue";
+		String date="sdate";
 		String sql="select * from sequence where "+ name+ " = ? ";
 		
 		PreparedStatement pStatement= DBUtils.getConnection().prepareStatement(sql,
@@ -163,6 +165,7 @@ public class Tools
 			{	//有相应的id
 				int id=set.getInt(value);
 				set.updateInt(value, ++id);
+				set.updateDate(date, new Date(System.currentTimeMillis()));
 				set.updateRow();
 				return id;
 				
@@ -173,6 +176,7 @@ public class Tools
 				set.moveToInsertRow();
 				set.updateString(name, idName);
 				set.updateInt(value, startNumber);
+				set.updateDate(date, new Date(System.currentTimeMillis()));
 				set.insertRow();
 				return startNumber;
 			}
@@ -184,4 +188,22 @@ public class Tools
 		}
 	}
 
+	
+	public static int changeInt(Object obj) {
+		 return Integer.parseInt(obj.toString());
+	}
+	
+	public static double changeDouble(Object obj) {
+		return Double.parseDouble(obj.toString());
+	}
+	
+	public static String getparentCode(String code,String name) throws SQLException {
+		String sql="select pfcode from syscode where fcode=? and fname=?";
+		PreparedStatement pstm=DBUtils.getConnection().prepareStatement(sql);
+		pstm.setObject(1, code);
+		pstm.setObject(2, name);
+		ResultSet result=pstm.executeQuery();
+		result.next();
+		return result.getString("pfcode");
+	}
 }
