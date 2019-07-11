@@ -5,6 +5,9 @@
 /bin/
 /build/
 
+#²âÊÔÎÄ¼ş
+/src/test/
+
 # idea
 /.idea/
 /*.iml

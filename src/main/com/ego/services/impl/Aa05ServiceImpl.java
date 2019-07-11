@@ -23,7 +23,6 @@ public class Aa05ServiceImpl extends JdbcServicesSupport{
 				.append("select aaa501,aab102,aaa502,aaa503,aaa504,aaa505,aaa506")
 				.append(" from aa05 where aaa102=?");
 		return this.queryForList(sql.toString(), this.get("aaa102"));
-		
 	}
 	
 	@Override
