@@ -116,7 +116,6 @@
 					<div class="category-content" id="guide_2">
 						<div class="category">
 							<ul class="category-list" id="js_climit_li">
-								<%@include file="/home/productType.jsp" %>
 							</ul>
 						</div>
 					</div>
