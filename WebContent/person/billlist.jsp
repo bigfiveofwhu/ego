@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link href="../css/bilstyle.css" rel="stylesheet" type="text/css">
 
 		<script src="../AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
-		<script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+		<script src="../AmazeUI-2.4.2/assets/js/amazeui.js" type="text/javascript"></script>
 
 	</head>
 
@@ -217,43 +217,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			<aside class="menu">
 				<ul>
-					<li class="person">
-						<a href="index.html">个人中心</a>
+					<li class="person active">
+						<a href="index.html"><i class="am-icon-user"></i>个人中心</a>
 					</li>
 					<li class="person">
-						<a href="#">个人资料</a>
+						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
 						<ul>
 							<li> <a href="information.html">个人信息</a></li>
 							<li> <a href="safety.html">安全设置</a></li>
-							<li> <a href="address.html">收货地址</a></li>
+							<li> <a href="address.html">地址管理</a></li>
+							<li> <a href="cardlist.html">快捷支付</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<a href="#">我的交易</a>
+						<p><i class="am-icon-balance-scale"></i>我的交易</p>
 						<ul>
 							<li><a href="order.html">订单管理</a></li>
 							<li> <a href="change.html">退款售后</a></li>
+							<li> <a href="comment.html">评价商品</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<a href="#">我的资产</a>
+						<p><i class="am-icon-dollar"></i>我的资产</p>
 						<ul>
+							<li> <a href="points.html">我的积分</a></li>
 							<li> <a href="coupon.html">优惠券 </a></li>
 							<li> <a href="bonus.html">红包</a></li>
-							<li class="active"> <a href="bill.html">账单明细</a></li>
+							<li> <a href="walletlist.html">账户余额</a></li>
+							<li> <a href="bill.html">账单明细</a></li>
 						</ul>
 					</li>
 
 					<li class="person">
-						<a href="#">我的小窝</a>
+						<p><i class="am-icon-tags"></i>我的收藏</p>
 						<ul>
 							<li> <a href="collection.html">收藏</a></li>
-							<li> <a href="foot.html">足迹</a></li>
-							<li> <a href="comment.html">评价</a></li>
-							<li> <a href="news.html">消息</a></li>
+							<li> <a href="foot.html">足迹</a></li>							
 						</ul>
 					</li>
 
+					<li class="person">
+						<p><i class="am-icon-qq"></i>在线客服</p>
+						<ul>
+							<li> <a href="consultation.html">商品咨询</a></li>
+							<li> <a href="suggest.html">意见反馈</a></li>							
+							
+							<li> <a href="news.html">我的消息</a></li>
+						</ul>
+					</li>
 				</ul>
 
 			</aside>

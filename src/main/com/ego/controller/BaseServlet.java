@@ -29,15 +29,17 @@ public class BaseServlet extends HttpServlet
 	public static final String prefix="WEB-INF/views/";
 	//º”‘ÿ”≥…‰Œƒº˛
 	private static Properties mapping=new Properties();
-	static {
-		try {
+	static 
+	{
+		try 
+		{
 			mapping.load(new FileInputStream("src/resources/urlMapping.properties"));
 			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+		} catch (FileNotFoundException e) 
+		{
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException e) 
+		{
 			e.printStackTrace();
 		}
 	}

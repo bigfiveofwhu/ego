@@ -1,6 +1,5 @@
 <%@ page language="java" pageEncoding="GBK"%>
 <%@ include file="/taglib.jsp" %>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,7 +9,7 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="Cache-Control" content="no-siteapp" />
-		<link rel="stylesheet" href="<%=path %>/AmazeUI-2.4.2/assets/css/amazeui.css" />
+		<link href="<%=path %>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 		<link href="<%=path %>/css/dlstyle.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="<%=path %>/js/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="<%=path %>/js/login.js"></script>
@@ -24,21 +23,24 @@
 				<div class="login-banner-bg"><span></span><img src="<%=path %>/images/big.jpg" /></div>
 				<div class="login-box">
 					<h3 class="title">登录商城</h3>
-						<span id="lab"><font style="color:red;font-size:14px">${errorMsg}</font></span>
+						<span id="lab"><font style="color:red;font-size:14px">${msg}</font></span>
 					<div class="clear"></div>	
 					<div class="login-form">
-					   <form action="<%=path %>/login" method="post">
-						    <div class="user-name">
-							    <label for="user"><i class="am-icon-user"></i></label>
-							    <input type="text" name="username" id="user" placeholder="邮箱/手机/用户名">
+					   <form action="<%=path %>/home/login.html" method="post">
+						    <div class="user_element">
+							    <label for="email"><i class="am-icon-user"></i></label>
+							    <input type="email" class="input_block" name="email" id="email" placeholder="邮箱" required="required">
 			                </div>
-			                <div class="user-pass">
+			                <div class="user_element">
 							    <label for="password"><i class="am-icon-lock"></i></label>
-							    <input type="password" name="password" id="password" placeholder="请输入密码">
+							    <input type="password" class="input_block" name="pwd" id="password" placeholder="请输入密码">
 			                </div>
-			                <div class="user-pass">
-							    <label for="password"><i class="am-icon-rocket"></i></label>
-							    <input type="password" name="verifyCode" id="verifyCode" placeholder="请输入验证码">
+			                <div class="user_element">
+							    <label for="code"><i class="am-icon-rocket"></i></label>
+							    <input type="text" class="input_block" name="verifyCode" id="verifyCode" maxlength="6" placeholder="请输入验证码">
+							    <img alt="加载失败" onclick="javascript:getchang();" title="看不清,换一张" name="verifyImage"
+									 id="verifyCodeImg" src="${pageContext.request.contextPath}/verifyCode" width="53px" 
+									 height="38px" border="1" align="absmiddle" style="margin-bottom:-16px">
 			                </div>
 			                <div class="am-cf">
 								<input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm">

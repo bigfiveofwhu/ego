@@ -207,7 +207,7 @@ text-align: center;float:none}
 @media only screen and (min-width: 640px) {
 /*标题*/
 .shopTitle{background: #fff;}
-.hmtop{background: #fff;}
+.hmtop{background: #f6d9ae;}
 .am-container {padding-left:0px;padding-right:0px ;}
 .am-container.header{padding-left:21px; padding-right:40px ;}
 .shopMainbg{width:100%;background:#fff;overflow:visible;}
@@ -404,7 +404,18 @@ top: 11px;text-align: right;}
 .category-content .category-info em{ position:absolute; top:8px; right:15px; width: 13px; height: 13px; font: 12px/18px "宋体"; color: #9b9b9b;}
 .category-content .category .hover{ margin-left: -1px; padding-left: 1px;z-index:999;} 
 .category-content .hover .category-info{ border:none; text-decoration:none; background: #fff;  }
-.category-content .menu-item { position: absolute;left: 143px;height:100%; z-index: 11;padding:0 0 0 2px;width:770px;background: #fff; border:none; border-top: 1px solid #bbb\9;}
+.category-content .menu-item { 
+	position: absolute;
+	left: 143px;
+	height:100%; 
+	z-index: 11;
+	padding:0 0 0 2px;
+	width:770px;
+	background: #fff; 
+	border:none;
+	border-top: 1px solid #bbb\9;
+	overflow: auto;
+	}
 .category-content .menu-item .area-in{ position: relative;  z-index: 1;  }
 .category-content .menu-item .area-bg{ padding: 10px 0 10px 40px;}
 .shadow-bg{ display: none; position: relative; width: 100%; height: 0; } 
@@ -732,13 +743,35 @@ filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#f8c375',endCo
 /*秒杀*/
 .sale-mt{margin-top: 10px;}
 /*导航*/
-#nav .category-content{ position:relative; width: 180px; float: left; z-index: 113; }
+#nav .category-content{ 
+	position:relative; 
+	width: 180px; float: 
+	left; 
+	z-index: 113; 
+	}
 #nav .category-content .all-goods {width:180px;}
 .category-content .category{  width:180px;}
-.category-content .category-info {padding-left: 12px;width: 182px;overflow: hidden;}
-.category-content .menu-item {left: 173px;}
-.category-content .category-list li {height:45px ;}
-
+.category-content .category-info {
+	padding-left: 12px;
+	width: 182px;
+	overflow: hidden;
+	}
+.category-content .menu-item {
+	left: 180px;
+	}
+.category-content .category-list li {
+	height:39px ;
+}
+#mc-menu-shop{
+	text-decoration: underline;
+	color:blue;
+}
+#mc-menu-localCity{
+	color:red;
+}
+.header{
+	color:pink;
+}
 
 /*推荐*/
 .clock img{position: absolute;right: 15%;width: 120px;top:15px;}

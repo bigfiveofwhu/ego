@@ -19,6 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link href="../css/personal.css" rel="stylesheet" type="text/css">
 		<link href="../css/blstyle.css" rel="stylesheet" type="text/css">
 		<script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="../../one/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 	</head>
 
 	<body>
@@ -73,23 +74,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</article>
 		</header>
 
-            <div class="nav-table">
-					   <div class="long-title"><span class="all-goods">全部分类</span></div>
-					   <div class="nav-cont">
-							<ul>
-								<li class="index"><a href="#">首页</a></li>
-                                <li class="qc"><a href="#">闪购</a></li>
-                                <li class="qc"><a href="#">限时抢</a></li>
-                                <li class="qc"><a href="#">团购</a></li>
-                                <li class="qc last"><a href="#">大包装</a></li>
-							</ul>
-						    <div class="nav-extra">
-						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-						    </div>
-						</div>
+		<div class="nav-table">
+			<div class="long-title"><span class="all-goods">全部分类</span></div>
+			<div class="nav-cont">
+				<ul>
+					<li class="index"><a href="#">首页</a></li>
+					<li class="qc"><a href="#">闪购</a></li>
+					<li class="qc"><a href="#">限时抢</a></li>
+					<li class="qc"><a href="#">团购</a></li>
+					<li class="qc last"><a href="#">大包装</a></li>
+				</ul>
+				<div class="nav-extra">
+					<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+					<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
+				</div>
 			</div>
-			<b class="line"></b>
+		</div>
+		<b class="line"></b>
 
 		<div class="center">
 			<div class="col-main">
@@ -127,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                               119.80
                                        </span>
                                     <span class="desc ng-binding">
-                                           <a href="billlist.jsp">查看支出明细</a>
+                                           <a href="billlist.html">查看支出明细</a>
                                          </span>
                                              </h3>
 
@@ -136,7 +137,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<div class="title">类型</div>
 												<ul>
 
-
 												</ul>
 											</div>
 											<div class="catatory-detail fn-left">
@@ -144,7 +144,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													购买商品
 												</div>
 												<ul>
-												
+
 													<li class="ng-scope  delete-false">
 
 														<div class="  ng-scope">
@@ -221,7 +221,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                               0.00
                                        </span>
                                     <span class="desc ng-binding">
-                                           <a href="billlist.jsp">查看收入明细</a>
+                                           <a href="billlist.html">查看收入明细</a>
                                     </span>
                                 </h3>
 								</div>
@@ -238,54 +238,205 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 								<div class="module-card inner-module">
 									<h3 class="module-title">银行卡使用情况</h3>
-									<div class="card-chart valid">
-										<div class="cards-carousel">
-											<div class="mask">
+									<div class="card-chart valid am-slider am-slider-default" data-am-widget="slider" data-am-slider='{"animation":"slide","slideshow":false}'>
+										<ul class="am-slides">
+											<li>
+												<div  class="cards-carousel">
+													<div class="mask">
 
-												<div class="bac fn-left"></div>
-												<div class="bank ng-binding" style="background-image: url(../images/combo.png);">中国农业银行</div>
-												<div class="details">
-													<a>查看详情</a>
+														<div class="bac fn-left"></div>
+														<div class="bank ng-binding" style="background-image: url(../images/combo.png);">中国农业银行</div>
+														<div class="details">
+															<a>查看详情</a>
+														</div>
+													</div>
 												</div>
-											</div>
-										</div>
-										<div class="cards-details">
-											<div class="bank-name">
-												<div class="name fn-left" style="background-image: url(../images/combo.png);"></div>
-												<span class="close fn-right"><a>X</a></span>
-											</div>
-											<div class="bank-detail">
-												<div class="totalin fn-left">
-													<span class="fn-left">流入</span>
-													<span class="amount fn-right">0.00</span>
-												</div>
-												<div class="totalout fn-left">
-													<span class="fn-left">流出</span>
-													<span class="amount fn-right">0.00</span>
-												</div>
-												<div class="expand fn-left">
-													<span class="fn-left">支出</span>
-													<span class="amount fn-right">0.00</span>
-												</div>
-												<div class="withdraw fn-left">
-													<span class="fn-left">提现</span>
-													<span class="amount fn-right">
+												<div class="cards-details">
+													<div class="bank-name">
+														<div class="name fn-left" style="background-image: url(../images/combo.png);"></div>
+														<span class="close fn-right"><a>X</a></span>
+													</div>
+													<div class="bank-detail">
+														<div class="totalin fn-left">
+															<span class="fn-left">流入</span>
+															<span class="amount fn-right">0.00</span>
+														</div>
+														<div class="totalout fn-left">
+															<span class="fn-left">流出</span>
+															<span class="amount fn-right">0.00</span>
+														</div>
+														<div class="expand fn-left">
+															<span class="fn-left">支出</span>
+															<span class="amount fn-right">0.00</span>
+														</div>
+														<div class="withdraw fn-left">
+															<span class="fn-left">提现</span>
+															<span class="amount fn-right">
 							                                0.00
                             						</span>
-												</div>
-												<div class="recharge fn-left">
-													<span class="fn-left">充值</span>
-													<span class="amount fn-right">
+														</div>
+														<div class="recharge fn-left">
+															<span class="fn-left">充值</span>
+															<span class="amount fn-right">
                                                             0.00
                             						</span>
-												</div>
+														</div>
 
-												<div class="refund fn-left">
-													<span class="fn-left">银行卡退款</span>
-													<span class="amount fn-right ">0.00</span>
+														<div class="refund fn-left">
+															<span class="fn-left">银行卡退款</span>
+															<span class="amount fn-right ">0.00</span>
+														</div>
+													</div>
 												</div>
-											</div>
-										</div>
+											</li>
+											<li>
+												<div  class="cards-carousel">
+													<div class="mask">
+
+														<div class="bac fn-left"></div>
+														<div class="bank ng-binding" style="background-image: url(../images/combo1.png);">中国建设银行</div>
+														<div class="details">
+															<a>查看详情</a>
+														</div>
+													</div>
+												</div>
+												<div class="cards-details">
+													<div class="bank-name">
+														<div class="name fn-left" style="background-image: url(../images/combo1.png);"></div>
+														<span class="close fn-right"><a>X</a></span>
+													</div>
+													<div class="bank-detail">
+														<div class="totalin fn-left">
+															<span class="fn-left">流入</span>
+															<span class="amount fn-right">0.00</span>
+														</div>
+														<div class="totalout fn-left">
+															<span class="fn-left">流出</span>
+															<span class="amount fn-right">0.00</span>
+														</div>
+														<div class="expand fn-left">
+															<span class="fn-left">支出</span>
+															<span class="amount fn-right">0.00</span>
+														</div>
+														<div class="withdraw fn-left">
+															<span class="fn-left">提现</span>
+															<span class="amount fn-right">
+							                                0.00
+                            						</span>
+														</div>
+														<div class="recharge fn-left">
+															<span class="fn-left">充值</span>
+															<span class="amount fn-right">
+                                                            0.00
+                            						</span>
+														</div>
+
+														<div class="refund fn-left">
+															<span class="fn-left">银行卡退款</span>
+															<span class="amount fn-right ">0.00</span>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div  class="cards-carousel">
+													<div class="mask">
+
+														<div class="bac fn-left"></div>
+														<div class="bank ng-binding" style="background-image: url(../images/combo2.png);">浦发银行</div>
+														<div class="details">
+															<a>查看详情</a>
+														</div>
+													</div>
+												</div>
+												<div class="cards-details">
+													<div class="bank-name">
+														<div class="name fn-left" style="background-image: url(../images/combo2.png);"></div>
+														<span class="close fn-right"><a>X</a></span>
+													</div>
+													<div class="bank-detail">
+														<div class="totalin fn-left">
+															<span class="fn-left">流入</span>
+															<span class="amount fn-right">0.00</span>
+														</div>
+														<div class="totalout fn-left">
+															<span class="fn-left">流出</span>
+															<span class="amount fn-right">0.00</span>
+														</div>
+														<div class="expand fn-left">
+															<span class="fn-left">支出</span>
+															<span class="amount fn-right">0.00</span>
+														</div>
+														<div class="withdraw fn-left">
+															<span class="fn-left">提现</span>
+															<span class="amount fn-right">
+							                                0.00
+                            						</span>
+														</div>
+														<div class="recharge fn-left">
+															<span class="fn-left">充值</span>
+															<span class="amount fn-right">
+                                                            0.00
+                            						</span>
+														</div>
+
+														<div class="refund fn-left">
+															<span class="fn-left">银行卡退款</span>
+															<span class="amount fn-right ">0.00</span>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div  class="cards-carousel">
+													<div class="mask">
+
+														<div class="bac fn-left"></div>
+														<div class="bank ng-binding" style="background-image: url(../images/combo3.png);">中国光大银行</div>
+														<div class="details">
+															<a>查看详情</a>
+														</div>
+													</div>
+												</div>
+												<div class="cards-details">
+													<div class="bank-name">
+														<div class="name fn-left" style="background-image: url(../images/combo3.png);"></div>
+														<span class="close fn-right"><a>X</a></span>
+													</div>
+													<div class="bank-detail">
+														<div class="totalin fn-left">
+															<span class="fn-left">流入</span>
+															<span class="amount fn-right">0.00</span>
+														</div>
+														<div class="totalout fn-left">
+															<span class="fn-left">流出</span>
+															<span class="amount fn-right">0.00</span>
+														</div>
+														<div class="expand fn-left">
+															<span class="fn-left">支出</span>
+															<span class="amount fn-right">0.00</span>
+														</div>
+														<div class="withdraw fn-left">
+															<span class="fn-left">提现</span>
+															<span class="amount fn-right">
+							                                0.00
+                            						</span>
+														</div>
+														<div class="recharge fn-left">
+															<span class="fn-left">充值</span>
+															<span class="amount fn-right">
+                                                            0.00
+                            						</span>
+														</div>
+
+														<div class="refund fn-left">
+															<span class="fn-left">银行卡退款</span>
+															<span class="amount fn-right ">0.00</span>
+														</div>
+													</div>
+												</div>
+											</li>											
+										</ul>
 									</div>
 								</div>
 
@@ -297,7 +448,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								             $('.cards-carousel').css("display","none");								 
 									    });									   									    
 								
-									    $('.cards-details .close').on('click', function (ev) {
+									    $('.cards-details .close,.am-next,.am-prev,.am-control-nav li a').on('click', function (ev) {
 								             $('.cards-details').css("display","none");
 								             $('.cards-carousel').css("display","block");								 
 									    });									    
@@ -339,43 +490,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			<aside class="menu">
 				<ul>
-					<li class="person">
-						<a href="index.jsp">个人中心</a>
+					<li class="person active">
+						<a href="index.html"><i class="am-icon-user"></i>个人中心</a>
 					</li>
 					<li class="person">
-						<a href="#">个人资料</a>
+						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
 						<ul>
-							<li> <a href="information.jsp">个人信息</a></li>
-							<li> <a href="safety.jsp">安全设置</a></li>
-							<li> <a href="address.jsp">收货地址</a></li>
+							<li> <a href="information.html">个人信息</a></li>
+							<li> <a href="safety.html">安全设置</a></li>
+							<li> <a href="address.html">地址管理</a></li>
+							<li> <a href="cardlist.html">快捷支付</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<a href="#">我的交易</a>
+						<p><i class="am-icon-balance-scale"></i>我的交易</p>
 						<ul>
-							<li><a href="order.jsp">订单管理</a></li>
-							<li> <a href="change.jsp">退款售后</a></li>
+							<li><a href="order.html">订单管理</a></li>
+							<li> <a href="change.html">退款售后</a></li>
+							<li> <a href="comment.html">评价商品</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<a href="#">我的资产</a>
+						<p><i class="am-icon-dollar"></i>我的资产</p>
 						<ul>
-							<li> <a href="coupon.jsp">优惠券 </a></li>
-							<li> <a href="bonus.jsp">红包</a></li>
-							<li class="active"> <a href="bill.jsp">账单明细</a></li>
+							<li> <a href="points.html">我的积分</a></li>
+							<li> <a href="coupon.html">优惠券 </a></li>
+							<li> <a href="bonus.html">红包</a></li>
+							<li> <a href="walletlist.html">账户余额</a></li>
+							<li> <a href="bill.html">账单明细</a></li>
+						</ul>
+					</li>
+
+					<li class="person">
+						<p><i class="am-icon-tags"></i>我的收藏</p>
+						<ul>
+							<li> <a href="collection.html">收藏</a></li>
+							<li> <a href="foot.html">足迹</a></li>							
 						</ul>
 					</li>
 
 					<li class="person">
-						<a href="#">我的小窝</a>
+						<p><i class="am-icon-qq"></i>在线客服</p>
 						<ul>
-							<li> <a href="collection.jsp">收藏</a></li>
-							<li> <a href="foot.jsp">足迹</a></li>
-							<li> <a href="comment.jsp">评价</a></li>
-							<li> <a href="news.jsp">消息</a></li>
+							<li> <a href="consultation.html">商品咨询</a></li>
+							<li> <a href="suggest.html">意见反馈</a></li>
+							
+							<li> <a href="news.html">我的消息</a></li>
 						</ul>
 					</li>
-
 				</ul>
 
 			</aside>

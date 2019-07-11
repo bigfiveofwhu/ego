@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%@include file="/taglib.jsp" %>
 <%
-	if(request.getAttribute("products")==null)
+	if(request.getAttribute("isSendRedirect") ==null)
 	{
 		response.sendRedirect(basePath+"/home/home.html");
 	}
@@ -9,18 +9,14 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
 <title>eGo首页</title>
-
 <link href="<%=path %>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 <link href="<%=path %>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
 <link href="<%=path %>/basic/css/demo.css" rel="stylesheet" type="text/css" />
 <link href="<%=path %>/css/hmstyle.css" rel="stylesheet" type="text/css" />
 <link href="<%=path %>/css/skin.css" rel="stylesheet" type="text/css" />
-
 <script src="<%=path %>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 <script src="<%=path %>/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
-
 </head>
 <body>
 	<div class="hmtop">
@@ -64,7 +60,7 @@
 			<li class="banner4">
 			<a><img src="<%=path%>/images/ad4.jpg" /> </a>
 			</li>
-			<li class="banner5">
+			<li class="banner4">
 			<a><img src="<%=path%>/images/ad4.jpg" /> </a>
 			</li></ul> 
 			<script type="text/javascript">
@@ -188,25 +184,25 @@
 						</li>
 						<div class="mod-vip">
 						<c:choose>
-							<c:when test="${USER_IN_SESSION==null}">
-						
+						   <c:when test="${session_uid!=null}">
+				   				<div class="m-baseinfo">
+								<a href="<%=path%>/person/information.jsp"> 
+								<img src="<%=path%>/images/getAvatar.do.jpg"> </a> 
+								<em> Hi,<span class="s-name">${session_username}</span> <a href="#"><p>点击更多优惠活动</p> </a> </em>
+								</div>
+							</c:when>
+							<c:otherwise>
 								<div class="m-baseinfo">
-									<a href="#"> <img
-										src="<%=path%>/images/getAvatar.do.jpg"> </a> <em> Hi,<span
-										class="s-name">小叮当</span> <a href="#"><p>点击更多优惠活动</p> </a> </em>
+									<a href="#"> 
+									<img src="<%=path%>/images/getAvatar.do.jpg"> 
+									</a> 
+									<em> Hi,<span class="s-name">小叮当</span> <a href="#"><p>点击更多优惠活动</p> </a> </em>
 								</div>
 								<div class="member-logout">
-									<a class="am-btn-warning btn" href="login.jsp">登录</a> <a
-										class="am-btn-warning btn" href="register.jsp">注册</a>
+									<a class="am-btn-warning btn" href="login.jsp">登录</a>
+									<a class="am-btn-warning btn" href="register.jsp">注册</a>
 								</div>
-							</c:when>
-							<c:when test="${USER_IN_SESSION!=null}">
-				   				<div class="m-baseinfo">
-								<a href="<%=path%>/person/information.jsp"> <img
-									src="<%=path%>/images/getAvatar.do.jpg"> </a> <em> Hi,<span
-									class="s-name">${USER_IN_SESSION.username}</span> <a href="#"><p>点击更多优惠活动</p> </a> </em>
-								</div>
-							</c:when>
+							</c:otherwise>
 						</c:choose>
 							<div class="member-login">
 								<a href="#"><strong>0</strong>待收货</a> <a href="#"><strong>0</strong>待发货</a>
@@ -266,7 +262,7 @@
 						今日<br>推荐
 					</p>
 				</div>
-				<!-- <div class="am-u-sm-4 am-u-lg-3 ">
+				<div class="am-u-sm-4 am-u-lg-3 ">
 					<div class="info ">
 						<h3>真的有鱼</h3>
 						<h4>开年福利篇</h4>
@@ -275,7 +271,7 @@
 						<a href="introduction.html"><img src="<%=path%>/images/tj.png "></img>
 						</a>
 					</div>
-				</div> -->
+				</div>
 			<%-- 	<%
 					//生成随机数
 					
@@ -309,19 +305,18 @@
 				</div>
 				<div class="am-g am-g-fixed ">
 
-					<!--   <div class="am-u-sm-3 ">
-							<div class="icon-sale one"></div>
-							<h4>超值</h4>
-							<div class="activityMain ">
-								<img src="<%=path%>/images/activity.jpg "></img>
-							</div>
-							<div class="info ">
-								<h3>春节送礼优选</h3>
-							</div>													
-						</div> -->
+					<div class="am-u-sm-3 ">
+						<div class="icon-sale one"></div>
+						<h4>超值</h4>
+						<div class="activityMain ">
+							<img src="<%=path%>/images/activity.jpg "></img>
+						</div>
+						<div class="info ">
+							<h3>春节送礼优选</h3>
+						</div>													
+					</div>
 
 					<c:forEach items="${sessionScope.list1}" var="item" varStatus="">
-
 						<div class="am-u-sm-3 ">
 							<div class="icon-sale one "></div>
 							<h4>秒杀</h4>
@@ -405,7 +400,7 @@
 							<div class="triangle-topright"></div>
 						</div>
 
-						<!-- 	<div class="am-u-sm-7 am-u-md-4 text-two">
+						<div class="am-u-sm-7 am-u-md-4 text-two">
 							<div class="outer-con ">
 								<div class="title ">雪之恋和风大福</div>
 								<div class="sub-title ">&yen;13.8</div>
@@ -421,7 +416,7 @@
 								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 							</div>
 							<a href="# "><img src="<%=path%>/images/2.jpg" /> </a>
-						</div> -->
+						</div>
 
 						<c:forEach items="${sessionScope.list2}" var="item1" varStatus="">
 
@@ -503,14 +498,14 @@
 							</a>
 							<div class="triangle-topright"></div>
 						</div>
-						<!-- 	<div class="am-u-sm-4 text-four">
+						<div class="am-u-sm-4 text-four">
 							<a href="# "> <img src="<%=path%>/images/6.jpg" />
 								<div class="outer-con ">
 									<div class="title ">雪之恋和风大福</div>
 									<div class="sub-title ">&yen;13.8</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div> </a>
-						</div> -->
+						</div>
 						<c:forEach items="${sessionScope.list3}" var="item2" varStatus="">
 
 							<div class="am-u-sm-4 text-four">

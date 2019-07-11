@@ -78,7 +78,7 @@
 	                                   </div>
 	                                    <div class="user_element">
 										    <label for="realname"><i class="am-icon-child"></i></label>
-										    <input type="realname" class="input_block" name="realname" id="realname" placeholder="真实名称" required="required">
+										    <input type="text" class="input_block" name="realname" id="realname" placeholder="真实名称" required="required">
 	                                   </div>
 	                                   <div class="user_element">
 										    <label for="gender"><i class="am-icon-female"></i></label>
@@ -94,7 +94,7 @@
 	                                   </div>
 	                                    <div class="user_element">
 										    <label for="addr"><i class="am-icon-area-chart"></i></label>
-										    <span class=""input_block"">
+										    <span class="input_block">
 											    <select name="addr_1" id="addr_1" required="required"></select>
 											    <select name="addr_2" id="addr_2" class="childs" required="required"></select>
 											    <select name="addr_3" id="addr_3" class="childs" required="required"></select>
