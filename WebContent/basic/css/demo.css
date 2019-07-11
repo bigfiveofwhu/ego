@@ -170,7 +170,8 @@ time, mark, audio, video {
 	.search-bar input {width: 80%;height:46px;}	
 	.my-cart a{display:block; margin-top:5px}
 	.classified{display:none;}
-	.navCir{display:none;}
+	.navCir{
+		display:inline;}
 	.nav.white{ position:relative;top:0px;z-index:0;}
      #ai-topsearch{ font-size:18px;}
      /*底部*/

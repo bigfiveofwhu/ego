@@ -12,8 +12,8 @@
 							<img src="../images/no-img_mid_.jpg " />
 						</p>
 						<ul class="user_info ">
-							<li>用户名sl1903</li>
-							<li>级&nbsp;别普通会员</li>
+							<li>用户名${session_username }</li>
+							<li>20级&nbsp;别普通会员</li>
 						</ul>
 					</div>
 					<div class="login_btnbox ">

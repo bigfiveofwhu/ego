@@ -17,6 +17,5 @@ public class SyscodeServiceImpl extends JdbcServicesSupport
 				this.get("fname")
 		};
 		return this.queryForList(sql, args);
-	}
-	
+	}	
 }

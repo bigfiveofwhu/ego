@@ -1,5 +1,6 @@
 package com.ego.services;
 
+import java.lang.reflect.Method;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -430,5 +431,19 @@ public abstract class JdbcServicesSupport implements BaseServices
 		{
 			DBUtils.close(pstm);
 		}
+	}
+	
+	/**
+	 * 通过反射获得services实现类方法
+	 * @param mdName   --具体方法名
+	 * @return
+	 * @throws Exception
+	 */
+	protected final Method getMethod(String mdName) throws Exception
+	{
+		System.out.println("执行反射:"+mdName+"()");
+		Method method=this.getClass().getDeclaredMethod(mdName);
+		method.setAccessible(true);
+		return method;
 	}
 }
