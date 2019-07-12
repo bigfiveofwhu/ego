@@ -5,7 +5,7 @@ public class GoAddOrderServlet extends OrderControllerSupport {
 	@Override
 	public String execute() throws Exception {
 		
-		return "addOrder";
+		return "WEB-INF/views/addOrder";
 	}
 
 }

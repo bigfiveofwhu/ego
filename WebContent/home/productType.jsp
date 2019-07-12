@@ -1,6 +1,5 @@
 
 <%@ page language="java" pageEncoding="GBK"%>
-<%@ include file="/taglib.jsp" %>
 <li class="appliance js_toggle relative first">
 	<div class="category-info">
 		<h3 class="category-name b-category-name">

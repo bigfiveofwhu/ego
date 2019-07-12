@@ -7,7 +7,7 @@ public class GoCommentServlet extends OrderControllerSupport
 	public String execute() throws Exception 
 	{
 		this.savePageInstance("detail");
-		return "makeComment";
+		return "WEB-INF/views/makeComment";
 	}
 
 }

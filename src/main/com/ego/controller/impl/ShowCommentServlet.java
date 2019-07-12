@@ -7,7 +7,7 @@ public class ShowCommentServlet extends CommentControllerSupport
 	public String execute() throws Exception 
 	{
 		// TODO Auto-generated method stub
-		return "comment";
+		return "WEB-INF/views/comment";
 	}
 
 }

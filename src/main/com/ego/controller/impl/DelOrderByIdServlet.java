@@ -6,7 +6,7 @@ public class DelOrderByIdServlet extends OrderControllerSupport {
 	public String execute() throws Exception {
 		this.update("delById", "É¾³ý¶©µ¥");
 		this.savePageDataForDelete("default");
-		return "order";
+		return "WEB-INF/views/order";
 	}
 
 }

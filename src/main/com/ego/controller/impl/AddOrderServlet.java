@@ -1,11 +1,14 @@
 package com.ego.controller.impl;
 
-public class GoPayServlet extends OrderControllerSupport {
+import com.ego.controller.ControllerSupport;
+
+public class AddOrderServlet extends OrderControllerSupport 
+{
 
 	@Override
 	public String execute() throws Exception {
+		this.update("addOrder","提交订单");
 		this.savePageInstance("pay");
-		System.out.println("***实例查询成功***");
 		return "WEB-INF/views/payOrder";//跳转到支付页面
 	}
 

@@ -205,7 +205,7 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Map<String,String>> query() throws Exception
+	public List<Map<String,String>> query(String qtype) throws Exception
 	{
 		
 		//定义SQL主体
