@@ -15,6 +15,7 @@ public class AddAddressServlet extends AddressControllerSupport {
 			//System.out.println(list);
 		  this.saveAttribute("addrlist", list);
 		}
+		
 		return "person/address";
 	}
 }

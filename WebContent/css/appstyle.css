@@ -9,7 +9,7 @@ textarea {width:100%;margin:10px 5px;min-height:80px;border: 0px none;resize: no
 
 img{width:100% ;}
 .item-opinion{border-top: 1px solid #F5F8FA;width: 100%;overflow: hidden;padding:10px 0px ;}
-.item-opinion li{float:left;width: 33.33%;text-align: center;font-size:14px ;cursor: pointer;}
+.item-opinion li{float:left;width: 10%;text-align: center;font-size:14px ;cursor: pointer;}
 .item-opinion li i{display:inline-block;width:16px;height:16px;margin-right: 5px;}
 .item-opinion li i.op1,.item-opinion li i.op2{background:url(../images/iconfont-evaluate.png);background-size:16px 16px;}
 .item-opinion li i.op3{background:url(../images/iconfont-bad.png);background-size:16px 16px;}
@@ -32,7 +32,7 @@ img{width:100% ;}
 .item-title{width:150px ;overflow: hidden;}
 .item-pay-logis{display: none;}
 .item-name p,.comment-list .info-little span{height: 18px;line-height: 18px;overflow: hidden;}
-.item-opinion{position: absolute;left:200px;top: 0px;right:0px;width: auto;max-width:600px ;}
+.item-opinion{position: absolute;left:200px;top: 0px;right:0px;width: 50%;max-width:600px ;}
 .item-comment{position: absolute;left:200px;top: 40px;right:0px;max-width:600px ;}
 textarea{min-height:120px ;border: 1px solid #F5F8FA;;padding:10px ;margin: 0px 0px;}
 .filePic{position: absolute;left:200px;bottom: 10px;width:120px;}
