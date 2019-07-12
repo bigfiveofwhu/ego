@@ -55,7 +55,11 @@ public class AjaxBaseServlet extends HttpServlet
 		catch (ClassNotFoundException e) 
 		{
 			e.printStackTrace();
-		}		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	/**

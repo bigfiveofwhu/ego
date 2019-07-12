@@ -14,7 +14,7 @@ public class VerifyCodeController extends AjaxControllerSupport
 {
 
 	@Override
-	public void execute(HttpSession session) 
+	public void execute(HttpSession session) throws Exception
 	{
 	    String object=(String)this.dto.get("object");
 		if(!object.contains("@"))

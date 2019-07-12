@@ -2,15 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
-
 <head>
 <meta charset="GBK">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Insert title here</title>
 <link rel="stylesheet" href="/ego/css/bootstrap.css">
+<title></title>
 </head>
-
 <body>
+
 <ul>
 个人优惠券
 <c:forEach  items="${coupons}" var="item">

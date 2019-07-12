@@ -23,11 +23,11 @@ public class DiscountController extends ControllerSupport{
 		ab05Service.setMapDto(dto);
 		aa05Service.setMapDto(dto);
 	}
-	
+
 	@Override
 	public String execute() throws Exception {
 		String prefix=BaseServlet.prefix+"discount/";
-		
+
 		String servletPath=((HttpServletRequest)this.dto.get("request")).getServletPath();
 		String mapping=servletPath.substring(servletPath.lastIndexOf('/')+1
 				,servletPath.indexOf('.'));
@@ -45,15 +45,15 @@ public class DiscountController extends ControllerSupport{
 			dto.put("aab505", ins.get("aab505"));//持续时间
 			this.saveAttribute("msg", aa05Service.update("addUserCoupon")?"成功":"失败");
 			return prefix+"result";
-			
+
 		case "useCoupon":
 			this.saveAttribute("msg", aa05Service.update("useCoupon")?"成功":"update无影响");
 			return prefix+"result";
 		case "getShopCoupons":
-			return prefix+"discount";
+			this.saveAttribute("shopCoupons", ab05Service.query());
+			return prefix+"shopDiscount";
 		default:
 			throw new Exception("DiscountController无法处理此类请求");
 		}
 	}
-
 }

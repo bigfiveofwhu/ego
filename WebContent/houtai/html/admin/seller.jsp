@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
@@ -9,10 +9,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 
 	<head>
-		<!-- é¡µé¢meta -->
-	ã€€ã€€<meta http-equiv="content-type" content="text/html;charset=utf-8">
+		<!-- Ò³Ãæmeta -->
+	¡¡¡¡<meta http-equiv="content-type" content="text/html;charset=utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>å•†å®¶å®¡æ ¸</title>
+		<title>ÉÌ¼ÒÉóºË</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
 		<link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
@@ -26,48 +26,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- .box-body -->
 		<div class="box box-primary">
 			<div class="box-header with-border">
-				<h3 class="box-title">å•†å®¶ç®¡ç†</h3>
+				<h3 class="box-title">ÉÌ¼Ò¹ÜÀí</h3>
 			</div>
 
 			<div class="box-body">
 
-				<!-- æ•°æ®è¡¨æ ¼ -->
+				<!-- Êı¾İ±í¸ñ -->
 				<div class="table-box">
 
-					<!--å·¥å…·æ -->
+					<!--¹¤¾ßÀ¸-->
                    <form action="queryShop.html" method="post">
 					<div class="box-tools pull-right">
 						<div class="has-feedback">
-							çŠ¶æ€ï¼š
+							×´Ì¬£º
 							<select ng-model="search_domain.status" name="qaab107">
-								<option value="">å…¨éƒ¨</option>
-								<option value="01" >æœªå®¡æ ¸</option>
-								<option value="02" >å®¡æ ¸é€šè¿‡</option>
-								<option value="03" >å®¡æ ¸æœªé€šè¿‡</option>
-								<option value="04" >å…³é—­</option>
+								<option value="">È«²¿</option>
+								<option value="01" >Î´ÉóºË</option>
+								<option value="02" >ÉóºËÍ¨¹ı</option>
+								<option value="03" >ÉóºËÎ´Í¨¹ı</option>
+								<option value="04" >¹Ø±Õ</option>
 							</select>
-							 åº—é“ºåç§°ï¼š <input name="qaab103" ng-model="search_domain.nickName">
-							<input type="submit" class="btn btn-default" value="æŸ¥è¯¢" ></input>
+							 µêÆÌÃû³Æ£º <input name="qaab103" ng-model="search_domain.nickName">
+							<input type="submit" class="btn btn-default" value="²éÑ¯" ></input>
 						</div>
 					</div>
 					</form>
-					<!--å·¥å…·æ /-->
+					<!--¹¤¾ßÀ¸/-->
 
-					<!--æ•°æ®åˆ—è¡¨-->
+					<!--Êı¾İÁĞ±í-->
 					<table id="dataList" class="table table-bordered table-striped table-hover dataTable" style="margin-left:10px">
 						<thead>
 							<tr>
-							    <th class="sorting">åºå·</th>
-								<th class="sorting_asc">å•†å®¶ID</th>
-								<th class="sorting">åº—é“ºåç§°</th>
-								<th class="sorting">è”ç³»äººå§“å</th>
-								<th class="sorting">è”ç³»äººç”µè¯</th>
-								<th class="sorting">çŠ¶æ€</th>
-								<th class="text-center">æ“ä½œ</th>
+							    <th class="sorting">ĞòºÅ</th>
+								<th class="sorting_asc">ÉÌ¼ÒID</th>
+								<th class="sorting">µêÆÌÃû³Æ</th>
+								<th class="sorting">ÁªÏµÈËĞÕÃû</th>
+								<th class="sorting">ÁªÏµÈËµç»°</th>
+								<th class="sorting">×´Ì¬</th>
+								<th class="text-center">²Ù×÷</th>
 							</tr>
 						</thead>
 						<tbody>
-						<!-- æ˜¾ç¤ºæŸ¥åˆ°çš„æ•°æ® -->
+						<!-- ÏÔÊ¾²éµ½µÄÊı¾İ -->
 						<c:forEach items="${shoplist }" var="ins" varStatus="vs">
 						    <tr >
 								<td>${vs.count }</td>
@@ -77,69 +77,69 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<td>${ins.aaa108 }</td>
 								<td>${ins.cnaab107 }</td>
 								<td class="text-center">
-									<button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#sellerModal" ng-click="findOne(entity.sellerId)">è¯¦æƒ…</button>
+									<button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#sellerModal" ng-click="findOne(entity.sellerId)">ÏêÇé</button>
 								</td>
 							</tr>
 						</c:forEach>
 							
 						</tbody>
 					</table>
-					<!--æ•°æ®åˆ—è¡¨/-->
+					<!--Êı¾İÁĞ±í/-->
 					<tm-pagination conf="paginationConf"></tm-pagination>
 
 				</div>
-				<!-- æ•°æ®è¡¨æ ¼ /-->
+				<!-- Êı¾İ±í¸ñ /-->
 
 			</div>
 			<!-- /.box-body -->
 
-			<!-- å•†å®¶è¯¦æƒ… -->
+			<!-- ÉÌ¼ÒÏêÇé -->
 			<div class="modal fade" id="sellerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-lg">
 					<div class="modal-content">
 						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
-							<h3 id="myModalLabel">å•†å®¶è¯¦æƒ…</h3>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">¡Á</button>
+							<h3 id="myModalLabel">ÉÌ¼ÒÏêÇé</h3>
 						</div>
 						<div class="modal-body">
 
 							<ul class="nav nav-tabs">
 								<li class="active">
-									<a href="#home" data-toggle="tab">åŸºæœ¬ä¿¡æ¯</a>
+									<a href="#home" data-toggle="tab">»ù±¾ĞÅÏ¢</a>
 								</li>
 								<li>
-									<a href="#linkman" data-toggle="tab">è”ç³»äºº</a>
+									<a href="#linkman" data-toggle="tab">ÁªÏµÈË</a>
 								</li>
 								<li>
-									<a href="#certificate" data-toggle="tab">è¯ä»¶</a>
+									<a href="#certificate" data-toggle="tab">Ö¤¼ş</a>
 								</li>
 								<li>
-									<a href="#ceo" data-toggle="tab">æ³•å®šä»£è¡¨äºº</a>
+									<a href="#ceo" data-toggle="tab">·¨¶¨´ú±íÈË</a>
 								</li>
 								<li>
-									<a href="#bank" data-toggle="tab">å¼€æˆ·è¡Œ</a>
+									<a href="#bank" data-toggle="tab">¿ª»§ĞĞ</a>
 								</li>
 							</ul>
 
-							<!-- é€‰é¡¹å¡å¼€å§‹ -->
+							<!-- Ñ¡Ïî¿¨¿ªÊ¼ -->
 							<div id="myTabContent" class="tab-content">
 								<div class="tab-pane active in" id="home">
 									<br>
 									<table class="table table-bordered table-striped" width="800px">
 										<tr>
-											<td>å…¬å¸åç§°</td>
+											<td>¹«Ë¾Ãû³Æ</td>
 											<td>{{entity.name}}</td>
 										</tr>
 										<tr>
-											<td>å…¬å¸æ‰‹æœº</td>
+											<td>¹«Ë¾ÊÖ»ú</td>
 											<td>{{entity.mobile}}</td>
 										</tr>
 										<tr>
-											<td>å…¬å¸ç”µè¯</td>
+											<td>¹«Ë¾µç»°</td>
 											<td>{{entity.telephone}}</td>
 										</tr>
 										<tr>
-											<td>å…¬å¸è¯¦ç»†åœ°å€</td>
+											<td>¹«Ë¾ÏêÏ¸µØÖ·</td>
 											<td>{{entity.addressDetail}}</td>
 										</tr>
 									</table>
@@ -148,19 +148,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<br>
 									<table class="table table-bordered table-striped">
 										<tr>
-											<td>è”ç³»äººå§“å</td>
+											<td>ÁªÏµÈËĞÕÃû</td>
 											<td>{{entity.linkmanName}}</td>
 										</tr>
 										<tr>
-											<td>è”ç³»äººQQ</td>
+											<td>ÁªÏµÈËQQ</td>
 											<td>{{entity.linkmanQq}}</td>
 										</tr>
 										<tr>
-											<td>è”ç³»äººæ‰‹æœº</td>
+											<td>ÁªÏµÈËÊÖ»ú</td>
 											<td>{{entity.linkmanMobile}}</td>
 										</tr>
 										<tr>
-											<td>è”ç³»äººE-Mail</td>
+											<td>ÁªÏµÈËE-Mail</td>
 											<td>{{entity.linkmanEmail}}</td>
 										</tr>
 									</table>
@@ -169,15 +169,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<br>
 									<table class="table table-bordered table-striped">
 										<tr>
-											<td>è¥ä¸šæ‰§ç…§å·</td>
+											<td>ÓªÒµÖ´ÕÕºÅ</td>
 											<td>{{entity.licenseNumber}}</td>
 										</tr>
 										<tr>
-											<td>ç¨åŠ¡ç™»è®°è¯å·</td>
+											<td>Ë°ÎñµÇ¼ÇÖ¤ºÅ</td>
 											<td>{{entity.taxNumber}}</td>
 										</tr>
 										<tr>
-											<td>ç»„ç»‡æœºæ„ä»£ç è¯å·</td>
+											<td>×éÖ¯»ú¹¹´úÂëÖ¤ºÅ</td>
 											<td>{{entity.orgNumber}}</td>
 										</tr>
 									</table>
@@ -186,11 +186,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<br>
 									<table class="table table-bordered table-striped">
 										<tr>
-											<td>æ³•å®šä»£è¡¨äºº</td>
+											<td>·¨¶¨´ú±íÈË</td>
 											<td>{{entity.legalPerson}}</td>
 										</tr>
 										<tr>
-											<td>æ³•å®šä»£è¡¨äººèº«ä»½è¯å·</td>
+											<td>·¨¶¨´ú±íÈËÉí·İÖ¤ºÅ</td>
 											<td>{{entity.legalPersonCardId}}</td>
 										</tr>
 									</table>
@@ -199,28 +199,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<br>
 									<table class="table table-bordered table-striped">
 										<tr>
-											<td>å¼€æˆ·è¡Œåç§°</td>
+											<td>¿ª»§ĞĞÃû³Æ</td>
 											<td>{{entity.bankUser}}</td>
 										</tr>
 										<tr>
-											<td>å¼€æˆ·è¡Œæ”¯è¡Œ</td>
+											<td>¿ª»§ĞĞÖ§ĞĞ</td>
 											<td>{{entity.bankName}}</td>
 										</tr>
 										<tr>
-											<td>é“¶è¡Œè´¦å·</td>
+											<td>ÒøĞĞÕËºÅ</td>
 											<td>{{entity.bankAccount}}</td>
 										</tr>
 									</table>
 								</div>
 							</div>
-							<!-- é€‰é¡¹å¡ç»“æŸ -->
+							<!-- Ñ¡Ïî¿¨½áÊø -->
 
 						</div>
 						<div class="modal-footer">
-							<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="updateStatus(entity.sellerId,'1')">å®¡æ ¸é€šè¿‡</button>
-							<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" ng-click="updateStatus(entity.sellerId,'2')">å®¡æ ¸æœªé€šè¿‡</button>
-							<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" ng-click="updateStatus(entity.sellerId,'3')">å…³é—­å•†å®¶</button>
-							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">å…³é—­</button>
+							<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="updateStatus(entity.sellerId,'1')">ÉóºËÍ¨¹ı</button>
+							<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" ng-click="updateStatus(entity.sellerId,'2')">ÉóºËÎ´Í¨¹ı</button>
+							<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" ng-click="updateStatus(entity.sellerId,'3')">¹Ø±ÕÉÌ¼Ò</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">¹Ø±Õ</button>
 						</div>
 					</div>
 				</div>
@@ -232,7 +232,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
 	<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../../plugins/angularjs/angular.min.js"></script>
-	<!-- åˆ†é¡µç»„ä»¶ -->
+	<!-- ·ÖÒ³×é¼ş -->
 	<script src="../../plugins/angularjs/pagination.js"></script>
 	<script type="text/javascript" src="../../js/base/Base_pagination.js"></script>
 	<script type="text/javascript" src="../../js/base/BaseService.js"></script>

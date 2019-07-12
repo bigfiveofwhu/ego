@@ -1,5 +1,6 @@
 package com.ego.system.tools;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +13,192 @@ public class Tools
 	private Tools()
 	{
 	}
+	
+	
+	//==============================以下为订单号获取以及评论号获取部分(dcz)=======================
+	private static final String baseCode2="00000";
 
+	/**
+	 * 获取订单号yyyyMMddxxxxx
+	 * @return
+	 * @throws Exception
+	 */
+	public static String getOrderNumber() throws Exception
+	{
+		return Tools.getCurrentDay()+Tools.getFormatTailNumber("aab302code");
+	}
+
+	/**
+	 * 获取格式化的订单尾号
+	 * @param firstName
+	 * @return
+	 * @throws Exception
+	 */
+	private static String getFormatTailNumber(String firstName)throws Exception
+	{
+		//获取流水号
+		int lastNumber = Tools.getNumberForDay(firstName);
+		//计算流水号宽度
+		int size = String.valueOf(lastNumber).length();
+		
+		//substring可以截断后边部分size位数的字符串
+		return baseCode2.substring(size)+lastNumber;
+	}
+	
+	
+	/**
+	 * 获取订单编号的尾码
+	 * @param firstName  --指sequence表中的主键名
+	 * @return
+	 * @throws Exception
+	 */
+	private static int getNumberForDay(String firstName)throws Exception
+	{
+		PreparedStatement pstm1 = null;
+		PreparedStatement pstm2 = null;
+		ResultSet rs = null;
+		try 
+		{
+			//1.定义SQL语句查询当前主键自增值
+			StringBuilder sql1 = new StringBuilder()
+					.append("select pkvalue from sequence a ")
+					//.append("where date_format(a.sdate,'%Y')=date_format(current_date,'%Y') ")
+					.append(" where a.sdate=current_date")
+					.append(" and a.pkname = ? ")
+					;
+			System.out.println(sql1.toString());
+			//赋值参数
+			
+			pstm1 = DBUtils.prepareStatement(sql1.toString());
+			pstm1.setObject(1, firstName);
+			//System.out.println(sql1.toString());
+			rs = pstm1.executeQuery();
+			int currentVal=0;
+			
+			StringBuilder sql2 = new StringBuilder();
+			if(rs.next())
+			{
+				//存在该自增值
+				currentVal = rs.getInt(1);
+				sql2.append("update sequence a ")
+					.append("set a.pkvalue=? ")
+					//.append("where date_format(a.sdate,'%Y')=date_format(current_date,'%Y') ")
+					.append(" where a.sdate=current_date")
+					.append(" and a.pkname = ?")
+					;
+				
+			}
+			else
+			{
+				sql2.append("insert into sequence")
+				.append("( pkvalue,pkname,sdate)")
+				.append(" values (?,?,current_date)")
+				;
+			}
+			pstm2=DBUtils.prepareStatement(sql2.toString());
+			pstm2.setObject(1, ++currentVal);
+			pstm2.setObject(2, firstName);
+			//System.out.println(sql2.toString());
+			pstm2.executeUpdate();
+			
+			return currentVal;
+			
+		} 
+		finally
+		{
+			DBUtils.close(rs);
+			DBUtils.close(pstm1);
+			DBUtils.close(pstm2);
+		}
+	}
+	
+	/**
+	 * 获取八位日码yyyyMMdd
+	 * @return
+	 */
+	private static String getCurrentDay()
+	{
+		return new SimpleDateFormat("yyyyMMdd").format(new java.util.Date());
+	}
+	
+	/**
+	 * 获取评论id
+	 * @return
+	 * @throws Exception
+	 */
+	public static String getCommentId() throws Exception
+	{
+		return String.valueOf(Tools.getSequence("aab402code"));
+	}
+	
+	/**
+	 * 获取主键值
+	 * 按日更新
+	 * @param pkname
+	 * @return
+	 * @throws Exception
+	 */
+	public static int getSequence(String pkname)throws Exception
+	{
+		//查询序列的当前值
+		PreparedStatement pstm1 = null;
+		//修改序列的当前值
+		PreparedStatement pstm2 = null;
+		//用于查询检查的容器
+		ResultSet rs = null;
+		
+		try 
+		{
+			//定义SQL语句,查询当前序列的值
+			StringBuilder sql1 = new StringBuilder()
+					.append("select a.pkvalue from sequence a where a.pkname=?")
+					//.append("and date_format(a.sdate,'%Y')=data_format(current_date,'%Y')")
+					;
+			//编译SQL语句
+			pstm1 = DBUtils.prepareStatement(sql1.toString());
+			//参数赋值
+			pstm1.setObject(1, pkname);
+			//执行查询
+			rs = pstm1.executeQuery();
+			
+			//定义序列当前值
+			int currentVal = 0;
+			if(rs.next())
+			{
+				//读取数据库当前值,为序列赋值
+				currentVal = rs.getInt(1);
+				//修改数据库当前值,比原来+1
+				String sql2 = "update sequence set pkvalue=? where pkname=?";
+				pstm2 = DBUtils.prepareStatement(sql2);
+				pstm2.setObject(1, ++currentVal);
+				pstm2.setObject(2, pkname);
+				
+			}
+			else
+			{
+				//如果数据库中不存在当前的主键,直接录入当前主键数据,pkvalue设为1
+				String sql2 = "insert into sequence(pkname,pkvalue) values(?,?)";
+				pstm2 = DBUtils.prepareStatement(sql2);
+				pstm2.setObject(1,pkname);
+				pstm2.setObject(2, ++currentVal);
+			}
+			pstm2.executeUpdate();
+			return currentVal;
+			
+		}
+		finally
+		{
+			DBUtils.close(rs);
+			DBUtils.close(pstm1);
+			DBUtils.close(pstm2);
+		}
+	}
+	
+	
+	
+	
+	//================以下为原员工表的代码修改部分====================================
+	private static final String baseCode1 = "0000";
 	/**
 	 * 获取员工流水号
 	 * 
@@ -23,11 +209,8 @@ public class Tools
 	{
 		return Tools.getCurrentYear() + Tools.getFormatNumber("E");
 	}
-
-	private static final String baseCode1 = "0000";
-
 	/**
-	 * 获取格式化的尾码
+	 * 获取格式化的员工尾码
 	 * 
 	 * @param firstName
 	 * @return
@@ -151,6 +334,7 @@ public class Tools
 	{
 		String name="pkname";
 		String value="pkvalue";
+		String date="sdate";
 		String sql="select * from sequence where "+ name+ " = ? ";
 		
 		PreparedStatement pStatement= DBUtils.getConnection().prepareStatement(sql,
@@ -163,6 +347,7 @@ public class Tools
 			{	//有相应的id
 				int id=set.getInt(value);
 				set.updateInt(value, ++id);
+				set.updateDate(date, new Date(System.currentTimeMillis()));
 				set.updateRow();
 				return id;
 				
@@ -173,6 +358,7 @@ public class Tools
 				set.moveToInsertRow();
 				set.updateString(name, idName);
 				set.updateInt(value, startNumber);
+				set.updateDate(date, new Date(System.currentTimeMillis()));
 				set.insertRow();
 				return startNumber;
 			}
@@ -184,4 +370,22 @@ public class Tools
 		}
 	}
 
+	
+	public static int changeInt(Object obj) {
+		 return Integer.parseInt(obj.toString());
+	}
+	
+	public static double changeDouble(Object obj) {
+		return Double.parseDouble(obj.toString());
+	}
+	
+	public static String getparentCode(String code,String name) throws SQLException {
+		String sql="select pfcode from syscode where fcode=? and fname=?";
+		PreparedStatement pstm=DBUtils.getConnection().prepareStatement(sql);
+		pstm.setObject(1, code);
+		pstm.setObject(2, name);
+		ResultSet result=pstm.executeQuery();
+		result.next();
+		return result.getString("pfcode");
+	}
 }
