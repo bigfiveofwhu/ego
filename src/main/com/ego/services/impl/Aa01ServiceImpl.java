@@ -10,14 +10,14 @@ import java.util.Map;
 import com.ego.services.JdbcServicesSupport;
 import com.ego.system.tools.Tools;
 
-public class Aa01Service extends JdbcServicesSupport 
+public class Aa01ServiceImpl extends JdbcServicesSupport 
 {
 
 	/*****************************************************
 	 *      以下为更新方法                                                                                    *
 	 *****************************************************/
 	@Override
-	public boolean update(String utype) throws Exception 
+	public boolean update(String utype) throws Exception
 	{
 		Method method=this.getMethod(utype);
 		return (boolean)method.invoke(this);
@@ -36,9 +36,9 @@ public class Aa01Service extends JdbcServicesSupport
 		String realname=(String)this.get("realname");
 		String gender=(String)this.get("gender");
 		String birthday=(String)this.get("birthday");
-		String addr_1=(String)this.get("addr_1");
-		String addr_2=(String)this.get("addr_2");
-		String addr_3=(String)this.get("addr_3");
+		String addr_1=(String)this.get("addr_1")+" ";
+		String addr_2=(String)this.get("addr_2")+" ";
+		String addr_3=(String)this.get("addr_3")+" ";
 		String addr_4=(String)this.get("addr_4");
 		String addr=addr_1+addr_2+addr_3+addr_4;
 		
@@ -75,7 +75,7 @@ public class Aa01Service extends JdbcServicesSupport
 	 *               以下为单一实例查询方法                                                 *
 	 *****************************************************/
 	/**
-	 * 通过aa01表中的Ak字段查询数据,读出数据
+	 * 通过aa01表中的Ak字段登录,查询数据,读出数据
 	 * aaa102 --uid ,aaa103 --用户名 ,aaa104 --邮箱地址 ,aaa106 --积分 ,aaa108 --电话号码,
 	 * aaa109 --姓名   ,aaa110 --生日    ,aaa111 --地址        ,aaa112 --身份证,aaa113 --性别
 	 * @param ftype   --字段名
@@ -86,15 +86,11 @@ public class Aa01Service extends JdbcServicesSupport
 	public Map<String, String> findById(String ftype) throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-				.append("select aaa102,aaa103,aaa104,aaa106,aaa108,")
+				.append("select aaa102,aaa103,aaa104,aaa105,aaa106,aaa107,aaa108,")
 				.append("		aaa109,aaa110,aaa111,aaa112,aaa113")
 				.append("  from aa01")
-				.append(" where aaa107=? and ").append(" "+ftype+"=?")
+				.append(" where ").append(" "+ftype+"=?")
 				;
-		Object args[]= {
-				this.get("aaa107"),
-				this.get(ftype)
-		};
-		return this.queryForMap(sql.toString(), args);
+		return this.queryForMap(sql.toString(), this.get(ftype));
 	}
 }

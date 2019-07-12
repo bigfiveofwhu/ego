@@ -13,7 +13,7 @@
 				<c:otherwise>
 				<label style="color:#0000FF">欢迎<font style="color:red">【${session_username}】</font>eGO商城</label>
 	    		&emsp;
-	    		<label><a href="<%=path %>>/logout.html">注销</a></label>
+	    		<label><a href="${path}/logout.html">注销</a></label>
 				</c:otherwise>
 				</c:choose>
 			</div>
@@ -75,12 +75,12 @@
 			<div class="menu-hd">
 			<c:choose>
 				<c:when test="${session_shopId!=null}">
-				  <a id="mc-menu-shop" href="<%=path %>/shop/home.html?shopId=${session_shopId}" target="_top">
+				  <a id="mc-menu-shop" href="${path}/shop/home.html" target="_top">
 				  <span>进入店铺</span>
 				  </a>
 				</c:when>
 				<c:otherwise>
-					<a id="mc-menu-shop" href="<%=path %>/shop/register.html?uid=${session_uid}" target="_top">
+					<a id="mc-menu-shop" href="${path}/shop/register.html" target="_top">
 					<span>自己开店?</span>
 				    </a>
 				</c:otherwise>

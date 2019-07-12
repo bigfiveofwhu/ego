@@ -3,13 +3,13 @@ package com.ego.controller.impl;
 import javax.servlet.http.HttpSession;
 
 import com.ego.controller.ControllerSupport;
-import com.ego.services.impl.Aa01Service;
+import com.ego.services.impl.Aa01ServiceImpl;
 
 public class RegisterController extends ControllerSupport 
 {
 	public RegisterController() 
 	{
-		this.setServices(new Aa01Service());
+		this.setServices(new Aa01ServiceImpl());
 	}
 	@Override
 	public String execute() throws Exception 
