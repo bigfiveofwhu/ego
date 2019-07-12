@@ -34,7 +34,7 @@ public class ShopRegisteredController extends ControllerSupport
 		this.getServices().update("insertAd08");
 		
 		this.saveAttribute("msg", "提交审核成功!");
-		return "WEB-INF/views/shop/register";
+		return "shop/background";
 	}
 
 }
