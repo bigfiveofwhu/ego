@@ -34,6 +34,8 @@ public class AjaxBaseServlet extends HttpServlet
 			
 			Map<String,Object> dto=this.createDto(request);
 			
+			dto.put("request", request);
+			
 			controller.setMap(dto);
 			
 			controller.execute(request.getSession());

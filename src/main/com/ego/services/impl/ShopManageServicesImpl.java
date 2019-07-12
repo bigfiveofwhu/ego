@@ -69,4 +69,65 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
   		//sql.append(" order by x.aab101");
   		return this.queryForList(sql.toString(), paramList.toArray());
 	}
+	
+	/**
+	 * 获取本店商品评级 待调试
+	 * 评价表:ab04
+	 * @return
+	 * @throws Exception
+	 */
+	public Map<String,String> getProductAvg() throws Exception
+	{
+		//获取该商铺所有商品idlist
+		String sql1 = "select aab203 from ab02 where aab102 = ?";
+		List<Map<String,String>> list = this.queryForList(sql1, this.get("aab102"));
+		List<Object> olist = new ArrayList<>(); 
+		for(Map<String,String> map : list)
+		{
+			olist.add(map.get("aab102"));
+		}
+		
+		String sql2 = "select avg(aab410) as productAvg from ab04 where aab203=?";
+		return this.queryForMap(sql2,olist.toArray());
+	}
+	
+	/**
+	 * 服务评级 待调试
+	 * @return
+	 * @throws Exception
+	 */
+	public Map<String,String> getServiceAvg() throws Exception
+	{
+		//获取该商铺所有商品idlist
+		String sql1 = "select aab203 from ab02 where aab102 = ?";
+		List<Map<String,String>> list = this.queryForList(sql1, this.get("aab102"));
+		List<Object> olist = new ArrayList<>(); 
+		for(Map<String,String> map : list)
+		{
+			olist.add(map.get("aab102"));
+		}
+		
+		String sql2 = "select avg(aab411) as productAvg from ab04 where aab203=?";
+		return this.queryForMap(sql2,olist.toArray());
+	}
+	
+	/**
+	 * 物流评级 待调试
+	 * @return
+	 * @throws Exception
+	 */
+	public Map<String,String> getShipAvg() throws Exception
+	{
+		//获取该商铺所有商品idlist
+		String sql1 = "select aab203 from ab02 where aab102 = ?";
+		List<Map<String,String>> list = this.queryForList(sql1, this.get("aab102"));
+		List<Object> olist = new ArrayList<>(); 
+		for(Map<String,String> map : list)
+		{
+			olist.add(map.get("aab102"));
+		}
+		
+		String sql2 = "select avg(aab409) as productAvg from ab04 where aab203=?";
+		return this.queryForMap(sql2,olist.toArray());
+	}
 }
