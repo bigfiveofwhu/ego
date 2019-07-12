@@ -50,7 +50,8 @@ public class DiscountController extends ControllerSupport{
 			this.saveAttribute("msg", aa05Service.update("useCoupon")?"成功":"update无影响");
 			return prefix+"result";
 		case "getShopCoupons":
-			return prefix+"discount";
+			this.saveAttribute("shopCoupons", ab05Service.query());
+			return prefix+"shopDiscount";
 		default:
 			throw new Exception("DiscountController无法处理此类请求");
 		}

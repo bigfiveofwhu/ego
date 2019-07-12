@@ -51,7 +51,7 @@ public class LoginController extends ControllerSupport {
 		}
 		if(ins!=null)
 		{
-			session.setAttribute("session_shopId", ins.get("aab102"));
+			session.setAttribute("aab102", ins.get("aab102"));
 		}
 		return "home/home";
 	}

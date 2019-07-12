@@ -9,8 +9,7 @@ public class SellerBackgroundController extends ControllerSupport{
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		
-		return null;
+		return "houtai/html/seller/sellerpage/index";
 	}
 	
 }
