@@ -121,6 +121,15 @@ public class Tools
 		return new SimpleDateFormat("yyyyMMdd").format(new java.util.Date());
 	}
 	
+	/**
+	 * 获取评论id
+	 * @return
+	 * @throws Exception
+	 */
+	public static String getCommentId() throws Exception
+	{
+		return String.valueOf(Tools.getSequence("aab402code"));
+	}
 	
 	/**
 	 * 获取主键值
