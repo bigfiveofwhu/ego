@@ -177,19 +177,4 @@ public abstract class ControllerSupport implements Controller
 	{
 		return ((HttpServletRequest)this.get("request")).getSession();
 	}
-	
-	/**
-	 * 检测相应的用户是否登录
-	 * @param uid  --从客户端传来的uid
-	 * @return  --true  已登录    --false  未登录
-	 */
-	protected boolean detectionLogin(String uid)
-	{
-		String session_uid=(String)this.getSession().getAttribute("session_uid");
-		if(session_uid!=null && session_uid.equals(uid))
-		{
-			return true;
-		}
-		return false;
-	}
 }

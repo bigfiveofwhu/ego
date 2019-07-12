@@ -1,5 +1,6 @@
 package com.ego.services.impl;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -88,9 +89,25 @@ public class Ad08ServicesImpl extends JdbcServicesSupport
 	}
 	
 	@Override
-	public boolean update(String utype) throws Exception 
+	public boolean update(String utype) throws Exception
 	{
-		// TODO Auto-generated method stub
-		return super.update(utype);
+		Method method=this.getMethod(utype);
+		return (boolean)method.invoke(this);
+	}
+
+	/**
+	 * aad802 --审核内容  aad803 --审核类型 , aad804 --审核状态, aad805 --审核对象, aaa102 --用户id
+	 * @return
+	 * @throws Exception
+	 */
+	private boolean insertAd08() throws Exception
+	{
+		String sql="insert into ad08(aad802,aad803,aad804,aad805,aaa102) values(?,'01','01',?,?)";
+		Object args[]= {
+				this.get("aad802"),
+				this.get("aad805"),
+				this.get("aaa102")
+		};
+		return this.executeUpdate(sql, args);
 	}
 }

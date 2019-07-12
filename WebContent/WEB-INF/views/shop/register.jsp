@@ -2,9 +2,8 @@
 <%@ include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
-	<head lang="en">
-		<meta charset="UTF-8">
-		<title>注册</title>
+	<head>
+		<title>店铺注册</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<meta name="format-detection" content="telephone=no">
@@ -41,12 +40,12 @@
 								<div class="am-tab-panel am-active">
 									<span style="color:red">${msg}</span>	
 									<!-- 店铺资格认证信息 -->
-									<form action="<%=path%>/register.html" method="post">	 
+									<form action="<%=path%>/shop/shopRegister.html" method="post">	 
 										<div class="shop_element">
 											<label for="name"><i class="am-icon-user"></i></label>
 											<input type="text" class="input_block" name="shopname" id="shopname" placeholder="请输入店铺名称" required="required">
 		                 			   </div>
-	                                   <div class="shop_element" style="display: flex;">
+	                                   <div class="shop_element" style="/*display: flex;*/display:none">
 										    <label for="code"><i class="am-icon-rocket"></i></label>
 										    <input type="text" class="input_block" name="verifyCode" id="verifyCode" onblur="checkVerify()" 
 										    	   maxlength="6" placeholder="请输入验证码">
@@ -55,23 +54,23 @@
 										    	<span class="failIcon"><i class="am-icon-close" style="color:red"></i>失败</span>
 										    </div>
 						               </div>
-						               <div class="shop_element">
+						               <div class="shop_element" style="display:none">
 											<label for="phone"><i class="am-icon-phone"></i></label>
 											<input type="text" class="input_block" name="phone" id="phone" 
 											       onblur="check()" maxlength="11" placeholder="请输入手机号码" required="required">
 											<button style="display:none" type="button" class="am-btn am-btn-default am-btn-xs sendVerifyCode">发送验证码</button>
 		                 			   </div>
-	                 				   <div class="shop_element">
+	                 				   <div class="shop_element" style="display:none">
 										    <label for="password"><i class="am-icon-lock"></i></label>
 										    <input type="password" class="input_block" name="pwd" id="password" onblur="checkPwd()" placeholder="设置密码" required="required">
 	                                   </div>								
-	                				   <div class="shop_element">
+	                				   <div class="shop_element" style="display:none">
 										    <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
 										    <input type="password" class="input_block" name="pwdRep" id="passwordRepeat" onblur="verifyPwd()" placeholder="确认密码" required="required">
 	                                   </div>
-	                                    <div class="shop_element">
+	                                    <div class="shop_element_textarea">
 										    <label for="realname"><i class="am-icon-child"></i></label>
-										    <textarea class="input_block" cols="50" rows="10" name="subscribe" id="subscribe" placeholder="店铺描述" required="required"></textarea>
+										    <textarea cols="50" rows="10" name="subscribe" id="subscribe" placeholder="店铺描述" required="required"></textarea>
 	                                   </div>
 	                                   <div class="shop_element">
 										    <label for="addr"><i class="am-icon-area-chart"></i></label>
@@ -79,7 +78,7 @@
 											    <select name="addr_1" id="addr_1" required="required"></select>
 											    <select name="addr_2" id="addr_2" class="childs" required="required"></select>
 											    <select name="addr_3" id="addr_3" class="childs" required="required"></select>
-											    <input type="text" name="addr_4" id="addr_4" required="required" placeholder="街道地址" maxlength="50"/>
+											    <input type="text" name="addr_4" id="addr_4" required="required" placeholder="街道地址" value="${addr_4 }" maxlength="50"/>
 										    </span>
 	                                   </div>
 									   <div class="am-cf">
@@ -177,8 +176,9 @@
 		}
 		
 		function check(){
-			var user=$("#username").val();
-			if(user==""){
+			return true;
+			var shop=$("#shopname").val();
+			if(shop==""){
 				alert("账户不能为空");
 				return false;
 			}
@@ -228,7 +228,6 @@
 						console.log(res.status);
 						console.log(res.status=='200');
 						 if(res.status=='200'){
-							 //$(".sendVerifyCode").text("60秒后重新发送");
 							 countTime();
 						 }else{
 							 $(".sendVerifyCode").text("发送失败,重新发送");
@@ -270,14 +269,31 @@
 						var addrs=res.addrs;
 						var n=addrs.length;
 						var html="";
+						var p=0;
 						if(n>0){
-							html="<option value='"+addrs[0].areaname+"' A_id='"+addrs[0].areaid+"' selected='selected'>"+addrs[0].areaname+"</option>";
-							for(var i=1;i<n;i++){
-								html+="<option value='"+addrs[i].areaname+"' A_id='"+addrs[i].areaid+"'>"+addrs[i].areaname+"</option>";
+							for(var i=0;i<n;i++){
+								var kk;
+								switch(index){
+								case 1:
+									kk= addrs[i].areaname=='${addr_1}';
+									break;
+								case 2:
+									kk= addrs[i].areaname=='${addr_2}';
+									break;
+								case 3:
+									kk= addrs[i].areaname=='${addr_3}';
+									break;
+								}
+								if(kk){
+									html+="<option value='"+addrs[i].areaname+"' A_id='"+addrs[i].areaid+"' selected='selected'>"+addrs[i].areaname+"</option>";
+									p=i;
+								}else{
+									html+="<option value='"+addrs[i].areaname+"' A_id='"+addrs[i].areaid+"'>"+addrs[i].areaname+"</option>";
+								}
 							}
 						}
 						$("#addr_"+index).html(html);
-						loadAddr(addrs[0].areaid,++index);
+						loadAddr(addrs[p].areaid,++index);
 					},
 					error:function(res,status){
 						console.log("#addr_"+index+"地址异步加载错误");
