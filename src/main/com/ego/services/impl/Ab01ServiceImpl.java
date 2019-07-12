@@ -25,7 +25,7 @@ public class Ab01ServiceImpl extends JdbcServicesSupport
 				.append("				  aab106,aab107,aab108,aab109,aab110,")
 				.append("				  aab111)")
 				.append("		   values(?,?,?,'0',?,")
-				.append("				  ?,?,'01','0','0',")    //  01--Œ¥…Û∫À
+				.append("				  ?,'01',?,'0','0',")    //  01--Œ¥…Û∫À
 				.append("				 '0')")
 				;
 		Object args[]= {

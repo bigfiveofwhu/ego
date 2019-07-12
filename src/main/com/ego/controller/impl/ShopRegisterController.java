@@ -21,15 +21,19 @@ public class ShopRegisterController extends ControllerSupport
 		HttpSession session=this.getSession();
 		//ºÏ≤‚”√ªß «∑Òµ«¬º
 		String uid=(String)session.getAttribute("aaa102"); //”√ªßid
+		System.out.println(uid);
 		if(uid==null) return "home/home";
 		
 		//ºÏ≤‚ «∑Ò“—◊¢≤·µÍ∆Ã
-		this.getServices().findById("aaa102");
+		Map<String,String> ins=this.getServices().findById("aaa102");
+		System.out.println(ins);
+		if(ins!=null && ins.get("aab102")!=null) return "home/home";
+		
 		//Œ¥◊¢≤·µÍ∆Ã
 		this.setServices(new Aa01ServiceImpl());
 		this.dto.put("aaa102", uid);
 		this.getServices().setMapDto(this.dto);
-		Map<String,String> ins=this.getServices().findById();
+		ins=this.getServices().findById("aaa102");
 		System.out.println(ins);
 		String addr=ins.get("aaa111");
 		if(addr!=null) 

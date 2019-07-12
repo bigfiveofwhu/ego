@@ -86,8 +86,8 @@ public class Aa01ServiceImpl extends JdbcServicesSupport
 	public Map<String, String> findById(String ftype) throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-				.append("select aaa102,aaa103,aaa104,aaa105,aaa106,aaa107,aaa108,")
-				.append("		aaa109,aaa110,aaa111,aaa112,aaa113")
+				.append("select aaa102,aaa103,aaa104,aaa105,aaa106,aaa107,")
+				.append("		aaa108,aaa109,aaa110,aaa111,aaa112,aaa113")
 				.append("  from aa01")
 				.append(" where ").append(" "+ftype+"=?")
 				;
