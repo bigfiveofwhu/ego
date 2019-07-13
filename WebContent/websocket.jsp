@@ -1,20 +1,20 @@
-<%@ page pageEncoding="utf-8" %>
+<%@ page pageEncoding="gbk" %>
 <html>
 <head>
     <title>websocket demo</title>
 </head>
 <body>
-æ¶ˆæ¯:<label for="text1"></label><input id="text1" type="text"/>
-<button onclick="WebSocketSend('1')">å‘é€æ¶ˆæ¯</button>
+ÏûÏ¢:<label for="text1"></label><input id="text1" type="text"/>
+<button onclick="WebSocketSend('1')">·¢ËÍÏûÏ¢</button>
 <br>
-å…¬å‘Š:<label for="text2"></label><input id="text2" type="text"/>
-<button onclick="WebSocketSend('2')">å‘é€å…¬å‘Š</button>
+¹«¸æ:<label for="text2"></label><input id="text2" type="text"/>
+<button onclick="WebSocketSend('2')">·¢ËÍ¹«¸æ</button>
 <hr/>
-å‘é€äºº:<label for="from"></label><input type="text" id="from">
-<button onclick="openWebSocket()">æ‰“å¼€WebSocketè¿æ¥</button>
+·¢ËÍÈË:<label for="from"></label><input type="text" id="from">
+<button onclick="openWebSocket()">´ò¿ªWebSocketÁ¬½Ó</button>
 <br>
-æ¥æ”¶äºº:<label for="to"></label><input type="text" id="to">
-<button onclick="closeWebSocket()">å…³é—­WebSocketè¿æ¥</button>
+½ÓÊÕÈË:<label for="to"></label><input type="text" id="to">
+<button onclick="closeWebSocket()">¹Ø±ÕWebSocketÁ¬½Ó</button>
 <br>
 <a href="index.jsp">next</a>
 <hr/>
@@ -42,7 +42,7 @@
         ws = null;
     }
 
-    //å°†æ¶ˆæ¯æ˜¾ç¤ºåœ¨ç½‘é¡µä¸Š
+    //½«ÏûÏ¢ÏÔÊ¾ÔÚÍøÒ³ÉÏ
     function setMessageInnerHTML(value) {
         var jsonObject = JSON.parse(value);
         var from = jsonObject.from;
@@ -58,7 +58,7 @@
         }
     }
 
-    //å‘é€æ¶ˆæ¯
+    //·¢ËÍÏûÏ¢
     function WebSocketSend(type) {
         if (ws == null) return;
         var from = document.getElementById('from').value;

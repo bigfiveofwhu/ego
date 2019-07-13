@@ -13,7 +13,7 @@
     　　
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>商家审核</title>
+    <title>服务审核</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
     <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
@@ -27,7 +27,7 @@
 <!-- .box-body -->
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">商家管理</h3>
+        <h3 class="box-title">服务管理</h3>
     </div>
 
     <div class="box-body">
@@ -36,18 +36,18 @@
         <div class="table-box">
 
             <!--工具栏-->
-            <form action="queryShop.html" method="post">
+            <form action="queryService.html" method="post">
                 <div class="box-tools pull-right">
                     <div class="has-feedback">
                         状态：
-                        <select name="qaab107">
+                        <select name="qaac208">
                             <option value="">全部</option>
                             <option value="01">未审核</option>
                             <option value="02">审核通过</option>
                             <option value="03">审核未通过</option>
                             <option value="04">关闭</option>
                         </select>
-                        店铺名称： <input name="qaab103">
+                        服务名称： <input name="qaac203">
                         <input type="submit" class="btn btn-default" value="查询"/>
                     </div>
                 </div>
@@ -60,27 +60,29 @@
                 <thead>
                 <tr>
                     <th class="sorting">序号</th>
-                    <th class="sorting_asc">商家ID</th>
-                    <th class="sorting">店铺名称</th>
-                    <th class="sorting">联系人姓名</th>
-                    <th class="sorting">联系人电话</th>
+                    <th class="sorting_asc">服务id</th>
+                    <th class="sorting">服务名称</th>
+                    <th class="sorting">服务类型</th>
+                    <th class="sorting">服务方式</th>
+                    <th class="sorting">服务描述</th>
                     <th class="sorting">状态</th>
                     <th class="text-center">操作</th>
                 </tr>
                 </thead>
                 <tbody>
                 <!-- 显示查到的数据 -->
-                <c:forEach items="${shoplist}" var="ins" varStatus="vs">
+                <c:forEach items="${servicelist}" var="ins" varStatus="vs">
                     <tr>
                         <td>${vs.count}</td>
-                        <td>${ins.aab102}</td>
-                        <td>${ins.aab103}</td>
-                        <td>${ins.aaa109}</td>
-                        <td>${ins.aaa108}</td>
-                        <td>${ins.cnaab107}</td>
+                        <td>${ins.aac202}</td>
+                        <td>${ins.aac203}</td>
+                        <td>${ins.cnaac204}</td>
+                        <td>${ins.cnaac205}</td>
+                        <td>${ins.aac207}</td>
+                        <td>${ins.cnaac208}</td>
                         <td class="text-center">
                             <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                    data-target="#sellerModal" onclick="getShopDetail(${ins.aab102})">详情
+                                    data-target="#sellerModal" onclick="getServiceDetail(${ins.aac202})">详情
                             </button>
                         </td>
                     </tr>
@@ -97,7 +99,7 @@
     </div>
     <!-- /.box-body -->
 
-    <!-- 商家详情 -->
+    <!-- 服务详情 -->
     <div class="modal fade" id="sellerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -106,16 +108,16 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                             onclick="clearDetails()">×
                     </button>
-                    <h3 id="myModalLabel">商家详情</h3>
+                    <h3 id="myModalLabel">服务详情</h3>
                 </div>
                 <div class="modal-body">
 
                     <ul class="nav nav-tabs">
                         <li class="active">
-                            <a href="#shop" data-toggle="tab">店铺详细信息</a>
+                            <a href="#service" data-toggle="tab">服务详细信息</a>
                         </li>
                         <li>
-                            <a href="#shopper" data-toggle="tab">用户详细信息</a>
+                            <a href="#serviceProvider" data-toggle="tab">服务商详细信息</a>
                         </li>
                         <li>
                             <a href="#content" data-toggle="tab">审核内容</a>
@@ -127,65 +129,73 @@
 
                     <!-- 选项卡开始 -->
                     <div id="myTabContent" class="tab-content">
-                        <div class="tab-pane active in" id="shop">
+                        <div class="tab-pane active in" id="service">
                             <br>
                             <table class="table table-bordered table-striped" width="800px">
                                 <tr>
-                                    <td>店铺id</td>
-                                    <td id="aab102" class="to_clear"></td>
+                                    <td>服务id</td>
+                                    <td id="aac202" class="to_clear"></td>
                                 </tr>
                                 <tr>
-                                    <td>店铺名称</td>
-                                    <td id="aab103" class="to_clear"></td>
+                                    <td>服务名称</td>
+                                    <td id="aac203" class="to_clear"></td>
                                 </tr>
                                 <tr>
-                                    <td>店铺地址</td>
-                                    <td id="aab105" class="to_clear"></td>
+                                    <td>服务类型</td>
+                                    <td id="aac204" class="to_clear"></td>
                                 </tr>
                                 <tr>
-                                    <td>认证信息</td>
-                                    <td id="aab106" class="to_clear"></td>
+                                    <td>服务方式</td>
+                                    <td id="aac205" class="to_clear"></td>
                                 </tr>
                                 <tr>
-                                    <td>店铺状态</td>
-                                    <td id="aab107" class="to_clear"></td>
+                                    <td>服务区间</td>
+                                    <td id="aac206" class="to_clear"></td>
                                 </tr>
                                 <tr>
-                                    <td>保证金</td>
-                                    <td id="aab108" class="to_clear"></td>
+                                    <td>服务描述</td>
+                                    <td id="aac207" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>状态</td>
+                                    <td id="aac208" class="to_clear"></td>
                                 </tr>
                             </table>
                         </div>
-                        <div class="tab-pane fade" id="shopper">
+                        <div class="tab-pane fade" id="serviceProvider">
                             <br>
                             <table class="table table-bordered table-striped">
                                 <tr>
-                                    <td>用户id</td>
-                                    <td id="aaa102" class="to_clear"></td>
+                                    <td>服务商id</td>
+                                    <td id="aac102" class="to_clear"></td>
                                 </tr>
                                 <tr>
-                                    <td>用户名</td>
-                                    <td id="aaa103" class="to_clear"></td>
+                                    <td>服务商名称</td>
+                                    <td id="aac103" class="to_clear"></td>
                                 </tr>
                                 <tr>
-                                    <td>用户邮箱</td>
-                                    <td id="aaa104" class="to_clear"></td>
+                                    <td>地址</td>
+                                    <td id="aac104" class="to_clear"></td>
                                 </tr>
                                 <tr>
-                                    <td>注册日期</td>
-                                    <td id="aaa105" class="to_clear"></td>
+                                    <td>城市</td>
+                                    <td id="aac105" class="to_clear"></td>
                                 </tr>
                                 <tr>
-                                    <td>用户积分</td>
-                                    <td id="aaa106" class="to_clear"></td>
+                                    <td>服务类型</td>
+                                    <td id="aac106" class="to_clear"></td>
                                 </tr>
                                 <tr>
-                                    <td>手机号码</td>
-                                    <td id="aaa108" class="to_clear"></td>
+                                    <td>认证信息</td>
+                                    <td id="aac107" class="to_clear"></td>
                                 </tr>
                                 <tr>
-                                    <td>真实姓名</td>
-                                    <td id="aaa109" class="to_clear"></td>
+                                    <td>保证金</td>
+                                    <td id="aac109" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>服务评分</td>
+                                    <td id="aac110" class="to_clear"></td>
                                 </tr>
                             </table>
                         </div>
@@ -235,7 +245,7 @@
                         审核未通过
                     </button>
                     <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" onclick="updateState('04')">
-                        关闭商家
+                        下架服务
                     </button>
                     <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" onclick="clearDetails()">关闭
                     </button>
@@ -247,33 +257,35 @@
 </body>
 
 <script>
-    function getShopDetail(id) {
+    function getServiceDetail(id) {
         $.ajax({
             url: "<%=basePath%>/adminReview.ajax",
             type: "post",
             timeout: 20000,
             dataType: "json",
             data: {
-                "aab102": id,
-                "type": '1'
+                "aac202": id,
+                "type": '7'
             },
             success: function (res) {
                 var map = res.map;
                 if (typeof (map) !== "undefined") {
-                    $("#aab102").html(map.aab102);
-                    $("#aab103").html(map.aab103);
-                    $("#aab105").html(map.aab105);
-                    $("#aab106").html(map.aab106);
-                    $("#aab107").html(map.cnaab107);
-                    $("#aab108").html(map.aab108);
+                    $("#aac202").html(map.aac202);
+                    $("#aac203").html(map.aac203);
+                    $("#aac204").html(map.cnaac204);
+                    $("#aac205").html(map.cnaac205);
+                    $("#aac206").html(map.aac206);
+                    $("#aac207").html(map.aac207);
+                    $("#aac208").html(map.cnaac208);
 
-                    $("#aaa102").html(map.aaa102);
-                    $("#aaa103").html(map.aaa103);
-                    $("#aaa104").html(map.aaa104);
-                    $("#aaa105").html(map.aaa105);
-                    $("#aaa106").html(map.aaa106);
-                    $("#aaa108").html(map.aaa108);
-                    $("#aaa109").html(map.aaa109);
+                    $("#aac102").html(map.aac102);
+                    $("#aac103").html(map.aac103);
+                    $("#aac104").html(map.aac104);
+                    $("#aac105").html(map.aac105);
+                    $("#aac106").html(map.cnaac106);
+                    $("#aac107").html(map.aac107);
+                    $("#aac109").html(map.aac109);
+                    $("#aac110").html(map.aac110);
 
                     $("#aad802").html(map.aad802);
 
@@ -283,11 +295,11 @@
                     $("#aad804").html(map.cnaad804);
                     $("#aad806").html(map.aad806);
 
-                    console.log("获取店铺详细信息成功")
+                    console.log("获取服务详细信息成功")
                 }
             },
             error: function () {
-                console.log("店铺详细信息异步加载错误");
+                console.log("服务详细信息异步加载错误");
             }
         });
     }
@@ -299,12 +311,12 @@
             timeout: 20000,
             dataType: "json",
             data: {
-                "aab102": $("#aab102").text(),
-                "aab107": state,
+                "aac202": $("#aac202").text(),
+                "aac208": state,
                 "aad102": '7001',
                 "aad801": $("#aad801").text(),
                 "aad804": state,
-                "type": '2'
+                "type": '8'
             },
             success: function () {
                 alert('操作成功')

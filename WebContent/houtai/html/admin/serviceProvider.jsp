@@ -13,7 +13,7 @@
     　　
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>商家审核</title>
+    <title>服务商审核</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
     <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
@@ -27,7 +27,7 @@
 <!-- .box-body -->
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">商家管理</h3>
+        <h3 class="box-title">服务商管理</h3>
     </div>
 
     <div class="box-body">
@@ -36,18 +36,18 @@
         <div class="table-box">
 
             <!--工具栏-->
-            <form action="queryShop.html" method="post">
+            <form action="queryServiceProvider.html" method="post">
                 <div class="box-tools pull-right">
                     <div class="has-feedback">
                         状态：
-                        <select name="qaab107">
+                        <select name="qaac108">
                             <option value="">全部</option>
                             <option value="01">未审核</option>
                             <option value="02">审核通过</option>
                             <option value="03">审核未通过</option>
                             <option value="04">关闭</option>
                         </select>
-                        店铺名称： <input name="qaab103">
+                        服务商名称： <input name="qaac103">
                         <input type="submit" class="btn btn-default" value="查询"/>
                     </div>
                 </div>
@@ -60,8 +60,9 @@
                 <thead>
                 <tr>
                     <th class="sorting">序号</th>
-                    <th class="sorting_asc">商家ID</th>
-                    <th class="sorting">店铺名称</th>
+                    <th class="sorting_asc">服务商ID</th>
+                    <th class="sorting">服务商名称</th>
+                    <th class="sorting">服务类型</th>
                     <th class="sorting">联系人姓名</th>
                     <th class="sorting">联系人电话</th>
                     <th class="sorting">状态</th>
@@ -70,17 +71,18 @@
                 </thead>
                 <tbody>
                 <!-- 显示查到的数据 -->
-                <c:forEach items="${shoplist}" var="ins" varStatus="vs">
+                <c:forEach items="${serviceProviderlist}" var="ins" varStatus="vs">
                     <tr>
                         <td>${vs.count}</td>
-                        <td>${ins.aab102}</td>
-                        <td>${ins.aab103}</td>
+                        <td>${ins.aac102}</td>
+                        <td>${ins.aac103}</td>
+                        <td>${ins.cnaac106}</td>
                         <td>${ins.aaa109}</td>
                         <td>${ins.aaa108}</td>
-                        <td>${ins.cnaab107}</td>
+                        <td>${ins.cnaac108}</td>
                         <td class="text-center">
                             <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                    data-target="#sellerModal" onclick="getShopDetail(${ins.aab102})">详情
+                                    data-target="#sellerModal" onclick="getServiceProviderDetail(${ins.aac102})">详情
                             </button>
                         </td>
                     </tr>
@@ -97,7 +99,7 @@
     </div>
     <!-- /.box-body -->
 
-    <!-- 商家详情 -->
+    <!-- 服务商详情 -->
     <div class="modal fade" id="sellerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -106,16 +108,16 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                             onclick="clearDetails()">×
                     </button>
-                    <h3 id="myModalLabel">商家详情</h3>
+                    <h3 id="myModalLabel">服务商详情</h3>
                 </div>
                 <div class="modal-body">
 
                     <ul class="nav nav-tabs">
                         <li class="active">
-                            <a href="#shop" data-toggle="tab">店铺详细信息</a>
+                            <a href="#serviceProvider" data-toggle="tab">服务商详细信息</a>
                         </li>
                         <li>
-                            <a href="#shopper" data-toggle="tab">用户详细信息</a>
+                            <a href="#user" data-toggle="tab">用户详细信息</a>
                         </li>
                         <li>
                             <a href="#content" data-toggle="tab">审核内容</a>
@@ -127,36 +129,44 @@
 
                     <!-- 选项卡开始 -->
                     <div id="myTabContent" class="tab-content">
-                        <div class="tab-pane active in" id="shop">
+                        <div class="tab-pane active in" id="serviceProvider">
                             <br>
                             <table class="table table-bordered table-striped" width="800px">
                                 <tr>
-                                    <td>店铺id</td>
-                                    <td id="aab102" class="to_clear"></td>
+                                    <td>服务商id</td>
+                                    <td id="aac102" class="to_clear"></td>
                                 </tr>
                                 <tr>
-                                    <td>店铺名称</td>
-                                    <td id="aab103" class="to_clear"></td>
+                                    <td>服务商名称</td>
+                                    <td id="aac103" class="to_clear"></td>
                                 </tr>
                                 <tr>
-                                    <td>店铺地址</td>
-                                    <td id="aab105" class="to_clear"></td>
+                                    <td>地址</td>
+                                    <td id="aac104" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>城市</td>
+                                    <td id="aac105" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>服务类型</td>
+                                    <td id="aac106" class="to_clear"></td>
                                 </tr>
                                 <tr>
                                     <td>认证信息</td>
-                                    <td id="aab106" class="to_clear"></td>
+                                    <td id="aac107" class="to_clear"></td>
                                 </tr>
                                 <tr>
-                                    <td>店铺状态</td>
-                                    <td id="aab107" class="to_clear"></td>
+                                    <td>服务商状态</td>
+                                    <td id="aac108" class="to_clear"></td>
                                 </tr>
                                 <tr>
                                     <td>保证金</td>
-                                    <td id="aab108" class="to_clear"></td>
+                                    <td id="aac109" class="to_clear"></td>
                                 </tr>
                             </table>
                         </div>
-                        <div class="tab-pane fade" id="shopper">
+                        <div class="tab-pane fade" id="user">
                             <br>
                             <table class="table table-bordered table-striped">
                                 <tr>
@@ -235,7 +245,7 @@
                         审核未通过
                     </button>
                     <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" onclick="updateState('04')">
-                        关闭商家
+                        关闭服务商
                     </button>
                     <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" onclick="clearDetails()">关闭
                     </button>
@@ -247,25 +257,27 @@
 </body>
 
 <script>
-    function getShopDetail(id) {
+    function getServiceProviderDetail(id) {
         $.ajax({
             url: "<%=basePath%>/adminReview.ajax",
             type: "post",
             timeout: 20000,
             dataType: "json",
             data: {
-                "aab102": id,
-                "type": '1'
+                "aac102": id,
+                "type": '5'
             },
             success: function (res) {
                 var map = res.map;
                 if (typeof (map) !== "undefined") {
-                    $("#aab102").html(map.aab102);
-                    $("#aab103").html(map.aab103);
-                    $("#aab105").html(map.aab105);
-                    $("#aab106").html(map.aab106);
-                    $("#aab107").html(map.cnaab107);
-                    $("#aab108").html(map.aab108);
+                    $("#aac102").html(map.aac102);
+                    $("#aac103").html(map.aac103);
+                    $("#aac104").html(map.aac104);
+                    $("#aac105").html(map.aac105);
+                    $("#aac106").html(map.cnaac106);
+                    $("#aac107").html(map.aac107);
+                    $("#aac108").html(map.cnaac108);
+                    $("#aac109").html(map.aac109);
 
                     $("#aaa102").html(map.aaa102);
                     $("#aaa103").html(map.aaa103);
@@ -283,11 +295,11 @@
                     $("#aad804").html(map.cnaad804);
                     $("#aad806").html(map.aad806);
 
-                    console.log("获取店铺详细信息成功")
+                    console.log("获取服务商详细信息成功")
                 }
             },
             error: function () {
-                console.log("店铺详细信息异步加载错误");
+                console.log("服务商详细信息异步加载错误");
             }
         });
     }
@@ -299,12 +311,12 @@
             timeout: 20000,
             dataType: "json",
             data: {
-                "aab102": $("#aab102").text(),
-                "aab107": state,
+                "aac102": $("#aac102").text(),
+                "aac108": state,
                 "aad102": '7001',
                 "aad801": $("#aad801").text(),
                 "aad804": state,
-                "type": '2'
+                "type": '6'
             },
             success: function () {
                 alert('操作成功')
