@@ -30,7 +30,7 @@
 						<ul class="message-l">
 							<div class="topMessage">
 								<div class="menu-hd">
-									<a href="#" target="_top" class="h">亲，请登录 %{ins.aaa102}</a>
+									<a href="#" target="_top" class="h">亲，请登录 ${aaa102}</a>
 									<a href="#" target="_top">免费注册</a>
 								</div>
 							</div>
@@ -109,106 +109,164 @@
 
 							<div class="am-tabs-bd">
 								<div class="am-tab-panel am-fade am-in am-active" id="tab1">
-
-									<div class="comment-main">
-										<div class="comment-list">
-											<ul class="item-list">
-
-												
-												<div class="comment-top">
-													<div class="th th-price">
-														<td class="td-inner">评价</td>
-													</div>
-													<div class="th th-item">
-														<td class="td-inner">商品</td>
-													</div>													
-												</div>
-												<li class="td td-item">
-													<div class="item-pic">
-														<a href="#" class="J_MakePoint">
-															<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic">
-														</a>
-													</div>
-												</li>
-
-												<li class="td td-comment">
-													<div class="item-title">
-														<div class="item-opinion">好评</div>
-														<div class="item-name">
-															<a href="#">
-																<p class="item-basic-info">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
-															</a>
+								<div class="comment-main">
+														<div class="comment-top">
+																<div class="th th-price">
+																	<td class="td-inner">评价</td>
+																</div>
+																<div class="th th-item">
+																	<td class="td-inner">商品</td>
+																</div>													
 														</div>
+									<c:choose>
+										<c:when test="${rows!=null }">
+											<c:forEach items="${rows }" var="ins" varStatus="vs">
+												<c:choose>
+												<c:when test="${ins.aab412 eq '02' }">
+												<div class="comment-list">
+													<ul class="item-list">
+														
+															<li class="td td-item">
+																<div class="item-pic">
+																	<a href="#" class="J_MakePoint">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic">
+																	</a>
+																</div>
+															</li>
+			
+															<li class="td td-comment">
+																<div class="item-title">
+																	<div class="item-opinion">${ins.aab410 }分</div>
+																	<div class="item-name">
+																		<a href="#">
+																			<p class="item-basic-info">${ins.aab202 }</p>
+																		</a>
+																	</div>
+																</div>
+																<div class="item-comment">
+																	${ins.aab403 }
+																</div>
+			
+																<div class="item-info">
+																	<div>
+																		<p class="info-little">
+																		<span>订单号:${ins.aab302 }</span> 
+																		</p>
+																		<p class="info-time">${ins.aab406 }</p>  
+			
+																	</div>
+																</div>
+															</li>
+														</ul>
 													</div>
-													<div class="item-comment">
-														宝贝非常漂亮，超级喜欢！！！ 口红颜色很正呐，还有第两支半价，买三支免单一支的活动，下次还要来买。就是物流太慢了，还要我自己去取快递，店家不考虑换个物流么？
+													<br/>
+												</c:when>
+												<c:when test="${ins.aab412 eq '01' }">
+													<div class="comment-list">
+														<ul class="item-list">
+															
+															
+															<li class="td td-item">
+																<div class="item-pic">
+																	<a href="#" class="J_MakePoint">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic">
+																	</a>
+																</div>
+															</li>											
+															
+															<li class="td td-comment">
+																<div class="item-title">
+																	<div class="item-opinion">${ins.aab410 }分</div>
+																	<div class="item-name">
+																		<a href="#">
+																			<p class="item-basic-info">${ins.aab202 }</p>
+																		</a>
+																	</div>
+																</div>
+																<div class="item-comment">
+																	${ins.aab403 }
+																<div class="filePic"><img src="<%=path%>/images/image.jpg" alt=""></div>	
+																</div>
+			
+																<div class="item-info">
+																	<div>
+																		<p class="info-little">
+																		<span>订单号:${ins.aab302 }</span> 
+																		</p>
+																		<p class="info-time">${ins.aab406 }</p>
+			
+																	</div>
+																</div>
+															</li>
+														</ul>
 													</div>
-
-													<div class="item-info">
-														<div>
-															<p class="info-little"><span>颜色：12#玛瑙</span> <span>包装：裸装</span> </p>
-															<p class="info-time">2015-12-24</p>
-
-														</div>
-													</div>
-												</li>
-
-											</ul>
-
-										</div>
-									</div>
-
+													<br/>
+												</c:when>
+												</c:choose>
+											</c:forEach>
+										</c:when>
+									</c:choose>
+								</div>
 								</div>
 								<div class="am-tab-panel am-fade" id="tab2">
-									
 									<div class="comment-main">
-										<div class="comment-list">
-											<ul class="item-list">
-												
-												
-												<div class="comment-top">
-													<div class="th th-price">
-														<td class="td-inner">评价</td>
+									<c:choose>
+										<c:when test="${rows!=null }">
+											<c:forEach items="${rows }" var="ins" varStatus="vs">
+												<c:choose>
+												<c:when test="${ins.aab412 eq '01' }">
+													<div class="comment-list">
+														<ul class="item-list">
+															
+															<div class="comment-top">
+																<div class="th th-price">
+																	<td class="td-inner">评价</td>
+																</div>
+																<div class="th th-item">
+																	<td class="td-inner">商品</td>
+																</div>													
+															</div>
+															<li class="td td-item">
+																<div class="item-pic">
+																	<a href="#" class="J_MakePoint">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic">
+																	</a>
+																</div>
+															</li>											
+															
+															<li class="td td-comment">
+																<div class="item-title">
+																	<div class="item-opinion">${ins.aab410 }分</div>
+																	<div class="item-name">
+																		<a href="#">
+																			<p class="item-basic-info">${ins.aab202 }</p>
+																		</a>
+																	</div>
+																</div>
+																<div class="item-comment">
+																	${ins.aab403 }
+																<div class="filePic"><img src="<%=path%>/images/image.jpg" alt=""></div>	
+																</div>
+			
+																<div class="item-info">
+																	<div>
+																		<p class="info-little">
+																		<span>订单号:${ins.aab302 }</span> 
+																		</p>
+																		<p class="info-time">${ins.aab406 }</p>
+			
+																	</div>
+																</div>
+															</li>
+														</ul>
 													</div>
-													<div class="th th-item">
-														<td class="td-inner">商品</td>
-													</div>													
-												</div>
-												<li class="td td-item">
-													<div class="item-pic">
-														<a href="#" class="J_MakePoint">
-															<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic">
-														</a>
-													</div>
-												</li>											
-												
-												<li class="td td-comment">
-													<div class="item-title">
-														<div class="item-opinion">好评</div>
-														<div class="item-name">
-															<a href="#">
-																<p class="item-basic-info">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
-															</a>
-														</div>
-													</div>
-													<div class="item-comment">
-														宝贝非常漂亮，超级喜欢！！！ 口红颜色很正呐，还有第两支半价，买三支免单一支的活动，下次还要来买。就是物流太慢了，还要我自己去取快递，店家不考虑换个物流么？
-													<div class="filePic"><img src="<%=path%>/images/image.jpg" alt=""></div>	
-													</div>
-
-													<div class="item-info">
-														<div>
-															<p class="info-little"><span>颜色：12#玛瑙</span> <span>包装：裸装</span> </p>
-															<p class="info-time">2015-12-24</p>
-
-														</div>
-													</div>
-												</li>
-
-											</ul>
-
-										</div>
-									</div>									
+													<br/>
+												</c:when>
+												</c:choose>
+											</c:forEach>
+										</c:when>
+									</c:choose>
+									</div>								
 									
 								</div>
 							</div>

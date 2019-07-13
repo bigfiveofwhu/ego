@@ -109,7 +109,11 @@ public class BaseServlet extends HttpServlet
 		
 		request.getRequestDispatcher("/" + toPath + ".jsp").forward(request, response);
 	}
-
+	/**
+	 * attribute切片
+	 * @param request
+	 * @param rueqestAttribute
+	 */
 	private void parseRueqestAttribute(HttpServletRequest request, Map<String, Object> rueqestAttribute) 
 	{
 		// 1.还原所有的键值对,形成集合

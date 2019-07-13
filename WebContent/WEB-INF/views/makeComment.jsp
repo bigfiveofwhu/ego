@@ -74,6 +74,7 @@
 		<input name="aab411" type="hidden"/>
 		<input name="aab410" type="hidden"/>
 		<input name="aab403" type="hidden"/>
+		<input name="aab203" value="${ins.aab203 }" type="hidden"/>
 		<input name="aab412" value="02" type="hidden"/>
 		</form>
 		<!--ͷ -->
