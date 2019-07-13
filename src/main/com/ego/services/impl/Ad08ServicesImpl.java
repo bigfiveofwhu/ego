@@ -1,10 +1,5 @@
 package com.ego.services.impl;
 
-<<<<<<< HEAD
-=======
-import java.lang.reflect.Method;
-import java.util.ArrayList;
->>>>>>> 1700c52bc90219eaade711b2df5f43348da2a3b2
 import java.util.List;
 import java.util.Map;
 
@@ -54,7 +49,7 @@ public class Ad08ServicesImpl extends JdbcServicesSupport
 		else if(utype.equalsIgnoreCase("modifyAc02"))
 			this.modifyAc02();
 		else 
-			throw new Exception("未支持的utype: "+utype);
+			return (boolean)this.getMethod(utype).invoke(this);
 		
 		return this.modifyAd08();
 	}
@@ -82,7 +77,6 @@ public class Ad08ServicesImpl extends JdbcServicesSupport
 		return this.queryForMap(sql.toString(), args);
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * 根据商品id查询商品审核相关的详细信息
 	 * @return
@@ -177,13 +171,8 @@ public class Ad08ServicesImpl extends JdbcServicesSupport
 				this.get("aad102")
 		};
 		return this.queryForList(sql.toString(), args);
-=======
-	@Override
-	public boolean update(String utype) throws Exception
-	{
-		Method method=this.getMethod(utype);
-		return (boolean)method.invoke(this);
 	}
+
 
 	/**
 	 * aad802 --审核内容  aad803 --审核类型 , aad804 --审核状态, aad805 --审核对象, aaa102 --用户id
@@ -199,7 +188,6 @@ public class Ad08ServicesImpl extends JdbcServicesSupport
 				this.get("aaa102")
 		};
 		return this.executeUpdate(sql, args);
->>>>>>> 1700c52bc90219eaade711b2df5f43348da2a3b2
 	}
 
 	/**
