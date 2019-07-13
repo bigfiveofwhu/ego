@@ -1,5 +1,10 @@
 package com.ego.services.impl;
 
+<<<<<<< HEAD
+=======
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+>>>>>>> 1700c52bc90219eaade711b2df5f43348da2a3b2
 import java.util.List;
 import java.util.Map;
 
@@ -77,6 +82,7 @@ public class Ad08ServicesImpl extends JdbcServicesSupport
 		return this.queryForMap(sql.toString(), args);
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * 根据商品id查询商品审核相关的详细信息
 	 * @return
@@ -171,6 +177,29 @@ public class Ad08ServicesImpl extends JdbcServicesSupport
 				this.get("aad102")
 		};
 		return this.queryForList(sql.toString(), args);
+=======
+	@Override
+	public boolean update(String utype) throws Exception
+	{
+		Method method=this.getMethod(utype);
+		return (boolean)method.invoke(this);
+	}
+
+	/**
+	 * aad802 --审核内容  aad803 --审核类型 , aad804 --审核状态, aad805 --审核对象, aaa102 --用户id
+	 * @return
+	 * @throws Exception
+	 */
+	private boolean insertAd08() throws Exception
+	{
+		String sql="insert into ad08(aad802,aad803,aad804,aad805,aaa102) values(?,'01','01',?,?)";
+		Object args[]= {
+				this.get("aad802"),
+				this.get("aad805"),
+				this.get("aaa102")
+		};
+		return this.executeUpdate(sql, args);
+>>>>>>> 1700c52bc90219eaade711b2df5f43348da2a3b2
 	}
 
 	/**

@@ -17,7 +17,7 @@ public class TestController  extends ControllerSupport{
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		this.savePageInstance();
+		this.savePageInstance("");
 		return BaseServlet.prefix+"discount";
 	}
 

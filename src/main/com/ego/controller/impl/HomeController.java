@@ -29,7 +29,7 @@ public class HomeController extends ControllerSupport
 		//初始化新品推荐
 		//初始化热门活动
 		//初始化广告
-
+		this.saveAttribute("isSendRedirect", false);
 		return "home/home";
 	}
 }

@@ -383,6 +383,7 @@ public abstract class JdbcServicesSupport implements BaseServices
 				// 向list中放入当前行数据
 				rows.add(ins);
 			}
+			System.out.println(rows);
 			return rows;
 		} 
 		finally

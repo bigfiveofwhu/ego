@@ -10,7 +10,7 @@ public class SetDefAddrController extends AjaxControllerSupport {
 
 
 	@Override
-	public void execute(HttpSession session)
+	public void execute(HttpSession session) throws Exception
 	{
 		BaseServices service=new Aa04ServiceImpl();
 		service.setMapDto(this.dto);

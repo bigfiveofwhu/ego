@@ -1,5 +1,7 @@
 package com.ego.controller.impl;
 
+import com.ego.system.utils.FileUpload;
+
 public class ModifyUserInfoServlet extends UserControllerSupport {
 
 	@Override
