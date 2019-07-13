@@ -9,7 +9,7 @@ import com.ego.controller.ajaxServlet.AjaxControllerSupport;
 public class VerifyController extends AjaxControllerSupport 
 {
 	@Override
-	public void execute(HttpSession session)
+	public void execute(HttpSession session) throws Exception
 	{
 	    String verCode=(String)this.dto.get("verCode");
 	    String code=(String)session.getAttribute("regVerCode");

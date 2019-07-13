@@ -12,7 +12,7 @@ import com.ego.services.impl.T_AreaService;
 public class GetAddrController extends AjaxControllerSupport
 {
 	@Override
-	public void execute(HttpSession session) 
+	public void execute(HttpSession session) throws Exception
 	{
 		BaseServices services=new T_AreaService();
 		services.setMapDto(this.dto);

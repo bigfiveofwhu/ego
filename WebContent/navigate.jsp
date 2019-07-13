@@ -5,15 +5,15 @@
 		<div class="topMessage">
 			<div class="menu-hd">
 				<c:choose>
-				<c:when test="${session_uid==null}">
+				<c:when test="${aaa102==null}">
 			
 				<a href="login.jsp" target="_top" class="h">亲，请登录</a>
 				<a href="register.jsp" target="_top">免费注册</a>
 				</c:when>
 				<c:otherwise>
-				<label style="color:#0000FF">欢迎<font style="color:red">【${session_username}】</font>eGO商城</label>
+				<label style="color:#0000FF">欢迎<font style="color:red">【${aaa103}】</font>eGO商城</label>
 	    		&emsp;
-	    		<label><a href="<%=path %>>/logout.html">注销</a></label>
+	    		<label><a href="${path}/logout.html">注销</a></label>
 				</c:otherwise>
 				</c:choose>
 			</div>
@@ -28,7 +28,7 @@
 		<div class="topMessage my-shangcheng">
 			<div class="menu-hd MyShangcheng">
 				<c:choose>
-					<c:when test="${session_uid!=null}">
+					<c:when test="${aaa102!=null}">
 				<a href="../person/information.jsp" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a>
 				</c:when>
 				<c:otherwise>
@@ -40,7 +40,7 @@
 		<div class="topMessage mini-cart">
 			<div class="menu-hd">
 				<c:choose>
-				<c:when test="${session_uid!=null}">
+				<c:when test="${aaa102!=null}">
 				  <a id="mc-menu-hd" href="shopcart.jsp" target="_top">
 				  <i class="am-icon-shopping-cart  am-icon-fw"></i>
 				  <span>购物车</span>
@@ -74,13 +74,13 @@
 		<div class="topMessage shop">
 			<div class="menu-hd">
 			<c:choose>
-				<c:when test="${session_shopId!=null}">
-				  <a id="mc-menu-shop" href="<%=path %>/shop/home.html?shopId=${session_shopId}" target="_top">
+				<c:when test="${aab102!=null}">
+				  <a id="mc-menu-shop" href="${path}/shop/home.html" target="_top">
 				  <span>进入店铺</span>
 				  </a>
 				</c:when>
 				<c:otherwise>
-					<a id="mc-menu-shop" href="<%=path %>/shop/register.html?uid=${session_uid}" target="_top">
+					<a id="mc-menu-shop" href="${path}/shop/register.html" target="_top">
 					<span>自己开店?</span>
 				    </a>
 				</c:otherwise>

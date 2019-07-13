@@ -116,8 +116,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<i class="fa fa-folder"></i>
 								<span>商品管理</span>
 								<span class="pull-right-container">
-				       			<i class="fa fa-angle-left pull-right"></i>
-				   		 	</span>
+				       				<i class="fa fa-angle-left pull-right"></i>
+				   		 		</span>
 							</a>
 							<ul class="treeview-menu">
 
@@ -147,11 +147,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</a>
 								</li>
 							</ul>
-				   		 </span>
 						</li>
-
 						<!-- 菜单 /-->
-
+						<!-- 优惠券 -->
+						<li class="treeview">
+							<a href="#" >
+								<i class="fa fa-folder"></i>
+								<span>优惠券管理</span>
+								<span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				       		</a>
+				       		<ul class="treeview-menu">
+								<li id="admin-login">
+									<a href="/ego/discount/getShopCoupons.html" target="iframe">
+										<i class="fa fa-circle-o"></i> 优惠券管理
+									</a>
+								</li>
+							</ul>
+						</li>
 					</ul>
 				</section>
 				<!-- /.sidebar -->
@@ -170,7 +183,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="pull-right hidden-xs">
 					<b>Version</b> 1.0.0
 				</div>
-				********提供技术支持
+				ego商城提供技术支持
 			</footer>
 			<!-- 底部导航 /-->
 
