@@ -56,7 +56,7 @@
 					
 				});
 	    	 })
-	    	 function sendComment(vaab302)
+	    	function sendComment(vaab302)
 			{
 				var vform = document.getElementById("myform");
 				$('input[name="aab403"]').val($("#comment_text").val());

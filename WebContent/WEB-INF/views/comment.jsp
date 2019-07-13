@@ -17,10 +17,22 @@
 
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+		
+		
+		<script type="text/javascript">
+			function goCommentDetail(vaab302)
+			{
+				var vform = document.getElementById("myform");
+				vform.action="<%=path%>/goCommentDetail.html?aab302="+vaab302;
+				vform.submit();
+			}
+		</script>
 
 	</head>
 
 	<body>
+	<form id="myform" action="<%=path%>/###.html" method="post"></form>
+	
 		<!--ͷ -->
 		<header>
 			<article>
@@ -144,7 +156,7 @@
 																	</div>
 																</div>
 																<div class="item-comment">
-																	${ins.aab403 }
+																	<a href="javascript:;" onclick="goCommentDetail(${ins.aab302})">${ins.aab403 }</a>
 																</div>
 			
 																<div class="item-info">
@@ -184,7 +196,7 @@
 																	</div>
 																</div>
 																<div class="item-comment">
-																	${ins.aab403 }
+																	<a href="javascript:;" onclick="goCommentDetail(${ins.aab302})">${ins.aab403 }</a>
 																<div class="filePic"><img src="<%=path%>/images/image.jpg" alt=""></div>	
 																</div>
 			
@@ -244,7 +256,7 @@
 																	</div>
 																</div>
 																<div class="item-comment">
-																	${ins.aab403 }
+																	<a href="javascript:;" onclick="goCommentDetail(${ins.aab302})">${ins.aab403 }</a>
 																<div class="filePic"><img src="<%=path%>/images/image.jpg" alt=""></div>	
 																</div>
 			
