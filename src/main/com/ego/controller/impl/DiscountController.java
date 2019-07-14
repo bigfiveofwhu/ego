@@ -13,8 +13,8 @@ import com.ego.services.impl.Ab05ServiceImpl;
 
 public class DiscountController extends ControllerSupport{
 
-	BaseServices ab05Service=Ab05ServiceImpl.getInstance();
-	BaseServices aa05Service=Aa05ServiceImpl.getInstance();
+	BaseServices ab05Service =new Ab05ServiceImpl();
+	BaseServices aa05Service=new Aa05ServiceImpl();
 
 	@Override
 	public void setMapDto(Map<String,Object> dto) {
@@ -36,6 +36,9 @@ public class DiscountController extends ControllerSupport{
 			this.saveAttribute("coupons", aa05Service.query());
 			this.saveAttribute("shopCoupons", ab05Service.query());
 			return prefix+"discount";
+		case "discountManage":
+			this.saveAttribute("shopCoupons", ab05Service.query());
+			return prefix+"discountManage";
 		case "addUserCoupon":
 			Map<String, String> ins=ab05Service.findById("getCoupon");
 			dto.put("aab102", ins.get("aab102"));//店铺id
@@ -45,13 +48,14 @@ public class DiscountController extends ControllerSupport{
 			dto.put("aab505", ins.get("aab505"));//持续时间
 			this.saveAttribute("msg", aa05Service.update("addUserCoupon")?"成功":"失败");
 			return prefix+"result";
-
 		case "useCoupon":
 			this.saveAttribute("msg", aa05Service.update("useCoupon")?"成功":"update无影响");
 			return prefix+"result";
 		case "getShopCoupons":
 			this.saveAttribute("shopCoupons", ab05Service.query());
 			return prefix+"shopDiscount";
+		case "addCoupon":
+			return prefix+"addCoupon";
 		default:
 			throw new Exception("DiscountController无法处理此类请求");
 		}

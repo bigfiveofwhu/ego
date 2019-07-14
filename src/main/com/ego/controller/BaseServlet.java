@@ -43,18 +43,6 @@ public class BaseServlet extends HttpServlet
 			e.printStackTrace();
 		}
 	}
-	//controller的容器，管理所有controller
-	Map<String,Controller > container= Collections.synchronizedMap(new HashMap<String, Controller>());
-	
-	private Controller getController(String className) throws Exception
-	{
-		Controller controller=container.get(className);
-		if (controller==null) {
-			controller=(Controller)Class.forName(className).newInstance();
-			container.put(className, controller);
-		}
-		return controller;
-	}
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -78,8 +66,7 @@ public class BaseServlet extends HttpServlet
 			// 实例化业务控制器
 			String basePackage="com.ego.controller.impl.";
 			String className=basePackage+mapping.getProperty(mappingURL);
-			Controller controller = getController(className);
-
+			Controller controller=(Controller)Class.forName(className).newInstance();
 			/***********************************************************
 			 * 向业务控制器,填充页面数据 i
 			 ***********************************************************/
