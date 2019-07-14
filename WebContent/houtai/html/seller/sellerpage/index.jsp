@@ -204,5 +204,4 @@
 	<script type="text/javascript" src="<%=path %>/houtai/js/controller/SellerLoginController.js"></script>
 	<script type="text/javascript" src="<%=path %>/houtai/js/service/SellerService.js"></script>
 	<script type="text/javascript" src="<%=path %>/houtai/js/common/common.js"></script>
-
 </html>

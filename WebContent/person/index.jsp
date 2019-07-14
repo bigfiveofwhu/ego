@@ -1,89 +1,61 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-
+<%@ page language="java" pageEncoding="GBK"%>
+<%@ include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
 
-		<title>个人中心</title>
+		<title>��������</title>
 
-		<link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
-		<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
-		<link href="../css/personal.css" rel="stylesheet" type="text/css">
-		<link href="../css/vipstyle.css" rel="stylesheet" type="text/css">
-		<script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-		<script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/css/vipstyle.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/css/hmstyle.css" rel="stylesheet" type="text/css">
+		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 	</head>
 
 	<body>
-		<!--头 -->
+		<!--ͷ -->
 		<header>
 			<article>
 				<div class="mt-logo">
-					<!--顶部导航条 -->
-					<div class="am-container header">
-						<ul class="message-l">
-							<div class="topMessage">
-								<div class="menu-hd">
-									<a href="#" target="_top" class="h">亲，请登录</a>
-									<a href="#" target="_top">免费注册</a>
-								</div>
-							</div>
-						</ul>
-						<ul class="message-r">
-							<div class="topMessage home">
-								<div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
-							</div>
-							<div class="topMessage my-shangcheng">
-								<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
-							</div>
-							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-							</div>
-							<div class="topMessage favorite">
-								<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
-						</ul>
-						</div>
-
-						<!--悬浮搜索框-->
+					<!--���������� -->
+					<%@ include file="/navigate.jsp" %>
+						<!--����������-->
 
 						<div class="nav white">
 							<div class="logoBig">
-								<li><img src="../images/logobig.png" /></li>
+								<li><img src="<%=path%>/images/logobig.png" /></li>
 							</div>
 
 							<div class="search-bar pr">
 								<a name="index_none_header_sysc" href="#"></a>
 								<form>
-									<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
-									<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
+									<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="����" autocomplete="off">
+									<input id="ai-topsearch" class="submit am-btn" value="����" index="1" type="submit">
 								</form>
 							</div>
 						</div>
-
 						<div class="clear"></div>
 					</div>
 				</div>
 			</article>
 		</header>
 		<div class="nav-table">
-			<div class="long-title"><span class="all-goods">全部分类</span></div>
+			<div class="long-title"><span class="all-goods">ȫ������</span></div>
 			<div class="nav-cont">
 				<ul>
-					<li class="index"><a href="#">首页</a></li>
-					<li class="qc"><a href="#">闪购</a></li>
-					<li class="qc"><a href="#">限时抢</a></li>
-					<li class="qc"><a href="#">团购</a></li>
-					<li class="qc last"><a href="#">大包装</a></li>
+					<li class="index"><a href="#">��ҳ</a></li>
+					<li class="qc"><a href="#">����</a></li>
+					<li class="qc"><a href="#">��ʱ��</a></li>
+					<li class="qc"><a href="#">�Ź�</a></li>
+					<li class="qc last"><a href="#">���װ</a></li>
 				</ul>
 				<div class="nav-extra">
-					<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+					<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>�ҵĸ���
 					<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
 				</div>
 			</div>
@@ -95,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="wrap-left">
 						<div class="wrap-list">
 							<div class="m-user">
-								<!--个人信息 -->
+								<!--������Ϣ -->
 
 								<div class="m-userinfo">
 									<a href="news.html">
@@ -103,73 +75,73 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</a>
 									<div class="m-baseinfo">
 										<a class="m-pic" href="information.html">
-											<img src="../images/getAvatar.do.jpg">
+											<img src="<%=path%>/images/getAvatar.do.jpg">
 										</a>
 										<div class="m-info">
-											<em class="s-name">小叮当</em>
-											<div class="vip1"><a href="#"><span></span><em>会员专享</em></a></div>
-											<div class="safeText"><a href="safety.html">账户安全:<em style="margin-left:20px ;">60</em>分</a>
+											<em class="s-name">С����</em>
+											<div class="vip1"><a href="#"><span></span><em>��Աר��</em></a></div>
+											<div class="safeText"><a href="safety.html">�˻���ȫ:<em style="margin-left:20px ;">60</em>��</a>
 												<div class="progressBar"><span style="left: -95px;" class="progress"></span></div>
 											</div>
 											<div class="m-address">
-												<a href="address.html" class="i-trigger">收货地址<i class="am-icon-angle-right" style="padding-left:5px ;"></i></a>
+												<a href="address.html" class="i-trigger">�ջ���ַ<i class="am-icon-angle-right" style="padding-left:5px ;"></i></a>
 											</div>
 										</div>
 									</div>
 									<div class="m-right">
 										<div class="m-new">
-											<a href="news.html"><i class="am-icon-dropbox  am-icon-md" style="padding-right:5px ;"></i>消息盒子</a>
+											<a href="news.html"><i class="am-icon-dropbox  am-icon-md" style="padding-right:5px ;"></i>��Ϣ����</a>
 										</div>
 
 									</div>
 								</div>
 
-								<!--个人资产-->
+								<!--�����ʲ�-->
 								<div class="m-userproperty">
 									<div class="s-bar">
-										<i class="s-icon"></i>个人资产
+										<i class="s-icon"></i>�����ʲ�
 									</div>
 									<p class="m-coupon">
 										<a href="coupon.html">
 											<em class="m-num">2</em>
-											<span class="m-title">优惠券</span>
+											<span class="m-title">�Ż�ȯ</span>
 										</a>
 									</p>
 									<p class="m-wallet">
 										<a href="wallet.html">
 											<em class="m-num">0.00</em>
-											<span class="m-title">账户余额</span>
+											<span class="m-title">�˻����</span>
 										</a>
 									</p>
 									<p class="m-bill">
 										<a href="pointnew.html">
 											<em class="m-num">10</em>
-											<span class="m-title">总积分</span>
+											<span class="m-title">�ܻ���</span>
 										</a>
 									</p>
 								</div>
 
-								<!--我的钱包-->
+								<!--�ҵ�Ǯ��-->
 								<div class="wallet">
 									<div class="s-bar">
-										<i class="s-icon"></i>商城钱包
+										<i class="s-icon"></i>�̳�Ǯ��
 									</div>
 									<p class="m-big squareS">
 										<a href="#">
-											<i><img src="../images/shopping.png"/></i>
-											<span class="m-title">能购物</span>
+											<i><img src="<%=path%>/images/shopping.png"/></i>
+											<span class="m-title">�ܹ���</span>
 										</a>
 									</p>
 									<p class="m-big squareA">
 										<a href="#">
-											<i><img src="../images/safe.png"/></i>
-											<span class="m-title">够安全</span>
+											<i><img src="<%=path%>/images/safe.png"/></i>
+											<span class="m-title">����ȫ</span>
 										</a>
 									</p>
 									<p class="m-big squareL">
 										<a href="#">
-											<i><img src="../images/profit.png"/></i>
-											<span class="m-title">很灵活</span>
+											<i><img src="<%=path%>/images/profit.png"/></i>
+											<span class="m-title">�����</span>
 										</a>
 									</p>
 								</div>
@@ -177,103 +149,103 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="box-container-bottom"></div>
 
-							<!--订单 -->
+							<!--���� -->
 							<div class="m-order">
 								<div class="s-bar">
-									<i class="s-icon"></i>我的订单
-									<a class="i-load-more-item-shadow" href="order.html">全部订单</a>
+									<i class="s-icon"></i>�ҵĶ���
+									<a class="i-load-more-item-shadow" href="order.html">ȫ������</a>
 								</div>
 								<ul>
-									<li><a href="order.html"><i><img src="../images/pay.png"/></i><span>待付款</span></a></li>
-									<li><a href="order.html"><i><img src="../images/send.png"/></i><span>待发货<em class="m-num">1</em></span></a></li>
-									<li><a href="order.html"><i><img src="../images/receive.png"/></i><span>待收货</span></a></li>
-									<li><a href="order.html"><i><img src="../images/comment.png"/></i><span>待评价<em class="m-num">3</em></span></a></li>
-									<li><a href="change.html"><i><img src="../images/refund.png"/></i><span>退换货</span></a></li>
+									<li><a href="order.html"><i><img src="<%=path%>/images/pay.png"/></i><span>������</span></a></li>
+									<li><a href="order.html"><i><img src="<%=path%>/images/send.png"/></i><span>������<em class="m-num">1</em></span></a></li>
+									<li><a href="order.html"><i><img src="<%=path%>/images/receive.png"/></i><span>���ջ�</span></a></li>
+									<li><a href="order.html"><i><img src="<%=path%>/images/comment.png"/></i><span>������<em class="m-num">3</em></span></a></li>
+									<li><a href="change.html"><i><img src="<%=path%>/images/refund.png"/></i><span>�˻���</span></a></li>
 								</ul>
 								<div class="orderContentBox">
 									<div class="orderContent">
 										<div class="orderContentpic">
 											<div class="imgBox">
-												<a href="orderinfo.html"><img src="../images/youzi.jpg"></a>
+												<a href="orderinfo.html"><img src="<%=path%>/images/youzi.jpg"></a>
 											</div>
 										</div>
 										<div class="detailContent">
-											<a href="orderinfo.html" class="delivery">签收</a>
+											<a href="orderinfo.html" class="delivery">ǩ��</a>
 											<div class="orderID">
 												<span class="time">2016-03-09</span>
 												<span class="splitBorder">|</span>
 												<span class="time">21:52:47</span>
 											</div>
 											<div class="orderID">
-												<span class="num">共1件商品</span>
+												<span class="num">��1����Ʒ</span>
 											</div>
 										</div>
-										<div class="state">待评价</div>
-										<div class="price"><span class="sym">¥</span>23.<span class="sym">80</span></div>
+										<div class="state">������</div>
+										<div class="price"><span class="sym">&yen;</span>23.<span class="sym">80</span></div>
 
 									</div>
-									<a href="javascript:void(0);" class="btnPay">再次购买</a>
+									<a href="javascript:void(0);" class="btnPay">�ٴι���</a>
 								</div>
 
 								<div class="orderContentBox">
 									<div class="orderContent">
 										<div class="orderContentpic">
 											<div class="imgBox">
-												<a href="orderinfo.html"><img src="../images/heart.jpg"></a>
+												<a href="orderinfo.html"><img src="<%=path%>/images/heart.jpg"></a>
 											</div>
 										</div>
 										<div class="detailContent">
-											<a href="orderinfo.html" class="delivery">派件</a>
+											<a href="orderinfo.html" class="delivery">�ɼ�</a>
 											<div class="orderID">
 												<span class="time">2016-03-09</span>
 												<span class="splitBorder">|</span>
 												<span class="time">21:52:47</span>
 											</div>
 											<div class="orderID">
-												<span class="num">共2件商品</span>
+												<span class="num">��2����Ʒ</span>
 											</div>
 										</div>
-										<div class="state">已发货</div>
-										<div class="price"><span class="sym">¥</span>246.<span class="sym">50</span></div>
+										<div class="state">�ѷ���</div>
+										<div class="price"><span class="sym">&yen;</span>246.<span class="sym">50</span></div>
 
 									</div>
-									<a href="javascript:void(0);" class="btnPay">再次购买</a>
+									<a href="javascript:void(0);" class="btnPay">�ٴι���</a>
 								</div>
 							</div>
-							<!--九宫格-->
+							<!--�Ź���-->
 							<div class="user-squaredIcon">
 								<div class="s-bar">
-									<i class="s-icon"></i>我的常用
+									<i class="s-icon"></i>�ҵĳ���
 								</div>
 								<ul>
 									<a href="order.html">
 										<li class="am-u-sm-4"><i class="am-icon-truck am-icon-md"></i>
-											<p>物流查询</p>
+											<p>������ѯ</p>
 										</li>
 									</a>
 									<a href="collection.html">
 										<li class="am-u-sm-4"><i class="am-icon-heart am-icon-md"></i>
-											<p>我的收藏</p>
+											<p>�ҵ��ղ�</p>
 										</li>
 									</a>
 									<a href="foot.html">
 										<li class="am-u-sm-4"><i class="am-icon-paw am-icon-md"></i>
-											<p>我的足迹</p>
+											<p>�ҵ��㼣</p>
 										</li>
 									</a>
 									<a href="#">
 										<li class="am-u-sm-4"><i class="am-icon-gift am-icon-md"></i>
-											<p>为你推荐</p>
+											<p>Ϊ���Ƽ�</p>
 										</li>
 									</a>
 									<a href="blog.html">
 										<li class="am-u-sm-4"><i class="am-icon-share-alt am-icon-md"></i>
-											<p>我的分享</p>
+											<p>�ҵķ���</p>
 										</li>
 									</a>
-									<a href="../home/home2.html">
+									<a href="<%=path%>/home/home2.html">
 										<li class="am-u-sm-4"><i class="am-icon-clock-o am-icon-md"></i>
-											<p>限时活动</p>
+											<p>��ʱ�</p>
 										</li>
 									</a>
 
@@ -282,40 +254,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 							<div class="user-suggestion">
 								<div class="s-bar">
-									<i class="s-icon"></i>会员中心
+									<i class="s-icon"></i>��Ա����
 								</div>
 								<div class="s-bar">
-									<a href="suggest.html"><i class="s-icon"></i>意见反馈</a>
+									<a href="suggest.html"><i class="s-icon"></i>�������</a>
 								</div>
 							</div>
 
-							<!--优惠券积分-->
+							<!--�Ż�ȯ����-->
 							<div class="twoTab">
 								<div class="twoTabModel Coupon">
-									<h5 class="squareTitle"><a href="#"><span class="splitBorder"></span>优惠券<i class="am-icon-angle-right"></i></a></h5>
+									<h5 class="squareTitle"><a href="#"><span class="splitBorder"></span>�Ż�ȯ<i class="am-icon-angle-right"></i></a></h5>
 									<div class="Box">
 										<div class="CouponList">
-											<span class="price">¥<strong class="num">50</strong></span>
-	                                        <p class="brandName"><a href="#">ABC品牌499减50</a></p>
-	                                        <p class="discount">满<span>499</span>元抵扣</p>
-                                            <a  href="#" class="btnReceive">立即领取</a>
+											<span class="price">&yen;<strong class="num">50</strong></span>
+	                                        <p class="brandName"><a href="#">ABCƷ��499��50</a></p>
+	                                        <p class="discount">��<span>499</span>Ԫ�ֿ�</p>
+                                            <a  href="#" class="btnReceive">������ȡ</a>
 										</div>
 									</div>
 								</div>
 								<div class="twoTabModel credit">
-									<h5 class="squareTitle"><a href="#"><span class="splitBorder"></span>积分商城<i class="am-icon-angle-right"></i></a></h5>
+									<h5 class="squareTitle"><a href="#"><span class="splitBorder"></span>�����̳�<i class="am-icon-angle-right"></i></a></h5>
 									<div class="Box">
 										<p class="countDown">
-											<span class="hour">12</span>：<span class="minute">09</span>：<span class="second">02</span><em class="txtStart">即将开始</em>
+											<span class="hour">12</span>��<span class="minute">09</span>��<span class="second">02</span><em class="txtStart">������ʼ</em>
 										</p>
 										<div class="am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth:108, itemMargin:3, slideshow: false}">
 											<ul class="am-slides">
-												<li><a href="#"><img src="../images/333.jpg" /></a></li>
-												<li><a href="#"><img src="../images/222.jpg" /></a></li>
-												<li><a href="#"><img src="../images/111.jpg" /></a></li>
-												<li><a href="#"><img src="../images/333.jpg" /></a></li>
-												<li><a href="#"><img src="../images/222.jpg" /></a></li>
-												<li><a href="#"><img src="../images/111.jpg" /></a></li>
+												<li><a href="#"><img src="<%=path%>/images/333.jpg" /></a></li>
+												<li><a href="#"><img src="<%=path%>/images/222.jpg" /></a></li>
+												<li><a href="#"><img src="<%=path%>/images/111.jpg" /></a></li>
+												<li><a href="#"><img src="<%=path%>/images/333.jpg" /></a></li>
+												<li><a href="#"><img src="<%=path%>/images/222.jpg" /></a></li>
+												<li><a href="#"><img src="<%=path%>/images/111.jpg" /></a></li>
 											</ul>
 										</div>
 									</div>
@@ -326,62 +298,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="wrap-right">
 
-						<!-- 日历-->
+						<!-- ����-->
 						<div class="day-list">
 							<div class="s-title">
-								每日新鲜事
+								ÿ��������
 							</div>
 							<div class="s-box">
 								<ul>
-									<li><a><p>粮油冲锋周 满128减18</p></a></li>
-									<li><a><p>防晒这么重要的事怎能随意</p></a></li>
-									<li><a><p>春日护肤面膜不可少，你选对了吗？</p></a></li>
-									<li><a><p>纯粹时尚，摩登出游，吸睛美衣</p></a></li>
-									<li><a><p>粮油冲锋周 满128减18</p></a></li>
-									<li><a><p>春日护肤面膜不可少，你选对了吗？</p></a></li>									
+									<li><a><p>���ͳ���� ��128��18</p></a></li>
+									<li><a><p>��ɹ��ô��Ҫ������������</p></a></li>
+									<li><a><p>���ջ�����Ĥ�����٣���ѡ������</p></a></li>
+									<li><a><p>����ʱ�У�Ħ�ǳ��Σ���������</p></a></li>
+									<li><a><p>���ͳ���� ��128��18</p></a></li>
+									<li><a><p>���ջ�����Ĥ�����٣���ѡ������</p></a></li>									
 								</ul>
 							</div>
 						</div>
-						<!--新品 -->
+						<!--��Ʒ -->
 						<div class="new-goods">
 							<div class="s-bar">
-								<i class="s-icon"></i>今日新品
-								<a class="i-load-more-item-shadow">15款新品</a>
+								<i class="s-icon"></i>������Ʒ
+								<a class="i-load-more-item-shadow">15����Ʒ</a>
 							</div>
 							<div class="new-goods-info">
 								<a class="shop-info" href="#">
 									<div class="face-img-panel">
-										<img src="../images/imgsearch1.jpg" alt="">
+										<img src="<%=path%>/images/imgsearch1.jpg" alt="">
 									</div>
 									<span class="new-goods-num ">4</span>
-									<span class="shop-title">剥壳松子</span>
+									<span class="shop-title">��������</span>
 								</a>
-								<a class="follow">收藏</a>
+								<a class="follow">�ղ�</a>
 							</div>
 						</div>						
 
-						<!--热卖推荐 -->
+						<!--�����Ƽ� -->
 						<div class="new-goods">
 							<div class="s-bar">
-								<i class="s-icon"></i>热卖推荐
+								<i class="s-icon"></i>�����Ƽ�
 							</div>
 							<div class="new-goods-info">
 								<a class="shop-info" href="#" target="_blank">
 									<div >
-										<img src="../images/666.jpg" alt="">
+										<img src="<%=path%>/images/666.jpg" alt="">
 									</div>
-                                    <span class="one-hot-goods">￥189.60</span>
+                                    <span class="one-hot-goods">��189.60</span>
 								</a>
 							</div>
 						</div>						
      				</div>
      				<div class="clear"></div>
      				
-     				<!--收藏和足迹-->
+     				<!--�ղغ��㼣-->
      				 <div data-am-widget="tabs" class="am-tabs collection">
                          <ul class="am-tabs-nav am-cf">
-                         	<li class="am-active"><a href="[data-tab-panel-0]"><i class="am-icon-heart"></i>商品收藏</a></li>
-                            <li class=""><a href="[data-tab-panel-1]"><i class="am-icon-paw"></i>购物足迹</a></li>
+                         	<li class="am-active"><a href="[data-tab-panel-0]"><i class="am-icon-heart"></i>��Ʒ�ղ�</a></li>
+                            <li class=""><a href="[data-tab-panel-1]"><i class="am-icon-paw"></i>�����㼣</a></li>
                         </ul>
                         <div class="am-tabs-bd">
 
@@ -389,36 +361,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         		<div class="am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth:155,slideshow: false}">
 									<ul class="am-slides">
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/EZA27501.jpg" /></a>
-                                       	  <strong class="price">¥32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/EZA27501.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/BxJk6.jpg" /></a>
-                                       	  <strong class="price">¥32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/BxJk6.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/Hxcag60.jpg" /></a>
-                                       	  <strong class="price">¥32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/Hxcag60.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/youzi.jpg" /></a>
-                                       	  <strong class="price">¥32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/youzi.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/EZA27501.jpg" /></a>
-                                       	  <strong class="price">¥32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/EZA27501.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/BxJk6.jpg" /></a>
-                                       	  <strong class="price">¥32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/BxJk6.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/Hxcag60.jpg" /></a>
-                                       	  <strong class="price">¥32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/Hxcag60.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/youzi.jpg" /></a>
-                                       	  <strong class="price">¥32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/youzi.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
 
 									</ul>
@@ -428,36 +400,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         		<div class="am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth:155, slideshow: false}">
 									<ul class="am-slides">
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/BxJk6.jpg" /></a>
-                                       	  <strong class="price">¥32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/BxJk6.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/Hxcag60.jpg" /></a>
-                                       	  <strong class="price">¥32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/Hxcag60.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/youzi.jpg" /></a>
-                                       	  <strong class="price">¥32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/youzi.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/EZA27501.jpg" /></a>
-                                       	  <strong class="price">¥32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/EZA27501.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/BxJk6.jpg" /></a>
-                                       	  <strong class="price">¥32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/BxJk6.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/Hxcag60.jpg" /></a>
-                                       	  <strong class="price">¥32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/Hxcag60.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/youzi.jpg" /></a>
-                                       	  <strong class="price">¥32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/youzi.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/EZA27501.jpg" /></a>
-                                       	  <strong class="price">¥32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/EZA27501.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
 									</ul>
 								</div>                            	
@@ -467,92 +439,71 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 				</div>
-				<!--底部-->
-				<div class="footer">
-					<div class="footer-hd">
-						<p>
-							<a href="#">恒望科技</a>
-							<b>|</b>
-							<a href="#">商城首页</a>
-							<b>|</b>
-							<a href="#">支付宝</a>
-							<b>|</b>
-							<a href="#">物流</a>
-						</p>
-					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">关于恒望</a>
-							<a href="#">合作伙伴</a>
-							<a href="#">联系我们</a>
-							<a href="#">网站地图</a>
-							<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
-						</p>
-					</div>
-				</div>
+				<!--�ײ�-->
+				<%@ include file="/footer.jsp" %>
 
 			</div>
 
 			<aside class="menu">
 				<ul>
 					<li class="person active">
-						<a href="#"><i class="am-icon-user"></i>个人中心</a>
+						<a href="#"><i class="am-icon-user"></i>��������</a>
 					</li>
 					<li class="person">
-						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
+						<p><i class="am-icon-newspaper-o"></i>��������</p>
 					<ul>
-							<li> <a href="showUserInfo.html">个人信息</a></li>
-							<li> <a href="<%=path%>/person/safety.jsp">安全设置</a></li>
-							<li> <a href="showAddress.html">地址管理</a></li>
-							<li> <a href="<%=path%>/person/cardlist.jsp">快捷支付</a></li>
+							<li> <a href="showUserInfo.html">������Ϣ</a></li>
+							<li> <a href="<%=path%>/person/safety.jsp">��ȫ����</a></li>
+							<li> <a href="showAddress.html">��ַ����</a></li>
+							<li> <a href="<%=path%>/person/cardlist.jsp">���֧��</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<p><i class="am-icon-balance-scale"></i>我的交易</p>
+						<p><i class="am-icon-balance-scale"></i>�ҵĽ���</p>
 						<ul>
-							<li><a href="order.html">订单管理</a></li>
-							<li> <a href="change.html">退款售后</a></li>
-							<li> <a href="comment.html">评价商品</a></li>
+							<li><a href="order.html">��������</a></li>
+							<li> <a href="change.html">�˿��ۺ�</a></li>
+							<li> <a href="comment.html">������Ʒ</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<p><i class="am-icon-dollar"></i>我的资产</p>
+						<p><i class="am-icon-dollar"></i>�ҵ��ʲ�</p>
 						<ul>
-							<li> <a href="points.html">我的积分</a></li>
-							<li> <a href="coupon.html">优惠券 </a></li>
-							<li> <a href="bonus.html">红包</a></li>
-							<li> <a href="walletlist.html">账户余额</a></li>
-							<li> <a href="bill.html">账单明细</a></li>
-						</ul>
-					</li>
-
-					<li class="person">
-						<p><i class="am-icon-tags"></i>我的收藏</p>
-						<ul>
-							<li> <a href="collection.html">收藏</a></li>
-							<li> <a href="foot.html">足迹</a></li>														
+							<li> <a href="points.html">�ҵĻ���</a></li>
+							<li> <a href="coupon.html">�Ż�ȯ </a></li>
+							<li> <a href="bonus.html">���</a></li>
+							<li> <a href="walletlist.html">�˻����</a></li>
+							<li> <a href="bill.html">�˵���ϸ</a></li>
 						</ul>
 					</li>
 
 					<li class="person">
-						<p><i class="am-icon-qq"></i>在线客服</p>
+						<p><i class="am-icon-tags"></i>�ҵ��ղ�</p>
 						<ul>
-							<li> <a href="consultation.html">商品咨询</a></li>
-							<li> <a href="suggest.html">意见反馈</a></li>							
+							<li> <a href="collection.html">�ղ�</a></li>
+							<li> <a href="foot.html">�㼣</a></li>														
+						</ul>
+					</li>
+
+					<li class="person">
+						<p><i class="am-icon-qq"></i>���߿ͷ�</p>
+						<ul>
+							<li> <a href="consultation.html">��Ʒ��ѯ</a></li>
+							<li> <a href="suggest.html">�������</a></li>							
 							
-							<li> <a href="news.html">我的消息</a></li>
+							<li> <a href="news.html">�ҵ���Ϣ</a></li>
 						</ul>
 					</li>
 				</ul>
 
 			</aside>
 		</div>
-		<!--引导 -->
+		<!--���� -->
 		<div class="navCir">
-			<li><a href="../home/home2.html"><i class="am-icon-home "></i>首页</a></li>
-			<li><a href="../home/sort.html"><i class="am-icon-list"></i>分类</a></li>
-			<li><a href="../home/shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>
-			<li class="active"><a href="index.html"><i class="am-icon-user"></i>我的</a></li>
+			<li><a href="<%=path%>/home/home2.html"><i class="am-icon-home "></i>��ҳ</a></li>
+			<li><a href="<%=path%>/home/sort.html"><i class="am-icon-list"></i>����</a></li>
+			<li><a href="<%=path%>/home/shopcart.html"><i class="am-icon-shopping-basket"></i>���ﳵ</a></li>
+			<li class="active"><a href="index.html"><i class="am-icon-user"></i>�ҵ�</a></li>
 		</div>
 	</body>
 
