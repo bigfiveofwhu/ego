@@ -42,7 +42,6 @@
     <input t class="form-control" id="amount" name="aab506">
   </div>
   
-  
 </form>
 
 <button id="submit" class="btn btn-primary mx-auto">添加</button>
@@ -67,7 +66,7 @@ $("#submit").click(function(){
 		data[field.name]=field.value;
 	})
 	console.log(data);
-	$.getJSON("/ego/discount/addCoupon.ajax?aab102=1",formData,function(result){
+	$.getJSON("/ego/discount/addCoupon.ajax",formData,function(result){
 		if(result.result==true){
 			$('body').empty();
 			$('body').append('添加成功')

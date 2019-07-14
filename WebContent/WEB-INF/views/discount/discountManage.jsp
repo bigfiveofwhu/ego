@@ -50,11 +50,6 @@
 		</c:if>
 	  </td>
 	  <td>${item.aab505}</td>
-	  <%--
-	  <jsp:useBean id="dValue" class="com.ego.beans.DoubleConverter">
-	  	<jsp:setProperty name="dValue" property="value" value="${item.aab505}"/>
-	  </jsp:useBean>
-	   --%>
 	  <td>
 	  	<c:if test="${item.aab505<0}">
 		  нчоча©

@@ -54,7 +54,7 @@ public class DiscountController extends ControllerSupport{
 		case "getShopCoupons":
 			this.saveAttribute("shopCoupons", ab05Service.query());
 			return prefix+"shopDiscount";
-		case "addCoupon":
+		case "addCoupon"://获取添加页面
 			return prefix+"addCoupon";
 		default:
 			throw new Exception("DiscountController无法处理此类请求");

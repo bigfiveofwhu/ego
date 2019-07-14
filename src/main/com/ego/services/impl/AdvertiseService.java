@@ -10,12 +10,24 @@ public class AdvertiseService extends JdbcServicesSupport{
 
 	public static final String productAd="00";
 	public static final String shoptAd="01";
-	
+	public static final String serviceAd="10";
+
 	public static final String headLine="00";//首页轮播
 	public static final String search="01";//搜索靠前
 	public static final String AIads="10";//猜你喜欢
-	public static final String homePage="11";//首页热门商品
+	public static final String homePage="11";//热门商品
 
+	@Override
+	public Map<String, String> findById(String qtype) throws Exception {
+		// TODO Auto-generated method stub
+		switch (qtype) {
+		case "getAccountById":
+			return this.getAccountById();
+		default:
+			throw new Exception("不支持的类型");
+		}
+	}
+	
 	@Override
 	public List<Map<String, String>> query(String qtyep) throws Exception {
 		// TODO Auto-generated method stub
@@ -44,16 +56,65 @@ public class AdvertiseService extends JdbcServicesSupport{
 			return this.addMoney();
 		case "reduceMoney":
 			return this.reduceMoney();
-		
+		case "addAdAudit":
+			return this.addAdAudit();
 		default:
 			throw new Exception("不支持的类型");
 		}
 	}
+	/**
+	 * 通过type和ref 返回产品的名字
+	 * @param type 类型
+	 * @param ref id值
+	 * @return
+	 * @throws Exception
+	 */
+	public String getName(String type,String ref) throws Exception {
+		String sqlProduct="select aab202 from ab02 where aab203=?";
+		String sqlService="select aac203 from ac02 where aac202=?";
+		String sqlShop="select aab103 from ab01 where aab102=?";
+		switch (type) {
+		case AdvertiseService.productAd:
+			return this.queryForMap(sqlProduct, ref).get("aab202");
+		case AdvertiseService.serviceAd:
+			return this.queryForMap(sqlService, ref).get("aac203");
+		case AdvertiseService.shoptAd:
+			return this.queryForMap(sqlShop, ref).get("aab102");
+		default:
+			throw new Exception("aad303类型出错  in advertiseController");
+		}
+	}
+
+	public String getAdType(String aad305) throws Exception {		
+		switch (aad305) {
+		case headLine:
+			return "首页轮播";
+		case search:
+			return "搜索靠前";
+		case AIads:
+			return "猜你喜欢";
+		case homePage:
+			return "热门商品";
+		default:
+			throw new Exception("未知的广告类型，in advertiseService");
+		}
+	}
 	
+	private boolean addAdAudit() throws Exception{
+		StringBuilder sql=new StringBuilder()
+				.append(" insert into ad08")
+				.append(" (aaa102,aad802,aad803,aad804)")
+				.append(" value(?,?,'ad','01')");
+		Object[] param=new Object[] {
+				this.get("aaa102"),
+				this.get("aad802")
+		};
+		return this.executeUpdate(sql.toString(), param);
+	}
 	
 	private List<Map<String,String>> queryAdsByAccountId() throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append(" select aad301,aad302,aad303,aad304,aad305,aad306,aad307")
+				.append(" select aad301,aad302,aad303,aad304,aad305,aad306")
 				.append(" from ad03 where aad402=?");
 		
 		return this.queryForList(sql.toString(),this.get("aad402") );
@@ -62,7 +123,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 	private List<Map<String, String>> getAdByType() throws Exception {
 		//获取广告id，物品类型，广告内容和ref
 		StringBuilder sql=new StringBuilder()
-				.append(" select aad302,aad303,aad306,aad307")
+				.append(" select aad302,aad303,aad306")
 				.append(" from ad03 where aad305=?")
 				.append(" order by aad304 DESC")
 				.append(" limit 20");
@@ -70,12 +131,15 @@ public class AdvertiseService extends JdbcServicesSupport{
 		
 	}
 	
-	
+	/**
+	 * 添加广告
+	 * @return
+	 * @throws Exception
+	 */
 	private  boolean insertAd() throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append(" insert into ad03(aad402,aad302,aad303,aad304,aad305,")
-				.append(" aad306,aad307)")
-				.append(" values(?,?,?,?,?,?,?)");
+				.append(" insert into ad03(aad402,aad302,aad303,aad304,aad305,aad306)")
+				.append(" values(?,?,?,?,?,?)");
 		Object[] parameter=new Object[] {
 				this.get("aad402"),
 				Tools.getIncrementId("aad302"),
@@ -83,7 +147,6 @@ public class AdvertiseService extends JdbcServicesSupport{
 				this.get("aad304"),
 				this.get("aad305"),
 				this.get("aad306"),
-				this.get("aad307"),
 		};
 		return this.executeUpdate(sql.toString(), parameter);
 	}
@@ -114,8 +177,8 @@ public class AdvertiseService extends JdbcServicesSupport{
 		String sql="select * from ad03 where aad302=?";
 		return this.queryForMap(sql, this.get("aad302"));
 	}
-	
-	static final double initMin=2000;
+	//-----------------关于账户的操作-----------------------------
+	static final double initMin=2000;//最少的账户余额
 	private boolean insertAdAccount() throws Exception{
 		int idNumber=Tools.getIncrementId("aad402");
 		StringBuilder sql=new StringBuilder()
@@ -130,9 +193,19 @@ public class AdvertiseService extends JdbcServicesSupport{
 				this.get("aad403"),
 				this.get("aaa102")
 		};
-		
 		return this.executeUpdate(sql.toString(),parameter);
 	}
+	/**
+	 * 通过accountid获得广告账户信息
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String, String> getAccountById() throws Exception {
+		String sql="select aad403 from ad04 where aad402=?";
+		return this.queryForMap(sql, this.get("aad402"));
+	}
+	
+	
 	//对账户进行充值
 	private boolean recharge() throws Exception{
 		StringBuilder sql=new StringBuilder()
@@ -157,4 +230,37 @@ public class AdvertiseService extends JdbcServicesSupport{
 		}
 		return this.executeUpdate(sql.toString(),decrement,this.get("aad402"));
 	}
+	
+	/**
+	 * 通过userid获得广告账户id
+	 * @return 广告账户id或null
+	 * @throws Exception 
+	 */
+	public String getAccountId() throws Exception {
+		String sql="select aad402 from ad04 where aaa102=?";
+		Map<String, String> map=this.queryForMap(sql, this.get("aaa102"));
+		return map==null?null:map.get("aad402");
+		
+	}
+	/**
+	 * 
+	 * @return 当前账户是否在审核
+	 * @throws Exception
+	 */
+	public boolean isInAudit() throws Exception {
+		String sql="select aad801 from ad08 where aaa102=? and aad803='ad' and aad804='01' ";
+		return this.queryForMap(sql, this.get("aaa102"))==null?false:true;
+	}
+	
+	//0无账户，1账户未审核通过，2有账户
+	public int accountStatus() throws Exception {
+		if (getAccountId()!=null) {
+			return 2;
+		}else if (isInAudit()) {
+			return 1;
+		}else {
+			return 0;
+		}
+	}
+	
 }

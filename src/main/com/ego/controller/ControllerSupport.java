@@ -3,6 +3,7 @@ package com.ego.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -119,6 +120,16 @@ public abstract class ControllerSupport implements Controller
 		}
 	}
 
+	/**
+	 * 将dto的数据放入页面
+	 * @param dto
+	 */
+	protected final  void saveMap(Map<String, String> dto) {
+		for (Entry<String, String> entry
+				: dto.entrySet()) {
+			saveAttribute(entry.getKey(), entry.getValue());
+		}
+	}
 	
 	//*****************************************
 	// * 数据输入流(将数据写入dto)

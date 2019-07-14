@@ -24,6 +24,7 @@ public class RegisterController extends ControllerSupport
 		this.setServices(new Aa01ServiceImpl());
 		this.update("insertAa01", "注册");
 		
+		saveAttribute("aaa102", this.get("aaa102"));
 		HttpSession session=this.getSession();
 		/**
 		 * aaa102,aaa106已通过dto双向传递
