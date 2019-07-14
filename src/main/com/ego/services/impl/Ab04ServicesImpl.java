@@ -1,5 +1,8 @@
 package com.ego.services.impl;
 
+import java.lang.reflect.Method;
+import java.util.Map;
+
 import com.ego.services.JdbcServicesSupport;
 import com.ego.system.tools.Tools;
 
@@ -85,9 +88,30 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 		//System.out.println("***显示编辑更新SQL语句****");
 		//System.out.println(sql.toString());
 		this.executeUpdate(sql.toString(), args);
+	}	
+
+	/****************************************************
+	 *                             以下为查询方法
+	 ****************************************************/
+	/**
+	 * @author hug
+	 */
+	@Override
+	public Map<String, String> findById(String qtype) throws Exception 
+	{
+		Method method=this.getMethod(qtype);
+		return (Map<String, String>)method.invoke(this);
 	}
-
-
 	
-
+	/**
+	 * @author hug
+	 * 通过商品id,查出累计有多少条评论
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String,String> comentCountByAab203() throws Exception
+	{
+		String sql="select count(*) as commentSum from ab04 where aab203=?";
+		return this.queryForMap(sql, this.get("aab203"));
+	}
 }

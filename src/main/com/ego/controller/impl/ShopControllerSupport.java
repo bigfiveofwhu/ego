@@ -9,6 +9,4 @@ public abstract class ShopControllerSupport extends ControllerSupport {
 	{
 		this.setServices(new ShopManageServicesImpl());
 	}
-
-
 }
