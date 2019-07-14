@@ -24,6 +24,7 @@ public class RegisterController extends ControllerSupport
 		this.setServices(new Aa01ServiceImpl());
 		this.update("insertAa01", "注册");
 		
+		saveAttribute("aaa102", this.get("aaa102"));
 		HttpSession session=this.getSession();
 		session.setAttribute("aaa102", this.get("aaa102"));  //用户id
 		session.setAttribute("aaa106", this.get("aaa106"));  //积分
