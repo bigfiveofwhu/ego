@@ -158,11 +158,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				       			<i class="fa fa-angle-left pull-right"></i>
 				       		</a>
 				       		<ul class="treeview-menu">
-								<li id="admin-login">
-									<a href="/ego/discount/getShopCoupons.html" target="iframe">
+								<li>
+									<a href="/ego/discount/getShopCoupons.html?aab102=1" target="iframe">
+										<i class="fa fa-circle-o"></i> 优惠券
+									</a>
+								</li>
+								<li>
+									<a href="/ego/discount/discountManage.html?aab102=1" target="iframe">
 										<i class="fa fa-circle-o"></i> 优惠券管理
 									</a>
 								</li>
+								
 							</ul>
 						</li>
 					</ul>

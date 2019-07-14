@@ -31,7 +31,7 @@
 /*标题*/
 .item-title{float:right;width:30%; margin-top: 0px;margin-right:18%;}
 .item-name{margin-left: 5px;}
-.item-opinion{display:none ;}
+.item-opinion{display:inline ;}
 .item-basic-info{overflow: hidden;text-overflow: ellipsis;white-space:normal;font-size:14px ;color: #005EA7;}
 
 /*商品信息*/

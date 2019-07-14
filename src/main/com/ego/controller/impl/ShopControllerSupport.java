@@ -1,3 +1,7 @@
+/**
+ * @author hug
+ * µêÆÌ¿ØÖÆÆ÷
+ */
 package com.ego.controller.impl;
 
 import com.ego.controller.ControllerSupport;
@@ -9,6 +13,4 @@ public abstract class ShopControllerSupport extends ControllerSupport {
 	{
 		this.setServices(new ShopManageServicesImpl());
 	}
-
-
 }

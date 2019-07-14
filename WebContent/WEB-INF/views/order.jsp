@@ -47,6 +47,12 @@
 				vform.action="<%=path%>/goComment.html?aab302="+vaab302;
 				vform.submit();
 			}
+			function goCommentDetail(vaab302)
+			{
+				var vform = document.getElementById("myform");
+				vform.action="<%=path%>/goCommentDetail.html?aab302="+vaab302;
+				vform.submit();
+			}
 		</script>
 
 	</head>
@@ -470,16 +476,27 @@
 																	<p class="order-info"><a href="logistics.html">查看物流</a></p>
 																</div>
 															</li>
-															<li class="td td-change">
-																<a href="#" onclick="goComment(${ins.aab302})">
-																	<div class="am-btn am-btn-danger anniu">
-																		<c:choose>
-																			<c:when test="${ ins.aab303 eq '05'}">去评价</c:when>
-																			<c:when test="${ ins.aab303 eq '06'}">去追评</c:when>
-																		</c:choose>
-																	</div>
-																</a>
-															</li>
+															<c:choose>
+																<c:when test="${ ins.aab303 eq '05'}">
+																<li class="td td-change">
+																	<a href="#" onclick="goComment(${ins.aab302})">
+																		<div class="am-btn am-btn-danger anniu">
+																			去评价
+																		</div>
+																	</a>
+																</li>
+																</c:when>
+																<c:when test="${ ins.aab303 eq '06'}">
+																<li class="td td-change">
+																	<a href="#" onclick="goCommentDetail(${ins.aab302})">
+																		<div class="am-btn am-btn-danger anniu">
+																			去追评
+																		</div>
+																	</a>
+																</li>
+																</c:when>
+															</c:choose>
+															
 														</div>
 													</div>
 												</div>
@@ -1101,16 +1118,26 @@
 																		<p class="order-info"><a href="logistics.html">查看物流</a></p>
 																	</div>
 																</li>
-																<li class="td td-change">
-																	<a href="#" onclick="goComment(${ins.aab302})">
-																		<div class="am-btn am-btn-danger anniu">
-																			<c:choose>
-																				<c:when test="${ ins.aab303 eq '05'}">去评价</c:when>
-																				<c:when test="${ ins.aab303 eq '06'}">去追评</c:when>
-																			</c:choose>
-																		</div>
-																	</a>
-																</li>
+																<c:choose>
+																	<c:when test="${ ins.aab303 eq '05'}">
+																	<li class="td td-change">
+																		<a href="#" onclick="goComment(${ins.aab302})">
+																			<div class="am-btn am-btn-danger anniu">
+																				去评价
+																			</div>
+																		</a>
+																	</li>
+																	</c:when>
+																	<c:when test="${ ins.aab303 eq '06'}">
+																	<li class="td td-change">
+																		<a href="#" onclick="goCommentDetail(${ins.aab302})">
+																			<div class="am-btn am-btn-danger anniu">
+																				去追评
+																			</div>
+																		</a>
+																	</li>
+																	</c:when>
+																</c:choose>
 															</div>
 														</div>
 														</div>

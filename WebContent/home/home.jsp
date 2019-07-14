@@ -17,6 +17,13 @@
 <link href="<%=path %>/css/skin.css" rel="stylesheet" type="text/css" />
 <script src="<%=path %>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 <script src="<%=path %>/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+<c:if test="${msg!=null }">
+	<script type="text/javascript">
+	$(function(){
+		alert('${msg}');
+	});
+	</script>
+</c:if>
 </head>
 <body>
 	<div class="hmtop">
@@ -112,7 +119,7 @@
 					<div class="category-content" id="guide_2">
 						<div class="category">
 							<ul class="category-list" id="js_climit_li">
-								<%@include file="productType.jsp" %>
+							<%@include file="/home/productType.jsp" %>
 							</ul>
 						</div>
 					</div>
@@ -184,11 +191,11 @@
 						</li>
 						<div class="mod-vip">
 						<c:choose>
-						   <c:when test="${session_uid!=null}">
+						   <c:when test="${aaa102!=null}">
 				   				<div class="m-baseinfo">
 								<a href="<%=path%>/person/information.jsp"> 
 								<img src="<%=path%>/images/getAvatar.do.jpg"> </a> 
-								<em> Hi,<span class="s-name">${session_username}</span> <a href="#"><p>点击更多优惠活动</p> </a> </em>
+								<em> Hi,<span class="s-name">${aaa103}</span> <a href="#"><p>点击更多优惠活动</p> </a> </em>
 								</div>
 							</c:when>
 							<c:otherwise>
@@ -286,7 +293,7 @@
 							<h4>${item3.price }</h4>
 						</div>
 						<div class="recommendationMain one">
-							<a href="${url}/intrServlet?goodId=${item3.id}"><img src="${item3.path }"></img>
+							<a href="<%=path %>/shop/detail.html?productId=${item3.id}"><img src="${item3.path }"></img>
 							</a>
 						</div>
 					</div>
@@ -300,40 +307,25 @@
 				<div class="shopTitle ">
 					<h4>活动</h4>
 					<h3>每期活动 优惠享不停</h3>
-					<span class="more "> <a href="# ">全部活动<i
-							class="am-icon-angle-right" style="padding-left:10px ;"></i> </a> </span>
+					<span class="more "> 
+						<a href="# ">全部活动<i class="am-icon-angle-right" style="padding-left:10px ;"></i></a> 
+					</span>
 				</div>
 				<div class="am-g am-g-fixed ">
-
-					<div class="am-u-sm-3 ">
-						<div class="icon-sale one"></div>
-						<h4>超值</h4>
-						<div class="activityMain ">
-							<img src="<%=path%>/images/activity.jpg "></img>
-						</div>
-						<div class="info ">
-							<h3>春节送礼优选</h3>
-						</div>													
-					</div>
-
-					<c:forEach items="${sessionScope.list1}" var="item" varStatus="">
+					<c:forEach items="${activityList}" var="item" varStatus="">
 						<div class="am-u-sm-3 ">
 							<div class="icon-sale one "></div>
 							<h4>秒杀</h4>
 							<div class="activityMain ">
 							    <!--  点击图片显示图片详细 -->
-								<%-- <a href="${item.website}"><img src="${item.path }"></img> </a> --%>
-								<a href="${url}/intrServlet?goodId=${item.id}"><img src="${item.path }"></img> </a>
+								<a href="<%=path %>/shop/detail.html?productId=${item.aab203}"><img src="${item.aab603 }"></img></a>
 							</div>
 							<div class="info ">
-								<h3>春节送礼优选</h3>
+								<h3>${item.aab604 }</h3>
 							</div>
 						</div>
-
 					</c:forEach>
-
 				</div>
-
 				<div class="clear "></div>
 				<div id="f1">
 					<!--甜点-->
@@ -359,36 +351,13 @@
 					<div class="am-g am-g-fixed floodFour">
 						<div class="am-u-sm-5 am-u-md-4 text-one list ">
 							<div class="word">
+							<c:forEach begin="0" end="5">
 								<a class="outer" href="#">
 								    <span class="inner">
 								        <b class="text">核桃</b> 
 								    </span> 
 								</a>
-								<a class="outer" href="#">
-								    <span class="inner">
-								        <b class="text">核桃</b>
-								    </span> 
-								</a>
-								<a class="outer" href="#">
-								    <span class="inner">
-								        <b class="text">核桃</b>
-								    </span> 
-								</a> 
-								<a class="outer" href="#">
-								    <span class="inner">
-								        <b class="text">核桃</b> 
-								    </span> 
-								</a> 
-								<a class="outer" href="#">
-								    <span class="inner">
-								        <b class="text">核桃</b>
-								     </span> 
-								</a> 
-								<a class="outer" href="#">
-								    <span class="inner">
-								        <b class="text">核桃</b>
-								    </span> 
-								</a>
+							</c:forEach>
 							</div>
 							<a href="# ">
 								<div class="outer-con ">
@@ -399,38 +368,16 @@
 							</a>
 							<div class="triangle-topright"></div>
 						</div>
-
-						<div class="am-u-sm-7 am-u-md-4 text-two">
-							<div class="outer-con ">
-								<div class="title ">雪之恋和风大福</div>
-								<div class="sub-title ">&yen;13.8</div>
-								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-							</div>
-							<a href="# "><img src="<%=path%>/images/2.jpg" /> </a>
-						</div>
-						
-						<div class="am-u-sm-7 am-u-md-4 text-two">
-							<div class="outer-con ">
-								<div class="title ">雪之恋和风大福</div>
-								<div class="sub-title ">&yen;13.8</div>
-								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-							</div>
-							<a href="# "><img src="<%=path%>/images/2.jpg" /> </a>
-						</div>
-
-						<c:forEach items="${sessionScope.list2}" var="item1" varStatus="">
-
+						<c:forEach items="${productList}" var="item1" varStatus="">
 							<div class="am-u-sm-7 am-u-md-4 text-two">
 								<div class="outer-con ">
-									<div class="title ">${item1.name }</div>
-									<div class="sub-title ">&yen;${item1.price }</div>
+									<div class="title ">${item1.aab202 }</div>
+									<div class="sub-title ">&yen;${item1.aab205 }</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
 								<!-- 甜品 -->
-								<%-- <a href="${item1.website }"><img src="${item1.path }" /> </a> --%>
-								<a href="${url}/intrServlet?goodId=${item1.id}"><img src="${item1.path }" /> </a>
+								<a href="<%=path %>/shop/detail.html?productId=${item1.aab203}"><img src="${productImg }" /> </a>
 							</div>
-
 						</c:forEach>
 					</div>
 					<div class="clear "></div>
@@ -459,36 +406,13 @@
 					<div class="am-g am-g-fixed floodThree ">
 						<div class="am-u-sm-4 text-four list">
 							<div class="word">
+							<c:forEach begin="0" end="5">
 								<a class="outer" href="#">
 								    <span class="inner">
 								        <b class="text">核桃</b> 
 								    </span> 
-								</a> 
-								<a class="outer" href="#">
-								    <span class="inner">
-								         <b class="text">核桃</b> 
-								     </span> 
-								 </a> 
-								 <a class="outer" href="#">
-								     <span class="inner">
-								         <b class="text">核桃</b>
-								     </span> 
-								 </a> 
-								 <a class="outer" href="#">
-								     <span class="inner">
-								         <b class="text">核桃</b> 
-								     </span> 
-								 </a> 
-								 <a class="outer" href="#">
-								     <span class="inner">
-								         <b class="text">核桃</b> 
-								     </span> 
-								 </a> 
-								 <a class="outer" href="#">
-								     <span class="inner">
-								         <b class="text">核桃</b>
-								     </span> 
-								 </a>
+								</a>
+							</c:forEach>
 							</div>
 							<a href="# "> 
 							    <img src="<%=path%>/images/act1.png " />
@@ -498,81 +422,20 @@
 							</a>
 							<div class="triangle-topright"></div>
 						</div>
-						<div class="am-u-sm-4 text-four">
-							<a href="# "> <img src="<%=path%>/images/6.jpg" />
-								<div class="outer-con ">
-									<div class="title ">雪之恋和风大福</div>
-									<div class="sub-title ">&yen;13.8</div>
-									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-								</div> </a>
-						</div>
-						<c:forEach items="${sessionScope.list3}" var="item2" varStatus="">
-
+						<c:forEach items="${productList}" var="item2" varStatus="">
 							<div class="am-u-sm-4 text-four">
 							<!-- 坚果信息 -->
 								<%-- <a href="${item2.website }"> <img src="${item2.path }" /> --%>
-								<a href="${url}/intrServlet?goodId=${item2.id}">
-								    <img src="${item2.path }" />
+								<a href="<%=path %>/shop/detail.html?productId=${item2.aab203}">
+								    <img src="${productImg }" />
 									<div class="outer-con ">
-										<div class="title ">${item2.name }</div>
-										<div class="sub-title ">&yen;${item2.price }</div>
+										<div class="title ">${item2.aab202 }</div>
+										<div class="sub-title ">&yen;${item2.aab205 }</div>
 										<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 									</div>
 								</a>
 							</div>
 						</c:forEach>
-
-						<div class="am-u-sm-4 text-four">
-							<a href="# "> <img src="<%=path%>/images/7.jpg" />
-								<div class="outer-con ">
-									<div class="title ">雪之恋和风大福</div>
-									<div class="sub-title ">&yen;13.8</div>
-									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-								</div> 
-							</a>
-						</div>
-
-						<div class="am-u-sm-4 text-four ">
-							<a href="# "> 
-							<img src="<%=path%>/images/10.jpg" />
-								<div class="outer-con ">
-									<div class="title ">雪之恋和风大福</div>
-									<div class="sub-title ">&yen;13.8</div>
-									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-								</div> 
-							</a>
-						</div> 
-
-						<div class="am-u-sm-4 text-four ">
-							<a href="# ">
-							 <img src="<%=path%>/images/8.jpg" />
-								<div class="outer-con ">
-									<div class="title ">雪之恋和风大福</div>
-									<div class="sub-title ">&yen;13.8</div>
-									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-								</div> 
-							</a>
-						</div>
-						<div class="am-u-sm-4 text-four">
-							<a href="# "> 
-							    <img src="<%=path%>/images/9.jpg" />
-								<div class="outer-con ">
-									<div class="title ">雪之恋和风大福</div>
-									<div class="sub-title ">&yen;13.8</div>
-									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-								</div> 
-							</a>
-						</div>
-						<div class="am-u-sm-4 text-four">
-							<a href="# "> 
-							    <img src="<%=path%>/images/10.jpg" />
-								<div class="outer-con ">
-									<div class="title ">雪之恋和风大福</div>
-									<div class="sub-title ">&yen;13.8</div>
-									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-								</div> 
-							</a>
-						</div>
 					</div>
 					<div class="clear "></div>
 				</div>

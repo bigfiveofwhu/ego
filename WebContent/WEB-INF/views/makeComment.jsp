@@ -56,7 +56,7 @@
 					
 				});
 	    	 })
-	    	 function sendComment(vaab302)
+	    	function sendComment(vaab302)
 			{
 				var vform = document.getElementById("myform");
 				$('input[name="aab403"]').val($("#comment_text").val());
@@ -74,6 +74,7 @@
 		<input name="aab411" type="hidden"/>
 		<input name="aab410" type="hidden"/>
 		<input name="aab403" type="hidden"/>
+		<input name="aab203" value="${ins.aab203 }" type="hidden"/>
 		<input name="aab412" value="02" type="hidden"/>
 		</form>
 		<!--ͷ -->

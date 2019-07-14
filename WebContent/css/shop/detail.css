@@ -1,0 +1,12 @@
+#addr_1,#addr_2,#addr_3{
+	margin-top: 4px;
+	hight:48px;
+	max-width: 87px;
+	border-color: #fff;
+}
+#addr_1{
+	margin-left: -2px;
+}
+#addr_2,#addr_3{
+	margin-left: -4px;
+}

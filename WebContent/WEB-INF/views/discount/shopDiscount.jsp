@@ -1,5 +1,18 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.List" %>
 <%@ page language="java" pageEncoding="GBK"%>
-<%@include file="../framework/bootstrapHeader.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/ego/css/bootstrap.css">
+<link rel="stylesheet" href="/ego/layui/css/layui.css">
+<meta charset="GBK">
+<title></title>
+</head>
+<body>
+
 
 <style>
         .demo {
@@ -13,6 +26,11 @@
             font-family: "Microsoft YaHei",'Source Code Pro', Menlo, Consolas, Monaco, monospace;
         }
 
+		.stampSize{
+			width: 387px;
+            height: 140px;
+		}
+		
         .stamp {
             width: 387px;
             height: 140px;
@@ -22,15 +40,15 @@
             overflow: hidden;
         }
 
-            .stamp:before {
-                content: '';
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 10px;
-                right: 10px;
-                z-index: -1;
-            }
+           .stamp:before {
+               content: '';
+               position: absolute;
+               top: 0;
+               bottom: 0;
+               left: 10px;
+               right: 10px;
+               z-index: -1;
+           }
 
             .stamp:after {
                 content: '';
@@ -168,7 +186,7 @@
                 left: 5px;
                 right: 5px;
             }
-
+            
             .stamp04 .copy {
                 padding: 10px 6px 10px 12px;
                 font-size: 24px;
@@ -190,40 +208,56 @@
                     display: block;
                 }
     </style>
-<div class="demo">
-		<div class="stamp stamp01">
-            <div class="par"><p>XXXXXX折扣店</p><sub class="sign">￥</sub><span>50.00</span><sub>优惠券</sub><p>订单满100.00元</p></div>
-            <div class="copy">副券<p>2015-08-13<br>2016-08-13</p></div>
-            <i></i>
-        </div>
-        
-        <div class="stamp stamp01">
-            <div class="par"><p>XXXXXX折扣店</p><sub class="sign">￥</sub><span>50.00</span><sub>优惠券</sub><p>订单满100.00元</p></div>
-            <div class="copy">副券<p>2015-08-13<br>2016-08-13</p></div>
-            <i></i>
-        </div>
-
-        <div class="stamp stamp02">
-            <div class="par"><p>XXXXXX折扣店</p><sub class="sign">￥</sub><span>50.00</span><sub>优惠券</sub><p>订单满100.00元</p></div>
-            <div class="copy">副券<p>2015-08-13<br>2016-08-13</p></div>
-            <i></i>
-        </div>
-
-        <div class="stamp stamp03">
-            <div class="par"><p>XXXXXX折扣店</p><sub class="sign">￥</sub><span>50.00</span><sub>优惠券</sub><p>订单满100.00元</p></div>
-            <div class="copy">副券<p>2015-08-13<br>2016-08-13</p><a href="#">立即使用</a></div>
-            <i></i>
-        </div>
-
-        <div class="stamp stamp04">
-            <div class="par"><p>XXXXXX折扣店</p><sub class="sign">￥</sub><span>50.00</span><sub>优惠券</sub><p>订单满100.00元</p></div>
-            <div class="copy">副券<p>2015-08-13<br>2016-08-13</p><a href="#">立即使用</a></div>
-            <i></i>
-        </div>
-    </div>
+    
 
 
+<div class="container mt-4 ml-4">
+	<%--aab501(流水) ,aab502(卡券类型),aab503(优惠值),aab504(条件),aab505(持续时间),aab506(数量) --%>
+		<%double discount; 
+		int index=0;%>
+		<c:choose>
+			<c:when test="${empty shopCoupons }">
+				<h1>还未添加任何优惠券</h1>
+			</c:when>
+			<c:otherwise>
+				<c:forEach  items="${shopCoupons}" var="item">
+				<%String str=((List<Map<String,String>>)request.getAttribute("shopCoupons")).get(index++).get("aab503"); %>
+					<%discount=Double.parseDouble(str); %>
+					
+					<c:choose>
+						<c:when test="<%=discount<20 %>">
+							<div class="stamp stamp01 w-wuto float-left mr-4" id="${item.aab501}">
+						</c:when>
+						<c:when test="<%=discount<50 %>">
+							<div class="stamp stamp02 w-wuto float-left  mr-4" id="${item.aab501}">
+						</c:when>
+						<c:when test="<%=discount<100 %>">
+							<div class="stamp stamp03 w-wuto float-left mr-4" id="${item.aab501}">
+						</c:when>
+						<c:otherwise>
+							<div class="stamp stamp04 w-wuto float-left mr-4" id="${item.aab501}">
+						</c:otherwise>
+					</c:choose>
+					            <div class=" par  w-auto">
+						            <c:if test="${item.aab502=='1'}"><p>无条件红包</p></c:if>
+						            <c:if test="${item.aab502=='2'}"><p>满减红包</p></c:if>
+						            <sub class="sign">￥</sub><span>${item.aab503}</span>
+						            <sub>优惠券</sub>
+					            	<c:if test="${item.aab502=='2'}"><p >订单满${item.aab504}元</p></c:if>
+					            </div>
+					            <div class="copy w-auto mt-4">有效期<p>${item.aab505 }天</p></div>
+			       			 </div><!-- stamp结束位置 -->
+			     </c:forEach>
+			</c:otherwise>
+		</c:choose>
+       
+</div>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+crossorigin="anonymous"></script>
+<script src="/ego/js/bootstrap.bundle.js"></script>
+<script src="/ego/layui/layui.js"></script>
 
-
-<%@include file="../framework/bootstrapFootter.jsp"%>
+</body>
+</html>

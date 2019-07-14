@@ -773,6 +773,12 @@ filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#f8c375',endCo
 	color:pink;
 }
 
+.am-active > .am-dropdown-content {
+    overflow: auto;
+    /*overflow-y:hidden;*/
+    max-height: 180px;
+}
+
 /*推荐*/
 .clock img{position: absolute;right: 15%;width: 120px;top:15px;}
 
