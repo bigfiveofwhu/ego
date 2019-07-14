@@ -77,7 +77,7 @@
 							<form enctype="multipart/form-data" id="formTag">
 							<div class="filePic">
 								<input id="pop_file" type="file"  class="inputPic" onchange="uploadFile(event)" name="fileTrans" ref="file" value="" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
-								<img id="preview" class="am-circle am-img-thumbnail" src="<%=basePath%>/upload/${user.imgName }.jpg" alt="" />
+								<img id="preview" class="am-circle am-img-thumbnail" src="<%=path%>/images/upload/${user.imgName }.jpg" alt="" />
 							</div>
 							</form>
 					
@@ -268,6 +268,7 @@ function uploadFile(ev){
 		data : formdata,
 		success:function(res,status){
             console.log("修改默认头像成功");
+			//img.setAttribute('src',"<%=basePath%>/images/upload/user_1.jpg")
 			},
 			error:function(res,status){
 				console.log("修改默认头像失败");

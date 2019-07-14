@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+	
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
 
 		<title>个人中心</title>
@@ -25,7 +25,6 @@
 					<!--顶部导航条 -->
 					<%@ include file="/navigate.jsp" %>
 						<!--悬浮搜索框-->
-
 						<div class="nav white">
 							<div class="logoBig">
 								<li><img src="<%=path%>/images/logobig.png" /></li>
@@ -161,6 +160,7 @@
 									<li><a href="order.html"><i><img src="<%=path%>/images/receive.png"/></i><span>待收货</span></a></li>
 									<li><a href="order.html"><i><img src="<%=path%>/images/comment.png"/></i><span>待评价<em class="m-num">3</em></span></a></li>
 									<li><a href="change.html"><i><img src="<%=path%>/images/refund.png"/></i><span>退换货</span></a></li>
+
 								</ul>
 								<div class="orderContentBox">
 									<div class="orderContent">
@@ -207,6 +207,7 @@
 										</div>
 										<div class="state">已发货</div>
 										<div class="price"><span class="sym">&yen;</span>246.<span class="sym">50</span></div>
+
 
 									</div>
 									<a href="javascript:void(0);" class="btnPay">再次购买</a>
@@ -268,6 +269,7 @@
 									<div class="Box">
 										<div class="CouponList">
 											<span class="price">&yen;<strong class="num">50</strong></span>
+
 	                                        <p class="brandName"><a href="#">ABC品牌499减50</a></p>
 	                                        <p class="discount">满<span>499</span>元抵扣</p>
                                             <a  href="#" class="btnReceive">立即领取</a>
@@ -441,7 +443,6 @@
 				</div>
 				<!--底部-->
 				<%@ include file="/footer.jsp" %>
-
 			</div>
 
 			<aside class="menu">
@@ -480,7 +481,7 @@
 					<li class="person">
 						<p><i class="am-icon-tags"></i>我的收藏</p>
 						<ul>
-							<li> <a href="collection.html">收藏</a></li>
+							<li> <a href="collection.jsp">收藏</a></li>
 							<li> <a href="foot.html">足迹</a></li>														
 						</ul>
 					</li>
@@ -506,5 +507,4 @@
 			<li class="active"><a href="index.html"><i class="am-icon-user"></i>我的</a></li>
 		</div>
 	</body>
-
 </html>

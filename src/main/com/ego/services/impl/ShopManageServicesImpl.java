@@ -130,4 +130,23 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 		String sql2 = "select avg(aab409) as productAvg from ab04 where aab203=?";
 		return this.queryForMap(sql2,olist.toArray());
 	}
+	
+	public boolean checkIn() throws Exception
+	{
+		//用户id用session获得
+		Object userId = "1";
+		String sql1="select a.aab107 from ab01 a where a.aaa102 = ?";
+		List<Map<String,String>> list = this.queryForList(sql1,userId );
+		if(list.size() > 0)
+		{
+			//用户审核通过
+			if(list.get(0).get("aab107").equals("02"))
+					return true;
+			else
+			//用户审核未通过
+				return false;
+		}
+		//用户未开店
+		return false;
+	}
 }
