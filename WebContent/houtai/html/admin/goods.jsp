@@ -1,274 +1,371 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page pageEncoding="GBK" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<!-- È°µÈù¢meta -->
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>ÂïÜÂìÅÁÆ°ÁêÜ</title>
-		<!-- Tell the browser to be responsive to screen width -->
-		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-		<link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../plugins/adminLTE/css/AdminLTE.css">
-		<link rel="stylesheet" href="../../plugins/adminLTE/css/skins/_all-skins.min.css">
-		<link rel="stylesheet" href="../../css/style.css">
-		<link rel="stylesheet" href="../../plugins/angularjs/pagination.css">
-	</head>
+<head>
+    <!-- “≥√Êmeta -->
+    °°°°
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>…Ã∆∑π‹¿Ì</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="../../plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../plugins/angularjs/pagination.css">
+</head>
 
-	<body class="hold-transition skin-red sidebar-mini" ng-app="shopping" ng-controller="GoodsController" ng-init="search_domain.auditStatus=1;findItemCatList();findTypeList();findBrandList()">
-		<!-- .box-body -->
+<body class="hold-transition skin-red sidebar-mini" ng-controller="SellerController">
+<!-- .box-body -->
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">…Ã∆∑…Û∫À</h3>
+    </div>
 
-		<div class="box-header with-border">
-			<h3 class="box-title">ÂïÜÂìÅÂÆ°Ê†∏</h3>
-		</div>
+    <div class="box-body">
 
-		<div class="box-body">
+        <!--  ˝æ›±Ì∏Ò -->
+        <div class="table-box">
 
-			<!-- Êï∞ÊçÆË°®Ê†º -->
-			<div class="table-box">
+            <!--π§æﬂ¿∏-->
+            <form action="queryGood.html" method="post">
+                <div class="box-tools pull-right">
+                    <div class="has-feedback">
+                        ◊¥Ã¨£∫
+                        <select name="qaab212">
+                            <option value="">»´≤ø</option>
+                            <option value="01">Œ¥…Û∫À</option>
+                            <option value="02">…Û∫ÀÕ®π˝</option>
+                            <option value="03">…Û∫ÀŒ¥Õ®π˝</option>
+                            <option value="04">“—œ¬º‹</option>
+                        </select>
+                        …Ã∆∑√˚≥∆£∫ <input name="qaab202">
+                        <input type="submit" class="btn btn-default" value="≤È—Ø"/>
+                    </div>
+                </div>
+            </form>
+            <!--π§æﬂ¿∏/-->
 
-				<!--Â∑•ÂÖ∑Ê†è-->
-				<div class="pull-left">
-					<div class="form-group form-inline">
-						<div class="btn-group">
-							<button type="button" class="btn btn-default" title="Âà†Èô§" ng-click="delete()"><i class="fa fa-trash-o"></i> Âà†Èô§</button>
-							<button type="button" class="btn btn-default" title="ÂÆ°Ê†∏ÈÄöËøá" ng-click="updateStatus('2')"><i class="fa fa-check"></i> ÈÄöËøá</button>
-							<button type="button" class="btn btn-default" title="ÂÆ°Ê†∏È©≥Âõû" ng-click="updateStatus('3')"><i class="fa fa-ban" ></i> È©≥Âõû</button>
-							<button type="button" class="btn btn-default" title="ÂïÜÂìÅÂÖ≥Èó≠" ng-click="updateStatus('4')"><i class="fa fa-ban" ></i> ÂÖ≥Èó≠</button>
-							<button type="button" class="btn btn-default" title="Âà∑Êñ∞"><i class="fa fa-refresh"></i> Âà∑Êñ∞</button>
-						</div>
-					</div>
-				</div>
-				<div class="box-tools pull-right">
-					<div class="has-feedback">
-						ÂïÜÂìÅÂêçÁß∞Ôºö<input ng-model="search_domain.goodsName">
-						<button class="btn btn-default" ng-click="reloadList()">Êü•ËØ¢</button>
-					</div>
-				</div>
-				<!--Â∑•ÂÖ∑Ê†è/-->
+            <!-- ˝æ›¡–±Ì-->
+            <table id="dataList" class="table table-bordered table-striped table-hover dataTable"
+                   style="margin-left:10px">
+                <thead>
+                <tr>
+                    <th class="sorting">–Ú∫≈</th>
+                    <th class="sorting_asc">…Ã∆∑ID</th>
+                    <th class="sorting">…Ã∆∑√˚≥∆</th>
+                    <th class="sorting">…Ã∆∑º€∏Ò</th>
+                    <th class="sorting">“ªº∂∑÷¿‡</th>
+                    <th class="sorting">∂˛º∂∑÷¿‡</th>
+                    <th class="sorting">»˝º∂∑÷¿‡</th>
+                    <th class="sorting">◊¥Ã¨</th>
+                    <th class="text-center">≤Ÿ◊˜</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- œ‘ æ≤ÈµΩµƒ ˝æ› -->
+                <c:forEach items="${goodslist}" var="ins" varStatus="vs">
+                    <tr>
+                        <td>${vs.count}</td>
+                        <td>${ins.aab203}</td>
+                        <td>${ins.aab202}</td>
+                        <td>${ins.aab205}</td>
+                        <td>${ins.aab204_1}</td>
+                        <td>${ins.aab204_2}</td>
+                        <td>${ins.aab204_3}</td>
+                        <td>${ins.cnaab212}</td>
+                        <td class="text-center">
+                            <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
+                                    data-target="#sellerModal" onclick="getGoodDetail(${ins.aab203})">œÍ«È
+                            </button>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+            <!-- ˝æ›¡–±Ì/-->
+            <tm-pagination conf="paginationConf"></tm-pagination>
 
-				<!--Êï∞ÊçÆÂàóË°®-->
-				<table id="dataList" class="table table-bordered table-striped table-hover dataTable">
-					<thead>
-						<tr>
-							<th class="" style="padding-right:0px">
-								<input id="selall" type="checkbox" class="icheckbox_square-blue">
-							</th>
-							<th class="sorting_asc">ÂïÜÂìÅID</th>
-							<th class="sorting">ÂïÜÂìÅÂêçÁß∞</th>
-							<th class="sorting">ÂïÜÂìÅ‰ª∑Ê†º</th>
-							<th class="sorting">‰∏ÄÁ∫ßÂàÜÁ±ª</th>
-							<th class="sorting">‰∫åÁ∫ßÂàÜÁ±ª</th>
-							<th class="sorting">‰∏âÁ∫ßÂàÜÁ±ª</th>
-							<th class="sorting">Áä∂ÊÄÅ</th>
-							<th class="text-center">Êìç‰Ωú</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="entity in list">
-							<td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
-							<td>{{entity.id}}</td>
-							<td>{{entity.goodsName}}</td>
-							<td>{{entity.price}}</td>
-							<td>{{itemCatList[entity.category1Id]}}</td>
-							<td>{{itemCatList[entity.category2Id]}}</td>
-							<td>{{itemCatList[entity.category3Id]}}</td>
-							<td>
-								<span>
-		                         {{status[entity.auditStatus]}} 
-		                        </span>
+        </div>
+        <!--  ˝æ›±Ì∏Ò /-->
 
-							</td>
-							<td class="text-center">
-								<button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#goodsModal" ng-click="findOneByID(entity.id)">ËØ¶ÊÉÖ</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<!--Êï∞ÊçÆÂàóË°®/-->
-				<tm-pagination conf="paginationConf"></tm-pagination>
-			</div>
-			<!-- Êï∞ÊçÆË°®Ê†º /-->
+    </div>
+    <!-- /.box-body -->
 
-		</div>
-		<!-- /.box-body -->
+    <!-- …Ã∆∑œÍ«È -->
+    <div class="modal fade" id="sellerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                            onclick="clearDetails()">°¡
+                    </button>
+                    <h3 id="myModalLabel">…Ã∆∑œÍ«È</h3>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#goods" data-toggle="tab">…Ã∆∑œÍœ∏–≈œ¢</a>
+                        </li>
+                        <li>
+                            <a href="#shop" data-toggle="tab">µÍ∆ÃœÍœ∏–≈œ¢</a>
+                        </li>
+                        <li>
+                            <a href="#content" data-toggle="tab">…Û∫Àƒ⁄»›</a>
+                        </li>
+                        <li>
+                            <a href="#detail" data-toggle="tab">…Û∫ÀœÍ«È</a>
+                        </li>
+                    </ul>
 
-		<!-- ÂïÜÂìÅËØ¶ÊÉÖ -->
-		<div class="modal fade" id="goodsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">√ó</button>
-						<h3 id="myModalLabel">ÂïÜÂìÅËØ¶ÊÉÖ</h3>
-					</div>
-					<div class="modal-body">
+                    <!-- —°œÓø®ø™ º -->
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane active in" id="goods">
+                            <br>
+                            <table class="table table-bordered table-striped" width="800px">
+                                <tr>
+                                    <td>…Ã∆∑√˚≥∆</td>
+                                    <td id="aab202" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>…Ã∆∑id</td>
+                                    <td id="aab203" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>…Ã∆∑¿‡–Õ</td>
+                                    <td id="aab204" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>…Ã∆∑º€∏Ò</td>
+                                    <td id="aab205" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>µÍ∆Ã◊¥Ã¨</td>
+                                    <td id="aab107" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>ø‚¥Ê</td>
+                                    <td id="aab206" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>…Ã∆∑√Ë ˆ</td>
+                                    <td id="aab207" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>’π æ“≥√Ê</td>
+                                    <td id="aab208" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>…Ã∆∑πÊ∏Ò</td>
+                                    <td id="aab209" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td> €∫Û¿‡–Õ</td>
+                                    <td id="aab211" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>…Ã∆∑◊¥Ã¨</td>
+                                    <td id="aab212" class="to_clear"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="shop">
+                            <br>
+                            <table class="table table-bordered table-striped">
+                                <tr>
+                                    <td>µÍ∆Ãid</td>
+                                    <td id="aab102" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>µÍ∆Ã√˚≥∆</td>
+                                    <td id="aab103" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>µÍ∆Ã–≈”√ª˝∑÷</td>
+                                    <td id="aab104" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>µÍ∆Ãµÿ÷∑</td>
+                                    <td id="aab105" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>»œ÷§–≈œ¢</td>
+                                    <td id="aab106" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>±£÷§Ω</td>
+                                    <td id="aab108" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>ŒÔ¡˜∆¿∑÷</td>
+                                    <td id="aab109" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>∑˛ŒÒ∆¿∑÷</td>
+                                    <td id="aab110" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>…Ã∆∑∆¿∑÷</td>
+                                    <td id="aab111" class="to_clear"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="content">
+                            <br>
+                            <table class="table table-bordered table-striped">
+                                <tr>
+                                    <td>…Û∫Àƒ⁄»›</td>
+                                    <td id="aad802" class="to_clear"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="detail">
+                            <br>
+                            <table class="table table-bordered table-striped">
+                                <tr>
+                                    <td>…Û∫À¡˜ÀÆ∫≈</td>
+                                    <td id="aad801" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>…Û∫À»À</td>
+                                    <td id="aad102" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>»®œﬁº∂±</td>
+                                    <td id="aad104" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>…Û∫À◊¥Ã¨</td>
+                                    <td id="aad804" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>…Û∫À ±º‰</td>
+                                    <td id="aad806" class="to_clear"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- —°œÓø®Ω· ¯ -->
 
-						<ul class="nav nav-tabs">
-							<li class="active">
-								<a href="#Baes" data-toggle="tab">Âü∫Êú¨‰ø°ÊÅØ</a>
-							</li>
-							<li>
-								<a href="#Category" data-toggle="tab">Á±ªÁõÆ‰ø°ÊÅØ</a>
-							</li>
-							<li>
-								<a href="#extend" data-toggle="tab">Êâ©Â±ï‰ø°ÊÅØ</a>
-							</li>
-							<li>
-								<a href="#sku" data-toggle="tab">SKU‰ø°ÊÅØ</a>
-							</li>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateState('02')">
+                        …Û∫ÀÕ®π˝
+                    </button>
+                    <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" onclick="updateState('03')">
+                        …Û∫ÀŒ¥Õ®π˝
+                    </button>
+                    <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" onclick="updateState('04')">
+                        œ¬º‹
+                    </button>
+                    <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" onclick="clearDetails()">πÿ±’
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 
-						</ul>
+<script>
+    function getGoodDetail(id) {
+        $.ajax({
+            url: "<%=basePath%>/adminReview.ajax",
+            type: "post",
+            timeout: 20000,
+            dataType: "json",
+            data: {
+                "aab203": id,
+                "type": '3'
+            },
+            success: function (res) {
+                var map = res.map;
+                if (typeof (map) !== "undefined") {
+                    $("#aab202").html(map.aab202);
+                    $("#aab203").html(map.aab203);
+                    $("#aab204").html(map.cnaab204);
+                    $("#aab205").html(map.aab205);
+                    $("#aab206").html(map.aab206);
+                    $("#aab207").html(map.aab207);
+                    $("#aab208").html(map.aab208);
+                    $("#aab209").html(map.aab209);
+                    $("#aab211").html(map.aab211);
+                    $("#aab212").html(map.cnaab212);
 
-						<!-- ÈÄâÈ°πÂç°ÂºÄÂßã -->
-						<div id="myTabContent" class="tab-content">
-							<div class="tab-pane active in" id="Baes">
-								<br>
-								<table class="table table-bordered table-striped" width="800px">
-									<tr>
-										<td>ÂïÜÂìÅID</td>
-										<td>{{details.goods.id}}</td>
-									</tr>
-									<tr>
-										<td>ÂïÜÂÆ∂</td>
-										<td>{{details.goods.sellerId}}</td>
-									</tr>
-									<tr>
-										<td>ÂïÜÂìÅÂêçÁß∞</td>
-										<td>{{details.goods.goodsName}}</td>
-									</tr>
-									<tr>
-										<td>‰ª∑Ê†º</td>
-										<td>{{details.goods.price}}</td>
-									</tr>
-									<tr>
-										<td>ÂìÅÁâå</td>
-										<td>{{BrandList[details.goods.brandId]}}</td>
-									</tr>
-									<tr>
-										<td>ÂâØÊ†áÈ¢ò</td>
-										<td>{{details.goods.caption}}</td>
-									</tr>
-									<tr>
-										<td>ÂåÖË£ÖÂàóË°®</td>
-										<td>{{details.goodsDesc.packageList}}</td>
-									</tr>
-									<tr>
-										<td>ÂîÆÂêéÊúçÂä°</td>
-										<td>{{details.goodsDesc.saleService}}</td>
-									</tr>
-								</table>
-							</div>
+                    $("#aab102").html(map.aab102);
+                    $("#aab103").html(map.aab103);
+                    $("#aab104").html(map.aab104);
+                    $("#aab105").html(map.aab105);
+                    $("#aab106").html(map.aab106);
+                    $("#aab108").html(map.aab108);
+                    $("#aab109").html(map.aab109);
+                    $("#aab110").html(map.aab110);
+                    $("#aab111").html(map.aab111);
 
-							<div class="tab-pane fade" id="Category">
-								<br>
-								<table class="table table-bordered table-striped" width="800px">
-									<tr>
-										<td>‰∏ÄÁ∫ßÁ±ªÁõÆ</td>
-										<td>{{itemCatList[details.goods.category1Id]}}</td>
-									</tr>
-									<tr>
-										<td>‰∫åÁ∫ßÁ±ªÁõÆ</td>
-										<td>{{itemCatList[details.goods.category2Id]}}</td>
-									</tr>
-									<tr>
-										<td>‰∏âÁ∫ßÁ±ªÁõÆ</td>
-										<td>{{itemCatList[details.goods.category3Id]}}</td>
-									</tr>
+                    $("#aad802").html(map.aad802);
 
-									<tr>
-										<td>ÂàÜÁ±ªÊ®°Êùø</td>
-										<td>{{TypeList[details.goods.typeTemplateId]}}</td>
-									</tr>
-								</table>
-							</div>
+                    $("#aad801").html(map.aad801);
+                    $("#aad102").html(map.aad102);
+                    $("#aad104").html(map.aad104);
+                    $("#aad804").html(map.cnaad804);
+                    $("#aad806").html(map.aad806);
 
-							<div class="tab-pane fade" id="extend">
-								<br>
-								<table class="table table-bordered table-striped" width="800px">
-									<tr>
-										<td>Êâ©Â±ï‰ø°ÊÅØ</td>
-										<td>
-											<span ng-repeat="pojo in details.goodsDesc.customAttributeItems">
-												{{pojo.text}}  :{{pojo.value}}  <br />
-											</span>
+                    console.log("ªÒ»°…Ã∆∑œÍœ∏–≈œ¢≥…π¶")
+                }
+            },
+            error: function () {
+                console.log("…Ã∆∑œÍœ∏–≈œ¢“Ï≤Ωº”‘ÿ¥ÌŒÛ");
+            }
+        });
+    }
 
-										</td>
-									</tr>
-									<tr>
-										<td id="#container">ÂïÜÂìÅ‰ªãÁªç</td>
-										<td ng-bind-html="details.goodsDesc.introduction"></td>
-									</tr>
-									<tr>
-										<td>ËßÑÊ†º‰ø°ÊÅØ</td>
-										<td>
-											<span ng-repeat="spec in details.goodsDesc.specificationItems">
-												{{spec.attributeName}} :  {{spec.attributeValue}} <br />
-											</span>
-										</td>
-									</tr>
-									<tr>
-										<td>ÂõæÁâáËØ¶ÊÉÖ</td>
-										<td>
-											<p ng-repeat="img in details.goodsDesc.itemImages">
-												{{img.color}} : <img alt="" src="{{img.url}}" width="100px" height="100px"> <br />
-											</p>
-										</td>
-									</tr>
+    function updateState(state) {
+        $.ajax({
+            url: "<%=basePath%>/adminReview.ajax",
+            type: "post",
+            timeout: 20000,
+            dataType: "json",
+            data: {
+                "aab203": $("#aab203").text(),
+                "aab212": state,
+                "aad102": '7001',
+                "aad801": $("#aad801").text(),
+                "aad804": state,
+                "type": '4'
+            },
+            success: function () {
+                alert('≤Ÿ◊˜≥…π¶')
+            },
+            error: function () {
+                alert('≤Ÿ◊˜ ß∞‹£¨«Î÷ÿ ‘')
+            }
+        });
+        clearDetails();
+    }
 
-								</table>
-							</div>
+    function clearDetails() {
+        $(".to_clear").html("");
+    }
+</script>
 
-							<div class="tab-pane fade" id="sku">
-								<br>
-								<table class="table table-bordered table-striped" width="800px">
-									<tr>
-										<th class="sorting">ÂïÜÂìÅÊ†áÈ¢ò</th>
-										<th class="sorting">ÂïÜÂìÅÂ∫ìÂ≠ò</th>
-										<th class="sorting">ÂïÜÂìÅ‰ª∑Ê†º</th>
-										<th class="sorting">ÂàõÂª∫Êó∂Èó¥</th>
-										<th class="sorting">Êõ¥Êñ∞Êó∂Èó¥</th>
-									</tr>
-									<tr ng-repeat="list in details.itemList">
-										<td>{{list.title}}</td>
-										<td>{{list.num}}</td>
-										<td>{{list.price}}</td>
-										<td>{{list.createTime}}</td>
-										<td>{{list.updateTime}}</td>
-									</tr>
-								</table>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="updateStatusOne(details.goods.id,'2')">ÈÄöËøáÁî≥ËØ∑</button>
-						<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" ng-click="updateStatusOne(details.goods.id,'3')">È©≥ÂõûÁî≥ËØ∑</button>
-						<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" ng-click="updateStatusOne(details.goods.id,'4')">ÂÖ≥Èó≠ÂïÜÂìÅ</button>
-						<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">ÂÖ≥Èó≠</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</body>
-	
-	<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-	<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../../plugins/angularjs/angular.min.js"></script>
-	<script type="text/javascript" src="../../plugins/angularjs/angular-sanitize.min.js"></script>
-	<script src="../../plugins/angularjs/pagination.js"></script>
-	<script type="text/javascript" src="../../js/base/Base_ngSanitize.js"></script>
-	<script type="text/javascript" src="../../js/base/BaseService.js"></script>
-	<script type="text/javascript" src="../../js/base/BaseController.js"></script>
-	<script type="text/javascript" src="../../js/service/UploadService.js"></script>
-	<script type="text/javascript" src="../../js/service/TypeTemplateService.js"></script>
-	<script type="text/javascript" src="../../js/service/SpecificationService.js"></script>
-	<script type="text/javascript" src="../../js/service/ItemCatService.js"></script>
-	<script type="text/javascript" src="../../js/service/GoodsService.js"></script>
-	<script type="text/javascript" src="../../js/service/BrandService.js"></script>
-	<script type="text/javascript" src="../../js/controller/GoodsController.js"></script>
+<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../plugins/angularjs/angular.min.js"></script>
+<!-- ∑÷“≥◊Èº˛ -->
+<script src="../../plugins/angularjs/pagination.js"></script>
+<script type="text/javascript" src="../../js/base/Base_pagination.js"></script>
+<script type="text/javascript" src="../../js/base/BaseService.js"></script>
+<script type="text/javascript" src="../../js/base/BaseController.js"></script>
+<script type="text/javascript" src="../../js/service/SellerService.js"></script>
+<script type="text/javascript" src="../../js/controller/SellerController.js"></script>
 
 </html>

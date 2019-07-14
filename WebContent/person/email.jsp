@@ -123,21 +123,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="am-form-group">
 							<label for="user-email" class="am-form-label">验证邮箱</label>
 							<div class="am-form-content">
-								<input type="email" id="user-email" placeholder="请输入邮箱地址">
+								<input type="email" id="email" placeholder="请输入邮箱地址">
 							</div>
 						</div>
 						<div class="am-form-group code">
 							<label for="user-code" class="am-form-label">验证码</label>
 							<div class="am-form-content">
-								<input type="tel" id="user-code" placeholder="验证码">
+								<input type="tel" id="verifyCode" onblur="checkVerify()" placeholder="验证码">
 							</div>
-							<a class="btn" href="javascript:void(0);" onclick="sendMobileCode();" id="sendMobileCode">
-								<div class="am-btn am-btn-danger">发送验证码</div>
+							<a class="btn" href="javascript:void(0);"  id="sendMobileCode">
+								<button class="am-btn am-btn-danger sendVerifyCode" >发送验证码</button>
 							</a>
+							<span id="vstatus"></span>
 						</div>
 						<div class="info-btn">
-							<div class="am-btn am-btn-danger">保存修改</div>
+							<button class="am-btn am-btn-danger" id="savemodify">保存修改</button>
+							<span id="issuccess" ></span>
 						</div>
+					
 
 					</form>
 
@@ -222,6 +225,122 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</aside>
 		</div>
 
+
+<script type="text/javascript">
+	function checkVerify()
+	{
+		var verCode=$("#verifyCode").val();
+		isVerify=false;
+		console.log(verCode);
+		$.ajax({
+			url:"<%=basePath%>/verify.ajax",
+			type:"post",
+			timeout:20000,
+			data:{
+				"verCode":verCode
+			},
+			dataType:"json",
+			success:function(res,status){
+				console.log("返回");
+				if(res.status=='200'){
+					//$(".successIcon").css("display","inline");
+					//$(".failIcon").css("display","none");
+					//alert("验证成功")
+				    $(".sendVerifyCode").text("验证成功");
+					isVerify=true;
+				}else{
+					console.log("s验证失败")
+					//$(".successIcon").css("display","none");
+					//$(".failIcon").css("display","inline");
+					$(".sendVerifyCode").text("验证失败");
+				}
+			},
+			error:function(res,status){
+				console.log("验证失败")
+				$("#vstatus").html()="验证失败,网络故障"
+			}
+		});
+	}
+	
+	
+	var count=60;
+	function countTime(){
+		var button=$(".sendVerifyCode");
+		button.text((count--)+"秒后重新发送");
+		if(count>=0){
+			setTimeout(countTime,1000);
+		}else{
+			setTimeout(function(){
+				button.text("发送验证码");
+				button.attr("disabled",false);
+				count=60;
+			},1000);
+		}
+	}
+	$(function(){
+		<%-- 验证码的异步发送--%>
+		$(".sendVerifyCode").click(function(){
+			$(".sendVerifyCode").attr("disabled",true);
+			$(".sendVerifyCode").text("正在发送...");
+			console.log("发送验证码...");
+			
+			$.ajax({
+				url:"<%=basePath%>/verifyCode.ajax",
+				type:"post",
+				timeout:20000,
+				dataType:"json",
+				data:{
+					"object":$("#email").val()
+					
+					
+				},
+				success:function(res,status){
+					console.log(res.status);
+					console.log(res.status=='200');
+					 if(res.status=='200'){
+						 //$(".sendVerifyCode").text("60秒后重新发送");
+						 countTime();
+					 }else{
+						 $(".sendVerifyCode").text("发送失败,重新发送");
+						 $(".sendVerifyCode").attr("disabled",false);
+					 }
+				},
+				error:function(res,status){
+					console.log("返回值:"+res+";  返回状态:"+status);
+					$(".sendVerifyCode").text("发送失败,重新发送");
+					$(".sendVerifyCode").attr("disabled",false);
+				}
+			});
+		});		
+	});
+	
+	$(function()
+ {
+	$("#savemodify").click(function(){
+		$.ajax({
+			url:"<%=basePath%>/modifyEmail.ajax",
+			type:"post",
+			dataType:"json",
+			timeout:20000,
+			data:{
+				"aaa104":$("#email").val()
+			},
+			success:function(res,status){
+				//alert("修改成功")
+              console.log("修改邮箱成功");
+              $("#issuccess").html()="修改成功";
+			},
+			error:function(res,status){
+				console.log("修改邮箱失败");
+			}
+		});
+	});	
+	});	
+
+	
+	
+</script>
 	</body>
+	
 
 </html>

@@ -20,5 +20,9 @@
     <input type="submit" value ="去下单" >
     </form>
     
+    <form action="<%=path%>/showComment.html" method="post">
+    <input type="submit" value ="去管理评价" >
+    </form>
+    
 </body>
 </html>

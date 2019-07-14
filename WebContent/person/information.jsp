@@ -101,14 +101,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
 						</div>
 						<hr/>
-
 						<!--头像 -->
 						<div class="user-infoPic">
-
+							<form enctype="multipart/form-data" id="formTag">
 							<div class="filePic">
-								<input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
-								<img class="am-circle am-img-thumbnail" src="../images/getAvatar.do.jpg" alt="" />
+								<input id="pop_file" type="file"  class="inputPic" onchange="uploadFile(event)" name="fileTrans" ref="file" value="" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
+								<img id="preview" class="am-circle am-img-thumbnail" src="<%=basePath%>/upload/${user.imgName }.jpg" alt="" />
 							</div>
+							</form>
+					
 
 							<p class="am-form-help">头像</p>
 
@@ -122,7 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 						<!--个人信息 -->
 						<div class="info-main">
-							<form class="am-form am-form-horizontal" action="modifyUserInfo.html">
+							<form class="am-form am-form-horizontal" action="modifyUserInfo.html" method="post">
 
 								<div class="am-form-group">
 									<label for="user-name2" class="am-form-label">用户名</label>
@@ -205,11 +206,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								   <input type="submit" class="am-btn am-btn-danger" value="保存修改"></input>
 								</div>
                              <span>${msg }</span>
-							</form>
+				             </form>
 						</div>
-
 					</div>
-
 				</div>
 				<!--底部-->
 				<div class="footer">
@@ -292,5 +291,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 
 	</body>
+<script>
+function uploadFile(ev){
+    var that = this;
+    const file = document.getElementById('pop_file');
+    const fileObj = file.files[0];
+    const windowURL = window.URL || window.webkitURL;
+    const img = document.getElementById('preview');
+    if(file && fileObj) {
+        const dataURl = windowURL.createObjectURL(fileObj);
+        console.log(dataURl);
+        img.setAttribute('src',dataURl);
+    }
+    
+   // var ftype = "user_${user.aaa102}";
+    var formdata = new FormData();
+    formdata.append("file",fileObj);
+    
+    $.ajax({
+		url:"<%=basePath%>/fileUpload.ajax?type=user&id=${user.aaa102}",
+		type:"post",
+		dataType:"json",
+		processData : false,
+		contentType : false,
+		timeout : 20000,
+		data : formdata,
+		success:function(res,status){
+            console.log("修改默认头像成功");
+			},
+			error:function(res,status){
+				console.log("修改默认头像失败");
+			}
+	 });
 
+}
+</script>
 </html>

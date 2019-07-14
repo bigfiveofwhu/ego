@@ -6,7 +6,8 @@ public class ShowCommentServlet extends CommentControllerSupport
 	@Override
 	public String execute() throws Exception 
 	{
-		// TODO Auto-generated method stub
+		
+		this.savePageData("allComment");
 		return "WEB-INF/views/comment";
 	}
 
