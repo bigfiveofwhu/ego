@@ -2,6 +2,7 @@ package com.ego.controller.ajaxServlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -12,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("*.ajax")
 public class AjaxBaseServlet extends HttpServlet 
@@ -99,6 +101,14 @@ public class AjaxBaseServlet extends HttpServlet
 				dto.put(entry.getKey(), value);
 			}
 		}
+		
+		HttpSession session = request.getSession();
+        Enumeration<String> attributes = session.getAttributeNames();
+        while (attributes.hasMoreElements())
+        {
+            String name = attributes.nextElement();
+            dto.put(name, session.getAttribute(name));
+        }
 		// System.out.println(dto);
 		return dto;
 	}

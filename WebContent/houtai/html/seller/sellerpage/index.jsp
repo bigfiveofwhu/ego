@@ -156,12 +156,12 @@
 				       		</a>
 				       		<ul class="treeview-menu">
 								<li>
-									<a href="/ego/discount/getShopCoupons.html?aab102=1" target="iframe">
+									<a href="/ego/discount/getShopCoupons.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 优惠券
 									</a>
 								</li>
 								<li>
-									<a href="/ego/discount/discountManage.html?aab102=1" target="iframe">
+									<a href="/ego/discount/discountManage.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 优惠券管理
 									</a>
 								</li>
