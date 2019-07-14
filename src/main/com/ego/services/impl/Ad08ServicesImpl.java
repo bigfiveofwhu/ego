@@ -176,6 +176,7 @@ public class Ad08ServicesImpl extends JdbcServicesSupport
 
 	/**
 	 * aad802 --审核内容  aad803 --审核类型 , aad804 --审核状态, aad805 --审核对象, aaa102 --用户id
+	 * @author hug
 	 * @return
 	 * @throws Exception
 	 */

@@ -1,5 +1,6 @@
 package com.ego.services.impl;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -69,11 +70,15 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 		}
 		else
 		{
-			throw new Exception("在类[ Ab04ServicesImpl ]中进行了未定义的单一查询动作调用,"
-					+ "动作名称是  "+qtype);
-			
+			/**
+			 * @author hug
+			 *  利用反射调用方法
+			 */
+			Method method=this.getMethod(qtype);
+			return (Map<String, String>)method.invoke(this);
+//			throw new Exception("在类[ Ab04ServicesImpl ]中进行了未定义的单一查询动作调用,"
+//					+ "动作名称是  "+qtype);
 		}
-		
 		//执行查询
 		
 	} 
@@ -263,7 +268,18 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 		this.executeUpdate(sql.toString(), args);
 	}
 
-
-	
-
+	/****************************************************
+	 *                             以下为查询方法
+	 ****************************************************/
+	/**
+	 * @author hug
+	 * 通过商品id,查出累计有多少条评论
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String,String> comentCountByAab203() throws Exception
+	{
+		String sql="select count(*) as commentSum from ab04 where aab203=?";
+		return this.queryForMap(sql, this.get("aab203"));
+	}
 }

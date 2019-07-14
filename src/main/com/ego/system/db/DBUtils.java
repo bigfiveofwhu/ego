@@ -1,19 +1,19 @@
 package com.ego.system.db;
 
-import java.io.FileInputStream;
+import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Properties;
-//资源文件解析器
+import java.util.ResourceBundle;
 
-import org.apache.tomcat.dbcp.dbcp2.*;
+//资源文件解析器
 
 public class DBUtils 
 {
 	
-	private	static BasicDataSource dataSource=null;
+	private	static BasicDataSource dataSource;
 	private static final ThreadLocal<java.sql.Connection> threadLocal = new ThreadLocal<>();
 	
 	/**
@@ -22,15 +22,12 @@ public class DBUtils
 	
 	static 
 	{
-		Properties properties=new Properties();
-		try {
-			properties.load(new FileInputStream("src/resources/DBOptions.properties"));
-			dataSource=BasicDataSourceFactory.createDataSource(properties);
-		} catch (Exception e) {
-			// TODO Auto-generasted catch block
-			System.out.println("初始化数据库失败");
-			e.printStackTrace();
-		}
+		ResourceBundle rb = ResourceBundle.getBundle("DBOptions");
+		dataSource = new BasicDataSource();
+		dataSource.setUsername(rb.getString("username"));
+		dataSource.setPassword(rb.getString("password"));
+		dataSource.setDriverClassName(rb.getString("driverClassName"));
+		dataSource.setUrl(rb.getString("url"));
 	}
 
 	private DBUtils() 

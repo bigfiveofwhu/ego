@@ -1,4 +1,3 @@
-
 <%@ page language="java" pageEncoding="GBK"%>
 <li class="appliance js_toggle relative first">
 	<div class="category-info">

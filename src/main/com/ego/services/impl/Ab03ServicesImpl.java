@@ -37,7 +37,6 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 			throw new Exception("在类[ Ab03ServicesImpl ]中进行了未定义的动作调用,"
 								+ "动作名称是  "+utype);
 		}
-		
 	}
 	
 	/**
@@ -150,9 +149,6 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		
 	}
 	
-	
-	
-	
 	//*******************************************
 	//查询操作
 	//********************************************
@@ -208,7 +204,6 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 	 */
 	public List<Map<String,String>> query(String qtype) throws Exception
 	{
-		
 		//定义SQL主体
 		StringBuilder sql = new StringBuilder()
 				.append("select x.aab203,x.aab302,x.aab303,x.aab304,x.aab305,")
@@ -219,14 +214,10 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 				//.append("  and x.aab107=b.fcode and b.fname='aab107'")
 				;
 		
-		
-		
 		//设置参数列表
 		List<Object> paramList = new ArrayList<>();
 		
 		paramList.add(this.get("aaa102"));
-
-  		
   		System.out.println("***显示订单条件查询SQL语句***");
   		System.out.println(sql.toString());
   		System.out.println("***显示订单查询参数列表***");

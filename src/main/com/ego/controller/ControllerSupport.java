@@ -25,6 +25,7 @@ public abstract class ControllerSupport implements Controller
 	protected void setServices(BaseServices services)
 	{
 		this.services = services;
+		this.services.setMapDto(this.dto);
 	}
 
 	protected BaseServices getServices()
@@ -143,7 +144,7 @@ public abstract class ControllerSupport implements Controller
 	{
 		this.dto = dto;
 		// 同步为Services传递DTO
-		this.services.setMapDto(dto);
+		//this.services.setMapDto(dto);
 	}
 	
 	/**

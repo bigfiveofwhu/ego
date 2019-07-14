@@ -6,7 +6,6 @@
 			<div class="menu-hd">
 				<c:choose>
 				<c:when test="${aaa102==null}">
-			
 				<a href="login.jsp" target="_top" class="h">亲，请登录</a>
 				<a href="register.jsp" target="_top">免费注册</a>
 				</c:when>
@@ -22,7 +21,7 @@
 	<ul class="message-r">
 		<div class="topMessage home">
 			<div class="menu-hd">
-				<a href="#" target="_top" class="h">商城首页</a>
+				<a href="${path }/home/home.html" target="_top" class="h">商城首页</a>
 			</div>
 		</div>
 		<div class="topMessage my-shangcheng">
@@ -75,7 +74,7 @@
 			<div class="menu-hd">
 			<c:choose>
 				<c:when test="${aab102!=null}">
-				  <a id="mc-menu-shop" href="${path}/shop/home.html" target="_top">
+				  <a id="mc-menu-shop" href="${path}/shop/background.html" target="_top">
 				  <span>进入店铺</span>
 				  </a>
 				</c:when>

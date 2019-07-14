@@ -10,40 +10,27 @@ import com.ego.services.impl.Ab01ServiceImpl;
 
 public class ShopRegisterController extends ControllerSupport
 {
-	public ShopRegisterController() 
-	{
-		this.setServices(new Ab01ServiceImpl());
-	}
-
 	@Override
 	public String execute() throws Exception
 	{
 		HttpSession session=this.getSession();
 		//¼ì²âÓÃ»§ÊÇ·ñµÇÂ¼
-		String uid=(String)session.getAttribute("aaa102"); //ÓÃ»§id
-		System.out.println(uid);
-		if(uid==null) return "home/home";
-		
-		//¼ì²âÊÇ·ñÒÑ×¢²áµêÆÌ
-		Map<String,String> ins=this.getServices().findById("aaa102");
-		System.out.println(ins);
-		if(ins!=null && ins.get("aab102")!=null) return "home/home";
-		
-		//Î´×¢²áµêÆÌ
-		this.setServices(new Aa01ServiceImpl());
-		this.dto.put("aaa102", uid);
-		this.getServices().setMapDto(this.dto);
-		ins=this.getServices().findById("aaa102");
-		System.out.println(ins);
-		String addr=ins.get("aaa111");
-		if(addr!=null) 
+		Object uid=session.getAttribute("aaa102"); //ÓÃ»§id
+		System.out.println("uid: "+uid);
+		if(uid==null) 
 		{
-			String addrs[]=addr.split(" ");
-			this.saveAttribute("addr_1", addrs[0]);
-			this.saveAttribute("addr_2", addrs[1]);
-			this.saveAttribute("addr_3", addrs[2]);
-			this.saveAttribute("addr_4", addrs[3]);
+			this.saveAttribute("msg", "ÇëµÇÂ¼!");
+			return "home/home";
 		}
+		//¼ì²âÊÇ·ñÒÑ×¢²áµêÆÌ
+		Object shopId=session.getAttribute("aab102");   //µêÆÌid
+		System.out.println("shopId: "+shopId);
+		if(shopId!=null)
+		{
+			this.saveAttribute("msg", "ÒÑ×¢²áµêÆÌ,ÇëÎğÔÙ´Î³¢ÊÔ!");
+			return "home/home";
+		}
+		//ÒÑµÇÂ¼²¢ÇÒÎ´×¢²áµêÆÌ¿É½øÈë
 		return "WEB-INF/views/shop/register";
 	}
 }
