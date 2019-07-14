@@ -1,22 +1,14 @@
 package com.ego.controller;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Properties;
-import java.util.Set;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.*;
+import java.util.Map.Entry;
 
 
 
@@ -28,20 +20,10 @@ public class BaseServlet extends HttpServlet
 	
 	public static final String prefix="WEB-INF/views/";
 	//加载映射文件
-	private static Properties mapping=new Properties();
+	private static ResourceBundle mapping;
 	static 
 	{
-		try 
-		{
-			mapping.load(new FileInputStream("src/resources/urlMapping.properties"));
-			
-		} catch (FileNotFoundException e) 
-		{
-			e.printStackTrace();
-		} catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
+		mapping=ResourceBundle.getBundle("urlMapping");
 	}
 	//controller的容器，管理所有controller
 	Map<String,Controller > container= Collections.synchronizedMap(new HashMap<String, Controller>());
@@ -77,7 +59,7 @@ public class BaseServlet extends HttpServlet
 			 ***********************************************************/
 			// 实例化业务控制器
 			String basePackage="com.ego.controller.impl.";
-			String className=basePackage+mapping.getProperty(mappingURL);
+			String className=basePackage+mapping.getString(mappingURL);
 			Controller controller = getController(className);
 
 			/***********************************************************
