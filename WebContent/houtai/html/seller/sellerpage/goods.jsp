@@ -81,17 +81,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${productList }" var="ins" varStatus="vs">
+						<c:forEach items="${productList}" var="ins" varStatus="vs">
 						<tr>
 							<td><input type="checkbox" ></td>
-							<td>${vs.count }</td>
-							<td>${productList.aab203 }</td>
-							<td>${productList.aab202 }</td>
-							<td>${productList.aab205 }</td>
-							<td>${productList.aab204 }</td>
-							<th>${productList.aab206 }</th>
+							<td>${vs.count}</td>
+							<td>${ins.aab203}</td>
+							<td>${ins.aab202}</td>
+							<td>${ins.aab205}</td>
+							<td>${ins.aab204}</td>
+							<td>${ins.aab206}</td>
 							<td>
-							  ${productList.cnaab212 }
+							  ${ins.cnaab212}
 							</td>
 						<td class="text-center">
 								<button type="button" class="btn bg-olive btn-xs"><a class="btn bg-olive btn-xs">修改</a></button>
@@ -104,7 +104,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</a>
 								</button>
 							</td>
-
 						</tr>
 						</c:forEach>
 					</tbody>

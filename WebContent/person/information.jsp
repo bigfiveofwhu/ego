@@ -106,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<form enctype="multipart/form-data" id="formTag">
 							<div class="filePic">
 								<input id="pop_file" type="file"  class="inputPic" onchange="uploadFile(event)" name="fileTrans" ref="file" value="" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
-								<img id="preview" class="am-circle am-img-thumbnail" src="<%=basePath%>/upload/${user.imgName }.jpg" alt="" />
+								<img id="preview" class="am-circle am-img-thumbnail" src="<%=path%>/images/upload/${user.imgName }.jpg" alt="" />
 							</div>
 							</form>
 					
@@ -243,9 +243,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li class="person">
 						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
 					<ul>
-							<li> <a href="showUserInfo.html">个人信息</a></li>
+						<li> <a href="showUserInfo.html">个人信息</a></li>
 							<li> <a href="<%=path%>/person/safety.jsp">安全设置</a></li>
-							<li> <a href="<%=path%>/person/address.jsp">地址管理</a></li>
+							<li> <a href="showAddress.html">地址管理</a></li>
 							<li> <a href="<%=path%>/person/cardlist.jsp">快捷支付</a></li>
 						</ul>
 					</li>
@@ -317,6 +317,7 @@ function uploadFile(ev){
 		timeout : 20000,
 		data : formdata,
 		success:function(res,status){
+			//img.setAttribute('src',"<%=basePath%>/images/upload/user_1.jpg")
             console.log("修改默认头像成功");
 			},
 			error:function(res,status){

@@ -12,8 +12,7 @@ public class ShowUserInfoServlet extends UserControllerSupport
 	public String execute() throws Exception
 	{
 		Map<String,String> user = this.getServices().findById();
-		System.out.println(this.get("aaa102"));
-		String imgName = "user"+"_"+this.get("aaa102");
+		String imgName = "user_"+user.get("aaa102");
 		user.put("imgName", imgName);
 		this.saveAttribute("user", user);
 		System.out.println(user);

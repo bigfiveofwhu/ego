@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -8,10 +8,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 
 	<head>
-		<meta charset="utf-8">
+	
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
 
-		<title>ä¸ªäººä¸­å¿ƒ</title>
+		<title>¸öÈËÖĞĞÄ</title>
 
 		<link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
 		<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
@@ -22,36 +22,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</head>
 
 	<body>
-		<!--å¤´ -->
+		<!--Í· -->
 		<header>
 			<article>
 				<div class="mt-logo">
-					<!--é¡¶éƒ¨å¯¼èˆªæ¡ -->
+					<!--¶¥²¿µ¼º½Ìõ -->
 					<div class="am-container header">
 						<ul class="message-l">
 							<div class="topMessage">
 								<div class="menu-hd">
-									<a href="#" target="_top" class="h">äº²ï¼Œè¯·ç™»å½•</a>
-									<a href="#" target="_top">å…è´¹æ³¨å†Œ</a>
+									<a href="#" target="_top" class="h">Ç×£¬ÇëµÇÂ¼</a>
+									<a href="#" target="_top">Ãâ·Ñ×¢²á</a>
 								</div>
 							</div>
 						</ul>
 						<ul class="message-r">
 							<div class="topMessage home">
-								<div class="menu-hd"><a href="#" target="_top" class="h">å•†åŸé¦–é¡µ</a></div>
+								<div class="menu-hd"><a href="#" target="_top" class="h">ÉÌ³ÇÊ×Ò³</a></div>
 							</div>
 							<div class="topMessage my-shangcheng">
-								<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>ä¸ªäººä¸­å¿ƒ</a></div>
+								<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>¸öÈËÖĞĞÄ</a></div>
 							</div>
 							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>è´­ç‰©è½¦</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
+								<div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>¹ºÎï³µ</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
 							</div>
 							<div class="topMessage favorite">
-								<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>æ”¶è—å¤¹</span></a></div>
+								<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>ÊÕ²Ø¼Ğ</span></a></div>
 						</ul>
 						</div>
 
-						<!--æ‚¬æµ®æœç´¢æ¡†-->
+						<!--Ğü¸¡ËÑË÷¿ò-->
 
 						<div class="nav white">
 							<div class="logoBig">
@@ -61,8 +61,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="search-bar pr">
 								<a name="index_none_header_sysc" href="#"></a>
 								<form>
-									<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="æœç´¢" autocomplete="off">
-									<input id="ai-topsearch" class="submit am-btn" value="æœç´¢" index="1" type="submit">
+									<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="ËÑË÷" autocomplete="off">
+									<input id="ai-topsearch" class="submit am-btn" value="ËÑË÷" index="1" type="submit">
 								</form>
 							</div>
 						</div>
@@ -73,17 +73,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</article>
 		</header>
 		<div class="nav-table">
-			<div class="long-title"><span class="all-goods">å…¨éƒ¨åˆ†ç±»</span></div>
+			<div class="long-title"><span class="all-goods">È«²¿·ÖÀà</span></div>
 			<div class="nav-cont">
 				<ul>
-					<li class="index"><a href="#">é¦–é¡µ</a></li>
-					<li class="qc"><a href="#">é—ªè´­</a></li>
-					<li class="qc"><a href="#">é™æ—¶æŠ¢</a></li>
-					<li class="qc"><a href="#">å›¢è´­</a></li>
-					<li class="qc last"><a href="#">å¤§åŒ…è£…</a></li>
+					<li class="index"><a href="#">Ê×Ò³</a></li>
+					<li class="qc"><a href="#">ÉÁ¹º</a></li>
+					<li class="qc"><a href="#">ÏŞÊ±ÇÀ</a></li>
+					<li class="qc"><a href="#">ÍÅ¹º</a></li>
+					<li class="qc last"><a href="#">´ó°ü×°</a></li>
 				</ul>
 				<div class="nav-extra">
-					<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>æˆ‘çš„ç¦åˆ©
+					<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>ÎÒµÄ¸£Àû
 					<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
 				</div>
 			</div>
@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="wrap-left">
 						<div class="wrap-list">
 							<div class="m-user">
-								<!--ä¸ªäººä¿¡æ¯ -->
+								<!--¸öÈËĞÅÏ¢ -->
 
 								<div class="m-userinfo">
 									<a href="news.html">
@@ -106,70 +106,70 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<img src="../images/getAvatar.do.jpg">
 										</a>
 										<div class="m-info">
-											<em class="s-name">å°å®å½“</em>
-											<div class="vip1"><a href="#"><span></span><em>ä¼šå‘˜ä¸“äº«</em></a></div>
-											<div class="safeText"><a href="safety.html">è´¦æˆ·å®‰å…¨:<em style="margin-left:20px ;">60</em>åˆ†</a>
+											<em class="s-name">Ğ¡¶£µ±</em>
+											<div class="vip1"><a href="#"><span></span><em>»áÔ±×¨Ïí</em></a></div>
+											<div class="safeText"><a href="safety.html">ÕË»§°²È«:<em style="margin-left:20px ;">60</em>·Ö</a>
 												<div class="progressBar"><span style="left: -95px;" class="progress"></span></div>
 											</div>
 											<div class="m-address">
-												<a href="address.html" class="i-trigger">æ”¶è´§åœ°å€<i class="am-icon-angle-right" style="padding-left:5px ;"></i></a>
+												<a href="address.html" class="i-trigger">ÊÕ»õµØÖ·<i class="am-icon-angle-right" style="padding-left:5px ;"></i></a>
 											</div>
 										</div>
 									</div>
 									<div class="m-right">
 										<div class="m-new">
-											<a href="news.html"><i class="am-icon-dropbox  am-icon-md" style="padding-right:5px ;"></i>æ¶ˆæ¯ç›’å­</a>
+											<a href="news.html"><i class="am-icon-dropbox  am-icon-md" style="padding-right:5px ;"></i>ÏûÏ¢ºĞ×Ó</a>
 										</div>
 
 									</div>
 								</div>
 
-								<!--ä¸ªäººèµ„äº§-->
+								<!--¸öÈË×Ê²ú-->
 								<div class="m-userproperty">
 									<div class="s-bar">
-										<i class="s-icon"></i>ä¸ªäººèµ„äº§
+										<i class="s-icon"></i>¸öÈË×Ê²ú
 									</div>
 									<p class="m-coupon">
 										<a href="coupon.html">
 											<em class="m-num">2</em>
-											<span class="m-title">ä¼˜æƒ åˆ¸</span>
+											<span class="m-title">ÓÅ»İÈ¯</span>
 										</a>
 									</p>
 									<p class="m-wallet">
 										<a href="wallet.html">
 											<em class="m-num">0.00</em>
-											<span class="m-title">è´¦æˆ·ä½™é¢</span>
+											<span class="m-title">ÕË»§Óà¶î</span>
 										</a>
 									</p>
 									<p class="m-bill">
 										<a href="pointnew.html">
 											<em class="m-num">10</em>
-											<span class="m-title">æ€»ç§¯åˆ†</span>
+											<span class="m-title">×Ü»ı·Ö</span>
 										</a>
 									</p>
 								</div>
 
-								<!--æˆ‘çš„é’±åŒ…-->
+								<!--ÎÒµÄÇ®°ü-->
 								<div class="wallet">
 									<div class="s-bar">
-										<i class="s-icon"></i>å•†åŸé’±åŒ…
+										<i class="s-icon"></i>ÉÌ³ÇÇ®°ü
 									</div>
 									<p class="m-big squareS">
 										<a href="#">
 											<i><img src="../images/shopping.png"/></i>
-											<span class="m-title">èƒ½è´­ç‰©</span>
+											<span class="m-title">ÄÜ¹ºÎï</span>
 										</a>
 									</p>
 									<p class="m-big squareA">
 										<a href="#">
 											<i><img src="../images/safe.png"/></i>
-											<span class="m-title">å¤Ÿå®‰å…¨</span>
+											<span class="m-title">¹»°²È«</span>
 										</a>
 									</p>
 									<p class="m-big squareL">
 										<a href="#">
 											<i><img src="../images/profit.png"/></i>
-											<span class="m-title">å¾ˆçµæ´»</span>
+											<span class="m-title">ºÜÁé»î</span>
 										</a>
 									</p>
 								</div>
@@ -177,18 +177,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="box-container-bottom"></div>
 
-							<!--è®¢å• -->
+							<!--¶©µ¥ -->
 							<div class="m-order">
 								<div class="s-bar">
-									<i class="s-icon"></i>æˆ‘çš„è®¢å•
-									<a class="i-load-more-item-shadow" href="order.html">å…¨éƒ¨è®¢å•</a>
+									<i class="s-icon"></i>ÎÒµÄ¶©µ¥
+									<a class="i-load-more-item-shadow" href="order.html">È«²¿¶©µ¥</a>
 								</div>
 								<ul>
-									<li><a href="order.html"><i><img src="../images/pay.png"/></i><span>å¾…ä»˜æ¬¾</span></a></li>
-									<li><a href="order.html"><i><img src="../images/send.png"/></i><span>å¾…å‘è´§<em class="m-num">1</em></span></a></li>
-									<li><a href="order.html"><i><img src="../images/receive.png"/></i><span>å¾…æ”¶è´§</span></a></li>
-									<li><a href="order.html"><i><img src="../images/comment.png"/></i><span>å¾…è¯„ä»·<em class="m-num">3</em></span></a></li>
-									<li><a href="change.html"><i><img src="../images/refund.png"/></i><span>é€€æ¢è´§</span></a></li>
+									<li><a href="order.html"><i><img src="../images/pay.png"/></i><span>´ı¸¶¿î</span></a></li>
+									<li><a href="order.html"><i><img src="../images/send.png"/></i><span>´ı·¢»õ<em class="m-num">1</em></span></a></li>
+									<li><a href="order.html"><i><img src="../images/receive.png"/></i><span>´ıÊÕ»õ</span></a></li>
+									<li><a href="order.html"><i><img src="../images/comment.png"/></i><span>´ıÆÀ¼Û<em class="m-num">3</em></span></a></li>
+									<li><a href="change.html"><i><img src="../images/refund.png"/></i><span>ÍË»»»õ</span></a></li>
 								</ul>
 								<div class="orderContentBox">
 									<div class="orderContent">
@@ -198,21 +198,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											</div>
 										</div>
 										<div class="detailContent">
-											<a href="orderinfo.html" class="delivery">ç­¾æ”¶</a>
+											<a href="orderinfo.html" class="delivery">Ç©ÊÕ</a>
 											<div class="orderID">
 												<span class="time">2016-03-09</span>
 												<span class="splitBorder">|</span>
 												<span class="time">21:52:47</span>
 											</div>
 											<div class="orderID">
-												<span class="num">å…±1ä»¶å•†å“</span>
+												<span class="num">¹²1¼şÉÌÆ·</span>
 											</div>
 										</div>
-										<div class="state">å¾…è¯„ä»·</div>
-										<div class="price"><span class="sym">Â¥</span>23.<span class="sym">80</span></div>
+										<div class="state">´ıÆÀ¼Û</div>
+										<div class="price"><span class="sym">$</span>23.<span class="sym">80</span></div>
 
 									</div>
-									<a href="javascript:void(0);" class="btnPay">å†æ¬¡è´­ä¹°</a>
+									<a href="javascript:void(0);" class="btnPay">ÔÙ´Î¹ºÂò</a>
 								</div>
 
 								<div class="orderContentBox">
@@ -223,57 +223,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											</div>
 										</div>
 										<div class="detailContent">
-											<a href="orderinfo.html" class="delivery">æ´¾ä»¶</a>
+											<a href="orderinfo.html" class="delivery">ÅÉ¼ş</a>
 											<div class="orderID">
 												<span class="time">2016-03-09</span>
 												<span class="splitBorder">|</span>
 												<span class="time">21:52:47</span>
 											</div>
 											<div class="orderID">
-												<span class="num">å…±2ä»¶å•†å“</span>
+												<span class="num">¹²2¼şÉÌÆ·</span>
 											</div>
 										</div>
-										<div class="state">å·²å‘è´§</div>
-										<div class="price"><span class="sym">Â¥</span>246.<span class="sym">50</span></div>
+										<div class="state">ÒÑ·¢»õ</div>
+										<div class="price"><span class="sym">$</span>246.<span class="sym">50</span></div>
 
 									</div>
-									<a href="javascript:void(0);" class="btnPay">å†æ¬¡è´­ä¹°</a>
+									<a href="javascript:void(0);" class="btnPay">ÔÙ´Î¹ºÂò</a>
 								</div>
 							</div>
-							<!--ä¹å®«æ ¼-->
+							<!--¾Å¹¬¸ñ-->
 							<div class="user-squaredIcon">
 								<div class="s-bar">
-									<i class="s-icon"></i>æˆ‘çš„å¸¸ç”¨
+									<i class="s-icon"></i>ÎÒµÄ³£ÓÃ
 								</div>
 								<ul>
 									<a href="order.html">
 										<li class="am-u-sm-4"><i class="am-icon-truck am-icon-md"></i>
-											<p>ç‰©æµæŸ¥è¯¢</p>
+											<p>ÎïÁ÷²éÑ¯</p>
 										</li>
 									</a>
 									<a href="collection.html">
 										<li class="am-u-sm-4"><i class="am-icon-heart am-icon-md"></i>
-											<p>æˆ‘çš„æ”¶è—</p>
+											<p>ÎÒµÄÊÕ²Ø</p>
 										</li>
 									</a>
 									<a href="foot.html">
 										<li class="am-u-sm-4"><i class="am-icon-paw am-icon-md"></i>
-											<p>æˆ‘çš„è¶³è¿¹</p>
+											<p>ÎÒµÄ×ã¼£</p>
 										</li>
 									</a>
 									<a href="#">
 										<li class="am-u-sm-4"><i class="am-icon-gift am-icon-md"></i>
-											<p>ä¸ºä½ æ¨è</p>
+											<p>ÎªÄãÍÆ¼ö</p>
 										</li>
 									</a>
 									<a href="blog.html">
 										<li class="am-u-sm-4"><i class="am-icon-share-alt am-icon-md"></i>
-											<p>æˆ‘çš„åˆ†äº«</p>
+											<p>ÎÒµÄ·ÖÏí</p>
 										</li>
 									</a>
 									<a href="../home/home2.html">
 										<li class="am-u-sm-4"><i class="am-icon-clock-o am-icon-md"></i>
-											<p>é™æ—¶æ´»åŠ¨</p>
+											<p>ÏŞÊ±»î¶¯</p>
 										</li>
 									</a>
 
@@ -282,31 +282,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 							<div class="user-suggestion">
 								<div class="s-bar">
-									<i class="s-icon"></i>ä¼šå‘˜ä¸­å¿ƒ
+									<i class="s-icon"></i>»áÔ±ÖĞĞÄ
 								</div>
 								<div class="s-bar">
-									<a href="suggest.html"><i class="s-icon"></i>æ„è§åé¦ˆ</a>
+									<a href="suggest.html"><i class="s-icon"></i>Òâ¼û·´À¡</a>
 								</div>
 							</div>
 
-							<!--ä¼˜æƒ åˆ¸ç§¯åˆ†-->
+							<!--ÓÅ»İÈ¯»ı·Ö-->
 							<div class="twoTab">
 								<div class="twoTabModel Coupon">
-									<h5 class="squareTitle"><a href="#"><span class="splitBorder"></span>ä¼˜æƒ åˆ¸<i class="am-icon-angle-right"></i></a></h5>
+									<h5 class="squareTitle"><a href="#"><span class="splitBorder"></span>ÓÅ»İÈ¯<i class="am-icon-angle-right"></i></a></h5>
 									<div class="Box">
 										<div class="CouponList">
-											<span class="price">Â¥<strong class="num">50</strong></span>
-	                                        <p class="brandName"><a href="#">ABCå“ç‰Œ499å‡50</a></p>
-	                                        <p class="discount">æ»¡<span>499</span>å…ƒæŠµæ‰£</p>
-                                            <a  href="#" class="btnReceive">ç«‹å³é¢†å–</a>
+											<span class="price">$<strong class="num">50</strong></span>
+	                                        <p class="brandName"><a href="#">ABCÆ·ÅÆ499¼õ50</a></p>
+	                                        <p class="discount">Âú<span>499</span>ÔªµÖ¿Û</p>
+                                            <a  href="#" class="btnReceive">Á¢¼´ÁìÈ¡</a>
 										</div>
 									</div>
 								</div>
 								<div class="twoTabModel credit">
-									<h5 class="squareTitle"><a href="#"><span class="splitBorder"></span>ç§¯åˆ†å•†åŸ<i class="am-icon-angle-right"></i></a></h5>
+									<h5 class="squareTitle"><a href="#"><span class="splitBorder"></span>»ı·ÖÉÌ³Ç<i class="am-icon-angle-right"></i></a></h5>
 									<div class="Box">
 										<p class="countDown">
-											<span class="hour">12</span>ï¼š<span class="minute">09</span>ï¼š<span class="second">02</span><em class="txtStart">å³å°†å¼€å§‹</em>
+											<span class="hour">12</span>£º<span class="minute">09</span>£º<span class="second">02</span><em class="txtStart">¼´½«¿ªÊ¼</em>
 										</p>
 										<div class="am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth:108, itemMargin:3, slideshow: false}">
 											<ul class="am-slides">
@@ -326,27 +326,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="wrap-right">
 
-						<!-- æ—¥å†-->
+						<!-- ÈÕÀú-->
 						<div class="day-list">
 							<div class="s-title">
-								æ¯æ—¥æ–°é²œäº‹
+								Ã¿ÈÕĞÂÏÊÊÂ
 							</div>
 							<div class="s-box">
 								<ul>
-									<li><a><p>ç²®æ²¹å†²é”‹å‘¨ æ»¡128å‡18</p></a></li>
-									<li><a><p>é˜²æ™’è¿™ä¹ˆé‡è¦çš„äº‹æ€èƒ½éšæ„</p></a></li>
-									<li><a><p>æ˜¥æ—¥æŠ¤è‚¤é¢è†œä¸å¯å°‘ï¼Œä½ é€‰å¯¹äº†å—ï¼Ÿ</p></a></li>
-									<li><a><p>çº¯ç²¹æ—¶å°šï¼Œæ‘©ç™»å‡ºæ¸¸ï¼Œå¸ç›ç¾è¡£</p></a></li>
-									<li><a><p>ç²®æ²¹å†²é”‹å‘¨ æ»¡128å‡18</p></a></li>
-									<li><a><p>æ˜¥æ—¥æŠ¤è‚¤é¢è†œä¸å¯å°‘ï¼Œä½ é€‰å¯¹äº†å—ï¼Ÿ</p></a></li>									
+									<li><a><p>Á¸ÓÍ³å·æÖÜ Âú128¼õ18</p></a></li>
+									<li><a><p>·ÀÉ¹ÕâÃ´ÖØÒªµÄÊÂÔõÄÜËæÒâ</p></a></li>
+									<li><a><p>´ºÈÕ»¤·ôÃæÄ¤²»¿ÉÉÙ£¬ÄãÑ¡¶ÔÁËÂğ£¿</p></a></li>
+									<li><a><p>´¿´âÊ±ÉĞ£¬Ä¦µÇ³öÓÎ£¬Îü¾¦ÃÀÒÂ</p></a></li>
+									<li><a><p>Á¸ÓÍ³å·æÖÜ Âú128¼õ18</p></a></li>
+									<li><a><p>´ºÈÕ»¤·ôÃæÄ¤²»¿ÉÉÙ£¬ÄãÑ¡¶ÔÁËÂğ£¿</p></a></li>									
 								</ul>
 							</div>
 						</div>
-						<!--æ–°å“ -->
+						<!--ĞÂÆ· -->
 						<div class="new-goods">
 							<div class="s-bar">
-								<i class="s-icon"></i>ä»Šæ—¥æ–°å“
-								<a class="i-load-more-item-shadow">15æ¬¾æ–°å“</a>
+								<i class="s-icon"></i>½ñÈÕĞÂÆ·
+								<a class="i-load-more-item-shadow">15¿îĞÂÆ·</a>
 							</div>
 							<div class="new-goods-info">
 								<a class="shop-info" href="#">
@@ -354,34 +354,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<img src="../images/imgsearch1.jpg" alt="">
 									</div>
 									<span class="new-goods-num ">4</span>
-									<span class="shop-title">å‰¥å£³æ¾å­</span>
+									<span class="shop-title">°ş¿ÇËÉ×Ó</span>
 								</a>
-								<a class="follow">æ”¶è—</a>
+								<a class="follow">ÊÕ²Ø</a>
 							</div>
 						</div>						
 
-						<!--çƒ­å–æ¨è -->
+						<!--ÈÈÂôÍÆ¼ö -->
 						<div class="new-goods">
 							<div class="s-bar">
-								<i class="s-icon"></i>çƒ­å–æ¨è
+								<i class="s-icon"></i>ÈÈÂôÍÆ¼ö
 							</div>
 							<div class="new-goods-info">
 								<a class="shop-info" href="#" target="_blank">
 									<div >
 										<img src="../images/666.jpg" alt="">
 									</div>
-                                    <span class="one-hot-goods">ï¿¥189.60</span>
+                                    <span class="one-hot-goods">189.60</span>
 								</a>
 							</div>
 						</div>						
      				</div>
      				<div class="clear"></div>
      				
-     				<!--æ”¶è—å’Œè¶³è¿¹-->
+     				<!--ÊÕ²ØºÍ×ã¼£-->
      				 <div data-am-widget="tabs" class="am-tabs collection">
                          <ul class="am-tabs-nav am-cf">
-                         	<li class="am-active"><a href="[data-tab-panel-0]"><i class="am-icon-heart"></i>å•†å“æ”¶è—</a></li>
-                            <li class=""><a href="[data-tab-panel-1]"><i class="am-icon-paw"></i>è´­ç‰©è¶³è¿¹</a></li>
+                         	<li class="am-active"><a href="[data-tab-panel-0]"><i class="am-icon-heart"></i>ÉÌÆ·ÊÕ²Ø</a></li>
+                            <li class=""><a href="[data-tab-panel-1]"><i class="am-icon-paw"></i>¹ºÎï×ã¼£</a></li>
                         </ul>
                         <div class="am-tabs-bd">
 
@@ -390,35 +390,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<ul class="am-slides">
                                        <li>
                                        	  <a><img class="am-thumbnail" src="../images/EZA27501.jpg" /></a>
-                                       	  <strong class="price">Â¥32.9</strong>
+                                       	  <strong class="price">$32.9</strong>
                                        </li>
                                        <li>
                                        	  <a><img class="am-thumbnail" src="../images/BxJk6.jpg" /></a>
-                                       	  <strong class="price">Â¥32.9</strong>
+                                       	  <strong class="price">$32.9</strong>
                                        </li>
                                        <li>
                                        	  <a><img class="am-thumbnail" src="../images/Hxcag60.jpg" /></a>
-                                       	  <strong class="price">Â¥32.9</strong>
+                                       	  <strong class="price">$32.9</strong>
                                        </li>
                                        <li>
                                        	  <a><img class="am-thumbnail" src="../images/youzi.jpg" /></a>
-                                       	  <strong class="price">Â¥32.9</strong>
+                                       	  <strong class="price">$32.9</strong>
                                        </li>
                                        <li>
                                        	  <a><img class="am-thumbnail" src="../images/EZA27501.jpg" /></a>
-                                       	  <strong class="price">Â¥32.9</strong>
+                                       	  <strong class="price">$32.9</strong>
                                        </li>
                                        <li>
                                        	  <a><img class="am-thumbnail" src="../images/BxJk6.jpg" /></a>
-                                       	  <strong class="price">Â¥32.9</strong>
+                                       	  <strong class="price">$32.9</strong>
                                        </li>
                                        <li>
                                        	  <a><img class="am-thumbnail" src="../images/Hxcag60.jpg" /></a>
-                                       	  <strong class="price">Â¥32.9</strong>
+                                       	  <strong class="price">$32.9</strong>
                                        </li>
                                        <li>
                                        	  <a><img class="am-thumbnail" src="../images/youzi.jpg" /></a>
-                                       	  <strong class="price">Â¥32.9</strong>
+                                       	  <strong class="price">$32.9</strong>
                                        </li>
 
 									</ul>
@@ -429,35 +429,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<ul class="am-slides">
                                        <li>
                                        	  <a><img class="am-thumbnail" src="../images/BxJk6.jpg" /></a>
-                                       	  <strong class="price">Â¥32.9</strong>
+                                       	  <strong class="price">$32.9</strong>
                                        </li>
                                        <li>
                                        	  <a><img class="am-thumbnail" src="../images/Hxcag60.jpg" /></a>
-                                       	  <strong class="price">Â¥32.9</strong>
+                                       	  <strong class="price">$32.9</strong>
                                        </li>
                                        <li>
                                        	  <a><img class="am-thumbnail" src="../images/youzi.jpg" /></a>
-                                       	  <strong class="price">Â¥32.9</strong>
+                                       	  <strong class="price">$32.9</strong>
                                        </li>
                                        <li>
                                        	  <a><img class="am-thumbnail" src="../images/EZA27501.jpg" /></a>
-                                       	  <strong class="price">Â¥32.9</strong>
+                                       	  <strong class="price">$32.9</strong>
                                        </li>
                                        <li>
                                        	  <a><img class="am-thumbnail" src="../images/BxJk6.jpg" /></a>
-                                       	  <strong class="price">Â¥32.9</strong>
+                                       	  <strong class="price">$32.9</strong>
                                        </li>
                                        <li>
                                        	  <a><img class="am-thumbnail" src="../images/Hxcag60.jpg" /></a>
-                                       	  <strong class="price">Â¥32.9</strong>
+                                       	  <strong class="price">$32.9</strong>
                                        </li>
                                        <li>
                                        	  <a><img class="am-thumbnail" src="../images/youzi.jpg" /></a>
-                                       	  <strong class="price">Â¥32.9</strong>
+                                       	  <strong class="price">$32.9</strong>
                                        </li>
                                        <li>
                                        	  <a><img class="am-thumbnail" src="../images/EZA27501.jpg" /></a>
-                                       	  <strong class="price">Â¥32.9</strong>
+                                       	  <strong class="price">$32.9</strong>
                                        </li>
 									</ul>
 								</div>                            	
@@ -467,26 +467,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 				</div>
-				<!--åº•éƒ¨-->
+				<!--µ×²¿-->
 				<div class="footer">
 					<div class="footer-hd">
 						<p>
-							<a href="#">æ’æœ›ç§‘æŠ€</a>
+							<a href="#">ºãÍû¿Æ¼¼</a>
 							<b>|</b>
-							<a href="#">å•†åŸé¦–é¡µ</a>
+							<a href="#">ÉÌ³ÇÊ×Ò³</a>
 							<b>|</b>
-							<a href="#">æ”¯ä»˜å®</a>
+							<a href="#">Ö§¸¶±¦</a>
 							<b>|</b>
-							<a href="#">ç‰©æµ</a>
+							<a href="#">ÎïÁ÷</a>
 						</p>
 					</div>
 					<div class="footer-bd">
 						<p>
-							<a href="#">å…³äºæ’æœ›</a>
-							<a href="#">åˆä½œä¼™ä¼´</a>
-							<a href="#">è”ç³»æˆ‘ä»¬</a>
-							<a href="#">ç½‘ç«™åœ°å›¾</a>
-							<em>Â© 2015-2025 Hengwang.com ç‰ˆæƒæ‰€æœ‰. æ›´å¤šæ¨¡æ¿ <a href="http://www.cssmoban.com/" target="_blank" title="æ¨¡æ¿ä¹‹å®¶">æ¨¡æ¿ä¹‹å®¶</a> - Collect from <a href="http://www.cssmoban.com/" title="ç½‘é¡µæ¨¡æ¿" target="_blank">ç½‘é¡µæ¨¡æ¿</a></em>
+							<a href="#">¹ØÓÚºãÍû</a>
+							<a href="#">ºÏ×÷»ï°é</a>
+							<a href="#">ÁªÏµÎÒÃÇ</a>
+							<a href="#">ÍøÕ¾µØÍ¼</a>
+							<em>&copy;2015-2025 Hengwang.com °æÈ¨ËùÓĞ. ¸ü¶àÄ£°å <a href="http://www.cssmoban.com/" target="_blank" title="Ä£°åÖ®¼Ò">Ä£°åÖ®¼Ò</a> - Collect from <a href="http://www.cssmoban.com/" title="ÍøÒ³Ä£°å" target="_blank">ÍøÒ³Ä£°å</a></em>
 						</p>
 					</div>
 				</div>
@@ -496,63 +496,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<aside class="menu">
 				<ul>
 					<li class="person active">
-						<a href="#"><i class="am-icon-user"></i>ä¸ªäººä¸­å¿ƒ</a>
+						<a href="#"><i class="am-icon-user"></i>¸öÈËÖĞĞÄ</a>
 					</li>
 					<li class="person">
-						<p><i class="am-icon-newspaper-o"></i>ä¸ªäººèµ„æ–™</p>
+						<p><i class="am-icon-newspaper-o"></i>¸öÈË×ÊÁÏ</p>
 					<ul>
-							<li> <a href="showUserInfo.html">ä¸ªäººä¿¡æ¯</a></li>
-							<li> <a href="<%=path%>/person/safety.jsp">å®‰å…¨è®¾ç½®</a></li>
-							<li> <a href="showAddress.html">åœ°å€ç®¡ç†</a></li>
-							<li> <a href="<%=path%>/person/cardlist.jsp">å¿«æ·æ”¯ä»˜</a></li>
+							<li> <a href="showUserInfo.html">¸öÈËĞÅÏ¢</a></li>
+							<li> <a href="<%=path%>/person/safety.jsp">°²È«ÉèÖÃ</a></li>
+							<li> <a href="showAddress.html">µØÖ·¹ÜÀí</a></li>
+							<li> <a href="<%=path%>/person/cardlist.jsp">¿ì½İÖ§¸¶</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<p><i class="am-icon-balance-scale"></i>æˆ‘çš„äº¤æ˜“</p>
+						<p><i class="am-icon-balance-scale"></i>ÎÒµÄ½»Ò×</p>
 						<ul>
-							<li><a href="order.html">è®¢å•ç®¡ç†</a></li>
-							<li> <a href="change.html">é€€æ¬¾å”®å</a></li>
-							<li> <a href="comment.html">è¯„ä»·å•†å“</a></li>
+							<li><a href="order.html">¶©µ¥¹ÜÀí</a></li>
+							<li> <a href="change.html">ÍË¿îÊÛºó</a></li>
+							<li> <a href="comment.html">ÆÀ¼ÛÉÌÆ·</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<p><i class="am-icon-dollar"></i>æˆ‘çš„èµ„äº§</p>
+						<p><i class="am-icon-dollar"></i>ÎÒµÄ×Ê²ú</p>
 						<ul>
-							<li> <a href="points.html">æˆ‘çš„ç§¯åˆ†</a></li>
-							<li> <a href="coupon.html">ä¼˜æƒ åˆ¸ </a></li>
-							<li> <a href="bonus.html">çº¢åŒ…</a></li>
-							<li> <a href="walletlist.html">è´¦æˆ·ä½™é¢</a></li>
-							<li> <a href="bill.html">è´¦å•æ˜ç»†</a></li>
-						</ul>
-					</li>
-
-					<li class="person">
-						<p><i class="am-icon-tags"></i>æˆ‘çš„æ”¶è—</p>
-						<ul>
-							<li> <a href="collection.html">æ”¶è—</a></li>
-							<li> <a href="foot.html">è¶³è¿¹</a></li>														
+							<li> <a href="points.html">ÎÒµÄ»ı·Ö</a></li>
+							<li> <a href="coupon.html">ÓÅ»İÈ¯ </a></li>
+							<li> <a href="bonus.html">ºì°ü</a></li>
+							<li> <a href="walletlist.html">ÕË»§Óà¶î</a></li>
+							<li> <a href="bill.html">ÕËµ¥Ã÷Ï¸</a></li>
 						</ul>
 					</li>
 
 					<li class="person">
-						<p><i class="am-icon-qq"></i>åœ¨çº¿å®¢æœ</p>
+						<p><i class="am-icon-tags"></i>ÎÒµÄÊÕ²Ø</p>
 						<ul>
-							<li> <a href="consultation.html">å•†å“å’¨è¯¢</a></li>
-							<li> <a href="suggest.html">æ„è§åé¦ˆ</a></li>							
+							<li> <a href="collection.jsp">ÊÕ²Ø</a></li>
+							<li> <a href="foot.html">×ã¼£</a></li>														
+						</ul>
+					</li>
+
+					<li class="person">
+						<p><i class="am-icon-qq"></i>ÔÚÏß¿Í·ş</p>
+						<ul>
+							<li> <a href="consultation.html">ÉÌÆ·×ÉÑ¯</a></li>
+							<li> <a href="suggest.html">Òâ¼û·´À¡</a></li>							
 							
-							<li> <a href="news.html">æˆ‘çš„æ¶ˆæ¯</a></li>
+							<li> <a href="news.html">ÎÒµÄÏûÏ¢</a></li>
 						</ul>
 					</li>
 				</ul>
 
 			</aside>
 		</div>
-		<!--å¼•å¯¼ -->
+		<!--Òıµ¼ -->
 		<div class="navCir">
-			<li><a href="../home/home2.html"><i class="am-icon-home "></i>é¦–é¡µ</a></li>
-			<li><a href="../home/sort.html"><i class="am-icon-list"></i>åˆ†ç±»</a></li>
-			<li><a href="../home/shopcart.html"><i class="am-icon-shopping-basket"></i>è´­ç‰©è½¦</a></li>
-			<li class="active"><a href="index.html"><i class="am-icon-user"></i>æˆ‘çš„</a></li>
+			<li><a href="../home/home2.html"><i class="am-icon-home "></i>Ê×Ò³</a></li>
+			<li><a href="../home/sort.html"><i class="am-icon-list"></i>·ÖÀà</a></li>
+			<li><a href="../home/shopcart.html"><i class="am-icon-shopping-basket"></i>¹ºÎï³µ</a></li>
+			<li class="active"><a href="index.html"><i class="am-icon-user"></i>ÎÒµÄ</a></li>
 		</div>
 	</body>
 

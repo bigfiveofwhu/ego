@@ -11,6 +11,7 @@ public class QueryProductServlet extends ProductControllerSupport {
 		System.out.println(list);
 		if(list != null)
 		this.saveAttribute("productList", list);
+		//System.out.println("productList:  "+list);
 		// TODO return page
 		return "houtai/html/seller/sellerpage/goods";
 	}
