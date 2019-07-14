@@ -8,13 +8,7 @@ import java.util.Map;
 import com.ego.services.JdbcServicesSupport;
 //ÓÃ»§¿¨È¯°ü
 public class Aa05ServiceImpl extends JdbcServicesSupport{
-	static Aa05ServiceImpl instance;
-	static {
-		instance=new Aa05ServiceImpl();
-	}
-	public static Aa05ServiceImpl getInstance() {
-		return instance;
-	}
+	
 	
 	@Override
 	public List<Map<String, String>> query() throws Exception {

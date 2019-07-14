@@ -8,19 +8,13 @@ import com.ego.services.JdbcServicesSupport;
 //商家用户卡券包
 public class Ab05ServiceImpl extends JdbcServicesSupport{
 		
-	static Ab05ServiceImpl instance;
-	static {
-		instance=new Ab05ServiceImpl();
-	}
-	public static Ab05ServiceImpl getInstance() {
-		return instance;
-	}
+	
 
 	@Override
 	public boolean update(String utype) throws Exception {
 		// TODO Auto-generated method stub
 		switch (utype) {
-		case "addDiscount":
+		case "addCoupon":
 			return addDiscount();
 		case "delete":
 			return delete();
@@ -87,10 +81,10 @@ public class Ab05ServiceImpl extends JdbcServicesSupport{
 		return this.executeUpdate(sql.toString(),parameter);
 	}
 	
-	
+	//1为无条件，2为满减
 	private boolean addDiscount() throws Exception{
 		
-		int type=Integer.parseInt((String)this.get("aab502"));
+		int type=Integer.parseInt(this.get("aab502").toString());
 		Object[] parameter;
 		//aab504为使用条件
 		switch (type) {
@@ -107,7 +101,7 @@ public class Ab05ServiceImpl extends JdbcServicesSupport{
 				};
 			this.executeUpdate(sql1.toString(), parameter);
 			return true;
-		case 2://无条件
+		case 2://满减
 			StringBuilder sql2=new StringBuilder()
 			.append("insert into ab05(aab102,aab502,aab503,aab504,aab505,aab506)")
 			.append(" value(?,?,?,?,?,?)");
