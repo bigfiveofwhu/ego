@@ -1,8 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 
@@ -13,10 +10,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<title>后台管理系统</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-		<link rel="stylesheet" href="../../../plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../../plugins/adminLTE/css/AdminLTE.css">
-		<link rel="stylesheet" href="../../../plugins/adminLTE/css/skins/_all-skins.min.css">
-		<link rel="stylesheet" href="../../../css/style.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/AdminLTE.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
 	</head>
 
 	<body class="hold-transition skin-blue sidebar-mini" ng-app="shopping" ng-controller="SellerLoginController" ng-init="getCookie('seller_name')">
@@ -44,13 +41,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<!-- User Account: style can be found in dropdown.less -->
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle text-center" data-toggle="dropdown">
-									<img src="../../../img/Logo.png" class="user-image" alt="User Image">
+									<img src="<%=path%>/houtai/img/Logo.png" class="user-image" alt="User Image">
 									<span class="hidden-xs">{{ loginName }}</span>
 								</a>
 								<ul class="dropdown-menu">
 									<!-- User image -->
 									<li class="user-header">
-										<img src="../../../img/Logo.png" class="user-image" alt="User Image">
+										<img src="<%=path%>/houtai/img/Logo.png" class="user-image" alt="User Image">
 										<p>
 											{{loginName}}
 										</p>
@@ -78,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<!-- Sidebar user panel -->
 					<div class="user-panel">
 						<div class="pull-left image">
-							<img src="../../../img/Logo.png" class="user-image" alt="User Image">
+							<img src="<%=path%>/houtai/img/Logo.png" class="user-image" alt="User Image">
 						</div>
 						<div class="pull-left info">
 							<p>{{loginName}}</p>
@@ -197,16 +194,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</body>
 
 	<!-- 页面meta /-->
-	<script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-	<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-	<script src="../../../plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../../../plugins/angularjs/angular.min.js"></script>
-	<script src="../../../plugins/adminLTE/js/app.min.js"></script>
-	<script type="text/javascript" src="../../../js/base/Base.js"></script>
-	<script type="text/javascript" src="../../../js/base/BaseController.js"></script>
-	<script type="text/javascript" src="../../../js/base/BaseService_Seller.js"></script>
-	<script type="text/javascript" src="../../../js/controller/SellerLoginController.js"></script>
-	<script type="text/javascript" src="../../../js/service/SellerService.js"></script>
-	<script type="text/javascript" src="../../../js/common/common.js"></script>
+	<script src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="<%=path%>/houtai/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/plugins/angularjs/angular.min.js"></script>
+	<script src="<%=path%>/houtai/plugins/adminLTE/js/app.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/Base.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseController.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseService_Seller.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/controller/SellerLoginController.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/SellerService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/common/common.js"></script>
 
 </html>
