@@ -189,7 +189,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="pull-right hidden-xs">
 					<b>Version</b> 1.0.0
 				</div>
-				********提供技术支持
+				ego商城提供技术支持
 			</footer>
 			<!-- 底部导航 /-->
 

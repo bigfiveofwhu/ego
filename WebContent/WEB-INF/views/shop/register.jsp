@@ -45,28 +45,10 @@
 											<label for="name"><i class="am-icon-user"></i></label>
 											<input type="text" class="input_block" name="shopname" id="shopname" placeholder="请输入店铺名称" required="required">
 		                 			   </div>
-	                                   <div class="shop_element" style="/*display: flex;*/display:none">
-										    <label for="code"><i class="am-icon-rocket"></i></label>
-										    <input type="text" class="input_block" name="verifyCode" id="verifyCode" onblur="checkVerify()" 
-										    	   maxlength="6" placeholder="请输入验证码">
-										    <div style="width:40px;height:30px;font-size:12px;padding-top:11px">
-										    	<span class="successIcon"><i class="am-icon-check-circle-o" style="color:green"></i>成功</span>
-										    	<span class="failIcon"><i class="am-icon-close" style="color:red"></i>失败</span>
-										    </div>
-						               </div>
-						               <div class="shop_element" style="display:none">
-											<label for="phone"><i class="am-icon-phone"></i></label>
-											<input type="text" class="input_block" name="phone" id="phone" 
-											       onblur="check()" maxlength="11" placeholder="请输入手机号码" required="required">
-											<button style="display:none" type="button" class="am-btn am-btn-default am-btn-xs sendVerifyCode">发送验证码</button>
-		                 			   </div>
-	                 				   <div class="shop_element" style="display:none">
-										    <label for="password"><i class="am-icon-lock"></i></label>
-										    <input type="password" class="input_block" name="pwd" id="password" onblur="checkPwd()" placeholder="设置密码" required="required">
-	                                   </div>								
-	                				   <div class="shop_element" style="display:none">
-										    <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
-										    <input type="password" class="input_block" name="pwdRep" id="passwordRepeat" onblur="verifyPwd()" placeholder="确认密码" required="required">
+	                                  
+	                                   <div class="shop_element">
+										    <label for="passwordRepeat"><i class="am-icon-cc-paypal"></i></label>
+										    <input type="number" class="input_block" name="amount" id="amount" placeholder="保证金" required="required">
 	                                   </div>
 	                                    <div class="shop_element_textarea">
 										    <label for="realname"><i class="am-icon-child"></i></label>
@@ -82,7 +64,7 @@
 										    </span>
 	                                   </div>
 									   <div class="am-cf">
-											<input type="submit" name="" value="注册" onclick="return check()" class="am-btn am-btn-primary am-btn-sm am-fl">
+											<input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
 									   </div>
 	                               </form>
 							   </div>

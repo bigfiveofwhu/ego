@@ -39,7 +39,7 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 	    {
 	    	//1.编写SQL语句
 	    	StringBuilder sql=new StringBuilder()
-	    			.append("select a.aaa103,a.aaa109,a.aaa110,")
+	    			.append("select a.aaa102,a.aaa103,a.aaa109,a.aaa110,")
 	    			.append("       a.aaa104,a.aaa108,a.aaa113")
 	    			.append("  from aa01 a")
 	    			.append(" where a.aaa101=?")
@@ -77,9 +77,17 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 	
 	
 	   @SuppressWarnings("unused")
-	 private boolean updateEmail() throws Exception
+	     private boolean modifyEmail() throws Exception
 	   {
+		 //用户id用session获得
+		   String user_id = "1";
+		   String sql = "update aa01 a set a.aaa104=? where a.aaa102 = "+ user_id;
 		   
-		   return false;
+		   System.out.println(sql);
+		  // this.appendBatch(sql, this.get("aaa104"), new Object[{1}]);
+		   //Object stateList[]={this.get("aaa104")};
+		   System.out.println(this.get("aaa104"));
+		    return true;
+		   //return  this.executeUpdate(sql, this.get("aaa104"));
 	   }
 }

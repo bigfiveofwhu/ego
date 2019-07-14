@@ -30,11 +30,6 @@ public class LoginController extends ControllerSupport {
 			return "home/login";
 		}
 		HttpSession session=this.getSession();
-		session.setAttribute("session_uid", ins.get("aaa102"));
-		session.setAttribute("session_aaa106", ins.get("aaa106"));  //积分
-		session.setAttribute("session_username", ins.get("aaa103"));
-		session.setAttribute("session_email", ins.get("aaa104"));
-		session.setAttribute("session_phone", ins.get("aaa108"));
 		session.setAttribute("aaa102", ins.get("aaa102"));  //用户id
 		session.setAttribute("aaa103", ins.get("aaa103"));  //用户名
 		session.setAttribute("aaa104", ins.get("aaa104"));  //邮箱地址
@@ -51,7 +46,7 @@ public class LoginController extends ControllerSupport {
 		}
 		if(ins!=null)
 		{
-			session.setAttribute("aab102", ins.get("aab102"));
+			session.setAttribute("aab102", ins.get("aab102"));  //店铺id
 		}
 		return "home/home";
 	}

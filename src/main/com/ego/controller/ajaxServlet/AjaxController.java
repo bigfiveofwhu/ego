@@ -10,7 +10,7 @@ public interface AjaxController
 {
 	void setMap(Map<String,Object> dto);
 	
-	void execute(HttpSession session);
+	void execute(HttpSession session) throws Exception;
 	
 	JSONObject getJSON();
 }

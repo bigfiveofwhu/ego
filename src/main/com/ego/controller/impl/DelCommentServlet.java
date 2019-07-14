@@ -1,12 +1,11 @@
 package com.ego.controller.impl;
 
-public class ShowCommentServlet extends CommentControllerSupport 
+public class DelCommentServlet extends CommentControllerSupport 
 {
-
 	@Override
 	public String execute() throws Exception 
 	{
-		
+		this.update("delComment", "É¾³ýÆÀÂÛ");
 		this.savePageData("allComment");
 		return "WEB-INF/views/comment";
 	}
