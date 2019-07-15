@@ -1,33 +1,33 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@include file="/taglib.jsp" %>
+<%@ page language="java" pageEncoding="GBK"%>
+<%@ include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<!-- é¡µé¢meta -->
+		<!-- Ò³Ãæmeta -->
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>åŽå°ç®¡ç†ç³»ç»Ÿ</title>
+		<title>ºóÌ¨¹ÜÀíÏµÍ³</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-		<link rel="stylesheet" href="<%=path %>/houtai/plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<%=path %>/houtai/plugins/adminLTE/css/AdminLTE.css">
-		<link rel="stylesheet" href="<%=path %>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
-		<link rel="stylesheet" href="<%=path %>/houtai/css/style.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/AdminLTE.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
 	</head>
 
 	<body class="hold-transition skin-blue sidebar-mini" ng-app="shopping" ng-controller="SellerLoginController" ng-init="getCookie('seller_name')">
 
 		<div class="wrapper">
 
-			<!-- é¡µé¢å¤´éƒ¨ -->
+			<!-- Ò³ÃæÍ·²¿ -->
 			<header class="main-header">
 				<!-- Logo -->
 				<a href="index.html" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
-					<span class="logo-mini"><b>è´­ç‰©å•†åŸŽ</b></span>
+					<span class="logo-mini"><b>¹ºÎïÉÌ³Ç</b></span>
 					<!-- logo for regular state and mobile devices -->
-					<span class="logo-lg"><b>è´­ç‰©å•†åŸŽ</b>å•†å®¶åŽå°</span>
+					<span class="logo-lg"><b>¹ºÎïÉÌ³Ç</b>ÉÌ¼ÒºóÌ¨</span>
 				</a>
 				<!-- Header Navbar: style can be found in header.less -->
 				<nav class="navbar navbar-static-top">
@@ -41,7 +41,7 @@
 							<!-- User Account: style can be found in dropdown.less -->
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle text-center" data-toggle="dropdown">
-									<img src="<%=path %>/houtai/img/Logo.png" class="user-image" alt="User Image">
+									<img src="<%=path%>/houtai/img/Logo.png" class="user-image" alt="User Image">
 									<span class="hidden-xs">{{ loginName }}</span>
 								</a>
 								<ul class="dropdown-menu">
@@ -56,7 +56,7 @@
 									<!-- Menu Footer-->
 									<li class="user-footer">
 										<div class="text-center">
-											<a href="#" class="btn btn-default btn-flat" ng-click="exit()">æ³¨é”€</a>
+											<a href="#" class="btn btn-default btn-flat" ng-click="exit()">×¢Ïú</a>
 										</div>
 									</li>
 								</ul>
@@ -66,30 +66,30 @@
 					</div>
 				</nav>
 			</header>
-			<!-- é¡µé¢å¤´éƒ¨ /-->
+			<!-- Ò³ÃæÍ·²¿ /-->
 
-			<!-- å¯¼èˆªä¾§æ  -->
+			<!-- µ¼º½²àÀ¸ -->
 			<aside class="main-sidebar">
 				<!-- sidebar: style can be found in sidebar.less -->
 				<section class="sidebar">
 					<!-- Sidebar user panel -->
 					<div class="user-panel">
 						<div class="pull-left image">
-							<img src="<%=path %>/houtai/img/Logo.png" class="user-image" alt="User Image">
+							<img src="<%=path%>/houtai/img/Logo.png" class="user-image" alt="User Image">
 						</div>
 						<div class="pull-left info">
 							<p>{{loginName}}</p>
-							<a href="#"><i class="fa fa-circle text-success"></i> åœ¨çº¿</a>
+							<a href="#"><i class="fa fa-circle text-success"></i> ÔÚÏß</a>
 						</div>
 					</div>
 					<ul class="sidebar-menu">
-						<li class="header">èœå•</li>
+						<li class="header">²Ëµ¥</li>
 						
-						<!-- èœå• -->
+						<!-- ²Ëµ¥ -->
 						<li class="treeview">
 							<a href="#">
 								<i class="fa fa-folder"></i>
-								<span>åŸºæœ¬ç®¡ç†</span>
+								<span>»ù±¾¹ÜÀí</span>
 								<span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
@@ -98,12 +98,12 @@
 
 								<li id="admin-login">
 									<a href="seller.html" target="iframe">
-										<i class="fa fa-circle-o"></i> ä¿®æ”¹èµ„æ–™
+										<i class="fa fa-circle-o"></i> ÐÞ¸Ä×ÊÁÏ
 									</a>
 								</li>
 								<li id="admin-login">
 									<a href="password.html" target="iframe">
-										<i class="fa fa-circle-o"></i> ä¿®æ”¹å¯†ç 
+										<i class="fa fa-circle-o"></i> ÐÞ¸ÄÃÜÂë
 									</a>
 								</li>
 							</ul>
@@ -111,7 +111,7 @@
 						<li class="treeview">
 							<a href="#">
 								<i class="fa fa-folder"></i>
-								<span>å•†å“ç®¡ç†</span>
+								<span>ÉÌÆ·¹ÜÀí</span>
 								<span class="pull-right-container">
 				       				<i class="fa fa-angle-left pull-right"></i>
 				   		 		</span>
@@ -120,12 +120,12 @@
 
 								<li id="admin-login">
 									<a href="goods_edit.jsp" target="iframe">
-										<i class="fa fa-circle-o"></i> æ–°å¢žå•†å“
+										<i class="fa fa-circle-o"></i> ÐÂÔöÉÌÆ·
 									</a>
 								</li>
 								<li id="admin-login">
 									<a href="queryProduct.html" target="iframe">
-										<i class="fa fa-circle-o"></i> å•†å“ç®¡ç†
+										<i class="fa fa-circle-o"></i> ÉÌÆ·¹ÜÀí
 									</a>
 								</li>
 							</ul>
@@ -133,36 +133,36 @@
 						<li class="treeview">
 							<a href="#" >
 								<i class="fa fa-folder"></i>
-								<span>è®¢å•ç®¡ç†</span>
+								<span>¶©µ¥¹ÜÀí</span>
 								<span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				       		</a>
 				       		<ul class="treeview-menu">
 								<li id="admin-login">
 									<a href="home-index.html" target="iframe">
-										<i class="fa fa-circle-o"></i> è®¢å•ç®¡ç†
+										<i class="fa fa-circle-o"></i> ¶©µ¥¹ÜÀí
 									</a>
 								</li>
 							</ul>
 						</li>
-						<!-- èœå• /-->
-						<!-- ä¼˜æƒ åˆ¸ -->
+						<!-- ²Ëµ¥ /-->
+						<!-- ÓÅ»ÝÈ¯ -->
 						<li class="treeview">
 							<a href="#" >
 								<i class="fa fa-folder"></i>
-								<span>ä¼˜æƒ åˆ¸ç®¡ç†</span>
+								<span>ÓÅ»ÝÈ¯¹ÜÀí</span>
 								<span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				       		</a>
 				       		<ul class="treeview-menu">
 								<li>
 									<a href="/ego/discount/getShopCoupons.html" target="iframe">
-										<i class="fa fa-circle-o"></i> ä¼˜æƒ åˆ¸
+										<i class="fa fa-circle-o"></i> ÓÅ»ÝÈ¯
 									</a>
 								</li>
 								<li>
 									<a href="/ego/discount/discountManage.html" target="iframe">
-										<i class="fa fa-circle-o"></i> ä¼˜æƒ åˆ¸ç®¡ç†
+										<i class="fa fa-circle-o"></i> ÓÅ»ÝÈ¯¹ÜÀí
 									</a>
 								</li>
 								
@@ -172,28 +172,28 @@
 				</section>
 				<!-- /.sidebar -->
 			</aside>
-			<!-- å¯¼èˆªä¾§æ  /-->
+			<!-- µ¼º½²àÀ¸ /-->
 
-			<!-- å†…å®¹åŒºåŸŸ -->
+			<!-- ÄÚÈÝÇøÓò -->
 			<div class="content-wrapper">
 				<iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" src="seller.jsp"></iframe>
 
 			</div>
-			<!-- å†…å®¹åŒºåŸŸ /-->
+			<!-- ÄÚÈÝÇøÓò /-->
 
-			<!-- åº•éƒ¨å¯¼èˆª -->
+			<!-- µ×²¿µ¼º½ -->
 			<footer class="main-footer">
 				<div class="pull-right hidden-xs">
 					<b>Version</b> 1.0.0
 				</div>
-				egoå•†åŸŽæä¾›æŠ€æœ¯æ”¯æŒ
+				egoÉÌ³ÇÌá¹©¼¼ÊõÖ§³Ö
 			</footer>
-			<!-- åº•éƒ¨å¯¼èˆª /-->
+			<!-- µ×²¿µ¼º½ /-->
 
 		</div>
 	</body>
 
-	<!-- é¡µé¢meta /-->
+	<!-- Ò³Ãæmeta /-->
 	<script src="<%=path %>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
 	<script src="<%=path %>/houtai/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<%=path %>/houtai/plugins/angularjs/angular.min.js"></script>
@@ -204,5 +204,4 @@
 	<script type="text/javascript" src="<%=path %>/houtai/js/controller/SellerLoginController.js"></script>
 	<script type="text/javascript" src="<%=path %>/houtai/js/service/SellerService.js"></script>
 	<script type="text/javascript" src="<%=path %>/houtai/js/common/common.js"></script>
-
 </html>

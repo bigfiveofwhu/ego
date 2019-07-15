@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		<link href="../css/personal.css" rel="stylesheet" type="text/css">
 		<link href="../css/colstyle.css" rel="stylesheet" type="text/css">
-
+		<script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 	</head>
 
 	<body>
@@ -92,20 +92,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="center">
 			<div class="col-main">
 				<div class="main-wrap">
-
-					<div class="user-collection">
-						<!--标题 -->
-						<div class="am-cf am-padding">
-							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">我的收藏</strong> / <small>My&nbsp;Collection</small></div>
-						</div>
+      	        <!--标题 -->
+				<div class="am-cf am-padding">
+					<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">我的收藏</strong> / <small>My&nbsp;Collection</small></div>
+				</div>
+				<ul class="am-avg-sm-2 am-tabs-nav am-nav am-nav-tabs">
+					<li class=""><a id="pro"   href="#tab1">收藏商品</a></li>
+					<li class=""><a id="shop" href="#tab2">收藏店铺</a></li>
+				</ul>
+					<div class="user-collection"  id="tab1">
+					
 						<hr/>
 
 						<div class="you-like">
-							<div class="s-bar">
-								我的收藏
-								<a class="am-badge am-badge-danger am-round">降价</a>
-								<a class="am-badge am-badge-danger am-round">下架</a>
-							</div>
+					
 							<div class="s-content">
 								<div class="s-item-wrap">
 									<div class="s-item">
@@ -295,7 +295,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 
 					</div>
-
+                    <div  id="tab2"></div>
 				</div>
 				<!--底部-->
 				<div class="footer">
@@ -378,5 +378,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 
 	</body>
-
+<script type="text/javascript">
+$("#pro").click(function(){
+	$("#tab1").show();
+	$("#tab2").hide();
+});
+$("#shop").click(function(){
+	$("#tab1").hide();
+	$("#tab2").show();
+})
+</script>
 </html>

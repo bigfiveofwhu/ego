@@ -30,8 +30,9 @@ public class FileUpload
                    InputStream in = null;
 		           OutputStream out = null;
 		           // 获取上传文件目录
-		          String savePath = request.getServletContext().getRealPath("/upload");
-
+		          String savePath = request.getServletContext().getRealPath("/images/upload");
+		        		  //System.getProperty("webContent"); 
+                  System.out.println(savePath);
 		 
 		          try {
 		              // 使用默认配置创建解析器工厂

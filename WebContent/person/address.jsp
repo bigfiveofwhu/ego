@@ -308,9 +308,9 @@
 					<li class="person">
 						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
 					<ul>
-							<li> <a href="showUserInfo.html">个人信息</a></li>
+						<li> <a href="showUserInfo.html">个人信息</a></li>
 							<li> <a href="<%=path%>/person/safety.jsp">安全设置</a></li>
-							<li> <a href="<%=path%>/person/address.jsp">地址管理</a></li>
+							<li> <a href="showAddress.html">地址管理</a></li>
 							<li> <a href="<%=path%>/person/cardlist.jsp">快捷支付</a></li>
 						</ul>
 					</li>

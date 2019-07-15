@@ -134,7 +134,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a class="btn" href="javascript:void(0);"  id="sendMobileCode">
 								<button class="am-btn am-btn-danger sendVerifyCode" >发送验证码</button>
 							</a>
-							<span id="vstatus"></span>
+							<span id="vsuccess" style="display:none">验证成功</span>
+							<span id="vfail"  style="display:none">验证失败</span>
 						</div>
 						<div class="info-btn">
 							<button class="am-btn am-btn-danger" id="savemodify">保存修改</button>
@@ -246,12 +247,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					//$(".successIcon").css("display","inline");
 					//$(".failIcon").css("display","none");
 					//alert("验证成功")
-				    $(".sendVerifyCode").text("验证成功");
+				    console.log("验证码验证成功");
+				    $("#vsuccess").show();
+					
 					isVerify=true;
 				}else{
 					console.log("s验证失败")
 					//$(".successIcon").css("display","none");
 					//$(".failIcon").css("display","inline");
+					$("#vfail").fail();
 					$(".sendVerifyCode").text("验证失败");
 				}
 			},
@@ -328,7 +332,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			success:function(res,status){
 				//alert("修改成功")
               console.log("修改邮箱成功");
-              $("#issuccess").html()="修改成功";
 			},
 			error:function(res,status){
 				console.log("修改邮箱失败");

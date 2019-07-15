@@ -34,6 +34,8 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 		return (boolean)method.invoke(this);
     }
 	/****个人信息管理*****/
+	
+	private int user_id = 1;
 	//按id查询
 	 public Map<String,String> findById()throws Exception
 	    {
@@ -75,19 +77,34 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 	    	return this.executeUpdate(sql.toString(), args);	    	
 	    }
 	
-	
+	/**
+	  * 修改用户绑定邮箱
+	 * @return
+	 * @throws Exception
+	 */
 	   @SuppressWarnings("unused")
 	     private boolean modifyEmail() throws Exception
 	   {
 		 //用户id用session获得
-		   String user_id = "1";
 		   String sql = "update aa01 a set a.aaa104=? where a.aaa102 = "+ user_id;
 		   
 		   System.out.println(sql);
 		  // this.appendBatch(sql, this.get("aaa104"), new Object[{1}]);
 		   //Object stateList[]={this.get("aaa104")};
 		   System.out.println(this.get("aaa104"));
-		    return true;
-		   //return  this.executeUpdate(sql, this.get("aaa104"));
+		   return true;
+		 // return  this.executeUpdate(sql, this.get("aaa104"));
+	   }
+	   
+	   /**
+	        * 修改用户密码 暂时没加入md5
+	    * @return
+	    * @throws Exception
+	    */
+	   private boolean modifyPwd() throws Exception
+	   {
+		   String sql = "update aa01 a set a.aaa107=? where a.aaa102 = " + user_id;
+		   
+		   return this.executeUpdate(sql, this.get("aaa107"));
 	   }
 }

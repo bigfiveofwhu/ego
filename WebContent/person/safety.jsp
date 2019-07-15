@@ -126,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<div class="fore2"><small>为保证您购物安全，建议您定期更改密码以保护账户安全。</small></div>
 									</div>
 									<div class="fore3">
-										<a href="password.html">
+										<a href="password.jsp">
 											<div class="am-btn am-btn-secondary">修改</div>
 										</a>
 									</div>
@@ -229,9 +229,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li class="person">
 						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
 					<ul>
-							<li> <a href="showUserInfo.html">个人信息</a></li>
+								<li> <a href="showUserInfo.html">个人信息</a></li>
 							<li> <a href="<%=path%>/person/safety.jsp">安全设置</a></li>
-							<li> <a href="<%=path%>/person/address.jsp">地址管理</a></li>
+							<li> <a href="showAddress.html">地址管理</a></li>
 							<li> <a href="<%=path%>/person/cardlist.jsp">快捷支付</a></li>
 						</ul>
 					</li>

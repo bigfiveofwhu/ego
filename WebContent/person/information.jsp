@@ -1,10 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-
+<%@ page language="java" pageEncoding="GBK"%>
+<%@include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 
@@ -12,59 +7,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
 
-		<title>ä¸ªäººèµ„æ–™</title>
+		<title>¸öÈË×ÊÁÏ</title>
 
-		<link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
-		<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 
-		<link href="../css/personal.css" rel="stylesheet" type="text/css">
-		<link href="../css/infstyle.css" rel="stylesheet" type="text/css">
-		<script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-		<script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>			
+		<link href="<%=path%>/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/css/infstyle.css" rel="stylesheet" type="text/css">
+		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>			
 	</head>
 
 	<body>
-		<!--å¤´ -->
+		<!--Í· -->
 		<header>
 			<article>
 				<div class="mt-logo">
-					<!--é¡¶éƒ¨å¯¼èˆªæ¡ -->
-					<div class="am-container header">
-						<ul class="message-l">
-							<div class="topMessage">
-								<div class="menu-hd">
-									<a href="#" target="_top" class="h">äº²ï¼Œè¯·ç™»å½•</a>
-									<a href="#" target="_top">å…è´¹æ³¨å†Œ</a>
-								</div>
-							</div>
-						</ul>
-						<ul class="message-r">
-							<div class="topMessage home">
-								<div class="menu-hd"><a href="#" target="_top" class="h">å•†åŸé¦–é¡µ</a></div>
-							</div>
-							<div class="topMessage my-shangcheng">
-								<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>ä¸ªäººä¸­å¿ƒ</a></div>
-							</div>
-							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>è´­ç‰©è½¦</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-							</div>
-							<div class="topMessage favorite">
-								<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>æ”¶è—å¤¹</span></a></div>
-						</ul>
-						</div>
-
-						<!--æ‚¬æµ®æœç´¢æ¡†-->
-
+					<!--¶¥²¿µ¼º½Ìõ -->
+					<%@ include file="/navigate.jsp" %>
+						<!--Ğü¸¡ËÑË÷¿ò-->
 						<div class="nav white">
 							<div class="logoBig">
-								<li><img src="../images/logobig.png" /></li>
+								<li><img src="<%=path%>/images/logobig.png" /></li>
 							</div>
 
 							<div class="search-bar pr">
 								<a name="index_none_header_sysc" href="#"></a>
 								<form>
-									<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="æœç´¢" autocomplete="off">
-									<input id="ai-topsearch" class="submit am-btn" value="æœç´¢" index="1" type="submit">
+									<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="ËÑË÷" autocomplete="off">
+									<input id="ai-topsearch" class="submit am-btn" value="ËÑË÷" index="1" type="submit">
 								</form>
 							</div>
 						</div>
@@ -75,17 +46,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</article>
 		</header>
             <div class="nav-table">
-					   <div class="long-title"><span class="all-goods">å…¨éƒ¨åˆ†ç±»</span></div>
+					   <div class="long-title"><span class="all-goods">È«²¿·ÖÀà</span></div>
 					   <div class="nav-cont">
 							<ul>
-								<li class="index"><a href="#">é¦–é¡µ</a></li>
-                                <li class="qc"><a href="#">é—ªè´­</a></li>
-                                <li class="qc"><a href="#">é™æ—¶æŠ¢</a></li>
-                                <li class="qc"><a href="#">å›¢è´­</a></li>
-                                <li class="qc last"><a href="#">å¤§åŒ…è£…</a></li>
+								<li class="index"><a href="#">Ê×Ò³</a></li>
+                                <li class="qc"><a href="#">ÉÁ¹º</a></li>
+                                <li class="qc"><a href="#">ÏŞÊ±ÇÀ</a></li>
+                                <li class="qc"><a href="#">ÍÅ¹º</a></li>
+                                <li class="qc last"><a href="#">´ó°ü×°</a></li>
 							</ul>
 						    <div class="nav-extra">
-						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>æˆ‘çš„ç¦åˆ©
+						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>ÎÒµÄ¸£Àû
 						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
 						    </div>
 						</div>
@@ -96,45 +67,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="main-wrap">
 
 					<div class="user-info">
-						<!--æ ‡é¢˜ -->
+						<!--±êÌâ -->
 						<div class="am-cf am-padding">
-							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">ä¸ªäººèµ„æ–™</strong> / <small>Personal&nbsp;information</small></div>
+							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">¸öÈË×ÊÁÏ</strong> / <small>Personal&nbsp;information</small></div>
 						</div>
 						<hr/>
-						<!--å¤´åƒ -->
+						<!--Í·Ïñ -->
 						<div class="user-infoPic">
 							<form enctype="multipart/form-data" id="formTag">
 							<div class="filePic">
 								<input id="pop_file" type="file"  class="inputPic" onchange="uploadFile(event)" name="fileTrans" ref="file" value="" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
-								<img id="preview" class="am-circle am-img-thumbnail" src="<%=basePath%>/upload/${user.imgName }.jpg" alt="" />
+								<img id="preview" class="am-circle am-img-thumbnail" src="<%=path%>/images/upload/${user.imgName }.jpg" alt="" />
 							</div>
 							</form>
 					
 
-							<p class="am-form-help">å¤´åƒ</p>
+							<p class="am-form-help">Í·Ïñ</p>
 
 							<div class="info-m">
-								<div><b>ç”¨æˆ·åï¼š<i>å°å®å½“</i></b></div>
+								<div><b>ÓÃ»§Ãû£º<i>Ğ¡¶£µ±</i></b></div>
 								<div class="vip">
-                                      <span></span><a href="#">ä¼šå‘˜ä¸“äº«</a>
+                                      <span></span><a href="#">»áÔ±×¨Ïí</a>
 								</div>
 							</div>
 						</div>
 
-						<!--ä¸ªäººä¿¡æ¯ -->
+						<!--¸öÈËĞÅÏ¢ -->
 						<div class="info-main">
 							<form class="am-form am-form-horizontal" action="modifyUserInfo.html" method="post">
 
 								<div class="am-form-group">
-									<label for="user-name2" class="am-form-label">ç”¨æˆ·å</label>
+									<label for="user-name2" class="am-form-label">ÓÃ»§Ãû</label>
 									<div class="am-form-content">
 										<input type="text" name="aaa103" "id="user-name" value="${user.aaa103}">
-                                          <small>æ˜µç§°é•¿åº¦ä¸èƒ½è¶…è¿‡40ä¸ªæ±‰å­—</small>
+                                          <small>êÇ³Æ³¤¶È²»ÄÜ³¬¹ı40¸öºº×Ö</small>
 									</div>
 								</div>
 
 								<div class="am-form-group">
-									<label for="user-name" class="am-form-label">çœŸå®å§“å</label>
+									<label for="user-name" class="am-form-label">ÕæÊµĞÕÃû</label>
 									<div class="am-form-content">
 										<input type="text" name="aaa109"id="user-realname" value="${user.aaa109}">
                                          
@@ -142,49 +113,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 
 								<div class="am-form-group">
-									<label class="am-form-label">æ€§åˆ«</label>
+									<label class="am-form-label">ĞÔ±ğ</label>
 									<div class="am-form-content sex">
 										<label class="am-radio-inline">
-											<input type="radio" name="aaa113" value="1" data-am-ucheck > ç”·
+											<input type="radio" name="aaa113" value="1" data-am-ucheck > ÄĞ
 										</label>
 										<label class="am-radio-inline">
-											<input type="radio" name="aaa113" value="2" data-am-ucheck> å¥³
+											<input type="radio" name="aaa113" value="2" data-am-ucheck> Å®
 										</label>
 										<label class="am-radio-inline">
-											<input type="radio" name="aaa113" value="3" data-am-ucheck checked> ä¿å¯†
+											<input type="radio" name="aaa113" value="3" data-am-ucheck checked> ±£ÃÜ
 										</label>
 									</div>
 								</div>
 
 								<div class="am-form-group">
-									<label for="user-birth" class="am-form-label">ç”Ÿæ—¥</label>
+									<label for="user-birth" class="am-form-label">ÉúÈÕ</label>
 									<div class="am-form-content">
 										    <input type="date" name="aaa110"  value="${user.aaa110 }"> 
 									</div>
 								</div>
 								<div class="am-form-group">
-									<label for="user-phone" class="am-form-label">ç”µè¯</label>
+									<label for="user-phone" class="am-form-label">µç»°</label>
 									<div class="am-form-content">
 										<input id="user-phone" name="aaa108" value=" ${user.aaa108 }" placeholder="telephonenumber" type="tel">
 
 									</div>
 								</div>
 								<div class="am-form-group">
-									<label for="user-email" class="am-form-label">ç”µå­é‚®ä»¶</label>
+									<label for="user-email" class="am-form-label">µç×ÓÓÊ¼ş</label>
 									<div class="am-form-content">
 										<input id="user-email" name="aaa104"  value="${user.aaa104 }" placeholder="Email" type="email">
 
 									</div>
 								</div>
 								<div class="am-form-group address">
-									<label for="user-address" class="am-form-label">æ”¶è´§åœ°å€</label>
+									<label for="user-address" class="am-form-label">ÊÕ»õµØÖ·</label>
 									<div class="am-form-content address">
 										<a href="address.html">
 											<p class="new-mu_l2cw">
-												<span class="province">æ¹–åŒ—</span>çœ
-												<span class="city">æ­¦æ±‰</span>å¸‚
-												<span class="dist">æ´ªå±±</span>åŒº
-												<span class="street">é›„æ¥šå¤§é“666å·(ä¸­å—è´¢ç»æ”¿æ³•å¤§å­¦)</span>
+												<span class="province">ºş±±</span>Ê¡
+												<span class="city">Îäºº</span>ÊĞ
+												<span class="dist">ºéÉ½</span>Çø
+												<span class="street">ĞÛ³ş´óµÀ666ºÅ(ÖĞÄÏ²Æ¾­Õş·¨´óÑ§)</span>
 												<span class="am-icon-angle-right"></span>
 											</p>
 										</a>
@@ -192,7 +163,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</div>
 								</div>
 								<div class="am-form-group safety">
-									<label for="user-safety" class="am-form-label">è´¦å·å®‰å…¨</label>
+									<label for="user-safety" class="am-form-label">ÕËºÅ°²È«</label>
 									<div class="am-form-content safety">
 										<a href="safety.html">
 
@@ -203,86 +174,65 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</div>
 								</div>
 								<div class="info-btn">
-								   <input type="submit" class="am-btn am-btn-danger" value="ä¿å­˜ä¿®æ”¹"></input>
+								   <input type="submit" class="am-btn am-btn-danger" value="±£´æĞŞ¸Ä"></input>
 								</div>
                              <span>${msg }</span>
 				             </form>
 						</div>
 					</div>
 				</div>
-				<!--åº•éƒ¨-->
-				<div class="footer">
-					<div class="footer-hd">
-						<p>
-							<a href="#">æ’æœ›ç§‘æŠ€</a>
-							<b>|</b>
-							<a href="#">å•†åŸé¦–é¡µ</a>
-							<b>|</b>
-							<a href="#">æ”¯ä»˜å®</a>
-							<b>|</b>
-							<a href="#">ç‰©æµ</a>
-						</p>
-					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">å…³äºæ’æœ›</a>
-							<a href="#">åˆä½œä¼™ä¼´</a>
-							<a href="#">è”ç³»æˆ‘ä»¬</a>
-							<a href="#">ç½‘ç«™åœ°å›¾</a>
-							<em>? 2015-2025 Hengwang.com ç‰ˆæƒæ‰€æœ‰. æ›´å¤šæ¨¡æ¿ <a href="http://www.cssmoban.com/" target="_blank" title="æ¨¡æ¿ä¹‹å®¶">æ¨¡æ¿ä¹‹å®¶</a> - Collect from <a href="http://www.cssmoban.com/" title="ç½‘é¡µæ¨¡æ¿" target="_blank">ç½‘é¡µæ¨¡æ¿</a></em>
-						</p>
-					</div>
-				</div>
+				<!--µ×²¿-->
+				<%@ include file="/footer.jsp" %>
 			</div>
 
 			<aside class="menu">
 				<ul>
 					<li class="person active">
-						<a href="index.html"><i class="am-icon-user"></i>ä¸ªäººä¸­å¿ƒ</a>
+						<a href="index.html"><i class="am-icon-user"></i>¸öÈËÖĞĞÄ</a>
 					</li>
 					<li class="person">
-						<p><i class="am-icon-newspaper-o"></i>ä¸ªäººèµ„æ–™</p>
+						<p><i class="am-icon-newspaper-o"></i>¸öÈË×ÊÁÏ</p>
 					<ul>
-							<li> <a href="showUserInfo.html">ä¸ªäººä¿¡æ¯</a></li>
-							<li> <a href="<%=path%>/person/safety.jsp">å®‰å…¨è®¾ç½®</a></li>
-							<li> <a href="<%=path%>/person/address.jsp">åœ°å€ç®¡ç†</a></li>
-							<li> <a href="<%=path%>/person/cardlist.jsp">å¿«æ·æ”¯ä»˜</a></li>
+							<li> <a href="showUserInfo.html">¸öÈËĞÅÏ¢</a></li>
+							<li> <a href="<%=path%>/person/safety.jsp">°²È«ÉèÖÃ</a></li>
+							<li> <a href="<%=path%>/person/address.jsp">µØÖ·¹ÜÀí</a></li>
+							<li> <a href="<%=path%>/person/cardlist.jsp">¿ì½İÖ§¸¶</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<p><i class="am-icon-balance-scale"></i>æˆ‘çš„äº¤æ˜“</p>
+						<p><i class="am-icon-balance-scale"></i>ÎÒµÄ½»Ò×</p>
 						<ul>
-							<li><a href="order.html">è®¢å•ç®¡ç†</a></li>
-							<li> <a href="change.html">é€€æ¬¾å”®å</a></li>
-							<li> <a href="comment.html">è¯„ä»·å•†å“</a></li>
+							<li><a href="order.html">¶©µ¥¹ÜÀí</a></li>
+							<li> <a href="change.html">ÍË¿îÊÛºó</a></li>
+							<li> <a href="comment.html">ÆÀ¼ÛÉÌÆ·</a></li>
 						</ul>
 					</li>
 					<li class="person">
-						<p><i class="am-icon-dollar"></i>æˆ‘çš„èµ„äº§</p>
+						<p><i class="am-icon-dollar"></i>ÎÒµÄ×Ê²ú</p>
 						<ul>
-							<li> <a href="points.html">æˆ‘çš„ç§¯åˆ†</a></li>
-							<li> <a href="coupon.html">ä¼˜æƒ åˆ¸ </a></li>
-							<li> <a href="bonus.html">çº¢åŒ…</a></li>
-							<li> <a href="walletlist.html">è´¦æˆ·ä½™é¢</a></li>
-							<li> <a href="bill.html">è´¦å•æ˜ç»†</a></li>
-						</ul>
-					</li>
-
-					<li class="person">
-						<p><i class="am-icon-tags"></i>æˆ‘çš„æ”¶è—</p>
-						<ul>
-							<li> <a href="collection.html">æ”¶è—</a></li>
-							<li> <a href="foot.html">è¶³è¿¹</a></li>														
+							<li> <a href="points.html">ÎÒµÄ»ı·Ö</a></li>
+							<li> <a href="coupon.html">ÓÅ»İÈ¯ </a></li>
+							<li> <a href="bonus.html">ºì°ü</a></li>
+							<li> <a href="walletlist.html">ÕË»§Óà¶î</a></li>
+							<li> <a href="bill.html">ÕËµ¥Ã÷Ï¸</a></li>
 						</ul>
 					</li>
 
 					<li class="person">
-						<p><i class="am-icon-qq"></i>åœ¨çº¿å®¢æœ</p>
+						<p><i class="am-icon-tags"></i>ÎÒµÄÊÕ²Ø</p>
 						<ul>
-							<li> <a href="consultation.html">å•†å“å’¨è¯¢</a></li>
-							<li> <a href="suggest.html">æ„è§åé¦ˆ</a></li>							
+							<li> <a href="collection.html">ÊÕ²Ø</a></li>
+							<li> <a href="foot.html">×ã¼£</a></li>														
+						</ul>
+					</li>
+
+					<li class="person">
+						<p><i class="am-icon-qq"></i>ÔÚÏß¿Í·ş</p>
+						<ul>
+							<li> <a href="consultation.html">ÉÌÆ·×ÉÑ¯</a></li>
+							<li> <a href="suggest.html">Òâ¼û·´À¡</a></li>							
 							
-							<li> <a href="news.html">æˆ‘çš„æ¶ˆæ¯</a></li>
+							<li> <a href="news.html">ÎÒµÄÏûÏ¢</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -317,10 +267,11 @@ function uploadFile(ev){
 		timeout : 20000,
 		data : formdata,
 		success:function(res,status){
-            console.log("ä¿®æ”¹é»˜è®¤å¤´åƒæˆåŠŸ");
+            console.log("ĞŞ¸ÄÄ¬ÈÏÍ·Ïñ³É¹¦");
+			//img.setAttribute('src',"<%=basePath%>/images/upload/user_1.jpg")
 			},
 			error:function(res,status){
-				console.log("ä¿®æ”¹é»˜è®¤å¤´åƒå¤±è´¥");
+				console.log("ĞŞ¸ÄÄ¬ÈÏÍ·ÏñÊ§°Ü");
 			}
 	 });
 

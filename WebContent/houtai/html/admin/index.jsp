@@ -242,8 +242,9 @@
 <script src="../../plugins/adminLTE/js/app.min.js"></script>
 <script type="text/javascript" src="../../js/base/Base.js"></script>
 <script type="text/javascript" src="../../js/base/BaseController.js"></script>
-<script type="text/javascript" src="../../js/base/BaseService.js"></script>
+<script type="text/javascript" src="../../js/base/BaseService.js"></script>s
 <script type="text/javascript" src="../../js/controller/AdminUserController.js"></script>
 <script type="text/javascript" src="../../js/service/AdminUserService.js"></script>
 <script type="text/javascript" src="../../js/common/common.js"></script>
 </html>
+
