@@ -16,6 +16,7 @@
 <script src="/ego/js/jquery-3.2.0.min.js" ></script>
 <script src="/ego/js/bootstrap.bundle.js"></script>
 <script src="/ego/layui/layui.js"></script>
-<!-- insert your javascripte here-->
+<!-- insert your javascript here-->
+
 </body>
 </html>
