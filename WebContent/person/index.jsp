@@ -470,11 +470,6 @@
 			</aside>
 		</div>
 		<!--引导 -->
-		<div class="navCir">
-			<li><a href="<%=path%>/home/home2.html"><i class="am-icon-home "></i>首页</a></li>
-			<li><a href="<%=path%>/home/sort.html"><i class="am-icon-list"></i>分类</a></li>
-			<li><a href="<%=path%>/home/shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>
-			<li class="active"><a href="index.html"><i class="am-icon-user"></i>我的</a></li>
-		</div>
+		<%@include file="/bottomGuide.jsp" %>
 	</body>
 </html>

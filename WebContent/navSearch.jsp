@@ -10,8 +10,8 @@
 	</div>
 	<div class="search-bar pr">
 		<a name="index_none_header_sysc" href="#"></a>
-		<form action="${path}/search.html">
-			<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="ËÑË÷" autocomplete="off"> 
+		<form action="${path}/search.html" method="post">
+			<input id="searchInput" name="key" type="text" value="${key }" placeholder="ÊäÈë¹Ø¼ü×ÖËÑË÷" required="required" autocomplete="on"> 
 			<input id="ai-topsearch" class="submit am-btn" value="ËÑË÷" index="1" type="submit">
 		</form>
 	</div>

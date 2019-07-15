@@ -42,6 +42,8 @@ public class AjaxBaseServlet extends HttpServlet
 			
 			controller.execute(request.getSession());
 			
+			response.setCharacterEncoding("UTF-8");
+			
 			PrintWriter out=response.getWriter();
 			
 			out.print(controller.getJSON().toJSONString());

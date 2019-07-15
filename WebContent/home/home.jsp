@@ -66,7 +66,6 @@
 			    			
 			    		}
 			    	});
-			    	console.log($(".am-slides").html());
 			    })
 			</script>
 		</div>
@@ -88,6 +87,12 @@
 					</div>
 				</div>
 			</div>
+			<script type="text/javascript">
+				$(".productType").click(function(){
+					var id=$(this).attr("ptype_id");
+					location.href="<%=path%>/search.html?type="+id;
+				});
+			</script>
 			<!--轮播-->
 			<script type="text/javascript">
 				(function() {
@@ -407,12 +412,7 @@
 		</div>
 	</div>
 	<!--引导 -->
-	<div class="navCir">
-		<li class="active"><a href="<%=path %>/home/home.html"><i class="am-icon-home "></i>首页</a></li>
-		<li><a href="sort.html"><i class="am-icon-list"></i>分类</a></li>
-		<li><p onclick="javascript:window.open('<%=path %>/home/shoppingCart.html')">购物车</p></li>
-		<li><a href="<%=path%>/person/index.html"><i class="am-icon-user"></i>我的</a></li>
-	</div>
+	<%@include file="/bottomGuide.jsp" %>
 	<!--菜单 -->
 	<%@include file="/rMenu.jsp" %>
 	<script>
