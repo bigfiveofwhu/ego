@@ -30,26 +30,9 @@
 		<%--顶部导航条 --%>
 		<%@include file="/navigate.jsp" %>
 		<%--悬浮搜索框 --%>
-		<div class="nav white">
-		<div class="logo">
-			<img src="<%=path%>/images/logo.png" />
-		</div>
-		<div class="logoBig">
-			<li>
-			<img src="<%=path%>/images/logobig.png" />
-			</li>
-		</div>
-		<div class="search-bar pr">
-			<a name="index_none_header_sysc" href="#"></a>
-			<form action="<%=path %>/search.html">
-				<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off"> 
-				<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
-			</form>
-		</div>
-		</div>
+		<%@ include file="/navSearch.jsp" %>
 		<div class="clear"></div>
 	</div>
-	
 	<div class="banner">
 		<!--轮播 -->
 		<div class="am-slider am-slider-default scoll" data-am-flexslider
@@ -91,28 +74,8 @@
 	</div>
 	<div class="shopNav">
 		<div class="slideall">
-			<div class="long-title">
-				<span class="all-goods">全部分类</span>
-			</div>
-			<div class="nav-cont">
-				<ul>
-					<li class="index"><a href="#">首页</a>
-					</li>
-					<li class="qc"><a href="#">闪购</a>
-					</li>
-					<li class="qc"><a href="#">限时抢</a>
-					</li>
-					<li class="qc"><a href="#">团购</a>
-					</li>
-					<li class="qc last"><a href="#">大包装</a>
-					</li>
-				</ul>
-				<div class="nav-extra">
-					<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-					<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-				</div>
-			</div>
-
+			<!-- 顶部分类导航 -->
+			<%@include file="/navClassify.jsp" %>
 			<!--侧边导航 -->
 			<div id="nav" class="navfull">
 				<div class="area clearfix">
@@ -445,9 +408,9 @@
 	</div>
 	<!--引导 -->
 	<div class="navCir">
-		<li class="active"><a href="home.html"><i class="am-icon-home "></i>首页</a></li>
+		<li class="active"><a href="<%=path %>/home/home.html"><i class="am-icon-home "></i>首页</a></li>
 		<li><a href="sort.html"><i class="am-icon-list"></i>分类</a></li>
-		<li><p onclick="javascript:window.open('/shoppingPro/shoppingCart?cmd=showCart')">购物车</p></li>
+		<li><p onclick="javascript:window.open('<%=path %>/home/shoppingCart.html')">购物车</p></li>
 		<li><a href="<%=path%>/person/index.html"><i class="am-icon-user"></i>我的</a></li>
 	</div>
 	<!--菜单 -->
