@@ -72,14 +72,14 @@
                 <tbody>
                 <!-- 显示查到的数据 -->
                 <c:forEach items="${serviceProviderlist}" var="ins" varStatus="vs">
-                    <tr>
+                    <tr id="tr-${ins.aac102}">
                         <td>${vs.count}</td>
                         <td>${ins.aac102}</td>
                         <td>${ins.aac103}</td>
                         <td>${ins.cnaac106}</td>
                         <td>${ins.aaa109}</td>
                         <td>${ins.aaa108}</td>
-                        <td>${ins.cnaac108}</td>
+                        <td class="status">${ins.cnaac108}</td>
                         <td class="text-center">
                             <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
                                     data-target="#sellerModal" onclick="getServiceProviderDetail(${ins.aac102})">详情
@@ -305,13 +305,28 @@
     }
 
     function updateState(state) {
+        var aac102 = $("#aac102").text();
+        var val = '';
+        switch (state) {
+            case '02':
+                val = '审核通过';
+                break;
+            case '03':
+                val = '审核未通过';
+                break;
+            case '04':
+                val = '关闭';
+                break;
+            default:
+                val = '未审核';
+        }
         $.ajax({
             url: "<%=basePath%>/adminReview.ajax",
             type: "post",
             timeout: 20000,
             dataType: "json",
             data: {
-                "aac102": $("#aac102").text(),
+                "aac102": aac102,
                 "aac108": state,
                 "aad102": '7001',
                 "aad801": $("#aad801").text(),
@@ -319,6 +334,7 @@
                 "type": '6'
             },
             success: function () {
+                $('#tr-' + aac102).find('.status').html(val);
                 alert('操作成功')
             },
             error: function () {
