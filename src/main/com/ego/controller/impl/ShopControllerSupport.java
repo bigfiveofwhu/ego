@@ -1,7 +1,4 @@
-/**
- * @author hug
- * µêÆÌ¿ØÖÆÆ÷
- */
+
 package com.ego.controller.impl;
 
 import com.ego.controller.ControllerSupport;

@@ -1,4 +1,5 @@
 /*
+ * @author zb
  * 表aa01:用户信息表
  Name	    Code	
 用户流水号	aaa101	

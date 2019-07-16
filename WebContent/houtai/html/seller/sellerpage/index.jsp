@@ -23,7 +23,7 @@
 			<!-- 页面头部 -->
 			<header class="main-header">
 				<!-- Logo -->
-				<a href="index.html" class="logo">
+				<a href="home.jsp" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
 					<span class="logo-mini"><b>购物商城</b></span>
 					<!-- logo for regular state and mobile devices -->
@@ -97,12 +97,12 @@
 							<ul class="treeview-menu">
 
 								<li id="admin-login">
-									<a href="seller.html" target="iframe">
+									<a href="" target="iframe">
 										<i class="fa fa-circle-o"></i> 修改资料
 									</a>
 								</li>
 								<li id="admin-login">
-									<a href="password.html" target="iframe">
+									<a href="password.jsp" target="iframe">
 										<i class="fa fa-circle-o"></i> 修改密码
 									</a>
 								</li>
@@ -139,7 +139,7 @@
 				       		</a>
 				       		<ul class="treeview-menu">
 								<li id="admin-login">
-									<a href="home-index.html" target="iframe">
+									<a href="" target="iframe">
 										<i class="fa fa-circle-o"></i> 订单管理
 									</a>
 								</li>
@@ -168,6 +168,41 @@
 								
 							</ul>
 						</li>
+						
+						<!-- 评价管理 -->
+						<li class="treeview">
+							<a href="#" >
+								<i class="fa fa-folder"></i>
+								<span>评价管理</span>
+								<span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				       		</a>
+				       		<ul class="treeview-menu">
+								<li id="admin-login">
+									<a href="shopcomment.jsp" target="iframe">
+										<i class="fa fa-circle-o"></i> 评价管理
+									</a>
+								</li>
+							</ul>
+						</li>
+						
+						<!-- 售后管理 -->
+								<li class="treeview">
+							<a href="#" >
+								<i class="fa fa-folder"></i>
+								<span>售后管理</span>
+								<span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				       		</a>
+				       		<ul class="treeview-menu">
+								<li id="admin-login">
+									<a href="" target="iframe">
+										<i class="fa fa-circle-o"></i> 售后管理
+									</a>
+								</li>
+							</ul>
+						</li>
+						
 					</ul>
 				</section>
 				<!-- /.sidebar -->

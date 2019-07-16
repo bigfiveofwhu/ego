@@ -24,16 +24,12 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 public class FileUpload 
 {
    
-	public static void writeFile(String fileName,HttpServletRequest request) throws ServletException, IOException 
+	public static void writeFile(String fileName,String savePath,HttpServletRequest request) throws ServletException, IOException 
 	{
 	
                    InputStream in = null;
 		           OutputStream out = null;
-		           // 获取上传文件目录
-		          String savePath = request.getServletContext().getRealPath("/images/upload");
-		        		  //System.getProperty("webContent"); 
-                  System.out.println(savePath);
-		 
+		         
 		          try {
 		              // 使用默认配置创建解析器工厂
 		              DiskFileItemFactory factory = new DiskFileItemFactory();

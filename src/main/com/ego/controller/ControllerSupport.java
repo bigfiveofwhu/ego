@@ -144,7 +144,7 @@ public abstract class ControllerSupport implements Controller
 	{
 		this.dto = dto;
 		// 同步为Services传递DTO
-		//this.services.setMapDto(dto);
+		if(this.services!=null) this.services.setMapDto(dto);
 	}
 	
 	/**

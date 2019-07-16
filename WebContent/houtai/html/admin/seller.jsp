@@ -47,7 +47,7 @@
                             <option value="03">审核未通过</option>
                             <option value="04">关闭</option>
                         </select>
-                        店铺名称： <input name="qaab103">
+                        店铺名称： <input type="text" value="" name="qaab103"/>
                         <input type="submit" class="btn btn-default" value="查询"/>
                     </div>
                 </div>

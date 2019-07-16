@@ -107,11 +107,12 @@ public class BaseServlet extends HttpServlet
         // 1.获取页面数据
         Map<String, String[]> tem = request.getParameterMap();
 
+        System.out.println("tem: "+ tem);
         int initSize = ((int) (tem.size() / 0.75)) + 1;
         // 2.导出所有键值对,形成键值对集合
         Set<Entry<String, String[]>> entrySet = tem.entrySet();
         // 3.定义数组,表示Enetry的value部分
-        String[] value;
+        String[] value = null;
 
         // 4.定义DTO容器
         Map<String, Object> dto = new HashMap<>(initSize);
@@ -142,7 +143,7 @@ public class BaseServlet extends HttpServlet
         }
         //放入request对象
         dto.put("request", request);
-        // System.out.println(dto);
+        System.out.println("dto:"+dto);
         return dto;
     }
 

@@ -1,8 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@include file="/taglib.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -123,26 +120,6 @@
 					<ul class="treeview-menu">
 
 						<li id="admin-login">
-							<a href="brand.html" target="iframe">
-								<i class="fa fa-circle-o"></i>品牌管理
-							</a>
-						</li>
-						<li id="admin-login">
-							<a href="specification.html" target="iframe">
-								<i class="fa fa-circle-o"></i>规格管理
-							</a>
-						</li>
-						<li id="admin-login">
-							<a href="type_template.html" target="iframe">
-								<i class="fa fa-circle-o"></i>模板管理
-							</a>
-						</li>
-						<li id="admin-login">
-							<a href="item_cat.html" target="iframe">
-								<i class="fa fa-circle-o"></i>分类管理
-							</a>
-						</li>
-						<li id="admin-login">
 							<a href="queryGood.html" target="iframe">
 								<i class="fa fa-circle-o"></i>商品审核
 							</a>
@@ -166,13 +143,32 @@
 					<ul class="treeview-menu">
 
 						<li id="admin-login">
-							<a href="content_category.html" target="iframe">
+							<a href="" target="iframe">
 								<i class="fa fa-circle-o"></i>广告类型管理
 							</a>
 						</li>
 						<li id="admin-login">
-							<a href="content.html" target="iframe">
+							<a href="" target="iframe">
 								<i class="fa fa-circle-o"></i>广告管理
+							</a>
+						</li>
+						</ul>
+						</li>
+						
+						<!-- 投诉管理 -->
+						<li class="treeview">
+					<a href="#">
+						<i class="fa fa-folder"></i>
+						<span>投诉管理</span>
+						<span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+					</a>
+					<ul class="treeview-menu">
+
+						<li id="admin-login">
+							<a href="" target="iframe">
+								<i class="fa fa-circle-o"></i>投诉管理
 							</a>
 						</li>
 					</ul>
