@@ -282,7 +282,7 @@
 														<div class="cart-title number">数量</div>
 														<dd>
 															<input id="min" class="am-btn am-btn-default" name="" type="button" value="-" />
-															<input id="text_box" name="" type="text" value="1" style="width:30px;" />
+															<input id="text_box" name="" type="text" value="1" style="width:30px;" readonly="readonly"/>
 															<input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
 															<span id="Stock" class="tb-hidden">库存<span class="stock">${product.aab206 }</span>件</span>
 														</dd>
@@ -336,15 +336,53 @@
 							</div>
 							<li>
 								<div class="clearfix tb-btn tb-btn-buy theme-login">
-									<a id="LikBuy" title="点此按钮到下一步确认购买信息" href="#">立即购买</a>
+									<a id="LikBuy" title="点此按钮到下一步确认购买信息" onclick="">立即购买</a>
 								</div>
 							</li>
 							<li>
 								<div class="clearfix tb-btn tb-btn-basket theme-login">
-									<a id="LikBasket" title="加入购物车" href="#"><i></i>加入购物车</a>
+									<a id="LikBasket" title="加入购物车" onclick="addShopCart(${product.aab203})"><i></i>加入购物车</a>
 								</div>
 							</li>
 						</div>
+						<script type="text/javascript">
+							function addShopCart(productId){
+								var count=parseInt($("#text_box").val());
+								console.log($("#text_box").val());
+								if(isNaN(count)){
+									alert("格式错误!");
+									return;
+								}
+								var sum=parseInt('${product.aab206 }');
+								if(count>sum){
+									alert("请重新选择数量!");
+									return;
+								}
+								$.ajax({
+									url:"<%=path%>/addShopCart.ajax",
+									type:"post",
+									dataType:"json",
+									timeout:20000,
+									data:{
+										"aab203":productId,
+										"aaa202":count
+									},
+									success:function(res,status){
+										if(res.status=='200'){
+											alert("加入成功");
+										}else if(res.status=='201'){
+											alert("加入失败");
+										}else if(res.status='202'){
+											alert("请先登录!");
+											location.href="/ego/home/login.jsp";
+										}
+									},
+									error:function(res,status){
+										alert("网络故障!");
+									}
+								});
+							}
+						</script>
 					</div>
 					<div class="clear"></div>
 				</div>

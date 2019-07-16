@@ -330,7 +330,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 	 */
 	public List<Map<String, String>> getTopHeadLine() throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append(" select aad302£¬aad303,aad306 from ad03")
+				.append(" select aad302,aad303,aad306 from ad03")
 				.append(" where aad303="+headLine)
 				.append(" order by aad304 DESC ")
 				.append(" limit 5");

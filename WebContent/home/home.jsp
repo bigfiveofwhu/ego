@@ -38,21 +38,35 @@
 		<div class="am-slider am-slider-default scoll" data-am-flexslider
 			id="demo-slider-0">
 			<ul class="am-slides">
-			<li class="banner1">
-			<a href="introduction.html"><img src="<%=path%>/images/ad1.jpg" /></a>
-			</li>
-			<li class="banner2">
-			<a><img src="<%=path%>/images/ad2.jpg" /> </a>
-			</li>
-			<li class="banner3">
-			<a><img src="<%=path%>/images/ad3.jpg" /> </a>
-			</li>
-			<li class="banner4">
-			<a><img src="<%=path%>/images/ad4.jpg" /> </a>
-			</li>
-			<li class="banner4">
-			<a><img src="<%=path%>/images/ad4.jpg" /> </a>
-			</li></ul> 
+			<c:forEach items="${loopShow }" var="Img">
+				<li class="banner1">
+				<%--商品类型 --%>
+				<c:if test="${Img.aad303=='00' }">
+				<a href="<%=path%>/shop/detail.html?aId=${Img.aad302 }&productId=${Img.aad306}"><img src="<%=path%>/images/advertise/${Img.aad302 }.jpg" /></a>
+				</c:if>
+				<%--店铺类型 --%>
+				<c:if test="${Img.aad303=='01' }">
+				<a href="<%=path%>/shop/home.html?aId=${Img.aad302 }&shopId=${Img.aad306}"><img src="<%=path%>/images/advertise/${Img.aad302 }.jpg" /></a>
+				</c:if>
+				</li>
+			</c:forEach>
+			<%-- 
+				<li class="banner1">
+				<a href="introduction.html"><img src="<%=path%>/images/ad1.jpg" /></a>
+				</li>
+				<li class="banner2">
+				<a><img src="<%=path%>/images/ad2.jpg" /> </a>
+				</li>
+				<li class="banner3">
+				<a><img src="<%=path%>/images/ad3.jpg" /> </a>
+				</li>
+				<li class="banner4">
+				<a><img src="<%=path%>/images/ad4.jpg" /> </a>
+				</li>
+				<li class="banner4">
+				<a><img src="<%=path%>/images/ad4.jpg" /> </a>
+				</li>--%>
+			</ul> 
 			<script type="text/javascript">
 			    $(function (){
 			    	$.ajax({
@@ -295,12 +309,38 @@
 					</c:forEach>
 				</div>
 				<div class="clear "></div>
+				<%--热门店铺 --%>
+				<div class="shopTitle ">
+					<h4>热门店铺</h4>
+					<h3>热门店铺 优惠享不停</h3>
+					<span class="more "> 
+						<a href="# ">全部店铺<i class="am-icon-angle-right" style="padding-left:10px ;"></i></a> 
+					</span>
+				</div>
+				<div class="am-g am-g-fixed ">
+					<c:forEach items="${hotShop}" var="item" varStatus="">
+						<div class="am-u-sm-3 ">
+							<div class="icon-sale one "></div>
+							<h4>实惠</h4>
+							<div class="activityMain ">
+							    <!--  点击图片显示图片详细 -->
+								<a href="<%=path %>/shop/home.html?aId=${item.aad302 }&shopId=${item.aad306}">
+								<img src="<%=path%>/images/advertise/${item.aad302 }.jpg"></img></a>
+							</div>
+							<div class="info ">
+								<h3>${item.aab103 }</h3>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+				<div class="clear "></div>
+				
 				<div id="f1">
-					<!--甜点-->
+					<!--热门商品-->
 					<div class="am-container ">
 						<div class="shopTitle ">
-							<h4>甜品</h4>
-							<h3>每一道甜品都有一个故事</h3>
+							<h4>热门商品</h4>
+							<h3>今日份热门商品</h3>
 							<div class="today-brands ">
 								<a href="# ">桂花糕</a> 
 								<a href="# ">奶皮酥</a> 
@@ -312,7 +352,7 @@
 							<span class="more ">
 								<a href="# ">更多美味
 									<i class="am-icon-angle-right" style="padding-left:10px ;"></i> 
-								</a> 
+								</a>
 							</span>
 						</div>
 					</div>
@@ -336,6 +376,20 @@
 							</a>
 							<div class="triangle-topright"></div>
 						</div>
+						<c:forEach items="${hotProduct}" var="item1" varStatus="">
+							<div class="am-u-sm-7 am-u-md-4 text-two">
+								<div class="outer-con ">
+									<div class="title ">${item1.aab202 }</div>
+									<div class="sub-title ">&yen;${item1.aab205 }</div>
+									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+								</div>
+								<!-- 甜品 -->
+								<a href="<%=path %>/shop/detail.html?aId=${item1.aad302 }&productId=${item1.aab203}">
+								<img src="<%=path %>/images/advertise/${item1.aad302 }.jpg" alt="${item1.aab202 }" /> 
+								</a>
+							</div>
+						</c:forEach>
+						<%-- 
 						<c:forEach items="${productList}" var="item1" varStatus="">
 							<div class="am-u-sm-7 am-u-md-4 text-two">
 								<div class="outer-con ">
@@ -344,14 +398,16 @@
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
 								<!-- 甜品 -->
-								<a href="<%=path %>/shop/detail.html?productId=${item1.aab203}"><img src="${productImg }" /> </a>
+								<a href="<%=path %>/shop/detail.html?productId=${item1.aab203}">
+								<img src="${productImg }" alt="${item1.aab202 }" /> 
+								</a>
 							</div>
-						</c:forEach>
+						</c:forEach>--%>
 					</div>
 					<div class="clear "></div>
 				</div>
 				<div id="f2">
-					<!--坚果-->
+					<!--新品推荐-->
 					<div class="am-container ">
 						<div class="shopTitle ">
 							<h4>坚果</h4>
@@ -404,6 +460,75 @@
 								</a>
 							</div>
 						</c:forEach>
+					</div>
+					<div class="clear "></div>
+				</div>
+				<div id="f3">
+					<!-- 猜你喜欢 -->
+					<div class="am-container ">
+						<div class="shopTitle ">
+							<h4>猜你喜欢</h4>
+							<h3>今日份猜你喜欢</h3>
+							<div class="today-brands ">
+								<a href="# ">腰果</a> 
+								<a href="# ">松子</a> 
+								<a href="# ">夏威夷果</a> 
+								<a href="# ">碧根果</a>
+								<a href="# ">开心果</a> 
+								<a href="# ">核桃仁</a>
+							</div>
+							<span class="more "> 
+							    <a href="# ">更多美味
+							        <i class="am-icon-angle-right" style="padding-left:10px ;"></i> 
+							    </a> 
+							</span>
+						</div>
+					</div>
+					<div class="am-g am-g-fixed floodThree ">
+						<div class="am-u-sm-4 text-four list">
+							<div class="word">
+							<c:forEach begin="0" end="5">
+								<a class="outer" href="#">
+								    <span class="inner">
+								        <b class="text">水蜜桃</b> 
+								    </span> 
+								</a>
+							</c:forEach>
+							</div>
+							<a href="# "> 
+							    <img src="<%=path%>/images/act1.png " />
+								<div class="outer-con ">
+									<div class="title ">雪之恋和风大福</div>
+								</div> 
+							</a>
+							<div class="triangle-topright"></div>
+						</div>
+						<c:forEach items="${guessProduct}" var="item2" varStatus="">
+							<div class="am-u-sm-4 text-four">
+								<a href="<%=path %>/shop/detail.html?aId=${item2.aad302 }&productId=${item2.aad306}">
+								    <img src="<%=path %>/images/advertise/${item2.aad302}.jpg" />
+									<div class="outer-con ">
+										<div class="title ">${item2.aab202 }</div>
+										<div class="sub-title ">&yen;${item2.aab205 }</div>
+										<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+									</div>
+								</a>
+							</div>
+						</c:forEach>
+						<%--
+						<c:forEach items="${productList}" var="item2" varStatus="">
+							<div class="am-u-sm-4 text-four">
+								<a href="<%=path %>/shop/detail.html?productId=${item2.aab203}">
+								    <img src="${productImg }" />
+									<div class="outer-con ">
+										<div class="title ">${item2.aab202 }</div>
+										<div class="sub-title ">&yen;${item2.aab205 }</div>
+										<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+									</div>
+								</a>
+							</div>
+						</c:forEach>
+						 --%>
 					</div>
 					<div class="clear "></div>
 				</div>

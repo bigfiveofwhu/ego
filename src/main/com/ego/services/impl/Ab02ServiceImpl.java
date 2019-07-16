@@ -48,9 +48,10 @@ public class Ab02ServiceImpl extends JdbcServicesSupport
 	 * 通过aab102 --店铺id 批量查询商品
 	 * @return
 	 */
-	private List<Map<String,String>> findProductsByAab102()
+	private List<Map<String,String>> findProductsByAab102() throws Exception
 	{
-		return null;
+		String sql="select aab202,aab203,aab205,aab208 from ab02 where aab212='02' and aab102=?";
+		return this.queryForList(sql, this.get("aab102"));
 	}
 	/**
 	 * 通过关键字搜索商品, 模糊匹配商品名称
@@ -98,7 +99,7 @@ public class Ab02ServiceImpl extends JdbcServicesSupport
 	 */
 	private List<Map<String,String>> findByUpToDate() throws Exception
 	{
-		String sql="select aab202,aab203,aab205 from ab02 order by aab210 desc limit 8";
+		String sql="select aab202,aab203,aab205,aab208 from ab02 order by aab210 desc limit 8";
 		return this.queryForList(sql);
 	}
 	/**
