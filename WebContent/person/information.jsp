@@ -4,22 +4,20 @@
 
 <!DOCTYPE html>
 <html>
-
 	<head>
-
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
-
+		
 		<title>个人资料</title>
-
+		
 		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
 		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
-
+		
 		<link href="<%=path%>/css/personal.css" rel="stylesheet" type="text/css">
 		<link href="<%=path%>/css/infstyle.css" rel="stylesheet" type="text/css">
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>			
 	</head>
-
+	
 	<body>
 					<div class="user-info">
 						<!--标题 -->
@@ -35,7 +33,6 @@
 								<img id="preview" class="am-circle am-img-thumbnail" src="<%=basePath%>/images/upload/${imgName }.jpg" alt="" />
 							</div>
 							</form>
-					
 
 							<p class="am-form-help">头像</p>
 
