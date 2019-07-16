@@ -133,7 +133,6 @@ public class Tools
 	
 	/**
 	 * 获取主键值
-	 * 按日更新
 	 * @param pkname
 	 * @return
 	 * @throws Exception

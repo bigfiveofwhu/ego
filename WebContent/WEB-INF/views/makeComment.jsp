@@ -18,13 +18,6 @@
 		<link href="<%=path%>/css/appstyle.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
 		
-		<script type="text/javascript">
-		function setPoint()
-		{
-			
-			
-		}
-		</script>
 		
 		<script type="text/javascript">
 			$(document).ready(function() {
