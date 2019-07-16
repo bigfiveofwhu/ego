@@ -1,13 +1,15 @@
 package com.ego.services.impl;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import com.ego.services.JdbcServicesSupport;
 import com.ego.system.tools.Tools;
-
+/**
+ * 关于商品评论一系列方法的实现类
+ * @author Dcz
+ *
+ */
 public class Ab04ServicesImpl extends JdbcServicesSupport 
 {
 
@@ -49,13 +51,16 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 		{
 			return this.allComment();
 		}
+		else if(qtype.equalsIgnoreCase("point"))
+		{
+			return this.queryPoint();
+		}
 		else
 		{
 			throw new Exception("在类[ Ab04ServicesImpl ]中进行了未定义的批量查询动作调用,"
 					+ "动作名称是  "+qtype);
 		}
 	}
-	
 	
 	/**
 	 * 单例查询操作分支入口
@@ -68,27 +73,64 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 		{
 			return this.commentDetail();
 		}
+		else if(qtype.equalsIgnoreCase("userPoint"))
+		{
+			return this.totalPoint();
+		}
+		else if(qtype.equalsIgnoreCase("comentCountByAab203"))
+		{
+			return this.comentCountByAab203();
+		}
+		
 		else
 		{
-			/**
-			 * @author hug
-			 *  利用反射调用方法
-			 */
-			Method method=this.getMethod(qtype);
-			return (Map<String, String>)method.invoke(this);
-//			throw new Exception("在类[ Ab04ServicesImpl ]中进行了未定义的单一查询动作调用,"
-//					+ "动作名称是  "+qtype);
+			throw new Exception("在类[ Ab04ServicesImpl ]中进行了未定义的单一查询动作调用,"
+					+ "动作名称是  "+qtype);
 		}
-		//执行查询
 		
 	} 
-	
-	
-	
+
 	
 	//********************************************************************
 	//                             具体业务
 	//********************************************************************
+	
+	/**
+	 * 查询用户积分变化历史
+	 * @return
+	 * @throws Exception
+	 */
+	private List<Map<String, String>> queryPoint()throws Exception
+	{
+		StringBuilder sql = new StringBuilder()
+				.append("select a.aaa1003,a.aaa1004,a.aaa1005")
+				.append("  from aa10 a")
+				.append("  where a.aaa102=? ")
+				.append("  order by a.aaa1005 desc")
+				;
+		
+		
+		
+		//设置参数列表
+		List<Object> paramList = new ArrayList<>();
+		
+		paramList.add(this.get("aaa102"));
+
+		return this.queryForList(sql.toString(),paramList.toArray());
+	}
+	
+	/**
+	 * 单一实例查询用户当前剩余积分
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String,String> totalPoint()throws Exception
+	{
+		String sql = "select aaa106 from aa01 where aaa102=?";
+
+		return this.queryForMap(sql.toString(), this.get("aaa102"));
+	}
+	
 	/**
 	 * 查询单一评价详情
 	 * @return
@@ -109,7 +151,6 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 		System.out.println(sql.toString()+"订单号:"+this.get("aab302"));
 		return this.queryForMap(sql.toString(), this.get("aab302"));
 	}
-	
 	
 	/**
 	 * 查询所有评价
@@ -213,7 +254,11 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 		return this.executeUpdate(sql.toString(), args);
 	}
 	
-	
+	/**
+	 * 删除评论
+	 * @return
+	 * @throws Exception
+	 */
 	private boolean delComment()throws Exception
 	{
 		String sql = "delete from ab04 where aab302=? and aab203=? ";
@@ -268,12 +313,9 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 		this.executeUpdate(sql.toString(), args);
 	}
 
-	/****************************************************
-	 *                             以下为查询方法
-	 ****************************************************/
 	/**
-	 * @author hug
 	 * 通过商品id,查出累计有多少条评论
+	 * hg
 	 * @return
 	 * @throws Exception
 	 */

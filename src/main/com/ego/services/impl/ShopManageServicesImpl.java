@@ -1,4 +1,4 @@
-/**表ab01:店铺表
+/**表ab01:店铺表  @author zb
 Name	    Code	
 店铺流水号	aab101	
 用户id	    aaa102	
@@ -131,6 +131,11 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 		return this.queryForMap(sql2,olist.toArray());
 	}
 	
+	/**
+	 * 检查进入店铺资格
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean checkIn() throws Exception
 	{
 		//用户id用session获得
@@ -149,4 +154,181 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 		//用户未开店
 		return false;
 	}
+	
+	/**评论管理**/
+/**评价表:ab04
+ Name	       Code	
+评价流水                 aab401	
+订单号(13位)	   aab302	
+商品id	       aab203
+用户id	       aaa102	
+评价id	       aab402	
+评论内容	       aab403	
+追加评价                aab404	
+商家回复	       aab405	
+评价时间	       aab406	
+追评时间                aab407	
+回复时间	       aab408	
+物流评级	       aab409	
+商品评级	       aab410	
+服务评级	       aab411	
+是否有图	       aab412	01--有图 02---无图	
+点赞数	       aab413	
+	 */
+	
+	public List<Map<String, String>> query(String qtype) throws Exception 
+	{
+		if(qtype.equalsIgnoreCase("queryforcomment"))
+			return this.queryforComment();
+		else if(qtype.equalsIgnoreCase("queryforaftermarket"))
+			return this.queryforAftermarkrt();
+		else if(qtype.equalsIgnoreCase("queryforcomplain"))
+			return this.queryforComplain();
+		else
+			throw new Exception("未定义的qtype");
+		
+	}
+	
+	/**
+	 * 查询评论页面
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Map<String, String>> queryforComment() throws Exception 
+	{
+		//还原页面查询条件
+				Object aab202=this.get("aab202");       //评论商品名称
+		  		Object isreply=this.get("isreply");     //评论是否回复
+		  		Object aab412=this.get("aab412");     //是否带图
+		  	
+
+		  		
+		  		//定义SQL主体
+		  		StringBuilder sql=new StringBuilder()
+		  		  		.append("	select y.aab202,y.aab203,z.aaa103,x.aab403,x.aab410	")
+		  		  		.append("  from ab04 x, ab02 y, aa01 z 	")
+		  		 	    .append(" where x.aab203=y.aab203 and x.aaa102=z.aaa102	")
+		  				;
+		  		
+		  		//参数列表
+		  		List<Object> paramList=new ArrayList<>();
+		  		//逐一判断查询条件是否录入,拼接AND条件
+		  		if(this.isNotNull(aab202))
+		  		{
+		  			sql.append(" and x.aab202 like ?");
+		  			paramList.add("%"+aab202+"%");
+		  		}
+		  		if(this.isNotNull(isreply))
+		  		{
+		  			if(isreply.equals("01"))
+		  			sql.append(" and x.aab405 is null ");
+		  			else
+		  				sql.append(" and x.aab405 is not null");
+		  			//paramList.add(aab107);
+		  		}
+		  		if(this.equals(aab412))
+		  		{
+		  			sql.append(" and x.aab412 = ?");
+		  			paramList.add(aab412);
+		  		}
+		  		//sql.append(" order by x.aab101");
+		  		return this.queryForList(sql.toString(), paramList.toArray());
+	}
+	
+	/**
+	 * 查看售后表 未完成
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Map<String, String>> queryforAftermarkrt() throws Exception 
+	{
+		//还原页面查询条件
+		Object aab202=this.get("aab202");       //评论商品名称
+  		Object isreply=this.get("isreply");     //评论是否回复
+  		Object aab412=this.get("aab412");     //是否带图
+  	
+
+  		
+  		//定义SQL主体
+  		StringBuilder sql=new StringBuilder()
+  		  		.append("	select y.aab202,y.aab203,z.aaa103,x.aab403,x.aab410	")
+  		  		.append("  from ab04 x, ab02 y, aa01 z 	")
+  		 	    .append(" where x.aab203=y.aab203 and x.aaa102=z.aaa102	")
+  				;
+  		
+  		//参数列表
+  		List<Object> paramList=new ArrayList<>();
+  		//逐一判断查询条件是否录入,拼接AND条件
+  		if(this.isNotNull(aab202))
+  		{
+  			sql.append(" and x.aab202 like ?");
+  			paramList.add("%"+aab202+"%");
+  		}
+  		if(this.isNotNull(isreply))
+  		{
+  			if(isreply.equals("01"))
+  			sql.append(" and x.aab405 is null ");
+  			else
+  				sql.append(" and x.aab405 is not null");
+  			//paramList.add(aab107);
+  		}
+  		if(this.equals(aab412))
+  		{
+  			sql.append(" and x.aab412 = ?");
+  			paramList.add(aab412);
+  		}
+  		//sql.append(" order by x.aab101");
+  		return this.queryForList(sql.toString(), paramList.toArray());
+		
+	}
+	
+	/**
+	 * 查看投诉(举报)表
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Map<String, String>> queryforComplain() throws Exception 
+	{
+		//还原页面查询条件
+		Object aab202=this.get("aab202");       //评论商品名称
+  		Object isreply=this.get("isreply");     //评论是否回复
+  		Object aab412=this.get("aab412");     //是否带图
+  	
+
+  		
+  		//定义SQL主体
+  		StringBuilder sql=new StringBuilder()
+  		  		.append("	select y.aab202,y.aab203,z.aaa103,x.aab403,x.aab410	")
+  		  		.append("  from ab04 x, ab02 y, aa01 z 	")
+  		 	    .append(" where x.aab203=y.aab203 and x.aaa102=z.aaa102	")
+  				;
+  		
+  		//参数列表
+  		List<Object> paramList=new ArrayList<>();
+  		//逐一判断查询条件是否录入,拼接AND条件
+  		if(this.isNotNull(aab202))
+  		{
+  			sql.append(" and x.aab202 like ?");
+  			paramList.add("%"+aab202+"%");
+  		}
+  		if(this.isNotNull(isreply))
+  		{
+  			if(isreply.equals("01"))
+  			sql.append(" and x.aab405 is null ");
+  			else
+  				sql.append(" and x.aab405 is not null");
+  			//paramList.add(aab107);
+  		}
+  		if(this.equals(aab412))
+  		{
+  			sql.append(" and x.aab412 = ?");
+  			paramList.add(aab412);
+  		}
+  		//sql.append(" order by x.aab101");
+  		return this.queryForList(sql.toString(), paramList.toArray());
+	}
+	
+	
+	
+	
 }

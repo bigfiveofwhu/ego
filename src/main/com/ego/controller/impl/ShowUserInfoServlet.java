@@ -13,7 +13,7 @@ public class ShowUserInfoServlet extends UserControllerSupport
 	{
 		Map<String,String> user = this.getServices().findById();
 		String imgName = "user_"+user.get("aaa102");
-		user.put("imgName", imgName);
+		this.saveAttribute("imgName", imgName);
 		this.saveAttribute("user", user);
 		System.out.println(user);
 		//User user = new User();

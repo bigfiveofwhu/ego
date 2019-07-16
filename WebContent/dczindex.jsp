@@ -13,6 +13,7 @@
     <a id="jumptest" href="#" onclick="window.location.href='payOrder.jsp'">支付页</a>
     
     <form action="<%=path%>/showOrder.html" method="post">
+    
     <input type="submit" value ="去管理订单" >
     </form>
     
@@ -22,6 +23,22 @@
     
     <form action="<%=path%>/showComment.html" method="post">
     <input type="submit" value ="去管理评价" >
+    </form>
+    
+    <form action="<%=path%>/showHistory.html?aaa102=1" method="post">
+    <input type="submit" value ="去历史记录" >
+    </form>
+    
+    <form action="<%=path%>/showPoint.html" method="post">
+    <input type="submit" value ="去积分历史" >
+    </form>
+    
+    <form action="<%=path%>/showRefund.html" method="post">
+    <input type="submit" value ="去管理售后" >
+    </form>
+    
+    <form action="<%=path%>/makeRefund.html" method="post">
+    <input type="submit" value ="去提交售后" >
     </form>
     
 </body>

@@ -27,7 +27,7 @@
 						<ul class="message-l">
 							<div class="topMessage">
 								<div class="menu-hd">
-									<a href="#" target="_top" class="h">亲，请登录</a>
+									<a href="#" target="_top" class="h">用户id:<%=session.getAttribute("aaa102") %></a>
 									<a href="#" target="_top">免费注册</a>
 								</div>
 							</div>
@@ -97,7 +97,7 @@
 						</div>
 						<hr/>
 						<div class="pointsTitle">
-						   <div class="usable">可用积分<span>120</span></div>
+						   <div class="usable">可用积分<span>${ins.aaa106 }</span></div>
 						   <div class="pointshop"><a href="#"><i><img src="<%=path%>/images/u5.png" /></i>积分商城</a></div>
 						   <div class="signIn"><a href="#"><i class="am-icon-calendar"></i><em>+5</em>每日签到</a></div>
 						</div>
@@ -115,40 +115,24 @@
 											<tr>												
 												<th class="th1">积分详情</th>
 												<th class="th2">积分变动</th>
-												<th class="th3">日期</th>
+												<th class="th3">变动时间</th>
 											</tr>
 										</thead>										
 										<tbody>
+										<c:choose>
+										<c:when test="${rows!=null }">
+										<c:forEach items="${rows }" var="ins" varStatus="vs">
 											<tr>
-												<td class="pointType">积分兑换</td>
-												<td class="pointNum">-80</td>
-												<td class="pointTime">2016-03-10&nbsp15:27</td>
+												<td class="pointType">变化类型: ${ins.aaa1004 }</td>
+												<td class="pointNum">${ins.aaa1003 }</td>
+												<td class="pointTime">${ins.aaa1005 }</td>
 											</tr>
-											<tr>
-												<td class="pointType">订单号7745926347132商品评论</td>
-												<td class="pointNum">+2</td>
-												<td class="pointTime">2016-03-12&nbsp09:32</td>
-											</tr>
-											<tr>
-												<td class="pointType">每日签到</td>
-												<td class="pointNum">+5</td>
-												<td class="pointTime">2016-03-12&nbsp07:32</td>
-											</tr>
-											<tr>
-												<td class="pointType">每日签到</td>
-												<td class="pointNum">+5</td>
-												<td class="pointTime">2016-03-11&nbsp12:24</td>
-											</tr>
-											<tr>
-												<td class="pointType">邮箱验证</td>
-												<td class="pointNum">+50</td>
-												<td class="pointTime">2016-03-10&nbsp16:18</td>
-											</tr>
-											<tr>
-												<td class="pointType">手机绑定</td>
-												<td class="pointNum">+100</td>
-												<td class="pointTime">2016-03-10&nbsp15:27</td>
-											</tr>
+											
+										</c:forEach>
+										</c:when>
+										</c:choose>
+											
+											
 										</tbody>
 									</table>
 								</div>
@@ -159,35 +143,25 @@
 											<tr>												
 												<th class="th1">积分详情</th>
 												<th class="th2">获取积分</th>
-												<th class="th3">日期</th>
+												<th class="th3">变动时间</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td class="pointType">订单号7745926347132商品评论</td>
-												<td class="pointNum">+2</td>
-												<td class="pointTime">2016-03-12&nbsp09:32</td>
-											</tr>
-											<tr>
-												<td class="pointType">每日签到</td>
-												<td class="pointNum">+5</td>
-												<td class="pointTime">2016-03-12&nbsp07:32</td>
-											</tr>
-											<tr>
-												<td class="pointType">每日签到</td>
-												<td class="pointNum">+5</td>
-												<td class="pointTime">2016-03-11&nbsp12:24</td>
-											</tr>
-											<tr>
-												<td class="pointType">邮箱验证</td>
-												<td class="pointNum">+50</td>
-												<td class="pointTime">2016-03-10&nbsp16:18</td>
-											</tr>
-											<tr>
-												<td class="pointType">手机绑定</td>
-												<td class="pointNum">+100</td>
-												<td class="pointTime">2016-03-10&nbsp15:27</td>
-											</tr>
+											<c:choose>
+											<c:when test="${rows!=null }">
+											<c:forEach items="${rows }" var="ins" varStatus="vs">
+												<c:choose>
+												<c:when test="${ins.aaa1004 eq '01' }">
+													<tr>
+														<td class="pointType">变化类型: ${ins.aaa1004 }</td>
+														<td class="pointNum">${ins.aaa1003 }</td>
+														<td class="pointTime">${ins.aaa1005 }</td>
+													</tr>
+												</c:when>
+												</c:choose>
+											</c:forEach>
+											</c:when>
+											</c:choose>
 										</tbody>
 									</table>
 								</div>
@@ -198,15 +172,25 @@
 											<tr>												
 												<th class="th1">积分详情</th>
 												<th class="th2">消耗积分</th>
-												<th class="th3">日期</th>
+												<th class="th3">变动时间</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td class="pointType">积分兑换</td>
-												<td class="pointNum">-300</td>
-												<td class="pointTime">2016-03-10&nbsp15:27</td>
-											</tr>
+											<c:choose>
+											<c:when test="${rows!=null }">
+											<c:forEach items="${rows }" var="ins" varStatus="vs">
+												<c:choose>
+												<c:when test="${ins.aaa1004 eq '02' }">
+													<tr>
+														<td class="pointType">变化类型: ${ins.aaa1004 }</td>
+														<td class="pointNum">${ins.aaa1003 }</td>
+														<td class="pointTime">${ins.aaa1005 }</td>
+													</tr>
+												</c:when>
+												</c:choose>
+											</c:forEach>
+											</c:when>
+											</c:choose>
 										</tbody>
 									</table>
 								</div>

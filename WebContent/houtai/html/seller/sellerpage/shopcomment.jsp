@@ -21,7 +21,7 @@
 		<!-- .box-body -->
 
 		<div class="box-header with-border">
-			<h3 class="box-title">商品管理</h3>
+			<h3 class="box-title">评价管理</h3>
 		</div>
 
 		<div class="box-body">
@@ -33,9 +33,6 @@
 				<div class="pull-left">
 					<div class="form-group form-inline">
 						<div class="btn-group">
-							<button type="button" class="btn btn-default" title="新建" onclick="window.location.href='goods_edit.html';"><i class="fa fa-file-o"></i> 新建</button>
-							<button type="button" class="btn btn-default" title="删除" ng-click="delete()"><i class="fa fa-trash-o"></i> 删除</button>
-							<button type="button" class="btn btn-default" title="提交审核" ng-click="updateStatus('1')"><i class="fa fa-check"></i> 提交审核</button>
 							<button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
 						</div>
 					</div>
@@ -44,15 +41,19 @@
 				<div class="box-tools pull-right">
 					<div class="has-feedback">
 						状态：
-						<select ng-model="search_domain.auditStatus" name="qaab212">
+						<select  name="isrepl y">
 							<option value="">全部</option>
-							<option value="01">未审核</option>
-							<option value="02">申请中</option>
-							<option value="03">审核通过</option>
-							<option value="04">审核未通过</option>
-							<option value="05">已下架</option>
+							<option value="01">未回复</option>
+							<option value="02">已回复</option>
 						</select>
-						商品名称：<input name="qaab202" ng-model="search_domain.goodsName">
+						是否带图：
+							<select  name="aab412">
+							<option value="">全部</option>
+							<option value="01">带图评论</option>
+							<option value="02">未带图评论</option>
+						</select>
+						评论商品:
+						<input type="text" name="aab202" value=""/>
 						<input type="submit"  value="查询"class="btn btn-default"></input>
 					</div>
 				</div>
@@ -63,42 +64,31 @@
 				<table id="dataList" class="table table-bordered table-striped table-hover dataTable">
 					<thead>
 						<tr>
-							<th class="" style="padding-right:0px">
-								<input id="selall" type="checkbox" class="icheckbox_square-blue">
-							</th>
 							<th class="sorting">序号</th>
-							<th class="sorting">商品ID</th>
-							<th class="sorting">商品名称</th>
-							<th class="sorting">商品价格</th>
-							<th class="sorting">商品分类</th>
-							<th class="sorting">库存</th>
-							<th class="sorting">状态</th>
+							<th class="sorting">评论商品id</th>
+							<th class="sorting">评论商品名称</th>
+							<th class="sorting">评论用户</th>
+							<th class="sorting">评论内容</th>
+							<th class="sorting">商品星级评价</th>
+							<th class="sorting">评论图片</th>
 							<th class="text-center">操作</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${productList}" var="ins" varStatus="vs">
+						<c:forEach items="${commentList}" var="ins" varStatus="vs">
 						<tr>
 							<td><input type="checkbox" ></td>
 							<td>${vs.count}</td>
 							<td>${ins.aab203}</td>
 							<td>${ins.aab202}</td>
-							<td>${ins.aab205}</td>
-							<td>${ins.aab204}</td>
-							<td>${ins.aab206}</td>
+							<td>${ins.aaa103}</td>
+							<td>${ins.aab403}</td>
+							<td>${ins.aab410}</td>
 							<td>
-							  ${ins.cnaab212}
+							  <button>图片</button>
 							</td>
 						<td class="text-center">
-								<button type="button" class="btn bg-olive btn-xs"><a class="btn bg-olive btn-xs">修改</a></button>
-								<button type="button" class="btn bg-olive btn-xs" >
-									<a class="btn bg-olive btn-xs"  >
-										下架
-									</a>
-									<a class="btn bg-olive btn-xs"  >
-										上架
-									</a>
-								</button>
+								<button type="button" class="btn bg-olive btn-xs"><a class="btn bg-olive btn-xs">回复</a></button>
 							</td>
 						</tr>
 						</c:forEach>
