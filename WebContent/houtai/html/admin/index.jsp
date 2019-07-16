@@ -121,29 +121,8 @@
 					<ul class="treeview-menu">
 
 						<li id="admin-login">
-<<<<<<< HEAD
-=======
-							<a href="brand.html" target="iframe">
-								<i class="fa fa-circle-o"></i>品牌管理
-							</a>
-						</li>
-						<li id="admin-login">
-							<a href="specification.html" target="iframe">
-								<i class="fa fa-circle-o"></i>规格管理
-							</a>
-						</li>
-						<li id="admin-login">
-							<a href="type_template.html" target="iframe">
-								<i class="fa fa-circle-o"></i>模板管理
-							</a>
-						</li>
-						<li id="admin-login">
-							<a href="item_cat.html" target="iframe">
-								<i class="fa fa-circle-o"></i>分类管理
-							</a>
-						</li>
-						<li id="admin-login">
->>>>>>> 471dc8a5fea1d6f4c59ec48eb34b0e43f907a2a9
+
+
 							<a href="queryGood.html" target="iframe">
 								<i class="fa fa-circle-o"></i>商品审核
 							</a>
@@ -167,15 +146,7 @@
 					<ul class="treeview-menu">
 
 						<li id="admin-login">
-<<<<<<< HEAD
-							<a href="" target="iframe">
-								<i class="fa fa-circle-o"></i>骞垮憡绫诲瀷绠＄悊
-							</a>
-						</li>
-						<li id="admin-login">
-							<a href="" target="iframe">
-								<i class="fa fa-circle-o"></i>骞垮憡绠＄悊
-=======
+
 							<a href="content_category.html" target="iframe">
 								<i class="fa fa-circle-o"></i>广告类型管理
 							</a>
@@ -183,17 +154,17 @@
 						<li id="admin-login">
 							<a href="content.html" target="iframe">
 								<i class="fa fa-circle-o"></i>广告管理
->>>>>>> 471dc8a5fea1d6f4c59ec48eb34b0e43f907a2a9
+
 							</a>
 						</li>
 						</ul>
 						</li>
 						
-						<!-- 鎶曡瘔绠＄悊 -->
+						<!-- 投诉管理 -->
 						<li class="treeview">
 					<a href="#">
 						<i class="fa fa-folder"></i>
-						<span>鎶曡瘔绠＄悊</span>
+						<span>投诉管理</span>
 						<span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
@@ -202,7 +173,7 @@
 
 						<li id="admin-login">
 							<a href="" target="iframe">
-								<i class="fa fa-circle-o"></i>鎶曡瘔绠＄悊
+								<i class="fa fa-circle-o"></i>投诉管理
 							</a>
 						</li>
 					</ul>

@@ -97,15 +97,7 @@
 							<ul class="treeview-menu">
 
 								<li id="admin-login">
-<<<<<<< HEAD
-									<a href="" target="iframe">
-										<i class="fa fa-circle-o"></i> 淇敼璧勬枡
-									</a>
-								</li>
-								<li id="admin-login">
-									<a href="password.jsp" target="iframe">
-										<i class="fa fa-circle-o"></i> 淇敼瀵嗙爜
-=======
+
 									<a href="seller.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 修改资料
 									</a>
@@ -113,7 +105,7 @@
 								<li id="admin-login">
 									<a href="password.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 修改密码
->>>>>>> 471dc8a5fea1d6f4c59ec48eb34b0e43f907a2a9
+
 									</a>
 								</li>
 							</ul>
@@ -149,13 +141,10 @@
 				       		</a>
 				       		<ul class="treeview-menu">
 								<li id="admin-login">
-<<<<<<< HEAD
-									<a href="" target="iframe">
-										<i class="fa fa-circle-o"></i> 璁㈠崟绠＄悊
-=======
+
 									<a href="home-index.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 订单管理
->>>>>>> 471dc8a5fea1d6f4c59ec48eb34b0e43f907a2a9
+
 									</a>
 								</li>
 							</ul>
@@ -184,35 +173,35 @@
 							</ul>
 						</li>
 						
-						<!-- 璇勪环绠＄悊 -->
+						<!-- 评论管理 -->
 						<li class="treeview">
 							<a href="#" >
 								<i class="fa fa-folder"></i>
-								<span>璇勪环绠＄悊</span>
+								<span>评论管理</span>
 								<span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				       		</a>
 				       		<ul class="treeview-menu">
 								<li id="admin-login">
 									<a href="shopcomment.jsp" target="iframe">
-										<i class="fa fa-circle-o"></i> 璇勪环绠＄悊
+										<i class="fa fa-circle-o"></i> 评论管理
 									</a>
 								</li>
 							</ul>
 						</li>
 						
-						<!-- 鍞悗绠＄悊 -->
+						<!-- 售后管理 -->
 								<li class="treeview">
 							<a href="#" >
 								<i class="fa fa-folder"></i>
-								<span>鍞悗绠＄悊</span>
+								<span>售后管理</span>
 								<span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				       		</a>
 				       		<ul class="treeview-menu">
 								<li id="admin-login">
 									<a href="" target="iframe">
-										<i class="fa fa-circle-o"></i> 鍞悗绠＄悊
+										<i class="fa fa-circle-o"></i> 售后管理
 									</a>
 								</li>
 							</ul>
