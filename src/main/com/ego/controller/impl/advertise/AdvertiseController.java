@@ -43,10 +43,11 @@ public class AdvertiseController extends ControllerSupport{
 				getSession().setAttribute("aad402", aad402);
 				dto.put("aad402",aad402);
 				saveMap(service.findById("getAccountById"));
-				List<Map<String, String>> adList=service.query("queryAdsByAccountId");
+				List<Map<String, String>> adList=service.query("queryAdsByAccountId");//获取账户的所有广告
 				for (Map<String, String> map : adList) {
-					map.put("refName",service.getName(map.get("aad303"), map.get("aad306")));
-					map.put("adType",service.getAdType(map.get("aad305")));
+					//通过类型和id获得推广品的名称
+					map.put("refName",service.getName(map.get("aad303"), map.get("aad306")));//reName为推广品名称
+					map.put("adType",service.getAdType(map.get("aad305")));//广告类型的名字，因为aad305里存的是code
 				}
 				saveAttribute("shop", service.findById("getShop"));
 				saveAttribute("products", service.query("getProducts"));

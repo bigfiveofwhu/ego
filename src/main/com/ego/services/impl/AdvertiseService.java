@@ -98,7 +98,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 		case AdvertiseService.serviceAd:
 			return this.queryForMap(sqlService, ref).get("aac203");
 		case AdvertiseService.shoptAd:
-			return this.queryForMap(sqlShop, ref).get("aab102");
+			return this.queryForMap(sqlShop, ref).get("aab103");
 		default:
 			throw new Exception("aad303类型出错  in advertiseController");
 		}
@@ -170,7 +170,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 	
 	private List<Map<String,String>> queryAdsByAccountId() throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append(" select aad301,aad302,aad303,aad304,aad305,aad306")
+				.append(" select aad301,aad302,aad303,aad304,aad305,aad306,aad307")
 				.append(" from ad03 where aad402=?");
 		
 		return this.queryForList(sql.toString(),this.get("aad402") );
@@ -194,17 +194,19 @@ public class AdvertiseService extends JdbcServicesSupport{
 	 */
 	private  boolean insertAd() throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append(" insert into ad03(aad402,aad302,aad303,aad304,aad305,aad306)")
-				.append(" values(?,?,?,?,?,?)");
+				.append(" insert into ad03(aad402,aad302,aad303,aad304,aad305,aad306,aad307)")
+				.append(" values(?,?,?,?,?,?,?)");
 		
 		Object[] parameter=new Object[] {
 				this.get("aad402"),
-				Tools.getIncrementId("aad302"),
+				this.get("aad302"),
 				this.get("aad303"),
 				this.get("aad304"),
 				this.get("aad305"),
 				this.get("aad306"),
+				this.get("aad307")
 		};
+		
 		return this.executeUpdate(sql.toString(), parameter);
 	}
 	//添加广告的钱
@@ -330,7 +332,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 	 */
 	public List<Map<String, String>> getTopHeadLine() throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append(" select aad302，aad303,aad306 from ad03")
+				.append(" select aad302,aad303,aad306 from ad03")
 				.append(" where aad303="+headLine)
 				.append(" order by aad304 DESC ")
 				.append(" limit 5");

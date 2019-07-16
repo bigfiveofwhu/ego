@@ -1,5 +1,6 @@
 package com.ego.controller.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,12 +11,13 @@ import com.ego.controller.ControllerSupport;
 import com.ego.services.BaseServices;
 import com.ego.services.impl.Aa05ServiceImpl;
 import com.ego.services.impl.Ab05ServiceImpl;
+import com.ego.services.impl.AdvertiseService;
 
 public class DiscountController extends ControllerSupport{
 
 	BaseServices ab05Service =new Ab05ServiceImpl();
 	BaseServices aa05Service=new Aa05ServiceImpl();
-
+	AdvertiseService adservice=new AdvertiseService();
 	@Override
 	public void setMapDto(Map<String,Object> dto) {
 		// TODO Auto-generated method stub
@@ -33,9 +35,13 @@ public class DiscountController extends ControllerSupport{
 				,servletPath.indexOf('.'));
 		switch (mapping) {
 		case "getCustomerCoupons":
-			this.saveAttribute("coupons", aa05Service.query());
-			this.saveAttribute("shopCoupons", ab05Service.query());
-			return prefix+"discount";
+			List<Map<String,String>> coupons= aa05Service.query();
+			for (Map<String, String> map : coupons) {
+				//获得每个优惠券的店铺名
+				map.put("shopName",adservice.getName(AdvertiseService.shoptAd, map.get("aab102")) );
+			}
+			this.saveAttribute("userCoupons", coupons);
+			return prefix+"userDiscount";
 		case "discountManage":
 			this.saveAttribute("shopCoupons", ab05Service.query());
 			return prefix+"discountManage";

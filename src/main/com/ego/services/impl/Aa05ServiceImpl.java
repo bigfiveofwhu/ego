@@ -8,8 +8,6 @@ import java.util.Map;
 import com.ego.services.JdbcServicesSupport;
 //ÓÃ»§¿¨È¯°ü
 public class Aa05ServiceImpl extends JdbcServicesSupport{
-	
-	
 	@Override
 	public List<Map<String, String>> query() throws Exception {
 		// TODO Auto-generated method stub
