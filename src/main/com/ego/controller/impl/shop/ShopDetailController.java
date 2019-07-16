@@ -1,5 +1,6 @@
 /**
  * @author hug
+ *  商品详情
  */
 package com.ego.controller.impl.shop;
 
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.ego.controller.ControllerSupport;
+import com.ego.services.impl.Aa07ServiceImpl;
 import com.ego.services.impl.Ab02ServiceImpl;
 import com.ego.services.impl.Ab03ServiceImpl;
 import com.ego.services.impl.Ab03ServicesImpl;
@@ -20,14 +22,20 @@ public class ShopDetailController extends ControllerSupport
 	@Override
 	public String execute() throws Exception 
 	{
-		this.setServices(new Ab02ServiceImpl());
+		//若用户登录了,则记录相应的浏览历史
 		this.dto.put("aab203", this.get("productId"));
+		if(this.get("aaa102")!=null)
+		{
+			this.setServices(new Aa07ServiceImpl());
+			this.getServices().update("insertAa07");
+		}
+		this.setServices(new Ab02ServiceImpl());
 		//商品的基本信息
 		Map<String,String> ins=this.getServices().findById("findByAab203");
 		this.saveAttribute("product", ins);
 		//在dto中放入店铺id
 		this.dto.put("aab102", ins.get("aab102"));
-		String describe=(String)ins.get("aab207");
+		String describe=(String)ins.get("aab209");
 		System.out.println(describe);
 		//解析规格描述文本
 		if(describe!=null)

@@ -26,6 +26,9 @@ public class RegisterController extends ControllerSupport
 		
 		saveAttribute("aaa102", this.get("aaa102"));
 		HttpSession session=this.getSession();
+		/**
+		 * aaa102,aaa106已通过dto双向传递
+		 */
 		session.setAttribute("aaa102", this.get("aaa102"));  //用户id
 		session.setAttribute("aaa106", this.get("aaa106"));  //积分
 		session.setAttribute("aaa103", this.get("username"));

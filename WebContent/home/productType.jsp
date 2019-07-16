@@ -1189,6 +1189,9 @@
 								<a class="productType" ptype_id="376" title="传统文化" href="#"><span>传统文化</span> </a>
 							</dd>
 							<dd>
+								<a class="productType" ptype_id="377" title="文化事业" href="#"><span>文化事业</span> </a>
+							</dd>
+							<dd>
 								<a class="productType" ptype_id="378" title="神秘文化" href="#"><span>神秘文化</span> </a>
 							</dd>
 							<dd>

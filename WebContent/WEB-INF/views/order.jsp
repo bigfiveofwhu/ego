@@ -53,13 +53,33 @@
 				vform.action="<%=path%>/goCommentDetail.html?aab302="+vaab302;
 				vform.submit();
 			}
+			function goRefund(vaab302)
+			{
+				var vform = document.getElementById("myform");
+				vform.action="<%=path%>/goRefund.html?aab302="+vaab302;
+				vform.submit();
+			}
+			function goRefundDetail(vaab302)
+			{
+				var vform = document.getElementById("myform");
+				vform.action="<%=path%>/goRefundDetail.html?aab302="+vaab302;
+				vform.submit();
+			}
+			function goComplaintDetail(vaab302)
+			{
+				var vform = document.getElementById("myform");
+				vform.action="<%=path%>/goComplaintDetail.html?aab302="+vaab302;
+				vform.submit();
+			}
 		</script>
 
 	</head>
 
 	<body>
 		<%double total=0; %>
-		<form id="myform" action="<%=path%>/###.html" method="post"></form>
+		<form id="myform" action="<%=path%>/###.html" method="post">
+		
+		</form>
 		<!--头 -->
 		<header>
 			<article>
@@ -298,7 +318,7 @@
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">退款</a>
+																	<a href="javascript:;" onclick="goRefund(${ins.aab302})">退款</a>
 																</div>
 															</li>
 														</ul>
@@ -372,7 +392,7 @@
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">退款/退货</a>
+																	<a href="javascript:;" onclick="goRefund(${ins.aab302})">退款/退货</a>
 																</div>
 															</li>
 														</ul>
@@ -449,7 +469,7 @@
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">退款/退货</a>
+																	<a href="javascript:;" onclick="goRefund(${ins.aab302})">退款/退货</a>
 																</div>
 															</li>
 														</ul>
@@ -613,11 +633,22 @@
 																		<span>×</span>${ins.aab310 }
 																	</div>
 																</li>
-																<li class="td td-operation">
+																<c:choose>
+																<c:when test="${ins.aab303 eq '08'}">
+																	<li class="td td-operation">
 																	<div class="item-operation">
-																		
+																		<a href="javascript:;" onclick="goRefundDetail(${ins.aab302})">售后详情</a>
 																	</div>
-																</li>
+																	</li>
+																</c:when>
+																<c:when test="${ins.aab303 eq '09'}">
+																	<li class="td td-operation">
+																	<div class="item-operation">
+																		<a href="javascript:;" onclick="goComplaintDetail(${ins.aab302})">投诉详情</a>
+																	</div>
+																	</li>
+																</c:when>
+																</c:choose>
 															</ul>
 														</div>
 														
@@ -861,7 +892,7 @@
 																</li>
 																<li class="td td-operation">
 																	<div class="item-operation">
-																		<a href="refund.html">退款</a>
+																		<a href="javascript:;" onclick="goRefund(${ins.aab302})">退款</a>
 																	</div>
 																</li>
 															</ul>
@@ -975,7 +1006,7 @@
 																	</li>
 																	<li class="td td-operation">
 																		<div class="item-operation">
-																			<a href="refund.html">退款/退货</a>
+																			<a href="javascript:;" onclick="goRefund(${ins.aab302})">退款/退货</a>
 																		</div>
 																	</li>
 																</ul>
@@ -1091,7 +1122,7 @@
 																</li>
 																<li class="td td-operation">
 																	<div class="item-operation">
-																		<a href="refund.html">退款/退货</a>
+																		<a href="javascript:;" onclick="goRefund(${ins.aab302})">退款/退货</a>
 																	</div>
 																</li>
 															</ul>
@@ -1100,15 +1131,15 @@
 														<div class="order-right">
 															<li class="td td-amount">
 																<c:set var="number" value="${ins.aab310}" scope="request"></c:set>
-																	    <c:set var="price" value="${ins.aab314}" scope="request"></c:set>
-																	    <c:set var="transFee" value="${ins.aab313}" scope="request"></c:set>
-																	    <%  total=Double.valueOf((String)request.getAttribute("number"))
-																	    				*Double.valueOf((String)request.getAttribute("price"))
-																	    				+Double.valueOf((String)request.getAttribute("transFee")); %>
-																		<div class="item-amount">
-																			合计：<%=total %>
-																			<p>含运费：<span>${ins.aab313 }</span></p>
-																		</div>
+															    <c:set var="price" value="${ins.aab314}" scope="request"></c:set>
+															    <c:set var="transFee" value="${ins.aab313}" scope="request"></c:set>
+															    <%  total=Double.valueOf((String)request.getAttribute("number"))
+															    				*Double.valueOf((String)request.getAttribute("price"))
+															    				+Double.valueOf((String)request.getAttribute("transFee")); %>
+																<div class="item-amount">
+																	合计：<%=total %>
+																	<p>含运费：<span>${ins.aab313 }</span></p>
+																</div>
 															</li>
 															<div class="move-right">
 																<li class="td td-status">

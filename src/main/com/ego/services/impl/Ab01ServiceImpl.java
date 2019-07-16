@@ -58,12 +58,14 @@ public class Ab01ServiceImpl extends JdbcServicesSupport
 	@Override
 	public Map<String, String> findById(String ftype) throws Exception
 	{
-		if(ftype.equals("findByAk"))
+		if(ftype.equals("loginByAaa102"))
+		{
+			return loginByAaa102();
+		}
+		else
 		{
 			return findByAk(ftype);
 		}
-		Method method=this.getMethod(ftype);
-		return (Map<String, String>)method.invoke(this);
 	}
 	/**
 	 * @author hug

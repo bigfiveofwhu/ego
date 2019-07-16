@@ -2,6 +2,7 @@
 <%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
 <%@include file="/taglib.jsp" %>
 
+
 <!DOCTYPE html>
 <html>
 
@@ -11,13 +12,13 @@
 
 		<title>个人资料</title>
 
-		<link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
-		<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 
-		<link href="../css/personal.css" rel="stylesheet" type="text/css">
-		<link href="../css/infstyle.css" rel="stylesheet" type="text/css">
-		<script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-		<script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>			
+		<link href="<%=path%>/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/css/infstyle.css" rel="stylesheet" type="text/css">
+		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>			
 	</head>
 
 	<body>
@@ -26,6 +27,7 @@
 			<article>
 				<div class="mt-logo">
 					<!--顶部导航条 -->
+<<<<<<< HEAD
 					<div class="am-container header">
 						<ul class="message-l">
 							<div class="topMessage">
@@ -52,9 +54,13 @@
 
 						<!--悬浮搜索框-->
 
+=======
+					<%@ include file="/navigate.jsp" %>
+						<!--悬浮搜索框-->
+>>>>>>> 471dc8a5fea1d6f4c59ec48eb34b0e43f907a2a9
 						<div class="nav white">
 							<div class="logoBig">
-								<li><img src="../images/logobig.png" /></li>
+								<li><img src="<%=path%>/images/logobig.png" /></li>
 							</div>
 
 							<div class="search-bar pr">
@@ -208,6 +214,7 @@
 					</div>
 				</div>
 				<!--底部-->
+<<<<<<< HEAD
 				<div class="footer">
 					<div class="footer-hd">
 						<p>
@@ -230,56 +237,95 @@
 						</p>
 					</div>
 				</div>
+=======
+				<%@ include file="/footer.jsp" %>
+>>>>>>> 471dc8a5fea1d6f4c59ec48eb34b0e43f907a2a9
 			</div>
 
 			<aside class="menu">
 				<ul>
 					<li class="person active">
+<<<<<<< HEAD
 						<a href="index.jsp"><i class="am-icon-user"></i>个人中心</a>
+=======
+						<a href="index.html"><i class="am-icon-user"></i>个人中心</a>
+>>>>>>> 471dc8a5fea1d6f4c59ec48eb34b0e43f907a2a9
 					</li>
 					<li class="person">
 						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
 					<ul>
+<<<<<<< HEAD
 						<li> <a href="showUserInfo.html">个人信息</a></li>
 							<li> <a href="<%=path%>/person/safety.jsp">安全设置</a></li>
 							<li> <a href="showAddress.html">地址管理</a></li>
+=======
+							<li> <a href="showUserInfo.html">个人信息</a></li>
+							<li> <a href="<%=path%>/person/safety.jsp">安全设置</a></li>
+							<li> <a href="<%=path%>/person/address.jsp">地址管理</a></li>
+>>>>>>> 471dc8a5fea1d6f4c59ec48eb34b0e43f907a2a9
 							<li> <a href="<%=path%>/person/cardlist.jsp">快捷支付</a></li>
 						</ul>
 					</li>
 					<li class="person">
 						<p><i class="am-icon-balance-scale"></i>我的交易</p>
 						<ul>
+<<<<<<< HEAD
 							<li><a href="order.jsp">订单管理</a></li>
 							<li> <a href="change.jsp">退款售后</a></li>
 							<li> <a href="comment.jsp">评价商品</a></li>
+=======
+							<li><a href="order.html">订单管理</a></li>
+							<li> <a href="change.html">退款售后</a></li>
+							<li> <a href="comment.html">评价商品</a></li>
+>>>>>>> 471dc8a5fea1d6f4c59ec48eb34b0e43f907a2a9
 						</ul>
 					</li>
 					<li class="person">
 						<p><i class="am-icon-dollar"></i>我的资产</p>
 						<ul>
+<<<<<<< HEAD
 							<li> <a href="points.jsp">我的积分</a></li>
 							<li> <a href="coupon.jsp">优惠券 </a></li>
 							<li> <a href="bonus.jsp">红包</a></li>
 							<li> <a href="walletlist.jsp">账户余额</a></li>
 							<li> <a href="bill.jsp">账单明细</a></li>
+=======
+							<li> <a href="points.html">我的积分</a></li>
+							<li> <a href="coupon.html">优惠券 </a></li>
+							<li> <a href="bonus.html">红包</a></li>
+							<li> <a href="walletlist.html">账户余额</a></li>
+							<li> <a href="bill.html">账单明细</a></li>
+>>>>>>> 471dc8a5fea1d6f4c59ec48eb34b0e43f907a2a9
 						</ul>
 					</li>
 
 					<li class="person">
 						<p><i class="am-icon-tags"></i>我的收藏</p>
 						<ul>
+<<<<<<< HEAD
 							<li> <a href="collection.jsp">收藏</a></li>
 							<li> <a href="foot.jsp">足迹</a></li>														
+=======
+							<li> <a href="collection.html">收藏</a></li>
+							<li> <a href="foot.html">足迹</a></li>														
+>>>>>>> 471dc8a5fea1d6f4c59ec48eb34b0e43f907a2a9
 						</ul>
 					</li>
 
 					<li class="person">
 						<p><i class="am-icon-qq"></i>在线客服</p>
 						<ul>
+<<<<<<< HEAD
 							<li> <a href="consultation.jsp">商品咨询</a></li>
 							<li> <a href="suggest.jsp">意见反馈</a></li>							
 							
 							<li> <a href="news.jsp">我的消息</a></li>
+=======
+							<li> <a href="consultation.html">商品咨询</a></li>
+							<li> <a href="suggest.html">意见反馈</a></li>							
+							
+							<li> <a href="news.html">我的消息</a></li>
+>>>>>>> 471dc8a5fea1d6f4c59ec48eb34b0e43f907a2a9
 						</ul>
 					</li>
 				</ul>
@@ -314,8 +360,12 @@ function uploadFile(ev){
 		timeout : 20000,
 		data : formdata,
 		success:function(res,status){
-			//img.setAttribute('src',"<%=basePath%>/images/upload/user_1.jpg")
             console.log("修改默认头像成功");
+			//img.setAttribute('src',"<%=basePath%>/images/upload/user_1.jpg")
+<<<<<<< HEAD
+            console.log("修改默认头像成功");
+=======
+>>>>>>> 471dc8a5fea1d6f4c59ec48eb34b0e43f907a2a9
 			},
 			error:function(res,status){
 				console.log("修改默认头像失败");

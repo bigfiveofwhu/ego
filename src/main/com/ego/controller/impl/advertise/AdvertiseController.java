@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.ego.controller.BaseServlet;
 import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.AdvertiseService;
+import com.ego.system.utils.FileUpload;
 
 public class AdvertiseController extends ControllerSupport{
 	
@@ -19,6 +20,7 @@ public class AdvertiseController extends ControllerSupport{
 		this.dto=dto;
 		service.setMapDto(dto);
 	}
+	
 	static final  String prefix=BaseServlet.prefix+"advertise/";
 	@Override
 	public String execute() throws Exception {
@@ -26,7 +28,7 @@ public class AdvertiseController extends ControllerSupport{
 		String servletPath=((HttpServletRequest)this.dto.get("request")).getServletPath();
 		String mapping=servletPath.substring(servletPath.lastIndexOf('/')+1
 				,servletPath.indexOf('.'));
-		switch (mapping) {
+		switch (mapping) { 
 		case "applyAccount":
 			dto.put("aad802",joinAad802());
 			boolean isSuccess=service.update("addAdAudit");
@@ -41,11 +43,15 @@ public class AdvertiseController extends ControllerSupport{
 				getSession().setAttribute("aad402", aad402);
 				dto.put("aad402",aad402);
 				saveMap(service.findById("getAccountById"));
-				List<Map<String, String>> adList=service.query("queryAdsByAccountId");
+				List<Map<String, String>> adList=service.query("queryAdsByAccountId");//获取账户的所有广告
 				for (Map<String, String> map : adList) {
-					map.put("refName",service.getName(map.get("aad303"), map.get("aad306")));
-					map.put("adType",service.getAdType(map.get("aad305")));
+					//通过类型和id获得推广品的名称
+					map.put("refName",service.getName(map.get("aad303"), map.get("aad306")));//reName为推广品名称
+					map.put("adType",service.getAdType(map.get("aad305")));//广告类型的名字，因为aad305里存的是code
 				}
+				saveAttribute("shop", service.findById("getShop"));
+				saveAttribute("products", service.query("getProducts"));
+				saveAttribute("services", service.query("getServices"));
 				saveAttribute("ads", adList);
 				return prefix+"advertiseHome"; 
 			}else if (service.isInAudit()){

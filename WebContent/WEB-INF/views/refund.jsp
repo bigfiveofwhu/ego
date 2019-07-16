@@ -17,10 +17,21 @@
 
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
-
+		
+		<script type="text/javascript">
+		function goRefundDetail(vaaa802)
+		{
+			var vform = document.getElementById("myform");
+			vform.action="<%=path%>/goRefundDetail.html?aaa802="+vaaa802;
+			vform.submit();
+		}
+		</script>
 	</head>
 
 	<body>
+		<form id="myform" action="###.html" method="post">
+		
+		</form>
 		<!--头 -->
 		<header>
 			<article>
@@ -30,7 +41,7 @@
 				<ul class="message-l">
 					<div class="topMessage">
 						<div class="menu-hd">
-							<a href="#" target="_top" class="h">亲，请登录</a>
+							<a href="#" target="_top" class="h">用户id:<%=session.getAttribute("aaa102") %></a>
 							<a href="#" target="_top">免费注册</a>
 						</div>
 					</div>
@@ -104,7 +115,7 @@
 
 							<ul class="am-avg-sm-2 am-tabs-nav am-nav am-nav-tabs">
 								<li class="am-active"><a href="#tab1">退款管理</a></li>
-								<li><a href="#tab2">售后管理</a></li>
+								<!--  li><a href="#tab2">售后管理</a></li-->
 
 							</ul>
 
@@ -127,12 +138,16 @@
 											<td class="td-inner">交易操作</td>
 										</div>
 									</div>
-
+		
 									<div class="order-main">
+									<%double total=0; double spend=0;%>
+									<c:choose>
+										<c:when test="${rows!=null }">
+										<c:forEach items="${rows }" var="ins" varStatus="vs">
 										<div class="order-list">
 											<div class="order-title">
-												<div class="dd-num">退款编号：<a href="javascript:;">1601430</a></div>
-												<span>申请时间：2015-12-20</span>
+												<div class="dd-num">退款编号：<a href="javascript:;">${ins.aaa802 }</a></div>
+												<span>申请时间：${ins.aaa807 }</span>
 												<!--    <em>店铺：小桔灯</em>-->
 											</div>
 											<div class="order-content">
@@ -147,23 +162,31 @@
 															<div class="item-info">
 																<div class="item-basic-info">
 																	<a href="#">
-																		<p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
-																		<p class="info-little">颜色：12#川南玛瑙
-																			<br/>包装：裸装 </p>
+																		<p>${ins.aab202 }</p>
+																		<p class="info-little">订单号:${ins.aab302 }
+																			<br/>商品id:${ins.aab203 } </p>
 																	</a>
 																</div>
 															</div>
 														</li>
 
+														
+														<c:set var="number" value="${ins.aab310}" scope="request"></c:set>
+													    <c:set var="price" value="${ins.aab314}" scope="request"></c:set>
+													    <c:set var="transFee" value="${ins.aab313}" scope="request"></c:set>
+													    <%  spend=Double.valueOf((String)request.getAttribute("number"))
+													    				*Double.valueOf((String)request.getAttribute("price")); 			
+													   		total=spend+Double.valueOf((String)request.getAttribute("transFee")); 			
+													    %>
 														<ul class="td-changeorder">
 															<li class="td td-orderprice">
 																<div class="item-orderprice">
-																	<span>交易金额：</span>72.00
+																	<span>交易金额：</span><%=total %>
 																</div>
 															</li>
 															<li class="td td-changeprice">
 																<div class="item-changeprice">
-																	<span>退款金额：</span>70.00
+																	<span>退款金额：</span><%=spend %>
 																</div>
 															</li>
 														</ul>
@@ -173,108 +196,37 @@
 													<div class="change move-right">
 														<li class="td td-moneystatus td-status">
 															<div class="item-status">
+															<c:choose>
+																<c:when test="${ins.aab803 eq 01 }">
+																<p class="Mystatus">已提交申请</p>
+																</c:when>
+																<c:when test="${ins.aab803 eq 02 }">
+																<p class="Mystatus">处理中</p>
+																</c:when>
+																<c:when test="${ins.aab803 eq 03 }">
 																<p class="Mystatus">退款成功</p>
-
+																</c:when>
+															</c:choose>
 															</div>
 														</li>
 													</div>
 													<li class="td td-change td-changebutton">
-														<a href="record.html">
-														<div class="am-btn am-btn-danger anniu">
-															钱款去向</div>
-														</a>
-													</li>
-
-												</div>
-											</div>
-										</div>
-
-									</div>
-
-								</div>
-								<div class="am-tab-panel am-fade" id="tab2">
-									<div class="order-top">
-										<div class="th th-item">
-											<td class="td-inner">商品</td>
-										</div>
-										<div class="th th-orderprice th-price">
-											<td class="td-inner">交易金额</td>
-										</div>
-										<div class="th th-changeprice th-price">
-											<td class="td-inner">退款金额</td>
-										</div>
-										<div class="th th-status th-moneystatus">
-											<td class="td-inner">交易状态</td>
-										</div>
-										<div class="th th-change th-changebuttom">
-											<td class="td-inner">交易操作</td>
-										</div>
-									</div>
-
-									<div class="order-main">
-										<div class="order-list">
-											<div class="order-title">
-												<div class="dd-num">退款编号：<a href="javascript:;">1601430</a></div>
-												<span>申请时间：2015-12-20</span>
-												<!--    <em>店铺：小桔灯</em>-->
-											</div>
-											<div class="order-content">
-												<div class="order-left">
-													<ul class="item-list">
-														<li class="td td-item">
-															<div class="item-pic">
-																<a href="#" class="J_MakePoint">
-																	<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-																</a>
-															</div>
-															<div class="item-info">
-																<div class="item-basic-info">
-																	<a href="#">
-																		<p>美康粉黛醉美唇膏 持久保湿滋润防水不掉色</p>
-																		<p class="info-little">颜色：12#川南玛瑙
-																			<br/>包装：裸装 </p>
-																	</a>
-																</div>
-															</div>
-														</li>
-
-														<ul class="td-changeorder">
-															<li class="td td-orderprice">
-																<div class="item-orderprice">
-																	<span>交易金额：</span>72.00
-																</div>
-															</li>
-															<li class="td td-changeprice">
-																<div class="item-changeprice">
-																	<span>退款金额：</span>70.00
-																</div>
-															</li>
-														</ul>
-														<div class="clear"></div>
-													</ul>
-
-													<div class="change move-right">
-														<li class="td td-moneystatus td-status">
-															<div class="item-status">
-																<p class="Mystatus">退款成功</p>
-
-															</div>
-														</li>
-													</div>
-													<li class="td td-change td-changebutton">
-                                                        <a href="record.html">
+                                                        <a href="javascript:;" onclick="goRefundDetail(${ins.aaa802})">
 														    <div class="am-btn am-btn-danger anniu">
-															钱款去向</div>
+															详细动态</div>
 														</a>
 													</li>
 
 												</div>
 											</div>
 										</div>
+										
+										</c:forEach>
+										</c:when>
+									</c:choose>
+										
 									</div>
-
 								</div>
-
 							</div>
 
 						</div>

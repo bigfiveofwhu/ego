@@ -1,89 +1,35 @@
 <%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%@include file="/taglib.jsp" %>
 
+
 <!DOCTYPE html>
 <html>
-
 	<head>
-	
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
-
 		<title>个人中心</title>
-
-		<link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
-		<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
-		<link href="../css/personal.css" rel="stylesheet" type="text/css">
-		<link href="../css/vipstyle.css" rel="stylesheet" type="text/css">
-		<script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-		<script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/css/vipstyle.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/css/hmstyle.css" rel="stylesheet" type="text/css">
+		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 	</head>
-
 	<body>
 		<!--头 -->
 		<header>
 			<article>
 				<div class="mt-logo">
 					<!--顶部导航条 -->
-					<div class="am-container header">
-						<ul class="message-l">
-							<div class="topMessage">
-								<div class="menu-hd">
-									<a href="#" target="_top" class="h">亲，请登录</a>
-									<a href="#" target="_top">免费注册</a>
-								</div>
-							</div>
-						</ul>
-						<ul class="message-r">
-							<div class="topMessage home">
-								<div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
-							</div>
-							<div class="topMessage my-shangcheng">
-								<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
-							</div>
-							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-							</div>
-							<div class="topMessage favorite">
-								<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
-						</ul>
-						</div>
-
-						<!--悬浮搜索框-->
-
-						<div class="nav white">
-							<div class="logoBig">
-								<li><img src="../images/logobig.png" /></li>
-							</div>
-
-							<div class="search-bar pr">
-								<a name="index_none_header_sysc" href="#"></a>
-								<form>
-									<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
-									<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
-								</form>
-							</div>
-						</div>
-
-						<div class="clear"></div>
-					</div>
+					<%@ include file="/navigate.jsp" %>
+					<!--悬浮搜索框-->
+					<%@include file="/navSearch.jsp" %>
+					<div class="clear"></div>
 				</div>
 			</article>
 		</header>
 		<div class="nav-table">
-			<div class="long-title"><span class="all-goods">全部分类</span></div>
-			<div class="nav-cont">
-				<ul>
-					<li class="index"><a href="#">首页</a></li>
-					<li class="qc"><a href="#">闪购</a></li>
-					<li class="qc"><a href="#">限时抢</a></li>
-					<li class="qc"><a href="#">团购</a></li>
-					<li class="qc last"><a href="#">大包装</a></li>
-				</ul>
-				<div class="nav-extra">
-					<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-					<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-				</div>
-			</div>
+			<%@include file="/navClassify.jsp" %>
 		</div>
 		<b class="line"></b>
 		<div class="center">
@@ -100,7 +46,7 @@
 									</a>
 									<div class="m-baseinfo">
 										<a class="m-pic" href="information.html">
-											<img src="../images/getAvatar.do.jpg">
+											<img src="<%=path%>/images/getAvatar.do.jpg">
 										</a>
 										<div class="m-info">
 											<em class="s-name">小叮当</em>
@@ -153,19 +99,19 @@
 									</div>
 									<p class="m-big squareS">
 										<a href="#">
-											<i><img src="../images/shopping.png"/></i>
+											<i><img src="<%=path%>/images/shopping.png"/></i>
 											<span class="m-title">能购物</span>
 										</a>
 									</p>
 									<p class="m-big squareA">
 										<a href="#">
-											<i><img src="../images/safe.png"/></i>
+											<i><img src="<%=path%>/images/safe.png"/></i>
 											<span class="m-title">够安全</span>
 										</a>
 									</p>
 									<p class="m-big squareL">
 										<a href="#">
-											<i><img src="../images/profit.png"/></i>
+											<i><img src="<%=path%>/images/profit.png"/></i>
 											<span class="m-title">很灵活</span>
 										</a>
 									</p>
@@ -181,17 +127,18 @@
 									<a class="i-load-more-item-shadow" href="order.html">全部订单</a>
 								</div>
 								<ul>
-									<li><a href="order.html"><i><img src="../images/pay.png"/></i><span>待付款</span></a></li>
-									<li><a href="order.html"><i><img src="../images/send.png"/></i><span>待发货<em class="m-num">1</em></span></a></li>
-									<li><a href="order.html"><i><img src="../images/receive.png"/></i><span>待收货</span></a></li>
-									<li><a href="order.html"><i><img src="../images/comment.png"/></i><span>待评价<em class="m-num">3</em></span></a></li>
-									<li><a href="change.html"><i><img src="../images/refund.png"/></i><span>退换货</span></a></li>
+									<li><a href="order.html"><i><img src="<%=path%>/images/pay.png"/></i><span>待付款</span></a></li>
+									<li><a href="order.html"><i><img src="<%=path%>/images/send.png"/></i><span>待发货<em class="m-num">1</em></span></a></li>
+									<li><a href="order.html"><i><img src="<%=path%>/images/receive.png"/></i><span>待收货</span></a></li>
+									<li><a href="order.html"><i><img src="<%=path%>/images/comment.png"/></i><span>待评价<em class="m-num">3</em></span></a></li>
+									<li><a href="change.html"><i><img src="<%=path%>/images/refund.png"/></i><span>退换货</span></a></li>
+
 								</ul>
 								<div class="orderContentBox">
 									<div class="orderContent">
 										<div class="orderContentpic">
 											<div class="imgBox">
-												<a href="orderinfo.html"><img src="../images/youzi.jpg"></a>
+												<a href="orderinfo.html"><img src="<%=path%>/images/youzi.jpg"></a>
 											</div>
 										</div>
 										<div class="detailContent">
@@ -206,7 +153,7 @@
 											</div>
 										</div>
 										<div class="state">待评价</div>
-										<div class="price"><span class="sym">$</span>23.<span class="sym">80</span></div>
+										<div class="price"><span class="sym">&yen;</span>23.<span class="sym">80</span></div>
 
 									</div>
 									<a href="javascript:void(0);" class="btnPay">再次购买</a>
@@ -216,7 +163,7 @@
 									<div class="orderContent">
 										<div class="orderContentpic">
 											<div class="imgBox">
-												<a href="orderinfo.html"><img src="../images/heart.jpg"></a>
+												<a href="orderinfo.html"><img src="<%=path%>/images/heart.jpg"></a>
 											</div>
 										</div>
 										<div class="detailContent">
@@ -231,7 +178,8 @@
 											</div>
 										</div>
 										<div class="state">已发货</div>
-										<div class="price"><span class="sym">$</span>246.<span class="sym">50</span></div>
+										<div class="price"><span class="sym">&yen;</span>246.<span class="sym">50</span></div>
+
 
 									</div>
 									<a href="javascript:void(0);" class="btnPay">再次购买</a>
@@ -268,7 +216,7 @@
 											<p>我的分享</p>
 										</li>
 									</a>
-									<a href="../home/home2.html">
+									<a href="<%=path%>/home/home2.html">
 										<li class="am-u-sm-4"><i class="am-icon-clock-o am-icon-md"></i>
 											<p>限时活动</p>
 										</li>
@@ -292,7 +240,8 @@
 									<h5 class="squareTitle"><a href="#"><span class="splitBorder"></span>优惠券<i class="am-icon-angle-right"></i></a></h5>
 									<div class="Box">
 										<div class="CouponList">
-											<span class="price">$<strong class="num">50</strong></span>
+											<span class="price">&yen;<strong class="num">50</strong></span>
+
 	                                        <p class="brandName"><a href="#">ABC品牌499减50</a></p>
 	                                        <p class="discount">满<span>499</span>元抵扣</p>
                                             <a  href="#" class="btnReceive">立即领取</a>
@@ -307,12 +256,12 @@
 										</p>
 										<div class="am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth:108, itemMargin:3, slideshow: false}">
 											<ul class="am-slides">
-												<li><a href="#"><img src="../images/333.jpg" /></a></li>
-												<li><a href="#"><img src="../images/222.jpg" /></a></li>
-												<li><a href="#"><img src="../images/111.jpg" /></a></li>
-												<li><a href="#"><img src="../images/333.jpg" /></a></li>
-												<li><a href="#"><img src="../images/222.jpg" /></a></li>
-												<li><a href="#"><img src="../images/111.jpg" /></a></li>
+												<li><a href="#"><img src="<%=path%>/images/333.jpg" /></a></li>
+												<li><a href="#"><img src="<%=path%>/images/222.jpg" /></a></li>
+												<li><a href="#"><img src="<%=path%>/images/111.jpg" /></a></li>
+												<li><a href="#"><img src="<%=path%>/images/333.jpg" /></a></li>
+												<li><a href="#"><img src="<%=path%>/images/222.jpg" /></a></li>
+												<li><a href="#"><img src="<%=path%>/images/111.jpg" /></a></li>
 											</ul>
 										</div>
 									</div>
@@ -348,7 +297,7 @@
 							<div class="new-goods-info">
 								<a class="shop-info" href="#">
 									<div class="face-img-panel">
-										<img src="../images/imgsearch1.jpg" alt="">
+										<img src="<%=path%>/images/imgsearch1.jpg" alt="">
 									</div>
 									<span class="new-goods-num ">4</span>
 									<span class="shop-title">剥壳松子</span>
@@ -365,9 +314,9 @@
 							<div class="new-goods-info">
 								<a class="shop-info" href="#" target="_blank">
 									<div >
-										<img src="../images/666.jpg" alt="">
+										<img src="<%=path%>/images/666.jpg" alt="">
 									</div>
-                                    <span class="one-hot-goods">189.60</span>
+                                    <span class="one-hot-goods">￥189.60</span>
 								</a>
 							</div>
 						</div>						
@@ -386,36 +335,36 @@
                         		<div class="am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth:155,slideshow: false}">
 									<ul class="am-slides">
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/EZA27501.jpg" /></a>
-                                       	  <strong class="price">$32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/EZA27501.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/BxJk6.jpg" /></a>
-                                       	  <strong class="price">$32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/BxJk6.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/Hxcag60.jpg" /></a>
-                                       	  <strong class="price">$32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/Hxcag60.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/youzi.jpg" /></a>
-                                       	  <strong class="price">$32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/youzi.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/EZA27501.jpg" /></a>
-                                       	  <strong class="price">$32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/EZA27501.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/BxJk6.jpg" /></a>
-                                       	  <strong class="price">$32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/BxJk6.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/Hxcag60.jpg" /></a>
-                                       	  <strong class="price">$32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/Hxcag60.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/youzi.jpg" /></a>
-                                       	  <strong class="price">$32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/youzi.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
 
 									</ul>
@@ -425,36 +374,36 @@
                         		<div class="am-slider am-slider-default am-slider-carousel" data-am-flexslider="{itemWidth:155, slideshow: false}">
 									<ul class="am-slides">
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/BxJk6.jpg" /></a>
-                                       	  <strong class="price">$32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/BxJk6.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/Hxcag60.jpg" /></a>
-                                       	  <strong class="price">$32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/Hxcag60.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/youzi.jpg" /></a>
-                                       	  <strong class="price">$32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/youzi.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/EZA27501.jpg" /></a>
-                                       	  <strong class="price">$32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/EZA27501.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/BxJk6.jpg" /></a>
-                                       	  <strong class="price">$32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/BxJk6.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/Hxcag60.jpg" /></a>
-                                       	  <strong class="price">$32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/Hxcag60.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/youzi.jpg" /></a>
-                                       	  <strong class="price">$32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/youzi.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
                                        <li>
-                                       	  <a><img class="am-thumbnail" src="../images/EZA27501.jpg" /></a>
-                                       	  <strong class="price">$32.9</strong>
+                                       	  <a><img class="am-thumbnail" src="<%=path%>/images/EZA27501.jpg" /></a>
+                                       	  <strong class="price">&yen;32.9</strong>
                                        </li>
 									</ul>
 								</div>                            	
@@ -465,29 +414,7 @@
 
 				</div>
 				<!--底部-->
-				<div class="footer">
-					<div class="footer-hd">
-						<p>
-							<a href="#">恒望科技</a>
-							<b>|</b>
-							<a href="#">商城首页</a>
-							<b>|</b>
-							<a href="#">支付宝</a>
-							<b>|</b>
-							<a href="#">物流</a>
-						</p>
-					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">关于恒望</a>
-							<a href="#">合作伙伴</a>
-							<a href="#">联系我们</a>
-							<a href="#">网站地图</a>
-							<em>&copy;2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
-						</p>
-					</div>
-				</div>
-
+				<%@ include file="/footer.jsp" %>
 			</div>
 
 			<aside class="menu">
@@ -545,12 +472,6 @@
 			</aside>
 		</div>
 		<!--引导 -->
-		<div class="navCir">
-			<li><a href="../home/home2.html"><i class="am-icon-home "></i>首页</a></li>
-			<li><a href="../home/sort.html"><i class="am-icon-list"></i>分类</a></li>
-			<li><a href="../home/shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>
-			<li class="active"><a href="index.html"><i class="am-icon-user"></i>我的</a></li>
-		</div>
+		<%@include file="/bottomGuide.jsp" %>
 	</body>
-
 </html>
