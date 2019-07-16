@@ -6,7 +6,7 @@
 			<div class="menu-hd">
 				<c:choose>
 				<c:when test="${aaa102==null}">
-				<a href="login.jsp" target="_top" class="h">Ç×£¬ÇëµÇÂ¼</a>
+				<a href="${path }/home/login.jsp" target="_top" class="h">Ç×£¬ÇëµÇÂ¼</a>
 				<a href="register.jsp" target="_top">Ãâ·Ñ×¢²á</a>
 				</c:when>
 				<c:otherwise>
@@ -64,7 +64,7 @@
 		</div>
 		<div class="topMessage localCity">
 			<div class="menu-hd">
-				<a href="${path }/localCity" id="mc-menu-localCity" target="_top">
+				<a href="${path }/localCity/home.html" id="mc-menu-localCity" target="_top">
 				<i class="am-icon-heart am-icon-fw"></i>
 				<span>Í¬³Ç·þÎñ</span>
 				</a>

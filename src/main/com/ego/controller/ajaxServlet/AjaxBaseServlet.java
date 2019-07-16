@@ -40,9 +40,15 @@ public class AjaxBaseServlet extends HttpServlet
 			controller.setMap(dto);
 			
 			controller.execute(request.getSession());
+<<<<<<< HEAD
 
 			response.setCharacterEncoding("UTF-8");
 
+=======
+			
+			response.setCharacterEncoding("UTF-8");
+		
+>>>>>>> branch 'master' of https://github.com/bigfiveofwhu/ego.git
 			PrintWriter out=response.getWriter();
 			
 			out.print(controller.getJSON().toJSONString());

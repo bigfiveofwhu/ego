@@ -73,7 +73,7 @@
                 <tbody>
                 <!-- 显示查到的数据 -->
                 <c:forEach items="${goodslist}" var="ins" varStatus="vs">
-                    <tr>
+                    <tr id="tr-${ins.aab203}">
                         <td>${vs.count}</td>
                         <td>${ins.aab203}</td>
                         <td>${ins.aab202}</td>
@@ -81,7 +81,7 @@
                         <td>${ins.aab204_1}</td>
                         <td>${ins.aab204_2}</td>
                         <td>${ins.aab204_3}</td>
-                        <td>${ins.cnaab212}</td>
+                        <td class="status">${ins.cnaab212}</td>
                         <td class="text-center">
                             <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
                                     data-target="#sellerModal" onclick="getGoodDetail(${ins.aab203})">详情
@@ -329,13 +329,28 @@
     }
 
     function updateState(state) {
+        var aab203 = $("#aab203").text();
+        var val = '';
+        switch (state) {
+            case '02':
+                val = '审核通过';
+                break;
+            case '03':
+                val = '审核未通过';
+                break;
+            case '04':
+                val = '已下架';
+                break;
+            default:
+                val = '未审核';
+        }
         $.ajax({
             url: "<%=basePath%>/adminReview.ajax",
             type: "post",
             timeout: 20000,
             dataType: "json",
             data: {
-                "aab203": $("#aab203").text(),
+                "aab203": aab203,
                 "aab212": state,
                 "aad102": '7001',
                 "aad801": $("#aad801").text(),
@@ -343,6 +358,7 @@
                 "type": '4'
             },
             success: function () {
+                $('#tr-' + aab203).find('.status').html(val);
                 alert('操作成功')
             },
             error: function () {

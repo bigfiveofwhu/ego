@@ -14,6 +14,7 @@
 <!-- insert your code-->
 <form class="mx-auto w-50 bg-light border p-3" method="post" action="applyAccount.html?aaa102=${aaa102}">
 	<div class="alert alert-warning" role="alert">
+	您还未拥有广告账户，可以直接申请<br>
 	您输入的信息会经过平台审核，请认真填写
 	</div>
   <div class="form-group">
