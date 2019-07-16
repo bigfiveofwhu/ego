@@ -1,14 +1,13 @@
 package com.ego.controller;
 
+import com.ego.services.BaseServices;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import com.ego.services.BaseServices;
 
 public abstract class ControllerSupport implements Controller 
 {
@@ -39,7 +38,7 @@ public abstract class ControllerSupport implements Controller
 	// *****************************************
 	/**
 	 * 批量数据查询
-	 * @param ftype --批量查询的具体分类
+	 * @param qtype --批量查询的具体分类
 	 * @throws Exception
 	 */
 	protected final void savePageData(String qtype) throws Exception
@@ -57,7 +56,7 @@ public abstract class ControllerSupport implements Controller
 
 	/**
 	 * 单一实例查询
-	 * @param ftype --单一实例查询的具体查询类型(基于业务)
+	 * @param qtype --单一实例查询的具体查询类型(基于业务)
 	 * @throws Exception
 	 */
 	protected final void savePageInstance(String qtype) throws Exception
@@ -108,7 +107,7 @@ public abstract class ControllerSupport implements Controller
 
 	/**
 	 * 删除之后的批量数据查询
-	 * @param ftype --批量查询的具体类型
+	 * @param qtype --批量查询的具体类型
 	 * @throws Exception
 	 */
 	protected final void savePageDataForDelete(String qtype) throws Exception
@@ -144,7 +143,7 @@ public abstract class ControllerSupport implements Controller
 	{
 		this.dto = dto;
 		// 同步为Services传递DTO
-		//this.services.setMapDto(dto);
+		this.services.setMapDto(dto);
 	}
 	
 	/**
