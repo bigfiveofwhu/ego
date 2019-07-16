@@ -37,7 +37,6 @@ public class Aa05ServiceImpl extends JdbcServicesSupport{
 	}
 	
 	private boolean addCoupon() throws Exception {
-				
 		int type=Integer.parseInt(get("aaa502").toString());
 		Object[] parameter;
 		Date currentDate=new Date(System.currentTimeMillis());

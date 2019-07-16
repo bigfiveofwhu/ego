@@ -3,21 +3,21 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
+	<head>	
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
-
+		
 		<title>个人资料</title>
-
+		
 		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
 		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
-
+		
 		<link href="<%=path%>/css/personal.css" rel="stylesheet" type="text/css">
 		<link href="<%=path%>/css/infstyle.css" rel="stylesheet" type="text/css">
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>			
 	</head>
-
+	
 	<body>
 		<!--头 -->
 		<header>
@@ -80,7 +80,6 @@
 								<img id="preview" class="am-circle am-img-thumbnail" src="<%=path%>/images/upload/${user.imgName }.jpg" alt="" />
 							</div>
 							</form>
-					
 
 							<p class="am-form-help">头像</p>
 
@@ -211,7 +210,7 @@
 						<p><i class="am-icon-dollar"></i>我的资产</p>
 						<ul>
 							<li> <a href="points.html">我的积分</a></li>
-							<li> <a href="coupon.html">优惠券 </a></li>
+							<li> <a href="<%=path%>/discount/getCustomerCoupons.html">优惠券 </a></li>
 							<li> <a href="bonus.html">红包</a></li>
 							<li> <a href="walletlist.html">账户余额</a></li>
 							<li> <a href="bill.html">账单明细</a></li>

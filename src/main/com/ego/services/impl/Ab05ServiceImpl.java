@@ -7,9 +7,6 @@ import com.ego.services.JdbcServicesSupport;
 
 //商家用户卡券包
 public class Ab05ServiceImpl extends JdbcServicesSupport{
-		
-	
-
 	@Override
 	public boolean update(String utype) throws Exception {
 		// TODO Auto-generated method stub
@@ -20,6 +17,8 @@ public class Ab05ServiceImpl extends JdbcServicesSupport{
 			return delete();
 		case "changeAmount":
 			return changeAmount();
+		case "decreseByOne":
+			return decreseByOne();
 		default:
 			throw new Exception("不支持的类型");
 		}
@@ -42,6 +41,18 @@ public class Ab05ServiceImpl extends JdbcServicesSupport{
 		default:
 			throw new Exception("不支持的类型");
 		}
+	}
+	
+	
+	
+	/**
+	 * 将对应优惠券的值减一
+	 * @return
+	 * @throws Exception
+	 */
+	private boolean decreseByOne()throws Exception {
+		String sql="update ab05 set aab506=aab506-1 where aab501=?";
+		return this.executeUpdate(sql, this.get("aab501"));
 	}
 	
 	private Map<String, String> getCoupon() throws Exception{
