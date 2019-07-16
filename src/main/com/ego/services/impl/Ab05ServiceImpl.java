@@ -7,6 +7,10 @@ import com.ego.services.JdbcServicesSupport;
 
 //商家用户卡券包
 public class Ab05ServiceImpl extends JdbcServicesSupport{
+	public static final String noCondition="1";
+	public static final String hasCondition="2";
+	
+	
 	@Override
 	public boolean update(String utype) throws Exception {
 		// TODO Auto-generated method stub
