@@ -1,79 +1,79 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%@include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<!-- 页面meta -->
-		<meta charset="utf-8">
+		<!-- ҳ��meta -->
+
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>商品管理</title>
+		<title>��Ʒ����</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-		<link rel="stylesheet" href="../../../plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../../plugins/adminLTE/css/AdminLTE.css">
-		<link rel="stylesheet" href="../../../plugins/adminLTE/css/skins/_all-skins.min.css">
-		<link rel="stylesheet" href="../../../css/style.css">
-		<link rel="stylesheet" href="../../../plugins/angularjs/pagination.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/AdminLTE.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/angularjs/pagination.css">
 	</head>
 
 	<body class="hold-transition skin-red sidebar-mini" ng-app="shopping" ng-controller="GoodsController" ng-init="findItemCatList()">
 		<!-- .box-body -->
 
 		<div class="box-header with-border">
-			<h3 class="box-title">商品管理</h3>
+			<h3 class="box-title">��Ʒ����</h3>
 		</div>
 
 		<div class="box-body">
 
-			<!-- 数据表格 -->
+			<!-- ���ݱ��� -->
 			<div class="table-box">
 
-				<!--工具栏-->
+				<!--������-->
 				<div class="pull-left">
 					<div class="form-group form-inline">
 						<div class="btn-group">
-							<button type="button" class="btn btn-default" title="新建" onclick="window.location.href='goods_edit.html';"><i class="fa fa-file-o"></i> 新建</button>
-							<button type="button" class="btn btn-default" title="删除" ng-click="delete()"><i class="fa fa-trash-o"></i> 删除</button>
-							<button type="button" class="btn btn-default" title="提交审核" ng-click="updateStatus('1')"><i class="fa fa-check"></i> 提交审核</button>
-							<button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
+							<button type="button" class="btn btn-default" title="�½�" onclick="window.location.href='goods_edit.html';"><i class="fa fa-file-o"></i> �½�</button>
+							<button type="button" class="btn btn-default" title="ɾ��" ng-click="delete()"><i class="fa fa-trash-o"></i> ɾ��</button>
+							<button type="button" class="btn btn-default" title="�ύ���" ng-click="updateStatus('1')"><i class="fa fa-check"></i> �ύ���</button>
+							<button type="button" class="btn btn-default" title="ˢ��" onclick="window.location.reload();"><i class="fa fa-refresh"></i> ˢ��</button>
 						</div>
 					</div>
 				</div>
 				<form action="queryProduct.html" method="post">
 				<div class="box-tools pull-right">
 					<div class="has-feedback">
-						状态：
+						״̬��
 						<select ng-model="search_domain.auditStatus" name="qaab212">
-							<option value="">全部</option>
-							<option value="01">未审核</option>
-							<option value="02">申请中</option>
-							<option value="03">审核通过</option>
-							<option value="04">审核未通过</option>
-							<option value="05">已下架</option>
+							<option value="">ȫ��</option>
+							<option value="01">δ���</option>
+							<option value="02">������</option>
+							<option value="03">���ͨ��</option>
+							<option value="04">���δͨ��</option>
+							<option value="05">���¼�</option>
 						</select>
-						商品名称：<input name="qaab202" ng-model="search_domain.goodsName">
-						<input type="submit"  value="查询"class="btn btn-default"></input>
+						��Ʒ���ƣ�<input name="qaab202" ng-model="search_domain.goodsName">
+						<input type="submit"  value="��ѯ"class="btn btn-default"></input>
 					</div>
 				</div>
 				</form>
-				<!--工具栏/-->
+				<!--������/-->
 
-				<!--数据列表-->
+				<!--�����б�-->
 				<table id="dataList" class="table table-bordered table-striped table-hover dataTable">
 					<thead>
 						<tr>
 							<th class="" style="padding-right:0px">
 								<input id="selall" type="checkbox" class="icheckbox_square-blue">
 							</th>
-							<th class="sorting">序号</th>
-							<th class="sorting">商品ID</th>
-							<th class="sorting">商品名称</th>
-							<th class="sorting">商品价格</th>
-							<th class="sorting">商品分类</th>
-							<th class="sorting">库存</th>
-							<th class="sorting">状态</th>
-							<th class="text-center">操作</th>
+							<th class="sorting">���</th>
+							<th class="sorting">��ƷID</th>
+							<th class="sorting">��Ʒ����</th>
+							<th class="sorting">��Ʒ�۸�</th>
+							<th class="sorting">��Ʒ����</th>
+							<th class="sorting">���</th>
+							<th class="sorting">״̬</th>
+							<th class="text-center">����</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -90,13 +90,13 @@
 							  ${ins.cnaab212}
 							</td>
 						<td class="text-center">
-								<button type="button" class="btn bg-olive btn-xs"><a class="btn bg-olive btn-xs">修改</a></button>
+								<button type="button" class="btn bg-olive btn-xs"><a class="btn bg-olive btn-xs">�޸�</a></button>
 								<button type="button" class="btn bg-olive btn-xs" >
 									<a class="btn bg-olive btn-xs"  >
-										下架
+										�¼�
 									</a>
 									<a class="btn bg-olive btn-xs"  >
-										上架
+										�ϼ�
 									</a>
 								</button>
 							</td>
@@ -104,32 +104,34 @@
 						</c:forEach>
 					</tbody>
 				</table>
-				<!--数据列表/-->
+				<!--�����б�/-->
 				<tm-pagination conf="paginationConf"></tm-pagination>
 
 			</div>
-			<!-- 数据表格 /-->
+			<!-- ���ݱ��� /-->
 
 		</div>
 		<!-- /.box-body -->
 
 	</body>
 
-	<script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-	<script src="../../../plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../../../plugins/angularjs/angular.min.js"></script>
-	<!-- 分页组件开始 -->
-	<script src="../../../plugins/angularjs/pagination.js"></script>
-	<!-- 分页组件结束 -->
-	<script type="text/javascript" src="../../../js/base/Base_pagination.js"></script>
-	<script type="text/javascript" src="../../../js/base/BaseService_Seller.js"></script>
-	<script type="text/javascript" src="../../../js/base/BaseController.js"></script>
-	<script type="text/javascript" src="../../../js/service/GoodsService.js"></script>
-	<script type="text/javascript" src="../../../js/service/ItemCatService.js"></script>
-	<script type="text/javascript" src="../../../js/service/UploadService.js"></script>
-	<script type="text/javascript" src="../../../js/service/TypeTemplateService.js"></script>
-	<script type="text/javascript" src="../../../js/service/SpecificationService.js"></script>
-	<script type="text/javascript" src="../../../js/service/BrandService.js"></script>
-	<script type="text/javascript" src="../../../js/controller/GoodsController.js"></script>
+	<script src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="<%=path%>/houtai/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/plugins/angularjs/angular.min.js"></script>
+	<!-- ��ҳ�����ʼ -->
+	<!--  
+	<script src="<%=path%>/houtai/plugins/angularjs/pagination.js" charset="utf-8"></script>
+	-->
+	<!-- ��ҳ������� -->
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/Base_pagination.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseService_Seller.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseController.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/GoodsService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/ItemCatService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/UploadService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/TypeTemplateService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/SpecificationService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/BrandService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
 
 </html>

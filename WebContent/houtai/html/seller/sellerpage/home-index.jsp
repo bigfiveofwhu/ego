@@ -1,42 +1,38 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-		<title>è®¢å•ç®¡ç†</title>
-		<link rel="stylesheet" type="text/css" href="../../../css/webbase.css" />
-    	<link rel="stylesheet" type="text/css" href="../../../css/pages-seckillOrder.css" />
-    	<link rel="stylesheet" href="../../../plugins/bootstrap/css/bootstrap.min.css">
+		<title>¶©µ¥¹ÜÀí</title>
+		<link rel="stylesheet" type="text/css" href="<%=path%>/houtai/css/webbase.css" />
+    	<link rel="stylesheet" type="text/css" href="<%=path%>/houtai/css/pages-seckillOrder.css" />
+    	<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
 	</head>
 
 	<body style="background-color:#8AA4AF;" ng-app="shopping" ng-controller="OrderController" ng-init="selectstatus(3)">
 		<div id="account" >
 			<div class="py-container">
 				<div class="yui3-g home">
-					<!--å·¦ä¾§åˆ—è¡¨-->
+					<!--×ó²àÁĞ±í-->
 					<div class="yui3-u-1-6 list">
 						<div class="list-items">
 							<dl>
-								<dt><i>Â·</i> è®¢å•ä¸­å¿ƒ</dt>
+								<dt><i>¡¤</i> ¶©µ¥ÖĞĞÄ</dt>
 							
 								<dd>
 									<a ng-click="selectstatus(3)" class=" {{isSelectedstatus(3)?'list-active':''}} ">
 										<i class="fa fa-folder"></i>
-										<span>å¾…å‘è´§</span>
+										<span>´ı·¢»õ</span>
 										<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 									</a>
 								</dd>
 								<dd>
 									<a  ng-click="selectstatus(4)" class=" {{isSelectedstatus(4)?'list-active':''}} ">
 										<i class="fa fa-folder"></i>
-										<span>å·²å‘è´§</span>
+										<span>ÒÑ·¢»õ</span>
 										<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 									</a>
 								</dd>
@@ -44,21 +40,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<dd>
 									<a  ng-click="selectstatus(5)" class=" {{isSelectedstatus(5)?'list-active':''}} ">
 										<i class="fa fa-folder"></i>
-										<span>äº¤æ˜“æˆåŠŸ</span>
+										<span>½»Ò×³É¹¦</span>
 										<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 									</a>
 								</dd>
 								<dd>
 									<a  ng-click="selectstatus(7)" class=" {{isSelectedstatus(7)?'list-active':''}} ">
 										<i class="fa fa-folder"></i>
-										<span>é€€æ¬¾/é€€è´§</span>
+										<span>ÍË¿î/ÍË»õ</span>
 										<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 									</a>
 								</dd>
 								<dd>
 									<a  ng-click="selectstatus(8)" class=" {{isSelectedstatus(8)?'list-active':''}} ">
 										<i class="fa fa-folder"></i>
-										<span>é€€æ¬¾/é€€è´§è®°å½•</span>
+										<span>ÍË¿î/ÍË»õ¼ÇÂ¼</span>
 										<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 									</a>
 								</dd>
@@ -66,19 +62,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</dl>
 						</div>
 					</div>
-					<!--å³ä¾§ä¸»å†…å®¹-->
+					<!--ÓÒ²àÖ÷ÄÚÈİ-->
 					<div class="yui3-u-5-6 order-pay">
 						<div class="body">
 							<div class="table-title">
 								<table class="sui-table  order-table">
 									<tr>
 										<thead>
-											<th width="35%">å®è´</th>
-											<th width="5%">å•ä»·</th>
-											<th width="5%">æ•°é‡</th>
-											<th width="10%">å®ä»˜æ¬¾</th>
-											<th width="10%">äº¤æ˜“çŠ¶æ€</th>
-											<th width="10%">äº¤æ˜“æ“ä½œ</th>
+											<th width="35%">±¦±´</th>
+											<th width="5%">µ¥¼Û</th>
+											<th width="5%">ÊıÁ¿</th>
+											<th width="10%">Êµ¸¶¿î</th>
+											<th width="10%">½»Ò××´Ì¬</th>
+											<th width="10%">½»Ò×²Ù×÷</th>
 										</thead>
 									</tr>
 								</table>
@@ -88,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<!--order1-->
 									<div class="choose-title" ng-repeat="item in list">
 										<label data-toggle="checkbox">
-                                           <span>è®¢å•ç¼–å·:{{item.orderId}}  é€è´§åœ°å€:{{item.order.receiverAreaName}}  {{item.order.createTime}}ã€€</span>
+                                           <span>¶©µ¥±àºÅ:{{item.orderId}}  ËÍ»õµØÖ·:{{item.order.receiverAreaName}}  {{item.order.createTime}}¡¡</span>
                                     	</label>
 										<table class="sui-table table-bordered order-datatable">
 
@@ -102,31 +98,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												</td>
 												<td width="5%" class="center">
 													<ul class="unstyled">
-														<li>Â¥{{itemlist.price}}</li>
+														<li>${{itemlist.price}}</li>
 													</ul>
 												</td>
 												<td width="5%" class="center">{{itemlist.num}}</td>
 												<td width="10%" class="center" ng-if="$first" rowspan="{{item.orderItemlist.length}}">
 													<ul class="unstyled">
-														<li>Â¥{{item.totalFee}}</li>
+														<li>${{item.totalFee}}</li>
 													</ul>
 												</td>
 
 												<td width="10%" class="center" ng-if="$first" rowspan="{{item.orderItemlist.length}}">
 													<ul class="unstyled">
-														<li ng-if="item.order.status==3">æœªå‘è´§</li>
-														<li ng-if="item.order.status==4">ç­‰å¾…ç”¨æˆ·ç¡®è®¤æ”¶è´§</li>
-														<li ng-if="item.order.status==5">äº¤æ˜“æˆåŠŸ</li>
-														<li ng-if="item.order.status==7">é€€æ¬¾/é€€è´§ä¸­</li>
-														<li ng-if="item.order.status==8">å·²é€€æ¬¾/é€€è´§</li>
+														<li ng-if="item.order.status==3">Î´·¢»õ</li>
+														<li ng-if="item.order.status==4">µÈ´ıÓÃ»§È·ÈÏÊÕ»õ</li>
+														<li ng-if="item.order.status==5">½»Ò×³É¹¦</li>
+														<li ng-if="item.order.status==7">ÍË¿î/ÍË»õÖĞ</li>
+														<li ng-if="item.order.status==8">ÒÑÍË¿î/ÍË»õ</li>
 													</ul>
 												</td>
 												<td width="10%" class="center" ng-if="$first" rowspan="{{item.orderItemlist.length}}">
 													<ul class="unstyled">
 														<li>
-															<a class="sui-btn btn-info" ng-if="item.order.status>=2&&item.order.status<=3" ng-click="settingId(item.orderId)"  data-toggle="modal" data-target="#editModal" class="btn btn-default btn-flat">å‘è´§</a>
+															<a class="sui-btn btn-info" ng-if="item.order.status>=2&&item.order.status<=3" ng-click="settingId(item.orderId)"  data-toggle="modal" data-target="#editModal" class="btn btn-default btn-flat">·¢»õ</a>
 															<p ng-if="item.order.status==7">
-																<a class="sui-btn btn-info"  ng-click="UpdateOrderStatus(item.orderId,8)">åŒæ„é€€æ¬¾/é€€è´§</a>
+																<a class="sui-btn btn-info"  ng-click="UpdateOrderStatus(item.orderId,8)">Í¬ÒâÍË¿î/ÍË»õ</a>
 															</p>
 															
 															
@@ -150,29 +146,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		
 		
-		<!-- ç¼–è¾‘çª—å£ -->
+		<!-- ±à¼­´°¿Ú -->
 		<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
-						<h3 id="myModalLabel">å¡«å†™ç‰©æµè®¢å•</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">¡Á</button>
+						<h3 id="myModalLabel">ÌîĞ´ÎïÁ÷¶©µ¥</h3>
 					</div>
 					<div class="modal-body">
 						<table class="table table-bordered table-striped" width="800px">
 							<tr>
-								<td>ç‰©æµå…¬å¸åç§°</td>
-								<td><input type="type" class="form-control" placeholder="ç‰©æµå…¬å¸åç§°" ng-model="pojo.name"> </td>
+								<td>ÎïÁ÷¹«Ë¾Ãû³Æ</td>
+								<td><input type="type" class="form-control" placeholder="ÎïÁ÷¹«Ë¾Ãû³Æ" ng-model="pojo.name"> </td>
 							</tr>
 							<tr>
-								<td>å¿«é€’å•å·</td>
-								<td><input type="type" class="form-control" placeholder="å¿«é€’å•å·" ng-model="pojo.code"> </td>
+								<td>¿ìµİµ¥ºÅ</td>
+								<td><input type="type" class="form-control" placeholder="¿ìµİµ¥ºÅ" ng-model="pojo.code"> </td>
 							</tr>
 						</table>
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="setsend()">ä¿å­˜</button>
-						<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">å…³é—­</button>
+						<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="setsend()">±£´æ</button>
+						<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">¹Ø±Õ</button>
 					</div>
 				</div>
 			</div>
@@ -180,14 +176,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	</body>
 
-	<script type="text/javascript" src="../../../plugins/jQuery/jquery.min.js"></script>
-	<script type="text/javascript" src="../../../js/common/input.js"></script>
-	<script src="../../../plugins/angularjs/angular.min.js"></script>
-	<script type="text/javascript" src="../../../js/base/BaseService_Seller.js" ></script>
-	<script type="text/javascript" src="../../../js/base/Base.js"></script>
-	<script type="text/javascript" src="../../../js/base/BaseController.js"></script>
-	<script type="text/javascript" src="../../../js/controller/OrderController_Seller.js"></script>
-	<script type="text/javascript" src="../../../js/service/OrderService_Seller.js"></script>
-	<script src="../../../plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/plugins/jQuery/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/common/input.js"></script>
+	<script src="<%=path%>/houtai/plugins/angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseService_Seller.js" ></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/Base.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseController.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/controller/OrderController_Seller.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/OrderService_Seller.js"></script>
+	<script src="<%=path%>/houtai/plugins/bootstrap/js/bootstrap.min.js"></script>
 
 </html>

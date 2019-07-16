@@ -1,8 +1,6 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@include file="/taglib.jsp" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -11,103 +9,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
 
-		<title>ä¸ªäººè´¦å•</title>
+		<title>¸öÈËÕËµ¥</title>
 
-		<link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
-		<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 
-		<link href="../css/personal.css" rel="stylesheet" type="text/css">
-		<link href="../css/blstyle.css" rel="stylesheet" type="text/css">
-		<script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-		<script src="../../one/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+		<link href="<%=path%>/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/css/blstyle.css" rel="stylesheet" type="text/css">
+		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="<%=path%>/<%=path%>/one/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 	</head>
 
 	<body>
-		<!--å¤´ -->
-		<header>
-			<article>
-				<div class="mt-logo">
-					<!--é¡¶éƒ¨å¯¼èˆªæ¡ -->
-					<div class="am-container header">
-						<ul class="message-l">
-							<div class="topMessage">
-								<div class="menu-hd">
-									<a href="#" target="_top" class="h">äº²ï¼Œè¯·ç™»å½•</a>
-									<a href="#" target="_top">å…è´¹æ³¨å†Œ</a>
-								</div>
-							</div>
-						</ul>
-						<ul class="message-r">
-							<div class="topMessage home">
-								<div class="menu-hd"><a href="#" target="_top" class="h">å•†åŸé¦–é¡µ</a></div>
-							</div>
-							<div class="topMessage my-shangcheng">
-								<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>ä¸ªäººä¸­å¿ƒ</a></div>
-							</div>
-							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>è´­ç‰©è½¦</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-							</div>
-							<div class="topMessage favorite">
-								<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>æ”¶è—å¤¹</span></a></div>
-						</ul>
-						</div>
-
-						<!--æ‚¬æµ®æœç´¢æ¡†-->
-
-						<div class="nav white">
-							<div class="logoBig">
-								<li><img src="../images/logobig.png" /></li>
-							</div>
-
-							<div class="search-bar pr">
-								<a name="index_none_header_sysc" href="#"></a>
-								<form>
-									<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="æœç´¢" autocomplete="off">
-									<input id="ai-topsearch" class="submit am-btn" value="æœç´¢" index="1" type="submit">
-								</form>
-							</div>
-						</div>
-
-						<div class="clear"></div>
-					</div>
-				</div>
-			</article>
-		</header>
-
-		<div class="nav-table">
-			<div class="long-title"><span class="all-goods">å…¨éƒ¨åˆ†ç±»</span></div>
-			<div class="nav-cont">
-				<ul>
-					<li class="index"><a href="#">é¦–é¡µ</a></li>
-					<li class="qc"><a href="#">é—ªè´­</a></li>
-					<li class="qc"><a href="#">é™æ—¶æŠ¢</a></li>
-					<li class="qc"><a href="#">å›¢è´­</a></li>
-					<li class="qc last"><a href="#">å¤§åŒ…è£…</a></li>
-				</ul>
-				<div class="nav-extra">
-					<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>æˆ‘çš„ç¦åˆ©
-					<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-				</div>
-			</div>
-		</div>
-		<b class="line"></b>
-
-		<div class="center">
-			<div class="col-main">
-				<div class="main-wrap">
+		
 
 					<div class="user-bill">
-						<!--æ ‡é¢˜ -->
+						<!--±êÌâ -->
 						<div class="am-cf am-padding">
-							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">è´¦å•</strong> / <small>Electronic&nbsp;bill</small></div>
+							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">ÕËµ¥</strong> / <small>Electronic&nbsp;bill</small></div>
 						</div>
 						<hr/>
 
 						<div class="ebill-section">
 							<div class="ebill-title-section">
 								<h2 class="trade-title section-title">
-                                                                                                                                     äº¤æ˜“
-                            <span class="desc">ï¼ˆé‡‘é¢å•ä½ï¼šå…ƒï¼‰</span>
+                                                                                                                                     ½»Ò×
+                            <span class="desc">£¨½ğ¶îµ¥Î»£ºÔª£©</span>
                         </h2>
 
 								<div class=" ng-scope">
@@ -115,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<a href="javascript:void(0);" class="current-circle ng-binding">2015/11/01 - 2015/11/30</a>
 
 									</div>
-									<span class="title-tag"><i class="num ng-binding">12</i>æœˆ</span>
+									<span class="title-tag"><i class="num ng-binding">12</i>ÔÂ</span>
 								</div>
 							</div>
 
@@ -123,33 +50,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<div class="income-slider ">
 									<div class="block-income block  fn-left">
 										<h3 class="income-title block-title">
-                                                                                                          æ”¯å‡º
+                                                                                                          Ö§³ö
                                       <span class="num ng-binding">
                                               119.80
                                        </span>
                                     <span class="desc ng-binding">
-                                           <a href="billlist.html">æŸ¥çœ‹æ”¯å‡ºæ˜ç»†</a>
+                                           <a href="billlist.html">²é¿´Ö§³öÃ÷Ï¸</a>
                                          </span>
                                              </h3>
 
 										<div ng-class="shoppingChart" class="catatory-details  fn-hide shopping">
 											<div class="catatory-chart fn-left fn-hide">
-												<div class="title">ç±»å‹</div>
+												<div class="title">ÀàĞÍ</div>
 												<ul>
 
 												</ul>
 											</div>
 											<div class="catatory-detail fn-left">
 												<div class="title ng-binding">
-													è´­ä¹°å•†å“
+													¹ºÂòÉÌÆ·
 												</div>
 												<ul>
 
 													<li class="ng-scope  delete-false">
 
 														<div class="  ng-scope">
-															<a href="#" class="text fn-left " title="å‘¢å­å¤§è¡£">
-																<span class="emoji-span ng-binding">å‘¢å­å¤§è¡£</span>
+															<a href="#" class="text fn-left " title="ÄØ×Ó´óÒÂ">
+																<span class="emoji-span ng-binding">ÄØ×Ó´óÒÂ</span>
 																<span class="amount fn-right ng-binding">349.00</span>
 															</a>
 														</div>
@@ -158,8 +85,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<li class="ng-scope  delete-false">
 
 														<div class="  ng-scope">
-															<a href="#" class="text fn-left " title="é‡‘å£«é¡¿ç¾Šå¹´é™é‡ç‰ˆ16gUç›˜">
-																<span class="emoji-span ng-binding">é‡‘å£«é¡¿ç¾Šå¹´é™é‡ç‰ˆ16gUç›˜</span>
+															<a href="#" class="text fn-left " title="½ğÊ¿¶ÙÑòÄêÏŞÁ¿°æ16gUÅÌ">
+																<span class="emoji-span ng-binding">½ğÊ¿¶ÙÑòÄêÏŞÁ¿°æ16gUÅÌ</span>
 																<span class="amount fn-right ng-binding">39.00</span>
 															</a>
 														</div>
@@ -168,8 +95,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<li class="ng-scope  delete-false">
 
 														<div class="  ng-scope">
-															<a href="#" class="text fn-left " title="å‘¢å­å¤§è¡£">
-																<span class="emoji-span ng-binding">å‘¢å­å¤§è¡£</span>
+															<a href="#" class="text fn-left " title="ÄØ×Ó´óÒÂ">
+																<span class="emoji-span ng-binding">ÄØ×Ó´óÒÂ</span>
 																<span class="amount fn-right ng-binding">349.00</span>
 															</a>
 														</div>
@@ -178,8 +105,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<li class="ng-scope  delete-false">
 
 														<div class="  ng-scope">
-															<a href="#" class="text fn-left " title="é‡‘å£«é¡¿ç¾Šå¹´é™é‡ç‰ˆ16gUç›˜">
-																<span class="emoji-span ng-binding">é‡‘å£«é¡¿ç¾Šå¹´é™é‡ç‰ˆ16gUç›˜</span>
+															<a href="#" class="text fn-left " title="½ğÊ¿¶ÙÑòÄêÏŞÁ¿°æ16gUÅÌ">
+																<span class="emoji-span ng-binding">½ğÊ¿¶ÙÑòÄêÏŞÁ¿°æ16gUÅÌ</span>
 																<span class="amount fn-right ng-binding">39.00</span>
 															</a>
 														</div>
@@ -188,8 +115,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<li class="ng-scope  delete-false">
 
 														<div class="  ng-scope">
-															<a href="#" class="text fn-left " title="å‘¢å­å¤§è¡£">
-																<span class="emoji-span ng-binding">å‘¢å­å¤§è¡£</span>
+															<a href="#" class="text fn-left " title="ÄØ×Ó´óÒÂ">
+																<span class="emoji-span ng-binding">ÄØ×Ó´óÒÂ</span>
 																<span class="amount fn-right ng-binding">349.00</span>
 															</a>
 														</div>
@@ -198,8 +125,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<li class="ng-scope  delete-false">
 
 														<div class="  ng-scope">
-															<a href="#" class="text fn-left " title="ç¾Šæ¯›æ¯¡åº•é‹å«">
-																<span class="emoji-span ng-binding">ç¾Šæ¯›æ¯¡åº•é‹å«</span>
+															<a href="#" class="text fn-left " title="ÑòÃ«Õ±µ×Ğ¬µæ">
+																<span class="emoji-span ng-binding">ÑòÃ«Õ±µ×Ğ¬µæ</span>
 																<span class="amount fn-right ng-binding">9.90</span>
 															</a>
 														</div>
@@ -214,30 +141,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</div>
 									<div class="clear"></div>
 
-									<!--æ”¶å…¥-->
+									<!--ÊÕÈë-->
 									<h3 class="expense income-title block-title">
-                                                                                                                       æ”¶å…¥                                                              
+                                                                                                                       ÊÕÈë                                                              
                                       <span class="num ng-binding">
                                               0.00
                                        </span>
                                     <span class="desc ng-binding">
-                                           <a href="billlist.html">æŸ¥çœ‹æ”¶å…¥æ˜ç»†</a>
+                                           <a href="billlist.html">²é¿´ÊÕÈëÃ÷Ï¸</a>
                                     </span>
                                 </h3>
 								</div>
 
-								<!--æ¶ˆè´¹èµ°åŠ¿-->
+								<!--Ïû·Ñ×ßÊÆ-->
 								<div class="module-consumeTrend inner-module">
-									<h3 class="module-title">æ¶ˆè´¹èµ°åŠ¿</h3>
+									<h3 class="module-title">Ïû·Ñ×ßÊÆ</h3>
 									<div id="consumeTrend-chart" class="consumeTrend-chart">
 
 									</div>
 								</div>
 
-								<!--é“¶è¡Œå¡ä½¿ç”¨æƒ…å†µ-->
+								<!--ÒøĞĞ¿¨Ê¹ÓÃÇé¿ö-->
 
 								<div class="module-card inner-module">
-									<h3 class="module-title">é“¶è¡Œå¡ä½¿ç”¨æƒ…å†µ</h3>
+									<h3 class="module-title">ÒøĞĞ¿¨Ê¹ÓÃÇé¿ö</h3>
 									<div class="card-chart valid am-slider am-slider-default" data-am-widget="slider" data-am-slider='{"animation":"slide","slideshow":false}'>
 										<ul class="am-slides">
 											<li>
@@ -245,45 +172,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<div class="mask">
 
 														<div class="bac fn-left"></div>
-														<div class="bank ng-binding" style="background-image: url(../images/combo.png);">ä¸­å›½å†œä¸šé“¶è¡Œ</div>
+														<div class="bank ng-binding" style="background-image: url(<%=path%>/images/combo.png);">ÖĞ¹úÅ©ÒµÒøĞĞ</div>
 														<div class="details">
-															<a>æŸ¥çœ‹è¯¦æƒ…</a>
+															<a>²é¿´ÏêÇé</a>
 														</div>
 													</div>
 												</div>
 												<div class="cards-details">
 													<div class="bank-name">
-														<div class="name fn-left" style="background-image: url(../images/combo.png);"></div>
+														<div class="name fn-left" style="background-image: url(<%=path%>/images/combo.png);"></div>
 														<span class="close fn-right"><a>X</a></span>
 													</div>
 													<div class="bank-detail">
 														<div class="totalin fn-left">
-															<span class="fn-left">æµå…¥</span>
+															<span class="fn-left">Á÷Èë</span>
 															<span class="amount fn-right">0.00</span>
 														</div>
 														<div class="totalout fn-left">
-															<span class="fn-left">æµå‡º</span>
+															<span class="fn-left">Á÷³ö</span>
 															<span class="amount fn-right">0.00</span>
 														</div>
 														<div class="expand fn-left">
-															<span class="fn-left">æ”¯å‡º</span>
+															<span class="fn-left">Ö§³ö</span>
 															<span class="amount fn-right">0.00</span>
 														</div>
 														<div class="withdraw fn-left">
-															<span class="fn-left">æç°</span>
+															<span class="fn-left">ÌáÏÖ</span>
 															<span class="amount fn-right">
 							                                0.00
                             						</span>
 														</div>
 														<div class="recharge fn-left">
-															<span class="fn-left">å……å€¼</span>
+															<span class="fn-left">³äÖµ</span>
 															<span class="amount fn-right">
                                                             0.00
                             						</span>
 														</div>
 
 														<div class="refund fn-left">
-															<span class="fn-left">é“¶è¡Œå¡é€€æ¬¾</span>
+															<span class="fn-left">ÒøĞĞ¿¨ÍË¿î</span>
 															<span class="amount fn-right ">0.00</span>
 														</div>
 													</div>
@@ -294,45 +221,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<div class="mask">
 
 														<div class="bac fn-left"></div>
-														<div class="bank ng-binding" style="background-image: url(../images/combo1.png);">ä¸­å›½å»ºè®¾é“¶è¡Œ</div>
+														<div class="bank ng-binding" style="background-image: url(<%=path%>/images/combo1.png);">ÖĞ¹ú½¨ÉèÒøĞĞ</div>
 														<div class="details">
-															<a>æŸ¥çœ‹è¯¦æƒ…</a>
+															<a>²é¿´ÏêÇé</a>
 														</div>
 													</div>
 												</div>
 												<div class="cards-details">
 													<div class="bank-name">
-														<div class="name fn-left" style="background-image: url(../images/combo1.png);"></div>
+														<div class="name fn-left" style="background-image: url(<%=path%>/images/combo1.png);"></div>
 														<span class="close fn-right"><a>X</a></span>
 													</div>
 													<div class="bank-detail">
 														<div class="totalin fn-left">
-															<span class="fn-left">æµå…¥</span>
+															<span class="fn-left">Á÷Èë</span>
 															<span class="amount fn-right">0.00</span>
 														</div>
 														<div class="totalout fn-left">
-															<span class="fn-left">æµå‡º</span>
+															<span class="fn-left">Á÷³ö</span>
 															<span class="amount fn-right">0.00</span>
 														</div>
 														<div class="expand fn-left">
-															<span class="fn-left">æ”¯å‡º</span>
+															<span class="fn-left">Ö§³ö</span>
 															<span class="amount fn-right">0.00</span>
 														</div>
 														<div class="withdraw fn-left">
-															<span class="fn-left">æç°</span>
+															<span class="fn-left">ÌáÏÖ</span>
 															<span class="amount fn-right">
 							                                0.00
                             						</span>
 														</div>
 														<div class="recharge fn-left">
-															<span class="fn-left">å……å€¼</span>
+															<span class="fn-left">³äÖµ</span>
 															<span class="amount fn-right">
                                                             0.00
                             						</span>
 														</div>
 
 														<div class="refund fn-left">
-															<span class="fn-left">é“¶è¡Œå¡é€€æ¬¾</span>
+															<span class="fn-left">ÒøĞĞ¿¨ÍË¿î</span>
 															<span class="amount fn-right ">0.00</span>
 														</div>
 													</div>
@@ -343,45 +270,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<div class="mask">
 
 														<div class="bac fn-left"></div>
-														<div class="bank ng-binding" style="background-image: url(../images/combo2.png);">æµ¦å‘é“¶è¡Œ</div>
+														<div class="bank ng-binding" style="background-image: url(<%=path%>/images/combo2.png);">ÆÖ·¢ÒøĞĞ</div>
 														<div class="details">
-															<a>æŸ¥çœ‹è¯¦æƒ…</a>
+															<a>²é¿´ÏêÇé</a>
 														</div>
 													</div>
 												</div>
 												<div class="cards-details">
 													<div class="bank-name">
-														<div class="name fn-left" style="background-image: url(../images/combo2.png);"></div>
+														<div class="name fn-left" style="background-image: url(<%=path%>/images/combo2.png);"></div>
 														<span class="close fn-right"><a>X</a></span>
 													</div>
 													<div class="bank-detail">
 														<div class="totalin fn-left">
-															<span class="fn-left">æµå…¥</span>
+															<span class="fn-left">Á÷Èë</span>
 															<span class="amount fn-right">0.00</span>
 														</div>
 														<div class="totalout fn-left">
-															<span class="fn-left">æµå‡º</span>
+															<span class="fn-left">Á÷³ö</span>
 															<span class="amount fn-right">0.00</span>
 														</div>
 														<div class="expand fn-left">
-															<span class="fn-left">æ”¯å‡º</span>
+															<span class="fn-left">Ö§³ö</span>
 															<span class="amount fn-right">0.00</span>
 														</div>
 														<div class="withdraw fn-left">
-															<span class="fn-left">æç°</span>
+															<span class="fn-left">ÌáÏÖ</span>
 															<span class="amount fn-right">
 							                                0.00
                             						</span>
 														</div>
 														<div class="recharge fn-left">
-															<span class="fn-left">å……å€¼</span>
+															<span class="fn-left">³äÖµ</span>
 															<span class="amount fn-right">
                                                             0.00
                             						</span>
 														</div>
 
 														<div class="refund fn-left">
-															<span class="fn-left">é“¶è¡Œå¡é€€æ¬¾</span>
+															<span class="fn-left">ÒøĞĞ¿¨ÍË¿î</span>
 															<span class="amount fn-right ">0.00</span>
 														</div>
 													</div>
@@ -392,45 +319,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<div class="mask">
 
 														<div class="bac fn-left"></div>
-														<div class="bank ng-binding" style="background-image: url(../images/combo3.png);">ä¸­å›½å…‰å¤§é“¶è¡Œ</div>
+														<div class="bank ng-binding" style="background-image: url(<%=path%>/images/combo3.png);">ÖĞ¹ú¹â´óÒøĞĞ</div>
 														<div class="details">
-															<a>æŸ¥çœ‹è¯¦æƒ…</a>
+															<a>²é¿´ÏêÇé</a>
 														</div>
 													</div>
 												</div>
 												<div class="cards-details">
 													<div class="bank-name">
-														<div class="name fn-left" style="background-image: url(../images/combo3.png);"></div>
+														<div class="name fn-left" style="background-image: url(<%=path%>/images/combo3.png);"></div>
 														<span class="close fn-right"><a>X</a></span>
 													</div>
 													<div class="bank-detail">
 														<div class="totalin fn-left">
-															<span class="fn-left">æµå…¥</span>
+															<span class="fn-left">Á÷Èë</span>
 															<span class="amount fn-right">0.00</span>
 														</div>
 														<div class="totalout fn-left">
-															<span class="fn-left">æµå‡º</span>
+															<span class="fn-left">Á÷³ö</span>
 															<span class="amount fn-right">0.00</span>
 														</div>
 														<div class="expand fn-left">
-															<span class="fn-left">æ”¯å‡º</span>
+															<span class="fn-left">Ö§³ö</span>
 															<span class="amount fn-right">0.00</span>
 														</div>
 														<div class="withdraw fn-left">
-															<span class="fn-left">æç°</span>
+															<span class="fn-left">ÌáÏÖ</span>
 															<span class="amount fn-right">
 							                                0.00
                             						</span>
 														</div>
 														<div class="recharge fn-left">
-															<span class="fn-left">å……å€¼</span>
+															<span class="fn-left">³äÖµ</span>
 															<span class="amount fn-right">
                                                             0.00
                             						</span>
 														</div>
 
 														<div class="refund fn-left">
-															<span class="fn-left">é“¶è¡Œå¡é€€æ¬¾</span>
+															<span class="fn-left">ÒøĞĞ¿¨ÍË¿î</span>
 															<span class="amount fn-right ">0.00</span>
 														</div>
 													</div>
@@ -461,88 +388,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 
 					</div>
-				</div>
-				<!--åº•éƒ¨-->
-				<div class="footer">
-					<div class="footer-hd">
-						<p>
-							<a href="#">æ’æœ›ç§‘æŠ€</a>
-							<b>|</b>
-							<a href="#">å•†åŸé¦–é¡µ</a>
-							<b>|</b>
-							<a href="#">æ”¯ä»˜å®</a>
-							<b>|</b>
-							<a href="#">ç‰©æµ</a>
-						</p>
-					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">å…³äºæ’æœ›</a>
-							<a href="#">åˆä½œä¼™ä¼´</a>
-							<a href="#">è”ç³»æˆ‘ä»¬</a>
-							<a href="#">ç½‘ç«™åœ°å›¾</a>
-							<em>Â© 2015-2025 Hengwang.com ç‰ˆæƒæ‰€æœ‰. æ›´å¤šæ¨¡æ¿ <a href="http://www.cssmoban.com/" target="_blank" title="æ¨¡æ¿ä¹‹å®¶">æ¨¡æ¿ä¹‹å®¶</a> - Collect from <a href="http://www.cssmoban.com/" title="ç½‘é¡µæ¨¡æ¿" target="_blank">ç½‘é¡µæ¨¡æ¿</a></em>
-						</p>
-					</div>
-				</div>
-
-			</div>
-
-			<aside class="menu">
-				<ul>
-					<li class="person active">
-						<a href="index.html"><i class="am-icon-user"></i>ä¸ªäººä¸­å¿ƒ</a>
-					</li>
-					<li class="person">
-						<p><i class="am-icon-newspaper-o"></i>ä¸ªäººèµ„æ–™</p>
-						<ul>
-							<li> <a href="information.html">ä¸ªäººä¿¡æ¯</a></li>
-							<li> <a href="safety.html">å®‰å…¨è®¾ç½®</a></li>
-							<li> <a href="address.html">åœ°å€ç®¡ç†</a></li>
-							<li> <a href="cardlist.html">å¿«æ·æ”¯ä»˜</a></li>
-						</ul>
-					</li>
-					<li class="person">
-						<p><i class="am-icon-balance-scale"></i>æˆ‘çš„äº¤æ˜“</p>
-						<ul>
-							<li><a href="order.html">è®¢å•ç®¡ç†</a></li>
-							<li> <a href="change.html">é€€æ¬¾å”®å</a></li>
-							<li> <a href="comment.html">è¯„ä»·å•†å“</a></li>
-						</ul>
-					</li>
-					<li class="person">
-						<p><i class="am-icon-dollar"></i>æˆ‘çš„èµ„äº§</p>
-						<ul>
-							<li> <a href="points.html">æˆ‘çš„ç§¯åˆ†</a></li>
-							<li> <a href="coupon.html">ä¼˜æƒ åˆ¸ </a></li>
-							<li> <a href="bonus.html">çº¢åŒ…</a></li>
-							<li> <a href="walletlist.html">è´¦æˆ·ä½™é¢</a></li>
-							<li> <a href="bill.html">è´¦å•æ˜ç»†</a></li>
-						</ul>
-					</li>
-
-					<li class="person">
-						<p><i class="am-icon-tags"></i>æˆ‘çš„æ”¶è—</p>
-						<ul>
-							<li> <a href="collection.html">æ”¶è—</a></li>
-							<li> <a href="foot.html">è¶³è¿¹</a></li>							
-						</ul>
-					</li>
-
-					<li class="person">
-						<p><i class="am-icon-qq"></i>åœ¨çº¿å®¢æœ</p>
-						<ul>
-							<li> <a href="consultation.html">å•†å“å’¨è¯¢</a></li>
-							<li> <a href="suggest.html">æ„è§åé¦ˆ</a></li>
-							
-							<li> <a href="news.html">æˆ‘çš„æ¶ˆæ¯</a></li>
-						</ul>
-					</li>
-				</ul>
-
-			</aside>
-		</div>
-
 	</body>
 
 </html>

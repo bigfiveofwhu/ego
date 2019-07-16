@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
 <%@include file="/taglib.jsp" %>
 
 
@@ -22,40 +21,6 @@
 	</head>
 
 	<body>
-		<!--头 -->
-		<header>
-			<article>
-				<div class="mt-logo">
-					<!--顶部导航条 -->
-					<%@ include file="/navigate.jsp" %>
-						<!--悬浮搜索框-->
-					<%@ include file="/navSearch.jsp" %>
-						<div class="clear"></div>
-					</div>
-				</div>
-			</article>
-		</header>
-            <div class="nav-table">
-					   <div class="long-title"><span class="all-goods">全部分类</span></div>
-					   <div class="nav-cont">
-							<ul>
-								<li class="index"><a href="#">首页</a></li>
-                                <li class="qc"><a href="#">闪购</a></li>
-                                <li class="qc"><a href="#">限时抢</a></li>
-                                <li class="qc"><a href="#">团购</a></li>
-                                <li class="qc last"><a href="#">大包装</a></li>
-							</ul>
-						    <div class="nav-extra">
-						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-						    </div>
-						</div>
-			</div>
-			<b class="line"></b>
-		<div class="center">
-			<div class="col-main">
-				<div class="main-wrap">
-
 					<div class="user-info">
 						<!--标题 -->
 						<div class="am-cf am-padding">
@@ -170,66 +135,6 @@
 				             </form>
 						</div>
 					</div>
-				</div>
-				<!--底部-->
-				<%@ include file="/footer.jsp" %>
-			</div>
-
-			<aside class="menu">
-				<ul>
-					<li class="person active">
-						<a href="index.jsp"><i class="am-icon-user"></i>个人中心</a>
-					</li>
-					<li class="person">
-						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
-					<ul>
-						<li> <a href="showUserInfo.html">个人信息</a></li>
-							<li> <a href="<%=path%>/person/safety.jsp">安全设置</a></li>
-							<li> <a href="showAddress.html">地址管理</a></li>
-							<li> <a href="<%=path%>/person/cardlist.jsp">快捷支付</a></li>
-						</ul>
-					</li>
-					<li class="person">
-						<p><i class="am-icon-balance-scale"></i>我的交易</p>
-						<ul>
-							<li><a href="order.jsp">订单管理</a></li>
-							<li> <a href="change.jsp">退款售后</a></li>
-							<li> <a href="comment.jsp">评价商品</a></li>
-						</ul>
-					</li>
-					<li class="person">
-						<p><i class="am-icon-dollar"></i>我的资产</p>
-						<ul>
-							<li> <a href="points.jsp">我的积分</a></li>
-							<li> <a href="coupon.jsp">优惠券 </a></li>
-							<li> <a href="bonus.jsp">红包</a></li>
-							<li> <a href="walletlist.jsp">账户余额</a></li>
-							<li> <a href="bill.jsp">账单明细</a></li>
-						</ul>
-					</li>
-
-					<li class="person">
-						<p><i class="am-icon-tags"></i>我的收藏</p>
-						<ul>
-							<li> <a href="collection.jsp">收藏</a></li>
-							<li> <a href="foot.jsp">足迹</a></li>														
-						</ul>
-					</li>
-
-					<li class="person">
-						<p><i class="am-icon-qq"></i>在线客服</p>
-						<ul>
-							<li> <a href="consultation.jsp">商品咨询</a></li>
-							<li> <a href="suggest.jsp">意见反馈</a></li>							
-							
-							<li> <a href="news.jsp">我的消息</a></li>
-						</ul>
-					</li>
-				</ul>
-
-			</aside>
-		</div>
-
 	</body>
 <script>
 function uploadFile(ev){

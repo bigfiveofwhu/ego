@@ -1,111 +1,37 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@include file="/taglib.jsp" %>
 
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
 
-		<title>Ф┬▒Г └Х╤ЁХ©╧</title>
+		<title>нр╣двЦ╪ё</title>
 
-		<link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
-		<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 
-		<link href="../css/personal.css" rel="stylesheet" type="text/css">
-		<link href="../css/footstyle.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/css/footstyle.css" rel="stylesheet" type="text/css">
 
 	</head>
 
 	<body>
-		<!--Е╓╢ -->
-		<!--Е╓╢ -->
-		<header>
-			<article>
-				<div class="mt-logo">
-					<!--И║╤И┐╗Е╞╪Х┬╙Ф²║ -->
-					<div class="am-container header">
-						<ul class="message-l">
-							<div class="topMessage">
-								<div class="menu-hd">
-									<a href="#" target="_top" class="h">Д╨╡О╪▄Х╞╥Г≥╩Е╫∙</a>
-									<a href="#" target="_top">Е┘█Х╢╧ФЁ╗Е├▄</a>
-								</div>
-							</div>
-						</ul>
-						<ul class="message-r">
-							<div class="topMessage home">
-								<div class="menu-hd"><a href="#" target="_top" class="h">Е∙├Е÷▌И╕√И║╣</a></div>
-							</div>
-							<div class="topMessage my-shangcheng">
-								<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>Д╦╙Д╨╨Д╦╜Е©┐</a></div>
-							</div>
-							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>Х╢╜Г┴╘Х╫╕</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-							</div>
-							<div class="topMessage favorite">
-								<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>Ф■╤Х≈▐Е╓╧</span></a></div>
-						</ul>
-						</div>
-
-						<!--Ф┌╛Ф╣╝Ф░°Г╢╒Ф║├-->
-
-						<div class="nav white">
-							<div class="logoBig">
-								<li><img src="../images/logobig.png" /></li>
-							</div>
-
-							<div class="search-bar pr">
-								<a name="index_none_header_sysc" href="#"></a>
-								<form>
-									<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="Ф░°Г╢╒" autocomplete="off">
-									<input id="ai-topsearch" class="submit am-btn" value="Ф░°Г╢╒" index="1" type="submit">
-								</form>
-							</div>
-						</div>
-
-						<div class="clear"></div>
-					</div>
-				</div>
-			</article>
-		</header>
-            <div class="nav-table">
-					   <div class="long-title"><span class="all-goods">Е┘╗И┐╗Е┬├Г╠╩</span></div>
-					   <div class="nav-cont">
-							<ul>
-								<li class="index"><a href="#">И╕√И║╣</a></li>
-                                <li class="qc"><a href="#">И≈╙Х╢╜</a></li>
-                                <li class="qc"><a href="#">И≥░Ф≈╤Ф┼╒</a></li>
-                                <li class="qc"><a href="#">Е⌡╒Х╢╜</a></li>
-                                <li class="qc last"><a href="#">Е╓╖Е▄┘Хё┘</a></li>
-							</ul>
-						    <div class="nav-extra">
-						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>Ф┬▒Г └Г╕▐Е┬╘
-						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-						    </div>
-						</div>
-			</div>
-			<b class="line"></b>
-		<div class="center">
-			<div class="col-main">
-				<div class="main-wrap">
-
+		<!--м╥ -->
+		
 					<div class="user-foot">
-						<!--Ф═┤И╒≤ -->
+						<!--╠ЙлБ -->
 						<div class="am-cf am-padding">
-							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">Ф┬▒Г └Х╤ЁХ©╧</strong> / <small>Browser&nbsp;History</small></div>
+							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">нр╣двЦ╪ё</strong> / <small>Browser&nbsp;History</small></div>
 						</div>
 						<hr/>
 
-						<!--Х╤ЁХ©╧Е┬≈Х║╗ -->
+						<!--вЦ╪ёап╠М -->
 
 						<div class="goods">
 							<div class="goods-date" data-date="2015-12-21">
-								<span><i class="month-lite">12</i>.<i class="day-lite">21</i><i class="date-desc">Д╩┼Е╓╘</i></span>
+								<span><i class="month-lite">12</i>.<i class="day-lite">21</i><i class="date-desc">╫ЯлЛ</i></span>
 								<del class="am-icon-trash"></del>
 								<s class="line"></s>
 							</div>
@@ -113,30 +39,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="goods-box first-box">
 								<div class="goods-pic">
 									<div class="goods-pic-box">
-										<a class="goods-pic-link" target="_blank" href="#" title="Ф└▐Е╓╖Е┬╘Х╢╧Е┬≈Г╫≈Х©⌡Е▐ёИё÷Е⌠│Е╥╖Е┘▀Е┼⌡И⌡╤Иё÷24Г╡▓  Х©⌡Е▐ёЕ╥╖Е┘▀Е┼⌡Иё÷Е⌠│">
-											<img src="../images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
+										<a class="goods-pic-link" target="_blank" href="#" title="рБ╢СюШ╥яапбч╫Ь©зйЁф╥ги©ка╕аЦйЁ24аё  ╫Ь©зги©ка╕йЁф╥">
+											<img src="<%=path%>/images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
 									</div>
 									<a class="goods-delete" href="javascript:void(0);"><i class="am-icon-trash"></i></a>
-									<div class="goods-status goods-status-show"><span class="desc">Е╝²Х╢²Е╥╡Д╦▀Ф·╤</span></div>
+									<div class="goods-status goods-status-show"><span class="desc">╠╕╠╢ряоб╪э</span></div>
 								</div>
 
 								<div class="goods-attr">
 									<div class="good-title">
-										<a class="title" href="#" target="_blank">Ф└▐Е╓╖Е┬╘Х╢╧Е┬≈Г╫≈Х©⌡Е▐ёИё÷Е⌠│Е╥╖Е┘▀Е┼⌡И⌡╤Иё÷24Г╡▓  Х©⌡Е▐ёЕ╥╖Е┘▀Е┼⌡Иё÷Е⌠│</a>
+										<a class="title" href="#" target="_blank">рБ╢СюШ╥яапбч╫Ь©зйЁф╥ги©ка╕аЦйЁ24аё  ╫Ь©зги©ка╕йЁф╥</a>
 									</div>
 									<div class="goods-price">
 										<span class="g_price">                                    
-                                        <span>б╔</span><strong>71</strong>
+                                        <span>ё╓</span><strong>71</strong>
 										</span>
 										<span class="g_price g_price-original">                                    
-                                        <span>б╔</span><strong>142</strong>
+                                        <span>ё╓</span><strong>142</strong>
 										</span>
 									</div>
 									<div class="clear"></div>
 									<div class="goods-num">
 										<div class="match-recom">
-											<a href="#" class="match-recom-item">Ф┴╬Г⌡╦Д╪╪</a>
-											<a href="#" class="match-recom-item">Ф┴╬Ф░╜И┘█</a>
+											<a href="#" class="match-recom-item">уроЮкф</a>
+											<a href="#" class="match-recom-item">ур╢НеД</a>
 											<i><em></em><span></span></i>
 										</div>
 									</div>
@@ -152,30 +78,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="goods-box">
 								<div class="goods-pic">
 									<div class="goods-pic-box">
-										<a class="goods-pic-link" target="_blank" href="#" title="Ф└▐Е╓╖Е┬╘Х╢╧Е┬≈Г╫≈Х©⌡Е▐ёИё÷Е⌠│Е╥╖Е┘▀Е┼⌡И⌡╤Иё÷24Г╡▓  Х©⌡Е▐ёЕ╥╖Е┘▀Е┼⌡Иё÷Е⌠│">
-											<img src="../images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
+										<a class="goods-pic-link" target="_blank" href="#" title="рБ╢СюШ╥яапбч╫Ь©зйЁф╥ги©ка╕аЦйЁ24аё  ╫Ь©зги©ка╕йЁф╥">
+											<img src="<%=path%>/images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
 									</div>
 									<a class="goods-delete" href="javascript:void(0);"><i class="am-icon-trash"></i></a>
-									<div class="goods-status goods-status-show"><span class="desc">Е╝²Х╢²Е╥╡Д╦▀Ф·╤</span></div>
+									<div class="goods-status goods-status-show"><span class="desc">╠╕╠╢ряоб╪э</span></div>
 								</div>
 
 								<div class="goods-attr">
 									<div class="good-title">
-										<a class="title" href="#" target="_blank">Ф└▐Е╓╖Е┬╘Х╢╧Е┬≈Г╫≈Х©⌡Е▐ёИё÷Е⌠│Е╥╖Е┘▀Е┼⌡И⌡╤Иё÷24Г╡▓  Х©⌡Е▐ёЕ╥╖Е┘▀Е┼⌡Иё÷Е⌠│</a>
+										<a class="title" href="#" target="_blank">рБ╢СюШ╥яапбч╫Ь©зйЁф╥ги©ка╕аЦйЁ24аё  ╫Ь©зги©ка╕йЁф╥</a>
 									</div>
 									<div class="goods-price">
 										<span class="g_price">                                    
-                                        <span>б╔</span><strong>71</strong>
+                                        <span>ё╓</span><strong>71</strong>
 										</span>
 										<span class="g_price g_price-original">                                    
-                                        <span>б╔</span><strong>142</strong>
+                                        <span>ё╓</span><strong>142</strong>
 										</span>
 									</div>
 									<div class="clear"></div>
 									<div class="goods-num">
 										<div class="match-recom">
-											<a href="#" class="match-recom-item">Ф┴╬Г⌡╦Д╪╪</a>
-											<a href="#" class="match-recom-item">Ф┴╬Ф░╜И┘█</a>
+											<a href="#" class="match-recom-item">уроЮкф</a>
+											<a href="#" class="match-recom-item">ур╢НеД</a>
 											<i><em></em><span></span></i>
 										</div>
 									</div>
@@ -191,30 +117,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="goods-box">
 								<div class="goods-pic">
 									<div class="goods-pic-box">
-										<a class="goods-pic-link" target="_blank" href="#" title="Ф└▐Е╓╖Е┬╘Х╢╧Е┬≈Г╫≈Х©⌡Е▐ёИё÷Е⌠│Е╥╖Е┘▀Е┼⌡И⌡╤Иё÷24Г╡▓  Х©⌡Е▐ёЕ╥╖Е┘▀Е┼⌡Иё÷Е⌠│">
-											<img src="../images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
+										<a class="goods-pic-link" target="_blank" href="#" title="рБ╢СюШ╥яапбч╫Ь©зйЁф╥ги©ка╕аЦйЁ24аё  ╫Ь©зги©ка╕йЁф╥">
+											<img src="<%=path%>/images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
 									</div>
 									<a class="goods-delete" href="javascript:void(0);"><i class="am-icon-trash"></i></a>
-									<div class="goods-status goods-status-show"><span class="desc">Е╝²Х╢²Е╥╡Д╦▀Ф·╤</span></div>
+									<div class="goods-status goods-status-show"><span class="desc">╠╕╠╢ряоб╪э</span></div>
 								</div>
 
 								<div class="goods-attr">
 									<div class="good-title">
-										<a class="title" href="#" target="_blank">Ф└▐Е╓╖Е┬╘Х╢╧Е┬≈Г╫≈Х©⌡Е▐ёИё÷Е⌠│Е╥╖Е┘▀Е┼⌡И⌡╤Иё÷24Г╡▓  Х©⌡Е▐ёЕ╥╖Е┘▀Е┼⌡Иё÷Е⌠│</a>
+										<a class="title" href="#" target="_blank">рБ╢СюШ╥яапбч╫Ь©зйЁф╥ги©ка╕аЦйЁ24аё  ╫Ь©зги©ка╕йЁф╥</a>
 									</div>
 									<div class="goods-price">
 										<span class="g_price">                                    
-                                        <span>б╔</span><strong>71</strong>
+                                        <span>ё╓</span><strong>71</strong>
 										</span>
 										<span class="g_price g_price-original">                                    
-                                        <span>б╔</span><strong>142</strong>
+                                        <span>ё╓</span><strong>142</strong>
 										</span>
 									</div>
 									<div class="clear"></div>
 									<div class="goods-num">
 										<div class="match-recom">
-											<a href="#" class="match-recom-item">Ф┴╬Г⌡╦Д╪╪</a>
-											<a href="#" class="match-recom-item">Ф┴╬Ф░╜И┘█</a>
+											<a href="#" class="match-recom-item">уроЮкф</a>
+											<a href="#" class="match-recom-item">ур╢НеД</a>
 											<i><em></em><span></span></i>
 										</div>
 									</div>
@@ -230,30 +156,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="goods-box">
 								<div class="goods-pic">
 									<div class="goods-pic-box">
-										<a class="goods-pic-link" target="_blank" href="#" title="Ф└▐Е╓╖Е┬╘Х╢╧Е┬≈Г╫≈Х©⌡Е▐ёИё÷Е⌠│Е╥╖Е┘▀Е┼⌡И⌡╤Иё÷24Г╡▓  Х©⌡Е▐ёЕ╥╖Е┘▀Е┼⌡Иё÷Е⌠│">
-											<img src="../images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
+										<a class="goods-pic-link" target="_blank" href="#" title="рБ╢СюШ╥яапбч╫Ь©зйЁф╥ги©ка╕аЦйЁ24аё  ╫Ь©зги©ка╕йЁф╥">
+											<img src="<%=path%>/images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
 									</div>
 									<a class="goods-delete" href="javascript:void(0);"><i class="am-icon-trash"></i></a>
-									<div class="goods-status goods-status-show"><span class="desc">Е╝²Х╢²Е╥╡Д╦▀Ф·╤</span></div>
+									<div class="goods-status goods-status-show"><span class="desc">╠╕╠╢ряоб╪э</span></div>
 								</div>
 
 								<div class="goods-attr">
 									<div class="good-title">
-										<a class="title" href="#" target="_blank">Ф└▐Е╓╖Е┬╘Х╢╧Е┬≈Г╫≈Х©⌡Е▐ёИё÷Е⌠│Е╥╖Е┘▀Е┼⌡И⌡╤Иё÷24Г╡▓  Х©⌡Е▐ёЕ╥╖Е┘▀Е┼⌡Иё÷Е⌠│</a>
+										<a class="title" href="#" target="_blank">рБ╢СюШ╥яапбч╫Ь©зйЁф╥ги©ка╕аЦйЁ24аё  ╫Ь©зги©ка╕йЁф╥</a>
 									</div>
 									<div class="goods-price">
 										<span class="g_price">                                    
-                                        <span>б╔</span><strong>71</strong>
+                                        <span>ё╓</span><strong>71</strong>
 										</span>
 										<span class="g_price g_price-original">                                    
-                                        <span>б╔</span><strong>142</strong>
+                                        <span>ё╓</span><strong>142</strong>
 										</span>
 									</div>
 									<div class="clear"></div>
 									<div class="goods-num">
 										<div class="match-recom">
-											<a href="#" class="match-recom-item">Ф┴╬Г⌡╦Д╪╪</a>
-											<a href="#" class="match-recom-item">Ф┴╬Ф░╜И┘█</a>
+											<a href="#" class="match-recom-item">уроЮкф</a>
+											<a href="#" class="match-recom-item">ур╢НеД</a>
 											<i><em></em><span></span></i>
 										</div>
 									</div>
@@ -270,30 +196,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="goods-box">
 								<div class="goods-pic">
 									<div class="goods-pic-box">
-										<a class="goods-pic-link" target="_blank" href="#" title="Ф└▐Е╓╖Е┬╘Х╢╧Е┬≈Г╫≈Х©⌡Е▐ёИё÷Е⌠│Е╥╖Е┘▀Е┼⌡И⌡╤Иё÷24Г╡▓  Х©⌡Е▐ёЕ╥╖Е┘▀Е┼⌡Иё÷Е⌠│">
-											<img src="../images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
+										<a class="goods-pic-link" target="_blank" href="#" title="рБ╢СюШ╥яапбч╫Ь©зйЁф╥ги©ка╕аЦйЁ24аё  ╫Ь©зги©ка╕йЁф╥">
+											<img src="<%=path%>/images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
 									</div>
 									<a class="goods-delete" href="javascript:void(0);"><i class="am-icon-trash"></i></a>
-									<div class="goods-status goods-status-show"><span class="desc">Е╝²Х╢²Е╥╡Д╦▀Ф·╤</span></div>
+									<div class="goods-status goods-status-show"><span class="desc">╠╕╠╢ряоб╪э</span></div>
 								</div>
 
 								<div class="goods-attr">
 									<div class="good-title">
-										<a class="title" href="#" target="_blank">Ф└▐Е╓╖Е┬╘Х╢╧Е┬≈Г╫≈Х©⌡Е▐ёИё÷Е⌠│Е╥╖Е┘▀Е┼⌡И⌡╤Иё÷24Г╡▓  Х©⌡Е▐ёЕ╥╖Е┘▀Е┼⌡Иё÷Е⌠│</a>
+										<a class="title" href="#" target="_blank">рБ╢СюШ╥яапбч╫Ь©зйЁф╥ги©ка╕аЦйЁ24аё  ╫Ь©зги©ка╕йЁф╥</a>
 									</div>
 									<div class="goods-price">
 										<span class="g_price">                                    
-                                        <span>б╔</span><strong>71</strong>
+                                        <span>ё╓</span><strong>71</strong>
 										</span>
 										<span class="g_price g_price-original">                                    
-                                        <span>б╔</span><strong>142</strong>
+                                        <span>ё╓</span><strong>142</strong>
 										</span>
 									</div>
 									<div class="clear"></div>
 									<div class="goods-num">
 										<div class="match-recom">
-											<a href="#" class="match-recom-item">Ф┴╬Г⌡╦Д╪╪</a>
-											<a href="#" class="match-recom-item">Ф┴╬Ф░╜И┘█</a>
+											<a href="#" class="match-recom-item">уроЮкф</a>
+											<a href="#" class="match-recom-item">ур╢НеД</a>
 											<i><em></em><span></span></i>
 										</div>
 									</div>
@@ -303,37 +229,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="clear"></div>
 						<div class="goods">
 							<div class="goods-date" data-date="2015-12-17">
-								<span><i class="month-lite"></i><i class="day-lite"></i>	<i class="date-desc">Д╦─Е▒╗Е├┘</i></span>
+								<span><i class="month-lite"></i><i class="day-lite"></i>	<i class="date-desc">р╩жэдз</i></span>
 								<del class="am-icon-trash"></del>
 								<s class="line"></s>
 							</div>
 							<div class="goods-box">
 								<div class="goods-pic">
 									<div class="goods-pic-box">
-										<a class="goods-pic-link" target="_blank" href="#" title="Ф└▐Е╓╖Е┬╘Х╢╧Е┬≈Г╫≈Х©⌡Е▐ёИё÷Е⌠│Е╥╖Е┘▀Е┼⌡И⌡╤Иё÷24Г╡▓  Х©⌡Е▐ёЕ╥╖Е┘▀Е┼⌡Иё÷Е⌠│">
-											<img src="../images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
+										<a class="goods-pic-link" target="_blank" href="#" title="рБ╢СюШ╥яапбч╫Ь©зйЁф╥ги©ка╕аЦйЁ24аё  ╫Ь©зги©ка╕йЁф╥">
+											<img src="<%=path%>/images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
 									</div>
 									<a class="goods-delete" href="javascript:void(0);"><i class="am-icon-trash"></i></a>
-									<div class="goods-status goods-status-show"><span class="desc">Е╝²Х╢²Е╥╡Д╦▀Ф·╤</span></div>
+									<div class="goods-status goods-status-show"><span class="desc">╠╕╠╢ряоб╪э</span></div>
 								</div>
 
 								<div class="goods-attr">
 									<div class="good-title">
-										<a class="title" href="#" target="_blank">Ф└▐Е╓╖Е┬╘Х╢╧Е┬≈Г╫≈Х©⌡Е▐ёИё÷Е⌠│Е╥╖Е┘▀Е┼⌡И⌡╤Иё÷24Г╡▓  Х©⌡Е▐ёЕ╥╖Е┘▀Е┼⌡Иё÷Е⌠│</a>
+										<a class="title" href="#" target="_blank">рБ╢СюШ╥яапбч╫Ь©зйЁф╥ги©ка╕аЦйЁ24аё  ╫Ь©зги©ка╕йЁф╥</a>
 									</div>
 									<div class="goods-price">
 										<span class="g_price">                                    
-                                        <span>б╔</span><strong>71</strong>
+                                        <span>ё╓</span><strong>71</strong>
 										</span>
 										<span class="g_price g_price-original">                                    
-                                        <span>б╔</span><strong>142</strong>
+                                        <span>ё╓</span><strong>142</strong>
 										</span>
 									</div>
 									<div class="clear"></div>
 									<div class="goods-num">
 										<div class="match-recom">
-											<a href="#" class="match-recom-item">Ф┴╬Г⌡╦Д╪╪</a>
-											<a href="#" class="match-recom-item">Ф┴╬Ф░╜И┘█</a>
+											<a href="#" class="match-recom-item">уроЮкф</a>
+											<a href="#" class="match-recom-item">ур╢НеД</a>
 											<i><em></em><span></span></i>
 										</div>
 									</div>
@@ -343,88 +269,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						
 						
 					</div>
-				</div>
-
-				<!--Е╨∙И┐╗-->
-				<div class="footer">
-					<div class="footer-hd">
-						<p>
-							<a href="#">Ф│▓Ф°⌡Г╖▒Ф┼─</a>
-							<b>|</b>
-							<a href="#">Е∙├Е÷▌И╕√И║╣</a>
-							<b>|</b>
-							<a href="#">Ф■╞Д╩≤Е╝²</a>
-							<b>|</b>
-							<a href="#">Г┴╘Ф╣│</a>
-						</p>
-					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">Е┘ЁД╨▌Ф│▓Ф°⌡</a>
-							<a href="#">Е░┬Д╫°Д╪≥Д╪╢</a>
-							<a href="#">Х│■ГЁ╩Ф┬▒Д╩╛</a>
-							<a href="#">Г╫▒Г╚≥Е°╟Е⌡╬</a>
-							<em>б╘ 2015-2025 Hengwang.com Г┴┬Ф²┐Ф┴─Ф°┴. Ф⌡╢Е╓ Ф╗║Ф²© <a href="http://www.cssmoban.com/" target="_blank" title="Ф╗║Ф²©Д╧▀Е╝╤">Ф╗║Ф²©Д╧▀Е╝╤</a> - Collect from <a href="http://www.cssmoban.com/" title="Г╫▒И║╣Ф╗║Ф²©" target="_blank">Г╫▒И║╣Ф╗║Ф²©</a></em>
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<aside class="menu">
-				<ul>
-					<li class="person active">
-						<a href="index.html"><i class="am-icon-user"></i>Д╦╙Д╨╨Д╦╜Е©┐</a>
-					</li>
-					<li class="person">
-						<p><i class="am-icon-newspaper-o"></i>Д╦╙Д╨╨Х╣└Ф√≥</p>
-						<ul>
-							<li> <a href="information.html">Д╦╙Д╨╨Д©║Ф│╞</a></li>
-							<li> <a href="safety.html">Е╝┴Е┘╗Х╝╬Г╫╝</a></li>
-							<li> <a href="address.html">Е°╟Е²─Г╝║Г░├</a></li>
-							<li> <a href="cardlist.html">Е©╚Ф█╥Ф■╞Д╩≤</a></li>
-						</ul>
-					</li>
-					<li class="person">
-						<p><i class="am-icon-balance-scale"></i>Ф┬▒Г └Д╨╓Ф≤⌠</p>
-						<ul>
-							<li><a href="order.html">Х╝╒Е█∙Г╝║Г░├</a></li>
-							<li> <a href="change.html">И──Ф╛╬Е■╝Е░▌</a></li>
-							<li> <a href="comment.html">Х╞└Д╩╥Е∙├Е⌠│</a></li>
-						</ul>
-					</li>
-					<li class="person">
-						<p><i class="am-icon-dollar"></i>Ф┬▒Г └Х╣└Д╨╖</p>
-						<ul>
-							<li> <a href="points.html">Ф┬▒Г └Г╖╞Е┬├</a></li>
-							<li> <a href="coupon.html">Д╪≤Ф┐═Е┬╦ </a></li>
-							<li> <a href="bonus.html">Г╨╒Е▄┘</a></li>
-							<li> <a href="walletlist.html">Х╢╕Ф┬╥Д╫≥И╒²</a></li>
-							<li> <a href="bill.html">Х╢╕Е█∙Ф≤▌Г╩├</a></li>
-						</ul>
-					</li>
-
-					<li class="person">
-						<p><i class="am-icon-tags"></i>Ф┬▒Г └Ф■╤Х≈▐</p>
-						<ul>
-							<li> <a href="collection.html">Ф■╤Х≈▐</a></li>
-							<li> <a href="foot.html">Х╤ЁХ©╧</a></li>
-						</ul>
-					</li>
-
-					<li class="person">
-						<p><i class="am-icon-qq"></i>Е°╗Г╨©Е╝╒Ф°█</p>
-						<ul>
-							<li> <a href="consultation.html">Е∙├Е⌠│Е▓╗Х╞╒</a></li>
-							<li> <a href="suggest.html">Ф└▐Х╖│Е▐█И╕┬</a></li>							
-							
-							<li> <a href="news.html">Ф┬▒Г └Ф╤┬Ф│╞</a></li>
-						</ul>
-					</li>
-				</ul>
-
-			</aside>
-		</div>
-
 	</body>
 
 </html>
