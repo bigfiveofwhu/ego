@@ -1,12 +1,11 @@
 package com.ego.controller.impl;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
 import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.ManageReviewServicesImpl;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
 
 public class BaseReviewServlet extends ControllerSupport
 {
@@ -49,7 +48,7 @@ public class BaseReviewServlet extends ControllerSupport
 				break;
 				
 			default:
-				throw new Exception("DiscountController无法处理此类请求");
+				throw new Exception("BaseReviewServlet无法处理此类请求");
 		}
 		System.out.println(list);
 		return path;

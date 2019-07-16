@@ -213,10 +213,10 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 				.append("  where x.aaa102=? and x.aab308='01' ")
 				//.append("  and x.aab107=b.fcode and b.fname='aab107'")
 				;
-		
 		//设置参数列表
 		List<Object> paramList = new ArrayList<>();
-		
+		System.out.println(this.dto);
+		System.out.println(this.get("aaa102"));
 		paramList.add(this.get("aaa102"));
   		System.out.println("***显示订单条件查询SQL语句***");
   		System.out.println(sql.toString());

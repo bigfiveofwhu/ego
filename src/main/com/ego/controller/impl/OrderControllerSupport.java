@@ -9,6 +9,4 @@ public abstract class OrderControllerSupport extends ControllerSupport {
 		this.setServices(new Ab03ServicesImpl());
 		System.out.println("***在OrderControllerSupport中,Ab03ServicesImpl被实例化***");
 	}
-
-
 }
