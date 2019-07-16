@@ -1,19 +1,18 @@
 package com.ego.controller.ajaxServlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 @WebServlet("*.ajax")
 public class AjaxBaseServlet extends HttpServlet 
@@ -43,24 +42,12 @@ public class AjaxBaseServlet extends HttpServlet
 			controller.execute(request.getSession());
 			
 			response.setCharacterEncoding("UTF-8");
-			
+		
 			PrintWriter out=response.getWriter();
 			
 			out.print(controller.getJSON().toJSONString());
 		}
-		catch (InstantiationException e) 
-		{
-			e.printStackTrace();
-		}
-		catch (IllegalAccessException e) 
-		{
-			e.printStackTrace();
-		}
-		catch (ClassNotFoundException e) 
-		{
-			e.printStackTrace();
-		}
-		catch(Exception e)
+		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
@@ -103,7 +90,7 @@ public class AjaxBaseServlet extends HttpServlet
 				dto.put(entry.getKey(), value);
 			}
 		}
-		
+
 		HttpSession session = request.getSession();
         Enumeration<String> attributes = session.getAttributeNames();
         while (attributes.hasMoreElements())
