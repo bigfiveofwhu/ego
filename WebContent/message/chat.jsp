@@ -64,6 +64,7 @@
     var curr_from = window.location.search.substr(1);//当前用户id
     var curr_to = '1001';//当前选中接收者id
     var curr_list = [];//当前列表中接收者
+    var RightCont = document.querySelector('.RightCont');
 
     var ws = new WS("ws://" + location.host + "${pageContext.request.contextPath}" + "/websocket/" + curr_from);
     ws.websocket.onmessage = function (event) {
@@ -135,9 +136,10 @@
                     $('.headName').text('name');
                     //将当前消息接收者设置为from
                     curr_to = from;
-                    //将对应聊天框显示为可见，隐藏其他聊天框
+                    //将对应聊天框显示为可见，隐藏其他聊天框，并拉到最下
                     $('.newsList').css({display: "none"});
                     $('#newsList-' + from).css({display: ""});
+                    RightCont.scrollTop = RightCont.scrollHeight;
                     //修改聊天消息为已读
                     var message = JSON.stringify({
                         "from": from,
@@ -157,7 +159,6 @@
         target.append(str);
 
         //当消息过多时将最新信息展示在聊天框最下面
-        var RightCont = document.querySelector('.RightCont');
         RightCont.scrollTop = RightCont.scrollHeight;
         // $('.RightCont').scrollTop($('.RightCont')[0].scrollHeight);
     }
