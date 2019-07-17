@@ -98,12 +98,12 @@
 
 								<li id="admin-login">
 
-									<a href="seller.html" target="iframe">
+									<a href="<%=path %>/shop/seller.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 修改资料
 									</a>
 								</li>
 								<li id="admin-login">
-									<a href="password.html" target="iframe">
+									<a href="<%=path %>/shop/password.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 修改密码
 
 									</a>
@@ -126,7 +126,7 @@
 									</a>
 								</li>
 								<li id="admin-login">
-									<a href="queryProduct.html" target="iframe">
+									<a href="<%=path %>/shop/queryProduct.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 商品管理
 									</a>
 								</li>
@@ -169,7 +169,6 @@
 										<i class="fa fa-circle-o"></i> 优惠券管理
 									</a>
 								</li>
-								
 							</ul>
 						</li>
 						
@@ -183,7 +182,7 @@
 				       		</a>
 				       		<ul class="treeview-menu">
 								<li id="admin-login">
-									<a href="<%=path %>/houtai/html/seller/sellerpage/shopcomment.jsp" target="iframe">
+									<a href="<%=path %>/shop/queryComment.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 评论管理
 									</a>
 								</li>
@@ -200,7 +199,7 @@
 				       		</a>
 				       		<ul class="treeview-menu">
 								<li id="admin-login">
-									<a href="" target="iframe">
+									<a href="<%=path %>/shop/queryShouhou.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 售后管理
 									</a>
 								</li>

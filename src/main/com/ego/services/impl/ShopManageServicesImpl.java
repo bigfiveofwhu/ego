@@ -15,6 +15,7 @@ Name	    Code
 **/
 package com.ego.services.impl;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -25,13 +26,10 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 {
 	public boolean update(String utype) throws Exception 
     {
-    	if(utype.equalsIgnoreCase("queryAll"))
-    	{
-    		//return this.modifyUserInfo();
-    	}
-    	{
-    		throw new Exception("在类[ShopManageServicesImpl]中进行了未定义的动作调用,动作名称是  "+utype);
-    	}	
+		//System.out.println("执行反射");
+		Method method=this.getClass().getDeclaredMethod(utype);
+		method.setAccessible(true);
+		return (boolean)method.invoke(this);
     }
 	
 	/**
@@ -180,13 +178,10 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 	{
 		if(qtype.equalsIgnoreCase("queryforcomment"))
 			return this.queryforComment();
-		else if(qtype.equalsIgnoreCase("queryforaftermarket"))
-			return this.queryforAftermarkrt();
-		else if(qtype.equalsIgnoreCase("queryforcomplain"))
-			return this.queryforComplain();
+		else if(qtype.equalsIgnoreCase("queryforafterbuy"))
+			return this.queryforAfterBuy();
 		else
 			throw new Exception("未定义的qtype");
-		
 	}
 	
 	/**
@@ -205,7 +200,7 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 		  		
 		  		//定义SQL主体
 		  		StringBuilder sql=new StringBuilder()
-		  		  		.append("	select y.aab202,y.aab203,z.aaa103,x.aab403,x.aab410	")
+		  		  		.append("	select y.aab202,y.aab203,z.aaa103,x.aab403,x.aab410,x.aab405 ")
 		  		  		.append("  from ab04 x, ab02 y, aa01 z 	")
 		  		 	    .append(" where x.aab203=y.aab203 and x.aaa102=z.aaa102	")
 		  				;
@@ -226,7 +221,7 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 		  				sql.append(" and x.aab405 is not null");
 		  			//paramList.add(aab107);
 		  		}
-		  		if(this.equals(aab412))
+		  		if(this.isNotNull(aab412))
 		  		{
 		  			sql.append(" and x.aab412 = ?");
 		  			paramList.add(aab412);
@@ -236,99 +231,57 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 	}
 	
 	/**
-	 * 查看售后表 未完成
+	 * 商家回复评论
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Map<String, String>> queryforAftermarkrt() throws Exception 
+	public boolean replyComment() throws Exception
+	{
+		//Object aab405 = this.get("aab405");
+		String  sql = "update ab04 a set a.aab405=?";
+		
+		return this.executeUpdate(sql, this.get("aab405"));
+	}
+
+	/*****售后管理******/
+	
+	/**
+	 * 查看售后
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Map<String, String>> queryforAfterBuy() throws Exception 
 	{
 		//还原页面查询条件
-		Object aab202=this.get("aab202");       //评论商品名称
-  		Object isreply=this.get("isreply");     //评论是否回复
-  		Object aab412=this.get("aab412");     //是否带图
+		Object aab803=this.get("aab803");       //售后状态
+  		Object aab202=this.get("aab202");     //售后商品
   	
 
   		
   		//定义SQL主体
   		StringBuilder sql=new StringBuilder()
-  		  		.append("	select y.aab202,y.aab203,z.aaa103,x.aab403,x.aab410	")
-  		  		.append("  from ab04 x, ab02 y, aa01 z 	")
-  		 	    .append(" where x.aab203=y.aab203 and x.aaa102=z.aaa102	")
+  		  		.append("	select y.aab202,y.aab203,z.aaa103,x.aaa802,x.aaa804,")
+  		  		.append("	x.aaa805,q.aab302	")
+  		  		.append("  from aa08 x, ab02 y, aa01 z,ab03 q 	")
+  		 	    .append(" where x.aab203=y.aab203 and x.aaa102=z.aaa102	and q.aab302=x.aab302")
   				;
   		
   		//参数列表
   		List<Object> paramList=new ArrayList<>();
   		//逐一判断查询条件是否录入,拼接AND条件
-  		if(this.isNotNull(aab202))
+  		if(this.isNotNull(aab803))
   		{
   			sql.append(" and x.aab202 like ?");
-  			paramList.add("%"+aab202+"%");
+  			paramList.add("%"+aab803+"%");
   		}
-  		if(this.isNotNull(isreply))
-  		{
-  			if(isreply.equals("01"))
-  			sql.append(" and x.aab405 is null ");
-  			else
-  				sql.append(" and x.aab405 is not null");
-  			//paramList.add(aab107);
-  		}
-  		if(this.equals(aab412))
+  		if(this.equals(aab202))
   		{
   			sql.append(" and x.aab412 = ?");
-  			paramList.add(aab412);
+  			paramList.add(aab202);
   		}
   		//sql.append(" order by x.aab101");
   		return this.queryForList(sql.toString(), paramList.toArray());
 		
 	}
-	
-	/**
-	 * 查看投诉(举报)表
-	 * @return
-	 * @throws Exception
-	 */
-	public List<Map<String, String>> queryforComplain() throws Exception 
-	{
-		//还原页面查询条件
-		Object aab202=this.get("aab202");       //评论商品名称
-  		Object isreply=this.get("isreply");     //评论是否回复
-  		Object aab412=this.get("aab412");     //是否带图
-  	
-
-  		
-  		//定义SQL主体
-  		StringBuilder sql=new StringBuilder()
-  		  		.append("	select y.aab202,y.aab203,z.aaa103,x.aab403,x.aab410	")
-  		  		.append("  from ab04 x, ab02 y, aa01 z 	")
-  		 	    .append(" where x.aab203=y.aab203 and x.aaa102=z.aaa102	")
-  				;
-  		
-  		//参数列表
-  		List<Object> paramList=new ArrayList<>();
-  		//逐一判断查询条件是否录入,拼接AND条件
-  		if(this.isNotNull(aab202))
-  		{
-  			sql.append(" and x.aab202 like ?");
-  			paramList.add("%"+aab202+"%");
-  		}
-  		if(this.isNotNull(isreply))
-  		{
-  			if(isreply.equals("01"))
-  			sql.append(" and x.aab405 is null ");
-  			else
-  				sql.append(" and x.aab405 is not null");
-  			//paramList.add(aab107);
-  		}
-  		if(this.equals(aab412))
-  		{
-  			sql.append(" and x.aab412 = ?");
-  			paramList.add(aab412);
-  		}
-  		//sql.append(" order by x.aab101");
-  		return this.queryForList(sql.toString(), paramList.toArray());
-	}
-	
-	
-	
 	
 }
