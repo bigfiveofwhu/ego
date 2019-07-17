@@ -263,9 +263,9 @@
 										<div class="theme-popbod dform">
 											<form class="theme-signin" name="loginform" action="<%=path %>/user/purchase.html" method="post">
 												<div class="theme-signin-left">
-												<c:forEach items="${spec}" var="t" varStatus="">
-													<div class="theme-options">
-														<div class="cart-title">${t.title }</div>
+												<c:forEach items="${spec}" var="t" varStatus="index">
+													<div class="theme-options" value="${index.index }">
+														<div class="cart-title${index.index }">${t.title }</div>
 														<ul>
 														<c:forEach items="${t.subTypes }" var="list" varStatus="i">
 														  <c:if test="${i.index==0 }">
@@ -365,7 +365,8 @@
 									timeout:20000,
 									data:{
 										"aab203":productId,
-										"aaa202":count
+										"aaa202":count,
+										"aaa205":getArgs()
 									},
 									success:function(res,status){
 										if(res.status=='200'){
@@ -381,6 +382,16 @@
 										alert("Õ¯¬Áπ ’œ!");
 									}
 								});
+							}
+							function getArgs(){
+								var options=$(".theme-options");
+								var n=options.length;
+								for(var i=0;i<n;i++){
+									var value=options[i].getAttribute("value");
+									var title=$(".cart-title"+value).text();
+									var val=$(".cart-title"+value).siblings("ul>.selected").text();
+									console.log(title+","+val+";");
+								}
 							}
 						</script>
 					</div>
