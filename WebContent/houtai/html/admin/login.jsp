@@ -1,53 +1,49 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-		<title>è´­ç‰©å•†åŸè¿è¥å•†ç®¡ç†åå°</title>
+		<title>¹ºÎïÉÌ³ÇÔËÓªÉÌ¹ÜÀíºóÌ¨</title>
 		<link rel="icon" href="../assets/img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../css/webbase.css" />
-		<link rel="stylesheet" type="text/css" href="../../css/pages-login-manage.css" />
-		<link rel="stylesheet" href="../../plugins/jquery-front-end-verify/css/verify.css" />
+		<link rel="stylesheet" type="text/css" href="<%=path%>/houtai/css/webbase.css" />
+		<link rel="stylesheet" type="text/css" href="<%=path%>/houtai/css/pages-login-manage.css" />
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/jquery-front-end-verify/css/verify.css" />
 
 	</head>
 
 	<body ng-app="shopping" ng-controller="AdminUserController">
 		<div class="loginmanage">
 			<div class="py-container">
-				<h4 class="manage-title">è¿è¥å•†ç®¡ç†åå°</h4>
+				<h4 class="manage-title">ÔËÓªÉÌ¹ÜÀíºóÌ¨</h4>
 				<div class="loginform">
 
 					<ul class="sui-nav nav-tabs tab-wraped">
 						<li>
 							<a href="#index" data-toggle="tab">
-								<h3>æ‰«æç™»å½•</h3>
+								<h3>É¨ÃèµÇÂ¼</h3>
 							</a>
 						</li>
 						<li class="active">
 							<a href="#profile" data-toggle="tab">
-								<h3>è´¦æˆ·ç™»å½•</h3>
+								<h3>ÕË»§µÇÂ¼</h3>
 							</a>
 						</li>
 					</ul>
 					<div class="tab-content tab-wraped">
 						<div id="index" class="tab-pane">
-							<p>äºŒç»´ç ç™»å½•</p>
+							<p>¶şÎ¬ÂëµÇÂ¼</p>
 							<img src="" />
 						</div>
 						<div id="profile" class="tab-pane  active">
 							<form class="sui-form" name="myForm">
 								<div class="input-prepend"><span class="add-on loginname"></span>
-									<input ng-model="entity.username" type="text" placeholder="ç”¨æˆ·å" class="span2 input-xfat" required>
+									<input ng-model="entity.username" type="text" placeholder="ÓÃ»§Ãû" class="span2 input-xfat" required>
 								</div>
 								<div class="input-prepend"><span class="add-on loginpwd"></span>
-									<input ng-model="entity.password" type="password" placeholder="è¯·è¾“å…¥å¯†ç " class="span2 input-xfat" required>
+									<input ng-model="entity.password" type="password" placeholder="ÇëÊäÈëÃÜÂë" class="span2 input-xfat" required>
 								</div>
 								<div class="setting">
 									<div id="mpanel4" >
@@ -55,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</div>
 								</div>
 								<div id="loginBtn" class="logined" hidden="true">
-									<a class="sui-btn btn-block btn-xlarge btn-danger" ng-disabled="!myForm.$valid" ng-click="login(entity)" >ç™»&nbsp;&nbsp;å½•</a>
+									<a class="sui-btn btn-block btn-xlarge btn-danger" ng-disabled="!myForm.$valid" ng-click="login(entity)" >µÇ&nbsp;&nbsp;Â¼</a>
 								</div>
 							</form>
 
@@ -69,40 +65,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--foot-->
 		<div class="py-container copyright">
 			<ul>
-				<li>å…³äºæˆ‘ä»¬</li>
-				<li>è”ç³»æˆ‘ä»¬</li>
-				<li>è”ç³»å®¢æœ</li>
-				<li>å•†å®¶å…¥é©»</li>
-				<li>è¥é”€ä¸­å¿ƒ</li>
-				<li>æ‰‹æœºApp</li>
-				<li>é”€å”®è”ç›Ÿ</li>
-				<li>å•†å®¶ç¤¾åŒº</li>
+				<li>¹ØÓÚÎÒÃÇ</li>
+				<li>ÁªÏµÎÒÃÇ</li>
+				<li>ÁªÏµ¿Í·ş</li>
+				<li>ÉÌ¼ÒÈë×¤</li>
+				<li>ÓªÏúÖĞĞÄ</li>
+				<li>ÊÖ»úApp</li>
+				<li>ÏúÊÛÁªÃË</li>
+				<li>ÉÌ¼ÒÉçÇø</li>
 			</ul>
-			<div class="address">åœ°å€ï¼šå¹¿å·ç•ªç¦ºèŒä¸šæŠ€æœ¯å­¦é™¢ é‚®ç¼–ï¼š515644 ç”µè¯ï¼š110-100-110 </div>
-			<div class="beian">å¹¿å·ç•ªç¦ºåŒº
+			<div class="address">µØÖ·£º¹ãÖİ·¬Ø®Ö°Òµ¼¼ÊõÑ§Ôº ÓÊ±à£º515644 µç»°£º110-100-110 </div>
+			<div class="beian">¹ãÖİ·¬Ø®Çø
 			</div>
 		</div>
 	</body>
 
 	
-	<script src="../../plugins/angularjs/angular.min.js"></script>
-	<script type="text/javascript" src="../../js/base/Base.js"></script>
-	<script type="text/javascript" src="../../js/base/BaseService.js"></script>
-	<script type="text/javascript" src="../../js/base/BaseController.js"></script>
-	<script type="text/javascript" src="../../js/service/AdminUserService.js"></script>
-	<script type="text/javascript" src="../../js/controller/AdminUserController.js"></script>
-	<script type="text/javascript" src="../../plugins/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="../../plugins/sui/sui.min.js"></script>
-	<script type="text/javascript" src="../../plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
-	<script type="text/javascript" src="../../js/pages/jquery.slideunlock.js"></script>
-	<script type="text/javascript" src="../../plugins/jquery-front-end-verify/js/jquery.min.js" ></script>
-	<script type="text/javascript" src="../../plugins/jquery-front-end-verify/js/verify.js" ></script>
+	<script src="<%=path%>/houtai/plugins/angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/Base.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseController.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/AdminUserService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/controller/AdminUserController.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/plugins/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/plugins/sui/sui.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/pages/jquery.slideunlock.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/plugins/jquery-front-end-verify/js/jquery.min.js" ></script>
+	<script type="text/javascript" src="<%=path%>/houtai/plugins/jquery-front-end-verify/js/verify.js" ></script>
 	<script>
 		$('#mpanel4').slideVerify({
-			type : 2,		//ç±»å‹
-			vOffset : 4,	//è¯¯å·®é‡ï¼Œæ ¹æ®éœ€æ±‚è‡ªè¡Œè°ƒæ•´
-			vSpace : 5,	//é—´éš”
-			imgName : ['../../../img/1.jpg', '../../../img/2.jpg'],
+			type : 2,		//ÀàĞÍ
+			vOffset : 4,	//Îó²îÁ¿£¬¸ù¾İĞèÇó×ÔĞĞµ÷Õû
+			vSpace : 5,	//¼ä¸ô
+			imgName : ['<%=path%>/houtai/img/1.jpg', '<%=path%>/houtai/img/2.jpg'],
 			imgSize : {
 				width: '335px',
 				height: '100px',

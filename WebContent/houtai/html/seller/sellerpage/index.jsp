@@ -23,7 +23,7 @@
 			<!-- 页面头部 -->
 			<header class="main-header">
 				<!-- Logo -->
-				<a href="home.jsp" class="logo">
+				<a href="<%=path %>/houtai/html/seller/sellerpage/home.jsp" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
 					<span class="logo-mini"><b>购物商城</b></span>
 					<!-- logo for regular state and mobile devices -->
@@ -121,7 +121,7 @@
 							<ul class="treeview-menu">
 
 								<li id="admin-login">
-									<a href="goods_edit.jsp" target="iframe">
+									<a href="<%=path %>/houtai/html/seller/sellerpage/goods_edit.jsp" target="iframe">
 										<i class="fa fa-circle-o"></i> 新增商品
 									</a>
 								</li>
@@ -183,7 +183,7 @@
 				       		</a>
 				       		<ul class="treeview-menu">
 								<li id="admin-login">
-									<a href="shopcomment.jsp" target="iframe">
+									<a href="<%=path %>/houtai/html/seller/sellerpage/shopcomment.jsp" target="iframe">
 										<i class="fa fa-circle-o"></i> 评论管理
 									</a>
 								</li>
@@ -215,7 +215,7 @@
 
 			<!-- 内容区域 -->
 			<div class="content-wrapper">
-				<iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" src="seller.jsp"></iframe>
+				<iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" src="<%=path %>/houtai/html/seller/sellerpage/seller.jsp"></iframe>
 
 			</div>
 			<!-- 内容区域 /-->
@@ -243,4 +243,5 @@
 	<script type="text/javascript" src="<%=path %>/houtai/js/controller/SellerLoginController.js"></script>
 	<script type="text/javascript" src="<%=path %>/houtai/js/service/SellerService.js"></script>
 	<script type="text/javascript" src="<%=path %>/houtai/js/common/common.js"></script>
+	
 </html>

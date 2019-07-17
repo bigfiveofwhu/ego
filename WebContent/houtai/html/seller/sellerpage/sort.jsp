@@ -1,34 +1,33 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%@include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="renderer" content="webkit" />
-<title>选择商品所在分类</title>
+<title>ѡ����Ʒ���ڷ���</title>
 <link rel="stylesheet" href="<%=path %>/houtai/css/style1.css" />
 <script type="text/javascript" src="<%=path %>/houtai/plugins/jQuery/jquery.min.js"></script>
 </head>
 <body>
 <div class="contains">
-	<!--面包屑导航-->
+	<!--���м����-->
 	<div class="crumbNav">
-		<a href="<%=path %>/houtai/html/seller/sellerpage/goods_edit.jsp">返回</a>
+		<a href="<%=path %>/houtai/html/seller/sellerpage/goods_edit.jsp">����</a>
 		<font>&gt;</font>
-		发布商品
+		������Ʒ
 		<font>&gt;</font>
-		选择商品所在分类
+		ѡ����Ʒ���ڷ���
 	</div>
-	<!--商品分类-->
+	<!--��Ʒ����-->
     <div class="wareSort clearfix">
 		<ul id="sort1"></ul>
 		<ul id="sort2" style="display: none;"></ul>
 		<ul id="sort3" style="display: none;"></ul>
 	</div>
-	<div class="selectedSort"><b>您当前选择的商品类别是：</b><i id="selectedSort"></i></div>
+	<div class="selectedSort"><b>����ǰѡ�����Ʒ����ǣ�</b><i id="selectedSort"></i></div>
 	<div class="wareSortBtn">
-		<input id="releaseBtn" type="button" value="下一步" disabled="disabled" />
+		<input id="releaseBtn" type="button" value="��һ��" disabled="disabled" />
 	</div>
 	<script src="<%=path %>/houtai/js/pages/sort.js"></script>
 </div>
@@ -38,7 +37,7 @@
 var expressP, expressC, expressD, expressArea, areaCont;
 var arrow = "-";
 
-/*初始化一级目录*/
+/*��ʼ��һ��Ŀ¼*/
 function intProvince() {
 	areaCont = "";
 	for (var i=0; i<province.length; i++) {
@@ -48,7 +47,7 @@ function intProvince() {
 }
 intProvince();
 
-/*选择一级目录*/
+/*ѡ��һ��Ŀ¼*/
 function selectP(p) {
 	areaCont = "";
 	for (var j=0; j<city[p].length; j++) {
@@ -62,7 +61,7 @@ function selectP(p) {
 	$("#releaseBtn").attr("disabled",true) ;
 }
 
-/*选择二级目录*/
+/*ѡ�����Ŀ¼*/
 function selectC(p,c) {
 	areaCont = "";
 	expressC = "";
@@ -76,7 +75,7 @@ function selectC(p,c) {
 	$("#releaseBtn").attr("disabled",true) ;
 }
 
-/*选择三级目录*/
+/*ѡ������Ŀ¼*/
 function selectD(p,c,d) {
 	$("#sort3 li").eq(d).addClass("active").siblings("li").removeClass("active");
 	expressD = expressC + arrow + district[p][c][d];
@@ -85,12 +84,12 @@ function selectD(p,c,d) {
 	$("#releaseBtn").attr("disabled",false) ;
 }
 
-/*点击下一步*/
+/*�����һ��*/
 $("#releaseBtn").click(function() {
 	console.log(expressD);
 	var releaseS = $(this).prop("disabled");
-	if (releaseS == false){//未被禁用
-		location.href = "getProSort.html?sortName="+expressD;//跳转到下一页
+	if (releaseS == false){//δ������
+		location.href = "getProSort.html?sortName="+expressD;//��ת����һҳ
 	}
 });
 

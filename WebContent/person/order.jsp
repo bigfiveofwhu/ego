@@ -1,154 +1,81 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@include file="/taglib.jsp" %>
 
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
 
-		<title>è®¢å•ç®¡ç†</title>
+		<title>¶©µ¥¹ÜÀí</title>
 
-		<link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
-		<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 
-		<link href="../css/personal.css" rel="stylesheet" type="text/css">
-		<link href="../css/orstyle.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/css/orstyle.css" rel="stylesheet" type="text/css">
 
-		<script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-		<script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
 	</head>
 
 	<body>
-		<!--å¤´ -->
-		<header>
-			<article>
-				<div class="mt-logo">
-					<!--é¡¶éƒ¨å¯¼èˆªæ¡ -->
-					<div class="am-container header">
-						<ul class="message-l">
-							<div class="topMessage">
-								<div class="menu-hd">
-									<a href="#" target="_top" class="h">äº²ï¼Œè¯·ç™»å½•</a>
-									<a href="#" target="_top">å…è´¹æ³¨å†Œ</a>
-								</div>
-							</div>
-						</ul>
-						<ul class="message-r">
-							<div class="topMessage home">
-								<div class="menu-hd"><a href="#" target="_top" class="h">å•†åŸé¦–é¡µ</a></div>
-							</div>
-							<div class="topMessage my-shangcheng">
-								<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>ä¸ªäººä¸­å¿ƒ</a></div>
-							</div>
-							<div class="topMessage mini-cart">
-								<div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>è´­ç‰©è½¦</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-							</div>
-							<div class="topMessage favorite">
-								<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>æ”¶è—å¤¹</span></a></div>
-						</ul>
-						</div>
-
-						<!--æ‚¬æµ®æœç´¢æ¡†-->
-
-						<div class="nav white">
-							<div class="logoBig">
-								<li><img src="../images/logobig.png" /></li>
-							</div>
-
-							<div class="search-bar pr">
-								<a name="index_none_header_sysc" href="#"></a>
-								<form>
-									<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="æœç´¢" autocomplete="off">
-									<input id="ai-topsearch" class="submit am-btn" value="æœç´¢" index="1" type="submit">
-								</form>
-							</div>
-						</div>
-
-						<div class="clear"></div>
-					</div>
-				</div>
-			</article>
-		</header>
-            <div class="nav-table">
-					   <div class="long-title"><span class="all-goods">å…¨éƒ¨åˆ†ç±»</span></div>
-					   <div class="nav-cont">
-							<ul>
-								<li class="index"><a href="#">é¦–é¡µ</a></li>
-                                <li class="qc"><a href="#">é—ªè´­</a></li>
-                                <li class="qc"><a href="#">é™æ—¶æŠ¢</a></li>
-                                <li class="qc"><a href="#">å›¢è´­</a></li>
-                                <li class="qc last"><a href="#">å¤§åŒ…è£…</a></li>
-							</ul>
-						    <div class="nav-extra">
-						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>æˆ‘çš„ç¦åˆ©
-						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-						    </div>
-						</div>
-			</div>
-			<b class="line"></b>
-		<div class="center">
-			<div class="col-main">
-				<div class="main-wrap">
+		
 
 					<div class="user-order">
 
-						<!--æ ‡é¢˜ -->
+						<!--±êÌâ -->
 						<div class="am-cf am-padding">
-							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">è®¢å•ç®¡ç†</strong> / <small>Order</small></div>
+							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">¶©µ¥¹ÜÀí</strong> / <small>Order</small></div>
 						</div>
 						<hr/>
 
 						<div class="am-tabs am-tabs-d2 am-margin" data-am-tabs>
 
 							<ul class="am-avg-sm-5 am-tabs-nav am-nav am-nav-tabs">
-								<li class="am-active"><a href="#tab1">æ‰€æœ‰è®¢å•</a></li>
-								<li><a href="#tab2">å¾…ä»˜æ¬¾</a></li>
-								<li><a href="#tab3">å¾…å‘è´§</a></li>
-								<li><a href="#tab4">å¾…æ”¶è´§</a></li>
-								<li><a href="#tab5">å¾…è¯„ä»·</a></li>
+								<li class="am-active"><a href="#tab1">ËùÓĞ¶©µ¥</a></li>
+								<li><a href="#tab2">´ı¸¶¿î</a></li>
+								<li><a href="#tab3">´ı·¢»õ</a></li>
+								<li><a href="#tab4">´ıÊÕ»õ</a></li>
+								<li><a href="#tab5">´ıÆÀ¼Û</a></li>
 							</ul>
 
 							<div class="am-tabs-bd">
 								<div class="am-tab-panel am-fade am-in am-active" id="tab1">
 									<div class="order-top">
 										<div class="th th-item">
-											<td class="td-inner">å•†å“</td>
+											<td class="td-inner">ÉÌÆ·</td>
 										</div>
 										<div class="th th-price">
-											<td class="td-inner">å•ä»·</td>
+											<td class="td-inner">µ¥¼Û</td>
 										</div>
 										<div class="th th-number">
-											<td class="td-inner">æ•°é‡</td>
+											<td class="td-inner">ÊıÁ¿</td>
 										</div>
 										<div class="th th-operation">
-											<td class="td-inner">å•†å“æ“ä½œ</td>
+											<td class="td-inner">ÉÌÆ·²Ù×÷</td>
 										</div>
 										<div class="th th-amount">
-											<td class="td-inner">åˆè®¡</td>
+											<td class="td-inner">ºÏ¼Æ</td>
 										</div>
 										<div class="th th-status">
-											<td class="td-inner">äº¤æ˜“çŠ¶æ€</td>
+											<td class="td-inner">½»Ò××´Ì¬</td>
 										</div>
 										<div class="th th-change">
-											<td class="td-inner">äº¤æ˜“æ“ä½œ</td>
+											<td class="td-inner">½»Ò×²Ù×÷</td>
 										</div>
 									</div>
 
 									<div class="order-main">
 										<div class="order-list">
 											
-											<!--äº¤æ˜“æˆåŠŸ-->
+											<!--½»Ò×³É¹¦-->
 											<div class="order-status5">
 												<div class="order-title">
-													<div class="dd-num">è®¢å•ç¼–å·ï¼š<a href="javascript:;">1601430</a></div>
-													<span>æˆäº¤æ—¶é—´ï¼š2015-12-20</span>
-													<!--    <em>åº—é“ºï¼šå°æ¡”ç¯</em>-->
+													<div class="dd-num">¶©µ¥±àºÅ£º<a href="javascript:;">1601430</a></div>
+													<span>³É½»Ê±¼ä£º2015-12-20</span>
+													<!--    <em>µêÆÌ£ºĞ¡½ÛµÆ</em>-->
 												</div>
 												<div class="order-content">
 													<div class="order-left">
@@ -156,15 +83,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¾åº·ç²‰é»›é†‰ç¾å”‡è† æŒä¹…ä¿æ¹¿æ»‹æ¶¦é˜²æ°´ä¸æ‰è‰²</p>
-																			<p class="info-little">é¢œè‰²ï¼š12#å·å—ç›ç‘™
-																				<br/>åŒ…è£…ï¼šè£¸è£… </p>
+																			<p>ÃÀ¿µ·Û÷ì×íÃÀ´½¸à ³Ö¾Ã±£Êª×ÌÈó·ÀË®²»µôÉ«</p>
+																			<p class="info-little">ÑÕÉ«£º12#´¨ÄÏÂêè§
+																				<br/>°ü×°£ºÂã×° </p>
 																		</a>
 																	</div>
 																</div>
@@ -176,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
@@ -190,15 +117,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¤¼ç›’è¢œå­å¥³ç§‹å†¬ çº¯æ£‰è¢œåŠ åš éŸ©å›½å¯çˆ± </p>
-																			<p class="info-little">é¢œè‰²åˆ†ç±»ï¼šææ¸…ç…§
-																				<br/>å°ºç ï¼šå‡ç </p>
+																			<p>ÀñºĞÍà×ÓÅ®Çï¶¬ ´¿ÃŞÍà¼Óºñ º«¹ú¿É°® </p>
+																			<p class="info-little">ÑÕÉ«·ÖÀà£ºÀîÇåÕÕ
+																				<br/>³ßÂë£º¾ùÂë</p>
 																		</a>
 																	</div>
 																</div>
@@ -210,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
@@ -224,15 +151,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¾åº·ç²‰é»›é†‰ç¾å”‡è† æŒä¹…ä¿æ¹¿æ»‹æ¶¦é˜²æ°´ä¸æ‰è‰²</p>
-																			<p class="info-little">é¢œè‰²ï¼š12#å·å—ç›ç‘™
-																				<br/>åŒ…è£…ï¼šè£¸è£… </p>
+																			<p>ÃÀ¿µ·Û÷ì×íÃÀ´½¸à ³Ö¾Ã±£Êª×ÌÈó·ÀË®²»µôÉ«</p>
+																			<p class="info-little">ÑÕÉ«£º12#´¨ÄÏÂêè§
+																				<br/>°ü×°£ºÂã×° </p>
 																		</a>
 																	</div>
 																</div>
@@ -244,7 +171,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
@@ -257,21 +184,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<div class="order-right">
 														<li class="td td-amount">
 															<div class="item-amount">
-																åˆè®¡ï¼š676.00
-																<p>å«è¿è´¹ï¼š<span>10.00</span></p>
+																ºÏ¼Æ£º676.00
+																<p>º¬ÔË·Ñ£º<span>10.00</span></p>
 															</div>
 														</li>
 														<div class="move-right">
 															<li class="td td-status">
 																<div class="item-status">
-																	<p class="Mystatus">äº¤æ˜“æˆåŠŸ</p>
-																	<p class="order-info"><a href="orderinfo.html">è®¢å•è¯¦æƒ…</a></p>
-																	<p class="order-info"><a href="logistics.html">æŸ¥çœ‹ç‰©æµ</a></p>
+																	<p class="Mystatus">½»Ò×³É¹¦</p>
+																	<p class="order-info"><a href="orderinfo.html">¶©µ¥ÏêÇé</a></p>
+																	<p class="order-info"><a href="logistics.html">²é¿´ÎïÁ÷</a></p>
 																</div>
 															</li>
 															<li class="td td-change">
 																<div class="am-btn am-btn-danger anniu">
-																	åˆ é™¤è®¢å•</div>
+																	É¾³ı¶©µ¥</div>
 															</li>
 														</div>
 													</div>
@@ -280,12 +207,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											
 											
 											
-											<!--äº¤æ˜“å¤±è´¥-->
+											<!--½»Ò×Ê§°Ü-->
 											<div class="order-status0">
 												<div class="order-title">
-													<div class="dd-num">è®¢å•ç¼–å·ï¼š<a href="javascript:;">1601430</a></div>
-													<span>æˆäº¤æ—¶é—´ï¼š2015-12-20</span>
-													<!--    <em>åº—é“ºï¼šå°æ¡”ç¯</em>-->
+													<div class="dd-num">¶©µ¥±àºÅ£º<a href="javascript:;">1601430</a></div>
+													<span>³É½»Ê±¼ä£º2015-12-20</span>
+													<!--    <em>µêÆÌ£ºĞ¡½ÛµÆ</em>-->
 												</div>
 												<div class="order-content">
 													<div class="order-left">
@@ -293,15 +220,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¾åº·ç²‰é»›é†‰ç¾å”‡è† æŒä¹…ä¿æ¹¿æ»‹æ¶¦é˜²æ°´ä¸æ‰è‰²</p>
-																			<p class="info-little">é¢œè‰²ï¼š12#å·å—ç›ç‘™
-																				<br/>åŒ…è£…ï¼šè£¸è£… </p>
+																			<p>ÃÀ¿µ·Û÷ì×íÃÀ´½¸à ³Ö¾Ã±£Êª×ÌÈó·ÀË®²»µôÉ«</p>
+																			<p class="info-little">ÑÕÉ«£º12#´¨ÄÏÂêè§
+																				<br/>°ü×°£ºÂã×° </p>
 																		</a>
 																	</div>
 																</div>
@@ -313,7 +240,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
@@ -327,15 +254,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¤¼ç›’è¢œå­å¥³ç§‹å†¬ çº¯æ£‰è¢œåŠ åš éŸ©å›½å¯çˆ± </p>
-																			<p class="info-little">é¢œè‰²åˆ†ç±»ï¼šææ¸…ç…§
-																				<br/>å°ºç ï¼šå‡ç </p>
+																			<p>ÀñºĞÍà×ÓÅ®Çï¶¬ ´¿ÃŞÍà¼Óºñ º«¹ú¿É°® </p>
+																			<p class="info-little">ÑÕÉ«·ÖÀà£ºÀîÇåÕÕ
+																				<br/>³ßÂë£º¾ùÂë</p>
 																		</a>
 																	</div>
 																</div>
@@ -347,7 +274,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
@@ -361,15 +288,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¾åº·ç²‰é»›é†‰ç¾å”‡è† æŒä¹…ä¿æ¹¿æ»‹æ¶¦é˜²æ°´ä¸æ‰è‰²</p>
-																			<p class="info-little">é¢œè‰²ï¼š12#å·å—ç›ç‘™
-																				<br/>åŒ…è£…ï¼šè£¸è£… </p>
+																			<p>ÃÀ¿µ·Û÷ì×íÃÀ´½¸à ³Ö¾Ã±£Êª×ÌÈó·ÀË®²»µôÉ«</p>
+																			<p class="info-little">ÑÕÉ«£º12#´¨ÄÏÂêè§
+																				<br/>°ü×°£ºÂã×° </p>
 																		</a>
 																	</div>
 																</div>
@@ -381,7 +308,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
@@ -394,31 +321,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<div class="order-right">
 														<li class="td td-amount">
 															<div class="item-amount">
-																åˆè®¡ï¼š676.00
-																<p>å«è¿è´¹ï¼š<span>10.00</span></p>
+																ºÏ¼Æ£º676.00
+																<p>º¬ÔË·Ñ£º<span>10.00</span></p>
 															</div>
 														</li>
 														<div class="move-right">
 															<li class="td td-status">
 																<div class="item-status">
-																	<p class="Mystatus">äº¤æ˜“å…³é—­</p>
+																	<p class="Mystatus">½»Ò×¹Ø±Õ</p>
 																</div>
 															</li>
 															<li class="td td-change">
 																<div class="am-btn am-btn-danger anniu">
-																	åˆ é™¤è®¢å•</div>
+																	É¾³ı¶©µ¥</div>
 															</li>
 														</div>
 													</div>
 												</div>
 											</div>											
 											
-											<!--å¾…å‘è´§-->
+											<!--´ı·¢»õ-->
 											<div class="order-status2">
 												<div class="order-title">
-													<div class="dd-num">è®¢å•ç¼–å·ï¼š<a href="javascript:;">1601430</a></div>
-													<span>æˆäº¤æ—¶é—´ï¼š2015-12-20</span>
-													<!--    <em>åº—é“ºï¼šå°æ¡”ç¯</em>-->
+													<div class="dd-num">¶©µ¥±àºÅ£º<a href="javascript:;">1601430</a></div>
+													<span>³É½»Ê±¼ä£º2015-12-20</span>
+													<!--    <em>µêÆÌ£ºĞ¡½ÛµÆ</em>-->
 												</div>
 												<div class="order-content">
 													<div class="order-left">
@@ -426,15 +353,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¾åº·ç²‰é»›é†‰ç¾å”‡è† æŒä¹…ä¿æ¹¿æ»‹æ¶¦é˜²æ°´ä¸æ‰è‰²</p>
-																			<p class="info-little">é¢œè‰²ï¼š12#å·å—ç›ç‘™
-																				<br/>åŒ…è£…ï¼šè£¸è£… </p>
+																			<p>ÃÀ¿µ·Û÷ì×íÃÀ´½¸à ³Ö¾Ã±£Êª×ÌÈó·ÀË®²»µôÉ«</p>
+																			<p class="info-little">ÑÕÉ«£º12#´¨ÄÏÂêè§
+																				<br/>°ü×°£ºÂã×° </p>
 																		</a>
 																	</div>
 																</div>
@@ -446,12 +373,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">é€€æ¬¾</a>
+																	<a href="refund.html">ÍË¿î</a>
 																</div>
 															</li>
 														</ul>
@@ -460,15 +387,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¤¼ç›’è¢œå­å¥³ç§‹å†¬ çº¯æ£‰è¢œåŠ åš éŸ©å›½å¯çˆ± </p>
-																			<p class="info-little">é¢œè‰²åˆ†ç±»ï¼šææ¸…ç…§
-																				<br/>å°ºç ï¼šå‡ç </p>
+																			<p>ÀñºĞÍà×ÓÅ®Çï¶¬ ´¿ÃŞÍà¼Óºñ º«¹ú¿É°® </p>
+																			<p class="info-little">ÑÕÉ«·ÖÀà£ºÀîÇåÕÕ
+																				<br/>³ßÂë£º¾ùÂë</p>
 																		</a>
 																	</div>
 																</div>
@@ -480,12 +407,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">é€€æ¬¾</a>
+																	<a href="refund.html">ÍË¿î</a>
 																</div>
 															</li>
 														</ul>
@@ -494,15 +421,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¾åº·ç²‰é»›é†‰ç¾å”‡è† æŒä¹…ä¿æ¹¿æ»‹æ¶¦é˜²æ°´ä¸æ‰è‰²</p>
-																			<p class="info-little">é¢œè‰²ï¼š12#å·å—ç›ç‘™
-																				<br/>åŒ…è£…ï¼šè£¸è£… </p>
+																			<p>ÃÀ¿µ·Û÷ì×íÃÀ´½¸à ³Ö¾Ã±£Êª×ÌÈó·ÀË®²»µôÉ«</p>
+																			<p class="info-little">ÑÕÉ«£º12#´¨ÄÏÂêè§
+																				<br/>°ü×°£ºÂã×° </p>
 																		</a>
 																	</div>
 																</div>
@@ -514,12 +441,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">é€€æ¬¾</a>
+																	<a href="refund.html">ÍË¿î</a>
 																</div>
 															</li>
 														</ul>
@@ -527,32 +454,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<div class="order-right">
 														<li class="td td-amount">
 															<div class="item-amount">
-																åˆè®¡ï¼š676.00
-																<p>å«è¿è´¹ï¼š<span>10.00</span></p>
+																ºÏ¼Æ£º676.00
+																<p>º¬ÔË·Ñ£º<span>10.00</span></p>
 															</div>
 														</li>
 														<div class="move-right">
 															<li class="td td-status">
 																<div class="item-status">
-																	<p class="Mystatus">ä¹°å®¶å·²ä»˜æ¬¾</p>
-																	<p class="order-info"><a href="orderinfo.html">è®¢å•è¯¦æƒ…</a></p>
+																	<p class="Mystatus">Âò¼ÒÒÑ¸¶¿î</p>
+																	<p class="order-info"><a href="orderinfo.html">¶©µ¥ÏêÇé</a></p>
 																</div>
 															</li>
 															<li class="td td-change">
 																<div class="am-btn am-btn-danger anniu">
-																	æé†’å‘è´§</div>
+																	ÌáĞÑ·¢»õ</div>
 															</li>
 														</div>
 													</div>
 												</div>
 											</div>
 
-											<!--ä¸åŒçŠ¶æ€è®¢å•-->
+											<!--²»Í¬×´Ì¬¶©µ¥-->
 											<div class="order-status3">
 												<div class="order-title">
-													<div class="dd-num">è®¢å•ç¼–å·ï¼š<a href="javascript:;">1601430</a></div>
-													<span>æˆäº¤æ—¶é—´ï¼š2015-12-20</span>
-													<!--    <em>åº—é“ºï¼šå°æ¡”ç¯</em>-->
+													<div class="dd-num">¶©µ¥±àºÅ£º<a href="javascript:;">1601430</a></div>
+													<span>³É½»Ê±¼ä£º2015-12-20</span>
+													<!--    <em>µêÆÌ£ºĞ¡½ÛµÆ</em>-->
 												</div>
 												<div class="order-content">
 													<div class="order-left">
@@ -560,15 +487,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¾åº·ç²‰é»›é†‰ç¾å”‡è† æŒä¹…ä¿æ¹¿æ»‹æ¶¦é˜²æ°´ä¸æ‰è‰²</p>
-																			<p class="info-little">é¢œè‰²ï¼š12#å·å—ç›ç‘™
-																				<br/>åŒ…è£…ï¼šè£¸è£… </p>
+																			<p>ÃÀ¿µ·Û÷ì×íÃÀ´½¸à ³Ö¾Ã±£Êª×ÌÈó·ÀË®²»µôÉ«</p>
+																			<p class="info-little">ÑÕÉ«£º12#´¨ÄÏÂêè§
+																				<br/>°ü×°£ºÂã×° </p>
 																		</a>
 																	</div>
 																</div>
@@ -580,12 +507,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">é€€æ¬¾/é€€è´§</a>
+																	<a href="refund.html">ÍË¿î/ÍË»õ</a>
 																</div>
 															</li>
 														</ul>
@@ -594,15 +521,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¤¼ç›’è¢œå­å¥³ç§‹å†¬ çº¯æ£‰è¢œåŠ åš éŸ©å›½å¯çˆ± </p>
-																			<p class="info-little">é¢œè‰²åˆ†ç±»ï¼šææ¸…ç…§
-																				<br/>å°ºç ï¼šå‡ç </p>
+																			<p>ÀñºĞÍà×ÓÅ®Çï¶¬ ´¿ÃŞÍà¼Óºñ º«¹ú¿É°® </p>
+																			<p class="info-little">ÑÕÉ«·ÖÀà£ºÀîÇåÕÕ
+																				<br/>³ßÂë£º¾ùÂë</p>
 																		</a>
 																	</div>
 																</div>
@@ -614,12 +541,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">é€€æ¬¾/é€€è´§</a>
+																	<a href="refund.html">ÍË¿î/ÍË»õ</a>
 																</div>
 															</li>
 														</ul>
@@ -628,22 +555,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<div class="order-right">
 														<li class="td td-amount">
 															<div class="item-amount">
-																åˆè®¡ï¼š676.00
-																<p>å«è¿è´¹ï¼š<span>10.00</span></p>
+																ºÏ¼Æ£º676.00
+																<p>º¬ÔË·Ñ£º<span>10.00</span></p>
 															</div>
 														</li>
 														<div class="move-right">
 															<li class="td td-status">
 																<div class="item-status">
-																	<p class="Mystatus">å–å®¶å·²å‘è´§</p>
-																	<p class="order-info"><a href="orderinfo.html">è®¢å•è¯¦æƒ…</a></p>
-																	<p class="order-info"><a href="logistics.html">æŸ¥çœ‹ç‰©æµ</a></p>
-																	<p class="order-info"><a href="#">å»¶é•¿æ”¶è´§</a></p>
+																	<p class="Mystatus">Âô¼ÒÒÑ·¢»õ</p>
+																	<p class="order-info"><a href="orderinfo.html">¶©µ¥ÏêÇé</a></p>
+																	<p class="order-info"><a href="logistics.html">²é¿´ÎïÁ÷</a></p>
+																	<p class="order-info"><a href="#">ÑÓ³¤ÊÕ»õ</a></p>
 																</div>
 															</li>
 															<li class="td td-change">
 																<div class="am-btn am-btn-danger anniu">
-																	ç¡®è®¤æ”¶è´§</div>
+																	È·ÈÏÊÕ»õ</div>
 															</li>
 														</div>
 													</div>
@@ -660,25 +587,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 									<div class="order-top">
 										<div class="th th-item">
-											<td class="td-inner">å•†å“</td>
+											<td class="td-inner">ÉÌÆ·</td>
 										</div>
 										<div class="th th-price">
-											<td class="td-inner">å•ä»·</td>
+											<td class="td-inner">µ¥¼Û</td>
 										</div>
 										<div class="th th-number">
-											<td class="td-inner">æ•°é‡</td>
+											<td class="td-inner">ÊıÁ¿</td>
 										</div>
 										<div class="th th-operation">
-											<td class="td-inner">å•†å“æ“ä½œ</td>
+											<td class="td-inner">ÉÌÆ·²Ù×÷</td>
 										</div>
 										<div class="th th-amount">
-											<td class="td-inner">åˆè®¡</td>
+											<td class="td-inner">ºÏ¼Æ</td>
 										</div>
 										<div class="th th-status">
-											<td class="td-inner">äº¤æ˜“çŠ¶æ€</td>
+											<td class="td-inner">½»Ò××´Ì¬</td>
 										</div>
 										<div class="th th-change">
-											<td class="td-inner">äº¤æ˜“æ“ä½œ</td>
+											<td class="td-inner">½»Ò×²Ù×÷</td>
 										</div>
 									</div>
 
@@ -686,9 +613,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<div class="order-list">
 											<div class="order-status1">
 												<div class="order-title">
-													<div class="dd-num">è®¢å•ç¼–å·ï¼š<a href="javascript:;">1601430</a></div>
-													<span>æˆäº¤æ—¶é—´ï¼š2015-12-20</span>
-													<!--    <em>åº—é“ºï¼šå°æ¡”ç¯</em>-->
+													<div class="dd-num">¶©µ¥±àºÅ£º<a href="javascript:;">1601430</a></div>
+													<span>³É½»Ê±¼ä£º2015-12-20</span>
+													<!--    <em>µêÆÌ£ºĞ¡½ÛµÆ</em>-->
 												</div>
 												<div class="order-content">
 													<div class="order-left">
@@ -696,15 +623,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¾åº·ç²‰é»›é†‰ç¾å”‡è† æŒä¹…ä¿æ¹¿æ»‹æ¶¦é˜²æ°´ä¸æ‰è‰²</p>
-																			<p class="info-little">é¢œè‰²ï¼š12#å·å—ç›ç‘™
-																				<br/>åŒ…è£…ï¼šè£¸è£… </p>
+																			<p>ÃÀ¿µ·Û÷ì×íÃÀ´½¸à ³Ö¾Ã±£Êª×ÌÈó·ÀË®²»µôÉ«</p>
+																			<p class="info-little">ÑÕÉ«£º12#´¨ÄÏÂêè§
+																				<br/>°ü×°£ºÂã×° </p>
 																		</a>
 																	</div>
 																</div>
@@ -716,7 +643,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
@@ -730,15 +657,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¤¼ç›’è¢œå­å¥³ç§‹å†¬ çº¯æ£‰è¢œåŠ åš éŸ©å›½å¯çˆ± </p>
-																			<p class="info-little">é¢œè‰²åˆ†ç±»ï¼šææ¸…ç…§
-																				<br/>å°ºç ï¼šå‡ç </p>
+																			<p>ÀñºĞÍà×ÓÅ®Çï¶¬ ´¿ÃŞÍà¼Óºñ º«¹ú¿É°® </p>
+																			<p class="info-little">ÑÕÉ«·ÖÀà£ºÀîÇåÕÕ
+																				<br/>³ßÂë£º¾ùÂë</p>
 																		</a>
 																	</div>
 																</div>
@@ -750,7 +677,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
@@ -764,15 +691,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¾åº·ç²‰é»›é†‰ç¾å”‡è† æŒä¹…ä¿æ¹¿æ»‹æ¶¦é˜²æ°´ä¸æ‰è‰²</p>
-																			<p class="info-little">é¢œè‰²ï¼š12#å·å—ç›ç‘™
-																				<br/>åŒ…è£…ï¼šè£¸è£… </p>
+																			<p>ÃÀ¿µ·Û÷ì×íÃÀ´½¸à ³Ö¾Ã±£Êª×ÌÈó·ÀË®²»µôÉ«</p>
+																			<p class="info-little">ÑÕÉ«£º12#´¨ÄÏÂêè§
+																				<br/>°ü×°£ºÂã×° </p>
 																		</a>
 																	</div>
 																</div>
@@ -784,7 +711,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
@@ -797,22 +724,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<div class="order-right">
 														<li class="td td-amount">
 															<div class="item-amount">
-																åˆè®¡ï¼š676.00
-																<p>å«è¿è´¹ï¼š<span>10.00</span></p>
+																ºÏ¼Æ£º676.00
+																<p>º¬ÔË·Ñ£º<span>10.00</span></p>
 															</div>
 														</li>
 														<div class="move-right">
 															<li class="td td-status">
 																<div class="item-status">
-																	<p class="Mystatus">ç­‰å¾…ä¹°å®¶ä»˜æ¬¾</p>
-																	<p class="order-info"><a href="#">å–æ¶ˆè®¢å•</a></p>
+																	<p class="Mystatus">µÈ´ıÂò¼Ò¸¶¿î</p>
+																	<p class="order-info"><a href="#">È¡Ïû¶©µ¥</a></p>
 
 																</div>
 															</li>
 															<li class="td td-change">
 																<a href="pay.html">
 																<div class="am-btn am-btn-danger anniu">
-																	ä¸€é”®æ”¯ä»˜</div></a>
+																	Ò»¼üÖ§¸¶</div></a>
 															</li>
 														</div>
 													</div>
@@ -826,25 +753,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<div class="am-tab-panel am-fade" id="tab3">
 									<div class="order-top">
 										<div class="th th-item">
-											<td class="td-inner">å•†å“</td>
+											<td class="td-inner">ÉÌÆ·</td>
 										</div>
 										<div class="th th-price">
-											<td class="td-inner">å•ä»·</td>
+											<td class="td-inner">µ¥¼Û</td>
 										</div>
 										<div class="th th-number">
-											<td class="td-inner">æ•°é‡</td>
+											<td class="td-inner">ÊıÁ¿</td>
 										</div>
 										<div class="th th-operation">
-											<td class="td-inner">å•†å“æ“ä½œ</td>
+											<td class="td-inner">ÉÌÆ·²Ù×÷</td>
 										</div>
 										<div class="th th-amount">
-											<td class="td-inner">åˆè®¡</td>
+											<td class="td-inner">ºÏ¼Æ</td>
 										</div>
 										<div class="th th-status">
-											<td class="td-inner">äº¤æ˜“çŠ¶æ€</td>
+											<td class="td-inner">½»Ò××´Ì¬</td>
 										</div>
 										<div class="th th-change">
-											<td class="td-inner">äº¤æ˜“æ“ä½œ</td>
+											<td class="td-inner">½»Ò×²Ù×÷</td>
 										</div>
 									</div>
 
@@ -852,9 +779,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<div class="order-list">
 											<div class="order-status2">
 												<div class="order-title">
-													<div class="dd-num">è®¢å•ç¼–å·ï¼š<a href="javascript:;">1601430</a></div>
-													<span>æˆäº¤æ—¶é—´ï¼š2015-12-20</span>
-													<!--    <em>åº—é“ºï¼šå°æ¡”ç¯</em>-->
+													<div class="dd-num">¶©µ¥±àºÅ£º<a href="javascript:;">1601430</a></div>
+													<span>³É½»Ê±¼ä£º2015-12-20</span>
+													<!--    <em>µêÆÌ£ºĞ¡½ÛµÆ</em>-->
 												</div>
 												<div class="order-content">
 													<div class="order-left">
@@ -862,15 +789,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¾åº·ç²‰é»›é†‰ç¾å”‡è† æŒä¹…ä¿æ¹¿æ»‹æ¶¦é˜²æ°´ä¸æ‰è‰²</p>
-																			<p class="info-little">é¢œè‰²ï¼š12#å·å—ç›ç‘™
-																				<br/>åŒ…è£…ï¼šè£¸è£… </p>
+																			<p>ÃÀ¿µ·Û÷ì×íÃÀ´½¸à ³Ö¾Ã±£Êª×ÌÈó·ÀË®²»µôÉ«</p>
+																			<p class="info-little">ÑÕÉ«£º12#´¨ÄÏÂêè§
+																				<br/>°ü×°£ºÂã×° </p>
 																		</a>
 																	</div>
 																</div>
@@ -882,12 +809,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">é€€æ¬¾</a>
+																	<a href="refund.html">ÍË¿î</a>
 																</div>
 															</li>
 														</ul>
@@ -896,15 +823,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¤¼ç›’è¢œå­å¥³ç§‹å†¬ çº¯æ£‰è¢œåŠ åš éŸ©å›½å¯çˆ± </p>
-																			<p class="info-little">é¢œè‰²åˆ†ç±»ï¼šææ¸…ç…§
-																				<br/>å°ºç ï¼šå‡ç </p>
+																			<p>ÀñºĞÍà×ÓÅ®Çï¶¬ ´¿ÃŞÍà¼Óºñ º«¹ú¿É°® </p>
+																			<p class="info-little">ÑÕÉ«·ÖÀà£ºÀîÇåÕÕ
+																				<br/>³ßÂë£º¾ùÂë</p>
 																		</a>
 																	</div>
 																</div>
@@ -916,12 +843,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">é€€æ¬¾</a>
+																	<a href="refund.html">ÍË¿î</a>
 																</div>
 															</li>
 														</ul>
@@ -930,15 +857,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¾åº·ç²‰é»›é†‰ç¾å”‡è† æŒä¹…ä¿æ¹¿æ»‹æ¶¦é˜²æ°´ä¸æ‰è‰²</p>
-																			<p class="info-little">é¢œè‰²ï¼š12#å·å—ç›ç‘™
-																				<br/>åŒ…è£…ï¼šè£¸è£… </p>
+																			<p>ÃÀ¿µ·Û÷ì×íÃÀ´½¸à ³Ö¾Ã±£Êª×ÌÈó·ÀË®²»µôÉ«</p>
+																			<p class="info-little">ÑÕÉ«£º12#´¨ÄÏÂêè§
+																				<br/>°ü×°£ºÂã×° </p>
 																		</a>
 																	</div>
 																</div>
@@ -950,12 +877,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">é€€æ¬¾</a>
+																	<a href="refund.html">ÍË¿î</a>
 																</div>
 															</li>
 														</ul>
@@ -963,20 +890,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<div class="order-right">
 														<li class="td td-amount">
 															<div class="item-amount">
-																åˆè®¡ï¼š676.00
-																<p>å«è¿è´¹ï¼š<span>10.00</span></p>
+																ºÏ¼Æ£º676.00
+																<p>º¬ÔË·Ñ£º<span>10.00</span></p>
 															</div>
 														</li>
 														<div class="move-right">
 															<li class="td td-status">
 																<div class="item-status">
-																	<p class="Mystatus">ä¹°å®¶å·²ä»˜æ¬¾</p>
-																	<p class="order-info"><a href="orderinfo.html">è®¢å•è¯¦æƒ…</a></p>
+																	<p class="Mystatus">Âò¼ÒÒÑ¸¶¿î</p>
+																	<p class="order-info"><a href="orderinfo.html">¶©µ¥ÏêÇé</a></p>
 																</div>
 															</li>
 															<li class="td td-change">
 																<div class="am-btn am-btn-danger anniu">
-																	æé†’å‘è´§</div>
+																	ÌáĞÑ·¢»õ</div>
 															</li>
 														</div>
 													</div>
@@ -988,25 +915,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<div class="am-tab-panel am-fade" id="tab4">
 									<div class="order-top">
 										<div class="th th-item">
-											<td class="td-inner">å•†å“</td>
+											<td class="td-inner">ÉÌÆ·</td>
 										</div>
 										<div class="th th-price">
-											<td class="td-inner">å•ä»·</td>
+											<td class="td-inner">µ¥¼Û</td>
 										</div>
 										<div class="th th-number">
-											<td class="td-inner">æ•°é‡</td>
+											<td class="td-inner">ÊıÁ¿</td>
 										</div>
 										<div class="th th-operation">
-											<td class="td-inner">å•†å“æ“ä½œ</td>
+											<td class="td-inner">ÉÌÆ·²Ù×÷</td>
 										</div>
 										<div class="th th-amount">
-											<td class="td-inner">åˆè®¡</td>
+											<td class="td-inner">ºÏ¼Æ</td>
 										</div>
 										<div class="th th-status">
-											<td class="td-inner">äº¤æ˜“çŠ¶æ€</td>
+											<td class="td-inner">½»Ò××´Ì¬</td>
 										</div>
 										<div class="th th-change">
-											<td class="td-inner">äº¤æ˜“æ“ä½œ</td>
+											<td class="td-inner">½»Ò×²Ù×÷</td>
 										</div>
 									</div>
 
@@ -1014,9 +941,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<div class="order-list">
 											<div class="order-status3">
 												<div class="order-title">
-													<div class="dd-num">è®¢å•ç¼–å·ï¼š<a href="javascript:;">1601430</a></div>
-													<span>æˆäº¤æ—¶é—´ï¼š2015-12-20</span>
-													<!--    <em>åº—é“ºï¼šå°æ¡”ç¯</em>-->
+													<div class="dd-num">¶©µ¥±àºÅ£º<a href="javascript:;">1601430</a></div>
+													<span>³É½»Ê±¼ä£º2015-12-20</span>
+													<!--    <em>µêÆÌ£ºĞ¡½ÛµÆ</em>-->
 												</div>
 												<div class="order-content">
 													<div class="order-left">
@@ -1024,15 +951,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¾åº·ç²‰é»›é†‰ç¾å”‡è† æŒä¹…ä¿æ¹¿æ»‹æ¶¦é˜²æ°´ä¸æ‰è‰²</p>
-																			<p class="info-little">é¢œè‰²ï¼š12#å·å—ç›ç‘™
-																				<br/>åŒ…è£…ï¼šè£¸è£… </p>
+																			<p>ÃÀ¿µ·Û÷ì×íÃÀ´½¸à ³Ö¾Ã±£Êª×ÌÈó·ÀË®²»µôÉ«</p>
+																			<p class="info-little">ÑÕÉ«£º12#´¨ÄÏÂêè§
+																				<br/>°ü×°£ºÂã×° </p>
 																		</a>
 																	</div>
 																</div>
@@ -1044,12 +971,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">é€€æ¬¾/é€€è´§</a>
+																	<a href="refund.html">ÍË¿î/ÍË»õ</a>
 																</div>
 															</li>
 														</ul>
@@ -1058,15 +985,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¤¼ç›’è¢œå­å¥³ç§‹å†¬ çº¯æ£‰è¢œåŠ åš éŸ©å›½å¯çˆ± </p>
-																			<p class="info-little">é¢œè‰²åˆ†ç±»ï¼šææ¸…ç…§
-																				<br/>å°ºç ï¼šå‡ç </p>
+																			<p>ÀñºĞÍà×ÓÅ®Çï¶¬ ´¿ÃŞÍà¼Óºñ º«¹ú¿É°® </p>
+																			<p class="info-little">ÑÕÉ«·ÖÀà£ºÀîÇåÕÕ
+																				<br/>³ßÂë£º¾ùÂë</p>
 																		</a>
 																	</div>
 																</div>
@@ -1078,12 +1005,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">é€€æ¬¾/é€€è´§</a>
+																	<a href="refund.html">ÍË¿î/ÍË»õ</a>
 																</div>
 															</li>
 														</ul>
@@ -1092,22 +1019,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<div class="order-right">
 														<li class="td td-amount">
 															<div class="item-amount">
-																åˆè®¡ï¼š676.00
-																<p>å«è¿è´¹ï¼š<span>10.00</span></p>
+																ºÏ¼Æ£º676.00
+																<p>º¬ÔË·Ñ£º<span>10.00</span></p>
 															</div>
 														</li>
 														<div class="move-right">
 															<li class="td td-status">
 																<div class="item-status">
-																	<p class="Mystatus">å–å®¶å·²å‘è´§</p>
-																	<p class="order-info"><a href="orderinfo.html">è®¢å•è¯¦æƒ…</a></p>
-																	<p class="order-info"><a href="logistics.html">æŸ¥çœ‹ç‰©æµ</a></p>
-																	<p class="order-info"><a href="#">å»¶é•¿æ”¶è´§</a></p>
+																	<p class="Mystatus">Âô¼ÒÒÑ·¢»õ</p>
+																	<p class="order-info"><a href="orderinfo.html">¶©µ¥ÏêÇé</a></p>
+																	<p class="order-info"><a href="logistics.html">²é¿´ÎïÁ÷</a></p>
+																	<p class="order-info"><a href="#">ÑÓ³¤ÊÕ»õ</a></p>
 																</div>
 															</li>
 															<li class="td td-change">
 																<div class="am-btn am-btn-danger anniu">
-																	ç¡®è®¤æ”¶è´§</div>
+																	È·ÈÏÊÕ»õ</div>
 															</li>
 														</div>
 													</div>
@@ -1120,35 +1047,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<div class="am-tab-panel am-fade" id="tab5">
 									<div class="order-top">
 										<div class="th th-item">
-											<td class="td-inner">å•†å“</td>
+											<td class="td-inner">ÉÌÆ·</td>
 										</div>
 										<div class="th th-price">
-											<td class="td-inner">å•ä»·</td>
+											<td class="td-inner">µ¥¼Û</td>
 										</div>
 										<div class="th th-number">
-											<td class="td-inner">æ•°é‡</td>
+											<td class="td-inner">ÊıÁ¿</td>
 										</div>
 										<div class="th th-operation">
-											<td class="td-inner">å•†å“æ“ä½œ</td>
+											<td class="td-inner">ÉÌÆ·²Ù×÷</td>
 										</div>
 										<div class="th th-amount">
-											<td class="td-inner">åˆè®¡</td>
+											<td class="td-inner">ºÏ¼Æ</td>
 										</div>
 										<div class="th th-status">
-											<td class="td-inner">äº¤æ˜“çŠ¶æ€</td>
+											<td class="td-inner">½»Ò××´Ì¬</td>
 										</div>
 										<div class="th th-change">
-											<td class="td-inner">äº¤æ˜“æ“ä½œ</td>
+											<td class="td-inner">½»Ò×²Ù×÷</td>
 										</div>
 									</div>
 
 									<div class="order-main">
 										<div class="order-list">
-											<!--ä¸åŒçŠ¶æ€çš„è®¢å•	-->
+											<!--²»Í¬×´Ì¬µÄ¶©µ¥	-->
 										<div class="order-status4">
 												<div class="order-title">
-													<div class="dd-num">è®¢å•ç¼–å·ï¼š<a href="javascript:;">1601430</a></div>
-													<span>æˆäº¤æ—¶é—´ï¼š2015-12-20</span>
+													<div class="dd-num">¶©µ¥±àºÅ£º<a href="javascript:;">1601430</a></div>
+													<span>³É½»Ê±¼ä£º2015-12-20</span>
 
 												</div>
 												<div class="order-content">
@@ -1157,15 +1084,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¾åº·ç²‰é»›é†‰ç¾å”‡è† æŒä¹…ä¿æ¹¿æ»‹æ¶¦é˜²æ°´ä¸æ‰è‰²</p>
-																			<p class="info-little">é¢œè‰²ï¼š12#å·å—ç›ç‘™
-																				<br/>åŒ…è£…ï¼šè£¸è£… </p>
+																			<p>ÃÀ¿µ·Û÷ì×íÃÀ´½¸à ³Ö¾Ã±£Êª×ÌÈó·ÀË®²»µôÉ«</p>
+																			<p class="info-little">ÑÕÉ«£º12#´¨ÄÏÂêè§
+																				<br/>°ü×°£ºÂã×° </p>
 																		</a>
 																	</div>
 																</div>
@@ -1177,12 +1104,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">é€€æ¬¾/é€€è´§</a>
+																	<a href="refund.html">ÍË¿î/ÍË»õ</a>
 																</div>
 															</li>
 														</ul>
@@ -1191,22 +1118,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<div class="order-right">
 														<li class="td td-amount">
 															<div class="item-amount">
-																åˆè®¡ï¼š676.00
-																<p>å«è¿è´¹ï¼š<span>10.00</span></p>
+																ºÏ¼Æ£º676.00
+																<p>º¬ÔË·Ñ£º<span>10.00</span></p>
 															</div>
 														</li>
 														<div class="move-right">
 															<li class="td td-status">
 																<div class="item-status">
-																	<p class="Mystatus">äº¤æ˜“æˆåŠŸ</p>
-																	<p class="order-info"><a href="orderinfo.html">è®¢å•è¯¦æƒ…</a></p>
-																	<p class="order-info"><a href="logistics.html">æŸ¥çœ‹ç‰©æµ</a></p>
+																	<p class="Mystatus">½»Ò×³É¹¦</p>
+																	<p class="order-info"><a href="orderinfo.html">¶©µ¥ÏêÇé</a></p>
+																	<p class="order-info"><a href="logistics.html">²é¿´ÎïÁ÷</a></p>
 																</div>
 															</li>
 															<li class="td td-change">
 																<a href="commentlist.html">
 																	<div class="am-btn am-btn-danger anniu">
-																		è¯„ä»·å•†å“</div>
+																		ÆÀ¼ÛÉÌÆ·</div>
 																</a>
 															</li>
 														</div>
@@ -1217,9 +1144,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											
 											<div class="order-status4">
 												<div class="order-title">
-													<div class="dd-num">è®¢å•ç¼–å·ï¼š<a href="javascript:;">1601430</a></div>
-													<span>æˆäº¤æ—¶é—´ï¼š2015-12-20</span>
-													<!--    <em>åº—é“ºï¼šå°æ¡”ç¯</em>-->
+													<div class="dd-num">¶©µ¥±àºÅ£º<a href="javascript:;">1601430</a></div>
+													<span>³É½»Ê±¼ä£º2015-12-20</span>
+													<!--    <em>µêÆÌ£ºĞ¡½ÛµÆ</em>-->
 												</div>
 												<div class="order-content">
 													<div class="order-left">
@@ -1227,15 +1154,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¾åº·ç²‰é»›é†‰ç¾å”‡è† æŒä¹…ä¿æ¹¿æ»‹æ¶¦é˜²æ°´ä¸æ‰è‰²</p>
-																			<p class="info-little">é¢œè‰²ï¼š12#å·å—ç›ç‘™
-																				<br/>åŒ…è£…ï¼šè£¸è£… </p>
+																			<p>ÃÀ¿µ·Û÷ì×íÃÀ´½¸à ³Ö¾Ã±£Êª×ÌÈó·ÀË®²»µôÉ«</p>
+																			<p class="info-little">ÑÕÉ«£º12#´¨ÄÏÂêè§
+																				<br/>°ü×°£ºÂã×° </p>
 																		</a>
 																	</div>
 																</div>
@@ -1247,12 +1174,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">é€€æ¬¾/é€€è´§</a>
+																	<a href="refund.html">ÍË¿î/ÍË»õ</a>
 																</div>
 															</li>
 														</ul>
@@ -1261,15 +1188,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¤¼ç›’è¢œå­å¥³ç§‹å†¬ çº¯æ£‰è¢œåŠ åš éŸ©å›½å¯çˆ± </p>
-																			<p class="info-little">é¢œè‰²åˆ†ç±»ï¼šææ¸…ç…§
-																				<br/>å°ºç ï¼šå‡ç </p>
+																			<p>ÀñºĞÍà×ÓÅ®Çï¶¬ ´¿ÃŞÍà¼Óºñ º«¹ú¿É°® </p>
+																			<p class="info-little">ÑÕÉ«·ÖÀà£ºÀîÇåÕÕ
+																				<br/>³ßÂë£º¾ùÂë</p>
 																		</a>
 																	</div>
 																</div>
@@ -1281,12 +1208,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">é€€æ¬¾/é€€è´§</a>
+																	<a href="refund.html">ÍË¿î/ÍË»õ</a>
 																</div>
 															</li>
 														</ul>
@@ -1295,15 +1222,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="../images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>ç¾åº·ç²‰é»›é†‰ç¾å”‡è† æŒä¹…ä¿æ¹¿æ»‹æ¶¦é˜²æ°´ä¸æ‰è‰²</p>
-																			<p class="info-little">é¢œè‰²ï¼š12#å·å—ç›ç‘™
-																				<br/>åŒ…è£…ï¼šè£¸è£… </p>
+																			<p>ÃÀ¿µ·Û÷ì×íÃÀ´½¸à ³Ö¾Ã±£Êª×ÌÈó·ÀË®²»µôÉ«</p>
+																			<p class="info-little">ÑÕÉ«£º12#´¨ÄÏÂêè§
+																				<br/>°ü×°£ºÂã×° </p>
 																		</a>
 																	</div>
 																</div>
@@ -1315,12 +1242,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</li>
 															<li class="td td-number">
 																<div class="item-number">
-																	<span>Ã—</span>2
+																	<span>¡Á</span>2
 																</div>
 															</li>
 															<li class="td td-operation">
 																<div class="item-operation">
-																	<a href="refund.html">é€€æ¬¾/é€€è´§</a>
+																	<a href="refund.html">ÍË¿î/ÍË»õ</a>
 																</div>
 															</li>
 														</ul>
@@ -1330,22 +1257,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<div class="order-right">
 														<li class="td td-amount">
 															<div class="item-amount">
-																åˆè®¡ï¼š676.00
-																<p>å«è¿è´¹ï¼š<span>10.00</span></p>
+																ºÏ¼Æ£º676.00
+																<p>º¬ÔË·Ñ£º<span>10.00</span></p>
 															</div>
 														</li>
 														<div class="move-right">
 															<li class="td td-status">
 																<div class="item-status">
-																	<p class="Mystatus">äº¤æ˜“æˆåŠŸ</p>
-																	<p class="order-info"><a href="orderinfo.html">è®¢å•è¯¦æƒ…</a></p>
-																	<p class="order-info"><a href="logistics.html">æŸ¥çœ‹ç‰©æµ</a></p>
+																	<p class="Mystatus">½»Ò×³É¹¦</p>
+																	<p class="order-info"><a href="orderinfo.html">¶©µ¥ÏêÇé</a></p>
+																	<p class="order-info"><a href="logistics.html">²é¿´ÎïÁ÷</a></p>
 																</div>
 															</li>
 															<li class="td td-change">
 																<a href="commentlist.html">
 																	<div class="am-btn am-btn-danger anniu">
-																		è¯„ä»·å•†å“</div>
+																		ÆÀ¼ÛÉÌÆ·</div>
 																</a>
 															</li>
 														</div>
@@ -1363,86 +1290,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 						</div>
 					</div>
-				</div>
-				<!--åº•éƒ¨-->
-				<div class="footer">
-					<div class="footer-hd">
-						<p>
-							<a href="#">æ’æœ›ç§‘æŠ€</a>
-							<b>|</b>
-							<a href="#">å•†åŸé¦–é¡µ</a>
-							<b>|</b>
-							<a href="#">æ”¯ä»˜å®</a>
-							<b>|</b>
-							<a href="#">ç‰©æµ</a>
-						</p>
-					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">å…³äºæ’æœ›</a>
-							<a href="#">åˆä½œä¼™ä¼´</a>
-							<a href="#">è”ç³»æˆ‘ä»¬</a>
-							<a href="#">ç½‘ç«™åœ°å›¾</a>
-							<em>Â© 2015-2025 Hengwang.com ç‰ˆæƒæ‰€æœ‰. æ›´å¤šæ¨¡æ¿ <a href="http://www.cssmoban.com/" target="_blank" title="æ¨¡æ¿ä¹‹å®¶">æ¨¡æ¿ä¹‹å®¶</a> - Collect from <a href="http://www.cssmoban.com/" title="ç½‘é¡µæ¨¡æ¿" target="_blank">ç½‘é¡µæ¨¡æ¿</a></em>
-						</p>
-					</div>
-
-				</div>
-			</div>
-			<aside class="menu">
-				<ul>
-					<li class="person active">
-						<a href="index.html"><i class="am-icon-user"></i>ä¸ªäººä¸­å¿ƒ</a>
-					</li>
-					<li class="person">
-						<p><i class="am-icon-newspaper-o"></i>ä¸ªäººèµ„æ–™</p>
-						<ul>
-							<li> <a href="information.html">ä¸ªäººä¿¡æ¯</a></li>
-							<li> <a href="safety.html">å®‰å…¨è®¾ç½®</a></li>
-							<li> <a href="address.html">åœ°å€ç®¡ç†</a></li>
-							<li> <a href="cardlist.html">å¿«æ·æ”¯ä»˜</a></li>
-						</ul>
-					</li>
-					<li class="person">
-						<p><i class="am-icon-balance-scale"></i>æˆ‘çš„äº¤æ˜“</p>
-						<ul>
-							<li><a href="order.html">è®¢å•ç®¡ç†</a></li>
-							<li> <a href="change.html">é€€æ¬¾å”®å</a></li>
-							<li> <a href="comment.html">è¯„ä»·å•†å“</a></li>
-						</ul>
-					</li>
-					<li class="person">
-						<p><i class="am-icon-dollar"></i>æˆ‘çš„èµ„äº§</p>
-						<ul>
-							<li> <a href="points.html">æˆ‘çš„ç§¯åˆ†</a></li>
-							<li> <a href="coupon.html">ä¼˜æƒ åˆ¸ </a></li>
-							<li> <a href="bonus.html">çº¢åŒ…</a></li>
-							<li> <a href="walletlist.html">è´¦æˆ·ä½™é¢</a></li>
-							<li> <a href="bill.html">è´¦å•æ˜ç»†</a></li>
-						</ul>
-					</li>
-
-					<li class="person">
-						<p><i class="am-icon-tags"></i>æˆ‘çš„æ”¶è—</p>
-						<ul>
-							<li> <a href="collection.html">æ”¶è—</a></li>
-							<li> <a href="foot.html">è¶³è¿¹</a></li>
-						</ul>
-					</li>
-
-					<li class="person">
-						<p><i class="am-icon-qq"></i>åœ¨çº¿å®¢æœ</p>
-						<ul>
-							<li> <a href="consultation.html">å•†å“å’¨è¯¢</a></li>
-							<li> <a href="suggest.html">æ„è§åé¦ˆ</a></li>							
-							
-							<li> <a href="news.html">æˆ‘çš„æ¶ˆæ¯</a></li>
-						</ul>
-					</li>
-				</ul>
-
-			</aside>
-		</div>
 
 	</body>
 

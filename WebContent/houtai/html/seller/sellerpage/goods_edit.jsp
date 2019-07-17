@@ -9,13 +9,13 @@
 		<title>商品编辑</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-		<link rel="stylesheet" href="../../../plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../../plugins/adminLTE/css/AdminLTE.css">
-		<link rel="stylesheet" href="../../../plugins/adminLTE/css/skins/_all-skins.min.css">
-		<link rel="stylesheet" href="../../../css/style.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/AdminLTE.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
 		<!-- 富文本编辑器 -->
-		<link rel="stylesheet" href="../../../plugins/kindeditor/themes/default/default.css" />
-		<link rel="stylesheet" href="../../../plugins/kindeditor/themes/default/default.css" />
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/kindeditor/themes/default/default.css" />
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/kindeditor/themes/default/default.css" />
 	</head>
 
 	<body class="hold-transition skin-red sidebar-mini" ng-app="shopping" ng-controller="GoodsController" ng-init="selectItemCat1List();findOne()">
@@ -54,7 +54,7 @@
 
 								<div class="col-md-10 data">
 								
-                                   <button><a href="sort.jsp">选择分类</a></button>
+                                   <button><a href="<%=path %>/houtai/seller/sellerpage/sort.jsp">选择分类</a></button>
                                
                                    <input type="text" value="${sortName }" name="aab204"/>
 
@@ -117,7 +117,7 @@
 									<tbody>
 										<tr ng-repeat="pojo in entity.goodsDesc.itemImages">
 										
-											<td><img id="preview" alt="图片" src="<%=basePath%>/images/upload/product_1.jpg" width="100px" height="100px"></td>
+											<td><img id="preview" alt="图片" src="<%=path%>/images/upload/product_1.jpg" width="100px" height="100px"></td>
 											<td><button type="button" class="btn btn-default" title="删除" ng-click="remove_image_entity($index)"><i class="fa fa-trash-o"></i> 删除</button></td>
 										</tr>
 									</tbody>
@@ -199,22 +199,22 @@
 	</body>
 
 
-	<script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-	<script src="../../../plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script charset="utf-8" src="../../../plugins/kindeditor/kindeditor.js"></script>
-	<script charset="utf-8" src="../../../plugins/kindeditor/lang/zh_CN.js"></script>
-	<script type="text/javascript" src="../../../plugins/angularjs/angular.min.js"></script>
-	<script type="text/javascript" src="../../../js/base/Base.js"></script>
-	<script type="text/javascript" src="../../../js/base/BaseController.js"></script>
-	<script type="text/javascript" src="../../../js/base/BaseService_Seller.js"></script>
-	<script type="text/javascript" src="../../../js/service/GoodsService.js"></script>
-	<script type="text/javascript" src="../../../js/service/UploadService.js"></script>
-	<script type="text/javascript" src="../../../js/service/TypeTemplateService.js"></script>
-	<script type="text/javascript" src="../../../js/service/SpecificationService.js"></script>
-	<script type="text/javascript" src="../../../js/service/BrandService.js"></script>
-	<script type="text/javascript" src="../../../js/service/ItemCatService.js"></script>
-	<script type="text/javascript" src="../../../js/controller/GoodsController.js"></script>
-	<script type="text/javascript" src="../../../js/common/common.js"></script>
+	<script src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="<%=path%>/houtai/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script charset="utf-8" src="<%=path%>/houtai/plugins/kindeditor/kindeditor.js"></script>
+	<script charset="utf-8" src="<%=path%>/houtai/plugins/kindeditor/lang/zh_CN.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/plugins/angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/Base.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseController.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseService_Seller.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/GoodsService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/UploadService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/TypeTemplateService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/SpecificationService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/BrandService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/ItemCatService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/common/common.js"></script>
 	<script>
 	 var lv1HTML = '<div class="control-group lv1">' +
      '<label class="control-label">规格名称</label>' +
@@ -369,7 +369,7 @@
  function uploadImg()
  {    
 	    $.ajax({
-			url:"<%=basePath%>/fileUpload.ajax?type=product&id=1",
+			url:"<%=path%>/fileUpload.ajax?type=product&id=1",
 			type:"post",
 			dataType:"json",
 			processData : false,
@@ -377,7 +377,7 @@
 			timeout : 20000,
 			data : formdata,
 			success:function(res,status){
-				//img.setAttribute('src',"<%=basePath%>/images/upload/user_1.jpg")
+				//img.setAttribute('src',"<%=path%>/images/upload/user_1.jpg")
 	            console.log("上传图片成功");
 				},
 				error:function(res,status){

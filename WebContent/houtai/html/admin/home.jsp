@@ -1,35 +1,32 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>åå°ç®¡ç†ç³»ç»Ÿ</title>
+		<title>ºóÌ¨¹ÜÀíÏµÍ³</title>
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-		<link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../plugins/adminLTE/css/AdminLTE.css">
-		<link rel="stylesheet" href="../../plugins/adminLTE/css/skins/_all-skins.min.css">
-		<link rel="stylesheet" href="../../css/style.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/AdminLTE.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
 	</head>
 
 	<body class="hold-transition skin-blue sidebar-mini">
 
 		<section class="content-header">
-			<h1>æ§åˆ¶é¢æ¿ </h1>
+			<h1>¿ØÖÆÃæ°å </h1>
 			<ol class="breadcrumb">
 				<li>
-					<a href="../webfront/index.html"><i class="fa fa-dashboard"></i> é¦–é¡µ</a>
+					<a href="../webfront/index.html"><i class="fa fa-dashboard"></i> Ê×Ò³</a>
 				</li>
 			</ol>
 		</section>
 		<section class="content">
 
-			<!-- ç»Ÿè®¡æ•°å€¼ -->
+			<!-- Í³¼ÆÊıÖµ -->
 			<div class="row">
 				<div class="col-lg-3 col-xs-6">
 					<!-- small box -->
@@ -37,12 +34,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="inner">
 							<h3>150</h3>
 
-							<p>æ–°è®¢å•</p>
+							<p>ĞÂ¶©µ¥</p>
 						</div>
 						<div class="icon">
 							<i class="ion ion-bag"></i>
 						</div>
-						<a href="all-order-manage-list.html" class="small-box-footer">è¯¦ç»† <i class="fa fa-arrow-circle-right"></i></a>
+						<a href="all-order-manage-list.html" class="small-box-footer">ÏêÏ¸ <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 				<!-- ./col -->
@@ -52,12 +49,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="inner">
 							<h3>53<sup style="font-size: 20px">%</sup></h3>
 
-							<p>è½¬åŒ–ç‡</p>
+							<p>×ª»¯ÂÊ</p>
 						</div>
 						<div class="icon">
 							<i class="ion ion-stats-bars"></i>
 						</div>
-						<a href="all-ad-statistics-list.html" class="small-box-footer">è¯¦ç»† <i class="fa fa-arrow-circle-right"></i></a>
+						<a href="all-ad-statistics-list.html" class="small-box-footer">ÏêÏ¸ <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 				<!-- ./col -->
@@ -67,12 +64,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="inner">
 							<h3>44</h3>
 
-							<p>æ–°æ³¨å†Œç”¨æˆ·</p>
+							<p>ĞÂ×¢²áÓÃ»§</p>
 						</div>
 						<div class="icon">
 							<i class="ion ion-person-add"></i>
 						</div>
-						<a href="all-member-manage-list.html" class="small-box-footer">è¯¦ç»† <i class="fa fa-arrow-circle-right"></i></a>
+						<a href="all-member-manage-list.html" class="small-box-footer">ÏêÏ¸ <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 				<!-- ./col -->
@@ -82,24 +79,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="inner">
 							<h3>65</h3>
 
-							<p>æ—¥PV</p>
+							<p>ÈÕPV</p>
 						</div>
 						<div class="icon">
 							<i class="ion ion-pie-graph"></i>
 						</div>
-						<a href="all-ad-statistics-list.html" class="small-box-footer">è¯¦ç»† <i class="fa fa-arrow-circle-right"></i></a>
+						<a href="all-ad-statistics-list.html" class="small-box-footer">ÏêÏ¸ <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 				<!-- ./col -->
 			</div>
 			<!-- /.row -->
 		</section>
-		<!-- æ­£æ–‡åŒºåŸŸ /-->
+		<!-- ÕıÎÄÇøÓò /-->
 
-		<!-- å†…å®¹åŒºåŸŸ /-->
+		<!-- ÄÚÈİÇøÓò /-->
 	</body>
 
-	<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-	<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="<%=path%>/houtai/plugins/bootstrap/js/bootstrap.min.js"></script>
 
 </html>

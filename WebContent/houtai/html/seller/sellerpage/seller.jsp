@@ -1,152 +1,151 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%@include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<!-- é¡µé¢meta -->
-		<meta charset="utf-8">
+		<!-- Ò³Ãæmeta -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>å•†å®¶å®Œå–„èµ„æ–™</title>
+		<title>ÉÌ¼ÒÍêÉÆ×ÊÁÏ</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-		<link rel="stylesheet" href="../../../plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../../plugins/adminLTE/css/AdminLTE.css">
-		<link rel="stylesheet" href="../../../plugins/adminLTE/css/skins/_all-skins.min.css">
-		<link rel="stylesheet" href="../../../css/style.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/AdminLTE.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
 	</head>
 
 	<body class="hold-transition skin-red sidebar-mini" ng-app="shopping" ng-controller="SellerController" ng-init="findOne(getCookie('seller'))">
 
-		<!-- æ­£æ–‡åŒºåŸŸ -->
+		<!-- ÕýÎÄÇøÓò -->
 		<section class="content">
 
 			<div class="box-body">
 
-				<!--tabé¡µ-->
+				<!--tabÒ³-->
 				<div class="nav-tabs-custom">
 
-					<!--tabå¤´-->
+					<!--tabÍ·-->
 					<ul class="nav nav-tabs">
 
 						<li class="active">
-							<a href="#home" data-toggle="tab">å•†å®¶ä¿¡æ¯</a>
+							<a href="#home" data-toggle="tab">ÉÌ¼ÒÐÅÏ¢</a>
 						</li>
 					</ul>
-					<!--tabå¤´/-->
+					<!--tabÍ·/-->
 
-					<!--tabå†…å®¹-->
+					<!--tabÄÚÈÝ-->
 					<div class="tab-content">
 
-						<!--è¡¨å•å†…å®¹-->
+						<!--±íµ¥ÄÚÈÝ-->
 						<div class="tab-pane active" id="home">
 							<div class="row data-type">
 							<form class="sui-form form-horizontal" name="myForm" novalidate>
-								<div class="col-md-2 title">åº—é“ºåç§°</div>
+								<div class="col-md-2 title">µêÆÌÃû³Æ</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control" placeholder="å…¬å¸åç§°" value="" ng-model="entity.nickName"required>
+									<input type="text" class="form-control" placeholder="¹«Ë¾Ãû³Æ" value="" ng-model="entity.nickName"required>
 								</div>
 
-								<div class="col-md-2 title">å…¬å¸æ‰‹æœº</div>
+								<div class="col-md-2 title">¹«Ë¾ÊÖ»ú</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control"name="phone"  placeholder="å…¬å¸æ‰‹æœº" value="" ng-model="entity.mobile"required >
+									<input type="text" class="form-control"name="phone"  placeholder="¹«Ë¾ÊÖ»ú" value="" ng-model="entity.mobile"required >
 								</div>
 
-								<div class="col-md-2 title">å…¬å¸ç”µè¯</div>
+								<div class="col-md-2 title">¹«Ë¾µç»°</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control" placeholder="å…¬å¸ç”µè¯" value="" ng-model="entity.telephone"required>
+									<input type="text" class="form-control" placeholder="¹«Ë¾µç»°" value="" ng-model="entity.telephone"required>
 								</div>
 
-								<div class="col-md-2 title">å…¬å¸è¯¦ç»†åœ°å€</div>
+								<div class="col-md-2 title">¹«Ë¾ÏêÏ¸µØÖ·</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control" placeholder="å…¬å¸è¯¦ç»†åœ°å€" value="" ng-model="entity.addressDetail"required>
+									<input type="text" class="form-control" placeholder="¹«Ë¾ÏêÏ¸µØÖ·" value="" ng-model="entity.addressDetail"required>
 								</div>
 
-								<div class="col-md-2 title">è”ç³»äººå§“å</div>
+								<div class="col-md-2 title">ÁªÏµÈËÐÕÃû</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control" placeholder="è”ç³»äººå§“å" value="" ng-model="entity.linkmanName"required>
+									<input type="text" class="form-control" placeholder="ÁªÏµÈËÐÕÃû" value="" ng-model="entity.linkmanName"required>
 								</div>
 
-								<div class="col-md-2 title">è”ç³»äººQQ</div>
+								<div class="col-md-2 title">ÁªÏµÈËQQ</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control" placeholder="è”ç³»äººQQ" value="" ng-model="entity.linkmanQq"required>
+									<input type="text" class="form-control" placeholder="ÁªÏµÈËQQ" value="" ng-model="entity.linkmanQq"required>
 								</div>
 
-								<div class="col-md-2 title">è”ç³»äººæ‰‹æœº</div>
+								<div class="col-md-2 title">ÁªÏµÈËÊÖ»ú</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control" placeholder="è”ç³»äººæ‰‹æœº" value="" ng-model="entity.linkmanMobile"required>
+									<input type="text" class="form-control" placeholder="ÁªÏµÈËÊÖ»ú" value="" ng-model="entity.linkmanMobile"required>
 								</div>
 
-								<div class="col-md-2 title">è”ç³»äººEMAIL</div>
+								<div class="col-md-2 title">ÁªÏµÈËEMAIL</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control" placeholder="è”ç³»äººEMAIL" value="" ng-model="entity.linkmanEmail"required>
+									<input type="text" class="form-control" placeholder="ÁªÏµÈËEMAIL" value="" ng-model="entity.linkmanEmail"required>
 								</div>
 
-								<div class="col-md-2 title">è¥ä¸šæ‰§ç…§å·</div>
+								<div class="col-md-2 title">ÓªÒµÖ´ÕÕºÅ</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control" placeholder="è¥ä¸šæ‰§ç…§å·" value="" ng-model="entity.licenseNumber"required>
+									<input type="text" class="form-control" placeholder="ÓªÒµÖ´ÕÕºÅ" value="" ng-model="entity.licenseNumber"required>
 								</div>
 
-								<div class="col-md-2 title">ç¨ŽåŠ¡ç™»è®°è¯å·</div>
+								<div class="col-md-2 title">Ë°ÎñµÇ¼ÇÖ¤ºÅ</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control" placeholder="ç¨ŽåŠ¡ç™»è®°è¯å·" value="" ng-model="entity.taxNumber"required>
+									<input type="text" class="form-control" placeholder="Ë°ÎñµÇ¼ÇÖ¤ºÅ" value="" ng-model="entity.taxNumber"required>
 								</div>
 
-								<div class="col-md-2 title">ç»„ç»‡æœºæž„ä»£ç è¯</div>
+								<div class="col-md-2 title">×éÖ¯»ú¹¹´úÂëÖ¤</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control" placeholder="ç»„ç»‡æœºæž„ä»£ç è¯" value="" ng-model="entity.orgNumber"required>
+									<input type="text" class="form-control" placeholder="×éÖ¯»ú¹¹´úÂëÖ¤" value="" ng-model="entity.orgNumber"required>
 								</div>
 
-								<div class="col-md-2 title">æ³•å®šä»£è¡¨äºº</div>
+								<div class="col-md-2 title">·¨¶¨´ú±íÈË</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control" placeholder="æ³•å®šä»£è¡¨äºº" value="" ng-model="entity.legalPerson"required>
+									<input type="text" class="form-control" placeholder="·¨¶¨´ú±íÈË" value="" ng-model="entity.legalPerson"required>
 								</div>
 
-								<div class="col-md-2 title">æ³•å®šä»£è¡¨äººèº«ä»½è¯å·</div>
+								<div class="col-md-2 title">·¨¶¨´ú±íÈËÉí·ÝÖ¤ºÅ</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control" placeholder="æ³•å®šä»£è¡¨äººèº«ä»½è¯å·" value="" ng-model="entity.legalPersonCardId"required>
+									<input type="text" class="form-control" placeholder="·¨¶¨´ú±íÈËÉí·ÝÖ¤ºÅ" value="" ng-model="entity.legalPersonCardId"required>
 								</div>
 
-								<div class="col-md-2 title">å¼€æˆ·è¡Œåç§°</div>
+								<div class="col-md-2 title">¿ª»§ÐÐÃû³Æ</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control" placeholder="å¼€æˆ·è¡Œåç§°" value="" ng-model="entity.bankUser"required>
+									<input type="text" class="form-control" placeholder="¿ª»§ÐÐÃû³Æ" value="" ng-model="entity.bankUser"required>
 								</div>
 
-								<div class="col-md-2 title">å¼€æˆ·è¡Œæ”¯è¡Œ</div>
+								<div class="col-md-2 title">¿ª»§ÐÐÖ§ÐÐ</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control" placeholder="å¼€æˆ·è¡Œæ”¯è¡Œ" value="" ng-model="entity.bankName" required>
+									<input type="text" class="form-control" placeholder="¿ª»§ÐÐÖ§ÐÐ" value="" ng-model="entity.bankName" required>
 								</div>
 
-								<div class="col-md-2 title">é“¶è¡Œè´¦å·</div>
+								<div class="col-md-2 title">ÒøÐÐÕËºÅ</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control" placeholder="é“¶è¡Œè´¦å·" value="" ng-model="entity.bankAccount" required>
+									<input type="text" class="form-control" placeholder="ÒøÐÐÕËºÅ" value="" ng-model="entity.bankAccount" required>
 								</div>
 									<div class="btn-toolbar list-toolbar">
-										<button class="btn btn-primary" ng-click="update()" ng-disabled="!myForm.$valid" ><i class="fa fa-save" >ä¿å­˜</i></button>
+										<button class="btn btn-primary" ng-click="update()" ng-disabled="!myForm.$valid" ><i class="fa fa-save" >±£´æ</i></button>
 									</div>
 								</form>
 							</div>
 						</div>
 
 					</div>
-					<!--tabå†…å®¹/-->
-					<!--è¡¨å•å†…å®¹/-->
+					<!--tabÄÚÈÝ/-->
+					<!--±íµ¥ÄÚÈÝ/-->
 
 				</div>
 
 			</div>
 			
 		</section>
-		<!-- æ­£æ–‡åŒºåŸŸ /-->
+		<!-- ÕýÎÄÇøÓò /-->
 
 	</body>
-	<script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-	<script src="../../../plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../../../plugins/angularjs/angular.min.js"></script>
-	<script type="text/javascript" src="../../../js/base/Base.js"></script>
-	<script type="text/javascript" src="../../../js/base/BaseService_Seller.js"></script>
-	<script type="text/javascript" src="../../../js/base/BaseController.js"></script>
-	<script type="text/javascript" src="../../../js/service/SellerService.js"></script>
-	<script type="text/javascript" src="../../../js/controller/SellerController.js"></script>
+	<script src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="<%=path%>/houtai/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/plugins/angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/Base.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseService_Seller.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseController.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/SellerService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/controller/SellerController.js"></script>
 
 </html>
