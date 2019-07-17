@@ -18,6 +18,7 @@
 
 package com.ego.services.impl;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -29,13 +30,10 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 {
 	public boolean update(String utype) throws Exception 
     {
-    	if(utype.equalsIgnoreCase("queryAll"))
-    	{
-    		//return this.modifyUserInfo();
-    	}
-    	{
-    		throw new Exception("在类[ProductManageServicesImpl]中进行了未定义的动作调用,动作名称是  "+utype);
-    	}	
+		//System.out.println("执行反射");
+		Method method=this.getClass().getDeclaredMethod(utype);
+		method.setAccessible(true);
+		return (boolean)method.invoke(this);
     }
 	
 	/**
@@ -106,11 +104,19 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 	 */
 	public boolean addProduct() throws Exception
 	{
+		Object aab102 = 1;//店铺id session获取
 		//获取当前商品编号
-    	int aab203=Tools.getIncrementId("aab201");
+    	int aab203=Tools.getIncrementId("ab02");
     
     	//向DTO添加商品编号
     	this.put("aab203", aab203);
+    	
+    	//解析商品类型,获得第三级类别
+    	String type =(String) this.get("aab204");
+    	String aab204 = "";
+    	String sortName=type.split("-")[type.split("-").length-1];
+    	if(type!=null)
+        aab204 = this.getSortCode(sortName);
     	
     	//1.编写SQL语句
     	StringBuilder sql=new StringBuilder()
@@ -124,11 +130,10 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 	 
     	//2.编写参数数组
     	Object args[]={
-    			this.get("aab102"),   //店铺id
+    			aab102,   //店铺id
     			this.get("aab202"),
     			aab203,               //商品id
-    			this.get("aab203"),   
-    			this.get("aab204"),
+    			aab204,
     			this.get("aab205"),
     			this.get("aab206"),
     			this.get("aab207"),
@@ -136,9 +141,20 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
     			this.get("aab209"),
     			this.get("aab210"),
     			this.get("aab211"),
-    			this.get("aab212")
+    			"01"
     	};
         return this.executeUpdate(sql.toString(), args);	
+	}
+	
+	
+	private String getSortCode(String sortName) throws Exception
+	{
+		//定义SQL
+		String sql = "select fcode from syscode where fvalue=?";
+		
+		Map<String,String> map = this.queryForMap(sql, sortName);
+		 
+		return map.get("fcode");
 	}
 	
 }

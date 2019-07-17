@@ -45,8 +45,6 @@
 </form>
 
 <button id="submit" class="btn btn-primary mx-auto">添加</button>
-
-
 <script src="/ego/js/jquery-3.2.0.min.js" ></script>
 <script src="/ego/js/bootstrap.bundle.js"></script>
 
@@ -69,7 +67,11 @@ $("#submit").click(function(){
 	$.getJSON("/ego/discount/addCoupon.ajax",formData,function(result){
 		if(result.result==true){
 			$('body').empty();
-			$('body').append('添加成功')
+			$('body').append('添加成功<br>');
+			$('body').append("<button id='return' class='btn btn-primary'>关闭</button>");
+			$("#return").click(function(){
+				parent.location.reload();
+			})
 		}else if(result.result==false){
 			$('body').empty();
 			$('body').append('添加失败')

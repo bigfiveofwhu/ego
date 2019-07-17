@@ -58,6 +58,10 @@
 	</head>
 
 	<body>
+		<%double total=0; %>
+		<form id="myform" action="<%=path%>/###.html" method="post">
+		<input name="aaa102" type="hidden" value="<%=session.getAttribute("aaa102") %>">
+		</form>
 		<!--ͷ -->
 		<header>
 			<article>
@@ -270,10 +274,7 @@
 								</div>
 							</div>
 							
-							<%double total=0; %>
-							<form id="myform" action="<%=path%>/###.html" method="post">
-								
-							</form>
+							
 							<div class="order-main">
 								<c:choose>
 												

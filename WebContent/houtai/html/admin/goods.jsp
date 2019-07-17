@@ -1,10 +1,5 @@
 <%@ page pageEncoding="GBK" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-%>
-
+<%@include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 
@@ -16,11 +11,11 @@
     <title>商品管理</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../plugins/adminLTE/css/AdminLTE.css">
-    <link rel="stylesheet" href="../../plugins/adminLTE/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../plugins/angularjs/pagination.css">
+    <link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
+    <link rel="stylesheet" href="<%=path%>/houtai/plugins/angularjs/pagination.css">
 </head>
 
 <body class="hold-transition skin-red sidebar-mini" ng-controller="SellerController">
@@ -279,7 +274,7 @@
 <script>
     function getGoodDetail(id) {
         $.ajax({
-            url: "<%=basePath%>/adminReview.ajax",
+            url: "<%=path%>/adminReview.ajax",
             type: "post",
             timeout: 20000,
             dataType: "json",
@@ -345,7 +340,7 @@
                 val = '未审核';
         }
         $.ajax({
-            url: "<%=basePath%>/adminReview.ajax",
+            url: "<%=path%>/adminReview.ajax",
             type: "post",
             timeout: 20000,
             dataType: "json",
@@ -373,15 +368,15 @@
     }
 </script>
 
-<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="../../plugins/angularjs/angular.min.js"></script>
+<script src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="<%=path%>/houtai/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="<%=path%>/houtai/plugins/angularjs/angular.min.js"></script>
 <!-- 分页组件 -->
-<script src="../../plugins/angularjs/pagination.js"></script>
-<script type="text/javascript" src="../../js/base/Base_pagination.js"></script>
-<script type="text/javascript" src="../../js/base/BaseService.js"></script>
-<script type="text/javascript" src="../../js/base/BaseController.js"></script>
-<script type="text/javascript" src="../../js/service/SellerService.js"></script>
-<script type="text/javascript" src="../../js/controller/SellerController.js"></script>
+<script src="<%=path%>/houtai/plugins/angularjs/pagination.js"></script>
+<script type="text/javascript" src="<%=path%>/houtai/js/base/Base_pagination.js"></script>
+<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseService.js"></script>
+<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseController.js"></script>
+<script type="text/javascript" src="<%=path%>/houtai/js/service/SellerService.js"></script>
+<script type="text/javascript" src="<%=path%>/houtai/js/controller/SellerController.js"></script>
 
 </html>

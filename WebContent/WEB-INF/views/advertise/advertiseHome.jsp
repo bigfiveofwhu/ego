@@ -62,14 +62,14 @@
     <%-- 添加广告 --%>
     <div class="layui-tab-item" id="addAd">
     
-    <form class="mx-auto w-75 bg-light border p-3" method="post">
+    <form class="mx-auto w-75 bg-light border p-3" id="form" method="post" enctype="multipart/form-data">
 	  
 	  <div class="form-group row">
 	    <label for="money" class="col-sm-2 col-form-label">选择推广品</label>
 	    <div class="col-sm-10">
 	      <select class="custom-select" name="aad306" size="1">
 			<c:forEach items="${products}" var="item">
-				<option value=${item.aab203 }>${item.aab202 }</option>
+				<option value="${item.aab203 }">${item.aab202 }</option>
 			</c:forEach>	  	
 		</select>
 	    </div>
@@ -121,7 +121,7 @@
 	        </div>
 	        
 	        <div class="form-check">
-	          <input class="form-check-input" type="radio" name="aad305" id="serchAhead" value=01>
+	          <input class="form-check-input" type="radio" name="aad305" id="serchAhead" value="01">
 	          <label class="form-check-label" for="serchAhead">
 	           	搜索靠前
 	          </label>
@@ -142,19 +142,14 @@
 	      </div>
 	    </div>
 	  </fieldset>
-	 
-	 <div class="form-group row">
-	    <label for="money" class="col-sm-2 col-form-label">展示图片</label>
+	  
+		<div class="form-group row">
+	    <label for="image" class="col-sm-2 col-form-label">广告图片</label>
 	    <div class="col-sm-10">
-	      <div class="layui-upload-drag" id="uploadArea">
-		  <i class="layui-icon"></i>
-		  <p>点击上传，或将文件拖拽到此处</p>
-		  </div>  
+	      <input  id="image"  name="file"  type="file"/>
 	    </div>
 	  </div>
-	 
-	 
-	 
+	  
 	  <div class="form-group row">
 	    <div class="col-sm-10">
 	      <button type="button"  id="submit" class="btn btn-primary">提交</button>
@@ -169,14 +164,40 @@
 <script src="/ego/js/jquery-3.2.0.min.js" ></script>
 <script src="/ego/js/bootstrap.bundle.js"></script>
 <script src="/ego/layui/layui.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
 <!-- insert your javascripte here-->
+
 <script>
 //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
 layui.use('element', function(){
   var element = layui.element;
   //…
 });
+$("#submit").click(register);
+
+function register(){
+        var options = {
+            url:'AddAd.ajax',
+            type:'POST',
+            //beforeSubmit: showRequest, //提交前处理的函数，也可以在这里写,注意，这里接收的只能是false和true，且不能是函数的名带括号的
+            dataType:'json', //返回的数据类型：null、"xml"、"script"、"json"其中之一。
+            //resetForm: true, 表示如果表单提交成功是否进行重置
+            clearForm:false, //表示如果表单提交成功是否清除表单数据。
+            success:function(msg){ //提交完后执行的函数
+                if(msg.result==true){
+                	alert("成功");
+                }else if(msg.result==false){
+                	alert(msg.reason);
+                }else{
+                	alert("未知原因");
+                }
+                	
+            }
+        };
+        $("#form").ajaxSubmit(options); //使用ajaxForm()插件提交
+}
+
+/*
 layui.use('upload', function(){
 	  var $ = layui.jquery
 	  ,upload = layui.upload;
@@ -184,29 +205,43 @@ layui.use('upload', function(){
 	  //拖拽上传
 	  upload.render({
 	    elem: '#uploadArea'
+	    ,exts:'jpg'
 	    ,auto: false
 	    ,bindAction:'#submit'
-	    ,data:{
-	    	"aad303":$("[name='aad303']").attr("value"),
-	    	"aad304":$("[name='aad304']").attr("value"),
-	    	"aad305":$("[name='aad305']").attr("value"),
-	    	"aad306":$("[name='aad306']").attr("value"),
-	    }
 	    ,url: 'AddAd.ajax'
+	    ,data:{
+	    	aad303:function(){
+	    		return $("[name='aad303']:checked").val();
+	    	},
+	    	aad304:function(){
+	    		return $("[name='aad304']").val();
+	    	},
+	    	aad305:function(){
+	    		return $("[name='aad305']:checked").val();
+	    	},
+	    	aad306:function(){
+	    		return $("[name='aad306']").val();
+	    	}
+	    }
 	   	,done: function(res, index, upload){
 	    		    //假设code=0代表上传成功
 	    		    if(res.code == 0){
 	    		      //do something （比如将res返回的图片链接保存到表单的隐藏域）
 	    		    }
-	    		    
+	    		    console.log("success");
 	    		    //获取当前触发上传的元素，一般用于 elem 绑定 class 的情况，注意：此乃 layui 2.1.0 新增
 	    		    var item = this.item;
 	    		    
 	    		    //文件保存失败
 	    		    //do something
-	    		  }
+	   	}
+	   	,error: function(){
+	        //请求异常回调
+	        console.log("error happend")
+	      }
 	  });
-});
+
+});*/
 </script>
 
 </body>

@@ -133,7 +133,6 @@ public class Tools
 	
 	/**
 	 * 获取主键值
-	 * 按日更新
 	 * @param pkname
 	 * @return
 	 * @throws Exception
@@ -388,4 +387,21 @@ public class Tools
 		result.next();
 		return result.getString("pfcode");
 	}
+	
+	public static String getWebPath()
+	{
+		 String t=Thread.currentThread().getContextClassLoader().getResource("").getPath(); 
+    	// System.out.println(t);
+    	 int num=t.indexOf(".metadata");
+    	 String path = null;
+    	 if(num>1)
+    	 path=t.substring(1,num).replace('/', '\\')+"ego\\WebContent\\";
+    	 return path;
+	}
+	
+	public static String getImgPath()
+	{
+		return Tools.getWebPath()+"images/upload";
+	}
+
 }

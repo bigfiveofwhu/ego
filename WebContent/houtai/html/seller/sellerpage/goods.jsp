@@ -1,83 +1,79 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<!-- é¡µé¢meta -->
-		<meta charset="utf-8">
+		<!-- Ò³Ãæmeta -->
+
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>å•†å“ç®¡ç†</title>
+		<title>ÉÌÆ·¹ÜÀí</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-		<link rel="stylesheet" href="../../../plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../../plugins/adminLTE/css/AdminLTE.css">
-		<link rel="stylesheet" href="../../../plugins/adminLTE/css/skins/_all-skins.min.css">
-		<link rel="stylesheet" href="../../../css/style.css">
-		<link rel="stylesheet" href="../../../plugins/angularjs/pagination.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/AdminLTE.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/angularjs/pagination.css">
 	</head>
 
 	<body class="hold-transition skin-red sidebar-mini" ng-app="shopping" ng-controller="GoodsController" ng-init="findItemCatList()">
 		<!-- .box-body -->
 
 		<div class="box-header with-border">
-			<h3 class="box-title">å•†å“ç®¡ç†</h3>
+			<h3 class="box-title">ÉÌÆ·¹ÜÀí</h3>
 		</div>
 
 		<div class="box-body">
 
-			<!-- æ•°æ®è¡¨æ ¼ -->
+			<!-- Êı¾İ±í¸ñ -->
 			<div class="table-box">
 
-				<!--å·¥å…·æ -->
+				<!--¹¤¾ßÀ¸-->
 				<div class="pull-left">
 					<div class="form-group form-inline">
 						<div class="btn-group">
-							<button type="button" class="btn btn-default" title="æ–°å»º" onclick="window.location.href='goods_edit.html';"><i class="fa fa-file-o"></i> æ–°å»º</button>
-							<button type="button" class="btn btn-default" title="åˆ é™¤" ng-click="delete()"><i class="fa fa-trash-o"></i> åˆ é™¤</button>
-							<button type="button" class="btn btn-default" title="æäº¤å®¡æ ¸" ng-click="updateStatus('1')"><i class="fa fa-check"></i> æäº¤å®¡æ ¸</button>
-							<button type="button" class="btn btn-default" title="åˆ·æ–°" onclick="window.location.reload();"><i class="fa fa-refresh"></i> åˆ·æ–°</button>
+							<button type="button" class="btn btn-default" title="ĞÂ½¨" onclick="window.location.href='goods_edit.html';"><i class="fa fa-file-o"></i> ĞÂ½¨</button>
+							<button type="button" class="btn btn-default" title="É¾³ı" ng-click="delete()"><i class="fa fa-trash-o"></i> É¾³ı</button>
+							<button type="button" class="btn btn-default" title="Ìá½»ÉóºË" ng-click="updateStatus('1')"><i class="fa fa-check"></i> Ìá½»ÉóºË</button>
+							<button type="button" class="btn btn-default" title="Ë¢ĞÂ" onclick="window.location.reload();"><i class="fa fa-refresh"></i> Ë¢ĞÂ</button>
 						</div>
 					</div>
 				</div>
 				<form action="queryProduct.html" method="post">
 				<div class="box-tools pull-right">
 					<div class="has-feedback">
-						çŠ¶æ€ï¼š
+						×´Ì¬£º
 						<select ng-model="search_domain.auditStatus" name="qaab212">
-							<option value="">å…¨éƒ¨</option>
-							<option value="01">æœªå®¡æ ¸</option>
-							<option value="02">ç”³è¯·ä¸­</option>
-							<option value="03">å®¡æ ¸é€šè¿‡</option>
-							<option value="04">å®¡æ ¸æœªé€šè¿‡</option>
-							<option value="05">å·²ä¸‹æ¶</option>
+							<option value="">È«²¿</option>
+							<option value="01">Î´ÉóºË</option>
+							<option value="02">ÉêÇëÖĞ</option>
+							<option value="03">ÉóºËÍ¨¹ı</option>
+							<option value="04">ÉóºËÎ´Í¨¹ı</option>
+							<option value="05">ÒÑÏÂ¼Ü</option>
 						</select>
-						å•†å“åç§°ï¼š<input name="qaab202" ng-model="search_domain.goodsName">
-						<input type="submit"  value="æŸ¥è¯¢"class="btn btn-default"></input>
+						ÉÌÆ·Ãû³Æ£º<input name="qaab202" ng-model="search_domain.goodsName">
+						<input type="submit"  value="²éÑ¯"class="btn btn-default"></input>
 					</div>
 				</div>
 				</form>
-				<!--å·¥å…·æ /-->
+				<!--¹¤¾ßÀ¸/-->
 
-				<!--æ•°æ®åˆ—è¡¨-->
+				<!--Êı¾İÁĞ±í-->
 				<table id="dataList" class="table table-bordered table-striped table-hover dataTable">
 					<thead>
 						<tr>
 							<th class="" style="padding-right:0px">
 								<input id="selall" type="checkbox" class="icheckbox_square-blue">
 							</th>
-							<th class="sorting">åºå·</th>
-							<th class="sorting">å•†å“ID</th>
-							<th class="sorting">å•†å“åç§°</th>
-							<th class="sorting">å•†å“ä»·æ ¼</th>
-							<th class="sorting">å•†å“åˆ†ç±»</th>
-							<th class="sorting">åº“å­˜</th>
-							<th class="sorting">çŠ¶æ€</th>
-							<th class="text-center">æ“ä½œ</th>
+							<th class="sorting">ĞòºÅ</th>
+							<th class="sorting">ÉÌÆ·ID</th>
+							<th class="sorting">ÉÌÆ·Ãû³Æ</th>
+							<th class="sorting">ÉÌÆ·¼Û¸ñ</th>
+							<th class="sorting">ÉÌÆ··ÖÀà</th>
+							<th class="sorting">¿â´æ</th>
+							<th class="sorting">×´Ì¬</th>
+							<th class="text-center">²Ù×÷</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -94,13 +90,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							  ${ins.cnaab212}
 							</td>
 						<td class="text-center">
-								<button type="button" class="btn bg-olive btn-xs"><a class="btn bg-olive btn-xs">ä¿®æ”¹</a></button>
+								<button type="button" class="btn bg-olive btn-xs"><a class="btn bg-olive btn-xs">ĞŞ¸Ä</a></button>
 								<button type="button" class="btn bg-olive btn-xs" >
 									<a class="btn bg-olive btn-xs"  >
-										ä¸‹æ¶
+										ÏÂ¼Ü
 									</a>
 									<a class="btn bg-olive btn-xs"  >
-										ä¸Šæ¶
+										ÉÏ¼Ü
 									</a>
 								</button>
 							</td>
@@ -108,32 +104,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</c:forEach>
 					</tbody>
 				</table>
-				<!--æ•°æ®åˆ—è¡¨/-->
+				<!--Êı¾İÁĞ±í/-->
 				<tm-pagination conf="paginationConf"></tm-pagination>
 
 			</div>
-			<!-- æ•°æ®è¡¨æ ¼ /-->
+			<!-- Êı¾İ±í¸ñ /-->
 
 		</div>
 		<!-- /.box-body -->
 
 	</body>
 
-	<script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-	<script src="../../../plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../../../plugins/angularjs/angular.min.js"></script>
-	<!-- åˆ†é¡µç»„ä»¶å¼€å§‹ -->
-	<script src="../../../plugins/angularjs/pagination.js"></script>
-	<!-- åˆ†é¡µç»„ä»¶ç»“æŸ -->
-	<script type="text/javascript" src="../../../js/base/Base_pagination.js"></script>
-	<script type="text/javascript" src="../../../js/base/BaseService_Seller.js"></script>
-	<script type="text/javascript" src="../../../js/base/BaseController.js"></script>
-	<script type="text/javascript" src="../../../js/service/GoodsService.js"></script>
-	<script type="text/javascript" src="../../../js/service/ItemCatService.js"></script>
-	<script type="text/javascript" src="../../../js/service/UploadService.js"></script>
-	<script type="text/javascript" src="../../../js/service/TypeTemplateService.js"></script>
-	<script type="text/javascript" src="../../../js/service/SpecificationService.js"></script>
-	<script type="text/javascript" src="../../../js/service/BrandService.js"></script>
-	<script type="text/javascript" src="../../../js/controller/GoodsController.js"></script>
+	<script src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="<%=path%>/houtai/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/plugins/angularjs/angular.min.js"></script>
+	<!-- ·ÖÒ³×é¼ş¿ªÊ¼ -->
+	<!--  
+	<script src="<%=path%>/houtai/plugins/angularjs/pagination.js" charset="utf-8"></script>
+	-->
+	<!-- ·ÖÒ³×é¼ş½áÊø -->
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/Base_pagination.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseService_Seller.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseController.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/GoodsService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/ItemCatService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/UploadService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/TypeTemplateService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/SpecificationService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/BrandService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
 
 </html>

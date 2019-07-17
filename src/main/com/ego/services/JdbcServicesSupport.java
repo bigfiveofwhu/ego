@@ -427,7 +427,8 @@ public abstract class JdbcServicesSupport implements BaseServices
 				pstm.setObject(index++, param);
 			}
 			// 5.Ö´ÐÐSQLÓï¾ä
-			return pstm.executeUpdate()>0;
+			int i=pstm.executeUpdate();
+			return i>0;
 		} 
 		finally 
 		{

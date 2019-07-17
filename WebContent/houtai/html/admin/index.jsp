@@ -1,23 +1,21 @@
-<%@ page pageEncoding="gbk"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@include file="/taglib.jsp" %>
+
 
 <!DOCTYPE html>
 <html>
 
 <head>
 	<!-- 页面meta -->
-	<meta charset="utf-8">
+
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>运营商后台管理系统</title>
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-	<link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../plugins/adminLTE/css/AdminLTE.css">
-	<link rel="stylesheet" href="../../plugins/adminLTE/css/skins/_all-skins.min.css">
-	<link rel="stylesheet" href="../../css/style.css">
+	<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/AdminLTE.css">
+	<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
+	<link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
 </head>
 
 <body class="hold-transition skin-green sidebar-mini" ng-app="shopping" ng-controller="AdminUserController" ng-init="getCookie('admin')">
@@ -38,13 +36,13 @@
 				<ul class="nav navbar-nav">
 					<li class="dropdown user user-menu">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<img src="../../img/Logo.png" class="user-image" alt="User Image">
+							<img src="<%=path%>/houtai/img/Logo.png" class="user-image" alt="User Image">
 							<span class="hidden-xs">{{loginName}}</span>
 						</a>
 						<ul class="dropdown-menu">
 							<!-- User image -->
 							<li class="user-header ">
-								<img src="../../img/Logo.png" class="user-image" alt="User Image">
+								<img src="<%=path%>/houtai/img/Logo.png" class="user-image" alt="User Image">
 								<p>
 									{{loginName}}
 								</p>
@@ -75,7 +73,7 @@
 			<!-- Sidebar user panel -->
 			<div class="user-panel">
 				<div class="pull-left image">
-					<img src="../../img/Logo.png" class="user-image" alt="User Image">
+					<img src="<%=path%>/houtai/img/Logo.png" class="user-image" alt="User Image">
 				</div>
 				<div class="pull-left info ">
 					<p> {{loginName}}</p>
@@ -123,26 +121,8 @@
 					<ul class="treeview-menu">
 
 						<li id="admin-login">
-							<a href="brand.html" target="iframe">
-								<i class="fa fa-circle-o"></i>品牌管理
-							</a>
-						</li>
-						<li id="admin-login">
-							<a href="specification.html" target="iframe">
-								<i class="fa fa-circle-o"></i>规格管理
-							</a>
-						</li>
-						<li id="admin-login">
-							<a href="type_template.html" target="iframe">
-								<i class="fa fa-circle-o"></i>模板管理
-							</a>
-						</li>
-						<li id="admin-login">
-							<a href="item_cat.html" target="iframe">
-								<i class="fa fa-circle-o"></i>分类管理
-							</a>
-						</li>
-						<li id="admin-login">
+
+
 							<a href="queryGood.html" target="iframe">
 								<i class="fa fa-circle-o"></i>商品审核
 							</a>
@@ -166,13 +146,34 @@
 					<ul class="treeview-menu">
 
 						<li id="admin-login">
-							<a href="content_category.html" target="iframe">
+
+							<a href="" target="iframe">
 								<i class="fa fa-circle-o"></i>广告类型管理
 							</a>
 						</li>
 						<li id="admin-login">
-							<a href="content.html" target="iframe">
+							<a href="" target="iframe">
 								<i class="fa fa-circle-o"></i>广告管理
+
+							</a>
+						</li>
+						</ul>
+						</li>
+						
+						<!-- 投诉管理 -->
+						<li class="treeview">
+					<a href="#">
+						<i class="fa fa-folder"></i>
+						<span>投诉管理</span>
+						<span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+					</a>
+					<ul class="treeview-menu">
+
+						<li id="admin-login">
+							<a href="" target="iframe">
+								<i class="fa fa-circle-o"></i>投诉管理
 							</a>
 						</li>
 					</ul>
@@ -187,7 +188,7 @@
 
 	<!-- 内容区域 -->
 	<div class="content-wrapper">
-		<iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" src="seller.jsp"></iframe>
+		<iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" src="<%=path %>/houtai/html/seller/sellerpage/seller.jsp"></iframe>
 	</div>
 	<!-- 内容区域 /-->
 
@@ -235,16 +236,16 @@
 
 </body>
 
-<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../../plugins/angularjs/angular.min.js"></script>
-<script src="../../plugins/adminLTE/js/app.min.js"></script>
-<script type="text/javascript" src="../../js/base/Base.js"></script>
-<script type="text/javascript" src="../../js/base/BaseController.js"></script>
-<script type="text/javascript" src="../../js/base/BaseService.js"></script>s
-<script type="text/javascript" src="../../js/controller/AdminUserController.js"></script>
-<script type="text/javascript" src="../../js/service/AdminUserService.js"></script>
-<script type="text/javascript" src="../../js/common/common.js"></script>
+<script src="<%=path%>/houtai/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<%=path%>/houtai/plugins/angularjs/angular.min.js"></script>
+<script src="<%=path%>/houtai/plugins/adminLTE/js/app.min.js"></script>
+<script type="text/javascript" src="<%=path%>/houtai/js/base/Base.js"></script>
+<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseController.js"></script>
+<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseService.js"></script>s
+<script type="text/javascript" src="<%=path%>/houtai/js/controller/AdminUserController.js"></script>
+<script type="text/javascript" src="<%=path%>/houtai/js/service/AdminUserService.js"></script>
+<script type="text/javascript" src="<%=path%>/houtai/js/common/common.js"></script>
 </html>
 
