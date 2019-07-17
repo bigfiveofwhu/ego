@@ -46,7 +46,7 @@
 					<div class="tab-content">
                            
                            
-                         <form id="myform" action="addProduct.html" method="post">
+                         <form id="myform" action="<%=path %>/shop/addProduct.html" method="post">
 						<!--表单内容-->
 						<div class="tab-pane active" id="home">
 							<div class="row data-type">
@@ -155,7 +155,7 @@
 			
 			<div class="btn-toolbar list-toolbar">
 				<button class="btn btn-primary"   onclick="saveData()"><i class="fa fa-save" ></i>保存</button>
-				<button class="btn btn-default" onclick="window.location.href='queryProduct.html';">返回列表</button>
+				<button class="btn btn-default" onclick="window.location.href='<%=path %>/shop/queryProduct.html';">返回列表</button>
 			</div>
 			 
 		</section>

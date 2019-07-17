@@ -28,7 +28,7 @@
 			<div class="menu-hd MyShangcheng">
 				<c:choose>
 					<c:when test="${aaa102!=null}">
-				<a href="${path}/person/information.jsp" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a>
+				<a href="${path}/person/index.jsp" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a>
 				</c:when>
 				<c:otherwise>
 				<a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>系统消息</a>
