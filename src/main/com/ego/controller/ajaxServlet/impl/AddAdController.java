@@ -31,20 +31,36 @@ public class AddAdController extends AjaxControllerSupport {
 		int adId = Tools.getIncrementId("ad03");
 		dto.put("aad302", adId);
 		try {
+			DBUtils.beginTransaction();
 			FileUpload.writeFile(Integer.toString(adId), request,dto);//添加文件同时给dto插入数据
-			if (service.update("insertAd")) {
+			Map<String, String> account=service.findById("getAccountById");
+			double balance=Double.parseDouble(account.get("aad403"));
+			double money=Double.parseDouble(this.get("aad304").toString());
+			dto.put("decrement", money);
+			if (balance<money) {
+				this.put("result", false);
+				this.put("reason", "账户余额不足");
+				return;
+			}
+			else if (service.update("insertAd")&&service.update("chargeMoney")) {
 				this.put("result", true);
 			}else {
 				this.put("result", false);
 				this.put("reason", "操作数据库失败");
+				DBUtils.rollback();
 			}
+			DBUtils.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
 			this.put("result", false);
-			this.put("reason", "写入文件失败");
+			this.put("reason", "添加失败");
 			e.printStackTrace();
+			DBUtils.rollback();
+		}finally {
+			DBUtils.endTransaction();
 		}
-		
 	}
+	
+	
 
 }

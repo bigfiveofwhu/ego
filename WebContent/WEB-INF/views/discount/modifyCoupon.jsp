@@ -22,12 +22,12 @@
     <input type="radio" class="form-check-input" id="type2" name="aab502" value="2">
     <label class="form-check-label " for="type2">满减</label>
   </div>
-  
+
   <div class="form-group" >
     <label for="discount">优惠值</label>
     <input class="form-control" placeholder="输入优惠的金额" id="discount" name="aab503" value="${coupon.aab503}">
   </div>
-  
+
   <div class="form-group" id="condition">
     <label for="condition">优惠条件</label>
     <input placeholder="输入需消费多少元才能使用" class="form-control" id="condition" name="aab504" value="${coupon.aab504 }">
