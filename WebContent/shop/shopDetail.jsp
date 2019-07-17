@@ -265,7 +265,7 @@
 												<div class="theme-signin-left">
 												<c:forEach items="${spec}" var="t" varStatus="index">
 													<div class="theme-options" value="${index.index }">
-														<div class="cart-title${index.index }">${t.title }</div>
+														<div class="cart-title cart-title${index.index }">${t.title }</div>
 														<ul>
 														<c:forEach items="${t.subTypes }" var="list" varStatus="i">
 														  <c:if test="${i.index==0 }">
@@ -385,13 +385,19 @@
 							}
 							function getArgs(){
 								var options=$(".theme-options");
-								var n=options.length;
-								for(var i=0;i<n;i++){
-									var value=options[i].getAttribute("value");
-									var title=$(".cart-title"+value).text();
-									var val=$(".cart-title"+value).siblings("ul>.selected").text();
-									console.log(title+","+val+";");
+								var n=options.length-1;
+								
+								var value=options[0].getAttribute("value");
+								var title=$(".cart-title"+value).text();
+								var val=$(".cart-title"+value).siblings("ul").children(".selected").text();
+								var aaa205=title+","+val;
+								for(var i=1;i<n;i++){
+									value=options[i].getAttribute("value");
+									title=$(".cart-title"+value).text();
+									val=$(".cart-title"+value).siblings("ul").children(".selected").text();
+									aaa205+=";"+title+","+val;
 								}
+								return aaa205;
 							}
 						</script>
 					</div>
