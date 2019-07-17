@@ -6,7 +6,7 @@
 	<head>
 		<!-- 页面meta -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>商品管理</title>
+		<title>评价管理</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
@@ -14,6 +14,51 @@
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
 		<link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/angularjs/pagination.css">
+		<script type="text/javascript" src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
+		<style>
+        /*背景层*/
+        #popLayer {
+            display: none;
+            background-color: #B3B3B3;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+            -moz-opacity: 0.8;
+            opacity:.80;
+            filter: alpha(opacity=80);/* 只支持IE6、7、8、9 */
+        }
+ 
+        /*弹出层*/
+        #popBox {
+            display: none;
+            background-color: #FFFFFF;
+            z-index: 11;
+            width: 400px;
+            height: 400px;
+            position:fixed;
+            top:0;
+            right:0;
+            left:0;
+            bottom:0;
+            margin:auto;
+        }
+ 
+        #popBox .close{
+            text-align: right;
+            margin-right: 5px;
+            background-color: #F8F8F8;
+        }
+ 
+        /*关闭按钮*/
+        #popBox .close a {
+            text-decoration: none;
+            color: #2D2C3B;
+        }
+ 
+    </style>
 	</head>
 
 	<body class="hold-transition skin-red sidebar-mini" ng-app="shopping" ng-controller="GoodsController" ng-init="findItemCatList()">
@@ -36,11 +81,11 @@
 						</div>
 					</div>
 				</div>
-				<form action="queryProduct.html" method="post">
+				<form action="<%=path %>/shop/queryComment.html" method="post">
 				<div class="box-tools pull-right">
 					<div class="has-feedback">
 						状态：
-						<select  name="isrepl y">
+						<select  name="isreply">
 							<option value="">全部</option>
 							<option value="01">未回复</option>
 							<option value="02">已回复</option>
@@ -76,7 +121,6 @@
 					<tbody>
 						<c:forEach items="${commentList}" var="ins" varStatus="vs">
 						<tr>
-							<td><input type="checkbox" ></td>
 							<td>${vs.count}</td>
 							<td>${ins.aab203}</td>
 							<td>${ins.aab202}</td>
@@ -84,11 +128,16 @@
 							<td>${ins.aab403}</td>
 							<td>${ins.aab410}</td>
 							<td>
-							  <button>图片</button>
+							  <button class="btn bg-olive btn-xs">图片</button>
 							</td>
 						<td class="text-center">
-								<button type="button" class="btn bg-olive btn-xs"><a class="btn bg-olive btn-xs">回复</a></button>
-							</td>
+						    <c:if test="${ins.aab405 == null }">
+			         		<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aab405}')">回复</button>
+					        </c:if>
+					        <c:if test="${ins.aab405 != null }">
+					        <button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aab405}')">查看回复</button>
+					        </c:if>
+						</td>
 						</tr>
 						</c:forEach>
 					</tbody>
@@ -101,6 +150,18 @@
 
 		</div>
 		<!-- /.box-body -->
+      <div id="popLayer"></div>
+     <div id="popBox">
+       <div class="close">
+        <a href="javascript:void(0)" onclick="closeBox()">×</a>
+     </div>
+    <div class="content">
+    <form action="<%=path %>/shop/reply.html" method="post">
+    <textarea id="replyText" rows="15" cols="48" name="aab405"></textarea>
+    <input type="submit"  value="回复"></input>
+    </form>
+    </div>
+    </div>
 
 	</body>
 
@@ -122,5 +183,24 @@
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/SpecificationService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/BrandService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
+	<script>
+    /*点击弹出按钮*/
+    function popBox(v) {
+        var popBox = document.getElementById("popBox");
+        var popLayer = document.getElementById("popLayer");
+        $("#replyText").val(v);
+       // document.getElementById("replyText").value = v;
+        popBox.style.display = "block";
+        popLayer.style.display = "block";
+    };
+    
+    /*点击关闭按钮*/
+    function closeBox() {
+        var popBox = document.getElementById("popBox");
+        var popLayer = document.getElementById("popLayer");
+        popBox.style.display = "none";
+        popLayer.style.display = "none";
+    }
+</script>
 
 </html>

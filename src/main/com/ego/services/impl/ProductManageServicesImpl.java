@@ -146,7 +146,12 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
         return this.executeUpdate(sql.toString(), args);	
 	}
 	
-	
+	/**
+	 * 获取商品类别编码
+	 * @param sortName
+	 * @return
+	 * @throws Exception
+	 */
 	private String getSortCode(String sortName) throws Exception
 	{
 		//定义SQL
