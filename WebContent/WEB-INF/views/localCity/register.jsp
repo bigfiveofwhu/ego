@@ -52,17 +52,8 @@
 	                                   </div>
 	                                    <div class="service_element_textarea">
 										    <label for="realname"><i class="am-icon-child"></i></label>
-										    <textarea cols="40" rows="10" name="describe" id="describe" placeholder="店铺描述" required="required"></textarea>
+										    <textarea cols="40" rows="10" name="describe" id="describe" placeholder="服务描述" required="required"></textarea>
 	                                   </div>
-	                                   <div class="service_element" style="display: flex;">
-										    <label for="code"><i class="am-icon-rocket"></i></label>
-										    <input type="text" class="input_block" name="verifyCode" id="verifyCode" onblur="checkVerify()" 
-										    	   maxlength="6" placeholder="请输入验证码">
-										    <div style="width:40px;height:30px;font-size:12px;padding-top:11px">
-										    	<span class="successIcon"><i class="am-icon-check-circle-o" style="color:green"></i>成功</span>
-										    	<span class="failIcon"><i class="am-icon-close" style="color:red"></i>失败</span>
-										    </div>
-						               </div>
 	                                   <div class="service_element">
 										    <label for="addr"><i class="am-icon-area-chart"></i></label>
 										    <span class="input_block">
@@ -171,6 +162,7 @@
 		}
 		
 		function check(){
+			return true;
 			var user=$("#username").val();
 			if(user==""){
 				alert("账户不能为空");
@@ -293,9 +285,9 @@
 						if(res.status=='200'){
 							var addrs=res.sorts;
 							var n=addrs.length;
-							var html="<option value='"+addrs[0].fvalue+"' A_id='"+addrs[0].fcode+"' selected='selected'>"+addrs[0].fvalue+"</option>";
+							var html="<option value='"+addrs[0].fcode+"' selected='selected'>"+addrs[0].fvalue+"</option>";
 							for(var i=1;i<n;i++){
-								html+="<option value='"+addrs[i].fvalue+"' A_id='"+addrs[i].fcode+"'>"+addrs[i].fvalue+"</option>";
+								html+="<option value='"+addrs[i].fcode+"'>"+addrs[i].fvalue+"</option>";
 							}
 							$("#serviceSort").html(html);
 						}
