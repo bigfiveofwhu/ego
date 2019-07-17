@@ -10,19 +10,20 @@ public class Ab05ServiceImpl extends JdbcServicesSupport{
 	public static final String noCondition="1";
 	public static final String hasCondition="2";
 	
-	
 	@Override
 	public boolean update(String utype) throws Exception {
 		// TODO Auto-generated method stub
 		switch (utype) {
 		case "addCoupon":
 			return addDiscount();
-		case "delete":
+		case "delete"://删除一个优惠券
 			return delete();
 		case "changeAmount":
 			return changeAmount();
 		case "decreseByOne":
 			return decreseByOne();
+		case "updateCoupon":
+			return updateCoupon();
 		default:
 			throw new Exception("不支持的类型");
 		}
@@ -47,7 +48,46 @@ public class Ab05ServiceImpl extends JdbcServicesSupport{
 		}
 	}
 	
-	
+	/**
+	 * 通过流水号修改优惠券，要求传递流水号和所有需要修改的参数
+	 * @return
+	 * @throws Exception 
+	 */
+	private boolean updateCoupon() throws Exception {
+		String type=dto.get("aab502").toString();
+		StringBuilder sql1=new StringBuilder()
+				.append(" update ab05 set")
+				.append(" aab502=?, aab503=?,aab504=null,aab505=?,aab506=?")
+				.append(" where aab501=?");
+		StringBuilder sql2=new StringBuilder()
+				.append(" update ab05 set")
+				.append(" aab502=?, aab503=?,aab504=?,aab505=?,aab506=?")
+				.append(" where aab501=?");
+		Object[] param;
+		switch (type) {
+		case noCondition:
+			param=new Object[] {
+				this.get("aab502"),
+				this.get("aab503"),
+				this.get("aab505"),
+				this.get("aab506"),
+				this.get("aab501")
+			};
+			return this.executeUpdate(sql1.toString(), param);
+		case hasCondition:
+			param=new Object[] {
+					this.get("aab502"),
+					this.get("aab503"),
+					this.get("aab504"),
+					this.get("aab505"),
+					this.get("aab506"),
+					this.get("aab501")
+				};
+				return this.executeUpdate(sql2.toString(), param);
+		default:
+			throw new Exception("不支持的优惠券类型类型，in ab05service");
+		}
+	}
 	
 	/**
 	 * 将对应优惠券的值减一
@@ -58,7 +98,11 @@ public class Ab05ServiceImpl extends JdbcServicesSupport{
 		String sql="update ab05 set aab506=aab506-1 where aab501=?";
 		return this.executeUpdate(sql, this.get("aab501"));
 	}
-	
+	/**
+	 * 通过流水号获得一个优惠券
+	 * @return
+	 * @throws Exception
+	 */
 	private Map<String, String> getCoupon() throws Exception{
 		String sql="select * from ab05 where aab501=?";
 		return this.queryForMap(sql, this.get("aab501"));

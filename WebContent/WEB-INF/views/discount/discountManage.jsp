@@ -55,10 +55,13 @@
 		  无限量
 		</c:if>
 		<c:if test="${item.aab505>0}">
-		  ${item.aab505}
+		  ${item.aab505}天
 		</c:if>
 	  </td>
-	  <td>删除，修改</td>
+	  <td>
+	  	<button type="button" value="${item.aab501 }" class="btn btn-info btn-sm" tag="modify">修改</button>
+		<button type="button" value="${item.aab501 }" class="btn btn-light btn-sm" tag="delete">删除</button>
+	  </td>
 	</tr>
   </c:forEach>
 
@@ -84,6 +87,30 @@ $('#newCoupon').on('click',function(){
 		  content: '/ego/discount/addCoupon.html'
 	});
 })
+
+$("[tag='modify']").click(function(){
+	var a=$(this);
+	layer.open({
+		  type: 2,
+		  skin: 'layui-layer-rim', //加上边框
+		  title:'编辑优惠券 ',
+		  area: ['600px', '400px'], //宽高
+		  content: '/ego/discount/modifyCoupon.html?aab501='+a.val()
+	});
+})
+
+$("[tag='delete']").click(function(){
+	var a=$(this);
+	$.getJSON("DeleteCoupon.ajax",{aab501:$(this).val()},function(json){
+		if(json.result==true){
+			a.parent().parent().remove();
+		}else{
+			alert("删除失败，原因："+result.reason);
+		}
+	})
+})
+
+
 </script>
 
 </body>
