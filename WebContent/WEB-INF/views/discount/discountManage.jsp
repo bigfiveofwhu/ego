@@ -58,7 +58,7 @@
 		  ${item.aab505}Ìì
 		</c:if>
 	  </td>
-	  <td>
+	  <td class="p-1">
 	  	<button type="button" value="${item.aab501 }" class="btn btn-info btn-sm" tag="modify">ÐÞ¸Ä</button>
 		<button type="button" value="${item.aab501 }" class="btn btn-light btn-sm" tag="delete">É¾³ý</button>
 	  </td>
