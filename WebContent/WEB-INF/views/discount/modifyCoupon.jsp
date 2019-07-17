@@ -11,44 +11,53 @@
 <body>
 
 <form id="form" class="col-6">
+  <input type="hidden" name="aab501" value="${coupon.aab501 }" />
   
   <div class="form-group form-check-inline">
-    <input type="radio" class="form-check-input"  id="type1" name="aab502" value="1" >
+    <input type="radio" class="form-check-input"  id="type1" name="aab502" value="1">
     <label class="form-check-label" for="type1">无条件</label>
   </div>
   
   <div class="form-group form-check-inline">
-    <input type="radio" class="form-check-input ml-" id="type2" name="aab502" value="2" checked>
+    <input type="radio" class="form-check-input" id="type2" name="aab502" value="2">
     <label class="form-check-label " for="type2">满减</label>
   </div>
   
   <div class="form-group" >
     <label for="discount">优惠值</label>
-    <input class="form-control" placeholder="输入优惠的金额" id="discount" name="aab503">
+    <input class="form-control" placeholder="输入优惠的金额" id="discount" name="aab503" value="${coupon.aab503}">
   </div>
   
   <div class="form-group" id="condition">
     <label for="condition">优惠条件</label>
-    <input placeholder="输入需消费多少元才能使用" class="form-control" id="condition" name="aab504">
+    <input placeholder="输入需消费多少元才能使用" class="form-control" id="condition" name="aab504" value="${coupon.aab504 }">
   </div>
   
   <div class="form-group">
     <label for="validTime">有效期</label>
-    <input placeholder="有效期的天数"  class="form-control" id="validTime" name="aab505">
+    <input placeholder="有效期的天数"  class="form-control" id="validTime" name="aab505" value="${coupon.aab505 }">
   </div>
   
   <div class="form-group">
     <label for="amount">数量</label>
-    <input t class="form-control" id="amount" name="aab506">
+    <input t class="form-control" id="amount" name="aab506" value="${coupon.aab506 }">
   </div>
   
 </form>
 
-<button id="submit" class="btn btn-primary mx-auto">添加</button>
+<button id="submit" class="btn btn-primary mx-auto">修改</button>
 <script src="/ego/js/jquery-3.2.0.min.js" ></script>
 <script src="/ego/js/bootstrap.bundle.js"></script>
 
 <script>
+<c:if test="${coupon.aab502==1}"> 
+$('#type1').attr('checked','checked')
+$("#condition").hide()
+</c:if>
+<c:if test="${coupon.aab502==2}"> 
+$('#type2').attr('checked','checked')
+</c:if>
+
 $("input[type='radio']").on("click",function(){
 	if($(this).val()==1)
 	$("#condition").hide()
@@ -64,7 +73,7 @@ $("#submit").click(function(){
 		data[field.name]=field.value;
 	})
 	console.log(data);
-	$.getJSON("/ego/discount/addCoupon.ajax",formData,function(result){
+	$.getJSON("/ego/discount/updateCoupon.ajax",formData,function(result){
 		if(result.result==true){
 			$('body').empty();
 			$('body').append('添加成功<br>');

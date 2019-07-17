@@ -62,6 +62,9 @@ public class DiscountController extends ControllerSupport{
 			return prefix+"shopDiscount";
 		case "addCoupon"://获取添加页面
 			return prefix+"addCoupon";
+		case "modifyCoupon":
+			this.saveAttribute("coupon",ab05Service.findById("getCoupon"));
+			return prefix+"modifyCoupon";
 		default:
 			throw new Exception("DiscountController无法处理此类请求");
 		}
