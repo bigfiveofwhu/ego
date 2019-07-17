@@ -83,7 +83,59 @@ public class Aa02ServiceImpl extends JdbcServicesSupport
 				this.get("aab203"),
 				aaa202
 		};
+		this.put("addCartCount", true);
+		return this.executeUpdate(sql, args);
+	}
+	/**
+	 * 根据用户id和商品id将购物车状态设置为不可见
+	 * hug
+	 * @return
+	 * @throws Exception
+	 */
+	
+	private boolean deleteByAaa102AndAab203() throws Exception
+	{
+		String sql="update aa02 set aaa204='00' where aaa102=? and aab203=?";   //00 --不可见
+		Object args[]= {
+				this.get("aaa102"),
+				this.get("aab203")
+		};
+		return this.executeUpdate(sql, args);
+	}
+
+	/**
+	 * 通过用户id和商品id更改购物车商品数量
+	 * hug
+	 * @return
+	 */
+	private boolean updateAaa202() throws Exception
+	{
+		String sql="update aa02 set aaa202=? where aaa102=? and aab203=?";
+		Object args[]= {
+				this.get("aaa202"),
+				this.get("aaa102"),
+				this.get("aab203")
+		};
 		return this.executeUpdate(sql, args);
 	}
 	
+	/*****************************************************
+	 * 以下是单一实例查询方法
+	 * hug
+	 *****************************************************/
+	@Override
+	public Map<String, String> findById(String qtype) throws Exception 
+	{
+		Method method=this.getMethod(qtype);
+		return (Map<String, String>)method.invoke(this);
+	}
+	/**
+	 * 查询指定用户id的购物车数量
+	 * @return
+	 */
+	private Map<String,String> countByAaa102() throws Exception
+	{
+		String sql="select count(*) sum from aa02 where aaa102=? and aaa204='01'";
+		return this.queryForMap(sql, this.get("aaa102"));
+	}
 }

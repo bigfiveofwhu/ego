@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.Aa01ServiceImpl;
+import com.ego.services.impl.Aa02ServiceImpl;
 import com.ego.services.impl.Ab01ServiceImpl;
 
 public class LoginController extends ControllerSupport {
@@ -38,9 +39,16 @@ public class LoginController extends ControllerSupport {
 		session.setAttribute("addr_2", addrs[1]);
 		session.setAttribute("addr_3", addrs[2]);
 		session.setAttribute("addr_4", addrs[3]);
+		//计数购物车
+		this.dto.put("aaa102", ins.get("aaa102"));
+		this.setServices(new Aa02ServiceImpl());
+		ins=this.getServices().findById("countByAaa102");
+		session.setAttribute("shopCartCount", "0");
+		if(ins!=null) {
+			session.setAttribute("shopCartCount", ins.get("sum"));
+		}
 		//是否拥有店铺
 		this.setServices(new Ab01ServiceImpl());
-		this.dto.put("aaa102", ins.get("aaa102"));
 		ins=this.getServices().findById("loginByAaa102");
 		System.out.println(ins);
 		if(ins!=null)

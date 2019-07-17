@@ -40,10 +40,10 @@
 			<div class="menu-hd">
 				<c:choose>
 				<c:when test="${aaa102!=null}">
-				  <a id="mc-menu-hd" href="${path }/home/shopcart.jsp" target="_top">
+				  <a id="mc-menu-hd" href="${path }/home/shopCart.html" target="_top">
 				  <i class="am-icon-shopping-cart  am-icon-fw"></i>
 				  <span>¹ºÎï³µ</span>
-				  <strong id="J_MiniCartNum" class="h">0</strong>
+				  <strong id="J_MiniCartNum" class="h">${shopCartCount }</strong>
 				  </a>
 				</c:when>
 				<c:otherwise>

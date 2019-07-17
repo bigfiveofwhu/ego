@@ -20,6 +20,11 @@ public class AddShopCartController extends AjaxControllerSupport
 		boolean status=this.getService().update("insertAa02");
 		if(status)
 		{
+			if(this.get("addCartCount")!=null)
+			{
+				int a=Integer.parseInt(session.getAttribute("shopCartCount").toString());   //更改session中购物车数量
+				session.setAttribute("shopCartCount", ++a+"");
+			}
 			this.put("status", "200");    //成功状态
 		}else
 		{
