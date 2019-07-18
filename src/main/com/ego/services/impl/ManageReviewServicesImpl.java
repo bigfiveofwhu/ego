@@ -18,6 +18,8 @@ public class ManageReviewServicesImpl extends JdbcServicesSupport
 			return this.queryForServiceProvider();
 		if(qtype.equalsIgnoreCase("queryForServices"))
 			return this.queryForServices();
+		if(qtype.equalsIgnoreCase("queryForJubao"))
+			return this.queryForJubao();
 		throw new Exception("未支持的qtype: "+qtype);
 	}
 	
@@ -146,5 +148,41 @@ public class ManageReviewServicesImpl extends JdbcServicesSupport
   			paramList.add(aac208);
   		}
   		return this.queryForList(sql.toString(), paramList.toArray());
+	}
+	
+	/**
+	 * @author zb
+	 * 查询举报表
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Map<String,String>> queryForJubao() throws Exception
+	{
+		//还原页面查询条件
+				Object aad706=this.get("aad706");       //投诉处理状态
+		       
+		  		
+		  		//定义SQL主体
+		  		StringBuilder sql=new StringBuilder()
+		  		  		.append("	select y.aaa102,y.aaa103, x.aad705,x.aad704,")
+		  		  		.append("   a.fvalue cnaad702,b.fvalue cnaad703,c.fvalue cnaad704,d.fvalue cnaad706 ")
+		  		  		.append("  from ad07 x, aa01 y, syscode a,syscode b,syscode c,syscode d ")
+		  		 	    .append(" where x.aaa102=y.aaa102 	")
+		  		 	    .append("  and a.fname='aad702' and a.fcode=x.aad702 ")
+		  		 	    .append("  and b.fname='aad703' and b.fcode=x.aad703 ")
+		  		 	    .append("  and c.fname='aad704' and c.fcode=x.aad704 ")
+		  		 	    .append("  and d.fname='aad706' and d.fcode=x.aad706 ")
+		  		 	    ;
+		  				
+		  		//参数列表
+		  		List<Object> paramList=new ArrayList<>();
+		  		//逐一判断查询条件是否录入,拼接AND条件
+		  		if(this.isNotNull(aad706))
+		  		{
+		  			sql.append(" and x.aab706 like ?");
+		  			paramList.add("%"+aad706+"%");
+		  		}
+		  		//sql.append(" order by x.aab101");
+		  		return this.queryForList(sql.toString(), paramList.toArray());
 	}
 }

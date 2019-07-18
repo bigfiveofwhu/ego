@@ -98,12 +98,12 @@
 
 								<li id="admin-login">
 
-									<a href="<%=path %>/shop/seller.html" target="iframe">
-										<i class="fa fa-circle-o"></i> 修改资料
+									<a href="<%=path %>/shop/sellerinfo.html" target="iframe">
+										<i class="fa fa-circle-o"></i> 基本信息
 									</a>
 								</li>
 								<li id="admin-login">
-									<a href="<%=path %>/shop/password.html" target="iframe">
+									<a href="<%=path %>/houtai/html/seller/sellerpage/password.jsp" target="iframe">
 										<i class="fa fa-circle-o"></i> 修改密码
 
 									</a>
@@ -142,7 +142,7 @@
 				       		<ul class="treeview-menu">
 								<li id="admin-login">
 
-									<a href="home-index.html" target="iframe">
+									<a href="<%=path %>/shop/queryOrder.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 订单管理
 
 									</a>
@@ -214,8 +214,7 @@
 
 			<!-- 内容区域 -->
 			<div class="content-wrapper">
-				<iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" src="<%=path %>/houtai/html/seller/sellerpage/seller.jsp"></iframe>
-
+				<iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" src="<%=path %>/shop/sellerinfo.html"></iframe>
 			</div>
 			<!-- 内容区域 /-->
 

@@ -85,7 +85,7 @@
 				<div class="box-tools pull-right">
 					<div class="has-feedback">
 						状态：
-						<select  name="aab803">
+						<select  name="aaa803">
 							<option value="">全部</option>
 							<option value="01">未处理</option>
 							<option value="02">已处理</option>
@@ -109,6 +109,7 @@
 							<th class="sorting">提交用户</th>
 							<th class="sorting">售后描述</th>
 							<th class="sorting">售后类型</th>
+							<th class="sorting">状态</th> 
 							<th class="text-center">操作</th>
 						</tr>
 					</thead>
@@ -121,9 +122,10 @@
 							<td>${ins.aaa202}</td>
 							<td>${ins.aaa103}</td>
 							<td>${ins.aaa805}</td>
-							<td>${ins.aaa804}</td>
+							<td>${ins.cnaaa804}</td>
+							<td>${ins.cnaaa803}</td>
 						<td class="text-center">
-			         		<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aab405}')">处理</button>
+			         		<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('')">处理</button>
 						</td>
 						</tr>
 						</c:forEach>

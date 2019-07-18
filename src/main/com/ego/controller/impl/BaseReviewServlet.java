@@ -46,6 +46,13 @@ public class BaseReviewServlet extends ControllerSupport
 				this.saveAttribute("servicelist", list);
 				path="houtai/html/admin/service";
 				break;
+			case "queryJubao":
+				list =this.getServices().query("queryForJubao");
+				this.saveAttribute("complainList", list);
+				path="houtai/html/admin/complain";
+				break;
+				
+				
 				
 			default:
 				throw new Exception("BaseReviewServlet无法处理此类请求");
