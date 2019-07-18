@@ -5,8 +5,9 @@
 
 	<head>
 		<!-- 页面meta -->
+
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>投诉管理</title>
+		<title>订单管理</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
@@ -14,9 +15,8 @@
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
 		<link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/angularjs/pagination.css">
-		<script type="text/javascript" src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
-		<style>
-        /*背景层*/
+		<style type="text/css">
+		 /*背景层*/
         #popLayer {
             display: none;
             background-color: #B3B3B3;
@@ -58,14 +58,14 @@
             color: #2D2C3B;
         }
  
-    </style>
+		</style>
 	</head>
 
 	<body class="hold-transition skin-red sidebar-mini" ng-app="shopping" ng-controller="GoodsController" ng-init="findItemCatList()">
 		<!-- .box-body -->
 
 		<div class="box-header with-border">
-			<h3 class="box-title">投诉管理</h3>
+			<h3 class="box-title">订单管理</h3>
 		</div>
 
 		<div class="box-body">
@@ -74,22 +74,17 @@
 			<div class="table-box">
 
 				<!--工具栏-->
-				<div class="pull-left">
-					<div class="form-group form-inline">
-						<div class="btn-group">
-							<button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
-						</div>
-					</div>
-				</div>
-				<form action="<%=path %>/houtai/html/admin/queryJubao.html" method="post">
+				<form action="<%=path %>/shop/queryOrder.html" method="post">
 				<div class="box-tools pull-right">
 					<div class="has-feedback">
 						状态：
-						<select  name="aad706">
+						<select ng-model="search_domain.auditStatus" name="aab303">
 							<option value="">全部</option>
-							<option value="01">未处理</option>
-							<option value="02">已处理</option>
+							<option value="02">待发货</option>
+							<option value="04">已发货</option>
+							<option value="05">已完成</option>
 						</select>
+						订单号：<input name="aab302" ng-model="search_domain.goodsName">
 						<input type="submit"  value="查询"class="btn btn-default"></input>
 					</div>
 				</div>
@@ -101,28 +96,40 @@
 					<thead>
 						<tr>
 							<th class="sorting">序号</th>
-							<th class="sorting">用户id</th>
-							<th class="sorting">用户名</th>
-							<th class="sorting">投诉原因</th>
-							<th class="sorting">投诉内容</th>
-							<th class="sorting">投诉对象</th>
-							<th class="sorting">投诉状态</th>
+							<th class="sorting">订单编号</th>
+							<th class="sorting">下单时间</th>
+							<th class="sorting">消费金额</th>
+							<th class="sorting">状态</th>
+							<th class="sorting">买家留言</th>
+							<th class="sorting">发货时间</th>
 							<th class="text-center">操作</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${complainList}" var="ins" varStatus="vs">
+						<c:forEach items="${orderList}" var="ins" varStatus="vs">
 						<tr>
 							<td>${vs.count}</td>
-							<td>${ins.aaa102}</td>
-							<td>${ins.aaa103}</td>
-							<td>${ins.cnaad702}</td>
-							<td>${ins.cnaad703}</td>
-							<td>${ins.cnaad704}</td>
-							<td>${ins.cnaad706}</td>
+							<td>${ins.aab302}</td>
+							<td>${ins.aab304}</td>
+							<td>${ins.totalmoney}</td>
+							<td>${ins.cnaab303}</td>
+							<td>${ins.aab312}</td>
+							<td>${ins.aab306}</td>
 						<td class="text-center">
-			         		<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aad705}')">处理</button>
-						</td>
+						<c:if test="${ins.aab306 == null }">
+								<button type="button" class="btn bg-olive btn-xs" disabled="disabled">删除</button>
+								<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aab302}')">
+										发货
+								</button>
+					    </c:if>
+					    <c:if test="${ins.aab306 != null }">
+					    	<button type="button" class="btn bg-olive btn-xs" >删除</button>
+								<button type="button" class="btn bg-olive btn-xs" disabled="disabled">
+										已发货
+								</button>
+					    </c:if>
+								
+							</td>
 						</tr>
 						</c:forEach>
 					</tbody>
@@ -141,13 +148,19 @@
         <a href="javascript:void(0)" onclick="closeBox()">×</a>
      </div>
     <div class="content">
-    <form action="reply.html" method="post">
-    <textarea id="replyText" rows="15" cols="48" name="aab405"></textarea>
-    <input type="submit"  value="回复"></input>
+    <form action="<%=path %>/shop/deliver.html" method="post">
+    	<select ng-model="search_domain.auditStatus">
+							<option value="">选择快递方</option>
+							<option value="02">圆通</option>
+							<option value="04">申通</option>
+							<option value="05">韵达</option>
+			</select>
+			物流单号:<input type="text" name="aab309"/>
+			<input type="hidden" id="ddbh" name="aab302"/>
+    <input type="submit"  value="确定"></input>
     </form>
     </div>
     </div>
-
 	</body>
 
 	<script src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -155,7 +168,7 @@
 	<script type="text/javascript" src="<%=path%>/houtai/plugins/angularjs/angular.min.js"></script>
 	<!-- 分页组件开始 -->
 	<!--  
-	<script src="<%=path%>/houtai/plugins/angularjs/pagination.js" charset="gbk"></script>
+	<script src="<%=path%>/houtai/plugins/angularjs/pagination.js" charset="utf-8"></script>
 	-->
 	<!-- 分页组件结束 -->
 	<script type="text/javascript" src="<%=path%>/houtai/js/base/Base_pagination.js"></script>
@@ -168,12 +181,12 @@
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/SpecificationService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/BrandService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
-	<script>
+    <script>
     /*点击弹出按钮*/
     function popBox(v) {
         var popBox = document.getElementById("popBox");
         var popLayer = document.getElementById("popLayer");
-        $("#replyText").val(v);
+        $("#ddbh").val(v);
        // document.getElementById("replyText").value = v;
         popBox.style.display = "block";
         popLayer.style.display = "block";
@@ -186,6 +199,5 @@
         popBox.style.display = "none";
         popLayer.style.display = "none";
     }
-</script>
-
+    </script>
 </html>

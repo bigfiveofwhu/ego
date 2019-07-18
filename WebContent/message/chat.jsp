@@ -38,8 +38,25 @@
                 <div class="headName"></div>
             </div>
             <div class="RightCont">
-                <ul class="newsList" id="newsList-1001">
-                </ul>
+               <%-- <ul class="newsList" id="newsList-1001" style="">
+                    <li>
+                        <div class="newsHead"><img src="" alt=""></div>
+                        <div class="news">
+                            <div style="height: 25%;">
+                                2019
+                            </div>
+                            <div>
+                                水电费
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="answersHead"><img src="" alt=""></div>
+                        <div class="answers">asd</div>
+                    </li>
+                </ul>--%>
+                <%--<ul class="newsList" id="newsList-1001">
+                </ul>--%>
                 <%--                <ul class="newsList">--%>
                 <%--                </ul>--%>
             </div>

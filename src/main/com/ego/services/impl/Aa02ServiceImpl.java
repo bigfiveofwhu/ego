@@ -71,17 +71,19 @@ public class Aa02ServiceImpl extends JdbcServicesSupport
 			aaa202=Integer.parseInt((String)ins.get("aaa202"))+aaa202;
 			args=new Object[] {
 					aaa202,
+					this.get("aaa205"),
 					this.get("aaa102"),
 					this.get("aab203")
 			};
-			sql="update aa02 set aaa202=?,aaa203=current_timestamp where aaa102=? and aab203=?";
+			sql="update aa02 set aaa202=?,aaa203=current_timestamp,aaa205=? where aaa102=? and aab203=?";
 			return this.executeUpdate(sql, args);
 		}
-		sql="insert into aa02(aaa102,aab203,aaa202,aaa203,aaa204) values(?,?,?,current_timestamp,'01')";  //01 --可见
+		sql="insert into aa02(aaa102,aab203,aaa202,aaa203,aaa204,aaa205) values(?,?,?,current_timestamp,'01',?)";  //01 --可见
 		args=new Object[] {
 				this.get("aaa102"),
 				this.get("aab203"),
-				aaa202
+				aaa202,
+				this.get("aaa205")
 		};
 		this.put("addCartCount", true);
 		return this.executeUpdate(sql, args);

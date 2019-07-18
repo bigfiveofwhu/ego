@@ -2,8 +2,8 @@
 <%@ include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>店铺注册</title>
+	<head lang="en">
+		<title>注册</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<meta name="format-detection" content="telephone=no">
@@ -11,7 +11,7 @@
 		<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 		<link rel="stylesheet" href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.min.css" />
-		<link href="<%=path%>/css/shop/dlstyle.css" rel="stylesheet" type="text/css">
+		<link href="<%=path%>/css/localCity/dlstyle.css" rel="stylesheet" type="text/css">
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
 
@@ -24,7 +24,7 @@
 	</head>
 	<body>
 		<div class="login-boxtitle">
-			<a href="home/home.html">
+			<a href="home/demo.html">
 				<img alt="" src="<%=path%>/images/logobig.png" />
 			</a>
 		</div>
@@ -34,43 +34,47 @@
 				<div class="login-box">
 						<div class="am-tabs" id="doc-my-tabs">
 							<ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
-								<li class="am-active"><a href="">店铺注册</a></li>
+								<li class="am-active"><a href="">服务商注册</a></li>
+								<li><a href="">手机号注册</a></li>
 							</ul>
 							<div class="am-tabs-bd">
 								<div class="am-tab-panel am-active">
 									<span style="color:red">${msg}</span>	
-									<!-- 店铺资格认证信息 -->
-									<form action="<%=path%>/shop/shopRegister.html" method="post">	 
-										<div class="shop_element">
+									<!-- 邮箱注册 -->
+									<form action="<%=path%>/localCity/registered.html" method="post">	 
+										<div class="service_element">
 											<label for="name"><i class="am-icon-user"></i></label>
-											<input type="text" class="input_block" name="shopname" id="shopname" placeholder="请输入店铺名称" required="required">
+											<input type="text" class="input_block" name="username" id="username" placeholder="请取一个服务商名称" required="required">
 		                 			   </div>
-	                                  
-	                                   <div class="shop_element">
+									    <div class="service_element">
 										    <label for="passwordRepeat"><i class="am-icon-cc-paypal"></i></label>
 										    <input type="number" class="input_block" name="amount" id="amount" placeholder="保证金" required="required">
 	                                   </div>
-	                                    <div class="shop_element_textarea">
+	                                    <div class="service_element_textarea">
 										    <label for="realname"><i class="am-icon-child"></i></label>
-										    <textarea cols="50" rows="10" name="subscribe" id="subscribe" placeholder="店铺描述" required="required"></textarea>
+										    <textarea cols="40" rows="10" name="describe" id="describe" placeholder="服务描述" required="required"></textarea>
 	                                   </div>
-	                                   <div class="shop_element">
+	                                   <div class="service_element">
 										    <label for="addr"><i class="am-icon-area-chart"></i></label>
 										    <span class="input_block">
 											    <select name="addr_1" id="addr_1" required="required"></select>
 											    <select name="addr_2" id="addr_2" class="childs" required="required"></select>
 											    <select name="addr_3" id="addr_3" class="childs" required="required"></select>
-											    <input type="text" name="addr_4" id="addr_4" required="required" placeholder="街道地址" value="${addr_4 }" maxlength="50"/>
+											    <input type="text" name="addr_4" id="addr_4" required="required" placeholder="街道地址" maxlength="50"/>
+										    </span>
+	                                   </div>
+	                                   <div class="service_element">
+										    <label for="addr"><i class="am-icon-area-chart"></i></label>
+										    <span class="input_block">
+											    <select name="serviceSort" id="serviceSort" required="required"></select>
 										    </span>
 	                                   </div>
 									   <div class="am-cf">
-											<input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
+											<input type="submit" name="" value="注册" onclick="return check()" class="am-btn am-btn-primary am-btn-sm am-fl">
 									   </div>
 	                               </form>
 							   </div>
-								<div class="am-tab-panel">
 									<hr>
-								</div>
 								<script>
 									$(function() {
 									    $('#doc-my-tabs').tabs();
@@ -159,8 +163,8 @@
 		
 		function check(){
 			return true;
-			var shop=$("#shopname").val();
-			if(shop==""){
+			var user=$("#username").val();
+			if(user==""){
 				alert("账户不能为空");
 				return false;
 			}
@@ -210,6 +214,7 @@
 						console.log(res.status);
 						console.log(res.status=='200');
 						 if(res.status=='200'){
+							 //$(".sendVerifyCode").text("60秒后重新发送");
 							 countTime();
 						 }else{
 							 $(".sendVerifyCode").text("发送失败,重新发送");
@@ -251,31 +256,14 @@
 						var addrs=res.addrs;
 						var n=addrs.length;
 						var html="";
-						var p=0;
 						if(n>0){
-							for(var i=0;i<n;i++){
-								var kk;
-								switch(index){
-								case 1:
-									kk= addrs[i].areaname=='${addr_1}';
-									break;
-								case 2:
-									kk= addrs[i].areaname=='${addr_2}';
-									break;
-								case 3:
-									kk= addrs[i].areaname=='${addr_3}';
-									break;
-								}
-								if(kk){
-									html+="<option value='"+addrs[i].areaname+"' A_id='"+addrs[i].areaid+"' selected='selected'>"+addrs[i].areaname+"</option>";
-									p=i;
-								}else{
-									html+="<option value='"+addrs[i].areaname+"' A_id='"+addrs[i].areaid+"'>"+addrs[i].areaname+"</option>";
-								}
+							html="<option value='"+addrs[0].areaname+"' A_id='"+addrs[0].areaid+"' selected='selected'>"+addrs[0].areaname+"</option>";
+							for(var i=1;i<n;i++){
+								html+="<option value='"+addrs[i].areaname+"' A_id='"+addrs[i].areaid+"'>"+addrs[i].areaname+"</option>";
 							}
 						}
 						$("#addr_"+index).html(html);
-						loadAddr(addrs[p].areaid,++index);
+						loadAddr(addrs[0].areaid,++index);
 					},
 					error:function(res,status){
 						console.log("#addr_"+index+"地址异步加载错误");
@@ -283,6 +271,33 @@
 				});
 			}
 			loadAddr("-1",1);
+			function loadSort(){
+				$.ajax({
+					url:"<%=path%>/getSort.ajax",
+					type:"post",
+					dataType:"json",
+					timeout:20000,
+					data:{
+						"pfcode":"00",
+						"fname":"aac106"
+					},
+					success:function(res,status){
+						if(res.status=='200'){
+							var addrs=res.sorts;
+							var n=addrs.length;
+							var html="<option value='"+addrs[0].fcode+"' selected='selected'>"+addrs[0].fvalue+"</option>";
+							for(var i=1;i<n;i++){
+								html+="<option value='"+addrs[i].fcode+"'>"+addrs[i].fvalue+"</option>";
+							}
+							$("#serviceSort").html(html);
+						}
+					},
+					error:function(res,status){
+						console.log("分类加载错误!");
+					}
+				});
+			}
+			loadSort();
 		});
 		</script>
 	</body>

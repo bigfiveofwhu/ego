@@ -172,7 +172,7 @@
 					<ul class="treeview-menu">
 
 						<li id="admin-login">
-							<a href="" target="iframe">
+							<a href="<%=path %>/houtai/html/admin/queryJubao.html" target="iframe">
 								<i class="fa fa-circle-o"></i>Õ∂Àﬂπ‹¿Ì
 							</a>
 						</li>

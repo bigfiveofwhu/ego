@@ -102,7 +102,8 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 	    * @return
 	    * @throws Exception
 	    */
-	   private boolean modifyPwd() throws Exception
+	   @SuppressWarnings("unused")
+	 private boolean modifyPwd() throws Exception
 	   {
 		   String sql = "update aa01 a set a.aaa107=? where a.aaa102 = " + user_id;
 		   
