@@ -27,6 +27,7 @@ public class ShopRegisteredController extends ControllerSupport
 		this.setServices(new Ad08ServicesImpl());
 		this.dto.put("aad802", this.get("subscribe"));
 		this.dto.put("aad805", this.get("aab102"));
+		this.dto.put("aad803", "01");   //审核类型 01--店铺注册
 		this.getServices().update("insertAd08");
 		this.getSession().setAttribute("aab102", this.get("aab102"));  //店铺id
 		this.saveAttribute("msg", "提交审核成功!请耐心等待,后续会以邮件通知!");

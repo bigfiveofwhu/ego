@@ -25,6 +25,8 @@ public class AdvertiseService extends JdbcServicesSupport{
 			return this.getAccountById();
 		case "getShop":
 			return this.getShop();
+		case "getAdById":
+			return this.getAdById();
 		default:
 			throw new Exception("不支持的类型");
 		}
@@ -59,24 +61,27 @@ public class AdvertiseService extends JdbcServicesSupport{
 			throw new Exception("不支持的类型");
 		}
 	}
+	
 	@Override
 	public boolean update(String utype) throws Exception {
 		// TODO Auto-generated method stub
 		switch (utype) {
 		case "insertAdAccount":
 			return this.insertAdAccount();
-		case "recharge":
+		case "recharge"://给账户充值
 			return this.recharge();
-		case "chargeMoney":
+		case "chargeMoney"://减少账户的钱
 			return this.chargeMoney();
 		case "insertAd":
 			return this.insertAd();
-		case "addMoney":
+		case "addMoney"://给广告充值
 			return this.addMoney();
-		case "reduceMoney":
+		case "reduceMoney"://减少广告的钱
 			return this.reduceMoney();
 		case "addAdAudit":
 			return this.addAdAudit();
+		case "retractAd":
+			return this.retractAd();
 		default:
 			throw new Exception("不支持的类型");
 		}
@@ -133,6 +138,15 @@ public class AdvertiseService extends JdbcServicesSupport{
 				.append(" on ac02.aac102=ac01.aac102")
 				.append(" where ac01.aaa102=?");
 		return this.queryForList(sql.toString(), this.get("aaa102"));
+	}
+	/**
+	 * 根据id删除广告
+	 * @return
+	 * @throws Exception
+	 */
+	private boolean retractAd()throws Exception {
+		String sql="delete from ad03 where aad302=?";
+		return this.executeUpdate(sql, this.get("aad302"));
 	}
 	
 	/**
@@ -265,7 +279,11 @@ public class AdvertiseService extends JdbcServicesSupport{
 	}
 	
 	
-	//对账户进行充值
+	/**
+	 * 对账户进行充值，需要increment参数
+	 * @return
+	 * @throws Exception
+	 */
 	private boolean recharge() throws Exception{
 		StringBuilder sql=new StringBuilder()
 				.append(" update ad04 set")
@@ -277,7 +295,11 @@ public class AdvertiseService extends JdbcServicesSupport{
 		}
 		return this.executeUpdate(sql.toString(),increse,this.get("aad402"));
 	}
-	//收取广告费，减少账户的钱
+	/**
+	 * 减少广告账户的钱，需要dto中存放decrement
+	 * @return 
+	 * @throws Exception
+	 */
 	private boolean chargeMoney() throws Exception{
 		StringBuilder sql=new StringBuilder()
 				.append(" update ad04 set")

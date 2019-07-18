@@ -20,7 +20,14 @@
   <div class="layui-tab-content">
     <%-- 基本信息 --%>
     <div class="layui-tab-item layui-show">
-    	账户余额 ${aad403 }元
+
+   	  	<div class="jumbotron">
+   	  	  <p class="lead">余额</p>
+		  <h1 class="display-4">￥${aad403}</h1>
+		  
+		  <hr class="my-4">
+		  <button class="btn btn-primary btn-lg" id="charge" type="button">账户充值</button>
+		</div>
     </div>
     
     <%-- 广告信息 --%>
@@ -48,8 +55,9 @@
 			  <td>
 			  	${item.aad304 }
 			  </td>
-			  <td>
-			  	详情，撤销
+			   <td class="p-1">
+			  	<button type="button" value="${item.aad302 }" class="btn btn-info btn-sm " tag="modify">投资</button>
+				<button type="button" value="${item.aad302 }" class="btn btn-light btn-sm " tag="retract">撤回</button>
 			  </td>
 			</tr>
 		  </c:forEach>
@@ -58,13 +66,15 @@
 	   </table>
 
     </div>
-    
+    <%-------------------------------------------------------------------%>
     <%-- 添加广告 --%>
     <div class="layui-tab-item" id="addAd">
     
     <form class="mx-auto w-75 bg-light border p-3" id="form" method="post" enctype="multipart/form-data">
 	  
-	  <div class="form-group row">
+	  <input type="hidden" name="aab102" value="${shop.aab102 }">
+	  
+	  <div class="form-group row" id="chooseProduct">
 	    <label for="money" class="col-sm-2 col-form-label">选择推广品</label>
 	    <div class="col-sm-10">
 	      <select class="custom-select" name="aad306" size="1">
@@ -75,6 +85,14 @@
 	    </div>
 	  </div>
 	  
+	  <div class="form-group row" id="shop">
+	    <label for="money" class="col-sm-2 col-form-label">你的店铺</label>
+	    <div class="col-sm-10">
+	    	<div class="alert alert-primary" role="alert"> 
+			  <a href="/ego/shop/home.html?shopId=${shop.aab103}" class="alert-link">${shop.aab103 }</a>
+			</div>
+	    </div>
+	  </div>
 	  
 	  <div class="form-group row">
 	    <label for="money" class="col-sm-2 col-form-label">投放金额</label>
@@ -108,7 +126,7 @@
 	      </div>
 	    </div>
 	  </fieldset>
-	 
+
 	 <fieldset class="form-group">
 	    <div class="row">
 	      <legend class="col-form-label col-sm-2 pt-0">广告类型</legend>
@@ -143,7 +161,7 @@
 	    </div>
 	  </fieldset>
 	  
-		<div class="form-group row">
+	  <div class="form-group row">
 	    <label for="image" class="col-sm-2 col-form-label">广告图片</label>
 	    <div class="col-sm-10">
 	      <input  id="image"  name="file"  type="file"/>
@@ -173,7 +191,48 @@ layui.use('element', function(){
   var element = layui.element;
   //…
 });
+
+layui.use('layer',function(){
+	 var $ = layui.jquery, layer = layui.layer;
+	 
+	 //例子1
+	$('#charge').click(function(){
+		layer.prompt({
+			  title: '请输入金额',
+			  area: ['800px', '350px'] //自定义文本域宽高
+			}, function(value, index, elem){
+			  $.getJSON('chargeAccount.ajax',{'increment':value},function(data){
+				  if(data.result==true){
+					  layer.msg('充值成功');
+					  window.location.reload();
+				  }else{
+					  layer.msg('充值失败');
+				  }
+			  }).fail(function() {
+				  layer.msg('充值失败');
+			  })
+			  layer.close(index);
+		});
+	})
+	 
+})
 $("#submit").click(register);
+$("#shop").hide();//隐藏店铺div
+$("input:radio[name='aad303']").change(function (){ //拨通
+	switch($(this).val()){
+		case '00'://产品
+			$("#chooseProduct").show();
+			$("#shop").hide();
+			break;
+		case '01'://店铺
+			$("#shop").show();
+			$("#chooseProduct").hide();
+			break;
+		case '10'://服务
+			alert("服务");
+			break;
+	};
+});
 
 function register(){
         var options = {
@@ -191,57 +250,44 @@ function register(){
                 }else{
                 	alert("未知原因");
                 }
-                	
             }
         };
         $("#form").ajaxSubmit(options); //使用ajaxForm()插件提交
 }
 
-/*
-layui.use('upload', function(){
-	  var $ = layui.jquery
-	  ,upload = layui.upload;
+$("[tag='modify']").click(function(){
+	var a=$(this);
+	layer.prompt({
+		  title: '请输入金额',
+		  area: ['800px', '350px'] //自定义文本域宽高
+		}, function(value, index, elem){
+		  $.getJSON('chargeAd.ajax',{'increment':value,'aad302':a.val()},function(data){
+			  if(data.result==true){
+				  layer.msg('投资成功');
+				  window.location.reload();
+			  }else{
+				  layer.msg(data.reason);
+			  }
+		  }).fail(function() {
+			  layer.msg('服务端错误');
+		  })
+		  layer.close(index);
+	});
+})
+$("[tag='retract']").click(function(){
+	var a=$(this);
+	$.getJSON('retractAd.ajax',{'aad302':a.val()},function(data){
+		  if(data.result==true){
+			  layer.msg('撤回成功');
+			  window.location.reload();
+		  }else{
+			  layer.msg('撤回失败');
+		  }
+	  }).fail(function() {
+		  layer.msg('撤回失败');
+	  })
+})
 
-	  //拖拽上传
-	  upload.render({
-	    elem: '#uploadArea'
-	    ,exts:'jpg'
-	    ,auto: false
-	    ,bindAction:'#submit'
-	    ,url: 'AddAd.ajax'
-	    ,data:{
-	    	aad303:function(){
-	    		return $("[name='aad303']:checked").val();
-	    	},
-	    	aad304:function(){
-	    		return $("[name='aad304']").val();
-	    	},
-	    	aad305:function(){
-	    		return $("[name='aad305']:checked").val();
-	    	},
-	    	aad306:function(){
-	    		return $("[name='aad306']").val();
-	    	}
-	    }
-	   	,done: function(res, index, upload){
-	    		    //假设code=0代表上传成功
-	    		    if(res.code == 0){
-	    		      //do something （比如将res返回的图片链接保存到表单的隐藏域）
-	    		    }
-	    		    console.log("success");
-	    		    //获取当前触发上传的元素，一般用于 elem 绑定 class 的情况，注意：此乃 layui 2.1.0 新增
-	    		    var item = this.item;
-	    		    
-	    		    //文件保存失败
-	    		    //do something
-	   	}
-	   	,error: function(){
-	        //请求异常回调
-	        console.log("error happend")
-	      }
-	  });
-
-});*/
 </script>
 
 </body>
