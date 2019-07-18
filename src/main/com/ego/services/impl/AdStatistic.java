@@ -38,6 +38,8 @@ public class AdStatistic extends JdbcServicesSupport{
 		switch (qtype) {
 		case "getRecentInfo"://获取最近30天的广告记录
 			return getRecentInfo();
+		case "getUserInfo":
+			return getUserInfo();//获得点击用户的信息
 		default:
 			throw new Exception("不支持的类型");
 		}
@@ -63,8 +65,10 @@ public class AdStatistic extends JdbcServicesSupport{
 	 * @throws Exception
 	 */
 	private List<Map<String, String>> getUserInfo()throws Exception{
-		String sql="select aaa102,aad503 from ad05 where aaa102=? and aad502=?";
-		return this.queryForList(sql, this.get("aad102"),this.get("aad502"));
+		StringBuilder sql=new StringBuilder()
+				.append(" select aaa103,aad503 from ad05 join aa01 using(aaa102)")
+				.append(" where aad302=? and aad502=?");
+		return this.queryForList(sql.toString(), this.get("aad302"),this.get("aad502"));
 	}
 	
 	

@@ -47,7 +47,7 @@
 		  <c:forEach  items="${ads}" var="item">
 			<tr>
 			  <td>
-				${item.refName }
+				<a href="/ego/advertise/showAdInfo.html?aad302=${item.aad302}">${item.refName }</a>
 			  </td>
 			  <td>
 			  	${item.adType }
@@ -61,12 +61,11 @@
 			  </td>
 			</tr>
 		  </c:forEach>
-		  
   		</tbody>
 	   </table>
 
     </div>
-    <%-------------------------------------------------------------------%>
+    <%----------------------------	---------------------------------------%>
     <%-- Ìí¼Ó¹ã¸æ --%>
     <div class="layui-tab-item" id="addAd">
     

@@ -1,5 +1,6 @@
 package com.ego.controller.impl.advertise;
 
+import java.util.List;
 import java.util.Map;
 
 import com.ego.controller.ControllerSupport;
@@ -20,9 +21,16 @@ public class AdInfoController extends ControllerSupport{
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		saveAttribute("total", service.findById("getTotal").get("total"));;
-		saveAttribute("rencentInfo",service.query("getRecentInfo") );
+		String total=service.findById("getTotal").get("total");
+		saveAttribute("total",total==null?0:total );//所有广告的点击总量
+		List<Map<String,String>> map=service.query("getRecentInfo");
+		int sum=0;
+		for (Map<String, String> item : map) {
+			sum+=Integer.parseInt(item.get("sum"));
+		}
+		saveAttribute("aad302", get("aad302"));
+		saveAttribute("recentInfo", map);
+		saveAttribute("sum", sum);//30天的点击总量
 		return AdvertiseController.prefix+"adInfo";
 	}
-	
 }
