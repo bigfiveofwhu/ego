@@ -410,6 +410,4 @@ public class AdvertiseService extends JdbcServicesSupport{
 				.append(" limit 8");
 		return this.queryForList(sql.toString(),this.get("aaa102"));
 	}
-	
-	
 }

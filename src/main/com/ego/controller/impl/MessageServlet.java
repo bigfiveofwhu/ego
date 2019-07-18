@@ -7,15 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
-public class MessageServlet extends ControllerSupport {
-
+public class MessageServlet extends ControllerSupport
+{
     public MessageServlet()
     {
         this.setServices(new Ae01ServicesImpl());
     }
 
     @Override
-    public String execute() throws Exception {
+    public String execute() throws Exception
+    {
         String path;
         String servletPath=((HttpServletRequest)this.dto.get("request")).getServletPath();
         String mapping=servletPath.substring(servletPath.lastIndexOf('/')+1
@@ -36,7 +37,7 @@ public class MessageServlet extends ControllerSupport {
                 break;
 
             default:
-                throw new Exception("MessageServlet无法处理此类请求");
+                throw new Exception("MessageServlet无法处理此类请求:"+mapping);
         }
         return path;
     }
