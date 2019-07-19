@@ -1,7 +1,17 @@
 <%@ page language="java" pageEncoding="GBK"%>
+<%@include file="/localCity/location.jsp" %>
+</script>
 <!--顶部导航条 -->
 <div class="am-container header">
-	<ul class="message-l">
+	<ul class="message-l local-l">
+		<div class="topMessage localtion">
+			<div class="menu-hd">
+				<div class="top-local">
+					<p class="local-title">当前位置:</p>
+					<p id="myLocal"></p>
+				</div>
+			</div>
+		</div>
 		<div class="topMessage">
 			<div class="menu-hd">
 				<c:choose>

@@ -44,7 +44,7 @@ public class RegisteredController extends ControllerSupport
 		this.dto.put("aad803", "02");   //审核类型 02--服务商注册
 		this.setServices(new Ad08ServicesImpl());
 		this.getServices().update("insertAd08");
-		this.getSession().setAttribute("aac102", this.get("aac102"));  //服务商id
+		this.getSession().setAttribute("aac102", this.get("aac102"));  //已放入dto的服务商id
 		return "localCity/home";
 	}
 

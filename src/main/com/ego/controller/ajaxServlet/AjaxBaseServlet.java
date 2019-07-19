@@ -23,6 +23,7 @@ public class AjaxBaseServlet extends HttpServlet
 	{
 		try
 		{
+			request.setCharacterEncoding("UTF-8");
 			String url=request.getServletPath();
 			
 			String name=url.substring(url.lastIndexOf("/")+1).replace(".ajax", "");

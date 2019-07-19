@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 import com.ego.services.JdbcServicesSupport;
 
-  public class Aa04ServiceImpl extends JdbcServicesSupport
+public class Aa04ServiceImpl extends JdbcServicesSupport
 {
 	
 	public boolean update(String utype) throws Exception 
@@ -32,7 +32,7 @@ import com.ego.services.JdbcServicesSupport;
 	/**
 	 * 显示单例地址信息
 	 */
-	
+	@Override
 	public Map<String,String> findById() throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
@@ -42,6 +42,7 @@ import com.ego.services.JdbcServicesSupport;
 	
     	return this.queryForMap(sql.toString(), this.get("aaa401"));
 	}
+	
 	/**
 	 * 增加地址
 	 * @return

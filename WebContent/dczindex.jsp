@@ -41,5 +41,33 @@
     <input type="submit" value ="去提交售后" >
     </form>
     
+    <form action="<%=path%>/createOrder.html" method="post">
+    <input type="submit" value ="去提交订单2" >
+    </form>
+    
+    <form action="<%=path%>/goPostNeed.html" method="post">
+    <input type="submit" value ="去提交服务需求" >
+    </form>
+    
+    <form action="<%=path%>/showNeed.html" method="post">
+    <input type="submit" value ="我的需求" >
+    </form>
+    
+    <form action="<%=path%>/showServiceOrder.html" method="post">
+    <input type="submit" value ="我的服务订单" >
+    </form>
+    
+    <form action="<%=path%>/showServiceComment.html" method="post">
+    <input type="submit" value ="我的服务评价" >
+    </form>
+    
+    <form action="<%=path%>/goConfirmOrder.html" method="post">
+    <input type="submit" value ="定向提交订单" >
+    </form>
+    
+     <form action="<%=path%>/goPrepay.html" method="post">
+    <input type="submit" value ="预付页测试" >
+    </form>
+    
 </body>
 </html>

@@ -102,6 +102,8 @@ public class Aa08ServicesImpl extends JdbcServicesSupport
 	 */
 	private boolean addRefund()throws Exception
 	{
+		//修改订单状态
+		this.updateOrder();
 		//获取订单编号
 		int aaa802 =Tools.getSequence("aaa802");
 		this.put("aaa802", aaa802);
@@ -132,6 +134,25 @@ public class Aa08ServicesImpl extends JdbcServicesSupport
 		return this.executeUpdate(sql.toString(), args);
 		
 		
+	}
+	
+	/**
+	 * 提交售后之后修改订单状态
+	 * @throws Exception
+	 */
+	private void updateOrder()throws Exception
+	{
+		StringBuilder sql = new StringBuilder()
+				.append("update ab03 a set")
+				.append("  a.aab303='08'")
+				.append("  where a.aab302=?")
+				;
+		
+		Object args[]={
+				this.get("aab302")
+		};
+
+		this.executeUpdate(sql.toString(), args);
 	}
 	
 	/**
