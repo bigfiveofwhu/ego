@@ -36,6 +36,8 @@ public class Aa05ServiceImpl extends JdbcServicesSupport{
 			return addCoupon();
 		case "useCoupon":
 			return removeCoupon();
+		case "removeCoupon":
+			return removeCoupon();
 		default:
 			throw new Exception("不支持的类型");
 		}

@@ -1,0 +1,13 @@
+@charset "GBK";
+.local-l{
+	width: 270px;
+	display: flex;
+}
+.local-l .localtion{
+	display: flex;
+}
+.local-l .localtion .top-local{
+	display: flex;
+	color: #000;
+	margin-right: 10px;
+}

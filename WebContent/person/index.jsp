@@ -49,8 +49,11 @@
 					</li>
 					<li class="person">
 						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
+
 					<ul>
 						<li> <a href="<%=path %>/person/showUserInfo.html" target="iframe">个人信息</a></li>
+
+
 							<li> <a href="<%=path%>/person/safety.jsp" target="iframe">安全设置</a></li>
 							<li> <a href="<%=path%>/person/showAddress.html" target="iframe">地址管理</a></li>
 							<li> <a href="<%=path%>/person/cardlist.jsp" target="iframe">快捷支付</a></li>
@@ -59,19 +62,20 @@
 					<li class="person">
 						<p><i class="am-icon-balance-scale"></i>我的交易</p>
 						<ul>
-							<li><a href="<%=path %>/person/order.jsp" target="iframe">订单管理</a></li>
-							<li> <a href="<%=path %>/person/change.jsp" target="iframe">退款售后</a></li>
-							<li> <a href=javascript:void(0); target="iframe">评价商品</a></li>
+							<li><a href="<%=path %>/showOrder.html" target="iframe">订单管理</a></li>
+							<li> <a href="<%=path %>/goRefund.html" target="iframe">退款售后</a></li>
+							<li> <a href="<%=path %>/showComment.html" target="iframe">评价商品</a></li>
 						</ul>
 					</li>
 					<li class="person">
 						<p><i class="am-icon-dollar"></i>我的资产</p>
 						<ul>
-							<li> <a href="<%=path %>/person/points.jsp" target="iframe">我的积分</a></li>
-							<li> <a href="<%=path %>/person/coupon.jsp" target="iframe">优惠券 </a></li>
+							<li> <a href="<%=path %>/showPoint.html" target="iframe">我的积分</a></li>
+							<li> <a href="<%=path %>/discount/getCustomerCoupons.html" target="iframe">优惠券 </a></li>
 							<li> <a href="<%=path %>/person/bonus.jsp" target="iframe">红包</a></li>
 							<li> <a href="<%=path %>/person/walletlist.jsp" target="iframe">账户余额</a></li>
 							<li> <a href="<%=path %>/person/bill.jsp" target="iframe">账单明细</a></li>
+							<li> <a href="<%=path %>/advertise/showAccount.html" target="iframe">广告账户</a></li>
 						</ul>
 					</li>
 

@@ -10,9 +10,23 @@
 	</div>
 	<div class="search-bar pr">
 		<a name="index_none_header_sysc" href="#"></a>
-		<form action="${path}/search.html" method="post">
-			<input id="searchInput" name="key" type="text" value="${key }" placeholder="ÊäÈë¹Ø¼ü×ÖËÑË÷" required="required" autocomplete="on"> 
+		<form action="${path}/localCity/search.html" method="post">
+			<input id="localInput" name="location" value="" type="hidden" />
+			<input id="searchInput" name="key" type="text" value="${key }" placeholder="ËÑË÷·þÎñ" required="required" autocomplete="on"> 
 			<input id="ai-topsearch" class="submit am-btn" value="ËÑË÷" index="1" type="submit">
 		</form>
 	</div>
 </div>
+<script>
+ $(function(){
+	 function location1(){
+		 if(myGeoLocation!=null){
+			 $("#myLocal").text(myGeoLocation);
+			 $("#localInput").attr("value",myGeoLocation);
+		 }else{
+			 setTimeout(location1,500);
+		 }
+	 }
+	 location1();
+ });
+</script>

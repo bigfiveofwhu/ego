@@ -20,13 +20,23 @@ public class Tools
 	private static final String baseCode2="00000";
 
 	/**
-	 * 获取订单号yyyyMMddxxxxx
+	 * 获取商品订单号yyyyMMddxxxxx
 	 * @return
 	 * @throws Exception
 	 */
 	public static String getOrderNumber() throws Exception
 	{
 		return Tools.getCurrentDay()+Tools.getFormatTailNumber("aab302code");
+	}
+	
+	/**
+	 * 获取服务订单号yyyyMMddxxxxx
+	 * @return
+	 * @throws Exception
+	 */
+	public static String getServiceOrderNumber() throws Exception
+	{
+		return Tools.getCurrentDay()+Tools.getFormatTailNumber("aac402");
 	}
 
 	/**
