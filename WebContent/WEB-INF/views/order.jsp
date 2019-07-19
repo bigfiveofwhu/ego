@@ -644,7 +644,7 @@
 																<c:when test="${ins.aab303 eq '09'}">
 																	<li class="td td-operation">
 																	<div class="item-operation">
-																		<a href="javascript:;" onclick="goComplaintDetail(${ins.aab302})">投诉详情</a>
+																		<a href="javascript:;" onclick="goComplaintDetail(${ins.aab302})">售后详情</a>
 																	</div>
 																	</li>
 																</c:when>
