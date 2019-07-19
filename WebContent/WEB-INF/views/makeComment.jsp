@@ -204,7 +204,7 @@
 								<div class="item-title">
 									<div class="item-name">
 										<a href="#">
-											<p class="item-basic-info">商品id:${ins.aab203 }</p>
+											<p class="item-basic-info">商品名:${ins.aab202 }</p>
 										</a>
 									</div>
 									<div class="item-info">
@@ -213,7 +213,7 @@
 											<span>属性2:尚无</span>
 										</div>
 										<div class="item-price">
-											价格：<strong>${ins.aab314 }</strong>
+											价格：<strong>&yen;${ins.aab314 }</strong>
 										</div>										
 									</div>
 								</div>

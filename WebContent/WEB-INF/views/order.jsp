@@ -223,7 +223,7 @@
 																	<div class="item-info">
 																		<div class="item-basic-info">
 																			<a href="#">
-																				<p>商品id:${ins.aab203 }</p>
+																				<p>商品名:${ins.aab202 }</p>
 																				<p class="info-little">属性1:还没填
 																					<br/>属性2:还没填 </p>
 																			</a>
@@ -232,7 +232,7 @@
 																</li>
 																<li class="td td-price">
 																	<div class="item-price">
-																		${ins.aab314 }
+																		&yen;${ins.aab314 }
 																	</div>
 																</li>
 																<li class="td td-number">
@@ -257,8 +257,8 @@
 															    				*Double.valueOf((String)request.getAttribute("price"))
 															    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 																<div class="item-amount">
-																	合计：<%=total %>
-																	<p>含运费：<span>${ins.aab313 }</span></p>
+																	合计：&yen;<%=total %>
+																	<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 																</div>
 															</li>
 															<div class="move-right">
@@ -299,7 +299,7 @@
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>商品id:${ins.aab203 } </p>
+																			<p>商品名:${ins.aab202 } </p>
 																			<p class="info-little">属性1:尚无
 																				<br/>属性2:尚无</p>
 																		</a>
@@ -308,7 +308,7 @@
 															</li>
 															<li class="td td-price">
 																<div class="item-price">
-																	${ins.aab314 }
+																	&yen;${ins.aab314 }
 																</div>
 															</li>
 															<li class="td td-number">
@@ -333,8 +333,8 @@
 														    				*Double.valueOf((String)request.getAttribute("price"))
 														    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 															<div class="item-amount">
-																合计：<%=total %>
-																<p>含运费：<span>${ins.aab313 }</span></p>
+																合计：&yen;<%=total %>
+																<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 															</div>
 														</li>
 														<div class="move-right">
@@ -373,7 +373,7 @@
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>商品id:${ins.aab203 }</p>
+																			<p>商品名:${ins.aab202 }</p>
 																			<p class="info-little">属性1:尚无
 																				<br/>属性2:尚无</p>
 																		</a>
@@ -382,7 +382,7 @@
 															</li>
 															<li class="td td-price">
 																<div class="item-price">
-																	${ins.aab314 }
+																	&yen;${ins.aab314 }
 																</div>
 															</li>
 															<li class="td td-number">
@@ -407,8 +407,8 @@
 															    				*Double.valueOf((String)request.getAttribute("price"))
 															    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 																<div class="item-amount">
-																	合计：<%=total %>
-																	<p>含运费：<span>${ins.aab313 }</span></p>
+																	合计：&yen;<%=total %>
+																	<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 																</div>
 														</li>
 														<div class="move-right">
@@ -450,7 +450,7 @@
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>商品id:${ins.aab203 }</p>
+																			<p>商品名:${ins.aab202 }</p>
 																			<p class="info-little">属性1:尚无
 																				<br/>属性2:尚无 </p>
 																		</a>
@@ -459,7 +459,7 @@
 															</li>
 															<li class="td td-price">
 																<div class="item-price">
-																	${ins.aab314 }
+																	&yen;${ins.aab314 }
 																</div>
 															</li>
 															<li class="td td-number">
@@ -484,8 +484,8 @@
 																    				*Double.valueOf((String)request.getAttribute("price"))
 																    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 																	<div class="item-amount">
-																		合计：<%=total %>
-																		<p>含运费：<span>${ins.aab313 }</span></p>
+																		合计：&yen;<%=total %>
+																		<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 																	</div>
 														</li>
 														<div class="move-right">
@@ -542,7 +542,7 @@
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
-																			<p>商品id:${ins.aab203 }</p>
+																			<p>商品名:${ins.aab202 }</p>
 																			<p class="info-little">属性1:尚无
 																				<br/>属性2:尚无 </p>
 																		</a>
@@ -551,7 +551,7 @@
 															</li>
 															<li class="td td-price">
 																<div class="item-price">
-																	${ins.aab314 }
+																	&yen;${ins.aab314 }
 																</div>
 															</li>
 															<li class="td td-number">
@@ -576,8 +576,8 @@
 														    				*Double.valueOf((String)request.getAttribute("price"))
 														    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 															<div class="item-amount">
-																合计：<%=total %>
-																<p>含运费：<span>${ins.aab313 }</span></p>
+																合计：&yen;<%=total %>
+																<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 															</div>
 														</li>
 														<div class="move-right">
@@ -616,7 +616,7 @@
 																	<div class="item-info">
 																		<div class="item-basic-info">
 																			<a href="#">
-																				<p>商品id:${ins.aab203 }</p>
+																				<p>商品名:${ins.aab202 }</p>
 																				<p class="info-little">规格1:还没填
 																								  <br/>规格2:还没填 </p>
 																			</a>
@@ -625,7 +625,7 @@
 																</li>
 																<li class="td td-price">
 																	<div class="item-price">
-																		${ins.aab314 }
+																		&yen;${ins.aab314 }
 																	</div>
 																</li>
 																<li class="td td-number">
@@ -661,8 +661,8 @@
 															    				*Double.valueOf((String)request.getAttribute("price"))
 															    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 																<div class="item-amount">
-																	合计：<%=total %>
-																	<p>含运费：<span>${ins.aab313 }</span></p>
+																	合计：&yen;<%=total %>
+																	<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 																</div>
 															</li>
 															<div class="move-right">
@@ -752,7 +752,7 @@
 																	<div class="item-info">
 																		<div class="item-basic-info">
 																			<a href="#">
-																				<p>商品id:${ins.aab203 }</p>
+																				<p>商品名:${ins.aab202 }</p>
 																				<p class="info-little">属性1:还没填
 																					<br/>属性2:还没填 </p>
 																			</a>
@@ -761,7 +761,7 @@
 																</li>
 																<li class="td td-price">
 																	<div class="item-price">
-																		${ins.aab314 }
+																		&yen;${ins.aab314 }
 																	</div>
 																</li>
 																<li class="td td-number">
@@ -786,8 +786,8 @@
 															    				*Double.valueOf((String)request.getAttribute("price"))
 															    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 																<div class="item-amount">
-																	合计：<%=total %>
-																	<p>含运费：<span>${ins.aab313 }</span></p>
+																	合计：&yen;<%=total %>
+																	<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 																</div>
 															</li>
 															<div class="move-right">
@@ -873,7 +873,7 @@
 																	<div class="item-info">
 																		<div class="item-basic-info">
 																			<a href="#">
-																				<p>商品id:${ins.aab203 } </p>
+																				<p>商品名:${ins.aab202 } </p>
 																				<p class="info-little">属性1:尚无
 																					<br/>属性2:尚无</p>
 																			</a>
@@ -882,7 +882,7 @@
 																</li>
 																<li class="td td-price">
 																	<div class="item-price">
-																		${ins.aab314 }
+																		&yen;${ins.aab314 }
 																	</div>
 																</li>
 																<li class="td td-number">
@@ -907,8 +907,8 @@
 															    				*Double.valueOf((String)request.getAttribute("price"))
 															    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 																<div class="item-amount">
-																	合计：<%=total %>
-																	<p>含运费：<span>${ins.aab313 }</span></p>
+																	合计：&yen;<%=total %>
+																	<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 																</div>
 															</li>
 															<div class="move-right">
@@ -987,7 +987,7 @@
 																		<div class="item-info">
 																			<div class="item-basic-info">
 																				<a href="#">
-																					<p>商品id:${ins.aab203 }</p>
+																					<p>商品名:${ins.aab202 }</p>
 																					<p class="info-little">属性1:尚无
 																						<br/>属性2:尚无</p>
 																				</a>
@@ -996,7 +996,7 @@
 																	</li>
 																	<li class="td td-price">
 																		<div class="item-price">
-																			${ins.aab314 }
+																			&yen;${ins.aab314 }
 																		</div>
 																	</li>
 																	<li class="td td-number">
@@ -1021,8 +1021,8 @@
 																    				*Double.valueOf((String)request.getAttribute("price"))
 																    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 																	<div class="item-amount">
-																		合计：<%=total %>
-																		<p>含运费：<span>${ins.aab313 }</span></p>
+																		合计：&yen;<%=total %>
+																		<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 																	</div>
 																</li>
 																<div class="move-right">
@@ -1103,7 +1103,7 @@
 																	<div class="item-info">
 																		<div class="item-basic-info">
 																			<a href="#">
-																				<p>商品id:${ins.aab203 }</p>
+																				<p>商品名:${ins.aab202 }</p>
 																				<p class="info-little">属性1:尚无
 																					<br/>属性2:尚无 </p>
 																			</a>
@@ -1112,7 +1112,7 @@
 																</li>
 																<li class="td td-price">
 																	<div class="item-price">
-																		${ins.aab314 }
+																		&yen;${ins.aab314 }
 																	</div>
 																</li>
 																<li class="td td-number">
@@ -1137,8 +1137,8 @@
 															    				*Double.valueOf((String)request.getAttribute("price"))
 															    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 																<div class="item-amount">
-																	合计：<%=total %>
-																	<p>含运费：<span>${ins.aab313 }</span></p>
+																	合计：&yen;<%=total %>
+																	<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 																</div>
 															</li>
 															<div class="move-right">
