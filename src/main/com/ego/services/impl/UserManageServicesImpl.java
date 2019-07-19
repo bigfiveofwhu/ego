@@ -23,6 +23,8 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import com.ego.services.JdbcServicesSupport;
 
 public class UserManageServicesImpl extends JdbcServicesSupport 
@@ -35,8 +37,7 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 		return (boolean)method.invoke(this);
     }
 	/****个人信息管理*****/
-	
-	private int user_id = 1;
+
 	//按id查询
 	 public Map<String,String> findById()throws Exception
 	    {
@@ -45,10 +46,11 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 	    			.append("select a.aaa102,a.aaa103,a.aaa109,a.aaa110,")
 	    			.append("       a.aaa104,a.aaa108,a.aaa113")
 	    			.append("  from aa01 a")
-	    			.append(" where a.aaa101=?")
+	    			.append(" where a.aaa102=?")
 	    			;
+	    	String id =(String) this.get("aaa102");
 	    	//执行查询
-	    	return this.queryForMap(sql.toString(), 2);
+	    	return this.queryForMap(sql.toString(), this.get("aaa102"));
 	    }
 	    
 	//修改用户信息
@@ -59,7 +61,7 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 	    			.append("update aa01 a")
 	    			.append("   set a.aaa103=?,a.aaa104=?,a.aaa108=?,")
 	    			.append("       a.aaa109=?,a.aaa110=?,a.aaa113=?")
-	    			.append(" where a.aaa101=?")
+	    			.append(" where a.aaa102=?")
 	    			;
 
 	 
@@ -70,7 +72,7 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 	    			this.get("aaa109"),
 	    			this.get("aaa110"),
 	    			this.get("aaa113"),
-	    			"2"
+	    			this.get("aaa102")
 	    	};
 	    //System.out.println(sql.toString());
 	    	//System.out.println(this.dto);
@@ -87,7 +89,7 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 	     private boolean modifyEmail() throws Exception
 	   {
 		 //用户id用session获得
-		   String sql = "update aa01 a set a.aaa104=? where a.aaa102 = "+ user_id;
+		   String sql = "update aa01 a set a.aaa104=? where a.aaa102 = "+ this.get("aaa102");
 		   
 		   System.out.println(sql);
 		  // this.appendBatch(sql, this.get("aaa104"), new Object[{1}]);
@@ -105,7 +107,7 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 	   @SuppressWarnings("unused")
 	 private boolean modifyPwd() throws Exception
 	   {
-		   String sql = "update aa01 a set a.aaa107=? where a.aaa102 = " + user_id;
+		   String sql = "update aa01 a set a.aaa107=? where a.aaa102 = " + this.get("aaa102");
 		   
 		   return this.executeUpdate(sql, this.get("aaa107"));
 	   }

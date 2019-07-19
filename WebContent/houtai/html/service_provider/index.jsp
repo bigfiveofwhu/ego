@@ -7,7 +7,7 @@
 		<!-- 页面meta -->
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>后台管理系统</title>
+		<title>服务商后台管理系统</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
@@ -25,9 +25,9 @@
 				<!-- Logo -->
 				<a href="<%=path %>/houtai/html/seller/sellerpage/home.jsp" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
-					<span class="logo-mini"><b>购物商城</b></span>
+					<span class="logo-mini"><b>服务商</b></span>
 					<!-- logo for regular state and mobile devices -->
-					<span class="logo-lg"><b>购物商城</b>商家后台</span>
+					<span class="logo-lg"><b>服务商</b>后台</span>
 				</a>
 				<!-- Header Navbar: style can be found in header.less -->
 				<nav class="navbar navbar-static-top">
@@ -98,7 +98,7 @@
 
 								<li id="admin-login">
 
-									<a href="<%=path %>/shop/sellerinfo.html" target="iframe">
+									<a href="<%=path %>/service/showInfo.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 基本信息
 									</a>
 								</li>
@@ -113,7 +113,7 @@
 						<li class="treeview">
 							<a href="#">
 								<i class="fa fa-folder"></i>
-								<span>商品管理</span>
+								<span>服务管理</span>
 								<span class="pull-right-container">
 				       				<i class="fa fa-angle-left pull-right"></i>
 				   		 		</span>
@@ -121,13 +121,13 @@
 							<ul class="treeview-menu">
 
 								<li id="admin-login">
-									<a href="<%=path %>/houtai/html/seller/sellerpage/goods_edit.jsp" target="iframe">
-										<i class="fa fa-circle-o"></i> 新增商品
+									<a href="<%=path %>/houtai/html/service_provider/service_edit.jsp" target="iframe">
+										<i class="fa fa-circle-o"></i> 新增服务
 									</a>
 								</li>
 								<li id="admin-login">
-									<a href="<%=path %>/shop/queryProduct.html" target="iframe">
-										<i class="fa fa-circle-o"></i> 商品管理
+									<a href="<%=path %>/service/queryService.html" target="iframe">
+										<i class="fa fa-circle-o"></i> 服务管理
 									</a>
 								</li>
 							</ul>
@@ -142,7 +142,7 @@
 				       		<ul class="treeview-menu">
 								<li id="admin-login">
 
-									<a href="<%=path %>/shop/queryOrder.html" target="iframe">
+									<a href="<%=path %>/service/queryOrder.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 订单管理
 
 									</a>
@@ -150,40 +150,18 @@
 							</ul>
 						</li>
 						<!-- 菜单 /-->
-						<!-- 优惠券 -->
-						<li class="treeview">
-							<a href="#" >
-								<i class="fa fa-folder"></i>
-								<span>优惠券管理</span>
-								<span class="pull-right-container">
-				       			<i class="fa fa-angle-left pull-right"></i>
-				       		</a>
-				       		<ul class="treeview-menu">
-								<li>
-									<a href="/ego/discount/getShopCoupons.html" target="iframe">
-										<i class="fa fa-circle-o"></i> 优惠券
-									</a>
-								</li>
-								<li>
-									<a href="/ego/discount/discountManage.html" target="iframe">
-										<i class="fa fa-circle-o"></i> 优惠券管理
-									</a>
-								</li>
-							</ul>
-						</li>
-						
 						<!-- 评论管理 -->
 						<li class="treeview">
 							<a href="#" >
 								<i class="fa fa-folder"></i>
-								<span>评论管理</span>
+								<span>评价管理</span>
 								<span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				       		</a>
 				       		<ul class="treeview-menu">
 								<li id="admin-login">
-									<a href="<%=path %>/shop/queryComment.html" target="iframe">
-										<i class="fa fa-circle-o"></i> 评论管理
+									<a href="<%=path %>/service/queryComment.html" target="iframe">
+										<i class="fa fa-circle-o"></i> 评价管理
 									</a>
 								</li>
 							</ul>
@@ -214,7 +192,7 @@
 
 			<!-- 内容区域 -->
 			<div class="content-wrapper">
-				<iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" src="<%=path %>/shop/sellerinfo.html"></iframe>
+				<iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" src="<%=path %>/service/showInfo.html"></iframe>
 			</div>
 			<!-- 内容区域 /-->
 

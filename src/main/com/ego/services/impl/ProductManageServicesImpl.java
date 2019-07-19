@@ -37,7 +37,7 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
     }
 	
 	/**
-	 * 商品页面查询
+	 * 商品页面查询(某个商铺)
 	 */
 	public List<Map<String,String>> query() throws Exception
 	{
@@ -45,13 +45,14 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
   		//还原页面查询条件
   		Object aab202=this.get("qaab202");     //商品名称  模糊查询
   		Object aab212=this.get("qaab212");     //商品状态
+  		Object aab102=this.get("aab102");
 
   		
   		//定义SQL主体
   		StringBuilder sql=new StringBuilder()
-  		  		.append("	select x.aab202,x.aab203,x.aab205,x.aab206,a.fvalue cnaab212 	")
+  		  		.append("	select x.aab202,x.aab203,x.aab205,x.aab206,a.fvalue cnaab212,x.aab204	")
   		  		.append("  from syscode a, ab02 x	")
-  		 	    .append(" where x.aab212=a.fcode and a.fname='aab212' 	")
+  		 	    .append("  where x.aab212=a.fcode and a.fname='aab212' 	")
   				;
   		
   		//参数列表
@@ -66,6 +67,11 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
   		{
   			sql.append(" and x.aab212=?");
   			paramList.add(aab212);
+  		}
+  		if(this.isNotNull(aab102))
+  		{
+  			sql.append(" and x.aab102 = ?");
+  			paramList.add(aab102);
   		}
   		//sql.append(" order by x.aab101");
   		return this.queryForList(sql.toString(), paramList.toArray());
@@ -161,5 +167,6 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 		 
 		return map.get("fcode");
 	}
+	
 	
 }

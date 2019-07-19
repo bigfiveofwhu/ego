@@ -85,13 +85,13 @@
 				<div class="box-tools pull-right">
 					<div class="has-feedback">
 						状态：
-						<select  name="aaa803">
+						<select  name="qaaa803">
 							<option value="">全部</option>
 							<option value="01">未处理</option>
 							<option value="02">已处理</option>
 						</select>
 						 商品:
-						<input type="text" name="aab202" value=""/>
+						<input type="text" name="qaab202" value=""/>
 						<input type="submit"  value="查询"class="btn btn-default"></input>
 					</div>
 				</div>

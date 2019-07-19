@@ -6,7 +6,7 @@
 	<head>
 		<!-- 页面meta -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>投诉管理</title>
+		<title>评价管理</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
@@ -65,7 +65,7 @@
 		<!-- .box-body -->
 
 		<div class="box-header with-border">
-			<h3 class="box-title">投诉管理</h3>
+			<h3 class="box-title">评价管理</h3>
 		</div>
 
 		<div class="box-body">
@@ -81,15 +81,17 @@
 						</div>
 					</div>
 				</div>
-				<form action="<%=path %>/houtai/html/admin/queryJubao.html" method="post">
+				<form action="<%=path %>/service/queryComment.html" method="post">
 				<div class="box-tools pull-right">
 					<div class="has-feedback">
 						状态：
-						<select  name="qaad706">
+						<select  name="isreply">
 							<option value="">全部</option>
-							<option value="01">未处理</option>
-							<option value="02">已处理</option>
+							<option value="01">未回复</option>
+							<option value="02">已回复</option>
 						</select>
+						评论服务:
+						<input type="text" name="qaac203" value=""/>
 						<input type="submit"  value="查询"class="btn btn-default"></input>
 					</div>
 				</div>
@@ -101,27 +103,30 @@
 					<thead>
 						<tr>
 							<th class="sorting">序号</th>
-							<th class="sorting">用户id</th>
-							<th class="sorting">用户名</th>
-							<th class="sorting">投诉原因</th>
-							<th class="sorting">投诉内容</th>
-							<th class="sorting">投诉对象</th>
-							<th class="sorting">投诉状态</th>
+							<th class="sorting">评论服务名称</th>
+							<th class="sorting">评论内容</th>
+							<th class="sorting">评价时间</th>
+							<th class="sorting">回复时间</th>
+							<th class="sorting">服务星级评价</th>
 							<th class="text-center">操作</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${complainList}" var="ins" varStatus="vs">
+						<c:forEach items="${commentList}" var="ins" varStatus="vs">
 						<tr>
 							<td>${vs.count}</td>
-							<td>${ins.aaa102}</td>
-							<td>${ins.aaa103}</td>
-							<td>${ins.cnaad702}</td>
-							<td>${ins.cnaad703}</td>
-							<td>${ins.cnaad704}</td>
-							<td>${ins.cnaad706}</td>
+							<td>${ins.aac203}</td>
+							<td>${ins.aac503}</td>
+							<td>${ins.aac505}</td>
+							<td>${ins.aac506}</td>
+							<td>${ins.aac507}</td>
 						<td class="text-center">
-			         		<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aad705}')">处理</button>
+						    <c:if test="${ins.aac504 == null }">
+			         		<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aac504}','${ins.aac502 }')">回复</button>
+					        </c:if>
+					        <c:if test="${ins.aac504 != null }">
+					        <button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aac504}','${ins.aac502 }')">查看回复</button>
+					        </c:if>
 						</td>
 						</tr>
 						</c:forEach>
@@ -141,9 +146,9 @@
         <a href="javascript:void(0)" onclick="closeBox()">×</a>
      </div>
     <div class="content">
-    <form action="reply.html" method="post">
-    <textarea id="replyText" rows="15" cols="48" name="aab405"></textarea>
-    <input type="submit"  value="回复"></input>
+    <form id="myform1" method="post">
+    <textarea id="reply" rows="15" cols="48" name="aac504"></textarea>
+    <input class="btn bg-olive btn-xs" type="submit"  value="回复"></input>
     </form>
     </div>
     </div>
@@ -170,10 +175,11 @@
 	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
 	<script>
     /*点击弹出按钮*/
-    function popBox(v) {
+    function popBox(v,id) {
         var popBox = document.getElementById("popBox");
         var popLayer = document.getElementById("popLayer");
-        $("#replyText").val(v);
+        $("#reply").val(v);
+        $("#myform1").attr("action","<%=path%>/service/replyComment.html?aac502="+id);
        // document.getElementById("replyText").value = v;
         popBox.style.display = "block";
         popLayer.style.display = "block";

@@ -5,8 +5,9 @@
 
 	<head>
 		<!-- 页面meta -->
+
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>投诉管理</title>
+		<title>商品管理</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
@@ -14,58 +15,13 @@
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
 		<link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/angularjs/pagination.css">
-		<script type="text/javascript" src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
-		<style>
-        /*背景层*/
-        #popLayer {
-            display: none;
-            background-color: #B3B3B3;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 10;
-            -moz-opacity: 0.8;
-            opacity:.80;
-            filter: alpha(opacity=80);/* 只支持IE6、7、8、9 */
-        }
- 
-        /*弹出层*/
-        #popBox {
-            display: none;
-            background-color: #FFFFFF;
-            z-index: 11;
-            width: 400px;
-            height: 400px;
-            position:fixed;
-            top:0;
-            right:0;
-            left:0;
-            bottom:0;
-            margin:auto;
-        }
- 
-        #popBox .close{
-            text-align: right;
-            margin-right: 5px;
-            background-color: #F8F8F8;
-        }
- 
-        /*关闭按钮*/
-        #popBox .close a {
-            text-decoration: none;
-            color: #2D2C3B;
-        }
- 
-    </style>
 	</head>
 
 	<body class="hold-transition skin-red sidebar-mini" ng-app="shopping" ng-controller="GoodsController" ng-init="findItemCatList()">
 		<!-- .box-body -->
 
 		<div class="box-header with-border">
-			<h3 class="box-title">投诉管理</h3>
+			<h3 class="box-title">服务管理</h3>
 		</div>
 
 		<div class="box-body">
@@ -81,15 +37,18 @@
 						</div>
 					</div>
 				</div>
-				<form action="<%=path %>/houtai/html/admin/queryJubao.html" method="post">
+				<form action="<%=path %>/service/queryService.html" method="post">
 				<div class="box-tools pull-right">
 					<div class="has-feedback">
 						状态：
-						<select  name="qaad706">
+						<select ng-model="search_domain.auditStatus" name="qaac208">
 							<option value="">全部</option>
-							<option value="01">未处理</option>
-							<option value="02">已处理</option>
+							<option value="01">未审核</option>
+							<option value="02">审核通过</option>
+							<option value="03">审核未通过</option>
+							<option value="04">已下架</option>
 						</select>
+						商品名称：<input name="qaac203" ng-model="search_domain.goodsName">
 						<input type="submit"  value="查询"class="btn btn-default"></input>
 					</div>
 				</div>
@@ -100,29 +59,43 @@
 				<table id="dataList" class="table table-bordered table-striped table-hover dataTable">
 					<thead>
 						<tr>
+							<th class="" style="padding-right:0px">
+								<input id="selall" type="checkbox" class="icheckbox_square-blue">
+							</th>
 							<th class="sorting">序号</th>
-							<th class="sorting">用户id</th>
-							<th class="sorting">用户名</th>
-							<th class="sorting">投诉原因</th>
-							<th class="sorting">投诉内容</th>
-							<th class="sorting">投诉对象</th>
-							<th class="sorting">投诉状态</th>
+							<th class="sorting">服务ID</th>
+							<th class="sorting">服务名称</th>
+							<th class="sorting">服务类型</th>
+							<th class="sorting">服务方式</th>
+							<th class="sorting">服务区间</th>
+							<th class="sorting">状态</th>
 							<th class="text-center">操作</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${complainList}" var="ins" varStatus="vs">
+						<c:forEach items="${serviceList}" var="ins" varStatus="vs">
 						<tr>
+							<td><input type="checkbox" ></td>
 							<td>${vs.count}</td>
-							<td>${ins.aaa102}</td>
-							<td>${ins.aaa103}</td>
-							<td>${ins.cnaad702}</td>
-							<td>${ins.cnaad703}</td>
-							<td>${ins.cnaad704}</td>
-							<td>${ins.cnaad706}</td>
+							<td>${ins.aac202}</td>
+							<td>${ins.aac203}</td>
+							<td>${ins.cnaac204}</td>
+							<td>${ins.cnaac205}</td>
+							<td>${ins.aac206}</td>
+							<td>
+							  ${ins.cnaac208}
+							</td>
 						<td class="text-center">
-			         		<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aad705}')">处理</button>
-						</td>
+								<button type="button" class="btn bg-olive btn-xs"><a class="btn bg-olive btn-xs">修改</a></button>
+								<button type="button" class="btn bg-olive btn-xs" >
+									<a class="btn bg-olive btn-xs"  >
+										下架
+									</a>
+									<a class="btn bg-olive btn-xs"  >
+										上架
+									</a>
+								</button>
+							</td>
 						</tr>
 						</c:forEach>
 					</tbody>
@@ -135,18 +108,6 @@
 
 		</div>
 		<!-- /.box-body -->
-      <div id="popLayer"></div>
-     <div id="popBox">
-       <div class="close">
-        <a href="javascript:void(0)" onclick="closeBox()">×</a>
-     </div>
-    <div class="content">
-    <form action="reply.html" method="post">
-    <textarea id="replyText" rows="15" cols="48" name="aab405"></textarea>
-    <input type="submit"  value="回复"></input>
-    </form>
-    </div>
-    </div>
 
 	</body>
 
@@ -155,7 +116,7 @@
 	<script type="text/javascript" src="<%=path%>/houtai/plugins/angularjs/angular.min.js"></script>
 	<!-- 分页组件开始 -->
 	<!--  
-	<script src="<%=path%>/houtai/plugins/angularjs/pagination.js" charset="gbk"></script>
+	<script src="<%=path%>/houtai/plugins/angularjs/pagination.js" charset="utf-8"></script>
 	-->
 	<!-- 分页组件结束 -->
 	<script type="text/javascript" src="<%=path%>/houtai/js/base/Base_pagination.js"></script>
@@ -168,24 +129,5 @@
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/SpecificationService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/BrandService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
-	<script>
-    /*点击弹出按钮*/
-    function popBox(v) {
-        var popBox = document.getElementById("popBox");
-        var popLayer = document.getElementById("popLayer");
-        $("#replyText").val(v);
-       // document.getElementById("replyText").value = v;
-        popBox.style.display = "block";
-        popLayer.style.display = "block";
-    };
-    
-    /*点击关闭按钮*/
-    function closeBox() {
-        var popBox = document.getElementById("popBox");
-        var popLayer = document.getElementById("popLayer");
-        popBox.style.display = "none";
-        popLayer.style.display = "none";
-    }
-</script>
 
 </html>

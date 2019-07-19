@@ -17,8 +17,7 @@ import com.ego.services.JdbcServicesSupport;
 
 public class Aa03ServiceImpl extends JdbcServicesSupport
 {
-	//”√sessionªÒ»°
-	private int userId = 1;
+	//
 	public boolean update(String utype) throws Exception 
     {
 		Method method=this.getClass().getDeclaredMethod(utype);
@@ -79,7 +78,7 @@ public class Aa03ServiceImpl extends JdbcServicesSupport
 		
 		Object args[]=
 		{
-		  userId,
+		  this.get("aaa102"),
 		  this.get("aaa302"),
 		  this.get("aaa303")
 		};
