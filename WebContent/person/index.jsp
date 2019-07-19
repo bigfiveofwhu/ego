@@ -59,7 +59,7 @@
 					<li class="person">
 						<p><i class="am-icon-balance-scale"></i>我的交易</p>
 						<ul>
-							<li><a href="<%=path %>/person/order.jsp" target="iframe">订单管理</a></li>
+							<li><a href="<%=path %>/showOrder.html" target="iframe">订单管理</a></li>
 							<li> <a href="<%=path %>/person/change.jsp" target="iframe">退款售后</a></li>
 							<li> <a href=javascript:void(0); target="iframe">评价商品</a></li>
 						</ul>
