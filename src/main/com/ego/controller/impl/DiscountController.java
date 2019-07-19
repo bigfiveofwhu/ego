@@ -1,5 +1,8 @@
 package com.ego.controller.impl;
 
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -34,14 +37,24 @@ public class DiscountController extends ControllerSupport{
 		String mapping=servletPath.substring(servletPath.lastIndexOf('/')+1
 				,servletPath.indexOf('.'));
 		switch (mapping) {
-		case "getCustomerCoupons":
+		case "getCustomerCoupons"://获取用户的所有优惠券，包括店铺名
 			List<Map<String,String>> coupons= aa05Service.query();
+			List<Map<String, String>> usable=new ArrayList<Map<String,String>>();
+			List<Map<String, String>> invalid=new ArrayList<Map<String,String>>();
 			for (Map<String, String> map : coupons) {
-				//获得每个优惠券的店铺名
 				map.put("shopName",adservice.getName(AdvertiseService.shoptAd, map.get("aab102")) );
+				Date ValidDate=DateFormat.getDateInstance().parse(map.get("aaa506"));//获取有效期
+				if (ValidDate.after(new Date())) {
+					usable.add(map);
+				}else {
+					invalid.add(map);
+				}
+				//获得每个优惠券的店铺名
 			}
-			this.saveAttribute("userCoupons", coupons);
-			return prefix+"userDiscount";
+			this.saveAttribute("usable", usable);
+			this.saveAttribute("invalid", invalid);
+			this.saveAttribute("currentDate", new Date());
+			return "person/coupon";
 		case "discountManage":
 			this.saveAttribute("shopCoupons", ab05Service.query());
 			return prefix+"discountManage";

@@ -16,6 +16,7 @@
 <link href="<%=path %>/css/localCity/hmstyle.css" rel="stylesheet" type="text/css" />
 <link href="<%=path %>/css/localCity/skin.css" rel="stylesheet" type="text/css" />
 <link href="<%=path %>/css/localCity/home.css" rel="stylesheet" type="text/css" />
+<link href="<%=path %>/css/localCity/navigate.css" rel="stylesheet" type="text/css" />
 <script src="<%=path %>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 <script src="<%=path %>/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
 <c:if test="${msg!=null }">
@@ -196,27 +197,75 @@
 			<!--热门活动 -->
 			<div class="am-container activity ">
 				<div class="shopTitle ">
-					<h4>活动</h4>
-					<h3>每期活动 优惠享不停</h3>
+					<h4>新增服务商</h4>
+					<h3>新增服务商 优惠享不停</h3>
 					<span class="more "> 
-						<a href="# ">全部活动<i class="am-icon-angle-right" style="padding-left:10px ;"></i></a> 
+						<a href="# ">全部服务商<i class="am-icon-angle-right" style="padding-left:10px ;"></i></a> 
 					</span>
 				</div>
-				<div class="am-g am-g-fixed ">
-					<c:forEach items="${activityList}" var="item" varStatus="">
-						<div class="am-u-sm-3 ">
-							<div class="icon-sale one "></div>
-							<h4>秒杀</h4>
-							<div class="activityMain ">
-							    <!--  点击图片显示图片详细 -->
-								<a href="<%=path %>/shop/detail.html?productId=${item.aab203}"><img src="${item.aab603 }"></img></a>
-							</div>
-							<div class="info ">
-								<h3>${item.aab604 }</h3>
-							</div>
-						</div>
-					</c:forEach>
+				<div class="am-g am-g-fixed service-101">
 				</div>
+				<script type="text/javascript">
+				$(function(){
+					$.ajax({
+						url:"<%=path%>/service.ajax",
+						type:"post",
+						dataType:"json",
+						timeout:20000,
+						data:{
+							"type":"1",
+							"location":myGeoLocation
+						},
+						success:function(res,status){
+							console.log(res.services.toString());
+							var services=res.services;
+							var n=services.length;
+							var html="";
+							for(var i=0;i<n;i++){
+								var service=services[i]
+								html+=  "<div class='service-body'>"+
+										"	<div class='am-u-sm-3 '>"+
+										"		<div class='icon-sale one'></div>"+
+										"		<h4>优惠</h4>"+
+										"		<div class='activityMain'>"+
+										"			<a href='/ego/localCity/companyDetail.html?id="+service.aac102+"'><img src='/ego/images/service/"+service.aac102+".jpg'></img></a>"+
+										"		</div>"+
+										"		<div class='info'>"+
+										"			<h3>"+service.aac103+"</h3>"+
+										"		</div>"+
+										"	</div>"+
+										"	<div class='service-intro'>"+
+										"		<div class='service-intro-item'>"+
+										"			<p class='title'>服务商名称</p>"+
+										"			<P class='value'>"+service.aac103+"</P>"+
+										"		</div>"+
+										"		<div class='service-intro-item'>"+
+										"			<p class='title'>服务类型</p>"+
+										"			<P class='value'>"+service.aac106+"</P>"+
+										"		</div>"+
+										"		<div class='service-intro-item'>"+
+										"			<p class='title'>公司地址</p>"+
+										"			<P class='value'>"+service.aac104+"</P>"+
+										"		</div>"+
+										"		<div class='service-intro-item'>"+
+										"			<p class='title'>综合评分</p>"+
+										"			<P class='value'>"+service.aac110+"</P>"+
+										"		</div>"+
+										"		<div class='service-intro-item'>"+
+										"			<p class='title'>公司电话</p>"+
+										"			<P class='value'>"+service.aac111+"</P>"+
+										"		</div>"+
+										"	</div>"+
+										"</div>";
+							}
+							$(".service-101").html(html);
+						},
+						error:function(res,status){
+							console.log("网络故障!");
+						}
+					});
+				});
+				</script>
 				<div class="clear "></div>
 				<%--热门店铺 --%>
 				<div class="shopTitle ">

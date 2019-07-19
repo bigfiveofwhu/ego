@@ -1,5 +1,6 @@
 package com.ego.controller.impl.localCity;
 
+import java.util.List;
 import java.util.Map;
 
 import com.ego.controller.ControllerSupport;
@@ -20,6 +21,7 @@ public class HomeController extends ControllerSupport
 				this.getSession().setAttribute("aac102", ins.get("aac102"));   //存入服务商id
 			}
 		}
+		
 		this.saveAttribute("isSendRedirect", false);
 		return "localCity/home";
 	}
