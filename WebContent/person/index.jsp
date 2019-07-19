@@ -45,14 +45,14 @@
 			<aside class="menu">
 				<ul>
 					<li class="person active">
-						<a href="<%=path %>/person/index.jsp" target="iframe"><i class="am-icon-user"></i>个人中心</a>
+						<a href="<%=path %>/person/home.jsp" target="iframe"><i class="am-icon-user"></i>个人中心</a>
 					</li>
 					<li class="person">
 						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
 					<ul>
-						<li> <a href="showUserInfo.html" target="iframe">个人信息</a></li>
+						<li> <a href="<%=path %>/person/showUserInfo.html" target="iframe">个人信息</a></li>
 							<li> <a href="<%=path%>/person/safety.jsp" target="iframe">安全设置</a></li>
-							<li> <a href="showAddress.html" target="iframe">地址管理</a></li>
+							<li> <a href="<%=path%>/person/showAddress.html" target="iframe">地址管理</a></li>
 							<li> <a href="<%=path%>/person/cardlist.jsp" target="iframe">快捷支付</a></li>
 						</ul>
 					</li>
@@ -103,7 +103,7 @@
 	function SetIFrameHeight() {
 		var iframeid = document.getElementById("iframe"); //iframe id
 		if(document.getElementById) {
-			iframeid.height = document.documentElement.clientHeight;
+			iframeid.height = document.documentElement.clientHeight*1.6;
 			//iframeid.width = document.documentElement.clientWidth*0.8;
 		}
 	}

@@ -34,7 +34,7 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 	
 	
 	/**
-	 * 商铺页面查询
+	 * 商铺页面查询:
 	 */
 	public List<Map<String,String>> query() throws Exception
 	{
@@ -42,6 +42,7 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
   		//还原页面查询条件
   		Object aab103=this.get("qaab103");     //店铺名称  模糊查询
   		Object aab107=this.get("qaab107");     //店铺状态
+  		Object aab102=this.get("aab102");   //店铺id
 
   		
   		//定义SQL主体
@@ -64,6 +65,11 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
   		{
   			sql.append(" and x.aab107=?");
   			paramList.add(aab107);
+  		}
+  		if(this.isNotNull(aab102))
+  		{
+  			sql.append(" and x.aab102=?");
+  			paramList.add(aab102);
   		}
   		//sql.append(" order by x.aab101");
   		return this.queryForList(sql.toString(), paramList.toArray());
@@ -135,12 +141,13 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 	 * @return
 	 * @throws Exception
 	 */
-	public boolean checkIn() throws Exception
+	@SuppressWarnings("unused")
+	private boolean checkIn() throws Exception
 	{
 		//用户id用session获得
-		Object userId = "1";
+		//Object userId = "1";
 		String sql1="select a.aab107 from ab01 a where a.aaa102 = ?";
-		List<Map<String,String>> list = this.queryForList(sql1,userId );
+		List<Map<String,String>> list = this.queryForList(sql1,this.get("aaa102") );
 		if(list.size() > 0)
 		{
 			//用户审核通过
@@ -175,6 +182,8 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 点赞数	       aab413	
 	 */
 	
+	
+	
 	public List<Map<String, String>> query(String qtype) throws Exception 
 	{
 		if(qtype.equalsIgnoreCase("queryforcomment"))
@@ -190,22 +199,23 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 	}
 	
 	/**
-	 * 查询评论页面 注:还未加入商铺id
+	 * 查询评论页面 
 	 * @return
 	 * @throws Exception
 	 */
 	public List<Map<String, String>> queryforComment() throws Exception 
 	{
 		//还原页面查询条件
-				Object aab202=this.get("aab202");       //评论商品名称
+				Object aab202=this.get("qaab202");       //评论商品名称
 		  		Object isreply=this.get("isreply");     //评论是否回复
-		  		Object aab412=this.get("aab412");     //是否带图
+		  		Object aab412=this.get("qaab412");     //是否带图
+		  		Object aab102=this.get("aab102");    //店铺id
 		  	
 
 		  		
 		  		//定义SQL主体
 		  		StringBuilder sql=new StringBuilder()
-		  		  		.append("	select y.aab202,y.aab203,z.aaa103,x.aab403,x.aab410,x.aab405 ")
+		  		  		.append("	select y.aab202,y.aab203,z.aaa103,x.aab403,x.aab410,x.aab405,x.aab402 ")
 		  		  		.append("  from ab04 x, ab02 y, aa01 z 	")
 		  		 	    .append(" where x.aab203=y.aab203 and x.aaa102=z.aaa102	")
 		  				;
@@ -231,6 +241,11 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 		  			sql.append(" and x.aab412 = ?");
 		  			paramList.add(aab412);
 		  		}
+		  		if(this.isNotNull(aab102))
+		  		{
+		  			sql.append(" and y.aab102 = ?");
+		  			paramList.add(aab102);
+		  		}
 		  		//sql.append(" order by x.aab101");
 		  		return this.queryForList(sql.toString(), paramList.toArray());
 	}
@@ -243,9 +258,10 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 	public boolean replyComment() throws Exception
 	{
 		//Object aab405 = this.get("aab405");
-		String  sql = "update ab04 a set a.aab405=?";
+		String  sql = "update ab04 a set a.aab405=?,a.aab408 = current_time where a.aab402=?";
 		
-		return this.executeUpdate(sql, this.get("aab405"));
+	
+		return this.batchUpdate(sql, new Object[] { this.get("aab405") },this.get("aab402"));
 	}
 
 	/*****售后管理******/
@@ -267,15 +283,16 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 完成时间	    aaa809	
 	 */
 	/**
-	 * 查看售后 注:还未加入店铺id
+	 * 查看售后 
 	 * @return
 	 * @throws Exception
 	 */
 	public List<Map<String, String>> queryforAfterBuy() throws Exception 
 	{
 		//还原页面查询条件
-		Object aaa803=this.get("aaa803");       //售后状态 01--未处理 02--已处理
-  		Object aab202=this.get("aab202");     //售后商品
+		Object aaa803=this.get("qaaa803");       //售后状态 01--未处理 02--已处理
+  		Object aab202=this.get("qaab202");     //售后商品
+  		Object aab102=this.get("aab102");//商品id
   	
 
   		
@@ -298,11 +315,17 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
   			sql.append(" and x.aaa803 = ?");
   			paramList.add("%"+aaa803+"%");
   		}
-  		if(this.equals(aab202))
+  		if(this.isNotNull(aab202))
   		{
   			sql.append(" and x.aab202 like ?");
   			paramList.add(aab202);
   		}
+  		if(this.isNotNull(aab102))
+  		{
+  			sql.append(" and x.aab102 = ?");
+  			paramList.add(aab102);
+  		}
+  		
   		//sql.append(" order by x.aab101");
   		return this.queryForList(sql.toString(), paramList.toArray());
 		
@@ -329,24 +352,28 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 商品价格	    aab314	
 商品规格	    aab315	
 **/
+
 	/**
-	 * 查询订单 注:还未加入商铺id
+	 * 查询该商铺所有订单 
 	 * @return
 	 * @throws Exception
 	 */
 	public List<Map<String, String>> queryforOrder() throws Exception
 	{
+		//
+		
 		//还原页面查询条件
-				Object aab303=this.get("aab303");       //
-                Object aab302=this.get("aab302");   //订单号
+				Object aab303=this.get("qaab303");       //
+                Object aab302=this.get("qaab302");   //订单号
+                Object aab102=this.get("aab102");
 		  		
 		  		//定义SQL主体
 		  		StringBuilder sql=new StringBuilder()
 		  				.append(" select x.aab302,x.aab304,x.aab312,x.aab306, ")
 		  				.append("        x.aab314,x.aab310,s.fvalue cnaab303 ")
-		  				.append(" from ab03 x,syscode s ")
+		  				.append(" from ab03 x,syscode s,ab02 a")
 		  				.append(" where s.fname='aab303' and s.fcode = x.aab303 ")
-		  				//.append("   and ")
+		  				.append("   and a.aab203 = x.aab203 ")
 		  				;
 		  		
 		  		//参数列表
@@ -355,13 +382,19 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 		  		if(this.isNotNull(aab303))
 		  		{
 		  			sql.append(" and x.aab303 = ?");
-		  			paramList.add("%"+aab303+"%");
+		  			paramList.add(aab303);
 		  		}
-		  		if(this.equals(aab302))
+		  		if(this.isNotNull(aab302))
 		  		{
 		  			sql.append(" and x.aab302 like ?");
-		  			paramList.add(aab302);
+		  			paramList.add("%"+aab302+"%");
 		  		}
+		  		if(this.isNotNull(aab102))
+		  		{
+		  			sql.append(" and a.aab102 = ?");
+		  			paramList.add(aab102);
+		  		}
+		  		
 		  		//sql.append(" order by x.aab101");
 		  		return this.queryForList(sql.toString(), paramList.toArray());
 	}
@@ -376,7 +409,7 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 	{
 		String sql = "update ab03 set aab303 = ?,aab306 = current_time,aab309 = ? where aab302 = ?";
     	Object args[]={
-    			"04",
+    			"04", //04--修改状态已发货
     			this.get("aab309")
     	};
 		return this.batchUpdate(sql, args, this.get("aab302"));
@@ -396,9 +429,9 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 				.append("  a.aab108,a.aab109,a.aab110,a.aab111 ")
 				.append(" from ab01 a,syscode s")
 				.append(" where s.fname='aab107' and s.fcode=a.aab107")
+				.append("  and a.aab102=?")
 				;
-		return this.queryForList(sql.toString());
+		return this.queryForList(sql.toString(),this.get("aab102"));
 	}
-	
 	
 }

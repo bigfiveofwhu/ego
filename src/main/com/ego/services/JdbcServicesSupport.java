@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import com.ego.system.db.DBUtils;
 
 /**
@@ -449,4 +452,7 @@ public abstract class JdbcServicesSupport implements BaseServices
 		method.setAccessible(true);
 		return method;
 	}
+	
 }
+
+

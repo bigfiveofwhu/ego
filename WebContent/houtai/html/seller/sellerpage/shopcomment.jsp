@@ -91,13 +91,13 @@
 							<option value="02">已回复</option>
 						</select>
 						是否带图：
-							<select  name="aab412">
+							<select  name="qaab412">
 							<option value="">全部</option>
 							<option value="01">带图评论</option>
 							<option value="02">未带图评论</option>
 						</select>
 						评论商品:
-						<input type="text" name="aab202" value=""/>
+						<input type="text" name="qaab202" value=""/>
 						<input type="submit"  value="查询"class="btn btn-default"></input>
 					</div>
 				</div>
@@ -132,10 +132,10 @@
 							</td>
 						<td class="text-center">
 						    <c:if test="${ins.aab405 == null }">
-			         		<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aab405}')">回复</button>
+			         		<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aab405}','${ins.aab402 }')">回复</button>
 					        </c:if>
 					        <c:if test="${ins.aab405 != null }">
-					        <button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aab405}')">查看回复</button>
+					        <button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aab405}','${ins.aab402 }')">查看回复</button>
 					        </c:if>
 						</td>
 						</tr>
@@ -156,7 +156,7 @@
         <a href="javascript:void(0)" onclick="closeBox()">×</a>
      </div>
     <div class="content">
-    <form action="<%=path %>/shop/reply.html" method="post">
+    <form in="myform" method="post">
     <textarea id="replyText" rows="15" cols="48" name="aab405"></textarea>
     <input type="submit"  value="回复"></input>
     </form>
@@ -185,10 +185,11 @@
 	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
 	<script>
     /*点击弹出按钮*/
-    function popBox(v) {
+    function popBox(v,id) {
         var popBox = document.getElementById("popBox");
         var popLayer = document.getElementById("popLayer");
         $("#replyText").val(v);
+        $("#myform").action="<%=path%>/shop/reply.html?aab402="+id;
        // document.getElementById("replyText").value = v;
         popBox.style.display = "block";
         popLayer.style.display = "block";

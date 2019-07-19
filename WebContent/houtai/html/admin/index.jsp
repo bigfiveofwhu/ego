@@ -188,7 +188,7 @@
 
 	<!-- 内容区域 -->
 	<div class="content-wrapper">
-		<iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" src="<%=path %>/houtai/html/seller/sellerpage/seller.jsp"></iframe>
+		<iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" src="<%=path %>/houtai/html/admin/queryShop.html"></iframe>
 	</div>
 	<!-- 内容区域 /-->
 
