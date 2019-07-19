@@ -2,7 +2,7 @@
 <li class="appliance js_toggle relative first">
 	<div class="category-info">
 		<h3 class="category-name b-category-name">
-			<i><img src="<%=path%>/images/cake.png"> </i>
+			<i><img src="${path}/images/cake.png"> </i>
 			<a class="ml-22 productType" ptype_id="1" title="图书">图书</a>
 		</h3>
 		<em>&gt;</em>
@@ -2155,7 +2155,7 @@
 <li class="appliance js_toggle relative first">
 	<div class="category-info">
 		<h3 class="category-name b-category-name">
-			<i><img src="<%=path%>/images/cake.png"> </i>
+			<i><img src="${path}/images/cake.png"> </i>
 			<a class="ml-22 productType" ptype_id="684" title="男女装/内衣">男女装/内衣</a>
 		</h3>
 		<em>&gt;</em>
@@ -2421,7 +2421,7 @@
 <li class="appliance js_toggle relative first">
 	<div class="category-info">
 		<h3 class="category-name b-category-name">
-			<i><img src="<%=path%>/images/cake.png"> </i>
+			<i><img src="${path}/images/cake.png"> </i>
 			<a class="ml-22 productType" ptype_id="764" title="鞋">鞋</a>
 		</h3>
 		<em>&gt;</em>
@@ -2545,7 +2545,7 @@
 <li class="appliance js_toggle relative first">
 	<div class="category-info">
 		<h3 class="category-name b-category-name">
-			<i><img src="<%=path%>/images/cake.png"> </i>
+			<i><img src="${path}/images/cake.png"> </i>
 			<a class="ml-22 productType" ptype_id="798" title="运动户外">运动户外</a>
 		</h3>
 		<em>&gt;</em>
@@ -2916,7 +2916,7 @@
 <li class="appliance js_toggle relative first">
 	<div class="category-info">
 		<h3 class="category-name b-category-name">
-			<i><img src="<%=path%>/images/cake.png"> </i>
+			<i><img src="${path}/images/cake.png"> </i>
 			<a class="ml-22 productType" ptype_id="909" title="箱包皮具">箱包皮具</a>
 		</h3>
 		<em>&gt;</em>
@@ -3012,7 +3012,7 @@
 <li class="appliance js_toggle relative first">
 	<div class="category-info">
 		<h3 class="category-name b-category-name">
-			<i><img src="<%=path%>/images/cake.png"> </i>
+			<i><img src="${path}/images/cake.png"> </i>
 			<a class="ml-22 productType" ptype_id="933" title="家用电器">家用电器</a>
 		</h3>
 		<em>&gt;</em>
@@ -3201,7 +3201,7 @@
 <li class="appliance js_toggle relative first">
 	<div class="category-info">
 		<h3 class="category-name b-category-name">
-			<i><img src="<%=path%>/images/cake.png"> </i>
+			<i><img src="${path}/images/cake.png"> </i>
 			<a class="ml-22 productType" ptype_id="988" title="食品">食品</a>
 		</h3>
 		<em>&gt;</em>
@@ -3442,7 +3442,7 @@
 <li class="appliance js_toggle relative first">
 	<div class="category-info">
 		<h3 class="category-name b-category-name">
-			<i><img src="<%=path%>/images/cake.png"> </i>
+			<i><img src="${path}/images/cake.png"> </i>
 			<a class="ml-22 productType" ptype_id="1057" title="时尚美妆">时尚美妆</a>
 		</h3>
 		<em>&gt;</em>
@@ -3651,7 +3651,7 @@
 <li class="appliance js_toggle relative first">
 	<div class="category-info">
 		<h3 class="category-name b-category-name">
-			<i><img src="<%=path%>/images/cake.png"> </i>
+			<i><img src="${path}/images/cake.png"> </i>
 			<a class="ml-22 productType" ptype_id="1116" title="母婴用品">母婴用品</a>
 		</h3>
 		<em>&gt;</em>
@@ -3921,7 +3921,7 @@
 <li class="appliance js_toggle relative first">
 	<div class="category-info">
 		<h3 class="category-name b-category-name">
-			<i><img src="<%=path%>/images/cake.png"> </i>
+			<i><img src="${path}/images/cake.png"> </i>
 			<a class="ml-22 productType" ptype_id="1194" title="电脑办公">电脑办公</a>
 		</h3>
 		<em>&gt;</em>
@@ -4220,7 +4220,7 @@
 <li class="appliance js_toggle relative first">
 	<div class="category-info">
 		<h3 class="category-name b-category-name">
-			<i><img src="<%=path%>/images/cake.png"> </i>
+			<i><img src="${path}/images/cake.png"> </i>
 			<a class="ml-22 productType" ptype_id="1283" title="文化创意用品">文化创意用品</a>
 		</h3>
 		<em>&gt;</em>
