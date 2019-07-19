@@ -33,9 +33,6 @@
 				<div class="pull-left">
 					<div class="form-group form-inline">
 						<div class="btn-group">
-							<button type="button" class="btn btn-default" title="新建" onclick="window.location.href='goods_edit.html';"><i class="fa fa-file-o"></i> 新建</button>
-							<button type="button" class="btn btn-default" title="删除" ng-click="delete()"><i class="fa fa-trash-o"></i> 删除</button>
-							<button type="button" class="btn btn-default" title="提交审核" ng-click="updateStatus('1')"><i class="fa fa-check"></i> 提交审核</button>
 							<button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
 						</div>
 					</div>
@@ -47,10 +44,9 @@
 						<select ng-model="search_domain.auditStatus" name="qaab212">
 							<option value="">全部</option>
 							<option value="01">未审核</option>
-							<option value="02">申请中</option>
-							<option value="03">审核通过</option>
-							<option value="04">审核未通过</option>
-							<option value="05">已下架</option>
+							<option value="02">审核通过</option>
+							<option value="03">审核未通过</option>
+							<option value="04">已下架</option>
 						</select>
 						商品名称：<input name="qaab202" ng-model="search_domain.goodsName">
 						<input type="submit"  value="查询"class="btn btn-default"></input>
@@ -84,7 +80,7 @@
 							<td>${ins.aab203}</td>
 							<td>${ins.aab202}</td>
 							<td>${ins.aab205}</td>
-							<td>${ins.aab204}</td>
+							<td>${ins.cnaab204}</td>
 							<td>${ins.aab206}</td>
 							<td>
 							  ${ins.cnaab212}

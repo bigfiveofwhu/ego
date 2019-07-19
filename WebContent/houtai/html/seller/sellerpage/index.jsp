@@ -7,7 +7,7 @@
 		<!-- 页面meta -->
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>后台管理系统</title>
+		<title>购物商城后台管理系统</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
@@ -41,22 +41,22 @@
 							<!-- User Account: style can be found in dropdown.less -->
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle text-center" data-toggle="dropdown">
-									<img src="<%=path%>/houtai/img/Logo.png" class="user-image" alt="User Image">
-									<span class="hidden-xs">{{ loginName }}</span>
+									<img src="<%=path%>/images/upload/user_${aaa102}.jpg" class="user-image" alt="User Image">
+									<span class="hidden-xs">${aaa103 }</span>
 								</a>
 								<ul class="dropdown-menu">
 									<!-- User image -->
 									<li class="user-header">
-										<img src="<%=path %>/houtai/img/Logo.png" class="user-image" alt="User Image">
+										<img src="<%=path %>/images/upload/user_${aaa102}.jpg" class="user-image" alt="User Image">
 										<p>
-											{{loginName}}
+											${aaa103}
 										</p>
 									</li>
 
 									<!-- Menu Footer-->
 									<li class="user-footer">
 										<div class="text-center">
-											<a href="#" class="btn btn-default btn-flat" ng-click="exit()">注销</a>
+											<a href="<%=path %>/logout.html" class="btn btn-default btn-flat">注销</a>
 										</div>
 									</li>
 								</ul>
@@ -75,10 +75,10 @@
 					<!-- Sidebar user panel -->
 					<div class="user-panel">
 						<div class="pull-left image">
-							<img src="<%=path%>/houtai/img/Logo.png" class="user-image" alt="User Image">
+							<img src="<%=path%>/images/upload/user_${aaa102}.jpg" class="user-image" alt="User Image">
 						</div>
 						<div class="pull-left info">
-							<p>{{loginName}}</p>
+							<p>${aaa103}</p>
 							<a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
 						</div>
 					</div>

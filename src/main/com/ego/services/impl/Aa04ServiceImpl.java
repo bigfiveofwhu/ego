@@ -21,6 +21,7 @@ import com.ego.services.JdbcServicesSupport;
 
 public class Aa04ServiceImpl extends JdbcServicesSupport
 {
+	  
 	
 	public boolean update(String utype) throws Exception 
     {
@@ -67,7 +68,7 @@ public class Aa04ServiceImpl extends JdbcServicesSupport
 	 
     	//2.编写参数数组
     	Object args[]={
-    			"1",
+    			this.get("aaa102"),
     			//this.get("aaa102"),   //用户id
     			aaa402,
     			this.get("aaa403"),   
@@ -90,7 +91,7 @@ public class Aa04ServiceImpl extends JdbcServicesSupport
 				.append("      from aa04 x  ")
 				.append("     where x.aaa102=? ");
 		//用户id通过session获取
-		return this.queryForList(sql.toString(), 1);
+		return this.queryForList(sql.toString(), this.get("aaa102"));
 		
 	}
 	/**
@@ -102,7 +103,7 @@ public class Aa04ServiceImpl extends JdbcServicesSupport
 	{
 	  String sql1= "update aa04 a set a.aaa407 = '0' where a.aaa102 = ? ";
 	  //?=用户id
-	 if(this.executeUpdate(sql1, 1))
+	 if(this.executeUpdate(sql1, this.get("aaa102")))
 	 {
 	    String sql2 = "update aa04 a set a.aaa407 = '1' where a.aaa401 = ? ";
 	    return  this.executeUpdate(sql2, this.get("aaa401"));
@@ -139,7 +140,7 @@ public class Aa04ServiceImpl extends JdbcServicesSupport
     	};
     //System.out.println(sql.toString());
     	System.out.println("aaa401"+this.get("aaa401"));
-    	System.out.println(this.dto);
+    	//System.out.println(this.dto);
     	//this.put("aaa101", 1);
     	return this.executeUpdate(sql.toString(), args);
 	  	

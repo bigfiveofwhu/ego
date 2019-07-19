@@ -544,5 +544,6 @@
 		window.jQuery || document.write('<script src="basic/js/jquery.min.js "><\/script>');
 	</script>
 	<script type="text/javascript " src="<%=path %>/basic/js/quick_links.js "></script>
+
 </body>
 </html>

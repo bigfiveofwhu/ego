@@ -78,13 +78,13 @@
 				<div class="box-tools pull-right">
 					<div class="has-feedback">
 						状态：
-						<select ng-model="search_domain.auditStatus" name="aab303">
+						<select ng-model="search_domain.auditStatus" name="qaab303">
 							<option value="">全部</option>
 							<option value="02">待发货</option>
 							<option value="04">已发货</option>
 							<option value="05">已完成</option>
 						</select>
-						订单号：<input name="aab302" ng-model="search_domain.goodsName">
+						订单号：<input name="qaab302" ng-model="search_domain.goodsName">
 						<input type="submit"  value="查询"class="btn btn-default"></input>
 					</div>
 				</div>

@@ -159,7 +159,7 @@ public class ManageReviewServicesImpl extends JdbcServicesSupport
 	public List<Map<String,String>> queryForJubao() throws Exception
 	{
 		//还原页面查询条件
-				Object aad706=this.get("aad706");       //投诉处理状态
+				Object aad706=this.get("qaad706");       //投诉处理状态
 		       
 		  		
 		  		//定义SQL主体
@@ -179,7 +179,7 @@ public class ManageReviewServicesImpl extends JdbcServicesSupport
 		  		//逐一判断查询条件是否录入,拼接AND条件
 		  		if(this.isNotNull(aad706))
 		  		{
-		  			sql.append(" and x.aab706 like ?");
+		  			sql.append(" and x.aad706 like ?");
 		  			paramList.add("%"+aad706+"%");
 		  		}
 		  		//sql.append(" order by x.aab101");

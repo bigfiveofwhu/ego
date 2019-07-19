@@ -279,7 +279,7 @@ public class Ad08ServicesImpl extends JdbcServicesSupport
     			;
     	Object args[]={
     			this.get("aad804"),
-    			this.get("aad102"),
+    			this.get("aad102"),//session÷–
     			this.get("aad801")
     	};
     	this.apppendSql(sql.toString(), args);

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Map;
 
 import com.ego.system.db.DBUtils;
 
@@ -398,6 +399,54 @@ public class Tools
 		return result.getString("pfcode");
 	}
 	
+	public static String getparentCode(String code,String name,String sortName) throws SQLException {
+		String sql="select pfcode from syscode where fcode=? and fname=? and fvalue = ?";
+		PreparedStatement pstm=DBUtils.getConnection().prepareStatement(sql);
+		pstm.setObject(1, code);
+		pstm.setObject(2, name);
+		pstm.setObject(3, sortName);
+		ResultSet result=pstm.executeQuery();
+		result.next();
+		return result.getString("pfcode");
+	}
+	
+	private static String getSortName(String sortCode) throws Exception
+	{
+		String sql ="select fvalue from syscode where fcode=?";
+		
+		PreparedStatement pstm = DBUtils.getConnection().prepareStatement(sql);
+		
+		pstm.setObject(1, sortCode);
+		
+		ResultSet rs = pstm.executeQuery();
+		 
+		rs.next();
+		 
+		return rs.getString("fvalue");
+	}
+	
+	/**
+	 * 获得三级分类
+	 * @param TriCode
+	 * @return
+	 * @throws Exception 
+	 */
+	public static String getTriSort(String TriCode) throws Exception 
+	{
+		String sort_3 = Tools.getSortName(TriCode);
+		String SecCode = Tools.getparentCode(TriCode, "aab204", sort_3);
+		String sort_2 = Tools.getSortName(SecCode);
+		String FirCode = Tools.getparentCode(SecCode, "aab204", sort_2);
+		String sort_1 = Tools.getSortName(FirCode);
+		
+		String cnaab204 = sort_1 + "-" + sort_2 + "-" + sort_3;
+		
+		return cnaab204;
+	}
+	/**
+	 * 获取webContent绝对地址
+	 * @return
+	 */
 	public static String getWebPath()
 	{
 		 String t=Thread.currentThread().getContextClassLoader().getResource("").getPath(); 
@@ -413,5 +462,7 @@ public class Tools
 	{
 		return Tools.getWebPath()+"images/upload";
 	}
+	
+
 
 }

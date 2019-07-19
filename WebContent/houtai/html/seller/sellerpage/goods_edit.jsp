@@ -46,17 +46,18 @@
 					<div class="tab-content">
                            
                            
-                         <form id="myform" action="<%=path %>/shop/addProduct.html" method="post">
+                       
 						<!--表单内容-->
 						<div class="tab-pane active" id="home">
+						  <form id="myform" action="<%=path %>/shop/addProduct.html" method="post">
 							<div class="row data-type">
 								<div class="col-md-2 title">商品分类</div>
 
 								<div class="col-md-10 data">
 								
-                                   <button><a href="<%=path %>/houtai/seller/sellerpage/sort.jsp">选择分类</a></button>
+                                   <button class="btn btn-default"><a href="<%=path %>/houtai/html/seller/sellerpage/sort.jsp">选择分类</a></button>
                                
-                                   <input type="text" value="${sortName }" name="aab204"/>
+                                   <input type="text" value="${sortName }" name="aab204" readonly="readonly" required/>
 
 								</div>
 
@@ -96,8 +97,9 @@
 						                  </select>
 								</div>
 							</div>
+						  </form>
 						</div>
-                   </form>
+ 
                    
 						<!--图片上传-->
 						<div class="tab-pane" id="pic_upload">
