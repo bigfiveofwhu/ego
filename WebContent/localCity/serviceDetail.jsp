@@ -13,6 +13,7 @@
 		<link type="text/css" href="<%=path%>/css/optstyle.css" rel="stylesheet" />
 		<link type="text/css" href="<%=path%>/css/localCity/style.css" rel="stylesheet" />
 		<link type="text/css" href="<%=path%>/css/localCity/serviceDetail.css" rel="stylesheet" />
+		<link href="${path }/css/localCity/navigate.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="<%=path%>/basic/js/jquery-1.7.min.js"></script>
 		<script type="text/javascript" src="<%=path%>/basic/js/quick_links.js"></script>
 		<script type="text/javascript" src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
@@ -243,7 +244,7 @@
 								<div class="am-tab-panel am-fade am-in am-active">
                                     <div class="actor-new">
                                     	<div class="rate">                
-                                    		<strong>100<span>%</span></strong><br> <span>好评度</span>            
+                                    		<strong>${grade*10000/100.0 }<span>%</span></strong><br> <span>好评度</span>            
                                     	</div>
                                         <dl>                    
                                             <dt>买家印象</dt>                    
@@ -266,7 +267,7 @@
 											<li class="tb-taglist-li tb-taglist-li-current">
 												<div class="comment-info">
 													<span>全部评价</span>
-													<span class="tb-tbcr-num">(32)</span>
+													<span class="tb-tbcr-num">(${AllComment })</span>
 												</div>
 											</li>
 											<li class="tb-taglist-li tb-taglist-li-1">
@@ -291,6 +292,7 @@
 									</div>
 									<div class="clear"></div>
 									<ul class="am-comments-list am-comments-list-flip">
+									<%-- 
 										<li class="am-comment">
 											<!-- 评论容器 -->
 											<a href="">
@@ -662,18 +664,68 @@
 												</div>
 												<!-- 评论内容 -->
 											</div>
+										</li>--%>
+										<c:forEach items="${comments }" var="comment">
+											<!-- 评论容器 -->
+											<a href="">
+												<img class="am-comment-avatar" src="<%=path%>/images/no-img_mid_.jpg" />
+												<!-- 评论者头像 -->
+											</a>
+											<div class="am-comment-main">
+												<!-- 评论内容容器 -->
+												<header class="am-comment-hd">
+													<!--<h3 class="am-comment-title">评论标题</h3>-->
+													<div class="am-comment-meta">
+														<!-- 评论元数据 -->
+														<a href="#link-to-user" class="am-comment-author">${comment.aaa103} (匿名)</a>
+														<!-- 评论者 -->
+														评论于
+														<time datetime="">${comment.aac505 }</time>
+													</div>
+												</header>
+												<div class="am-comment-bd">
+													<div class="tb-rev-item " data-id="258040417670">
+														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+															${comment.aac503 }
+														</div>
+														<div class="tb-r-act-bar">
+															服务评分：${comment.aac507}
+														</div>
+													</div>
+												</div>
+												<!-- 评论内容 -->
+											</div>
 										</li>
+										</c:forEach>
 									</ul>
 									<div class="clear"></div>
 									<!--分页 -->
 									<ul class="am-pagination am-pagination-right">
+										<c:if test="${AllComment==0}">	
+											<li class="am-disabled"><a href="#">&laquo;</a></li>
+											<li class="am-active"><a href="#">1</a></li>	
+											<li><a href="#">&raquo;</a></li>
+										</c:if>
+										<c:if test="${AllComment!=0}">
+											<li class="am-disabled"><a href="#">&laquo;</a></li>
+										<c:forEach begin="1" end="${(AllComment-1)/12+1}" varStatus="i">
+										<c:if test="${i.count==1 }">
+											<li class="am-active"><a href="#">1</a></li>
+										</c:if>
+										<c:if test="${i.count!=1 }">
+											<li><a href="#">${i.count}</a></li>
+										</c:if>
+										</c:forEach>
+											<li><a href="#">&raquo;</a></li>
+										</c:if>
+										<%-- 
 										<li class="am-disabled"><a href="#">&laquo;</a></li>
 										<li class="am-active"><a href="#">1</a></li>
 										<li><a href="#">2</a></li>
 										<li><a href="#">3</a></li>
 										<li><a href="#">4</a></li>
 										<li><a href="#">5</a></li>
-										<li><a href="#">&raquo;</a></li>
+										<li><a href="#">&raquo;</a></li>--%>
 									</ul>
 									<div class="clear"></div>
 									<div class="tb-reviewsft">
