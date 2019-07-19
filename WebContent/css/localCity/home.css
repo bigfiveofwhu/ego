@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "GBK";
 #serviceSort{
 	min-height: 400px;
 }
@@ -17,6 +17,7 @@
 	margin-top: 16px;
 	margin-left: 40px;
 	color: rebeccapurple;
+	cursor:pointer;
 }
 .service a:hover{
 	color:red;
@@ -34,4 +35,30 @@
 	position: relative;
 	top: 68px;
 	left: -113px;
+}
+.service-body{
+	width:100%;
+	border-bottom: 1px solid;
+	height: 240px;
+	margin-bottom: 15px;
+}
+.service-body .service-intro{
+	padding-top: 15px;
+}
+.service-body .service-intro
+.service-intro-item{
+	display: flex;
+	padding-left: 30px;
+}
+.service-body .service-intro
+.service-intro-item .title{
+	margin-right: 15px;
+	width: 86px;
+	margin-bottom: 15px;
+	font-size: 17px;
+	color: #bbb1b1;
+}
+.service-body .service-intro
+.service-intro-item .value{
+	font-size: 20px;
 }

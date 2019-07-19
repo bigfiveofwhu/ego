@@ -60,6 +60,52 @@ public class Ac02ServiceImpl extends JdbcServicesSupport
 		String sql="select aac202,aac203,aac210 from ac02 where aac102=? and aac208='02'";
 		return this.queryForList(sql, this.get("aac102"));
 	}
-	
-	
+	/**
+	 * 通过关键字模糊匹配地理位置信息,进行相应的服务查找   ,服务服务商分别要通过审核
+	 * hug
+	 * @return
+	 */
+	private List<Map<String,String>> queryByKeyLocation() throws Exception
+	{
+		StringBuilder sql=new StringBuilder()
+				.append("select x.aac202,x.aac203,z.fvalue aac104,a.fvalue aac105,x.aac206,aac210")
+				.append("  from ac02 x, T_Area y,syscode z, syscode a, ac01 b")
+				.append(" where (x.aac205=a.fcode and a.fname='aac205')")
+				.append("   and (x.aac204=z.fcode and z.fname='aac204')")
+				.append("   and (x.aac203 like ?)")    //关键字对服务名称进行模糊匹配
+				.append("	and (x.aac208='02' and x.aac102=b.aac102)")   //服务  02 --审核通过
+				.append("   and (b.aac108='02')")        //服务商  02 --通过审核
+				.append("	and (b.aac105=y.areaId)")
+				.append("   and (y.`level`='2' and y.areaName like ?)")   //对地理位置进行模糊匹配
+				;
+		Object args[]= {
+			this.get("key"),
+			this.get("location")
+		};
+		return this.queryForList(sql.toString(), args);
+	}
+	/**
+	 * 通过类别编码模糊匹配分类信息,进行相应的服务查找,服务服务商分别要通过审核
+	 * hug
+	 * @return
+	 * @throws Exception
+	 */
+	private List<Map<String,String>> queryByTypeLocation() throws Exception
+	{
+		StringBuilder sql=new StringBuilder()
+				.append("select x.aac202,x.aac203,z.fvalue aac104,a.fvalue aac105,x.aac206,aac210")
+				.append("  from ac02 x, T_Area y,syscode z, syscode a, ac01 b")
+				.append(" where (x.aac205=a.fcode and a.fname='aac205')")
+				.append("   and (x.aac204=z.fcode and z.fname='aac204')")
+				.append("	and (x.aac208='02' and x.aac102=b.aac102)")   //服务  02 --审核通过
+				.append("   and (b.aac108='02' and b.aac106=?)")     //根据类别对服务商进行筛选   02 --审核通过
+				.append("	and (b.aac105=y.areaId)")
+				.append("   and (y.`level`='2' and y.areaName like ?)")   //对地理位置进行模糊匹配
+				;
+		Object args[]= {
+			this.get("type"),
+			this.get("location")
+		};
+		return this.queryForList(sql.toString(), args);
+	}
 }

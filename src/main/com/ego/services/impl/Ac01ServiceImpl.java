@@ -4,6 +4,7 @@
 package com.ego.services.impl;
 
 import java.lang.reflect.Method;
+import java.util.List;
 import java.util.Map;
 
 import com.ego.services.JdbcServicesSupport;
@@ -78,5 +79,29 @@ public class Ac01ServiceImpl extends JdbcServicesSupport
 				.append(" where aac102=? and y.fname='aac106' and y.fcode=x.aac106")
 				;
 		return this.queryForMap(sql.toString(), this.get("aac102"));
+	}
+	/********************************************************************
+	 *     以下为批量查询方法
+	 *******************************************************************/
+	@Override
+	public List<Map<String, String>> query(String qtype) throws Exception
+	{
+		Method method=this.getMethod(qtype);
+		return (List<Map<String, String>>)method.invoke(this);
+	}
+	/**
+	 * 查找新增的服务商  前8个
+	 * @return
+	 */
+	private List<Map<String, String>> queryByUpToDate() throws Exception
+	{
+		StringBuilder sql=new StringBuilder()
+				.append("  select x.aac102,x.aac103,x.aac104,z.fvalue aac106,x.aac110,aac111")
+				.append("    from ac01 x,T_Area y,syscode z")
+				.append("   where x.aac105=y.areaId and y.`level`='2' and y.areaName like ? ")
+				.append("     and x.aac106=z.fcode and z.fname='aac106' ")
+				.append("order by x.aac112 desc limit 8")
+				;
+		return this.queryForList(sql.toString(), this.get("location"));
 	}
 }

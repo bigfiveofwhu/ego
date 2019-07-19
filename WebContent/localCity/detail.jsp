@@ -9,6 +9,7 @@
 		<link href="<%=path%>/basic/css/demo.css" rel="stylesheet" type="text/css" />
 		<link href="<%=path%>/css/shop/sortstyle.css" rel="stylesheet" type="text/css" />
 		<link href="<%=path%>/css/localCity/detail.css" rel="stylesheet" type="text/css" />
+		<link href="<%=path%>/css/localCity/navigate.css" rel="stylesheet" type="text/css" />
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 	</head>
 	<body>

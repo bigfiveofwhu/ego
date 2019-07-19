@@ -4,15 +4,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-	<title>搜索页面</title>
-
+	<title>${location}-${key}-搜索页面</title>
 	<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 	<link href="<%=path%>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
 	<link href="<%=path%>/basic/css/demo.css" rel="stylesheet" type="text/css" />
 	<link href="<%=path%>/css/seastyle.css" rel="stylesheet" type="text/css" />
 	<link href="<%=path%>/css/search.css" rel="stylesheet" type="text/css" />
 	<link href="<%=path %>/css/hmstyle.css" rel="stylesheet" type="text/css" />
+	<link href="<%=path %>/css/localCity/navigate.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="<%=path%>/basic/js/jquery-1.7.min.js"></script>
 	<%-- <script type="text/javascript" src="<%=path%>/js/jquery-3.2.0.min.js"></script> --%>
 	<script type="text/javascript" src="<%=path%>/js/script.js"></script>
@@ -20,9 +19,9 @@
 </head>
 <body>
 	<!--顶部导航条 -->
-	<%@include file="/navigate.jsp" %>
+	<%@include file="/localCity/navigate.jsp" %>
 	<!--悬浮搜索框-->
-	<%@ include file="/navSearch.jsp" %>
+	<%@ include file="/localCity/navSearch.jsp" %>
 	<div class="clear"></div>
 	<b class="line"></b>
          <div class="search">
@@ -35,9 +34,9 @@
                 <div class="theme-popover">														
 				<div class="searchAbout">
 					<span class="font-pale">相关搜索：</span>
-					<a title="坚果" href="#">坚果</a>
-					<a title="瓜子" href="#">瓜子</a>
-					<a title="鸡腿" href="#">豆干</a>
+					<a title="配钥匙" href="#">配钥匙</a>
+					<a title="开锁" href="#">开锁</a>
+					<a title="买锁" href="#">买锁</a>
 				</div>
 				<ul class="select">
 					<p class="title font-normal">
@@ -92,27 +91,35 @@
 					<div class="clear"></div>
 					<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
 					<!-- 一个商品信息模板 -->
-						<c:forEach items="${productList}" var="goods">
+						<c:forEach items="${services}" var="service" varStatus="i">
 						<li>
 							<div class="i-pic limit">
 								<div id="imgsize">
 								<!-- 显示图片详细信息 -->
-							<a href="<%=path%>/shop/detail.html?productId=${goods.aab203}"><img src="${goods.aab208}"/></a>
+							<a href="<%=path%>/localCity/detail.html?serviceId=${service.aac202}"><img id="service${i.count }" src="/ego/images/01_mid.jpg"/></a>
 							<%-- <a href="<%=path%>/intrServlet?goodId=${goods.id}"><img src="E:/tomcat/apache-tomcat-7.0.57-windows-x64/apache-tomcat-7.0.57/webapps/shoppingPro/images/01.jpg"/></a> --%> 
 								</div>										
-								<p class="title fl">【良品铺子旗舰店】${goods.aab202}${goods.introduce}</p>
+								<p class="title fl">【${service.aac203}】</p>
+								<p>服务类型:${service.aac104 }</p>
+								<p>服务方式:${service.aac105 }</p>
 								<p class="price fl">
 									<b>&yen;</b>
-									<strong>${goods.aab205}</strong>
+									<strong>${service.aac206}</strong>
 								</p>
 								<p class="number fl">
-									销量<span>1110</span>
+									累积订单<span>1110</span>
 								</p>
 							</div>
 						</li>
+						<script>
+							var service${i.count }='${service.aac210}';
+							$("#service${i.count }").attr("src","<%=path%>"+service${i.count }.split(";")[0]);
+						</script>
 						</c:forEach>
 					 </ul>
 				</div>
+				
+				
 				<div class="search-side">
 					<div class="side-title">
 						经典搭配
