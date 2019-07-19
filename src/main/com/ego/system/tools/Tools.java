@@ -397,4 +397,21 @@ public class Tools
 		result.next();
 		return result.getString("pfcode");
 	}
+	
+	public static String getWebPath()
+	{
+		 String t=Thread.currentThread().getContextClassLoader().getResource("").getPath(); 
+    	// System.out.println(t);
+    	 int num=t.indexOf(".metadata");
+    	 String path = null;
+    	 if(num>1)
+    	 path=t.substring(1,num).replace('/', '\\')+"ego\\WebContent\\";
+    	 return path;
+	}
+	
+	public static String getImgPath()
+	{
+		return Tools.getWebPath()+"images/upload";
+	}
+
 }

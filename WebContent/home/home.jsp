@@ -175,7 +175,7 @@
 						<c:choose>
 						   <c:when test="${aaa102!=null}">
 				   				<div class="m-baseinfo">
-								<a href="<%=path%>/person/information.jsp"> 
+								<a href="<%=path%>/person/index.jsp"> 
 								<img src="<%=path%>/images/getAvatar.do.jpg"> </a> 
 								<em> Hi,<span class="s-name">${aaa103}</span> <a href="#"><p>点击更多优惠活动</p> </a> </em>
 								</div>

@@ -43,7 +43,6 @@ public class AjaxBaseServlet extends HttpServlet
 
 			response.setCharacterEncoding("UTF-8");
 
-
 			PrintWriter out=response.getWriter();
 			
 			out.print(controller.getJSON().toJSONString());

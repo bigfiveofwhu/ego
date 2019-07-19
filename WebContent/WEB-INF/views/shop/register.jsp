@@ -24,7 +24,7 @@
 	</head>
 	<body>
 		<div class="login-boxtitle">
-			<a href="home/demo.html">
+			<a href="home/home.html">
 				<img alt="" src="<%=path%>/images/logobig.png" />
 			</a>
 		</div>

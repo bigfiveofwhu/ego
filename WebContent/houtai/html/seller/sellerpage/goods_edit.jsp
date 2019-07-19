@@ -1,146 +1,124 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<!-- é¡µé¢meta -->
-		<meta charset="utf-8">
+		<!-- Ò³Ãæmeta -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>å•†å“ç¼–è¾‘</title>
+		<title>ÉÌÆ·±à¼­</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-		<link rel="stylesheet" href="../../../plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../../plugins/adminLTE/css/AdminLTE.css">
-		<link rel="stylesheet" href="../../../plugins/adminLTE/css/skins/_all-skins.min.css">
-		<link rel="stylesheet" href="../../../css/style.css">
-		<!-- å¯Œæ–‡æœ¬ç¼–è¾‘å™¨ -->
-		<link rel="stylesheet" href="../../../plugins/kindeditor/themes/default/default.css" />
-		<link rel="stylesheet" href="../../../plugins/kindeditor/themes/default/default.css" />
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/AdminLTE.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
+		<!-- ¸»ÎÄ±¾±à¼­Æ÷ -->
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/kindeditor/themes/default/default.css" />
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/kindeditor/themes/default/default.css" />
 	</head>
 
 	<body class="hold-transition skin-red sidebar-mini" ng-app="shopping" ng-controller="GoodsController" ng-init="selectItemCat1List();findOne()">
 
-		<!-- æ­£æ–‡åŒºåŸŸ -->
+		<!-- ÕıÎÄÇøÓò -->
 		<section class="content">
 
 			<div class="box-body">
 
-				<!--tabé¡µ-->
+				<!--tabÒ³-->
 				<div class="nav-tabs-custom">
 
-					<!--tabå¤´-->
+					<!--tabÍ·-->
 					<ul class="nav nav-tabs">
 						<li class="active">
-							<a href="#home" data-toggle="tab">å•†å“åŸºæœ¬ä¿¡æ¯</a>
+							<a href="#home" data-toggle="tab">ÉÌÆ·»ù±¾ĞÅÏ¢</a>
 						</li>
 						<li>
-							<a href="#pic_upload" data-toggle="tab">å•†å“å›¾ç‰‡</a>
+							<a href="#pic_upload" data-toggle="tab">ÉÌÆ·Í¼Æ¬</a>
 						</li>
 						<li>
-							<a href="#customAttribute" data-toggle="tab">æ‰©å±•å±æ€§</a>
-						</li>
-						<li>
-							<a href="#spec" data-toggle="tab">è§„æ ¼</a>
+							<a href="#spec" data-toggle="tab">¹æ¸ñ</a>
 						</li>
 					</ul>
-					<!--tabå¤´/-->
+					<!--tabÍ·/-->
 
-					<!--tabå†…å®¹-->
+					<!--tabÄÚÈİ-->
 					<div class="tab-content">
-
-						<!--è¡¨å•å†…å®¹-->
+                           
+                           
+                         <form id="myform" action="<%=path %>/shop/addProduct.html" method="post">
+						<!--±íµ¥ÄÚÈİ-->
 						<div class="tab-pane active" id="home">
 							<div class="row data-type">
-								<div class="col-md-2 title">å•†å“åˆ†ç±»</div>
+								<div class="col-md-2 title">ÉÌÆ··ÖÀà</div>
 
 								<div class="col-md-10 data">
-									<table>
-										<tr>
-											<td>
-												<select class="form-control" ng-model="entity.goods.category1Id" ng-options="item.id as item.name for item in itemCat1List"></select>
-											</td>
-											<td>
-												<select class="form-control select-sm" ng-model="entity.goods.category2Id" ng-options="item.id as item.name for item in itemCat2List"></select>
-											</td>
-											<td>
-												<select class="form-control select-sm" ng-model="entity.goods.category3Id" ng-options="item.id as item.name for item in itemCat3List"></select>
-											</td>
-											<td>
-												æ¨¡æ¿å:{{typeName}}
-											</td>
-										</tr>
-									</table>
+								
+                                   <button><a href="<%=path %>/houtai/seller/sellerpage/sort.jsp">Ñ¡Ôñ·ÖÀà</a></button>
+                               
+                                   <input type="text" value="${sortName }" name="aab204"/>
 
 								</div>
 
-								<div class="col-md-2 title">å•†å“åç§°</div>
+								<div class="col-md-2 title">ÉÌÆ·Ãû³Æ</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control" ng-model="entity.goods.goodsName" placeholder="å•†å“åç§°" value="">
+									<input type="text" class="form-control"  required="required" placeholder="ÉÌÆ·Ãû³Æ"  name="aab202" value=""/>
 								</div>
 
-								<div class="col-md-2 title">å“ç‰Œ</div>
-								<div class="col-md-10 data">
-									<select class="form-control" ng-model="entity.goods.brandId" ng-options="item.id as item.text for item in typeTemplate.brandIds"></select>
-								</div>
 
-								<div class="col-md-2 title">å‰¯æ ‡é¢˜</div>
-								<div class="col-md-10 data">
-									<input type="text" class="form-control" placeholder="å‰¯æ ‡é¢˜" value="" ng-model="entity.goods.caption">
-								</div>
-
-								<div class="col-md-2 title">ä»·æ ¼</div>
+								<div class="col-md-2 title">¼Û¸ñ</div>
 								<div class="col-md-10 data">
 									<div class="input-group">
-										<span class="input-group-addon">Â¥</span>
-										<input type="text" class="form-control" placeholder="ä»·æ ¼" value="" ng-model="entity.goods.price">
+										<input type="text" class="form-control" placeholder="¼Û¸ñ" name="aab205" required="required"  />
+										<span class="input-group-addon">Ôª</span>
+									</div>
+								</div>
+								
+								<div class="col-md-2 title">×Ü¿â´æ</div>
+								<div class="col-md-10 data">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="¿â´æ" name="aab206" required="required" />
 									</div>
 								</div>
 
-								<div class="col-md-2 title editer">å•†å“ä»‹ç»</div>
+								<div class="col-md-2 title editer">ÉÌÆ·½éÉÜ</div>
 								<div class="col-md-10 data editer">
-									<textarea name="content" style="width:800px;height:400px;visibility:hidden;"></textarea>
+									<textarea name="content" name="aab207" style="width:800px;height:400px;visibility:hidden;"></textarea>
 								</div>
 
-								<div class="col-md-2 title rowHeight2x">åŒ…è£…åˆ—è¡¨</div>
-								<div class="col-md-10 data rowHeight2x">
 
-									<textarea rows="4" class="form-control" placeholder="åŒ…è£…åˆ—è¡¨" ng-model="entity.goodsDesc.packageList"></textarea>
+								<div class="col-md-2 title">ÊÛºó·şÎñ</div>
+								<div class="col-md-10 data">
+											<select  name="aab211">
+													<option value="01">ÊÛºóÀàĞÍ1</option>
+													<option value="02">ÊÛºóÀàĞÍ2</option>
+													<option value="03">ÊÛºóÀàĞÍ3</option>
+						                  </select>
 								</div>
-
-								<div class="col-md-2 title rowHeight2x">å”®åæœåŠ¡</div>
-								<div class="col-md-10 data rowHeight2x">
-									<textarea rows="4" class="form-control" placeholder="å”®åæœåŠ¡" ng-model="entity.goodsDesc.saleService"></textarea>
-								</div>
-
 							</div>
 						</div>
-
-						<!--å›¾ç‰‡ä¸Šä¼ -->
+                   </form>
+                   
+						<!--Í¼Æ¬ÉÏ´«-->
 						<div class="tab-pane" id="pic_upload">
 							<div class="row data-type">
-								<!-- é¢œè‰²å›¾ç‰‡ -->
+								<!-- ÑÕÉ«Í¼Æ¬ -->
 								<div class="btn-group">
-									<button type="button" class="btn btn-default" title="æ–°å»º" data-target="#uploadModal" data-toggle="modal" ng-click="image_entity={}"><i class="fa fa-file-o"></i> æ–°å»º</button>
+									<button type="button" class="btn btn-default" title="ĞÂ½¨" data-target="#uploadModal" data-toggle="modal" ng-click="image_entity={}"><i class="fa fa-file-o"></i> ĞÂ½¨</button>
 
 								</div>
 
 								<table class="table table-bordered table-striped table-hover dataTable">
 									<thead>
 										<tr>
-
-											<th class="sorting">é¢œè‰²</th>
-											<th class="sorting">å›¾ç‰‡</th>
-											<th class="sorting">æ“ä½œ</th>
+											<th class="sorting">Í¼Æ¬</th>
+											<th class="sorting">²Ù×÷</th>
 									</thead>
 									<tbody>
 										<tr ng-repeat="pojo in entity.goodsDesc.itemImages">
-											<td>{{pojo.color}}</td>
-											<td><img alt="" src="{{pojo.url}}" width="100px" height="100px"></td>
-											<td><button type="button" class="btn btn-default" title="åˆ é™¤" ng-click="remove_image_entity($index)"><i class="fa fa-trash-o"></i> åˆ é™¤</button></td>
+										
+											<td><img id="preview" alt="Í¼Æ¬" src="<%=path%>/images/upload/product_1.jpg" width="100px" height="100px"></td>
+											<td><button type="button" class="btn btn-default" title="É¾³ı" ng-click="remove_image_entity($index)"><i class="fa fa-trash-o"></i> É¾³ı</button></td>
 										</tr>
 									</tbody>
 								</table>
@@ -148,124 +126,61 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 						</div>
 
-						<!--æ‰©å±•å±æ€§-->
-						<div class="tab-pane" id="customAttribute">
-							<div class="row data-type">
-								<div ng-repeat="pojo in entity.goodsDesc.customAttributeItems">
-									<div class="col-md-2 title">{{pojo.text}}</div>
-									<div class="col-md-10 data">
-										<input class="form-control" ng-model="pojo.value" placeholder="{{pojo.text}}">
-									</div>
-								</div>
+						
 
-							</div>
-						</div>
-
-						<!--è§„æ ¼-->
+						<!--¹æ¸ñ-->
 						<div class="tab-pane" id="spec">
-							<div class="row data-type">
-								<div class="col-md-2 title">æ˜¯å¦å¯ç”¨è§„æ ¼</div>
-								<div class="col-md-10 data">
-									<input type="checkbox" ng-model="entity.goods.isEnableSpec" ng-true-value="1" ng-false-value="0">
-								</div>
+							<div class="control-group">
+							    <label class="control-label"> </label>
+							    <div class="controls">
+							        <button id="add_lv1" class="btn btn-primary" type="button">Ìí¼Ó¹æ¸ñÏî</button>
+							        <button id="update_table" class="btn btn-success" type="button">Ë¢ĞÂ¹æ¸ñÏîÄ¿±í</button>
+							    </div>
 							</div>
-							<p>
-
-								<div ng-if="entity.goods.isEnableSpec==1">
-
-									<div class="row data-type">
-
-										<div ng-repeat="pojo in specList">
-											<div class="col-md-2 title">{{pojo.text}}</div>
-											<div class="col-md-10 data">
-												<span ng-repeat="option in pojo.options">
-										      	<input  type="checkbox" ng-click="updateSpecAttribute($event,pojo.text,option.optionName);createItemList()" ng-checked="checkAttributeValue(pojo.text,option.optionName)">{{option.optionName}}	     
-										      </span>
-											</div>
-										</div>
-									</div>
-									<div class="row data-type">
-										<table class="table table-bordered table-striped table-hover dataTable">
-											<thead>
-												<tr>
-													<th class="sorting" ng-repeat="item in entity.goodsDesc.specificationItems">{{item.attributeName}}</th>
-													<th class="sorting">ä»·æ ¼</th>
-													<th class="sorting">åº“å­˜</th>
-													<th class="sorting">æ˜¯å¦å¯ç”¨</th>
-													<th class="sorting">æ˜¯å¦é»˜è®¤</th>
-
-												</tr>
-											</thead>
-											<tbody>
-
-												<tr ng-repeat="pojo in entity.itemList">
-													<td ng-repeat="item in entity.goodsDesc.specificationItems">
-														{{pojo.spec[item.attributeName]}}
-													</td>
-													<td>
-														<input class="form-control" ng-model="pojo.price" placeholder="ä»·æ ¼">
-													</td>
-													<td>
-														<input class="form-control" ng-model="pojo.num" placeholder="åº“å­˜æ•°é‡">
-													</td>
-													<td>
-														<input type="checkbox" ng-model="pojo.status" ng-true-value="1" ng-false-value="0">
-													</td>
-													<td>
-														<input type="checkbox" ng-model="pojo.isDefault" ng-true-value="1" ng-false-value="0">
-													</td>
-												</tr>
-											</tbody>
-										</table>
-
-									</div>
-
-								</div>
+							<div id="lv_table_con" class="control-group" style="display: none;">
+							    <label class="control-label">¹æ¸ñÏîÄ¿±í</label>
+							    <div class="controls">
+							        <div id="lv_table">
+							            
+							        </div>
+							    </div>
+                             </div>
 						</div>
-
 					</div>
-					<!--tabå†…å®¹/-->
-					<!--è¡¨å•å†…å®¹/-->
+					<!--tabÄÚÈİ/-->
+					<!--±íµ¥ÄÚÈİ/-->
 
 				</div>
-
 			</div>
+			
 			<div class="btn-toolbar list-toolbar">
-				<button class="btn btn-primary" ng-click="save()"><i class="fa fa-save" ></i>ä¿å­˜</button>
-				<button class="btn btn-default" onclick="window.location.href='goods.html';">è¿”å›åˆ—è¡¨</button>
+				<button class="btn btn-primary"   onclick="saveData()"><i class="fa fa-save" ></i>±£´æ</button>
+				<button class="btn btn-default" onclick="window.location.href='<%=path %>/shop/queryProduct.html';">·µ»ØÁĞ±í</button>
 			</div>
-
+			 
 		</section>
+		   
 
-		<!-- ä¸Šä¼ çª—å£ -->
+		<!-- ÉÏ´«´°¿Ú -->
 		<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
-						<h3 id="myModalLabel">ä¸Šä¼ å•†å“å›¾ç‰‡</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">¡Á</button>
+						<h3 id="myModalLabel">ÉÏ´«ÉÌÆ·Í¼Æ¬</h3>
 					</div>
 					<div class="modal-body">
 
 						<table class="table table-bordered table-striped">
 							<tr>
-								<td>é¢œè‰²</td>
-								<td><input class="form-control" placeholder="é¢œè‰²" ng-model="image_entity.color"> </td>
-							</tr>
-							<tr>
-								<td>å•†å“å›¾ç‰‡</td>
+								<td>ÉÌÆ·Í¼Æ¬</td>
 								<td>
 									<table>
 										<tr>
-											<td>
-												<input type="file" id="file" />
-												<button class="btn btn-primary" type="button" ng-click="uploadFile()">
-				                   		ä¸Šä¼ 
-					                </button>
-											</td>
-											<td>
-												<img src="{{image_entity.url}}" width="200px" height="200px">
-											</td>
+											<div class="filePic">
+												<input id="pop_file" type="file"  class="inputPic" onchange="uploadFile(event)" name="fileTrans" ref="file" value="" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
+												<img id="preview" width="200px" height="200px" src="" alt="no image" />
+											</div>
 										</tr>
 									</table>
 								</td>
@@ -274,8 +189,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="add_image_entity()">ä¿å­˜</button>
-						<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">å…³é—­</button>
+						<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="add_image_entity()" onclick="uploadImg()">È·¶¨</button>
+						<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">¹Ø±Õ</button>
 					</div>
 				</div>
 			</div>
@@ -284,23 +199,199 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</body>
 
 
-	<script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-	<script src="../../../plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script charset="utf-8" src="../../../plugins/kindeditor/kindeditor.js"></script>
-	<script charset="utf-8" src="../../../plugins/kindeditor/lang/zh_CN.js"></script>
-	<script type="text/javascript" src="../../../plugins/angularjs/angular.min.js"></script>
-	<script type="text/javascript" src="../../../js/base/Base.js"></script>
-	<script type="text/javascript" src="../../../js/base/BaseController.js"></script>
-	<script type="text/javascript" src="../../../js/base/BaseService_Seller.js"></script>
-	<script type="text/javascript" src="../../../js/service/GoodsService.js"></script>
-	<script type="text/javascript" src="../../../js/service/UploadService.js"></script>
-	<script type="text/javascript" src="../../../js/service/TypeTemplateService.js"></script>
-	<script type="text/javascript" src="../../../js/service/SpecificationService.js"></script>
-	<script type="text/javascript" src="../../../js/service/BrandService.js"></script>
-	<script type="text/javascript" src="../../../js/service/ItemCatService.js"></script>
-	<script type="text/javascript" src="../../../js/controller/GoodsController.js"></script>
-	<script type="text/javascript" src="../../../js/common/common.js"></script>
-	
-	
+	<script src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="<%=path%>/houtai/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script charset="utf-8" src="<%=path%>/houtai/plugins/kindeditor/kindeditor.js"></script>
+	<script charset="utf-8" src="<%=path%>/houtai/plugins/kindeditor/lang/zh_CN.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/plugins/angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/Base.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseController.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseService_Seller.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/GoodsService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/UploadService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/TypeTemplateService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/SpecificationService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/BrandService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/ItemCatService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/common/common.js"></script>
+	<script>
+	 var lv1HTML = '<div class="control-group lv1">' +
+     '<label class="control-label">¹æ¸ñÃû³Æ</label>' +
+     '<div class="controls">' +
+     '<input type="text" name="lv1" placeholder="¹æ¸ñÃû³Æ">' +
+     '<button class="btn btn-primary add_lv2" type="button">Ìí¼Ó²ÎÊı</button>' +
+     '<button class="btn btn-danger remove_lv1" type="button">É¾³ı¹æ¸ñ</button>' +
+     '</div>' +
+     '<div class="controls lv2s"></div>' +
+     '</div>';
+
+ var lv2HTML = '<div style="margin-top: 5px;">' +
+     '<input type="text" name="lv2" placeholder="²ÎÊıÃû³Æ">' +
+     '<button class="btn btn-danger remove_lv2" type="button">É¾³ı²ÎÊı</button>' +
+     '</div>';
+
+ $(document).ready(function() {
+     $('#add_lv1').on('click', function() {
+         var last = $('.control-group.lv1:last');
+         if (!last || last.length == 0) {
+             $(this).parents('.control-group').eq(0).after(lv1HTML);
+         } else {
+             last.after(lv1HTML);
+         }
+     });
+
+     $(document).on('click', '.remove_lv1', function() {
+         $(this).parents('.lv1').remove();
+     });
+
+     $(document).on('click', '.add_lv2', function() {
+         $(this).parents('.lv1').find('.lv2s').append(lv2HTML);
+     });
+
+     $(document).on('click', '.remove_lv2', function() {
+         $(this).parent().remove();
+     });
+
+     $('#update_table').on('click', function() {
+         var lv1Arr = $('input[name="lv1"]');
+         if (!lv1Arr || lv1Arr.length == 0) {
+             $('#lv_table_con').hide();
+             $('#lv_table').html('');
+             return;
+         }
+         for (var i = 0; i < lv1Arr.length; i++) {
+             var lv2Arr = $(lv1Arr[i]).parents('.lv1').find('input[name="lv2"]');
+             if (!lv2Arr || lv2Arr.length == 0) {
+                 alert('ÇëÏÈÉ¾³ıÎŞ²ÎÊıµÄ¹æ¸ñÏî£¡');
+                 return;
+             }
+         }
+
+         var tableHTML = '';
+         tableHTML += '<table class="table table-bordered">';
+         tableHTML += '    <thead>';
+         tableHTML += '        <tr>';
+         for (var i = 0; i < lv1Arr.length; i++) {
+             tableHTML += '<th width="50">' + $(lv1Arr[i]).val() + '</th>';
+         }
+         tableHTML += '            <th width="20">¼Û¸ñ</th>';
+         tableHTML += '            <th width="20">¿â´æ</th>';
+         tableHTML += '        </tr>';
+         tableHTML += '    </thead>';
+         tableHTML += '    <tbody>';
+
+         var numsArr = new Array();
+         var idxArr = new Array();
+         //numsArr¼ÇÂ¼Ã¿¸ö¹æ¸ñÓÖ¶àÉÙ¸ö²ÎÊı£¬²¢ÓÃidxarr¼ÇÂ¼¹æ¸ñÊı×éÏÂ±ê ·½±ãºó±ß±ê¼Çname
+         for (var i = 0; i < lv1Arr.length; i++) {
+             numsArr.push($(lv1Arr[i]).parents('.lv1').find('input[name="lv2"]').length);
+             idxArr[i] = 0;
+         }
+
+         var len = 1;
+         var rowsArr = new Array();
+         for (var i = 0; i < numsArr.length; i++) {
+             //len  ¼ÇÂ¼²ÎÊı×ÜĞĞÊı
+             len = len * numsArr[i];
+
+             var tmpnum = 1;
+             for (var j = numsArr.length - 1; j > i; j--) {
+                 tmpnum = tmpnum * numsArr[j];
+             }
+             //µ±Ç°¹æ¸ñÃ¿¸ö²ÎÊıËùÕ¼ĞĞÊı
+             rowsArr.push(tmpnum);
+         }
+
+         for (var i = 0; i < len; i++) {
+             tableHTML += '        <tr data-row="' + (i+1) + '">';
+
+             var name = '';
+             for (var j = 0; j < lv1Arr.length; j++) {
+                 var n = parseInt(i / rowsArr[j]);
+                 if (j == 0) {
+                 } else if (j == lv1Arr.length - 1) {
+                     n = idxArr[j];
+                     if (idxArr[j] + 1 >= numsArr[j]) {
+                         idxArr[j] = 0;
+                     } else {
+                         idxArr[j]++;
+                     }
+                 } else {
+                     var m = parseInt(i / rowsArr[j]);
+                     n = m % numsArr[j];
+                 }
+
+                 var text = $(lv1Arr[j]).parents('.lv1').find('input[name="lv2"]').eq(n).val();
+                 if (j != lv1Arr.length - 1) {
+                     name += text + '_';
+                 } else {
+                     name += text;
+                 }
+
+                 if (i % rowsArr[j] == 0) {
+                     tableHTML += '<td width="50" rowspan="' + rowsArr[j] + '" data-rc="' + (i+1) + '_' + (j+1) + '">' + text + '</td>';
+                 }
+             }
+
+             tableHTML += '<td width="20"><input type="text" name="' + name + '[price]" /></td>';
+             tableHTML += '<td width="20"><input type="text" name="' + name + '[amount]" /></td>';
+             tableHTML += '</tr>';
+         }
+         tableHTML += '</tbody>';
+         tableHTML += '</table>';
+
+         $('#lv_table_con').show();
+         $('#lv_table').html(tableHTML);
+     });
+ });
+ 
+ /////////////////
+ 
+  var formdata = new FormData();
+ function uploadFile(ev){
+    var that = this;
+    const file = document.getElementById('pop_file');
+    const fileObj = file.files[0];
+    formdata.append("file",fileObj);
+    const windowURL = window.URL || window.webkitURL;
+    const img = document.getElementById('preview');
+    if(file && fileObj) {
+        const dataURl = windowURL.createObjectURL(fileObj);
+        console.log(dataURl);
+        img.setAttribute('src',dataURl);
+    }
+    
+   // var ftype = "user_${user.aaa102}";
+  
+}
+ 
+ function uploadImg()
+ {    
+	    $.ajax({
+			url:"<%=path%>/fileUpload.ajax?type=product&id=1",
+			type:"post",
+			dataType:"json",
+			processData : false,
+			contentType : false,
+			timeout : 20000,
+			data : formdata,
+			success:function(res,status){
+				//img.setAttribute('src',"<%=path%>/images/upload/user_1.jpg")
+	            console.log("ÉÏ´«Í¼Æ¬³É¹¦");
+				},
+				error:function(res,status){
+					console.log("ÉÏ´«Í¼Æ¬Ê§°Ü");
+				}
+		 });
+ }
+ 
+ function saveData()
+ {
+	 var vform = document.getElementById("myform");
+	 vform.submit();
+ }
+
+	</script>
 
 </html>

@@ -23,7 +23,7 @@
 			<!-- 页面头部 -->
 			<header class="main-header">
 				<!-- Logo -->
-				<a href="index.html" class="logo">
+				<a href="<%=path %>/houtai/html/seller/sellerpage/home.jsp" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
 					<span class="logo-mini"><b>购物商城</b></span>
 					<!-- logo for regular state and mobile devices -->
@@ -97,13 +97,15 @@
 							<ul class="treeview-menu">
 
 								<li id="admin-login">
-									<a href="seller.html" target="iframe">
-										<i class="fa fa-circle-o"></i> 修改资料
+
+									<a href="<%=path %>/shop/sellerinfo.html" target="iframe">
+										<i class="fa fa-circle-o"></i> 基本信息
 									</a>
 								</li>
 								<li id="admin-login">
-									<a href="password.html" target="iframe">
+									<a href="<%=path %>/houtai/html/seller/sellerpage/password.jsp" target="iframe">
 										<i class="fa fa-circle-o"></i> 修改密码
+
 									</a>
 								</li>
 							</ul>
@@ -119,12 +121,12 @@
 							<ul class="treeview-menu">
 
 								<li id="admin-login">
-									<a href="goods_edit.jsp" target="iframe">
+									<a href="<%=path %>/houtai/html/seller/sellerpage/goods_edit.jsp" target="iframe">
 										<i class="fa fa-circle-o"></i> 新增商品
 									</a>
 								</li>
 								<li id="admin-login">
-									<a href="queryProduct.html" target="iframe">
+									<a href="<%=path %>/shop/queryProduct.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 商品管理
 									</a>
 								</li>
@@ -139,8 +141,10 @@
 				       		</a>
 				       		<ul class="treeview-menu">
 								<li id="admin-login">
-									<a href="home-index.html" target="iframe">
+
+									<a href="<%=path %>/shop/queryOrder.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 订单管理
+
 									</a>
 								</li>
 							</ul>
@@ -165,9 +169,43 @@
 										<i class="fa fa-circle-o"></i> 优惠券管理
 									</a>
 								</li>
-								
 							</ul>
 						</li>
+						
+						<!-- 评论管理 -->
+						<li class="treeview">
+							<a href="#" >
+								<i class="fa fa-folder"></i>
+								<span>评论管理</span>
+								<span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				       		</a>
+				       		<ul class="treeview-menu">
+								<li id="admin-login">
+									<a href="<%=path %>/shop/queryComment.html" target="iframe">
+										<i class="fa fa-circle-o"></i> 评论管理
+									</a>
+								</li>
+							</ul>
+						</li>
+						
+						<!-- 售后管理 -->
+								<li class="treeview">
+							<a href="#" >
+								<i class="fa fa-folder"></i>
+								<span>售后管理</span>
+								<span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				       		</a>
+				       		<ul class="treeview-menu">
+								<li id="admin-login">
+									<a href="<%=path %>/shop/queryShouhou.html" target="iframe">
+										<i class="fa fa-circle-o"></i> 售后管理
+									</a>
+								</li>
+							</ul>
+						</li>
+						
 					</ul>
 				</section>
 				<!-- /.sidebar -->
@@ -176,8 +214,7 @@
 
 			<!-- 内容区域 -->
 			<div class="content-wrapper">
-				<iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" src="seller.jsp"></iframe>
-
+				<iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" src="<%=path %>/shop/sellerinfo.html"></iframe>
 			</div>
 			<!-- 内容区域 /-->
 
@@ -204,4 +241,5 @@
 	<script type="text/javascript" src="<%=path %>/houtai/js/controller/SellerLoginController.js"></script>
 	<script type="text/javascript" src="<%=path %>/houtai/js/service/SellerService.js"></script>
 	<script type="text/javascript" src="<%=path %>/houtai/js/common/common.js"></script>
+	
 </html>

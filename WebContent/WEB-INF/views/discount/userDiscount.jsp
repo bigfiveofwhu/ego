@@ -234,7 +234,7 @@
 						</c:otherwise>
 					</c:choose>
 					            <div class=" par  w-auto">
-						            <p><a href="">${item.shopName }</a></p>
+						            <p><a style="color:white" href="/ego/shop/home.html?shopId=${item.aab102}">${item.shopName }</a></p>
 						            <sub class="sign">£¤</sub><span>${item.aaa503}</span>
 						            <sub>ÓÅ»ÝÈ¯</sub>
 					            	<c:if test="${item.aaa502=='2'}"><p >¶©µ¥Âú${item.aaa504}Ôª</p></c:if>
@@ -246,7 +246,6 @@
 			     </c:forEach>
 			</c:otherwise>
 		</c:choose>
-       
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 

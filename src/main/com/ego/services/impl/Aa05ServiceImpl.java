@@ -18,6 +18,17 @@ public class Aa05ServiceImpl extends JdbcServicesSupport{
 	}
 	
 	@Override
+	public List<Map<String, String>> query(String qtype) throws Exception {
+		// TODO Auto-generated method stub
+		switch (qtype) {
+		case "getUsableCoupons"://返回所有可用的优惠券，要求传递用户id(aaa102)，店铺id(aab102),以及价格(price)
+			return getUsableCoupons();
+		default:
+			throw new Exception("不支持的类型");
+		}
+	}
+	
+	@Override
 	public boolean update(String utype) throws Exception {
 		// TODO Auto-generated method stub
 		switch (utype) {
@@ -30,6 +41,19 @@ public class Aa05ServiceImpl extends JdbcServicesSupport{
 		}
 	}
 	
+	
+	private List<Map<String, String>> getUsableCoupons() throws Exception{
+		String sql="select * from aa05 where aaa102=? and aab102=? and (aaa504>? or aaa502=?)";
+		Object[] param=new Object[] {
+				this.get("aaa102"),
+				this.get("aab102"),
+				this.get("price"),
+				Ab05ServiceImpl.noCondition
+		};
+		return this.queryForList(sql, param);
+	}
+	
+	
 	private boolean removeCoupon()throws Exception 
 	{
 		String sql="delete from aa05 where aaa501 =?";
@@ -37,7 +61,6 @@ public class Aa05ServiceImpl extends JdbcServicesSupport{
 	}
 	
 	private boolean addCoupon() throws Exception {
-				
 		int type=Integer.parseInt(get("aaa502").toString());
 		Object[] parameter;
 		Date currentDate=new Date(System.currentTimeMillis());

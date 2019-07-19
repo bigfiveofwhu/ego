@@ -176,21 +176,23 @@ public class Ad08ServicesImpl extends JdbcServicesSupport
 
 	/**
 	 * aad802 --审核内容  aad803 --审核类型 , aad804 --审核状态, aad805 --审核对象, aaa102 --用户id
+	 * 插入审核数据均可通过该方法插入
 	 * @author hug
 	 * @return
 	 * @throws Exception
 	 */
 	private boolean insertAd08() throws Exception
 	{
-		String sql="insert into ad08(aad802,aad803,aad804,aad805,aaa102) values(?,'01','01',?,?)";
+		String sql="insert into ad08(aad802,aad803,aad804,aad805,aaa102) values(?,?,'01',?,?)";
 		Object args[]= {
 				this.get("aad802"),
+				this.get("aad803"),
 				this.get("aad805"),
 				this.get("aaa102")
 		};
 		return this.executeUpdate(sql, args);
 	}
-
+	
 	/**
 	 * 修改店铺状态，将更新的sql语句添加入事务，与审核表同时更新
 	 * @throws Exception

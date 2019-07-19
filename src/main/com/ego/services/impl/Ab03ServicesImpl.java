@@ -1,10 +1,11 @@
 package com.ego.services.impl;
 
+import com.ego.services.JdbcServicesSupport;
+import com.ego.system.tools.Tools;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import com.ego.services.JdbcServicesSupport;
-import com.ego.system.tools.Tools;
 /**
  * 关于订单一系列方法的实现类
  * @author Dcz
@@ -384,6 +385,5 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		return this.executeUpdate(sql.toString(), args);
 		
 	}
-	
-	
+
 }

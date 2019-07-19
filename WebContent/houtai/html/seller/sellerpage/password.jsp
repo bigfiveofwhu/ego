@@ -1,88 +1,84 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@ include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<!-- é¡µé¢meta -->
-		<meta charset="utf-8">
+		<!-- Ò³Ãæmeta -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>å•†å®¶ä¿®æ”¹å¯†ç </title>
+		<title>ÉÌ¼ÒÐÞ¸ÄÃÜÂë</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-		<link rel="stylesheet" href="../../../plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../../plugins/adminLTE/css/AdminLTE.css">
-		<link rel="stylesheet" href="../../../plugins/adminLTE/css/skins/_all-skins.min.css">
-		<link rel="stylesheet" href="../../../css/style.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/AdminLTE.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
 	</head>
 
 	<body class="hold-transition skin-red sidebar-mini" ng-app="shopping" ng-controller="SellerLoginController" >
 
-		<!-- æ­£æ–‡åŒºåŸŸ -->
+		<!-- ÕýÎÄÇøÓò -->
 		<section class="content">
 
 			<div class="box-body">
 
-				<!--tabé¡µ-->
+				<!--tabÒ³-->
 				<div class="nav-tabs-custom">
 
-					<!--tabå¤´-->
+					<!--tabÍ·-->
 					<ul class="nav nav-tabs">
 
 						<li class="active">
-							<a href="#home" data-toggle="tab">ä¿®æ”¹å¯†ç </a>
+							<a href="#home" data-toggle="tab">ÐÞ¸ÄÃÜÂë</a>
 						</li>
 					</ul>
-					<!--tabå¤´/-->
+					<!--tabÍ·/-->
 
-					<!--tabå†…å®¹-->
+					<!--tabÄÚÈÝ-->
 					<div class="tab-content">
 
-						<!--è¡¨å•å†…å®¹-->
+						<!--±íµ¥ÄÚÈÝ-->
 						<div class="tab-pane active" id="home">
 							<div class="row data-type">
 
-								<div class="col-md-2 title">åŽŸå¯†ç </div>
+								<div class="col-md-2 title">Ô­ÃÜÂë</div>
 								<div class="col-md-10 data">
-									<input type="password" class="form-control" placeholder="åŽŸå¯†ç " value="" ng-model="pojo.oldPassword">
+									<input type="password" class="form-control" placeholder="Ô­ÃÜÂë" value="" ng-model="pojo.oldPassword">
 								</div>
 
-								<div class="col-md-2 title">æ–°å¯†ç </div>
+								<div class="col-md-2 title">ÐÂÃÜÂë</div>
 								<div class="col-md-10 data">
-									<input type="password" class="form-control" placeholder="æ–°å¯†ç " value="" ng-model="pojo.newPassword">
+									<input type="password" class="form-control" placeholder="ÐÂÃÜÂë" value="" ng-model="pojo.newPassword">
 								</div>
 
-								<div class="col-md-2 title">ç¡®è®¤æ–°å¯†ç </div>
+								<div class="col-md-2 title">È·ÈÏÐÂÃÜÂë</div>
 								<div class="col-md-10 data">
-									<input type="password" class="form-control" placeholder="ç¡®è®¤æ–°å¯†ç " value="" ng-model="newPassword">
+									<input type="password" class="form-control" placeholder="È·ÈÏÐÂÃÜÂë" value="" ng-model="newPassword">
 								</div>
 							</div>
 						</div>
 
 					</div>
-					<!--tabå†…å®¹/-->
-					<!--è¡¨å•å†…å®¹/-->
+					<!--tabÄÚÈÝ/-->
+					<!--±íµ¥ÄÚÈÝ/-->
 				</div>
 			</div>
 			<div class="btn-toolbar list-toolbar">
-				<button class="btn btn-primary" ng-click="changepasswd()"><i class="fa fa-save" >ä¿å­˜</i></button>
+				<button class="btn btn-primary" ng-click="changepasswd()"><i class="fa fa-save" >±£´æ</i></button>
 			</div>
 
 		</section>
-		<!-- æ­£æ–‡åŒºåŸŸ /-->
+		<!-- ÕýÎÄÇøÓò /-->
 
 	</body>
 
-	<script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-	<script src="../../../plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../../../plugins/angularjs/angular.min.js"></script>
-	<script type="text/javascript" src="../../../js/base/Base.js"></script>
-	<script type="text/javascript" src="../../../js/base/BaseService_Seller.js"></script>
-	<script type="text/javascript" src="../../../js/base/BaseController.js"></script>
-	<script type="text/javascript" src="../../../js/service/SellerService.js"></script>
-	<script type="text/javascript" src="../../../js/controller/SellerLoginController.js"></script>
+	<script src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="<%=path%>/houtai/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/plugins/angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/Base.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseService_Seller.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseController.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/SellerService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/controller/SellerLoginController.js"></script>
 
 </html>

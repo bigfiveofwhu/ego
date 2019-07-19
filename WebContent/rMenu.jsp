@@ -12,22 +12,28 @@
 							<img src="../images/no-img_mid_.jpg " />
 						</p>
 						<ul class="user_info ">
+						<c:if test="${aaa103!=null }">
 							<li>用户名${aaa103 }</li>
-							<li>20级&nbsp;别普通会员</li>
+							<li>&nbsp;普通会员</li>
+						</c:if>
+						<c:if test="${aaa103==null }">
+							<li>游客状态</li>
+							<li>&nbsp;请先登录</li>
+						</c:if>
 						</ul>
 					</div>
 					<div class="login_btnbox ">
-						<a href="# " class="login_order ">我的订单</a> <a href="# "
-							class="login_favorite ">我的收藏</a>
+						<a href="# " class="login_order ">我的订单</a>
+						 <a href="# " class="login_favorite ">我的收藏</a>
 					</div>
 					<i class="icon_arrow_white "></i>
 				</div>
 
 			</div>
-			<div id="shopCart " class="item ">
+			<div id="shopCart " class="item " onclick="location.href='${path}/home/shopCart.html'">
 				<a href="# "> <span class="message "></span> </a>
 				<p>购物车</p>
-				<p class="cart_num ">${CARTNUM_IN_SESSION}</p>
+				<p class="cart_num ">${shopCartCount}</p>
 			</div>
 			<div id="asset " class="item ">
 				<a href="# "> <span class="view "></span> </a>

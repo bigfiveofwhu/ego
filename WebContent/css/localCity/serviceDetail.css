@@ -1,0 +1,28 @@
+@charset "GBK";
+.service-info{
+	padding-left: 7px;
+	width: 705px;;
+}
+.service-info .itemInfo{
+	margin-top: 20px;
+	display: flex;
+}
+.service-info .itemInfo .item_title{
+	margin-right: 16px;
+	width: 67px;
+	color: #bfb3b3;
+	font-size: 15px;
+}
+.service-info .itemInfo .item_info{
+	font-size: 20px;
+}
+.service-info .itemInfo .item_pag{
+	cursor: pointer;
+	background-color: #f7063d;
+	color: #fdf8f8;
+	padding: 1px 4px 1px 4px;
+	height: 25px;
+}
+.service-info .itemInfo .pname{
+	width: 400px;
+}

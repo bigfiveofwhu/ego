@@ -1,44 +1,40 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<!-- é¡µé¢meta -->
-		<meta charset="utf-8">
+		<!-- Ò³Ãæmeta -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>å¹¿å‘Šç®¡ç†</title>
+		<title>¹ã¸æ¹ÜÀí</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-		<link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../plugins/adminLTE/css/AdminLTE.css">
-		<link rel="stylesheet" href="../../plugins/adminLTE/css/skins/_all-skins.min.css">
-		<link rel="stylesheet" href="../../css/style.css">
-		<link rel="stylesheet" href="../../plugins/angularjs/pagination.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/AdminLTE.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
+		<link rel="stylesheet" href="<%=path%>/houtai/plugins/angularjs/pagination.css">
 	</head>
 
 	<body class="hold-transition skin-red sidebar-mini" ng-app='shopping' ng-controller='ContentController' ng-init="findContentCategoryList()">
 		<!-- .box-body -->
 
 		<div class="box-header with-border">
-			<h3 class="box-title">å¹¿å‘Šç®¡ç†</h3>
+			<h3 class="box-title">¹ã¸æ¹ÜÀí</h3>
 		</div>
 
 		<div class="box-body">
 
-			<!-- æ•°æ®è¡¨æ ¼ -->
+			<!-- Êı¾İ±í¸ñ -->
 			<div class="table-box">
 
-				<!--å·¥å…·æ -->
+				<!--¹¤¾ßÀ¸-->
 				<div class="pull-left">
 					<div class="form-group form-inline">
 						<div class="btn-group">
-							<button type="button" class="btn btn-default" title="æ–°å»º" data-toggle="modal" data-target="#editModal" ng-click="entity={}"><i class="fa fa-file-o"></i> æ–°å»º</button>
-							<button type="button" class="btn btn-default" title="åˆ é™¤" ng-click="delete()"><i class="fa fa-trash-o"></i> åˆ é™¤</button>
-							<button type="button" class="btn btn-default" title="åˆ·æ–°" onclick="window.location.reload();"><i class="fa fa-refresh"></i> åˆ·æ–°</button>
+							<button type="button" class="btn btn-default" title="ĞÂ½¨" data-toggle="modal" data-target="#editModal" ng-click="entity={}"><i class="fa fa-file-o"></i> ĞÂ½¨</button>
+							<button type="button" class="btn btn-default" title="É¾³ı" ng-click="delete()"><i class="fa fa-trash-o"></i> É¾³ı</button>
+							<button type="button" class="btn btn-default" title="Ë¢ĞÂ" onclick="window.location.reload();"><i class="fa fa-refresh"></i> Ë¢ĞÂ</button>
 						</div>
 					</div>
 				</div>
@@ -47,23 +43,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 					</div>
 				</div>
-				<!--å·¥å…·æ /-->
+				<!--¹¤¾ßÀ¸/-->
 
-				<!--æ•°æ®åˆ—è¡¨-->
+				<!--Êı¾İÁĞ±í-->
 				<table id="dataList" class="table table-bordered table-striped table-hover dataTable">
 					<thead>
 						<tr>
 							<th class="" style="padding-right:0px">
 								<input id="selall" type="checkbox" class="icheckbox_square-blue">
 							</th>
-							<th class="sorting_asc">å¹¿å‘ŠID</th>
-							<th class="sorting">åˆ†ç±»ID</th>
-							<th class="sorting">æ ‡é¢˜</th>
+							<th class="sorting_asc">¹ã¸æID</th>
+							<th class="sorting">·ÖÀàID</th>
+							<th class="sorting">±êÌâ</th>
 							<th class="sorting">URL</th>
-							<th class="sorting">å›¾ç‰‡</th>
-							<th class="sorting">æ’åº</th>
-							<th class="sorting">æ˜¯å¦æœ‰æ•ˆ</th>
-							<th class="text-center">æ“ä½œ</th>
+							<th class="sorting">Í¼Æ¬</th>
+							<th class="sorting">ÅÅĞò</th>
+							<th class="sorting">ÊÇ·ñÓĞĞ§</th>
+							<th class="text-center">²Ù×÷</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -79,55 +75,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<td>{{entity.sortOrder}}</td>
 							<td>{{status[entity.status]}}</td>
 							<td class="text-center">
-								<button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)">ä¿®æ”¹</button>
+								<button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)">ĞŞ¸Ä</button>
 							</td>
 						</tr>
 					</tbody>
 				</table>
-				<!--æ•°æ®åˆ—è¡¨/-->
+				<!--Êı¾İÁĞ±í/-->
 				<tm-pagination conf="paginationConf"></tm-pagination>
 			</div>
-			<!-- æ•°æ®è¡¨æ ¼ /-->
+			<!-- Êı¾İ±í¸ñ /-->
 		</div>
 		<!-- /.box-body -->
 
-		<!-- ç¼–è¾‘çª—å£ -->
+		<!-- ±à¼­´°¿Ú -->
 		<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
-						<h3 id="myModalLabel">å¹¿å‘Šç¼–è¾‘</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">¡Á</button>
+						<h3 id="myModalLabel">¹ã¸æ±à¼­</h3>
 					</div>
 					<div class="modal-body">
 
 						<table class="table table-bordered table-striped" width="800px">
 							<tr>
-								<td>å¹¿å‘Šåˆ†ç±»</td>
+								<td>¹ã¸æ·ÖÀà</td>
 								<td>
 									<select class="form-control" ng-model="entity.categoryId" ng-options="item.id as item.name  for item in contentCategoryList"></select>
 								</td>
 							</tr>
 							<tr>
-								<td>æ ‡é¢˜</td>
-								<td><input class="form-control" ng-model="entity.title" placeholder="æ ‡é¢˜"> </td>
+								<td>±êÌâ</td>
+								<td><input class="form-control" ng-model="entity.title" placeholder="±êÌâ"> </td>
 							</tr>
 							<tr>
 								<td>URL</td>
 								<td><input class="form-control" ng-model="entity.url" placeholder="URL"> </td>
 							</tr>
 							<tr>
-								<td>æ’åº</td>
-								<td><input class="form-control" ng-model="entity.sortOrder" placeholder="æ’åº"> </td>
+								<td>ÅÅĞò</td>
+								<td><input class="form-control" ng-model="entity.sortOrder" placeholder="ÅÅĞò"> </td>
 							</tr>
 							<tr>
-								<td>å¹¿å‘Šå›¾ç‰‡</td>
+								<td>¹ã¸æÍ¼Æ¬</td>
 								<td>
 									<table>
 										<tr>
 											<td>
 												<input type="file" id="file" />
-												<button class="btn btn-primary" type="button" ng-click="uploadFile()">ä¸Šä¼ </button>
+												<button class="btn btn-primary" type="button" ng-click="uploadFile()">ÉÏ´«</button>
 											</td>
 											<td>
 												<img src="{{entity.pic}}" width="200px" height="100px">
@@ -137,7 +133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</td>
 							</tr>
 							<tr>
-								<td>æ˜¯å¦æœ‰æ•ˆ</td>
+								<td>ÊÇ·ñÓĞĞ§</td>
 								<td>
 									<input type="checkbox" ng-model="entity.status" ng-true-value="1" ng-false-value="0">
 								</td>
@@ -146,8 +142,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save()">ä¿å­˜</button>
-						<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">å…³é—­</button>
+						<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save()">±£´æ</button>
+						<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">¹Ø±Õ</button>
 					</div>
 				</div>
 			</div>
@@ -156,16 +152,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</body>
 	
 	
-	<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-	<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../../plugins/angularjs/angular.min.js"></script>
-	<script src="../../plugins/angularjs/pagination.js"></script>
-	<script type="text/javascript" src="../../js/base/Base_pagination.js"></script>
-	<script type="text/javascript" src="../../js/base/BaseService.js"></script>
-	<script type="text/javascript" src="../../js/base/BaseController.js"></script>
-	<script type="text/javascript" src="../../js/service/ContentService.js"></script>
-	<script type="text/javascript" src="../../js/service/ContentCategoryService.js"></script>
-	<script type="text/javascript" src="../../js/service/UploadService.js"></script>
-	<script type="text/javascript" src="../../js/controller/ContentController.js"></script>
+	<script src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="<%=path%>/houtai/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<%=path%>/houtai/plugins/angularjs/angular.min.js"></script>
+	<script src="<%=path%>/houtai/plugins/angularjs/pagination.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/Base_pagination.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseController.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/ContentService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/ContentCategoryService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/service/UploadService.js"></script>
+	<script type="text/javascript" src="<%=path%>/houtai/js/controller/ContentController.js"></script>
 
 </html>
