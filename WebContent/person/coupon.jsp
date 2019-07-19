@@ -32,58 +32,64 @@
 							<ul class="am-avg-sm-2 am-tabs-nav am-nav am-nav-tabs">
 								<li class="am-active"><a href="#tab1">可用优惠券</a></li>
 								<li><a href="#tab2">已用/过期优惠券</a></li>
-
 							</ul>
 
 							<div class="am-tabs-bd">
 								<div class="am-tab-panel am-fade am-in am-active" id="tab1">
 									<div class="coupon-items">
-										<div class="coupon-item coupon-item-d">
-											<div class="coupon-list">
-												<div class="c-type">
-													<div class="c-class">
-														<strong>购物券</strong>
+									<c:if test="${empty usable }">您还未拥有任何优惠券，快去逛逛吧！</c:if>
+									<c:forEach items="${usable }" var="item">
+										<c:choose>
+											<c:when test="${item.aaa502==1 }">
+												<div class="coupon-item coupon-item-d">
+												<div class="coupon-list">
+													<div class="c-type">
+														<div class="c-class">
+															<strong>购物券</strong>
+														</div>
+														
+														<div class="c-price">
+															<strong>￥8</strong>
+														</div>
+														<div class="c-limit">
+															【消费满&nbsp;${item.aaa503 }元&nbsp;可用】
+														</div>
+														<div class="c-time"><span>使用期限</span>截止至${item.aaa506 }</div>
+														<div class="c-type-top"></div>
+														<div class="c-type-bottom"></div>
 													</div>
-													<div class="c-price">
-														<strong>￥8</strong>
-													</div>
-													<div class="c-limit">
-														【消费满&nbsp;95元&nbsp;可用】
-													</div>
-													<div class="c-time"><span>使用期限</span>2015-12-21--2015-12-31</div>
-													<div class="c-type-top"></div>
-
-													<div class="c-type-bottom"></div>
-												</div>
-
-												<div class="c-msg">
-													<div class="c-range">
-														<div class="range-all">
-															<div class="range-item">
-																<span class="label">券&nbsp;编&nbsp;号：</span>
-																<span class="txt">35730144</span>
+												
+													<div class="c-msg">
+														<div class="c-range">
+															<div class="range-all">
+																<div class="range-item">
+																	<span class="label">店&nbsp;铺&nbsp;名&nbsp;称：</span>
+																	<span class="txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${item.shopName}</span>
+																</div>
 															</div>
 														</div>
-													</div>
-													<div class="op-btns">
-														<a href="#" class="btn"><span class="txt">立即使用</span><b></b></a>
+														<div class="op-btns">
+															<a href="#" onclick="parent.location.href='/ego/shop/home.html?shopId=${item.aab102}'" class="btn"><span class="txt">立即使用</span><b></b></a>
+														</div>
 													</div>
 												</div>
-											</div>
-										</div>
-										<div class="coupon-item coupon-item-yf">
+												</div>
+											</c:when>
+											
+											<c:when test="${item.aaa502==2}">
+												<div class="coupon-item coupon-item-yf">
 											<div class="coupon-list">
 												<div class="c-type">
 													<div class="c-class">
-														<strong>运费券</strong>
+														<strong>￥${item.aaa503}</strong>
 													</div>
 													<div class="c-price">
 														<strong>可抵运费</strong>
 													</div>
 													<div class="c-limit">
-														【不含偏远地区】
+														无条件
 													</div>
-													<div class="c-time"><span>使用期限</span>2015-12-21--2015-12-31</div>
+													<div class="c-time"><span>使用期限</span>截止至${item.aaa506 }</div>
 													<div class="c-type-top"></div>
 
 													<div class="c-type-bottom"></div>
@@ -93,24 +99,32 @@
 													<div class="c-range">
 														<div class="range-all">
 															<div class="range-item">
-																<span class="label">券&nbsp;编&nbsp;号：</span>
-																<span class="txt">35728267</span>
+																<span class="label">店&nbsp;铺&nbsp;名&nbsp;称：</span>
+																<span class="txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${item.shopName}</span>
 															</div>
 														</div>
 
 													</div>
 													<div class="op-btns">
-														<a href="#" class="btn"><span class="txt">立即使用</span><b></b></a>
+													
+														<a href="#"  onclick="parent.location.href='/ego/shop/home.html?shopId=${item.aab102}'" class="btn" ><span class="txt">立即使用</span><b></b></a>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-
+											</c:when>
+										</c:choose>
+									</c:forEach>
+									</div><%-- tab1结束 --%>
 								</div>
+								
 								<div class="am-tab-panel am-fade" id="tab2">
 									<div class="coupon-items">
-										<div class="coupon-item coupon-item-d">
+									
+									<c:forEach items="${invalid }" var="item">
+										<c:choose>
+											<c:when test="${item.aaa502==1}">
+												<div class="coupon-item coupon-item-d" id="${item.aaa501 }">
 											<div class="coupon-list">
 												<div class="c-type">
 													<div class="c-class">
@@ -118,12 +132,12 @@
 														<span class="am-icon-trash"></span>
 													</div>
 													<div class="c-price">
-														<strong>￥8</strong>
+														<strong>￥${item.aaa503 }</strong>
 													</div>
 													<div class="c-limit">
-														【消费满&nbsp;95元&nbsp;可用】
+														【消费满&nbsp;${item.aaa504 }元&nbsp;可用】
 													</div>
-													<div class="c-time"><span>使用期限</span>2015-12-21--2015-12-31</div>
+													<div class="c-time"><span>使用期限</span>截止至${item.aaa506 }</div>
 													<div class="c-type-top"></div>
 
 													<div class="c-type-bottom"></div>
@@ -133,37 +147,41 @@
 													<div class="c-range">
 														<div class="range-all">
 															<div class="range-item">
-																<span class="label">券&nbsp;编&nbsp;号：</span>
-																<span class="txt">35730144</span>
+																<span class="label">店&nbsp;铺&nbsp;名&nbsp;称：</span>
+																<span class="txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${item.shopName}</span>
 															</div>
 														</div>
 													</div>
 													<div class="op-btns c-del">
-														<a href="#" class="btn"><span class="txt">删除</span><b></b></a>
+														<a href="#" class="btn" tag="delete" data="${item.aaa501 }"><span class="txt">删除</span><b></b></a>
 													</div>
 												</div>
 												
 												<li class="td td-usestatus ">
 													<div class="item-usestatus ">
-														<span><img src="<%=path%>/images/gift_stamp_31.png"></span>
+														<span><img src="<%=path%>/images/gift_stamp_21.png"></span>
 													</div>
-												</li>												
+												</li>
+																								
 											</div>
 										</div>
-										<div class="coupon-item coupon-item-yf">
+											</c:when>
+											
+											<c:when test="${item.aaa502==2}">
+												<div class="coupon-item coupon-item-yf" id="${item.aaa501 }">
 											<div class="coupon-list">
 												<div class="c-type">
 													<div class="c-class">
-														<strong>运费券</strong>
+														<strong>￥${item.aaa503 }</strong>
 														<span class="am-icon-trash"></span>
 													</div>
 													<div class="c-price">
 														<strong>可抵运费</strong>
 													</div>
 													<div class="c-limit">
-														【不含偏远地区】
+														【无条件】
 													</div>
-													<div class="c-time"><span>使用期限</span>2015-12-21--2015-12-31</div>
+													<div class="c-time"><span>使用期限</span>截止至${item.aaa506 }</div>
 													<div class="c-type-top"></div>
 
 													<div class="c-type-bottom"></div>
@@ -173,14 +191,14 @@
 													<div class="c-range">
 														<div class="range-all">
 															<div class="range-item">
-																<span class="label">券&nbsp;编&nbsp;号：</span>
-																<span class="txt">35728267</span>
+																<span class="label">店&nbsp;铺&nbsp;名&nbsp;称：</span>
+																<span class="txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${item.shopName}</span>
 															</div>
 														</div>
 
 													</div>
 													<div class="op-btns c-del">
-														<a href="#" class="btn"><span class="txt">删除</span><b></b></a>
+														<a href="#"  class="btn" tag="delete" data="${item.aaa501 }"><span class="txt">删除</span><b></b></a>
 													</div>
 												</div>
 												
@@ -191,6 +209,11 @@
 												</li>
 											</div>
 										</div>
+											
+											</c:when>
+										</c:choose>
+									</c:forEach>
+										
 									</div>
 									
 								</div>
@@ -200,6 +223,22 @@
 
 					</div>
 
+<script src="/ego/js/jquery-3.2.0.min.js" ></script>
+<script>
+$("[tag='delete']").click(function(){
+	var a=$(this);
+	$.getJSON('deleteUserCoupon.ajax',{'aaa501':a.attr('data')},function(data){
+		  if(data.result==true){
+			  $('#'+a.attr('data')).remove();
+		  }else{
+			  alert("删除失败")
+		  }
+	  }).fail(function() {
+		  alert("未知错误")
+	  })
+})
+$("")
+</script>
 	</body>
 
 </html>

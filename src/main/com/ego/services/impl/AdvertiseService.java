@@ -1,5 +1,9 @@
 package com.ego.services.impl;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -170,6 +174,11 @@ public class AdvertiseService extends JdbcServicesSupport{
 		}
 	}
 	
+	/**
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	private boolean addAdAudit() throws Exception{
 		StringBuilder sql=new StringBuilder()
 				.append(" insert into ad08")
@@ -252,18 +261,18 @@ public class AdvertiseService extends JdbcServicesSupport{
 	}
 	//-----------------关于账户的操作-----------------------------
 	static final double initMin=2000;//最少的账户余额
+	/**
+	 * 添加账户，需要一个用户id
+	 * @return
+	 * @throws Exception
+	 */
 	private boolean insertAdAccount() throws Exception{
 		int idNumber=Tools.getIncrementId("aad402");
 		StringBuilder sql=new StringBuilder()
 				.append(" insert into ad04(aad402,aad403,aaa102)")
-				.append(" value(?,?,?)");
-		double initMoney= Double.parseDouble(this.get("aad403").toString());
-		if (initMoney<initMin) {
-			throw new Exception("初始充值不能少于"+initMin);
-		}
+				.append(" value(?,0,?)");
 		Object[] parameter=new Object[] {
 				idNumber,
-				this.get("aad403"),
 				this.get("aaa102")
 		};
 		return this.executeUpdate(sql.toString(),parameter);
@@ -323,26 +332,48 @@ public class AdvertiseService extends JdbcServicesSupport{
 		return map==null?null:map.get("aad402");
 		
 	}
-	/**
-	 * 
-	 * @return 当前账户是否在审核
+	/**前提是该用户还没有广告账户
+	 * 获取aaa102用户的账户审核状态，当未通过时显示还有几天解封
+	 * @return  01表示未审核，03表示审核未通过，00表示还没有申请
 	 * @throws Exception
 	 */
-	public boolean isInAudit() throws Exception {
-		String sql="select aad801 from ad08 where aaa102=? and aad803='ad' and aad804='01' ";
-		return this.queryForMap(sql, this.get("aaa102"))==null?false:true;
-	}
-	
-	//0无账户，1账户未审核通过，2有账户
-	public int accountStatus() throws Exception {
-		if (getAccountId()!=null) {
-			return 2;
-		}else if (isInAudit()) {
-			return 1;
+	public String getAuditStatus() throws Exception {
+		//获取是否还未审核
+		String sql="select aad804 from ad08 where aaa102=? and aad803='ad' and aad804='01' and aad102 is null" ;
+		StringBuilder sql2=new StringBuilder()
+				.append(" select aad806 from ad08 where aaa102=? and ")
+				.append(" aad803='ad' and aad804='03'")
+				.append(" order by aad806 DESC");
+		if (this.queryForMap(sql, this.get("aaa102"))!=null) {
+			return "01";//提交了申请还没审核
 		}else {
-			return 0;
+			Map<String, String> map=this.queryForMap(sql2.toString(), this.get("aaa102"));
+			if (map==null) {//如果没有否决记录，则说明未申请过广告账户
+				return "00";
+			}
+			//获得管理员否决的日期
+			Date date=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(map.get("aad806"));
+			Date current=new Date();
+			long dayDif=(current.getTime()-date.getTime())/(1000*3600*24);
+			if (dayDif>=10) {//已经过了冷冻期
+				return "00";
+			}else {//还在冷冻期
+				dto.put("frozenDay", 10-dayDif);
+				return "03";
+			}
 		}
 	}
+	
+//	//0无账户，1账户未审核通过，2有账户
+//	public int accountStatus(String ss) throws Exception {
+//		if (getAccountId()!=null) {
+//			return 2;
+//		}else if (isInAudit()) {
+//			return 1;
+//		}else {
+//			return 0;
+//		}
+//	}
 	/***************************************************************
 	 *                                                  关于广告展示的操作
 	 *************************************************************/

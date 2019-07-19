@@ -121,8 +121,6 @@
 					<ul class="treeview-menu">
 
 						<li id="admin-login">
-
-
 							<a href="queryGood.html" target="iframe">
 								<i class="fa fa-circle-o"></i>商品审核
 							</a>
@@ -146,9 +144,8 @@
 					<ul class="treeview-menu">
 
 						<li id="admin-login">
-
-							<a href="" target="iframe">
-								<i class="fa fa-circle-o"></i>广告类型管理
+							<a href="/ego/advertise/adAudit.html" target="iframe">
+								<i class="fa fa-circle-o"></i>广告账户管理
 							</a>
 						</li>
 						<li id="admin-login">
