@@ -21,8 +21,12 @@ public class VerifyController extends AjaxControllerSupport
 	    }
 	    else
 	    {
-	    	if(verCode.equals(code))
+	    	if(verCode.equals(code))   //在此处验证, 通过后移除相应属性
 	    	{
+	    		session.setAttribute("isVeriFied", true);//做上标记
+	    		session.setAttribute("isVerifiedTimeout", new Date().getTime());  //定义起始时间,有效时长一分钟
+	    		session.removeAttribute("regVerCode");
+	    		session.removeAttribute("regVerCodeTime");
 		    	this.put("status", "200");
 	    	}
 	    	else

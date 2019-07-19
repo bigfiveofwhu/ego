@@ -8,6 +8,7 @@ import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.Aa01ServiceImpl;
 import com.ego.services.impl.Aa02ServiceImpl;
 import com.ego.services.impl.Ab01ServiceImpl;
+import com.ego.system.tools.Tools;
 
 public class LoginController extends ControllerSupport {
 	
@@ -17,8 +18,8 @@ public class LoginController extends ControllerSupport {
 		//前后端字段名转换
 		this.setServices(new Aa01ServiceImpl());
 		this.dto.put("aaa104", this.get("email"));
-		this.dto.put("aaa107", this.get("pwd"));
-		System.out.println(this.get("email").toString()+",  "+this.get("pwd").toString());
+		this.dto.put("aaa107", Tools.getMd5(this.get("pwd")));
+		System.out.println(this.get("email").toString()+",  "+this.get("pwd").toString()+";"+Tools.getMd5(this.get("pwd"))+"(已加密)");
 		//用email进行查找
 		Map<String,String> ins=this.getServices().findById("loginByEmail");
 		if(ins==null)

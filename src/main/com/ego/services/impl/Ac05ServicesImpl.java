@@ -53,6 +53,7 @@ public class Ac05ServicesImpl extends JdbcServicesSupport
 	}
 	/**
 	 * º∆À„∫√∆¿¬ 
+	 * hug
 	 * @return
 	 */
 	private Map<String,String> compute5Comment() throws Exception

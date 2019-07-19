@@ -38,14 +38,38 @@
 			                <div class="user_element">
 							    <label for="code"><i class="am-icon-rocket"></i></label>
 							    <input type="text" class="input_block" name="verifyCode" id="verifyCode" maxlength="6" placeholder="请输入验证码">
-							    <img alt="加载失败" onclick="javascript:getchang();" title="看不清,换一张" name="verifyImage"
-									 id="verifyCodeImg" src="${pageContext.request.contextPath}/verifyCode" width="53px" 
-									 height="38px" border="1" align="absmiddle" style="margin-bottom:-16px">
+							    <img alt="加载失败" onclick="javascript:getChange();" title="看不清,换一张" name="verifyImage"
+									 id="verifyCodeImg" src="${path}/images/001/000001.jpg" width="53px" 
+									 height="38px" border="1" align="absmiddle" style="margin-bottom:-16px"
+									 style="cursor:pointer">
 			                </div>
 			                <div class="am-cf">
 								<input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm">
 						 	</div>
 			             </form>
+			             <script type="text/javascript">
+			             	function getChange(){
+			             		$.ajax({
+			             			url:"<%=path%>/getVerifyImg.ajax",
+			             			type:"post",
+			             			dataType:"json",
+			             			timeout:20000,
+			             			data:{
+			             				
+			             			},
+			             			success:function(res,status){
+			             				setTimeout(() => {
+				             				$("#verifyCodeImg").attr("src",res.url);
+										}, 1000);
+			             				console.log("请求成功!");
+			             			},
+			             			error:function(res,status){
+			             				console.log("网络故障!")
+			             			}
+			             		});
+			             	}
+			             	getChange();
+			             </script>
 			          </div>
 		            <div class="login-links">
 						<a href="<%=path %>/home/register.jsp" class="zcnext am-fr am-btn-default">注册</a>
