@@ -4,23 +4,16 @@
 <%String path=request.getContextPath(); %>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0 ,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
 		<title>结算页面</title>
-
 		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-
 		<link href="<%=path%>/basic/css/demo.css" rel="stylesheet" type="text/css" />
 		<link href="<%=path%>/css/cartstyle.css" rel="stylesheet" type="text/css" />
-
 		<link href="<%=path%>/css/jsstyle.css" rel="stylesheet" type="text/css" />	
-
 		<script type="text/javascript" src="<%=path%>/js/address.js"></script>
-		
 		<script type="text/javascript">
 		function checkAddress(){
 			$('input[name="aab311"]').val($(".defaultAddr").children(".address-left").children(".default-address") .children(".buy--address-detail") .children(".theAddress") .text());
@@ -57,76 +50,34 @@
 						<div class="clear"></div>
 						<ul>
 							<div class="per-border"></div>
-							<li class="user-addresslist defaultAddr">
-
-								<div class="address-left">
-									<div class="user DefaultAddr">
-
-										<span class="buy-address-detail">   
-	                   						<span class="buy-user">艾迪 </span>
-											<span class="buy-phone">15888888888</span>
-										</span>
-									</div>
-									<div class="default-address DefaultAddr">
-										<span class="buy-line-title buy-line-title-type">收货地址：</span>
-										<span class="buy--address-detail">
-								   		<span class="theAddress">湖北省武汉市洪山区雄楚大道666号(中南财经政法大学)</span>
-										
-										</span>
-
-									</div>
-									<ins class="deftip">默认地址</ins>
+							 <c:forEach items="${addrlist }" var="ins" varStatus="vs">
+							   <c:choose>
+							   <c:when test="${ins.aaa407 > 0 }">
+							   	<li class="user-addresslist defaultAddr">
+							   </c:when>
+							   <c:otherwise>
+							   <li   class="user-addresslist">
+							   </c:otherwise>
+							    </c:choose>
+								<span class="new-option-r" value="${ins.aaa401 }"><i class="am-icon-check-circle"></i>默认地址</span>
+								<p class="new-tit new-p-re">
+									<span class="new-txt">${ins.aaa405 }</span>
+									<span class="new-txt-rd2">${ins.aaa406}</span>
+								</p>
+								<div class="new-mu_l2a new-p-re">
+									<p class="new-mu_l2cw">
+										<span class="title">地址:</span>
+										<span class="province">${ins.aaa402 }</span>
+										<span class="street">${ins.aaa403 }</span>
+									</p>
 								</div>
-								<div class="address-right">
-									<a href="<%=path%>/person/address.html">
-										<span class="am-icon-angle-right am-icon-lg"></span></a>
-								</div>
-								<div class="clear"></div>
-
 								<div class="new-addr-btn">
-									<a href="#" class="hidden">设为默认</a>
-									<span class="new-addr-bar hidden">|</span>
-									<a href="#">编辑</a>
+									<a onclick="window.location.href='<%=path %>/person/editAddress.html?aaa401=${ins.aaa401}';return false;"   href="javascript:void(0);"><i class="am-icon-edit"></i>编辑</a>
 									<span class="new-addr-bar">|</span>
-									<a href="javascript:void(0);" onclick="delClick(this);">删除</a>
+									<a onclick="window.location.href='<%=path%>/person/deleteAddress.html?aaa401=${ins.aaa401}';return false;"   href="javascript:void(0);" ><i class="am-icon-trash"></i>删除</a>
 								</div>
-
 							</li>
-							<div class="per-border"></div>
-							<li class="user-addresslist">
-								<div class="address-left">
-									<div class="user DefaultAddr">
-
-										<span class="buy-address-detail">   
-                   						<span class="buy-user">艾迪 </span>
-										<span class="buy-phone">15877777777</span>
-										</span>
-									</div>
-									<div class="default-address DefaultAddr">
-										<span class="buy-line-title buy-line-title-type">收货地址：</span>
-										<span class="buy--address-detail">
-								   		<span class="theAddress">湖北省武汉市武昌区东湖路75号众环大厦9栋9层999</span>
-										
-										</span>
-
-										</span>
-									</div>
-									<ins class="deftip hidden">默认地址</ins>
-								</div>
-								<div class="address-right">
-									<span class="am-icon-angle-right am-icon-lg"></span>
-								</div>
-								<div class="clear"></div>
-
-								<div class="new-addr-btn">
-									<a href="#">设为默认</a>
-									<span class="new-addr-bar">|</span>
-									<a href="#">编辑</a>
-									<span class="new-addr-bar">|</span>
-									<a href="javascript:void(0);"  onclick="delClick(this);">删除</a>
-								</div>
-
-							</li>
+							</c:forEach>
 
 						</ul>
 						<div class="clear"></div>
@@ -161,17 +112,83 @@
 								</div>
 							</div>
 							<div class="clear"></div>
-							<c:choose>
-							<c:when test="1==1">
-							<c:forEach items="">
-							</c:forEach>
 							
-							</c:when>
-							</c:choose>
-
 							<tr class="item-list">
 								<div class="bundle  bundle-last">
-
+									<div class="bundle-main">
+										<ul class="item-content clearfix">
+											<div class="pay-phone">
+												<li class="td td-item">
+													<div class="item-pic">
+														<a href="#" class="J_MakePoint">
+															<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+														</a>
+													</div>
+													<div class="item-info">
+														<div class="item-basic-info">
+															<a href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">${product.aab202 }</a>
+														</div>
+													</div>
+												</li>
+												<li class="td td-info">
+													<div class="item-props">
+														<span class="sku-line">颜色：12#川南玛瑙</span>
+														<span class="sku-line">包装：裸装</span>
+													</div>
+													<script type="text/javascript">
+														$(function(){
+															var proArgs='${product.args}';
+															proArgs=proArgs.split(";");
+															var n=proArgs.length;
+															var html="";
+															for(var i=0;i<n;i++){
+																html+="<span class='sku-line'>"+proArgs[i].replace(",",": ")+"&emsp;</span>"
+															}
+															$(".item-props").html(html);
+														});
+													</script>
+												</li>
+												<li class="td td-price">
+													<div class="item-price price-promo-promo">
+														<div class="price-content">
+															<em class="J_Price price-now">${product.aab205 }</em>
+														</div>
+													</div>
+												</li>
+											</div>
+											<li class="td td-amount">
+												<div class="amount-wrapper ">
+													<div class="item-amount ">
+														<span class="phone-title">购买数量</span>
+														<div class="sl">
+															<input class="text_box" readonly="readonly" type="text" value="${product.count}" style="width:30px;" />
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="td td-sum">
+												<div class="td-inner">
+													<em tabindex="0" class="J_ItemSum number">${product.aab205*product.count}</em>
+												</div>
+											</li>
+											<li class="td td-oplist">
+												<div class="td-inner">
+													<span class="phone-title">配送方式</span>
+													<div class="pay-logis">
+														快递<b class="sys_item_freprice">${product.fee}</b>元
+													</div>
+												</div>
+											</li>
+										</ul>
+										<div class="clear"></div>
+									</div>
+								</div>	
+							</tr>
+							<div class="clear"></div>
+							
+							<%--
+							<tr class="item-list">
+								<div class="bundle  bundle-last">
 									<div class="bundle-main">
 										<ul class="item-content clearfix">
 											<div class="pay-phone">
@@ -299,7 +316,7 @@
 								</div>
 							</tr>
 							
-							<div class="clear"></div>
+							<div class="clear"></div> --%>
 							
 							<div class="pay-total">
 								<!--留言-->
