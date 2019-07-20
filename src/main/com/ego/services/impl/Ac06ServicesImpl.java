@@ -120,7 +120,7 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
 	private boolean prepay()throws Exception
 	{
 		//获取订单编号
-		int aac402 =Tools.getSequence("aac402");
+		String aac402 =Tools.getServiceOrderNumber();
 		this.put("aac402", aac402);
 		//1.创建SQL语句
 		StringBuilder sql = new StringBuilder()
