@@ -21,12 +21,17 @@ public class RegisterController extends ControllerSupport
 	    	return "home/register";
 		}
 		long time=(long)session.getAttribute("isVerifiedTimeout");
+		long internel=(long)session.getAttribute("internel");
 	    long now=new Date().getTime();
-	    if((now-time)>60000)    //失效一分钟  ,验证码失效
+	    if((now-time)>internel)    //失效一分钟  ,验证码失效
 	    {
 	    	this.saveAttribute("msg", "验证码已失效!");
 	    	return "home/register";
 	    }
+	    //验证通过  移除相应属性
+	    session.removeAttribute("isVeriFied");
+	    session.removeAttribute("isVerifiedTimeout");
+	    session.removeAttribute("internel");
 		//去掉前后空格,以防后续分割出现异常
 		String addr_1=((String)this.get("addr_1")).trim();
 		String addr_2=((String)this.get("addr_2")).trim();

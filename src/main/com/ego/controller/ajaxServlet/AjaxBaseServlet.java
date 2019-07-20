@@ -38,15 +38,20 @@ public class AjaxBaseServlet extends HttpServlet
 			
 			dto.put("request", request);
 			
+			dto.put("response", response);
+			
 			controller.setMap(dto);
 			
 			controller.execute(request.getSession());
 
 			response.setCharacterEncoding("UTF-8");
 
-			PrintWriter out=response.getWriter();
-			
-			out.print(controller.getJSON().toJSONString());
+			if(!controller.getJSON().isEmpty())  //Json对象不为空的话   就开启字符流对象
+			{
+				PrintWriter out=response.getWriter();
+				
+				out.print(controller.getJSON().toJSONString());
+			}
 		}
 		catch (Exception e)
 		{

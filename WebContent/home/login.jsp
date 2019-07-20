@@ -38,9 +38,9 @@
 			                <div class="user_element">
 							    <label for="code"><i class="am-icon-rocket"></i></label>
 							    <input type="text" class="input_block" name="verifyCode" id="verifyCode" maxlength="6" placeholder="请输入验证码">
-							    <img alt="加载失败" onclick="javascript:getChange();" title="看不清,换一张" name="verifyImage"
-									 id="verifyCodeImg" src="${path}/images/001/000001.jpg" width="53px" 
-									 height="38px" border="1" align="absmiddle" style="margin-bottom:-16px"
+							    <img alt="加载失败" onclick="javascript:getChange1();" title="看不清,换一张" name=""
+									 id="verifyCodeImg" src="${path}/images/001/000001.jpg" width="80px" 
+									 height="40px" border="1" align="absmiddle" style="margin-bottom:-16px"
 									 style="cursor:pointer">
 			                </div>
 			                <div class="am-cf">
@@ -59,7 +59,7 @@
 			             			},
 			             			success:function(res,status){
 			             				setTimeout(() => {
-				             				$("#verifyCodeImg").attr("src",res.url);
+			             					$("#verifyCodeImg").attr("src",res.url);
 										}, 1000);
 			             				console.log("请求成功!");
 			             			},
@@ -68,7 +68,9 @@
 			             			}
 			             		});
 			             	}
-			             	getChange();
+			             	function getChange1(){
+			             		$("#verifyCodeImg").attr("src","${path}/getVerifyImg.ajax?datetime="+new Date().getTime());
+			             	}
 			             </script>
 			          </div>
 		            <div class="login-links">
