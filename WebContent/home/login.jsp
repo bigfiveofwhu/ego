@@ -71,6 +71,7 @@
 			             	function getChange1(){
 			             		$("#verifyCodeImg").attr("src","${path}/getVerifyImg.ajax?datetime="+new Date().getTime());
 			             	}
+			             	getChange1();
 			             </script>
 			          </div>
 		            <div class="login-links">

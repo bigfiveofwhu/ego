@@ -149,9 +149,8 @@
 							</a>
 						</li>
 						<li id="admin-login">
-							<a href="" target="iframe">
-								<i class="fa fa-circle-o"></i>广告管理
-
+							<a href="/ego/advertise/getPlatformAdInfo.html" target="iframe">
+								<i class="fa fa-circle-o"></i>数据统计
 							</a>
 						</li>
 						</ul>

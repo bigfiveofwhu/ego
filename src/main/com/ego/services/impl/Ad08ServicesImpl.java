@@ -1,9 +1,9 @@
 package com.ego.services.impl;
 
+import com.ego.services.JdbcServicesSupport;
+
 import java.util.List;
 import java.util.Map;
-
-import com.ego.services.JdbcServicesSupport;
 
 /**
  * ab01:µÍ∆Ã±Ì
@@ -183,7 +183,7 @@ public class Ad08ServicesImpl extends JdbcServicesSupport
 	 */
 	private boolean insertAd08() throws Exception
 	{
-		String sql="insert into ad08(aad802,aad803,aad804,aad805,aaa102) values(?,?,'01',?,?)";
+		String sql="insert into ad08(aad102,aad802,aad803,aad804,aad805,aaa102) values(0,?,?,'01',?,?)";
 		Object args[]= {
 				this.get("aad802"),
 				this.get("aad803"),
