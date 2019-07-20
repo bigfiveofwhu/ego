@@ -29,15 +29,15 @@
 						<div class="user-infoPic">
 
 							<div class="filePic">
-								<img class="am-circle am-img-thumbnail" src="<%=path%>/images/getAvatar.do.jpg" alt="" />
+								<img class="am-circle am-img-thumbnail" src="<%=path%>/images/upload/user_${aaa102}.jpg" alt="" />
 							</div>
 
 							<p class="am-form-help">头像</p>
 
 							<div class="info-m">
-								<div><b>用户名：<i>小叮当</i></b></div>
+								<div><b>用户名：<i>${aaa103}</i></b></div>
                                 <div class="safeText">
-                                  	<a href="safety.html">账户安全:<em style="margin-left:20px ;">60</em>分</a>
+                                  	<a href="safety.html">信用积分:<em style="margin-left:20px ;">${aaa106}</em>分</a>
 									<div class="progressBar"><span style="left: -95px;" class="progress"></span></div>
 								</div>
 							</div>
@@ -52,7 +52,7 @@
 										<div class="fore2"><small>为保证您购物安全，建议您定期更改密码以保护账户安全。</small></div>
 									</div>
 									<div class="fore3">
-										<a href="password.jsp">
+										<a href="<%=path %>/person/password.jsp">
 											<div class="am-btn am-btn-secondary">修改</div>
 										</a>
 									</div>
