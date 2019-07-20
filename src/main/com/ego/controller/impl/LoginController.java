@@ -9,12 +9,21 @@ import com.ego.services.impl.Aa01ServiceImpl;
 import com.ego.services.impl.Aa02ServiceImpl;
 import com.ego.services.impl.Ab01ServiceImpl;
 import com.ego.system.tools.Tools;
+import com.ego.system.utils.CodeVerify;
 
 public class LoginController extends ControllerSupport {
 	
 	@Override
 	public String execute() throws Exception 
 	{
+		HttpSession session=this.getSession();
+		//验证验证码
+		String verifyCode=(String)this.get("verifyCode");
+		if(verifyCode==null || !CodeVerify.verify(session, verifyCode))
+		{
+			this.saveAttribute("msg", "验证码无效!");
+			return "home/login";
+		}
 		//前后端字段名转换
 		this.setServices(new Aa01ServiceImpl());
 		this.dto.put("aaa104", this.get("email"));
@@ -27,7 +36,6 @@ public class LoginController extends ControllerSupport {
 			this.saveAttribute("msg", "账户或密码错误,请重新登录!");
 			return "home/login";
 		}
-		HttpSession session=this.getSession();
 		session.setAttribute("aaa102", ins.get("aaa102"));  //用户id
 		session.setAttribute("aaa103", ins.get("aaa103"));  //用户名
 		session.setAttribute("aaa104", ins.get("aaa104"));  //邮箱地址
