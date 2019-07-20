@@ -40,19 +40,19 @@
 									<c:if test="${empty usable }">您还未拥有任何优惠券，快去逛逛吧！</c:if>
 									<c:forEach items="${usable }" var="item">
 										<c:choose>
-											<c:when test="${item.aaa502==1 }">
+											<c:when test="${item.aaa502==2 }"><%--有条件 --%>
 												<div class="coupon-item coupon-item-d">
 												<div class="coupon-list">
 													<div class="c-type">
 														<div class="c-class">
-															<strong>购物券</strong>
+															<strong>${item.aaa503}</strong>
 														</div>
 														
 														<div class="c-price">
 															<strong>￥8</strong>
 														</div>
 														<div class="c-limit">
-															【消费满&nbsp;${item.aaa503 }元&nbsp;可用】
+															【消费满&nbsp;${item.aaa504 }元&nbsp;可用】
 														</div>
 														<div class="c-time"><span>使用期限</span>截止至${item.aaa506 }</div>
 														<div class="c-type-top"></div>
@@ -76,7 +76,7 @@
 												</div>
 											</c:when>
 											
-											<c:when test="${item.aaa502==2}">
+											<c:when test="${item.aaa502==1}">
 												<div class="coupon-item coupon-item-yf">
 											<div class="coupon-list">
 												<div class="c-type">

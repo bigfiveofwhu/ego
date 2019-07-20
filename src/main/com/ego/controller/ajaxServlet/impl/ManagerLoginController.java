@@ -19,6 +19,10 @@ public class ManagerLoginController extends AjaxControllerSupport{
 	@Override
 	public void execute(HttpSession session) throws Exception {
 		// TODO Auto-generated method stub
+		if (this.get("aad102").equals("0")) {
+			this.put("result", false);
+			return ;
+		};
 		String password=service.findById("getPassword").get("aad103");//获得数据库的密码
 		String userInput=get("aad103").toString();//获得前端用户输入的密码
 		if (password.equals(userInput)) {

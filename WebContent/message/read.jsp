@@ -15,17 +15,9 @@
     <title></title>
 </head>
 <body>
-
-<form action="readMessage.html" method="post">
-    <div>
-        接收者： <input name="qaae302">
-        <input type="submit" value="查询"/>
-    </div>
-</form>
-
 <div class="list-group justify-content-center">
     <c:forEach items="${messages}" var="ins" varStatus="vs">
-        <a data-toggle="modal" data-target=".bd-modal-lg-${ins.aae301}" onclick="updateState(${ins.aae301},1)"
+        <a data-toggle="modal" data-target=".bd-modal-lg-${ins.aae301}" onclick="updateState(${ins.aae301})"
            class="list-group-item list-group-item-action mb-4 w-75 shadow rounded p-3">
             <div class="d-flex justify-content-between" id="message-${ins.aae301}">
                 <div>
@@ -33,7 +25,7 @@
                         <h5 class="mb-2 ml-4"><strong>${ins.aae105}</strong></h5>
                         <small class="text-muted ml-4">${ins.aae104}</small>
                     </div>
-                    <p class="mb-2 ml-5">${ins.aae103}</p>
+                    <p class="mb-2 ml-5">${ins.aae106}(${ins.aae103})</p>
                 </div>
                 <p class="mt-3 mr-4">
                     <c:choose>
@@ -64,7 +56,7 @@
 </div>
 
 <script>
-    function updateState(id, count) {
+    function updateState(id) {
         $.ajax({
             url: "<%=basePath%>/updateState.ajax",
             type: "post",
@@ -76,10 +68,6 @@
             success: function () {
                 $('#message-' + id).find('.mt-3.mr-4').html('已读');
             },
-            error: function () {
-                if (count < 3)
-                    updateState(id, ++count);
-            }
         });
     }
 </script>
