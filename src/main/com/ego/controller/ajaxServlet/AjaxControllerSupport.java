@@ -2,6 +2,8 @@ package com.ego.controller.ajaxServlet;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.alibaba.fastjson.JSONObject;
 import com.ego.services.BaseServices;
 
@@ -51,5 +53,10 @@ public abstract class AjaxControllerSupport implements AjaxController
 	protected void put(String key,Object value)
 	{
 		this.jsonOject.put(key, value);
+	}
+	
+	protected HttpServletResponse getResponse()
+	{
+		return (HttpServletResponse)this.get("response");
 	}
 }

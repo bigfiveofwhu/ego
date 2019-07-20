@@ -26,6 +26,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import com.ego.services.JdbcServicesSupport;
+import com.ego.system.tools.Tools;
 
 public class UserManageServicesImpl extends JdbcServicesSupport 
 {
@@ -100,15 +101,27 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 	   }
 	   
 	   /**
-	        * 修改用户密码 暂时没加入md5
+	        * 修改用户密码 
 	    * @return
 	    * @throws Exception
 	    */
 	   @SuppressWarnings("unused")
 	 private boolean modifyPwd() throws Exception
 	   {
-		   String sql = "update aa01 a set a.aaa107=? where a.aaa102 = " + this.get("aaa102");
+		   String sql1 = "select aaa107 from aa01 where a.aaa102= ?";
 		   
-		   return this.executeUpdate(sql, this.get("aaa107"));
+		   Map<String,String> map = this.queryForMap(sql1, this.get("aaa102"));
+		   
+		   
+		   String pwdMd5 = Tools.getMd5(this.get("aaa107"));
+		   
+		   if(map.get("aaa107").equals(pwdMd5))
+		   {
+		   
+		      String sql = "update aa01 a set a.aaa107=? where a.aaa102 = " + this.get("aaa102");
+		   
+		      return this.executeUpdate(sql, pwdMd5);
+		   }
+		   return false;
 	   }
 }

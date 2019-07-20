@@ -26,12 +26,12 @@
 									</a>
 									<div class="m-baseinfo">
 										<a class="m-pic" href="<%=path %>/person/showUserInfo.html">
-											<img src="<%=path%>/images/getAvatar.do.jpg">
+											<img src="<%=path%>/images/upload/user_${aaa102}.jpg">
 										</a>
 										<div class="m-info">
 											<em class="s-name">${aaa103}</em>
 											<div class="vip1"><a href="#"><span></span><em>会员专享</em></a></div>
-											<div class="safeText"><a href="<%=path %>/person/safety.jsp">账户安全:<em style="margin-left:20px ;">${aaa106}</em>分</a>
+											<div class="safeText"><a href="<%=path %>/person/safety.jsp">信用积分:<em style="margin-left:20px ;">${aaa106}</em>分</a>
 												<div class="progressBar"><span style="left: -95px;" class="progress"></span></div>
 											</div>
 											<div class="m-address">
