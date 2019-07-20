@@ -109,7 +109,7 @@ public class Ac05ServicesImpl extends JdbcServicesSupport
 		//1.创建SQL语句
 		StringBuilder sql = new StringBuilder()
 				.append("insert into ac05(aaa102,aac402,aac502,aac503,aac505,aac507)")
-    			.append("          values (?,?,?,current_timestamp,?)")
+    			.append("          values (?,?,?,?,current_timestamp,?)")
     			;
 		//2.编写参数数组
 		Object args[]={
