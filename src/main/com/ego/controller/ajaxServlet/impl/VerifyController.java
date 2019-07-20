@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.servlet.http.HttpSession;
 
 import com.ego.controller.ajaxServlet.AjaxControllerSupport;
+import com.ego.system.utils.CodeVerify;
 
 public class VerifyController extends AjaxControllerSupport 
 {
@@ -12,23 +13,14 @@ public class VerifyController extends AjaxControllerSupport
 	public void execute(HttpSession session) throws Exception
 	{
 	    String verCode=(String)this.dto.get("verCode");
-	    String code=(String)session.getAttribute("regVerCode");
-	    long time=(long)session.getAttribute("regVerCodeTime");
-	    long now=new Date().getTime();
-	    if((now-time)>300000)
+	    if(!CodeVerify.verify(session, verCode))
 	    {
 	    	this.put("status", "201");
+	    	return;
 	    }
-	    else
-	    {
-	    	if(verCode.equals(code))
-	    	{
-		    	this.put("status", "200");
-	    	}
-	    	else
-	    	{
-	    		this.put("status", "201");
-	    	}
-	    }
+	    session.setAttribute("isVeriFied", true);//做上标记
+		session.setAttribute("isVerifiedTimeout", new Date().getTime());  //定义起始时间,有效时长一分钟
+		session.setAttribute("internel", 60000L);
+    	this.put("status", "200");
 	}
 }

@@ -7,7 +7,7 @@
 		<!-- 页面meta -->
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>后台管理系统</title>
+		<title>购物商城后台管理系统</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/bootstrap/css/bootstrap.min.css">
@@ -201,6 +201,22 @@
 								<li id="admin-login">
 									<a href="<%=path %>/shop/queryShouhou.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 售后管理
+									</a>
+								</li>
+							</ul>
+						</li>
+						<%--广告管理 --%>
+						<li class="treeview">
+							<a href="#" >
+								<i class="fa fa-folder"></i>
+								<span>广告管理</span>
+								<span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				       		</a>
+				       		<ul class="treeview-menu">
+								<li id="admin-login">
+									<a href="<%=path %>/advertise/showAccount.html" target="iframe">
+										<i class="fa fa-circle-o"></i> 广告账户
 									</a>
 								</li>
 							</ul>

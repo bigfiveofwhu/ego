@@ -75,7 +75,6 @@
 							<li> <a href="<%=path %>/person/bonus.jsp" target="iframe">红包</a></li>
 							<li> <a href="<%=path %>/person/walletlist.jsp" target="iframe">账户余额</a></li>
 							<li> <a href="<%=path %>/person/bill.jsp" target="iframe">账单明细</a></li>
-							<li> <a href="<%=path %>/advertise/showAccount.html" target="iframe">广告账户</a></li>
 						</ul>
 					</li>
 

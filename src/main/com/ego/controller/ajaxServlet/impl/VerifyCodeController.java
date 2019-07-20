@@ -29,6 +29,7 @@ public class VerifyCodeController extends AjaxControllerSupport
 			String code_6=SendEmail.random_6_Code();
 			session.setAttribute("regVerCode", code_6);
 			session.setAttribute("regVerCodeTime", new Date().getTime());
+			session.setAttribute("internel", 300000L);
 			String content="普通会员注册验证码为:"+code_6+",5分钟内有效.";
 			try 
 			{

@@ -9,6 +9,7 @@ import java.util.Map;
 
 import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.Ac02ServiceImpl;
+import com.ego.services.impl.Ac05ServicesImpl;
 
 public class ServiceDetailController extends ControllerSupport
 {
@@ -17,16 +18,26 @@ public class ServiceDetailController extends ControllerSupport
 	public String execute() throws Exception
 	{
 		this.dto.put("aac202", this.get("serviceId"));
+		//查询服务详细信息
 		this.setServices(new Ac02ServiceImpl());
 		Map<String,String> ins=this.getServices().findById("findByAac202");
 		this.saveAttribute("info", ins);
-		String imgs=(String)ins.get("aac210");
+		 //服务所有图片路径
+		String imgs=(String)ins.get("aac210");    
 		List<String> imgList=new ArrayList<>();
 		for(String img:imgs.split(";"))
 		{
 			imgList.add(img);
 		}
 		this.saveAttribute("imgList", imgList);
+		this.setServices(new Ac05ServicesImpl());
+		//计算好评率
+		ins=this.getServices().findById("compute5Comment");
+		this.saveAttribute("grade", ins.get("grade"));
+		this.saveAttribute("AllComment", Integer.parseInt(ins.get("a").toString()));
+		//查询服务的评论信息
+		List<Map<String,String>> rows=this.getServices().query("queryCommentForAac202");
+		this.saveAttribute("comments", rows);
 		return "localCity/serviceDetail";
 	}
 }

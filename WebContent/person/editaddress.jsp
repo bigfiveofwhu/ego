@@ -26,7 +26,7 @@
 								<hr/>
 
 								<div class="am-u-md-12 am-u-lg-8" style="margin-top: 20px;">
-									<form  action="editAddressBack.html" class="am-form am-form-horizontal">
+									<form  action="editAddressBack.html" class="am-form am-form-horizontal" method="post">
 
 										<div class="am-form-group">
 											<label for="user-name" class="am-form-label">收货人</label>

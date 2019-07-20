@@ -33,9 +33,6 @@
 				<div class="pull-left">
 					<div class="form-group form-inline">
 						<div class="btn-group">
-							<button type="button" class="btn btn-default" title="新建" onclick="window.location.href='goods_edit.html';"><i class="fa fa-file-o"></i> 新建</button>
-							<button type="button" class="btn btn-default" title="删除" ng-click="delete()"><i class="fa fa-trash-o"></i> 删除</button>
-							<button type="button" class="btn btn-default" title="提交审核" ng-click="updateStatus('1')"><i class="fa fa-check"></i> 提交审核</button>
 							<button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
 						</div>
 					</div>

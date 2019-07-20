@@ -40,7 +40,7 @@ public class Aa01ServiceImpl extends JdbcServicesSupport
 		String username=(String)this.get("username");
 		String email=(String)this.get("email");
 		String phone=(String)this.get("phone");
-		String pwd=(String)this.get("pwd");
+		String pwd=Tools.getMd5(this.get("pwd"));   //º”√‹
 		String realname=(String)this.get("realname");
 		String gender=(String)this.get("gender");
 		String birthday=(String)this.get("birthday");
