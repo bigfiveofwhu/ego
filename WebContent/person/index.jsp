@@ -63,8 +63,17 @@
 						<p><i class="am-icon-balance-scale"></i>我的交易</p>
 						<ul>
 							<li><a href="<%=path %>/showOrder.html" target="iframe">订单管理</a></li>
-							<li> <a href="<%=path %>/goRefund.html" target="iframe">退款售后</a></li>
-							<li> <a href="<%=path %>/showComment.html" target="iframe">评价商品</a></li>
+							<li> <a href="<%=path %>/showRefund.html" target="iframe">退款售后</a></li>
+							<li> <a href="<%=path %>/showComment.html" target="iframe">我的评价</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<p><i class="am-icon-balance-scale"></i>我的服务</p>
+						<ul>
+							<li><a href="<%=path %>/goPostNeed.html" target="iframe">我有需求</a></li>
+							<li> <a href="<%=path %>/showNeed.html" target="iframe">历史需求</a></li>
+							<li> <a href="<%=path %>/showServiceOrder.html" target="iframe">服务订单</a></li>
+							<li> <a href="<%=path %>/showServiceComment.html" target="iframe">服务评价</a></li>
 						</ul>
 					</li>
 					<li class="person">
@@ -82,7 +91,7 @@
 						<p><i class="am-icon-tags"></i>我的收藏</p>
 						<ul>
 							<li> <a href="<%=path %>/person/collection.jsp" target="iframe">收藏</a></li>
-							<li> <a href="<%=path %>/person/foot.jsp" target="iframe">足迹</a></li>														
+							<li> <a href="<%=path %>/showHistory.html" target="iframe">足迹</a></li>														
 						</ul>
 					</li>
 

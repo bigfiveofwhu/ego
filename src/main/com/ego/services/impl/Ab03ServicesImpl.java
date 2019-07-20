@@ -118,9 +118,9 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql = new StringBuilder()
 				.append("select x.aab203,x.aab302,x.aab303,x.aab304,x.aab305,")
 				.append("       x.aab306,x.aab307,x.aab309,x.aab310,x.aab313,")
-				.append("       x.aab314,y.aab202,z.aaa802")
-				.append("  from ab03 x, ab02 y,aa08 z")
-				.append("  where  x.aab203=y.aab203 and x.aab302=z.aab302")
+				.append("       x.aab314,y.aab202")
+				.append("  from ab03 x, ab02 y")
+				.append("  where  x.aab203=y.aab203 ")
 				.append("  and x.aaa102=? and x.aab308='01' ")
 				;
 		

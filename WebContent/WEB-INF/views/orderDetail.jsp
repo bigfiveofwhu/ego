@@ -140,15 +140,9 @@
 						
 						<div class="order-infoaside">
 							<div class="order-logistics">
-								<a href="logistics.html">
-									<div class="icon-log">
-										<i><img src="<%=path%>/images/receive.png"></i>
-									</div>
+								<a href="javascript:;">
+									
 									<div class="latest-logistics">
-										<p class="text">已签收,签收人是青年城签收，感谢使用天天快递，期待再次为您服务</p>
-										<div class="time-list">
-											<span class="date">2015-12-19</span><span class="week">周六</span><span class="time">15:35:42</span>
-										</div>
 										<div class="inquire">
 											<span class="package-detail">物流号:${ins.aab309 }</span>
 											<span class="package-detail">快递单号: </span>
@@ -165,16 +159,13 @@
 									<div class="icon-add">
 									</div>
 									<p class="new-tit new-p-re">
-										<span class="new-txt">小叮当</span>
-										<span class="new-txt-rd2">159****1622</span>
+										<span class="new-txt">联系人:<%=session.getAttribute("aaa103") %></span>
+										<span class="new-txt-rd2">联系方式:<%=session.getAttribute("aaa108") %></span>
 									</p>
 									<div class="new-mu_l2a new-p-re">
 										<p class="new-mu_l2cw">
 											<span class="title">收货地址：${ins.aab311 }</span>
-											<!--span class="province">湖北</span>省
-											<span class="city">武汉</span>市
-											<span class="dist">洪山</span>区
-											<span class="street">雄楚大道666号(中南财经政法大学)</span-->
+											
 										</p>
 									</div>
 								</div>

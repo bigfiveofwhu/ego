@@ -56,82 +56,75 @@
 
 							<div class="am-tabs-bd">
 								<div class="am-tab-panel am-fade am-in am-active" id="tab1">
-								<div class="comment-main">
-								<div class="comment-top">
+									<div class="comment-main">
+									<div class="comment-top">
 										<div class="th th-price">
 											<td class="td-inner">评价</td>
 										</div>
 										<div class="th th-item">
 											<td class="td-inner">服务</td>
 										</div>													
-								</div>
-								<c:choose>
+									</div>
+									<c:choose>
 									<c:when test="${rows!=null }">
 									<c:forEach items="${rows }" var="ins" varStatus="vs">
-									
 										<div class="comment-list">
-													<ul class="item-list">
-														
-															<li class="td td-item">
-																<div class="item-pic">
-																	<a href="#" class="J_MakePoint">
-																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic">
-																	</a>
-																</div>
-															</li>
-			
-															<li class="td td-comment">
-																<div class="item-title">
-																	<div class="item-opinion" style="width:20%;">评分:<br/>
-																	${ins.aac507 }分
-																	</div>
-																	<div class="item-opinion" style="width:20%;"><br/><br/><br/><br/>
-																	
-																	</div>
-																	<div class="item-name">
-																		<a href="#">
-																			<p class="item-basic-info">${ins.aac103 }</p>
-																		</a>
-																		<p class="item-basic-info" style="color:orange;">${ins.aac410 }</p>
-																		<p class="item-basic-info">${ins.aac411 }</p>
-																	</div>
-																</div>
-																<div class="item-comment">
-																	<a href="javascript:;">${ins.aac503 }</a>
-																</div>
-			
-																<div class="item-info">
-																	<div>
-																		<p class="info-little">
-																		<span>订单号:${ins.aac402 }</span> 
-																		</p>
-																		<p class="info-time">${ins.aac505 }</p>  
-			
-																	</div>
-																</div>
-															</li>
-														</ul>
+										<ul class="item-list">
+											<li class="td td-item">
+												<div class="item-pic">
+													<a href="#" class="J_MakePoint">
+														<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic">
+													</a>
+												</div>
+											</li>
+	
+											<li class="td td-comment">
+												<div class="item-title">
+													<div class="item-opinion" style="width:20%;">评分:<br/>
+													${ins.aac507 }分
 													</div>
+													
+													<div class="item-name">
+														<a href="#">
+															<p class="item-basic-info">
+															服务商:
+															${ins.aac103 }
+															</p>
+														</a>
+														<p class="item-basic-info" style="color:orange;">服务类型:${ins.aac410 }</p>
+														<p>
+														<br/><span style="color:orange;">服务内容:</span><br/>
+														${ins.aac411 }
+														</p>
+														<p>
+														<br/><span style="color:orange;">评价内容:</span><br/>
+														${ins.aac503 }
+														</p>
+													</div>
+												</div>
+												
+												<div class="item-info">
+													<div>
+														<p class="info-little">
+														<span>订单号:${ins.aac402 }</span> 
+														</p>
+														<p class="info-time">提交时间:${ins.aac505 }</p>  
+													</div>
+												</div>
+											</li>
+										</ul>
+										</div>
 									
 									</c:forEach>
 									</c:when>
-								</c:choose>				
-												
+									</c:choose>	
+									</div>
 								</div>
-								</div>
-								
 							</div>
 						</div>
-
 					</div>
-
 				</div>
-				
 			</div>
-
-			
 		</div>
-
 	</body>
-
 </html>
