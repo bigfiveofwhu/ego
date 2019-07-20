@@ -4,22 +4,16 @@
 <%String path=request.getContextPath(); %>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0 ,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
 		<title>结算页面</title>
-
 		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-
 		<link href="<%=path%>/basic/css/demo.css" rel="stylesheet" type="text/css" />
 		<link href="<%=path%>/css/cartstyle.css" rel="stylesheet" type="text/css" />
-
 		<link href="<%=path%>/css/jsstyle.css" rel="stylesheet" type="text/css" />	
-
 		<script type="text/javascript" src="<%=path%>/js/address.js"></script>
-		
 		<script type="text/javascript">
 		function checkAddress(){
 			$('input[name="aab311"]').val($(".defaultAddr").children(".address-left").children(".default-address") .children(".buy--address-detail") .children(".theAddress") .text());
@@ -118,17 +112,83 @@
 								</div>
 							</div>
 							<div class="clear"></div>
-							<c:choose>
-							<c:when test="1==1">
-							<c:forEach items="">
-							</c:forEach>
 							
-							</c:when>
-							</c:choose>
-
 							<tr class="item-list">
 								<div class="bundle  bundle-last">
-
+									<div class="bundle-main">
+										<ul class="item-content clearfix">
+											<div class="pay-phone">
+												<li class="td td-item">
+													<div class="item-pic">
+														<a href="#" class="J_MakePoint">
+															<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+														</a>
+													</div>
+													<div class="item-info">
+														<div class="item-basic-info">
+															<a href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">${product.aab202 }</a>
+														</div>
+													</div>
+												</li>
+												<li class="td td-info">
+													<div class="item-props">
+														<span class="sku-line">颜色：12#川南玛瑙</span>
+														<span class="sku-line">包装：裸装</span>
+													</div>
+													<script type="text/javascript">
+														$(function(){
+															var proArgs='${product.args}';
+															proArgs=proArgs.split(";");
+															var n=proArgs.length;
+															var html="";
+															for(var i=0;i<n;i++){
+																html+="<span class='sku-line'>"+proArgs[i].replace(",",": ")+"&emsp;</span>"
+															}
+															$(".item-props").html(html);
+														});
+													</script>
+												</li>
+												<li class="td td-price">
+													<div class="item-price price-promo-promo">
+														<div class="price-content">
+															<em class="J_Price price-now">${product.aab205 }</em>
+														</div>
+													</div>
+												</li>
+											</div>
+											<li class="td td-amount">
+												<div class="amount-wrapper ">
+													<div class="item-amount ">
+														<span class="phone-title">购买数量</span>
+														<div class="sl">
+															<input class="text_box" readonly="readonly" type="text" value="${product.count}" style="width:30px;" />
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="td td-sum">
+												<div class="td-inner">
+													<em tabindex="0" class="J_ItemSum number">${product.aab205*product.count}</em>
+												</div>
+											</li>
+											<li class="td td-oplist">
+												<div class="td-inner">
+													<span class="phone-title">配送方式</span>
+													<div class="pay-logis">
+														快递<b class="sys_item_freprice">${product.fee}</b>元
+													</div>
+												</div>
+											</li>
+										</ul>
+										<div class="clear"></div>
+									</div>
+								</div>	
+							</tr>
+							<div class="clear"></div>
+							
+							<%--
+							<tr class="item-list">
+								<div class="bundle  bundle-last">
 									<div class="bundle-main">
 										<ul class="item-content clearfix">
 											<div class="pay-phone">
@@ -256,7 +316,7 @@
 								</div>
 							</tr>
 							
-							<div class="clear"></div>
+							<div class="clear"></div> --%>
 							
 							<div class="pay-total">
 								<!--留言-->

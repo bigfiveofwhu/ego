@@ -346,16 +346,37 @@
 							</div>
 							<li>
 								<div class="clearfix tb-btn tb-btn-buy theme-login">
-									<a id="LikBuy" title="点此按钮到下一步确认购买信息" onclick="">立即购买</a>
+									<a id="LikBuy" title="点此按钮到下一步确认购买信息" onclick="purchase()">立即购买</a>
 								</div>
 							</li>
 							<li>
 								<div class="clearfix tb-btn tb-btn-basket theme-login">
-									<a id="LikBasket" title="加入购物车" onclick="addShopCart(${product.aab203})"><i></i>加入购物车</a>
+									<a id="LikBasket" title="加入购物车" onclick="addShopCart('${product.aab203}')"><i></i>加入购物车</a>
 								</div>
 							</li>
 						</div>
+						<form action="<%=path %>/createOrder.html" method="post" id="pur">
+							<input type="hidden" id="pur-productId" name="aab203" value="${product.aab203}" >
+							<input type="hidden" id="pur-count" name="count" value="" >
+							<input type="hidden" id="pur-args" name="args" value="" >
+							<input type="hidden" id="pur-fee" name="fee" value="10" >
+						</form>
 						<script type="text/javascript">
+							function purchase(){
+								var count=parseInt($("#text_box").val());
+								if(isNaN(count)){
+									alert("格式错误!");
+									return;
+								}
+								var sum=parseInt('${product.aab206 }');
+								if(count>sum){
+									alert("请重新选择数量!");
+									return;
+								}
+								$("#pur-count").attr("value",count);
+								$("#pur-args").attr("value",getArgs());
+								$("#pur").submit();
+							}
 							function addShopCart(productId){
 								var count=parseInt($("#text_box").val());
 								console.log($("#text_box").val());
