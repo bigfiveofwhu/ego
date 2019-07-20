@@ -8,7 +8,7 @@
 <title>IndexPage</title>
 </head>
 <body>
-	<%session.setAttribute("aaa102", "1"); %><!-- 当前用户id -->
+	<%session.setAttribute("aaa102", "23"); %><!-- 当前用户id -->
     <a id="jumptest" href="#" onclick="">订单页</a>
     <a id="jumptest" href="#" onclick="window.location.href='payOrder.jsp'">支付页</a>
     

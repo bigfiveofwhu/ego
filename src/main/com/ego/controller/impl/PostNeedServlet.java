@@ -7,7 +7,8 @@ public class PostNeedServlet extends NeedControllerSupport
 	public String execute() throws Exception 
 	{
 		this.update("postNeed","ÃÌº”–Ë«Û");
-		return "WEB-INF/views/serviceOrder";
+		this.savePageData("allNeed");
+		return "WEB-INF/views/serviceNeed";
 	}
 
 }

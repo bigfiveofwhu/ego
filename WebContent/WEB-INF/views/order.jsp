@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@ page language="java"  pageEncoding="GBK"%>
 <%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -59,16 +60,10 @@
 				vform.action="<%=path%>/goRefund.html?aab302="+vaab302;
 				vform.submit();
 			}
-			function goRefundDetail(vaab302)
+			function goRefundDetail(vaaa802)
 			{
 				var vform = document.getElementById("myform");
-				vform.action="<%=path%>/goRefundDetail.html?aab302="+vaab302;
-				vform.submit();
-			}
-			function goComplaintDetail(vaab302)
-			{
-				var vform = document.getElementById("myform");
-				vform.action="<%=path%>/goComplaintDetail.html?aab302="+vaab302;
+				vform.action="<%=path%>/goRefundDetail.html?aaa802="+vaaa802;
 				vform.submit();
 			}
 		</script>
@@ -77,6 +72,7 @@
 
 	<body>
 		<%double total=0; %>
+		<%DecimalFormat df=new DecimalFormat("0.00"); %>
 		<form id="myform" action="<%=path%>/###.html" method="post">
 		
 		</form>
@@ -84,6 +80,7 @@
 			<b class="line"></b>
 		<div class="center">
 			<div class="col-main" style="padding-top:0px">
+				<div class="main-wrap" style="margin:0px;">
 					<div class="user-order">
 
 						<!--标题 -->
@@ -190,7 +187,7 @@
 															    				*Double.valueOf((String)request.getAttribute("price"))
 															    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 																<div class="item-amount">
-																	合计：&yen;<%=total %>
+																	合计：&yen;<%=df.format(total) %>
 																	<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 																</div>
 															</li>
@@ -266,7 +263,7 @@
 														    				*Double.valueOf((String)request.getAttribute("price"))
 														    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 															<div class="item-amount">
-																合计：&yen;<%=total %>
+																合计：&yen;<%=df.format(total)%>
 																<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 															</div>
 														</li>
@@ -340,7 +337,7 @@
 															    				*Double.valueOf((String)request.getAttribute("price"))
 															    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 																<div class="item-amount">
-																	合计：&yen;<%=total %>
+																	合计：&yen;<%=df.format(total)%>
 																	<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 																</div>
 														</li>
@@ -417,7 +414,7 @@
 																    				*Double.valueOf((String)request.getAttribute("price"))
 																    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 																	<div class="item-amount">
-																		合计：&yen;<%=total %>
+																		合计：&yen;<%=df.format(total)%>
 																		<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 																	</div>
 														</li>
@@ -509,7 +506,7 @@
 														    				*Double.valueOf((String)request.getAttribute("price"))
 														    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 															<div class="item-amount">
-																合计：&yen;<%=total %>
+																合计：&yen;<%=df.format(total)%>
 																<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 															</div>
 														</li>
@@ -570,14 +567,14 @@
 																<c:when test="${ins.aab303 eq '08'}">
 																	<li class="td td-operation">
 																	<div class="item-operation">
-																		<a href="javascript:;" onclick="goRefundDetail(${ins.aab302})">售后详情</a>
+																		<a href="javascript:;" onclick="goRefundDetail(${ins.aaa802})">售后详情</a>
 																	</div>
 																	</li>
 																</c:when>
 																<c:when test="${ins.aab303 eq '09'}">
 																	<li class="td td-operation">
 																	<div class="item-operation">
-																		<a href="javascript:;" onclick="goComplaintDetail(${ins.aab302})">售后详情</a>
+																		<a href="javascript:;" onclick="goRefundDetail(${ins.aaa802})">售后详情</a>
 																	</div>
 																	</li>
 																</c:when>
@@ -594,7 +591,7 @@
 															    				*Double.valueOf((String)request.getAttribute("price"))
 															    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 																<div class="item-amount">
-																	合计：&yen;<%=total %>
+																	合计：&yen;<%=df.format(total)%>
 																	<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 																</div>
 															</li>
@@ -719,7 +716,7 @@
 															    				*Double.valueOf((String)request.getAttribute("price"))
 															    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 																<div class="item-amount">
-																	合计：&yen;<%=total %>
+																	合计：&yen;<%=df.format(total)%>
 																	<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 																</div>
 															</li>
@@ -840,7 +837,7 @@
 															    				*Double.valueOf((String)request.getAttribute("price"))
 															    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 																<div class="item-amount">
-																	合计：&yen;<%=total %>
+																	合计：&yen;<%=df.format(total)%>
 																	<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 																</div>
 															</li>
@@ -954,7 +951,7 @@
 																    				*Double.valueOf((String)request.getAttribute("price"))
 																    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 																	<div class="item-amount">
-																		合计：&yen;<%=total %>
+																		合计：&yen;<%=df.format(total)%>
 																		<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 																	</div>
 																</li>
@@ -1070,7 +1067,7 @@
 															    				*Double.valueOf((String)request.getAttribute("price"))
 															    				+Double.valueOf((String)request.getAttribute("transFee")); %>
 																<div class="item-amount">
-																	合计：&yen;<%=total %>
+																	合计：&yen;<%=df.format(total)%>
 																	<p>含运费：<span>&yen;${ins.aab313 }</span></p>
 																</div>
 															</li>
@@ -1123,7 +1120,7 @@
 
 						</div>
 					</div>
-				<!--底部-->
+				</div>
 				
 			</div>
 			
