@@ -1,4 +1,4 @@
-﻿<%--<%@ page pageEncoding="GBK" %>--%>
+﻿<%@ page pageEncoding="UTF-8"%>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
 <div class="qqBox">
     <div class="BoxHead">
         <div class="headImg">
-            <img src="" alt="">
+<%--            <img src="" alt="">--%>
         </div>
         <div class="internetName">我的消息</div>
     </div>
@@ -18,7 +18,7 @@
         <div class="conLeft">
             <ul>
                 <li class="bg">
-                    <div class="liLeft"><img src="" alt=""></div>
+                    <div class="liLeft"><%--<img src="" alt="">--%></div>
                     <div class="liRight">
                         <span class="interName">用户1</span>
                         <span class="info">1001</span>
@@ -139,7 +139,7 @@
 
                 //左侧头像框
                 // $('.conLeft li').removeClass('bg');
-                var conLeft_str = '<li id="li-' + from + '"><div class="liLeft"><img src="" alt=""></div><div class="liRight">' +
+                var conLeft_str = '<li id="li-' + from + '"><div class="liLeft"><!--<img src="" alt="">--></div><div class="liRight">' +
                     '<span class="interName">' + 'name' + '</span>' +
                     '<span class="info">' + from + '</span></div></li>';
                 $('.conLeft').find('ul').prepend(conLeft_str);
@@ -171,7 +171,7 @@
             target = $('#newsList-' + to);
         }
         var str = '<li><div class=' + name +
-            'Head><img src="" alt=""/></div><div class=' +
+            'Head><!--<img src="" alt=""/>--></div><div class=' +
             name + '>' + content + '</div></li>';
         target.append(str);
 

@@ -136,7 +136,7 @@
 							<a href="#" >
 								<i class="fa fa-folder"></i>
 								<span>订单管理</span>
-								<span class="pull-right-container">
+								<span class="pull-right-container"></span>
 				       			<i class="fa fa-angle-left pull-right"></i>
 				       		</a>
 				       		<ul class="treeview-menu">
@@ -155,7 +155,7 @@
 							<a href="#" >
 								<i class="fa fa-folder"></i>
 								<span>评价管理</span>
-								<span class="pull-right-container">
+								<span class="pull-right-container"></span>
 				       			<i class="fa fa-angle-left pull-right"></i>
 				       		</a>
 				       		<ul class="treeview-menu">
@@ -172,7 +172,7 @@
 							<a href="#" >
 								<i class="fa fa-folder"></i>
 								<span>售后管理</span>
-								<span class="pull-right-container">
+								<span class="pull-right-container"></span>
 				       			<i class="fa fa-angle-left pull-right"></i>
 				       		</a>
 				       		<ul class="treeview-menu">
@@ -183,7 +183,45 @@
 								</li>
 							</ul>
 						</li>
-						
+
+						<!-- 消息管理 -->
+						<li class="treeview">
+							<a href="#" >
+								<i class="fa fa-folder"></i>
+								<span>消息管理</span>
+								<span class="pull-right-container"></span>
+								<i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu">
+								<li id="admin-login">
+									<a href="<%=path %>/message/initMessage.html?type=3" target="iframe">
+										<i class="fa fa-circle-o"></i> 发送通知
+									</a>
+								</li>
+								<li id="admin-login">
+									<a href="<%=path %>/message/listMessage.html?type=3" target="iframe">
+										<i class="fa fa-circle-o"></i> 查看已发送通知
+									</a>
+								</li>
+							</ul>
+						</li>
+
+						<!-- 流水报表 -->
+						<li class="treeview">
+							<a href="#" >
+								<i class="fa fa-folder"></i>
+								<span>流水报表</span>
+								<span class="pull-right-container"></span>
+								<i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu">
+								<li id="admin-login">
+									<a href="<%=path %>/report/serviceProviderReport.html?type=3" target="iframe">
+										<i class="fa fa-circle-o"></i> 流水报表
+									</a>
+								</li>
+							</ul>
+						</li>
 					</ul>
 				</section>
 				<!-- /.sidebar -->
