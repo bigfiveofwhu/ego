@@ -11,8 +11,7 @@ public class UpdateStateController extends AjaxControllerSupport{
     public void execute(HttpSession session) throws Exception {
         BaseServices services=new Ae01ServicesImpl();
         services.setMapDto(this.dto);
-        //如果修改失败就再尝试一次
-        if(!services.update("modify"))
-            services.update("modify");
+        services.update("modify");
+        this.put("msg","成功");
     }
 }
