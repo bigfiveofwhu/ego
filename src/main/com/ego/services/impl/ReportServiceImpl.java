@@ -6,201 +6,620 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ReportServiceImpl extends JdbcServicesSupport {
+/**
+ * aaa102:用户id
+ * aab102:店铺id
+ * aac102:服务商id
+ * <p>
+ * type:用户类型
+ * 1:普通用户
+ * 2:店铺
+ * 3:服务商
+ * 4:管理员
+ * <p>
+ * diff:
+ * 0：这个月
+ * 1：上个月
+ */
+public class ReportServiceImpl extends JdbcServicesSupport
+{
     @Override
-    public List<Map<String, String>> query(String qtype) throws Exception {
-        if(qtype.equalsIgnoreCase("queryShopForMonth"))
+    public List<Map<String, String>> query(String qtype) throws Exception
+    {
+        if (qtype.equalsIgnoreCase("queryShopForMonth"))
             return this.queryShopForMonth();
-        if(qtype.equalsIgnoreCase("queryServiceForMonth"))
+        if (qtype.equalsIgnoreCase("queryServiceForMonth"))
             return this.queryServiceForMonth();
-        if(qtype.equalsIgnoreCase("queryShopForYear"))
+        if (qtype.equalsIgnoreCase("queryShopForYear"))
             return this.queryShopForYear();
-        if(qtype.equalsIgnoreCase("queryServiceForYear"))
+        if (qtype.equalsIgnoreCase("queryServiceForYear"))
             return this.queryServiceForYear();
-        throw new Exception("ReportServiceImpl不能处理："+qtype);
+        /***************************************************新的处理逻辑************************************************************/
+        if (qtype.equalsIgnoreCase("shopSumMonth"))
+            return this.shopSum(1);
+        if (qtype.equalsIgnoreCase("shopSumYear"))
+            return this.shopSum(2);
+        if (qtype.equalsIgnoreCase("shopSumAll"))
+            return this.shopSum(3);
+        if (qtype.equalsIgnoreCase("serviceSumMonth"))
+            return this.serviceSum(1);
+        if (qtype.equalsIgnoreCase("serviceSumYear"))
+            return this.serviceSum(2);
+        if (qtype.equalsIgnoreCase("serviceSumAll"))
+            return this.serviceSum(3);
+        if (qtype.equalsIgnoreCase("userMonthlyReportDetail"))
+            return this.userMonthlyReportDetail();
+        if (qtype.equalsIgnoreCase("shopMonthlyReportDetail"))
+            return this.shopMonthlyReportDetail();
+        if (qtype.equalsIgnoreCase("serviceMonthlyDetail"))
+            return this.serviceMonthlyDetail();
+        if (qtype.equalsIgnoreCase("shopMonthlyReportDetailForGoods"))
+            return this.shopMonthlyReportDetailForGoods();
+        if (qtype.equalsIgnoreCase("shopYearlyReportDetail"))
+            return shopYearlyReportDetail();
+        if (qtype.equalsIgnoreCase("serviceYearlyReportDetail"))
+            return serviceYearlyReportDetail();
+        if (qtype.equalsIgnoreCase("adminMonthlyReportDetail"))
+            return adminMonthlyReportDetail();
+        if (qtype.equalsIgnoreCase("clickCount"))
+            return clickCount();
+        if (qtype.equalsIgnoreCase("queryShopForMonth2"))
+            return queryShopForMonth2();
+        if (qtype.equalsIgnoreCase("queryGoodsOfShop"))
+            return queryGoodsOfShop();
+
+        throw new Exception("ReportServiceImpl不能处理：" + qtype);
     }
 
     /**
-     * aaa102:用户id
-     * aab102:店铺id
-     *   diff:
-     *      0：这个月
-     *      1：上个月
+     * 查询商品月度总流水
      *
-     * 如果用户id或者店铺id不为空，则根据id查记录
-     * 否则为管理员，查询月度总流水
      * @return
      * @throws Exception
      */
-    private List<Map<String, String>> queryShopForMonth() throws Exception {
-        Object aaa102=this.get("aaa102");
-        Object aab102=this.get("aab102");
-        Object diff=this.get("diff");
+    private List<Map<String, String>> queryShopForMonth() throws Exception
+    {
+        Object aaa102 = this.get("aaa102");
+        Object aab102 = this.get("aab102");
+        Object type = this.get("type");
+        Object diff = this.get("diff");
 
-        StringBuilder sql=new StringBuilder()
-                .append("SELECT aab202 name,DAY(aab305) day,SUM(aab310 * aab314) sum")
-                .append("  FROM ab03 a3,ab02 a2")
+        List<Object> paramList = new ArrayList<>();
+        StringBuilder sql = new StringBuilder();
+        String tmp;
+
+        paramList.add(diff);
+
+        if (type != null)
+        {
+            //用户查询
+            if (type.equals("1") && this.isNotNull(aaa102))
+            {
+                sql.append("SELECT DAY(aab305) day,SUM(aab310 * aab314) sum");
+                tmp = " AND aaa102=? GROUP BY DAY(aab305)";
+                paramList.add(aaa102);
+            }
+            //店铺查询
+            else if (type.equals("2") && this.isNotNull(aab102))
+            {
+                sql.append("SELECT CONCAT(aab202,'_',a3.aab203) name,DAY(aab305) day,SUM(aab310 * aab314) sum");
+                tmp = " AND aab102=? GROUP BY a3.aab203,DAY(aab305)";
+                paramList.add(aab102);
+            }
+            //管理员查询
+            else if (type.equals("4"))
+            {
+                sql.append("SELECT DAY(aab305) day,SUM(aab310 * aab314) sum");
+                tmp = " GROUP BY DAY(aab305)";
+            }
+            else
+            {
+                throw new Exception("ReportServiceImpl.queryShopForMonth()无法处理此请求");
+            }
+        }
+        else
+        {
+            throw new Exception("ReportServiceImpl.queryShopForMonth()无法处理此请求");
+        }
+
+        sql.append("  FROM ab03 a3,ab02 a2")
                 .append(" WHERE a3.aab203=a2.aab203 AND PERIOD_DIFF(date_format(NOW( ),'%Y%m'),date_format(aab305,'%Y%m'))=?")
-                ;
+                .append(tmp);
 
-        List<Object> paramList=new ArrayList<>();
-        paramList.add(diff);
-
-        //用户查询
-        if(this.isNotNull(aaa102))
-        {
-            sql.append(" AND aaa102=? GROUP BY DAY(aab305)");
-            paramList.add(aaa102);
-        }
-        //店铺查询
-        else if(this.isNotNull(aab102))
-        {
-            sql.append(" AND aab102=? GROUP BY a3.aab203,DAY(aab305)");
-            paramList.add(aab102);
-        }
-        //都为空则是管理员查询
-        else
-        {
-            sql.append(" GROUP BY DAY(aab305)");
-        }
         return this.queryForList(sql.toString(), paramList.toArray());
     }
 
     /**
-     * aaa102:用户id
-     * aac102:服务商id
-     *   diff:
-     *      0：这个月
-     *      1：上个月
+     * 查询服务月度总流水
      *
-     * 如果用户id或者服务商id不为空，则根据id查记录
-     * 否则为管理员，查询月度总流水
      * @return
      * @throws Exception
      */
-    private List<Map<String, String>> queryServiceForMonth() throws Exception{
-        Object aaa102=this.get("aaa102");
-        Object aac102=this.get("aac102");
-        Object diff=this.get("diff");
+    private List<Map<String, String>> queryServiceForMonth() throws Exception
+    {
+        Object aaa102 = this.get("aaa102");
+        Object aac102 = this.get("aac102");
+        Object type = this.get("type");
+        Object diff = this.get("diff");
 
-        StringBuilder sql=new StringBuilder()
-                .append("SELECT aac203 name,DAY(aac405) day,SUM(aac407) sum")
-                .append("  FROM ac02 a2,ac04 a4")
+        List<Object> paramList = new ArrayList<>();
+        StringBuilder sql = new StringBuilder();
+        String tmp;
+
+        paramList.add(diff);
+
+        if (type != null)
+        {
+            //用户查询
+            if (type.equals("1") && this.isNotNull(aaa102))
+            {
+                sql.append("SELECT DAY(aac405) day,SUM(aac407) sum");
+                tmp = " AND aaa102=? GROUP BY DAY(aac405)";
+                paramList.add(aaa102);
+            }
+            //服务商查询
+            else if (type.equals("3") && this.isNotNull(aac102))
+            {
+                sql.append("SELECT CONCAT(aac203,'_',a4.aac202) name,DAY(aac405) day,SUM(aac407) sum");
+                tmp = " AND a4.aac102=? GROUP BY a4.aac202,DAY(aac405)";
+                paramList.add(aac102);
+            }
+            //管理员查询
+            else if (type.equals("4"))
+            {
+                sql.append("SELECT DAY(aac405) day,SUM(aac407) sum");
+                tmp = " GROUP BY DAY(aac405)";
+            }
+            else
+            {
+                throw new Exception("ReportServiceImpl.queryServiceForMonth()无法处理此请求");
+            }
+        }
+        else
+        {
+            throw new Exception("ReportServiceImpl.queryServiceForMonth()无法处理此请求");
+        }
+
+        sql.append("  FROM ac02 a2,ac04 a4")
                 .append(" WHERE a2.aac202=a4.aac202 AND PERIOD_DIFF(date_format(NOW( ),'%Y%m'),date_format(aac405,'%Y%m'))=?")
-                ;
+                .append(tmp);
 
-        List<Object> paramList=new ArrayList<>();
-        paramList.add(diff);
-
-        //用户查询
-        if(this.isNotNull(aaa102))
-        {
-            sql.append(" AND aaa102=? GROUP BY DAY(aac405)");
-            paramList.add(aaa102);
-        }
-        //店铺查询
-        else if(this.isNotNull(aac102))
-        {
-            sql.append(" AND aab102=? GROUP BY a4.aac202,DAY(aac405)");
-            paramList.add(aac102);
-        }
-        //都为空则是管理员查询
-        else
-        {
-            sql.append(" GROUP BY DAY(aac405)");
-        }
         return this.queryForList(sql.toString(), paramList.toArray());
     }
 
     /**
-     * aaa102:用户id
-     * aab102:店铺id
-     *   diff:
-     *      0：今年
-     *      1：去年
+     * 查询商品年度总流水
      *
-     * 如果用户id或者店铺id不为空，则根据id查记录
-     * 否则为管理员，查询年度总流水
      * @return
      * @throws Exception
      */
-    private List<Map<String, String>> queryShopForYear() throws Exception {
-        Object aaa102=this.get("aaa102");
-        Object aab102=this.get("aab102");
-        Object diff=this.get("diff");
+    private List<Map<String, String>> queryShopForYear() throws Exception
+    {
+        Object aaa102 = this.get("aaa102");
+        Object aab102 = this.get("aab102");
+        Object type = this.get("type");
+        Object diff = this.get("diff");
 
-        StringBuilder sql=new StringBuilder()
-                .append("SELECT aab202 name,Month(aab305) month,SUM(aab310 * aab314) sum")
-                .append("  FROM ab03 a3,ab02 a2")
-                .append(" WHERE a3.aab203=a2.aab203 AND PERIOD_DIFF(date_format(NOW( ),'%Y'),date_format(aab305,'%Y'))=?")
-                ;
+        List<Object> paramList = new ArrayList<>();
+        StringBuilder sql = new StringBuilder();
+        String tmp;
 
-        List<Object> paramList=new ArrayList<>();
         paramList.add(diff);
 
-        //用户查询
-        if(this.isNotNull(aaa102))
+        if (type != null)
         {
-            sql.append(" AND aaa102=? GROUP BY Month(aab305)");
+            //用户查询
+            if (type.equals("1") && this.isNotNull(aaa102))
+            {
+                sql.append("SELECT Month(aab305) month,SUM(aab310 * aab314) sum");
+                tmp = " AND aaa102=? GROUP BY Month(aab305)";
+                paramList.add(aaa102);
+            }
+            //店铺查询
+            else if (type.equals("2") && this.isNotNull(aab102))
+            {
+                sql.append("SELECT CONCAT(aab202,'_',a3.aab203) name,Month(aab305) month,SUM(aab310 * aab314) sum");
+                tmp = " AND aab102=? GROUP BY a3.aab203,Month(aab305)";
+                paramList.add(aab102);
+            }
+            //管理员查询
+            else if (type.equals("4"))
+            {
+                sql.append("SELECT Month(aab305) month,SUM(aab310 * aab314) sum");
+                tmp = " GROUP BY Month(aab305)";
+            }
+            else
+            {
+                throw new Exception("ReportServiceImpl.queryShopForYear()无法处理此请求");
+            }
+        }
+        else
+        {
+            throw new Exception("ReportServiceImpl.queryShopForYear()无法处理此请求");
+        }
+
+        sql.append("  FROM ab03 a3,ab02 a2")
+                .append(" WHERE a3.aab203=a2.aab203 AND PERIOD_DIFF(date_format(NOW( ),'%Y'),date_format(aab305,'%Y'))=?")
+                .append(tmp);
+
+        return this.queryForList(sql.toString(), paramList.toArray());
+    }
+
+    /**
+     * 查询服务年度总流水
+     *
+     * @return
+     * @throws Exception
+     */
+    private List<Map<String, String>> queryServiceForYear() throws Exception
+    {
+        Object aaa102 = this.get("aaa102");
+        Object aac102 = this.get("aac102");
+        Object type = this.get("type");
+        Object diff = this.get("diff");
+
+        List<Object> paramList = new ArrayList<>();
+        StringBuilder sql = new StringBuilder();
+        String tmp;
+
+        paramList.add(diff);
+
+        if (type != null)
+        {
+            //用户查询
+            if (type.equals("1") && this.isNotNull(aaa102))
+            {
+                sql.append("SELECT Month(aac405) month,SUM(aac407) sum");
+                tmp = " AND aaa102=? GROUP BY Month(aac405)";
+                paramList.add(aaa102);
+            }
+            //服务商查询
+            else if (type.equals("3") && this.isNotNull(aac102))
+            {
+                sql.append("SELECT CONCAT(aac203,'_',a4.aac202) name,Month(aac405) month,SUM(aac407) sum");
+                tmp = " AND a4.aac102=? GROUP BY a4.aac202,Month(aac405)";
+                paramList.add(aac102);
+            }
+            //管理员查询
+            else if (type.equals("4"))
+            {
+                sql.append("SELECT Month(aac405) month,SUM(aac407) sum");
+                tmp = " GROUP BY Month(aac405)";
+            }
+            else
+            {
+                throw new Exception("ReportServiceImpl.queryServiceForYear()无法处理此请求");
+            }
+        }
+        else
+        {
+            throw new Exception("ReportServiceImpl.queryServiceForYear()无法处理此请求");
+        }
+
+        sql.append("  FROM ac02 a2,ac04 a4")
+                .append(" WHERE a2.aac202=a4.aac202 AND PERIOD_DIFF(date_format(NOW( ),'%Y'),date_format(aac405,'%Y'))=?")
+                .append(tmp);
+
+        return this.queryForList(sql.toString(), paramList.toArray());
+    }
+
+    /***************************************************新的处理逻辑************************************************************/
+    /**
+     * 获取商品消费总额
+     *
+     * @param tag 1：月度商品消费总额
+     *            2：年度商品消费总额
+     *            3：生涯商品消费总额
+     * @return 消费总额
+     * @throws Exception
+     */
+    private List<Map<String, String>> shopSum(int tag) throws Exception
+    {
+        Object aaa102 = this.get("aaa102");
+        Object aab102 = this.get("aab102");
+
+        StringBuilder sql = new StringBuilder()
+                .append("SELECT SUM(aab314*aab310) sum")
+                .append("  FROM ab02 a2,ab03 a3")
+                .append(" WHERE a2.aab203=a3.aab203");
+        List<Object> paramList = new ArrayList<>();
+        //用户
+        if (this.isNotNull(aaa102))
+        {
+            sql.append(" AND aaa102=?");
             paramList.add(aaa102);
         }
-        //店铺查询
-        else if(this.isNotNull(aab102))
+        //店铺
+        else if (this.isNotNull(aab102))
         {
-            sql.append(" AND aab102=? GROUP BY a3.aab203,Month(aab305)");
+            sql.append(" AND aab102=?");
             paramList.add(aab102);
         }
-        //都为空则是管理员查询
-        else
+        //都为空则是管理员
+
+        //月度流水
+        if (tag == 1)
+            sql.append(" AND PERIOD_DIFF(date_format(NOW( ),'%Y%m'),date_format(aab305,'%Y%m'))=0");
+            //年度流水
+        else if (tag == 2)
+            sql.append(" AND PERIOD_DIFF(date_format(NOW( ),'%Y'),date_format(aab305,'%Y'))=0");
+        //否则（tag=3）为生涯流水
+
+        return queryForList(sql.toString(), paramList.toArray());
+    }
+
+    /**
+     * 获取服务消费总额
+     *
+     * @param tag 1：月度服务消费总额
+     *            2：年度服务消费总额
+     *            3：生涯服务消费总额
+     * @return 消费总额
+     * @throws Exception
+     */
+    private List<Map<String, String>> serviceSum(int tag) throws Exception
+    {
+        Object aaa102 = this.get("aaa102");
+        Object aac102 = this.get("aac102");
+
+        StringBuilder sql = new StringBuilder()
+                .append("SELECT SUM(aac407) sum")
+                .append("  FROM ac02 a2,ac04 a4")
+                .append(" WHERE a2.aac202=a4.aac202");
+
+        List<Object> paramList = new ArrayList<>();
+        //用户
+        if (this.isNotNull(aaa102))
         {
-            sql.append(" GROUP BY Month(aab305)");
+            sql.append(" AND aaa102=?");
+            paramList.add(aaa102);
         }
+        //服务商
+        else if (this.isNotNull(aac102))
+        {
+            sql.append(" AND a2.aac102=?");
+            paramList.add(aac102);
+        }
+        //都为空则是管理员
+
+        //月度流水
+        if (tag == 1)
+            sql.append(" AND PERIOD_DIFF(date_format(NOW( ),'%Y%m'),date_format(aac405,'%Y%m'))=0");
+            //年度流水
+        else if (tag == 2)
+            sql.append(" AND PERIOD_DIFF(date_format(NOW( ),'%Y'),date_format(aac405,'%Y'))=0");
+        //否则（tag=3）为生涯流水
+
+        return queryForList(sql.toString(), paramList.toArray());
+    }
+
+    /**
+     * 获取用户月流水详情（详细账单）
+     *
+     * @return
+     * @throws Exception
+     */
+    private List<Map<String, String>> userMonthlyReportDetail() throws Exception
+    {
+        Object aaa102 = this.get("aaa102");
+
+        StringBuilder sql = new StringBuilder()
+                .append("SELECT aab305 time,aab310*aab314 sum,'商品' type,aab103 name")
+                .append("  FROM ab03 a3,ab02 a2,ab01 a1")
+                .append(" WHERE a3.aaa102=? AND PERIOD_DIFF(date_format(NOW( ),'%Y%m'),date_format(aab305,'%Y%m'))=0")
+                .append("   AND a3.aab203=a2.aab203 AND a2.aab102=a1.aab102")
+                .append(" UNION ")
+                .append("SELECT aac405 time,aac407 sum,'服务' type,aac103 name")
+                .append("  FROM ac04 a4,ac02 a2,ac01 a1")
+                .append(" WHERE a4.aaa102=? AND PERIOD_DIFF(date_format(NOW( ),'%Y%m'),date_format(aac405,'%Y%m'))=0")
+                .append("   AND a4.aac202=a2.aac202 AND a2.aac102=a1.aac102")
+                .append(" ORDER BY time");
+
+        return this.queryForList(sql.toString(), aaa102, aaa102);
+    }
+
+    /**
+     * 获取商铺月流水详情（详细账单）
+     *
+     * @return
+     * @throws Exception
+     */
+    private List<Map<String, String>> shopMonthlyReportDetail() throws Exception
+    {
+        Object aab102 = this.get("aab102");
+
+        StringBuilder sql = new StringBuilder()
+                .append("SELECT aab305 time,CONCAT(aab202,'_',a2.aab203) name,aab314*aab310 sum")
+                .append("  FROM ab02 a2,ab03 a3")
+                .append(" WHERE a2.aab203=a3.aab203 AND aab102=? AND PERIOD_DIFF(date_format(NOW( ),'%Y%m'),date_format(aab305,'%Y%m'))=0")
+                .append(" ORDER BY time");
+
+        return this.queryForList(sql.toString(), aab102);
+    }
+
+    /**
+     * 获取服务商月流水详情（详细账单）
+     *
+     * @return
+     * @throws Exception
+     */
+    private List<Map<String, String>> serviceMonthlyDetail() throws Exception
+    {
+        Object aac102 = this.get("aac102");
+
+        StringBuilder sql = new StringBuilder()
+                .append("SELECT aac405 time,CONCAT(aac203,'_',a2.aac202) name,aac407 sum")
+                .append("  FROM ac02 a2,ac04 a4")
+                .append(" WHERE a2.aac202=a4.aac202 AND a2.aac102=? AND PERIOD_DIFF(date_format(NOW( ),'%Y%m'),date_format(aac405,'%Y%m'))=0")
+                .append(" ORDER BY time");
+
+        return this.queryForList(sql.toString(), aac102);
+    }
+
+    /**
+     * 获取店铺这个月每件商品的点击量、销售量、销售额
+     *
+     * @return
+     * @throws Exception
+     */
+    private List<Map<String, String>> shopMonthlyReportDetailForGoods() throws Exception
+    {
+        Object aab102 = this.get("aab102");
+
+        StringBuilder sql = new StringBuilder()
+                .append("	SELECT CONCAT(aab202,'_',aab203) name,COALESCE ( views, 0 ) views,COALESCE ( count, 0 ) count,COALESCE ( sum, 0 ) sum")
+                .append("	FROM")
+                .append("		( SELECT aab203, aab202 FROM ab02 WHERE aab102 = ? ) c")
+                .append("	 LEFT JOIN (")
+                .append("		  SELECT a.id,views,count,sum ")
+                .append("			FROM(")
+                .append("			SELECT a2.aab203 id,SUM( aaa703 ) views ")
+                .append("			  FROM ab02 a2,aa07 a7 ")
+                .append("			 WHERE a2.aab203 = a7.aab203 AND PERIOD_DIFF( date_format( NOW( ), '%Y%m' ), date_format( aaa702, '%Y%m' ) ) = 0 AND aab102 = 11 ")
+                .append("			 GROUP BY a2.aab203 ")
+                .append("			) a")
+                .append("			JOIN (")
+                .append("			SELECT")
+                .append("				a2.aab203 id,SUM( aab310 ) count,SUM( aab310 * aab314 ) sum ")
+                .append("			  FROM ab02 a2,ab03 a3 ")
+                .append("			 WHERE a2.aab203 = a3.aab203 AND PERIOD_DIFF( date_format( NOW( ), '%Y%m' ), date_format( aab305, '%Y%m' ) ) = 0 AND aab102 = ? ")
+                .append("			 GROUP BY a2.aab203 ")
+                .append("			) b ON a.id = b.id ")
+                .append("		) d ON c.aab203 = d.id ")
+                .append("	ORDER BY sum DESC");
+
+        return this.queryForList(sql.toString(), aab102, aab102);
+    }
+
+    /**
+     * 商铺一年内各月份的总销量、总额度
+     *
+     * @return
+     * @throws Exception
+     */
+    private List<Map<String, String>> shopYearlyReportDetail() throws Exception
+    {
+        Object aab102 = this.get("aab102");
+
+        StringBuilder sql = new StringBuilder()
+                .append("SELECT Month(aab305) month,SUM(aab310 * aab314) sum,SUM(aab310) count")
+                .append("  FROM ab03 a3,ab02 a2")
+                .append(" WHERE a3.aab203=a2.aab203 AND PERIOD_DIFF(date_format(NOW( ),'%Y'),date_format(aab305,'%Y'))=0");
+
+        List<Object> paramList = new ArrayList<>();
+        //aab102不为空即商铺，为空即管理员
+        if (this.isNotNull(aab102))
+        {
+            sql.append("   AND aab102=?");
+            paramList.add(aab102);
+        }
+        sql.append(" GROUP BY Month(aab305)");
         return this.queryForList(sql.toString(), paramList.toArray());
     }
 
     /**
-     * aaa102:用户id
-     * aac102:服务商id
-     *   diff:
-     *      0：今年
-     *      1：去年
+     * 服务商一年内各月份的总销量、总额度
      *
-     * 如果用户id或者店铺id不为空，则根据id查记录
-     * 否则为管理员，查询年度总流水
      * @return
      * @throws Exception
      */
-    private List<Map<String, String>> queryServiceForYear() throws Exception {
-        Object aaa102=this.get("aaa102");
-        Object aac102=this.get("aac102");
-        Object diff=this.get("diff");
+    private List<Map<String, String>> serviceYearlyReportDetail() throws Exception
+    {
+        Object aac102 = this.get("aac102");
 
-        StringBuilder sql=new StringBuilder()
-                .append("SELECT aac203 name,Month(aac405) month,SUM(aac407) sum")
+        StringBuilder sql = new StringBuilder()
+                .append("SELECT Month(aac405) month,SUM(aac407) sum,COUNT(*) count")
                 .append("  FROM ac02 a2,ac04 a4")
-                .append(" WHERE a2.aac202=a4.aac202 AND PERIOD_DIFF(date_format(NOW( ),'%Y'),date_format(aac405,'%Y'))=?")
-                ;
+                .append(" WHERE a2.aac202=a4.aac202 AND PERIOD_DIFF(date_format(NOW( ),'%Y'),date_format(aac405,'%Y'))=0");
 
-        List<Object> paramList=new ArrayList<>();
-        paramList.add(diff);
-
-        //用户查询
-        if(this.isNotNull(aaa102))
+        List<Object> paramList = new ArrayList<>();
+        //aac102不为空即服务商，为空即管理员
+        if (this.isNotNull(aac102))
         {
-            sql.append(" AND aaa102=? GROUP BY Month(aac405)");
-            paramList.add(aaa102);
-        }
-        //店铺查询
-        else if(this.isNotNull(aac102))
-        {
-            sql.append(" AND aab102=? GROUP BY a4.aac202,Month(aac405)");
+            sql.append(" AND a2.aac102=?");
             paramList.add(aac102);
         }
-        //都为空则是管理员查询
-        else
-        {
-            sql.append(" GROUP BY Month(aac405)");
-        }
+        sql.append(" GROUP BY Month(aac405)");
         return this.queryForList(sql.toString(), paramList.toArray());
+    }
+
+    /**
+     * 获取本月平台内商品销量/销售额排名前5的店铺
+     * tmp:销量/销售额
+     *
+     * @return
+     * @throws Exception
+     */
+    private List<Map<String, String>> adminMonthlyReportDetail() throws Exception
+    {
+        StringBuilder sql = new StringBuilder()
+                .append("SELECT CONCAT(aab103,'_',a1.aab102) name,SUM(aab310*aab314) sum,SUM(aab310) count")
+                .append("  FROM ab03 a3,ab02 a2,ab01 a1")
+                .append(" WHERE a2.aab203=a3.aab203 AND a1.aab102=a2.aab102 AND PERIOD_DIFF(date_format(NOW( ),'%Y'),date_format(aab305,'%Y'))=0")
+                .append(" GROUP BY a1.aab102")
+                .append(" ORDER BY ")
+                .append(this.get("tmp"))
+                .append("  DESC")
+                .append(" LIMIT 5");
+
+        return this.queryForList(sql.toString());
+    }
+
+    /**
+     * 获取每月平台总点击量
+     *
+     * @return
+     * @throws Exception
+     */
+    private List<Map<String, String>> clickCount() throws Exception
+    {
+        StringBuilder sql = new StringBuilder()
+                .append("SELECT MONTH(aaa702) month, SUM(aaa703) sum")
+                .append("  FROM aa07")
+                .append(" WHERE PERIOD_DIFF(date_format(NOW( ),'%Y'),date_format(aaa702,'%Y'))=0")
+                .append(" GROUP BY MONTH(aaa702)");
+        return this.queryForList(sql.toString());
+    }
+
+    /**
+     * 获取本月各商品每天销售量和销售额
+     *
+     * @return
+     * @throws Exception
+     */
+    private List<Map<String, String>> queryShopForMonth2() throws Exception
+    {
+        Object aab102 = this.get("aab102");
+
+        StringBuilder sql = new StringBuilder()
+                .append("SELECT CONCAT(aab202,'_',a3.aab203) name,DAY(aab305) day,SUM(aab310 * aab314) sum,SUM(aab310) count")
+                .append("  FROM ab03 a3,ab02 a2")
+                .append(" WHERE a3.aab203=a2.aab203 AND PERIOD_DIFF(date_format(NOW( ),'%Y%m'),date_format(aab305,'%Y%m'))=0");
+
+        List<Object> paramList = new ArrayList<>();
+        if (this.isNotNull(aab102))
+        {
+            sql.append(" AND aab102=?");
+            paramList.add(aab102);
+        }
+        sql.append(" GROUP BY a3.aab203,DAY(aab305)");
+
+        return this.queryForList(sql.toString(), paramList.toArray());
+    }
+
+    /**
+     * 根据店铺id获取该店铺所有商品名
+     *
+     * @return
+     * @throws Exception
+     */
+    private List<Map<String, String>> queryGoodsOfShop() throws Exception
+    {
+        StringBuilder sql = new StringBuilder()
+                .append("SELECT CONCAT(aab202,'_',aab203) name")
+                .append("  FROM ab02")
+                .append(" WHERE aab102=?");
+
+        return this.queryForList(sql.toString(), this.get("aab102"));
     }
 }

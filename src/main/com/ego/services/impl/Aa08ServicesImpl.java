@@ -84,7 +84,7 @@ public class Aa08ServicesImpl extends JdbcServicesSupport
 		sql = new StringBuilder()
 				.append("select c.aab202,b.aab302,a.aaa802,a.aaa807,a.aaa808,")
 				.append("       a.aaa809,b.aab310,b.aab314,a.aaa803,a.aaa804,")
-				.append("       a.aaa806,a.aaa805")
+				.append("       a.aaa806,a.aaa805,c.aab203")
     			.append("  from aa08 a, ab03 b, ab02 c")
     			.append(" where a.aab302=b.aab302 and a.aab203=c.aab203")
     			.append(" and a.aaa802=?")

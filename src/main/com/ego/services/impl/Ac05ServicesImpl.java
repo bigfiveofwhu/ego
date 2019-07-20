@@ -41,13 +41,32 @@ public class Ac05ServicesImpl extends JdbcServicesSupport
 		{
 			return null;
 		}
+		else if(qtype.equalsIgnoreCase("compute5Comment"))
+		{
+			return compute5Comment();
+		}
 		else
 		{
 			throw new Exception("ac05:未知的单一实例查询类型: "+qtype);
 			
 		}
 	}
-	
+	/**
+	 * 计算好评率
+	 * hug
+	 * @return
+	 */
+	private Map<String,String> compute5Comment() throws Exception
+	{
+		StringBuilder sql=new StringBuilder()
+				.append("select count(y.aac507) as A,count(z.aac507)/count(y.aac507) as grade")
+				.append("  from ac04 x,ac05 y,ac05 z")
+				.append(" where (z.aac507>=4 and z.aac402=y.aac402)")
+				.append("   and (x.aac402=y.aac402)")
+				.append("   and (x.aac408='03' and x.aac202='1')")
+				;
+		return this.queryForMap(sql.toString());
+	}
 	
 	/**
 	 * 批量查询操作分支入口
@@ -60,6 +79,10 @@ public class Ac05ServicesImpl extends JdbcServicesSupport
 		if(qtype.equalsIgnoreCase("allComment"))
 		{
 			return this.allServiceComment();
+		}
+		else if(qtype.equalsIgnoreCase("queryCommentForAac202"))
+		{
+			return queryCommentForAac202();
 		}
 		else
 		{
@@ -150,5 +173,22 @@ public class Ac05ServicesImpl extends JdbcServicesSupport
   		System.out.println(sql.toString());
   		
   		return this.queryForList(sql.toString(),this.get("aaa102"));
+	}
+	/**
+	 * 查询服务对应的所有评论信息
+	 * hug
+	 * @return
+	 */
+	private List<Map<String,String>> queryCommentForAac202() throws Exception
+	{
+		StringBuilder sql=new StringBuilder()
+				.append("select y.aac502,y.aac503,y.aac504,y.aac505,y.aac506,")
+				.append("		y.aac507,y.aaa102,z.aaa103")
+				.append("  from ac04 x,ac05 y,aa01 z")
+				.append(" where z.aaa102=y.aaa102")
+				.append("   and x.aac402=y.aac402 and x.aac408='03' and x.aac202=?")
+				.append(" limit 12")
+				;
+		return this.queryForList(sql.toString(), this.get("aac202"));
 	}
 }

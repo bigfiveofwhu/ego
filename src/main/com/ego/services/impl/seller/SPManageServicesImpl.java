@@ -142,7 +142,9 @@ Name	Code
 		//还原页面查询条件
 		Object aac203=this.get("qaac203");       //评论服务名称
   		Object isreply=this.get("isreply");     //评论是否回复
-  		Object aac102=this.get("aac102");    //服务商id,session获取
+  		Object aac102= 15;
+  				//this.get("aac102");    //服务商id,session获取
+  		System.out.println("aac102:" +aac102);
   	
 
   		
@@ -175,6 +177,7 @@ Name	Code
   			sql.append(" and y.aac102 = ?");
   			paramList.add(aac102);
   		}
+  		System.out.println(sql.toString());
   		//sql.append(" order by x.aab101");
   		return this.queryForList(sql.toString(), paramList.toArray());
 	}
