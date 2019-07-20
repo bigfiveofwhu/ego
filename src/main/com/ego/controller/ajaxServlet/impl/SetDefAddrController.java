@@ -14,6 +14,7 @@ public class SetDefAddrController extends AjaxControllerSupport {
 	{
 		BaseServices service=new Aa04ServiceImpl();
 		service.setMapDto(this.dto);
+		//this.setService(service);
 		try
 		{
 			service.update("setDefaultAddress");
