@@ -62,6 +62,11 @@ public class Aa05ServiceImpl extends JdbcServicesSupport{
 		return this.executeUpdate(sql, this.get("aaa501"));
 	}
 	
+	/**
+	 * ÐèÒªaaa502£¬aab505,aaa102,aab102,aaa503,aaa504
+	 * @return
+	 * @throws Exception
+	 */
 	private boolean addCoupon() throws Exception {
 		int type=Integer.parseInt(get("aaa502").toString());
 		Object[] parameter;

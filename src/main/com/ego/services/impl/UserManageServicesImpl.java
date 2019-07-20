@@ -100,6 +100,7 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 		 // return  this.executeUpdate(sql, this.get("aaa104"));
 	   }
 	   
+	   
 	   /**
 	        * 修改用户密码 
 	    * @return
@@ -108,19 +109,23 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 	   @SuppressWarnings("unused")
 	 private boolean modifyPwd() throws Exception
 	   {
-		   String sql1 = "select aaa107 from aa01 where a.aaa102= ?";
+		   
+		   String sql1 = "select aaa107 from aa01 where aaa102= ?";
 		   
 		   Map<String,String> map = this.queryForMap(sql1, this.get("aaa102"));
 		   
+		   //旧密码
+		   String opwdMd5 = Tools.getMd5(this.get("oaaa107"));
 		   
-		   String pwdMd5 = Tools.getMd5(this.get("aaa107"));
-		   
-		   if(map.get("aaa107").equals(pwdMd5))
+		   //验证旧密码
+		   if(map.get("aaa107").equals(opwdMd5))
 		   {
-		   
+			   //更新新密码
+			  String npwdMd5 = Tools.getMd5(this.get("naaa107"));
+			   
 		      String sql = "update aa01 a set a.aaa107=? where a.aaa102 = " + this.get("aaa102");
 		   
-		      return this.executeUpdate(sql, pwdMd5);
+		      return this.executeUpdate(sql, npwdMd5);
 		   }
 		   return false;
 	   }

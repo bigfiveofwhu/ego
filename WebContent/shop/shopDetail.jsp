@@ -13,12 +13,14 @@
 		<link type="text/css" href="<%=path%>/css/optstyle.css" rel="stylesheet" />
 		<link type="text/css" href="<%=path%>/css/style.css" rel="stylesheet" />
 		<link type="text/css" href="<%=path%>/css/shop/detail.css" rel="stylesheet" />
+		<link rel="stylesheet" href="/ego/layui/css/layui.css">
 		<script type="text/javascript" src="<%=path%>/basic/js/jquery-1.7.min.js"></script>
 		<script type="text/javascript" src="<%=path%>/basic/js/quick_links.js"></script>
 		<script type="text/javascript" src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 		<script type="text/javascript" src="<%=path%>/js/jquery.imagezoom.min.js"></script>
 		<script type="text/javascript" src="<%=path%>/js/jquery.flexslider.js"></script>
 		<script type="text/javascript" src="<%=path%>/js/list.js"></script>
+		
 	</head>
 	<body>
 		<!--顶部导航条 -->
@@ -313,7 +315,7 @@
 								<div class="hot">
 									<dt class="tb-metatit">店铺优惠</dt>
 									<div class="gold-list">
-										<p>购物满2件打8折，满3件7折<span>点击领券<i class="am-icon-sort-down"></i></span></p>
+										<p><span>点击领券<i class="am-icon-sort-down"></i></span></p>
 									</div>
 								</div>
 								<div class="clear"></div>
@@ -321,9 +323,17 @@
 									<dt class="tb-metatit">优惠券</dt>
 									<div class="gold-list">
 										<ul>
-											<li>125减5</li>
-											<li>198减10</li>
-											<li>298减20</li>
+										<c:forEach items="${coupons }" var="item">
+											<c:choose>
+												<c:when test="${item.aab502=='1'}"><%--无条件 --%>
+													<li ><a class="coupon-item" onclick="getCoupon(${item.aab501})" style="color:white">立减${item.aab503}</a></li>
+												</c:when>
+												<c:when test="${item.aab502=='2'}"><%--满减 --%>
+													<li ><a class="coupon-item" onclick="getCoupon(${item.aab501})" style="color:white">满${item.aab504}减${item.aab503 }</a></li>
+												</c:when>
+											</c:choose>
+										</c:forEach>
+											
 										</ul>
 									</div>
 								</div>
@@ -336,16 +346,37 @@
 							</div>
 							<li>
 								<div class="clearfix tb-btn tb-btn-buy theme-login">
-									<a id="LikBuy" title="点此按钮到下一步确认购买信息" onclick="">立即购买</a>
+									<a id="LikBuy" title="点此按钮到下一步确认购买信息" onclick="purchase()">立即购买</a>
 								</div>
 							</li>
 							<li>
 								<div class="clearfix tb-btn tb-btn-basket theme-login">
-									<a id="LikBasket" title="加入购物车" onclick="addShopCart(${product.aab203})"><i></i>加入购物车</a>
+									<a id="LikBasket" title="加入购物车" onclick="addShopCart('${product.aab203}')"><i></i>加入购物车</a>
 								</div>
 							</li>
 						</div>
+						<form action="<%=path %>/createOrder.html" method="post" id="pur">
+							<input type="hidden" id="pur-productId" name="aab203" value="${product.aab203}" >
+							<input type="hidden" id="pur-count" name="count" value="" >
+							<input type="hidden" id="pur-args" name="args" value="" >
+							<input type="hidden" id="pur-fee" name="fee" value="10" >
+						</form>
 						<script type="text/javascript">
+							function purchase(){
+								var count=parseInt($("#text_box").val());
+								if(isNaN(count)){
+									alert("格式错误!");
+									return;
+								}
+								var sum=parseInt('${product.aab206 }');
+								if(count>sum){
+									alert("请重新选择数量!");
+									return;
+								}
+								$("#pur-count").attr("value",count);
+								$("#pur-args").attr("value",getArgs());
+								$("#pur").submit();
+							}
 							function addShopCart(productId){
 								var count=parseInt($("#text_box").val());
 								console.log($("#text_box").val());
@@ -1141,5 +1172,36 @@
 			</div>
 			<!--菜单 -->
 			<%@include file="/rMenu.jsp" %>
+			
+<script src="/ego/layui/layui.js"></script>
+<script>
+layui.use('layer', function(){
+	layer = layui.layer;
+});
+var memory;
+$(".coupon-item").hover(function(){
+	memory=$(this).html();
+	$(this).html("点击领取");
+},function(){
+	$(this).html(memory);
+})
+var ifClick=false;
+function getCoupon(couponId){
+	if(ifClick==true){
+		layer.msg("您今天已经领取过了，请明天再来");
+		return ;
+	}
+	$.getJSON("getCoupon.ajax",{aab501:couponId},function(res){
+		if(res.result==true){
+			layer.msg("领取成功")
+		}else{
+			layer.msg("失败,"+res.reason)
+		}
+	}).fail(function(){
+		layer.msg("网络故障");
+	})
+	ifClick=true;
+}
+</script>
 	</body>
 </html>

@@ -10,15 +10,19 @@ import java.util.List;
 import java.util.Map;
 
 import com.ego.controller.ControllerSupport;
+import com.ego.services.impl.Aa05ServiceImpl;
 import com.ego.services.impl.Aa07ServiceImpl;
 import com.ego.services.impl.Ab02ServiceImpl;
 import com.ego.services.impl.Ab03ServiceImpl;
 import com.ego.services.impl.Ab03ServicesImpl;
 import com.ego.services.impl.Ab04ServicesImpl;
+import com.ego.services.impl.Ab05ServiceImpl;
 
 public class ShopDetailController extends ControllerSupport 
 {
 
+	
+	
 	@Override
 	public String execute() throws Exception 
 	{
@@ -63,6 +67,12 @@ public class ShopDetailController extends ControllerSupport
 			this.saveAttribute("spec", typeList);  //规格
 			System.out.println(typeList);
 		}
+		//////////////////////////////////添加优惠券功能
+		this.setServices(new Ab05ServiceImpl());
+		List<Map<String, String>>coupons= this.getServices().query();
+		saveAttribute("coupons", coupons);
+		//////////////////////////////////
+		
 		this.setServices(new Ab03ServiceImpl());
 		//上月销量
 		//ins=this.getServices().findById("orderSumLastMouth");

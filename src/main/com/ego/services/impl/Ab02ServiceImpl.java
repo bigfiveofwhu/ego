@@ -103,6 +103,7 @@ public class Ab02ServiceImpl extends JdbcServicesSupport
 		return this.queryForList(sql);
 	}
 	/**
+	 * 根据商品id查询商品的详细信息
 	 * @author hug
 	 * @return
 	 * @throws Exception
@@ -111,5 +112,15 @@ public class Ab02ServiceImpl extends JdbcServicesSupport
 	{
 		String sql="select aab102,aab202,aab203,aab205,aab206,aab207,aab208,aab209 from ab02 where aab203=? order by aab210 desc";
 		return this.queryForMap(sql,this.get("aab203"));
+	}
+	/**
+	 * 根据多个商品id查询 多个商品的粗略信息
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String, String> findNameAndPriceByAab203() throws Exception
+	{
+		String sql="select aab202,aab203,aab205 from ab02 where aab203=?";
+		return this.queryForMap(sql, this.get("aab203"));
 	}
 }
