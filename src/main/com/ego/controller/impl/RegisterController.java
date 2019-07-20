@@ -1,5 +1,7 @@
 package com.ego.controller.impl;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import com.ego.controller.ControllerSupport;
@@ -11,7 +13,20 @@ public class RegisterController extends ControllerSupport
 	public String execute() throws Exception 
 	{
 
-		String verifyCode=(String)this.get("verifyCode");   //记得做验证码的再次验证
+		Boolean isVerified=(boolean)this.get("isVeriFied");   //记得做验证码的再次验证
+		HttpSession session=this.getSession();
+		if(isVerified==null || !isVerified)
+		{
+			this.saveAttribute("msg", "请输入验证码!");
+	    	return "home/register";
+		}
+		long time=(long)session.getAttribute("isVerifiedTimeout");
+	    long now=new Date().getTime();
+	    if((now-time)>60000)    //失效一分钟  ,验证码失效
+	    {
+	    	this.saveAttribute("msg", "验证码已失效!");
+	    	return "home/register";
+	    }
 		//去掉前后空格,以防后续分割出现异常
 		String addr_1=((String)this.get("addr_1")).trim();
 		String addr_2=((String)this.get("addr_2")).trim();
@@ -24,8 +39,7 @@ public class RegisterController extends ControllerSupport
 		this.setServices(new Aa01ServiceImpl());
 		this.update("insertAa01", "注册");
 		
-		saveAttribute("aaa102", this.get("aaa102"));
-		HttpSession session=this.getSession();
+		//this.saveAttribute("aaa102", this.get("aaa102"));
 		/**
 		 * aaa102,aaa106已通过dto双向传递
 		 */

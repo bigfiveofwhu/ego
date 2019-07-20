@@ -25,23 +25,23 @@
 										<div class="tipsBox"><i class="am-icon-envelope"></i></div>
 									</a>
 									<div class="m-baseinfo">
-										<a class="m-pic" href="information.html">
+										<a class="m-pic" href="<%=path %>/person/showUserInfo.html">
 											<img src="<%=path%>/images/getAvatar.do.jpg">
 										</a>
 										<div class="m-info">
-											<em class="s-name">小叮当</em>
+											<em class="s-name">${aaa103}</em>
 											<div class="vip1"><a href="#"><span></span><em>会员专享</em></a></div>
-											<div class="safeText"><a href="safety.html">账户安全:<em style="margin-left:20px ;">60</em>分</a>
+											<div class="safeText"><a href="<%=path %>/person/safety.jsp">账户安全:<em style="margin-left:20px ;">${aaa106}</em>分</a>
 												<div class="progressBar"><span style="left: -95px;" class="progress"></span></div>
 											</div>
 											<div class="m-address">
-												<a href="address.html" class="i-trigger">收货地址<i class="am-icon-angle-right" style="padding-left:5px ;"></i></a>
+												<a href="<%=path %>/person/showAddress.html" class="i-trigger">收货地址<i class="am-icon-angle-right" style="padding-left:5px ;"></i></a>
 											</div>
 										</div>
 									</div>
 									<div class="m-right">
 										<div class="m-new">
-											<a href="news.html"><i class="am-icon-dropbox  am-icon-md" style="padding-right:5px ;"></i>消息盒子</a>
+											<a href="<%=path%>/person/news.jsp"><i class="am-icon-dropbox  am-icon-md" style="padding-right:5px ;"></i>消息盒子</a>
 										</div>
 
 									</div>

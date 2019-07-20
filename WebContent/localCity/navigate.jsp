@@ -1,6 +1,5 @@
 <%@ page language="java" pageEncoding="GBK"%>
 <%@include file="/localCity/location.jsp" %>
-</script>
 <!--¶¥²¿µ¼º½Ìõ -->
 <div class="am-container header">
 	<ul class="message-l local-l">
