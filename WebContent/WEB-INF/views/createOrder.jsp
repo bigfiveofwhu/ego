@@ -12,7 +12,8 @@
 		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 		<link href="<%=path%>/basic/css/demo.css" rel="stylesheet" type="text/css" />
 		<link href="<%=path%>/css/cartstyle.css" rel="stylesheet" type="text/css" />
-		<link href="<%=path%>/css/jsstyle.css" rel="stylesheet" type="text/css" />	
+		<link href="<%=path%>/css/jsstyle.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="/ego/layui/css/layui.css">	
 		<script type="text/javascript" src="<%=path%>/js/address.js"></script>
 		<script type="text/javascript">
 		function checkAddress(){
@@ -337,23 +338,25 @@
 									<li class="td td-coupon">
 	
 										<span class="coupon-title">优惠券</span>
-										<select data-am-selected>
-											<option value="a">
-												<div class="c-price">
-													<strong>￥8</strong>
-												</div>
-												<div class="c-limit">
-													【消费满195元可用】
-												</div>
-											</option>
-											<option value="b" selected>
-												<div class="c-price">
-													<strong>￥3</strong>
-												</div>
-												<div class="c-limit">
-													【无使用门槛】
-												</div>
-											</option>
+										<select data-am-selected id="coupon-select">
+											<option value="0" selected>不使用优惠券</option>
+											<c:forEach items="${coupons }" var="item">
+													<option value="${item.aaa503 }">
+														<div class="c-price">
+															<strong>￥${item.aaa503 }</strong>
+														</div>
+														<div class="c-limit">
+															<c:choose>
+																<c:when test="${item.aaa502==1 }"><%--无条件 --%>
+																	【无使用门槛】	
+																</c:when>
+																<c:when test="${item.aaa502==2 }"><%--有条件 --%>
+																	【消费满${item.aab504 }元可用】
+																</c:when>
+															</c:choose>
+														</div>
+													</option>
+											</c:forEach>
 										</select>
 									</li>
 	
@@ -363,9 +366,10 @@
 							<div class="clear"></div>
 							
 							<!--含运费小计 -->
+							<c:set var="total" value="${product.aab205*product.count+product.fee} "/>
 							<div class="buy-point-discharge ">
 								<p class="price g_price ">
-									合计（含运费） <span>&yen;</span><em class="pay-sum">244.00</em>
+									合计（含运费） <span>&yen;</span><em class="pay-sum">${total }</em>
 								</p>
 							</div>
 
@@ -373,9 +377,9 @@
 							<div class="order-go clearfix">
 								<div class="pay-confirm clearfix">
 									<div class="box">
-										<div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
+										<div tabindex="0" id="holyshit267" class="realPay">实付款：<em class="t" id="pay-total">${total }</em>
 											<span class="price g_price ">
-                                    <span>&yen;</span> <em class="style-large-bold-red " id="J_ActualFee">244.00</em>
+                                    <span>&yen;</span> <em class="style-large-bold-red " id="J_ActualFee">${price }</em>
 											</span>
 										</div>
 
@@ -403,7 +407,7 @@
 
 									<div id="holyshit269" class="submitOrder">
 										<div class="go-btn-wrap">
-											<a id="J_Go" href="success.html" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+											<a id="J_Go" href="success.html" class="btn-go" tabindex="0" title="点击此按钮，提交订单"  id="submit_order">提交订单</a>
 										</div>
 									</div>
 									<div class="clear"></div>
@@ -502,5 +506,16 @@
 
 			<div class="clear"></div>
 	</body>
+<script src="/ego/layui/layui.js"></script>
+<script>
+layui.use('layer',function(){
+	 var $ = layui.jquery,layer = layui.layer;
+});
 
+var total=${total};
+$("#coupon-select").change(function(){
+	total= ${total} - parseFloat($(this).val());
+	$("#pay-total").html(total);
+})
+</script>
 </html>
