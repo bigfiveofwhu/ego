@@ -42,5 +42,6 @@ public class CreateOrderServlet extends OrderControllerSupport
 		saveAttribute("coupons",coupons);
 		
 		return "WEB-INF/views/createOrder";
+		
 	}
 }

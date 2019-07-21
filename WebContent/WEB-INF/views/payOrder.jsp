@@ -6,59 +6,73 @@
 
 <html>
 <head>
-<title>Insert title here</title>
-</head>
-<body>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0 ,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>支付</title>
+		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+		<link href="<%=path%>/basic/css/demo.css" rel="stylesheet" type="text/css" />
+		<link href="<%=path%>/css/cartstyle.css" rel="stylesheet" type="text/css" />
+		<link href="<%=path%>/css/jsstyle.css" rel="stylesheet" type="text/css" />	
+		<script type="text/javascript" src="<%=path%>/js/address.js"></script>
+		<script type="text/javascript">
+		
+		</script>
 
-<form action="<%=path%>/payOrder.html" method="post">
-	<table  border="1" align="center" width="45%">
-	    <caption>
-	       支付界面
-	    </caption>
-	    
-	    <tr>
-	    	<td>订单号:${ins.aab302 }</td>
-	    </tr>
-	    <tr>
-	    	<td>创建时间:${ins.aab304 }</td>
-	    </tr>
-	    <tr>
-	    	<td>数量:${ins.aab310 }</td>
-	    </tr>
-	    <tr>
-	    	<td>单价:${ins.aab314 }</td>
-	    </tr>
-	     <tr>
-	    	<td>运费:${ins.aab313 }</td>
-	    </tr>
-	    <c:set var="number" value="${ins.aab310}" scope="request"></c:set>
-	    <c:set var="price" value="${ins.aab314}" scope="request"></c:set>
-	    <c:set var="transFee" value="${ins.aab313}" scope="request"></c:set>
-	    <% double total=Double.valueOf((String)request.getAttribute("number"))
-	    				*Double.valueOf((String)request.getAttribute("price"))
-	    				+Double.valueOf((String)request.getAttribute("transFee")); %>
-	    <tr>
-	    	<td>总费用:<%=total %></td>
-	    </tr>
-	    <tr>
-	    	<td>收货地址(此处应调用aaa401)</td>
-	    	<td><e:text name="aab311"/></td>
-	    </tr>
-	     <tr>
-	    	<td>买家留言</td>
-	    	<td><e:text name="aab312"/></td>
-	    </tr>
-	    
-	</table>
-<!-- 功能按钮区 -->
-	<table border="1" width="95%" align="center">
-	  <tr>
-	    <td align="center">
-	       <input type="submit" name="next" value="支付">
-	    </td>
-	  </tr>
-	</table>
-<input type="hidden" name="aab302" value="${ins.aab302 }">
-</form>
+	</head>
+<body>
+	<br/><br/><br/><br/>
+	<div align="center">
+		<img alt="" src="<%=path%>/images/payCode.jpg" >
+		<br/><br/>
+	</div>
+		
+	<div class="clear">
+	<div style="text-align:center;">
+		
+		<div style="display:inline-block; *display:inline; zoom:1;">
+			
+          	<div class="box" style="float:left;">
+				<div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
+					<span class="price g_price ">
+		                            <span>&yen;</span> <em class="style-large-bold-red " id="J_ActualFee">${ins.aab316 }</em>
+					</span>
+				</div>
+		
+				<div id="holyshit268" class="pay-address">
+		
+					<p class="buy-footer-address">
+						<span class="buy-line-title buy-line-title-type">寄送至：</span>
+						<span class="buy--address-detail">
+		  				<span class="province">${ins.aab311 }</span>
+						</span>
+						</span>
+					</p>
+					<p class="buy-footer-address">
+						<span class="buy-line-title">收货人：</span>
+						<span class="buy-address-detail">   
+		                <span class="buy-user">${ins.aab317 } </span>
+						</span>
+						<br/>
+						<span class="buy-line-title">联系方式：</span>
+						<span class="buy-address-detail">  
+						<span class="buy-phone">${ins.aab318 }</span>
+						</span>
+					</p>
+				</div>
+				
+			</div>
+			
+			<div class="clear">
+			
+			<div class="info-btn">
+				<a href="payOrder.html?aab302=${ins.aab302 }"><div class="am-btn am-btn-danger"">支付完成</div></a>
+			</div>
+        </div>
+			
+	</div>
+		
+							
+		
+
+
 </body>
 </html>

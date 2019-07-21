@@ -58,9 +58,7 @@
                     <th class="sorting_asc">商品ID</th>
                     <th class="sorting">商品名称</th>
                     <th class="sorting">商品价格</th>
-                    <th class="sorting">一级分类</th>
-                    <th class="sorting">二级分类</th>
-                    <th class="sorting">三级分类</th>
+                    <th class="sorting">分类</th>
                     <th class="sorting">状态</th>
                     <th class="text-center">操作</th>
                 </tr>
@@ -73,9 +71,7 @@
                         <td>${ins.aab203}</td>
                         <td>${ins.aab202}</td>
                         <td>${ins.aab205}</td>
-                        <td>${ins.aab204_1}</td>
-                        <td>${ins.aab204_2}</td>
-                        <td>${ins.aab204_3}</td>
+                        <td>${ins.aab204}</td>
                         <td class="status">${ins.cnaab212}</td>
                         <td class="text-center">
                             <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
