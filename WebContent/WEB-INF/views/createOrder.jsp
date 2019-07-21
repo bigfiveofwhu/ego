@@ -47,11 +47,12 @@
 	<body>
 		<p id="xx"></p>
 		<p id="yy"></p>
+		<%-- 
 		<p>${product.aab203 }</p>
 		<p>${product.count }</p>
 		<p>${product.aab205 }</p>
 		<p>${product.fee }</p>
-		<p>${product.aab205*product.count}</p>
+		<p>${product.aab205*product.count}</p>--%>
 		
 		<form id="myform" action="###.html" method="post" > 
 			<input name="aaa102" type="hidden" value="<%=session.getAttribute("aaa102")%>"/>
@@ -65,9 +66,6 @@
 			<input name="aab317" type="hidden" value=""/>
 			<input name="aab318" type="hidden" value=""/>
 		</form>
-
-
-
 			<div class="clear"></div>
 			<div class="concent">
 				
