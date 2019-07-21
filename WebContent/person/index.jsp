@@ -47,16 +47,13 @@
 					<li class="person active">
 						<a href="<%=path %>/person/home.jsp" target="iframe"><i class="am-icon-user"></i>个人中心</a>
 					</li>
-					<li class="person">
+					<li class="person" >
 						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
 
 					<ul>
-						<li> <a href="<%=path %>/person/showUserInfo.html" target="iframe">个人信息</a></li>
-
-
+						    <li> <a href="<%=path %>/person/showUserInfo.html" target="iframe">个人信息</a></li>
 							<li> <a href="<%=path%>/person/safety.jsp" target="iframe">安全设置</a></li>
 							<li> <a href="<%=path%>/person/showAddress.html" target="iframe">地址管理</a></li>
-							<li> <a href="<%=path%>/person/cardlist.jsp" target="iframe">快捷支付</a></li>
 						</ul>
 					</li>
 					<li class="person">
@@ -81,9 +78,6 @@
 						<ul>
 							<li> <a href="<%=path %>/showPoint.html" target="iframe">我的积分</a></li>
 							<li> <a href="<%=path %>/discount/getCustomerCoupons.html" target="iframe">优惠券 </a></li>
-							<li> <a href="<%=path %>/person/bonus.jsp" target="iframe">红包</a></li>
-							<li> <a href="<%=path %>/person/walletlist.jsp" target="iframe">账户余额</a></li>
-							<li> <a href="<%=path %>/person/bill.jsp" target="iframe">账单明细</a></li>
 							<li> <a href="<%=path %>/report/userReport.html?type=1" target="iframe">流水报表</a></li>
 						</ul>
 					</li>
@@ -99,9 +93,10 @@
 					<li class="person">
 						<p><i class="am-icon-qq"></i>在线客服</p>
 						<ul>
+						<!--  
 							<li> <a href="<%=path %>/person/consultation.jsp" target="iframe">商品咨询</a></li>
 							<li> <a href="<%=path %>/person/suggest.jsp" target="iframe">意见反馈</a></li>							
-							
+						-->
 							<li> <a href="<%=path %>/message/readMessage.html" target="iframe">我的消息</a></li>
 						</ul>
 					</li>

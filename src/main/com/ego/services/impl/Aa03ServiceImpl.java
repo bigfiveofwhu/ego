@@ -32,20 +32,28 @@ public class Aa03ServiceImpl extends JdbcServicesSupport
 	@Override
 	public List<Map<String, String>> query(String qtype) throws Exception 
 	{
-		StringBuilder sql  = new StringBuilder()
-				   .append(" select  a.aaa301,a.aaa303,b.aab202,b.aab205,b.aab206,b.aab212 ")   
-				   .append(" from aa03 a,ab02 b ")
-				   .append(" where a.aaa303 = b.aab203 and a.aaa302 = ? ")
-				   .append("  and a.aaa102 = '")
-				   .append(this.get("aaa102"))
-				   .append("'")
-				   ;
 		if(qtype.equals("product"))//查收藏的商品
 		{
+			StringBuilder sql  = new StringBuilder()
+					   .append(" select  a.aaa301,a.aaa303,b.aab202,b.aab205,b.aab206,b.aab212 ")   
+					   .append(" from aa03 a,ab02 b ")
+					   .append(" where a.aaa303 = b.aab203 and a.aaa302 = ? ")
+					   .append("  and a.aaa102 = '")
+					   .append(this.get("aaa102"))
+					   .append("'")
+					   ;
 			return this.queryForList(sql.toString(), "01");
 		}
 		else if(qtype.equals("shop"))//查收藏的店铺
 		{
+			StringBuilder sql  = new StringBuilder()
+					   .append(" select  a.aaa301,a.aaa303,b.aab103,b.aab107 ")   
+					   .append(" from aa03 a,ab01 b ")
+					   .append(" where a.aaa303 = b.aab102 and a.aaa302 = ? ")
+					   .append("  and a.aaa102 = '")
+					   .append(this.get("aaa102"))
+					   .append("'")
+					   ;
              return this.queryForList(sql.toString(), "02");		
 		}
 		else 
