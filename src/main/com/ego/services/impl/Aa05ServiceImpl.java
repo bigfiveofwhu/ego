@@ -43,7 +43,7 @@ public class Aa05ServiceImpl extends JdbcServicesSupport{
 		}
 	}
 	
-	
+	//返回所有可用的优惠券，要求传递用户id(aaa102)，店铺id(aab102),以及价格(price)
 	private List<Map<String, String>> getUsableCoupons() throws Exception{
 		String sql="select * from aa05 where aaa102=? and aab102=? and (aaa504>? or aaa502=?)";
 		Object[] param=new Object[] {

@@ -15,7 +15,9 @@ public class AddAddressServlet extends AddressControllerSupport {
 			//System.out.println(list);
 		  this.saveAttribute("addrlist", list);
 		}
-		
-		return "person/address";
+		if(this.get("tag").equals("buy"))
+			return "WEB-INF/views/createOrder";
+		else
+		    return "person/address";
 	}
 }

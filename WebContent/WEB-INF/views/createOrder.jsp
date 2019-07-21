@@ -1,7 +1,5 @@
 <%@ page language="java"  pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%String path=request.getContextPath(); %>
+<%@include file="/taglib.jsp" %>
 
 
 <html>
@@ -12,7 +10,8 @@
 		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 		<link href="<%=path%>/basic/css/demo.css" rel="stylesheet" type="text/css" />
 		<link href="<%=path%>/css/cartstyle.css" rel="stylesheet" type="text/css" />
-		<link href="<%=path%>/css/jsstyle.css" rel="stylesheet" type="text/css" />	
+		<link href="<%=path%>/css/jsstyle.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="/ego/layui/css/layui.css">	
 		<script type="text/javascript" src="<%=path%>/js/address.js"></script>
 		<script type="text/javascript">
 		function checkAddress(){
@@ -372,23 +371,25 @@
 									<li class="td td-coupon">
 	
 										<span class="coupon-title">优惠券</span>
-										<select data-am-selected>
-											<option value="a">
-												<div class="c-price">
-													<strong>￥8</strong>
-												</div>
-												<div class="c-limit">
-													【消费满195元可用】
-												</div>
-											</option>
-											<option value="b" selected>
-												<div class="c-price">
-													<strong>￥3</strong>
-												</div>
-												<div class="c-limit">
-													【无使用门槛】
-												</div>
-											</option>
+										<select data-am-selected id="coupon-select">
+											<option value="0" selected>不使用优惠券</option>
+											<c:forEach items="${coupons }" var="item">
+													<option value="${item.aaa503 }">
+														<div class="c-price">
+															<strong>￥${item.aaa503 }</strong>
+														</div>
+														<div class="c-limit">
+															<c:choose>
+																<c:when test="${item.aaa502==1 }"><%--无条件 --%>
+																	【无使用门槛】	
+																</c:when>
+																<c:when test="${item.aaa502==2 }"><%--有条件 --%>
+																	【消费满${item.aab504 }元可用】
+																</c:when>
+															</c:choose>
+														</div>
+													</option>
+											</c:forEach>
 										</select>
 									</li>
 	
@@ -398,9 +399,10 @@
 							<div class="clear"></div>
 							
 							<!--含运费小计 -->
+							<c:set var="total" value="${product.aab205*product.count+product.fee} "/>
 							<div class="buy-point-discharge ">
 								<p class="price g_price ">
-									合计（含运费） <span>&yen;</span><em class="pay-sum">244.00</em>
+									合计（含运费） <span>&yen;</span><em class="pay-sum">${total }</em>
 								</p>
 							</div>
 
@@ -408,9 +410,9 @@
 							<div class="order-go clearfix">
 								<div class="pay-confirm clearfix">
 									<div class="box">
-										<div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
+										<div tabindex="0" id="holyshit267" class="realPay">实付款：<em class="t" id="pay-total">${total }</em>
 											<span class="price g_price ">
-                                    <span>&yen;</span> <em class="style-large-bold-red " id="J_ActualFee">244.00</em>
+                                    <span>&yen;</span> <em class="style-large-bold-red " id="J_ActualFee">${price }</em>
 											</span>
 										</div>
 
@@ -461,51 +463,50 @@
 				<hr/>
 
 				<div class="am-u-md-12">
-					<form class="am-form am-form-horizontal">
+					<form id="form1" class="am-form am-form-horizontal" action="<%=path %>/person/addAddress.html?tag=buy" method="post">
 
 						<div class="am-form-group">
 							<label for="user-name" class="am-form-label">收货人</label>
 							<div class="am-form-content">
-								<input type="text" id="user-name" placeholder="收货人">
+								<input type="text" name="aaa405"  id="user-name" placeholder="收货人" required>
 							</div>
 						</div>
 
 						<div class="am-form-group">
 							<label for="user-phone" class="am-form-label">手机号码</label>
 							<div class="am-form-content">
-								<input id="user-phone" placeholder="手机号必填" type="email">
+								<input id="user-phone"  name= "aaa406" placeholder="手机号必填" type="tel" required>
 							</div>
 						</div>
 
 						<div class="am-form-group">
 							<label for="user-phone" class="am-form-label">所在地</label>
 							<div class="am-form-content address">
-								<select data-am-selected>
-									<option value="a">浙江省</option>
-									<option value="b">湖北省</option>
+								<select name="addr_1" id="addr_1" >
 								</select>
-								<select data-am-selected>
-									<option value="a">温州市</option>
-									<option value="b">武汉市</option>
+								<select name="addr_2" id="addr_2" class="childs" >
 								</select>
-								<select data-am-selected>
-									<option value="a">瑞安区</option>
-									<option value="b">洪山区</option>
+								<select name="addr_3" id="addr_3" class="childs" >
 								</select>
 							</div>
 						</div>
-
+                             <div class="am-form-group">
+								<label  class="am-form-label">备注</label>
+								<div class="am-form-content">
+									<input name="aaa404" placeholder="备注" type="text" required>
+								</div>
+							</div>
 						<div class="am-form-group">
 							<label for="user-intro" class="am-form-label">详细地址</label>
 							<div class="am-form-content">
-								<textarea class="" rows="3" id="user-intro" placeholder="输入详细地址"></textarea>
+								<textarea class=""  name="aaa403" rows="3" id="user-intro" placeholder="输入详细地址" required></textarea>
 								<small>100字以内写出你的详细地址...</small>
 							</div>
 						</div>
 
 						<div class="am-form-group theme-poptit">
 							<div class="am-u-sm-9 am-u-sm-push-3">
-								<div class="am-btn am-btn-danger">保存</div>
+								<input type="submit"  value = "保存"class="am-btn am-btn-danger"></input>
 								<div class="am-btn am-btn-danger close">取消</div>
 							</div>
 						</div>
@@ -516,5 +517,61 @@
 
 			<div class="clear"></div>
 	</body>
+<script type="text/javascript">
 
+$("#addr_1").change(function(){
+	var A_id=$(this).children("option:selected").attr("A_id");
+	$("#addr_2").html("");
+	$("#addr_3").html("");
+	loadAddr(A_id,2);
+});
+$("#addr_2").change(function(){
+	var A_id=$(this).children("option:selected").attr("A_id");
+	$("#addr_3").html("");
+	loadAddr(A_id,3);
+});
+
+<%-- 地址初始化的异步加载--%>
+function loadAddr(type,index){
+	if(index>3) return;
+	$.ajax({
+		url:"${path}/getAddr.ajax",
+		type:"post",
+		timeout:20000,
+		dataType:"json",
+		data:{
+			"type":type
+		},
+		success:function(res,status){
+			var addrs=res.addrs;
+			var n=addrs.length;
+			var html="";
+			if(n>0){
+				html="<option value='"+addrs[0].areaname+"' A_id='"+addrs[0].areaid+"' selected='selected'>"+addrs[0].areaname+"</option>";
+				for(var i=1;i<n;i++){
+					html+="<option value='"+addrs[i].areaname+"' A_id='"+addrs[i].areaid+"'>"+addrs[i].areaname+"</option>";
+				}
+			}
+			$("#addr_"+index).html(html);
+			loadAddr(addrs[0].areaid,++index);
+		},
+		error:function(res,status){
+			console.log("#addr_"+index+"地址异步加载错误");
+		}
+	});
+}
+loadAddr("-1",1);
+</script>
+<script src="/ego/layui/layui.js"></script>
+<script>
+layui.use('layer',function(){
+	 var $ = layui.jquery,layer = layui.layer;
+});
+
+var total=${total};
+$("#coupon-select").change(function(){
+	total= ${total} - parseFloat($(this).val());
+	$("#pay-total").html(total);
+})
+</script>
 </html>
