@@ -1116,26 +1116,17 @@
 													</c:choose>
 													</c:forEach>
 												</c:when>
-												
 											</c:choose>	
-											
-											
-											
-											
 										</div>
 									</div>
 								</div>
 <!-- /¶©µ¥ÇøÓò5 -->
 							</div>
-
 						</div>
 					</div>
 				</div>
-				
 			</div>
-			
 		</div>
-
 	</body>
 
 </html>

@@ -16,8 +16,14 @@
 		<script type="text/javascript" src="<%=path%>/js/address.js"></script>
 		<script type="text/javascript">
 		function checkAddress(){
-			$('input[name="aab311"]').val($(".defaultAddr").children(".address-left").children(".default-address") .children(".buy--address-detail") .children(".theAddress") .text());
-			$("#xx").text($(".defaultAddr").children(".address-left").children(".default-address").children(".buy--address-detail").children(".theAddress").text());
+			var province=$(".defaultAddr").children(".new-p-re").children(".new-mu_l2cw") .children(".province").text();
+			var street=$(".defaultAddr").children(".new-p-re").children(".new-mu_l2cw") .children(".street").text();
+			var man=$(".defaultAddr").children(".new-p-re").children(".new-txt").text();
+			var phone=$(".defaultAddr").children(".new-p-re").children(".new-txt-rd2").text();
+			$("#xx").text(province+street+man+phone);
+			$('input[name="aab311"]').val(province+street);
+			$('input[name="aab317"]').val(man);
+			$('input[name="aab318"]').val(phone);
 		}
 		</script>
 
@@ -25,14 +31,20 @@
 
 	<body>
 		<p id="xx"></p>
+		<p>${product.aab203 }</p>
+		<p>${product.count }</p>
+		<p>${product.aab205 }</p>
 		<form id="myform" action="###.html" method="post" > 
-		<input name="aaa102" type="hidden" value="<%=session.getAttribute("aaa102")%>"/>
-		<input name="aab203" type="hidden"/>
-		<input name="aab310" type="hidden"/>
-		<input name="aab311" type="hidden" value=""/>
-		<input name="aab312" type="hidden"/>
-		<input name="aab313" type="hidden"/>
-		<input name="aab314" type="hidden"/>
+			<input name="aaa102" type="hidden" value="<%=session.getAttribute("aaa102")%>"/>
+			<input name="aab203" type="hidden" value="${product.aab203 }"/>
+			<input name="aab310" type="hidden" value="${product.count }"/>	
+			<input name="aab311" type="hidden" value=""/>
+			<input name="aab312" type="hidden"/>
+			<input name="aab313" type="hidden"/>
+			<input name="aab314" type="hidden" value="${product.aab205 }"/>
+			<input name="aab316" type="hidden"/>
+			<input name="aab317" type="hidden" value=""/>
+			<input name="aab318" type="hidden" value=""/>
 		</form>
 
 
@@ -50,14 +62,14 @@
 						<div class="clear"></div>
 						<ul>
 							<div class="per-border"></div>
-							 <c:forEach items="${addrlist }" var="ins" varStatus="vs">
-							   <c:choose>
-							   <c:when test="${ins.aaa407 > 0 }">
-							   	<li class="user-addresslist defaultAddr">
-							   </c:when>
-							   <c:otherwise>
-							   <li   class="user-addresslist">
-							   </c:otherwise>
+								<c:forEach items="${addrlist }" var="ins" varStatus="vs">
+							 	<c:choose>
+								   <c:when test="${ins.aaa407 > 0 }">
+								   <li id="myAddress" class="user-addresslist defaultAddr">
+								   </c:when>
+								   <c:otherwise>
+								   <li id="myAddress" class="user-addresslist">
+								   </c:otherwise>
 							    </c:choose>
 								<span class="new-option-r" value="${ins.aaa401 }"><i class="am-icon-check-circle"></i>默认地址</span>
 								<p class="new-tit new-p-re">
@@ -76,7 +88,7 @@
 									<span class="new-addr-bar">|</span>
 									<a onclick="window.location.href='<%=path%>/person/deleteAddress.html?aaa401=${ins.aaa401}';return false;"   href="javascript:void(0);" ><i class="am-icon-trash"></i>删除</a>
 								</div>
-							</li>
+									</li>
 							</c:forEach>
 
 						</ul>
@@ -324,7 +336,10 @@
 									<div class="order-user-info">
 										<div id="holyshit257" class="memo">
 											<label>买家留言：</label>
-											<input type="text" title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" placeholder="选填,建议填写和卖家达成一致的说明" class="memo-input J_MakePoint c2c-text-default memo-close">
+											<input type="text" 
+												   title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" 
+												   placeholder="选填,建议填写和卖家达成一致的说明" 
+												   class="memo-input J_MakePoint c2c-text-default memo-close">
 											<div class="msg hidden J-msg">
 												<p class="error">最多输入500个字符</p>
 											</div>
