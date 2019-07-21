@@ -30,6 +30,7 @@ public class AdminReviewController extends AjaxControllerSupport {
 		int type=Integer.valueOf((String) this.dto.get("type"));
 		System.out.println(type);
 		Map<String,String> map=null;
+		String msg;
 		switch (type)
 		{
 		case 1:
@@ -37,32 +38,32 @@ public class AdminReviewController extends AjaxControllerSupport {
 			this.put("map", map);
 			break;
 		case 2:
-			services.update("modifyAb01");
-			this.put("msg","msg");
+			msg=services.update("modifyAb01")?"修改成功":"修改失败";
+			this.put("msg",msg);
 			break;
 		case 3:
 			map=services.findById("findAb02ById");
 			this.put("map", map);
 			break;
 		case 4:
-			services.update("modifyAb02");
-			this.put("msg","msg");
+			msg=services.update("modifyAb02")?"修改成功":"修改失败";
+			this.put("msg",msg);
 			break;
 		case 5:
 			map=services.findById("findAc01ById");
 			this.put("map", map);
 			break;
 		case 6:
-			services.update("modifyAc01");
-			this.put("map", map);
+			msg=services.update("modifyAc01")?"修改成功":"修改失败";
+			this.put("msg",msg);
 			break;
 		case 7:
 			map=services.findById("findAc02ById");
 			this.put("map", map);
 			break;
 		case 8:
-			services.update("modifyAc02");
-			this.put("map", map);
+			msg=services.update("modifyAc02")?"修改成功":"修改失败";
+			this.put("msg",msg);
 			break;
 		case 9:
 			List<Map<String, String>> lists=services.query("queryAd08");
