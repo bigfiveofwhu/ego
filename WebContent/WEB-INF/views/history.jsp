@@ -58,7 +58,6 @@
 		<div class="center">
 			<div class="col-main">
 				<div class="main-wrap" style="margin-left:0px;">
-
 					<div class="user-foot">
 						<!--БъЬт -->
 						<div class="am-cf am-padding">

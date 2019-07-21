@@ -47,9 +47,9 @@
     height: 100%;
 }
 
-.liLeft img {
-    margin: 10px;
-}
+/*.liLeft img {*/
+/*    margin: 10px;*/
+/*}*/
 
 .liRight span {
     display: block;
@@ -116,15 +116,15 @@
     float: left;
 }
 
-.newsHead img {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-}
+/*.newsHead img {*/
+/*    width: 44px;*/
+/*    height: 44px;*/
+/*    border-radius: 50%;*/
+/*}*/
 
 .news {
     width: auto;
-    height: 40px;
+    height: auto;
     background: #eeeeee;
     padding: 5px 20px;
     line-height: 40px;
@@ -143,15 +143,20 @@
     float: right;
 }
 
-.answersHead img {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-}
+/*.answersHead img {*/
+/*    width: 44px;*/
+/*    height: 44px;*/
+/*    border-radius: 50%;*/
+/*}*/
 
 .answers {
+    /*white-space:normal;*/
+
+    /*        word-wrap:break-word;*/
+
+    /*        word-break:break-all;*/
     width: auto;
-    height: 30px;
+    height: auto;
     background: #eeeeee;
     padding: 5px 20px;
     line-height: 30px;
@@ -199,11 +204,11 @@
     margin: 0 10px;
 }
 
-.headImg img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-}
+/*.headImg img {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    border-radius: 50%;*/
+/*}*/
 
 .internetName {
     width: auto;

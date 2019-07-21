@@ -346,7 +346,7 @@
 																<div class="item-status">
 																	<p class="Mystatus">卖家已发货</p>
 																	<p class="order-info"><a href="#" onclick="goOrderDetail(${ins.aab302})">订单详情</a></p>
-																	<p class="order-info"><a href="logistics.html">查看物流</a></p>
+																	
 																	<p class="order-info"><a href="#">延长收货</a></p>
 																</div>
 															</li>
@@ -423,7 +423,7 @@
 																<div class="item-status">
 																	<p class="Mystatus">交易成功</p>
 																	<p class="order-info"><a href="#" onclick="goOrderDetail(${ins.aab302})">订单详情</a></p>
-																	<p class="order-info"><a href="logistics.html">查看物流</a></p>
+																	
 																</div>
 															</li>
 															<c:choose>
@@ -606,7 +606,7 @@
 																			</c:choose>
 																		</p>
 																		<p class="order-info"><a href="#"  onclick="goOrderDetail(${ins.aab302})">订单详情</a></p>
-																		<p class="order-info"><a href="logistics.html">查看物流</a></p>
+																		
 																	</div>
 																</li>
 																<li class="td td-change">
@@ -622,6 +622,11 @@
 												</c:choose>
 												</c:forEach>
 											</c:when>
+											<c:otherwise>
+											<p>好像没有订单哦,亲<br/>
+											<a href="<%=path %>/home/home.html">去购物>>></a>
+											</p>
+											</c:otherwise>
 										</c:choose>	
 
 										</div>
@@ -658,13 +663,13 @@
 
 									<div class="order-main">
 										<div class="order-list">
-	<!-- 待付款循环体 -->	
+	<!-- 待付款循环体 -->						
 										<c:choose>
 											<c:when test="${rows!=null }">
 											<c:forEach items="${rows }" var="ins" varStatus="vs">
 												<c:choose>
 												<c:when test="${ins.aab303 eq '01' }">
-													<div class="order-status1">
+												<div class="order-status1">
 													<div class="order-title">
 														<div class="dd-num">订单编号：<a href="javascript:;">${ins.aab302 }</a></div>
 														<span>提交时间：${ins.aab304 }</span>
@@ -736,11 +741,12 @@
 														</div>
 	
 														</div>
-													</div>
+													</div>	
 												</c:when>
 												</c:choose>
 											</c:forEach>
 											</c:when>
+											
 										</c:choose>
 	<!-- /待付款循环体 -->										
 											
@@ -860,6 +866,7 @@
 													</c:choose>
 													</c:forEach>
 												</c:when>
+												
 											</c:choose>
 	<!-- /待发货循环体 -->
 										</div>
@@ -960,13 +967,14 @@
 																		<div class="item-status">
 																			<p class="Mystatus">卖家已发货</p>
 																			<p class="order-info"><a href="#" onclick="goOrderDetail(${ins.aab302})">订单详情</a></p>
-																			<p class="order-info"><a href="logistics.html">查看物流</a></p>
+																			
 																			<p class="order-info"><a href="#">延长收货</a></p>
 																		</div>
 																	</li>
 																	<li class="td td-change">
 																		<div class="am-btn am-btn-danger anniu" onclick="goOrderDetail(${ins.aab302})">
-																			确认收货</div>
+																			确认收货
+																		</div>
 																	</li>
 																</div>
 															</div>
@@ -976,6 +984,7 @@
 													</c:choose>
 													</c:forEach>
 												</c:when>
+												
 											</c:choose>
 											
 										</div>
@@ -1076,7 +1085,7 @@
 																	<div class="item-status">
 																		<p class="Mystatus">交易成功</p>
 																		<p class="order-info"><a href="#"  onclick="goOrderDetail(${ins.aab302})">订单详情</a></p>
-																		<p class="order-info"><a href="logistics.html">查看物流</a></p>
+																		
 																	</div>
 																</li>
 																<c:choose>
@@ -1108,24 +1117,16 @@
 													</c:forEach>
 												</c:when>
 											</c:choose>	
-											
-											
-											
-											
 										</div>
 									</div>
 								</div>
 <!-- /订单区域5 -->
 							</div>
-
 						</div>
 					</div>
 				</div>
-				
 			</div>
-			
 		</div>
-
 	</body>
 
 </html>

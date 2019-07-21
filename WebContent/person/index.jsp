@@ -63,8 +63,17 @@
 						<p><i class="am-icon-balance-scale"></i>我的交易</p>
 						<ul>
 							<li><a href="<%=path %>/showOrder.html" target="iframe">订单管理</a></li>
-							<li> <a href="<%=path %>/goRefund.html" target="iframe">退款售后</a></li>
-							<li> <a href="<%=path %>/showComment.html" target="iframe">评价商品</a></li>
+							<li> <a href="<%=path %>/showRefund.html" target="iframe">退款售后</a></li>
+							<li> <a href="<%=path %>/showComment.html" target="iframe">我的评价</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<p><i class="am-icon-balance-scale"></i>我的服务</p>
+						<ul>
+							<li><a href="<%=path %>/goPostNeed.html" target="iframe">我有需求</a></li>
+							<li> <a href="<%=path %>/showNeed.html" target="iframe">历史需求</a></li>
+							<li> <a href="<%=path %>/showServiceOrder.html" target="iframe">服务订单</a></li>
+							<li> <a href="<%=path %>/showServiceComment.html" target="iframe">服务评价</a></li>
 						</ul>
 					</li>
 					<li class="person">
@@ -75,6 +84,7 @@
 							<li> <a href="<%=path %>/person/bonus.jsp" target="iframe">红包</a></li>
 							<li> <a href="<%=path %>/person/walletlist.jsp" target="iframe">账户余额</a></li>
 							<li> <a href="<%=path %>/person/bill.jsp" target="iframe">账单明细</a></li>
+							<li> <a href="<%=path %>/report/userReport.html?type=1" target="iframe">流水报表</a></li>
 						</ul>
 					</li>
 
@@ -82,7 +92,7 @@
 						<p><i class="am-icon-tags"></i>我的收藏</p>
 						<ul>
 							<li> <a href="<%=path %>/person/showCollection.html" target="iframe">收藏</a></li>
-							<li> <a href="<%=path %>/person/foot.jsp" target="iframe">足迹</a></li>														
+							<li> <a href="<%=path %>/showHistory.html" target="iframe">足迹</a></li>														
 						</ul>
 					</li>
 
@@ -92,7 +102,7 @@
 							<li> <a href="<%=path %>/person/consultation.jsp" target="iframe">商品咨询</a></li>
 							<li> <a href="<%=path %>/person/suggest.jsp" target="iframe">意见反馈</a></li>							
 							
-							<li> <a href="<%=path %>/person/news.jsp" target="iframe">我的消息</a></li>
+							<li> <a href="<%=path %>/message/readMessage.html" target="iframe">我的消息</a></li>
 						</ul>
 					</li>
 				</ul>
