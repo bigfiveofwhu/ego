@@ -166,9 +166,8 @@
 								</li>
 							</ul>
 						</li>
-						
 						<!-- 售后管理 -->
-								<li class="treeview">
+						<li class="treeview">
 							<a href="#" >
 								<i class="fa fa-folder"></i>
 								<span>售后管理</span>
@@ -179,6 +178,22 @@
 								<li id="admin-login">
 									<a href="<%=path %>/shop/queryShouhou.html" target="iframe">
 										<i class="fa fa-circle-o"></i> 售后管理
+									</a>
+								</li>
+							</ul>
+						</li>
+						<!-- 需求管理 -->
+						<li class="treeview">
+							<a href="#" >
+								<i class="fa fa-folder"></i>
+								<span>需求管理</span>
+								<span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				       		</a>
+				       		<ul class="treeview-menu">
+								<li id="admin-login">
+									<a href="<%=path %>/service/queryRequire.html" target="iframe">
+										<i class="fa fa-circle-o"></i> 需求管理
 									</a>
 								</li>
 							</ul>
