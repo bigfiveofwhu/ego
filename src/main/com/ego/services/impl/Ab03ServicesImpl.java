@@ -145,7 +145,7 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql =null;
 		sql = new StringBuilder()
-				.append("select a.aab302,a.aab304,a.aab310,a.aab313,a.aab314")
+				.append("select a.aab302,a.aab311,a.aab316,a.aab317,a.aab318")
     			.append("  from ab03 a")
     			.append(" where a.aab302=?")
     			;
@@ -320,13 +320,11 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql = new StringBuilder()
 				.append("update ab03 a set")
-				.append("  a.aab303='02', a.aab305=current_timestamp,a.aab311=?,a.aab312=?")
+				.append("  a.aab303='02', a.aab305=current_timestamp")
 				.append("  where a.aab302=?")
 				;
 		
 		Object args[]={
-				this.get("aab311"),
-				this.get("aab312"),
 				this.get("aab302")
 		};
 		
