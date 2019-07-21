@@ -70,7 +70,7 @@
 								<hr/>
 
 								<div class="am-u-md-12 am-u-lg-8" style="margin-top: 20px;">
-									<form  action="addAddress.html" class="am-form am-form-horizontal" method="post">
+									<form  action="<%=path %>/person/addAddress.html" class="am-form am-form-horizontal" method="post">
 
 										<div class="am-form-group">
 											<label for="user-name" class="am-form-label"> ’ªı»À</label>

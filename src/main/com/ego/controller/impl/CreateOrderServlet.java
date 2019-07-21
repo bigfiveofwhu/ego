@@ -28,5 +28,6 @@ public class CreateOrderServlet extends OrderControllerSupport
 		ins.put("fee", this.get("fee").toString());       //¿ìµÝ·ÑÓÃ
 		this.saveAttribute("product", ins);
 		return "WEB-INF/views/createOrder";
+		
 	}
 }
