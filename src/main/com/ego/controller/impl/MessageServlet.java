@@ -9,8 +9,7 @@ import java.util.Map;
 
 public class MessageServlet extends ControllerSupport
 {
-    public MessageServlet()
-    {
+    public MessageServlet() {
         this.setServices(new Ae01ServicesImpl());
     }
 
@@ -31,21 +30,34 @@ public class MessageServlet extends ControllerSupport
                 aab102 = aab102 == null ? 0 : aab102;
                 this.saveAttribute("aae103", aab102);
                 this.saveAttribute("list", list);
-                path = "message/send";
+                path = "message/sendMessage";
                 break;
 
             case "sendMessage":
-                String msg = this.getServices().update("insert") ? "发送成功！" : "发送失败！";
+                String msg;
+                try
+                {
+                    msg = this.getServices().update("insert") ? "发送成功！" : "发送失败！";
+                }
+                catch (Exception e)
+                {
+                    msg = "发送失败：" + e.getMessage();
+                }
                 this.saveAttribute("msg", msg);
-                path = "message/send";
+                path = "message/listMessage";
                 break;
 
             case "readMessage":
                 list = this.getServices().query("getAllMessages");
                 this.saveAttribute("messages", list);
-                path = "message/read";
+                path = "message/readMessage";
                 break;
 
+            case "listMessage":
+                list = this.getServices().query("queryPastSentMessage");
+                this.saveAttribute("messageList", list);
+                path = "message/listMessage";
+                break;
             default:
                 throw new Exception("MessageServlet无法处理此类请求:" + mapping);
         }
