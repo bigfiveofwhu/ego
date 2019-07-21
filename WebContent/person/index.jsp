@@ -75,6 +75,7 @@
 							<li> <a href="<%=path %>/person/bonus.jsp" target="iframe">红包</a></li>
 							<li> <a href="<%=path %>/person/walletlist.jsp" target="iframe">账户余额</a></li>
 							<li> <a href="<%=path %>/person/bill.jsp" target="iframe">账单明细</a></li>
+							<li> <a href="<%=path %>/report/userReport.html?type=1" target="iframe">流水报表</a></li>
 						</ul>
 					</li>
 
@@ -92,7 +93,7 @@
 							<li> <a href="<%=path %>/person/consultation.jsp" target="iframe">商品咨询</a></li>
 							<li> <a href="<%=path %>/person/suggest.jsp" target="iframe">意见反馈</a></li>							
 							
-							<li> <a href="<%=path %>/person/news.jsp" target="iframe">我的消息</a></li>
+							<li> <a href="<%=path %>/message/readMessage.html" target="iframe">我的消息</a></li>
 						</ul>
 					</li>
 				</ul>
