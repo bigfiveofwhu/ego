@@ -63,6 +63,9 @@
 				<p style="color:red;">地点:</p>
 				<p>${shop.aab105 }</p>
 			</div>
+			<div>
+			 <a><span onclick="addShopCollection();" class="am-icon-heart">收藏本店</span></a>
+			 </div>
 		</div>
 		<div class="clear"></div>
 		<div class="loopShow"></div>
@@ -149,6 +152,37 @@
 				});
 			});
 		</script>
+		<script src="/ego/layui/layui.js"></script>
+<script>
+layui.use('layer', function(){
+	layer = layui.layer;
+});
+function addShopCollection()
+{
+	alert('${shop.aab102}');
+	if('${aaa102}' == '')
+		return;
+	$.ajax({
+		url:"${path}/addCollection.ajax",
+		type:"post",
+		dataType:"json",
+		timeout:20000,
+		data:{
+			"aaa303": '${shop.aab102}',
+			"aaa302": "02"
+		},
+		success:function(res,status){
+			if(res.tag == 1)
+			    layer.msg("收藏成功");
+			else
+				layer.msg("该商铺已被收藏")
+		},
+		error:function(res,status){
+			console.log("收藏失败");
+		}
+	});
+}
+</script>
 		<!--引导 -->
 		<%@include file="/footer.jsp" %>
 		<%@include file="/bottomGuide.jsp" %>

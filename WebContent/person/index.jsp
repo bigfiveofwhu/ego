@@ -81,7 +81,7 @@
 					<li class="person">
 						<p><i class="am-icon-tags"></i>我的收藏</p>
 						<ul>
-							<li> <a href="<%=path %>/person/collection.jsp" target="iframe">收藏</a></li>
+							<li> <a href="<%=path %>/person/showCollection.html" target="iframe">收藏</a></li>
 							<li> <a href="<%=path %>/person/foot.jsp" target="iframe">足迹</a></li>														
 						</ul>
 					</li>
@@ -106,7 +106,7 @@
 	function SetIFrameHeight() {
 		var iframeid = document.getElementById("iframe"); //iframe id
 		if(document.getElementById) {
-			iframeid.height = document.documentElement.clientHeight*1.6;
+			iframeid.height = document.documentElement.clientHeight;
 			//iframeid.width = document.documentElement.clientWidth*0.8;
 		}
 	}
