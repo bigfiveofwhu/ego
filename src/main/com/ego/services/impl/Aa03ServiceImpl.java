@@ -1,4 +1,5 @@
 /**
+ * @author zb
  * 收藏夹:aa03
 Name                 Code	
 收藏夹流水号	         aaa301
@@ -26,15 +27,19 @@ public class Aa03ServiceImpl extends JdbcServicesSupport
     }
 	
 	/**
-	 * 查询收藏夹
+	 * 查询某用户收藏夹
 	 */
 	@Override
 	public List<Map<String, String>> query(String qtype) throws Exception 
 	{
 		StringBuilder sql  = new StringBuilder()
-				   .append(" select  a.aaa301,a.aaa303,b.aab202,b.aab205,b.aab206 ")   
+				   .append(" select  a.aaa301,a.aaa303,b.aab202,b.aab205,b.aab206,b.aab212 ")   
 				   .append(" from aa03 a,ab02 b ")
-				   .append(" where a.aaa303 = b.aab203 and a.aaa302 = ? ");
+				   .append(" where a.aaa303 = b.aab203 and a.aaa302 = ? ")
+				   .append("  and a.aaa102 = '")
+				   .append(this.get("aaa102"))
+				   .append("'")
+				   ;
 		if(qtype.equals("product"))//查收藏的商品
 		{
 			return this.queryForList(sql.toString(), "01");
@@ -69,19 +74,22 @@ public class Aa03ServiceImpl extends JdbcServicesSupport
 	 */
 	@SuppressWarnings("unused")
 	private boolean addCollection() throws Exception
-	{
+	{ 
+		Object args[]=
+			{
+			  this.get("aaa102"),
+			  this.get("aaa302"),
+			  this.get("aaa303")
+			};
+		String sql1 = "select aaa301 from aa03 where aaa102 = ? and aaa302 = ? and aaa303 =?";
+		
+		if(this.queryForMap(sql1, args) != null)//已被收藏
+			return false;
 		//编写SQL
 		StringBuilder sql=new StringBuilder()
-    			.append("insert into aa03(aaa101,aaa302,aaa303) ")
+    			.append("insert into aa03(aaa102,aaa302,aaa303) ")
     			.append("          values(?,?,?)")
     			;
-		
-		Object args[]=
-		{
-		  this.get("aaa102"),
-		  this.get("aaa302"),
-		  this.get("aaa303")
-		};
 		
 		return this.executeUpdate(sql.toString(), args);
 	}
