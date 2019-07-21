@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.ego.services.impl.Aa04ServiceImpl;
+import com.ego.services.impl.Aa05ServiceImpl;
 import com.ego.services.impl.Ab02ServiceImpl;
 
 public class CreateOrderServlet extends OrderControllerSupport
@@ -27,6 +28,19 @@ public class CreateOrderServlet extends OrderControllerSupport
 		ins.put("args", this.get("args").toString());     //商品规格
 		ins.put("fee", this.get("fee").toString());       //快递费用
 		this.saveAttribute("product", ins);
+		
+		//获得店铺信息
+		this.setServices(new Ab02ServiceImpl());
+		Map<String, String> shopInfo=this.getServices().findById("findByAab203");
+		dto.put("aab102", shopInfo.get("aab102"));
+		//获得可用优惠券
+		this.setServices(new Aa05ServiceImpl());
+		double prince= Integer.parseInt(this.get("count").toString())
+				*Double.parseDouble(ins.get("aab205").toString());
+		dto.put("price", prince);
+		List<Map<String, String>> coupons=this.getServices().query("getUsableCoupons");
+		saveAttribute("coupons",coupons);
+		
 		return "WEB-INF/views/createOrder";
 		
 	}
