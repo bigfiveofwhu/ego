@@ -401,8 +401,8 @@ public class AdvertiseService extends JdbcServicesSupport{
 		StringBuilder sql=new StringBuilder()
 				.append(" select aad302,aad306,aad307,aab202,aab205 from ad03 join ab02")
 				.append(" on ad03.aad306 = ab02.aab203")
-				.append(" where aad305=").append(homePage)
-				.append(" and aad303=").append(productAd)
+				.append(" where aad305=").append(homePage)//11
+				.append(" and aad303=").append(productAd)//00
 				.append(" order by aad304 DESC ")
 				.append(" limit 8");
 		return this.queryForList(sql.toString());
