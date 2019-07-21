@@ -42,11 +42,11 @@
 				<li class="banner1">
 				<%--商品类型 --%>
 				<c:if test="${Img.aad303=='00' }">
-				<a href="<%=path%>/shop/detail.html?aId=${Img.aad302 }&productId=${Img.aad306}"><img src="<%=path%>/images/advertise/${Img.aad302 }.jpg" /></a>
+				<a href="<%=path%>/shop/detail.html?aId=${Img.aad302 }&productId=${Img.aad306}"><img src="<%=path%>/images/advertise/${Img.aad307 }" /></a>
 				</c:if>
 				<%--店铺类型 --%>
 				<c:if test="${Img.aad303=='01' }">
-				<a href="<%=path%>/shop/home.html?aId=${Img.aad302 }&shopId=${Img.aad306}"><img src="<%=path%>/images/advertise/${Img.aad302 }.jpg" /></a>
+				<a href="<%=path%>/shop/home.html?aId=${Img.aad302 }&shopId=${Img.aad306}"><img src="<%=path%>/images/advertise/${Img.aad307 }" /></a>
 				</c:if>
 				</li>
 			</c:forEach>
@@ -325,7 +325,7 @@
 							<div class="activityMain ">
 							    <!--  点击图片显示图片详细 -->
 								<a href="<%=path %>/shop/home.html?aId=${item.aad302 }&shopId=${item.aad306}">
-								<img src="<%=path%>/images/advertise/${item.aad302 }.jpg"></img></a>
+								<img src="<%=path%>/images/advertise/${item.aad307 }"></img></a>
 							</div>
 							<div class="info ">
 								<h3>${item.aab103 }</h3>
@@ -342,12 +342,14 @@
 							<h4>热门商品</h4>
 							<h3>今日份热门商品</h3>
 							<div class="today-brands ">
+							<!--
 								<a href="# ">桂花糕</a> 
 								<a href="# ">奶皮酥</a> 
 								<a href="# ">栗子糕</a>
 								<a href="# ">马卡龙</a>
 								<a href="# ">铜锣烧</a>
 								<a href="# ">豌豆黄</a>
+							-->
 							</div>
 							<span class="more ">
 								<a href="# ">更多美味
@@ -385,7 +387,7 @@
 								</div>
 								<!-- 甜品 -->
 								<a href="<%=path %>/shop/detail.html?aId=${item1.aad302 }&productId=${item1.aab203}">
-								<img src="<%=path %>/images/advertise/${item1.aad302 }.jpg" alt="${item1.aab202 }" /> 
+								<img src="<%=path %>/images/advertise/${item1.aad307 }" alt="${item1.aab202 }" /> 
 								</a>
 							</div>
 						</c:forEach>

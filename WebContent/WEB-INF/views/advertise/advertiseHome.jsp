@@ -70,7 +70,7 @@
     <div class="layui-tab-item" id="addAd">
     
     <form class="mx-auto w-75 bg-light border p-3" id="form" method="post" enctype="multipart/form-data">
-	  
+	  <%--传递店铺id --%>
 	  <input type="hidden" name="aab102" value="${shop.aab102 }">
 	  
 	  <div class="form-group row" id="chooseProduct">
@@ -79,17 +79,9 @@
 	      <select class="custom-select" name="aad306" size="1">
 			<c:forEach items="${products}" var="item">
 				<option value="${item.aab203 }">${item.aab202 }</option>
-			</c:forEach>	  	
+			</c:forEach>	 
+				<option value="${shop.aab102 }"  id="shopItem" hidden>${shop.aab103 }</option> 	
 		</select>
-	    </div>
-	  </div>
-	  
-	  <div class="form-group row" id="shop">
-	    <label for="money" class="col-sm-2 col-form-label">你的店铺</label>
-	    <div class="col-sm-10">
-	    	<div class="alert alert-primary" role="alert"> 
-			  <a href="/ego/shop/home.html?shopId=${shop.aab103}" class="alert-link">${shop.aab103 }</a>
-			</div>
 	    </div>
 	  </div>
 	  
@@ -216,19 +208,20 @@ layui.use('layer',function(){
 	 
 })
 $("#submit").click(register);
-$("#shop").hide();//隐藏店铺div
 $("input:radio[name='aad303']").change(function (){ //拨通
 	switch($(this).val()){
 		case '00'://产品
-			$("#chooseProduct").show();
-			$("#shop").hide();
+			$("[name='aad306']").attr("disabled",false);	
+			$('#shopItem').attr("selected",false);
 			break;
 		case '01'://店铺
-			$("#shop").show();
-			$("#chooseProduct").hide();
+			//$("#shop").show();
+			//$("#chooseProduct").hide();
+			$('#shopItem').attr("selected",true);
+			$("[name='aad306']").attr("disabled",true);
 			break;
 		case '10'://服务
-			alert("服务");
+			alert("暂不支持服务");
 			break;
 	};
 });
@@ -243,12 +236,16 @@ function register(){
             clearForm:false, //表示如果表单提交成功是否清除表单数据。
             success:function(msg){ //提交完后执行的函数
                 if(msg.result==true){
-                	alert("成功");
+                	layer.msg("添加成功");
+                	location.reload();
                 }else if(msg.result==false){
-                	alert(msg.reason);
+                	layer.msg("添加失败,"+msg.reason);
                 }else{
-                	alert("未知原因");
+                	layer.msg("网络故障");
                 }
+            },
+            error:function(){
+            	layer.msg("网络故障");
             }
         };
         $("#form").ajaxSubmit(options); //使用ajaxForm()插件提交
