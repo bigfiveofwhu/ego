@@ -47,6 +47,10 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		{
 			return this.recieveOrder();
 		}
+		else if(utype.equalsIgnoreCase("cancel"))
+		{
+			return this.cancelOrder();
+		}
 		else
 		{
 			throw new Exception("在类[ Ab03ServicesImpl ]中进行了未定义的动作调用,"
@@ -299,6 +303,23 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql = new StringBuilder()
 				.append("update ab03 a set")
 				.append("  a.aab303='05', a.aab307=current_timestamp")
+				.append("  where a.aab302=?")
+				;
+		
+		Object args[]={
+				this.get("aab302")
+		};
+		
+		//System.out.println("***显示编辑更新SQL语句****");
+		//System.out.println(sql.toString());
+		return this.executeUpdate(sql.toString(), args);
+	}
+	
+	private boolean cancelOrder()throws Exception
+	{
+		StringBuilder sql = new StringBuilder()
+				.append("update ab03 a set")
+				.append("  a.aab303='03', a.aab307=current_timestamp")
 				.append("  where a.aab302=?")
 				;
 		

@@ -8,7 +8,8 @@
 
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
-
+		<link rel="stylesheet" href="<%=path%>/css/bootstrap.css">
+		<link rel="stylesheet" href="<%=path%>/layui/css/layui.css">
 		<title>发表评论</title>
 
 		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
@@ -17,6 +18,7 @@
 		<link href="<%=path%>/css/personal.css" rel="stylesheet" type="text/css">
 		<link href="<%=path%>/css/appstyle.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
+		<script src="<%=path%>/layui/dist/layui.js" charset="utf-8"></script>
 		
 		
 		<script type="text/javascript">
@@ -56,6 +58,34 @@
 				vform.action="<%=path%>/makeComment.html?aab302="+vaab302;
 				vform.submit();
 			}
+		</script>
+		
+		<script src="<%=path%>/js/jquery-3.2.0.min.js" ></script>
+		<script src="<%=path%>/js/bootstrap.bundle.js"></script>
+		<script src="<%=path%>/layui/layui.js"></script>								
+		<script type="text/javascript">
+		layui.use('upload', function(){
+		  var $ = layui.jquery
+		  ,upload = layui.upload;
+		  
+		  //多图片上传
+		  upload.render({
+		    elem: '#test2'
+		    ,url: 'makeComment.html'
+		    ,multiple: true
+		    ,before: function(obj){
+		      //预读本地文件示例，不支持ie8
+		      obj.preview(function(index, file, result){
+		        $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+		      });
+		    }
+		    ,done: function(res){
+		      //上传完毕
+		    }
+		  });
+		
+		  
+		});
 		</script>
 		
 	</head>
@@ -155,18 +185,24 @@
 								</div>
 								<div class="clear"></div>
 								<hr/>
-								
-								
-								
-								
+
 								<div class="item-comment">
 									<textarea id="comment_text" placeholder="请写下对宝贝的感受吧，对他人帮助很大哦！"></textarea>
 								</div>
-								<div class="filePic">
-									<input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*" >
-									<span>晒照片(0/5)</span>
-									<img src="<%=path%>/images/image.jpg" alt="">
-								</div>
+								<!--div class="filePic">
+									<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+									  <legend>上传多张图片</legend>
+									</fieldset>
+									
+									<div class="layui-upload">
+									  <button type="button" class="layui-btn" id="test2">多图片上传</button> 
+									  
+									  <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+									    预览图：
+									    <div class="layui-upload-list" id="demo2"></div>
+									 </blockquote>
+									</div>
+								</div-->
 								
 								<div id="comment3" class="item-opinion">
 									<li value="1" ><i class="op1"></i></li>

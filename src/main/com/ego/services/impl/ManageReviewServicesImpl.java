@@ -1,10 +1,10 @@
 package com.ego.services.impl;
 
+import com.ego.services.JdbcServicesSupport;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import com.ego.services.JdbcServicesSupport;
 
 public class ManageReviewServicesImpl extends JdbcServicesSupport
 {
@@ -65,11 +65,9 @@ public class ManageReviewServicesImpl extends JdbcServicesSupport
   		Object aab212=this.get("qaab212");
 
   		StringBuilder sql=new StringBuilder()
-  		  		.append("SELECT aab203,aab202,aab205,s1.fvalue aab204_1,s2.fvalue aab204_2,")
-  		  		.append("	    s3.fvalue aab204_3,s4.fvalue cnaab212")
-  		 	    .append("  FROM ab02 a,syscode s1,syscode s2,syscode s3,syscode s4")
-  		     	.append(" WHERE s3.fcode=aab204 AND s3.fname='aab204' AND s3.pfcode=s2.fcode")
-  		     	.append("   AND s2.pfcode=s1.fcode AND s4.fcode=aab212 AND s4.fname='aab212'")
+  		  		.append("SELECT aab203,aab202,aab205,s1.fvalue aab204,s2.fvalue cnaab212")
+  		  		.append("  FROM ab02 a,syscode s1,syscode s2")
+  		 	    .append(" WHERE s1.fcode=aab204 AND s1.fname='aab204' AND s2.fcode=aab212 AND s2.fname='aab212'")
   				;
   		
   		List<Object> paramList=new ArrayList<>();

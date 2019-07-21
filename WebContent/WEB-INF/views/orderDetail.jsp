@@ -346,7 +346,7 @@
 													</div>
 												</li>
 												<li class="td td-change">
-													<div class="am-btn am-btn-danger anniu">
+													<div class="am-btn am-btn-danger anniu" onclick="remind()">
 														Ã·–—∑¢ªı</div>
 												</li>
 											</div>
