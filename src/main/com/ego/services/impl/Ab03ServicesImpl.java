@@ -118,9 +118,9 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql = new StringBuilder()
 				.append("select x.aab203,x.aab302,x.aab303,x.aab304,x.aab305,")
 				.append("       x.aab306,x.aab307,x.aab309,x.aab310,x.aab313,")
-				.append("       x.aab314,y.aab202,z.aaa802")
-				.append("  from ab03 x, ab02 y,aa08 z")
-				.append("  where  x.aab203=y.aab203 and x.aab302=z.aab302")
+				.append("       x.aab314,y.aab202")
+				.append("  from ab03 x, ab02 y")
+				.append("  where  x.aab203=y.aab203 ")
 				.append("  and x.aaa102=? and x.aab308='01' ")
 				;
 		
@@ -363,9 +363,11 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		//1.创建SQL语句
 		StringBuilder sql = new StringBuilder()
 				.append("insert into ab03(aaa102,aab203,aab302,aab303,aab304,")
-    			.append("                 aab308,aab310,aab311,aab313,aab314)")
+    			.append("                 aab308,aab310,aab311,aab312,aab313,")
+    			.append("                 aab314,aab316,aab317,aab318)")
     			.append("          values (?,?,?,?,current_timestamp,")
-    			.append("                  ?,?,?,?,?)")
+    			.append("                  ?,?,?,?,?,")
+    			.append("                  ?,?,?,?)")
     			;
 		//2.编写参数数组
 		Object args[]={
@@ -376,9 +378,15 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 				//5
 				"01",
 				this.get("aab310"),
-				"收货地址:待定",
-				"0",
-				this.get("aab314")//10
+				this.get("aab311"),
+				this.get("aab312"),
+				this.get("aab313"),
+				//10
+				this.get("aab314"),
+				this.get("aab316"),
+				this.get("aab317"),
+				this.get("aab318"),
+				//14
 		};
 		System.out.println("***生成新订单***");
 		System.out.println(sql.toString());

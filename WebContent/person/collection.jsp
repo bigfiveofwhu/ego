@@ -35,37 +35,39 @@
 					
 							<div class="s-content">
 		
+		       <c:forEach items="${proList }" var="ins" varStatus="vs">
 
+                              <c:if test="${ins.aab212 != 04 }">
 								<div class="s-item-wrap">
 									<div class="s-item">
-
 										<div class="s-pic">
 											<a href="#" class="s-pic-link">
-												<img src="<%=path%>/images/1-item_pic.jpg_220x220.jpg" alt="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰" title="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰" class="s-pic-img s-guess-item-img">
+												<img src="/ego/images/01_mid.jpg" alt="${ins.aab202 }" title="${ins.aab202 }" class="s-pic-img s-guess-item-img">
 											</a>
 										</div>
 										<div class="s-info">
-											<div class="s-title"><a href="#" title="s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰">s925纯银千纸鹤锁骨链短款简约时尚韩版素银项链小清新秋款女配饰</a></div>
+											<div class="s-title"><a href="#" title="${ins.aab202 }">${ins.aab202 }</a></div>
 											<div class="s-price-box">
-												<span class="s-price"><em class="s-price-sign">￥</em><em class="s-value">49.90</em></span>
-												<span class="s-history-price"><em class="s-price-sign">￥</em><em class="s-value">88.00</em></span>
+												<span class="s-price"><em class="s-price-sign">￥</em><em class="s-value">${ins.aab205 }</em></span>
 											</div>
 											<div class="s-extra-box">
 												<span class="s-comment">好评: 99.74%</span>
-												<span class="s-sales">月销: 69</span>
+												<span class="s-sales">库存 :${ins.aab206 }</span>
 											</div>
 										</div>
 										<div class="s-tp">
 											<span class="ui-btn-loading-before">加入购物车</span>
 											<i class="am-icon-shopping-cart"></i>
-											<span class="ui-btn-loading-before buy">加入购物车</span>
+											<span class="ui-btn-loading-before buy" onclick="delCollection('${ins.aaa301}');">取消收藏</span>
 											<p>
 												<a href="javascript:;" class="c-nodo J_delFav_btn">取消收藏</a>
 											</p>
 										</div>
 									</div>
 								</div>
+                              </c:if>
 
+                              <c:if test="">
 								<div class="s-item-wrap">
 									<div class="s-item">
 
@@ -96,6 +98,9 @@
 										</div>
 									</div>
 								</div>
+							</c:if>
+								
+				</c:forEach>
 							</div>
 
 						</div>
@@ -104,6 +109,7 @@
                     <div  id="tab2"></div>
 				
 	</body>
+<script src="/ego/layui/layui.js"></script>
 <script type="text/javascript">
 $("#pro").click(function(){
 	$("#tab1").show();
@@ -113,5 +119,32 @@ $("#shop").click(function(){
 	$("#tab1").hide();
 	$("#tab2").show();
 })
+
+
+
+layui.use('layer', function(){
+	layer = layui.layer;
+});
+
+function delCollection(id)
+{
+	$.ajax({
+		url:"${path}/delCollection.ajax",
+		type:"post",
+		dataType:"json",
+		timeout:20000,
+		data:{
+			"aaa301": id
+		},
+		success:function(res,status){
+			    location.href="${path}/person/showCollection.html";
+			    layer.msg("删除成功");
+		},
+		error:function(res,status){
+			location.href="${path}/person/showCollection.html"
+			console.log("删除失败");
+		}
+	});
+}
 </script>
 </html>

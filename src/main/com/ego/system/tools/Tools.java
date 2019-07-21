@@ -550,7 +550,9 @@ public class Tools
     	 int num=t.indexOf(".metadata");
     	 String path = null;
     	 if(num>1)
-    	 path=t.substring(1,num).replace('/', '\\')+"ego\\WebContent\\";
+    	     path=t.substring(1,num).replace('/', '\\')+"ego\\WebContent\\";
+    	 else
+    		 path="./WebContent/";//û�취
     	 return path;
 	}
 	

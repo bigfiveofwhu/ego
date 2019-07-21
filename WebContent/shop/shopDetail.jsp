@@ -341,8 +341,8 @@
 						</div>
 						<div class="pay">
 							<div class="pay-opt">
-							<a href="home.html"><span class="am-icon-home am-icon-fw">首页</span></a>
-							<a><span class="am-icon-heart am-icon-fw">收藏</span></a>
+							<a href="<%=path %>/home/home.html"><span class="am-icon-home am-icon-fw">首页</span></a>
+							<a ><span onclick="addCollection();" class="am-icon-heart am-icon-fw">收藏</span></a>
 							</div>
 							<li>
 								<div class="clearfix tb-btn tb-btn-buy theme-login">
@@ -1201,6 +1201,31 @@ function getCoupon(couponId){
 		layer.msg("网络故障");
 	})
 	ifClick=true;
+}
+
+function addCollection()
+{
+	if('${aaa102}' == '')
+		return;
+	$.ajax({
+		url:"${path}/addCollection.ajax",
+		type:"post",
+		dataType:"json",
+		timeout:20000,
+		data:{
+			"aaa303": '${product.aab203}',
+			"aaa302": "01"
+		},
+		success:function(res,status){
+			if(res.tag == 1)
+			    layer.msg("收藏成功");
+			else
+				layer.msg("该商品已被收藏")
+		},
+		error:function(res,status){
+			console.log("收藏失败");
+		}
+	});
 }
 </script>
 	</body>

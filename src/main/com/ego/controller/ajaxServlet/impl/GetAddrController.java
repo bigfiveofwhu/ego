@@ -26,5 +26,4 @@ public class GetAddrController extends AjaxControllerSupport
 			e.printStackTrace();
 		}
 	}
-
 }

@@ -19,7 +19,7 @@
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 		
 		<script type="text/javascript">
-		function goDetail(vaac402)
+		function goComment(vaac402)
 		{
 			var vform = document.getElementById("myform");
 			vform.action="<%=path%>/goServiceOrderDetail.html?aac402="+vaac402;
@@ -91,7 +91,6 @@
 																		<a href="#">
 																			<p>${ins.aac103 }</p>
 																			<p class="info-little">服务类型:${ins.aac410 }</p>
-																			
 																		</a>
 																	</div>
 																</div>
@@ -106,35 +105,30 @@
 														</ul>
 													</div>
 													<div class="order-right">
-															<li class="td td-status">
-															<c:choose>
-																<c:when test="${ins.aac408 eq '01' }">
-																	<div class="item-status"><br/>
-																		<p class="Mystatus">已预付</p>
-																	</div>
-																</c:when>
-																<c:when test="${ins.aac408 eq '02' }">
-																	<div class="item-status"><br/>
-																		<p class="Mystatus">已完工</p>
-																	</div>
-																</c:when>
-																<c:when test="${ins.aac408 eq '03' }">
-																	<div class="item-status"><br/>
-																		<p class="Mystatus">已评价</p>
-																		<p style="color:orange;">查看评价>>></p>
-																	</div>
-																</c:when>
-															</c:choose>
-																
-															</li>
-														<li class="td td-change">
-															
-															<div class="am-btn am-btn-danger anniu" onclick="goDetail(${ins.aac402})">
-																订单详情
-															</div>
+														<li class="td td-status">
+														<c:choose>
+															<c:when test="${ins.aac408 eq '01' }">
+																<div class="item-status"><br/>
+																	<p class="Mystatus">已预付</p>
+																</div>
+															</c:when>
+															<c:when test="${ins.aac408 eq '02' }">
+																<div class="item-status"><br/>
+																	<p class="Mystatus">已完工</p>
+																</div>
+															</c:when>
+															<c:when test="${ins.aac408 eq '03' }">
+																<div class="item-status"><br/>
+																	<p class="Mystatus">已评价</p>
+																	<p style="color:orange;">查看评价>>></p><br/>
+																</div>
+															</c:when>
+														</c:choose>
 														</li>
-														
 													</div>
+													<div class="am-btn am-btn-danger anniu" onclick="goDetail(${ins.aac402})">
+														订单详情
+													</div>	
 												</div>
 											</div>
 										</c:forEach>
@@ -147,11 +141,7 @@
 						</div>
 					</div>
 				</div>
-				
 			</div>
-			
 		</div>
-
 	</body>
-
 </html>
