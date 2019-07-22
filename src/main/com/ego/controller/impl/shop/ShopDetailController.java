@@ -111,15 +111,21 @@ public class ShopDetailController extends ControllerSupport
 		List<Map<String, String>>coupons= this.getServices().query();
 		saveAttribute("coupons", coupons);
 		///////////////修改用户偏好
-		this.setServices(new PreferenceService());
-		this.getServices().update("click");
-		//////////////更新广告点击信息
-		String aad302=(String)this.get("aId");
-		if (aad302!=null&&!aad302.equals("")) {
-			dto.put("aad302", this.get("aId"));
-			this.setServices(new AdStatistic());
+		if (this.get("aaa102")!=null&&!this.get("aaa102").equals("")) {
+			this.setServices(new PreferenceService());
 			this.getServices().update("click");
 		}
+		
+		//////////////更新广告点击信息
+		if (this.get("aaa102")!=null&&!this.get("aaa102").equals("")) {
+			String aad302=(String)this.get("aId");
+			if (aad302!=null&&!aad302.equals("")) {
+				dto.put("aad302", this.get("aId"));
+				this.setServices(new AdStatistic());
+				this.getServices().update("click");
+			}
+		}
+		
 		
 		
 		this.setServices(new Ab03ServiceImpl());

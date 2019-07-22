@@ -23,12 +23,16 @@ public class ShopController extends ControllerSupport
 		List<Map<String,String>> rows=this.getServices().query("findProductsByAab102");
 		this.saveAttribute("productList", rows);
 		//更新广告信息
-		String aad302=(String)this.get("aId");
-		if (aad302!=null&&!aad302.equals("")) {
-			dto.put("aad302", this.get("aId"));
-			this.setServices(new AdStatistic());
-			this.getServices().update("click");
+		if (this.get("aaa102")!=null&&!this.get("aaa102").equals("")) {
+			String aad302=(String)this.get("aId");
+			if (aad302!=null&&!aad302.equals("")) {
+				dto.put("aad302", this.get("aId"));
+				this.setServices(new AdStatistic());
+				this.getServices().update("click");
+			}
 		}
+		
+		
 		return "shop/home";
 	}
 
