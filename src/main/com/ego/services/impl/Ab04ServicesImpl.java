@@ -123,6 +123,12 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 		return this.queryForList(sql.toString(),paramList.toArray());
 	}
 	
+	/**
+	 * 根据商品id查询所有的评论信息  每次限15条
+	 * hug
+	 * @return
+	 * @throws Exception
+	 */
 	private List<Map<String,String>> queryCommentByAab203() throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
@@ -132,6 +138,7 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 				.append("  from ab04 x,aa01 y")
 				.append(" where x.aaa102=y.aaa102")
 				.append("   and x.aab203=?")
+				.append(" limit 15")
 				;
 		return this.queryForList(sql.toString(), this.get("aab203"));
 	}

@@ -64,7 +64,7 @@ public class Ac01ServiceImpl extends JdbcServicesSupport
 	 */
 	private Map<String,String> login() throws Exception
 	{
-		String sql="select aac102 from ac01 where aaa102=?";
+		String sql="select aac102,aac103 from ac01 where aaa102=?";
 		return this.queryForMap(sql, this.getIdList("aaa102"));
 	}
 	/**
