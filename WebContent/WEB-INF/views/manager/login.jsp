@@ -30,7 +30,7 @@
 	      <input  class="form-control password"  type="password" id="passwrod" name="aad103" placeholder="ÇëÊäÈëÄúµÄÃÜÂë">
 	    </div>
 	  </div>
-	   <button type="button" class="btn btn-primary" id="submit">µÇÂ½</button>
+	   <button type="button" class="btn btn-primary" id="submit">µÇÂ¼</button>
 	</form>
 
 <script src="/ego/js/jquery-3.2.0.min.js" ></script>

@@ -126,9 +126,9 @@
 														</c:choose>
 														</li>
 													</div>
-													<div class="am-btn am-btn-danger anniu" onclick="goDetail(${ins.aac402})">
+													<!--div class="am-btn am-btn-danger anniu" onclick="goDetail(${ins.aac402})">
 														∂©µ•œÍ«È
-													</div>	
+													</div-->	
 												</div>
 											</div>
 										</c:forEach>

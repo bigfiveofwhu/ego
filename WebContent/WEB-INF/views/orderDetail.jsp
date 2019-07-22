@@ -225,7 +225,7 @@
 														<div class="item-info">
 															<div class="item-basic-info">
 																<a href="#">
-																	<p>商品id:${ins.aab203 }</p>
+																	<p>商品名称:${ins.aab202 }</p>
 																	<p class="info-little">属性1:还没填
 																		<br/>属性2:还没填 </p>
 																</a>
@@ -300,7 +300,7 @@
 													<div class="item-info">
 														<div class="item-basic-info">
 															<a href="#">
-																<p>商品id:${ins.aab203 } </p>
+																<p>商品名称:${ins.aab202 } </p>
 																<p class="info-little">属性1:尚无
 																	<br/>属性2:尚无</p>
 															</a>
@@ -373,7 +373,7 @@
 													<div class="item-info">
 														<div class="item-basic-info">
 															<a href="#">
-																<p>商品id:${ins.aab203 }</p>
+																<p>商品名称:${ins.aab202 }</p>
 																<p class="info-little">属性1:尚无
 																	<br/>属性2:尚无</p>
 															</a>
@@ -449,7 +449,7 @@
 													<div class="item-info">
 														<div class="item-basic-info">
 															<a href="#">
-																<p>商品id:${ins.aab203 }</p>
+																<p>商品名称:${ins.aab202 }</p>
 																<p class="info-little">属性1:尚无
 																	<br/>属性2:尚无 </p>
 															</a>
@@ -528,7 +528,7 @@
 													<div class="item-info">
 														<div class="item-basic-info">
 															<a href="#">
-																<p>商品id:${ins.aab203 }</p>
+																<p>商品名称:${ins.aab202 }</p>
 																<p class="info-little">属性1:尚无
 																	<br/>属性2:尚无 </p>
 															</a>
@@ -601,7 +601,7 @@
 														<div class="item-info">
 															<div class="item-basic-info">
 																<a href="#">
-																	<p>商品id:${ins.aab203 }</p>
+																	<p>商品名称:${ins.aab202 }</p>
 																	<p class="info-little">规格1:还没填
 																					  <br/>规格2:还没填 </p>
 																</a>

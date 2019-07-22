@@ -172,7 +172,7 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 				.append("       x.aab306,x.aab307,x.aab309,x.aab310,x.aab311,")
 				.append("       x.aab313,x.aab314,y.aab202")
     			.append("  from ab03 x,ab02 y")
-    			.append(" where x.aab302=?")
+    			.append(" where x.aab203=y.aab203 and x.aab302=?")
     			;
 		System.out.println("***为详情查询单一订单:显示findById()的SQL查询语句****");
 		System.out.println(sql.toString()+"订单号:"+this.get("aab302"));
