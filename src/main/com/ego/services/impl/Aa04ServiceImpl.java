@@ -55,8 +55,9 @@ public class Aa04ServiceImpl extends JdbcServicesSupport
 		//获取当前用户id
 		
 		//获取三级地址
-	    String aaa402 = (String)this.get("addr_1") +" "+ (String)this.get("addr_2") + " "+(String)this.get("addr_3");
+	    String aaa402 = (String)this.get("myaddr_1") +" "+ (String)this.get("myaddr_2") + " "+(String)this.get("myaddr_3");
 		
+	    System.out.println("aaa402:"+aaa402);
     	
     	//1.编写SQL语句
     	StringBuilder sql=new StringBuilder()
@@ -120,7 +121,7 @@ public class Aa04ServiceImpl extends JdbcServicesSupport
 	private boolean editAddress() throws Exception
 	{
 		//获取三级地址
-		String aaa402 = (String)this.get("addr_1") +" "+ (String)this.get("addr_2") + " "+(String)this.get("addr_3");
+		String aaa402 = (String)this.get("myaddr_1") +" "+ (String)this.get("myaddr_2") + " "+(String)this.get("myaddr_3");
 		
 		StringBuilder sql=new StringBuilder()
     			.append("update aa04 a")

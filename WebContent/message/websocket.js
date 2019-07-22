@@ -34,15 +34,36 @@ WS.prototype.initWebSocket = function () {
     };
 };
 
-//关闭WebSocket连接
-WS.prototype.closeWebSocket = function () {
-    if (this.websocket != null) {
-        this.websocket.close();
-        this.websocket = null;
-    }
-};
-
 //发送消息
 WS.prototype.send = function (message) {
     this.websocket.send(message);
 };
+
+//获取当前时间，格式化为datetime
+function getNowFormatDate() {
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    var hour = date.getHours();
+    var minutes = date.getMinutes();
+    var second = date.getSeconds();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    if (hour >= 0 && hour <= 9) {
+        hour = "0" + hour;
+    }
+    if (minutes >= 0 && minutes <= 9) {
+        minutes = "0" + minutes;
+    }
+    if (second >= 0 && second <= 9) {
+        second = "0" + second;
+    }
+    return year + "-" + month + "-" + strDate
+        + " " + hour + ":" + minutes
+        + ":" + second;
+}

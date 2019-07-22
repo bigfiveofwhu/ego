@@ -272,17 +272,16 @@ Name	Code
 	 */
 	public boolean addService() throws Exception
 	{
-		Object aac102 = 1;
-				//this.get("aac102");//服务商id session获取
-		//获取当前商品编号
+		Object aac102 = this.get("aac102");//服务商id session获取
+		//获取当前服务编号
     	int aac202=Tools.getIncrementId("ac02");
     
-    	//向DTO添加商品编号
+    	//向DTO添加服务编号
     	this.put("aac202", aac202);
     	
     	
     	//1.编写SQL语句
-    	StringBuilder sql=new StringBuilder()
+    	StringBuilder sql1=new StringBuilder()
     			.append("insert into ac02(aac102,aac202,aac203,aac204,aac205,")
     			.append("                 aac206,aac207,aac208,aac209,aac210)")
     			.append("          values(?,?,?,?,?,")
@@ -290,7 +289,7 @@ Name	Code
     			;
 	 
     	//2.编写参数数组
-    	Object args[]={
+    	Object args1[]={
     			aac102,   //服务商id
     			this.get("aac202"),
     			this.get("aac203"),
@@ -302,7 +301,26 @@ Name	Code
     			this.get("aac209"),
     			"/images/service/071803.jpg;/images/service/071801.jpg;/images/service/071802.jpg"
     	};
-        return this.executeUpdate(sql.toString(), args);	
+    	
+
+    	//添加审核表
+    	StringBuilder sql2 = new StringBuilder()
+    			.append("insert into ad08(aaa102,aad802,aad803,aad804,aad805) ")
+    		  	.append("        VALUES(?,?,?,?,?) ")
+    			;
+    	Object args2[] = {
+    		this.get("aaa102"),
+    		this.get("aac203")+":请求通过",
+    		"04",
+    		"01",
+    		this.get("aac202")
+    	};
+    	if( this.executeUpdate(sql1.toString(), args1))
+        {
+       	   return this.executeUpdate(sql2.toString(), args2);
+        }
+        else
+       	   return false;
 	}
 	
 }

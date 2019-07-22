@@ -22,6 +22,20 @@
 			$('input[name="aab317"]').val(man);
 			$('input[name="aab318"]').val(phone);
 		}
+		
+		function sendOrder(){
+			var province=$(".defaultAddr").children(".new-p-re").children(".new-mu_l2cw") .children(".province").text();
+			var street=$(".defaultAddr").children(".new-p-re").children(".new-mu_l2cw") .children(".street").text();
+			var man=$(".defaultAddr").children(".new-p-re").children(".new-txt").text();
+			var phone=$(".defaultAddr").children(".new-p-re").children(".new-txt-rd2").text();
+			var vform = document.getElementById("myform");
+			$('input[name="aab311"]').val(province+street);
+			$('input[name="aab312"]').val($("#user_message").val());
+			$('input[name="aab317"]').val(man);
+			$('input[name="aab318"]').val(phone);
+			vform.action="<%=path%>/addOrder.html";
+			vform.submit();
+		}
 		</script>
 
 	</head>
@@ -29,12 +43,15 @@
 	<body>
 		<p id="xx"></p>
 		<p id="yy"></p>
-		<%-- 
+
 		<p>${product.aab203 }</p>
 		<p>${product.count }</p>
 		<p>${product.aab205 }</p>
 		<p>${product.fee }</p>
-		<p>${product.aab205*product.count}</p>--%>
+		<p>${product.aab205*product.count}</p>
+		<p>${total }</p>
+
+
 		<form id="myform" action="###.html" method="post" > 
 			<input name="aaa102" type="hidden" value="<%=session.getAttribute("aaa102")%>"/>
 			<input name="aab203" type="hidden" value="${product.aab203 }"/>
@@ -63,13 +80,13 @@
 								<c:forEach items="${addrlist }" var="ins" varStatus="vs">
 							 	<c:choose>
 								   <c:when test="${ins.aaa407 > 0 }">
-								   <li id="myAddress" class="user-addresslist defaultAddr">
+								   <li id="myAddressinOrder" value="${ins.aaa401 }" class="user-addresslist defaultAddr">
 								   </c:when>
 								   <c:otherwise>
-								   <li id="myAddress" class="user-addresslist">
+								   <li id="myAddressinOrder" value="${ins.aaa401 }" class="user-addresslist">
 								   </c:otherwise>
 							    </c:choose>
-								<span class="new-option-r" value="${ins.aaa401 }"><i class="am-icon-check-circle"></i>默认地址</span>
+								<span class="new-option-r"  value="${ins.aaa401 }"><i class="am-icon-check-circle"></i>默认地址</span>
 								<p class="new-tit new-p-re">
 									<span class="new-txt">${ins.aaa405 }</span>
 									<span class="new-txt-rd2">${ins.aaa406}</span>
@@ -250,19 +267,32 @@
 							
 							<div class="clear"></div>
 							
+							<c:set var="total" value="${product.aab205*product.count+product.fee} "/>
+							
 							<!--含运费小计 -->
 							<div class="buy-point-discharge ">
 								<p class="price g_price ">
-									合计（含运费） <span>&yen;</span><em class="pay-sum">244.00</em>
+									合计（含运费） <span>&yen;</span><em class="pay-sum">${total }</em>
 								</p>
 							</div>
 
 							
 							<div class="order-go clearfix">
 								<div class="pay-confirm clearfix">
-
+								
+								<div class="box">
+										<div tabindex="0" id="holyshit267" class="realPay">优惠后价格:&yen;<em class="t" id="pay-total">${total }</em>
+											<span class="price g_price ">
+                                   			 <span></span> <em class="style-large-bold-red " id="J_ActualFee">${price }</em>
+											</span>
+										</div>
+								</div>
+								
+								
+								
 									<div id="holyshit269" class="submitOrder">
 										<div class="go-btn-wrap">
+
 											<a id="J_Go" href="javascript:;" class="btn-go" tabindex="0" onclick="sendOrder()">提交订单</a>
 										</div>
 									</div>
@@ -306,11 +336,11 @@
 						<div class="am-form-group">
 							<label for="user-phone" class="am-form-label">所在地</label>
 							<div class="am-form-content address">
-								<select name="addr_1" id="addr_1" >
+								<select name="myaddr_1" id="addr_1" >
 								</select>
-								<select name="addr_2" id="addr_2" class="childs" >
+								<select name="myaddr_2" id="addr_2" class="childs" >
 								</select>
-								<select name="addr_3" id="addr_3" class="childs" >
+								<select name="myaddr_3" id="addr_3" class="childs" >
 								</select>
 							</div>
 						</div>
@@ -342,6 +372,50 @@
 			<div class="clear"></div>
 	</body>
 <script type="text/javascript">
+$(document).ready(function() {							
+	$(".new-option-r").click(function() {
+		$(this).parent('.user-addresslist').addClass("defaultAddr").siblings().removeClass("defaultAddr");
+		$.ajax({
+			url:"<%=basePath%>/setDefAddr.ajax",
+			type:"post",
+			dataType:"json",
+			timeout:20000,
+			data:{
+				"aaa401":$(this).attr("value")
+			},
+			success:function(res,status){
+              console.log("修改默认地址成功");
+			},
+			error:function(res,status){
+				console.log("修改默认地址失败");
+			}
+		});
+	});
+	
+	$("#myAddressinOrder").click(function(){
+		$.ajax({
+			url:"<%=basePath%>/setDefAddr.ajax",
+			type:"post",
+			dataType:"json",
+			timeout:20000,
+			data:{
+				"aaa401":$(this).attr("value")
+			},
+			success:function(res,status){
+              console.log("修改默认地址成功");
+			},
+			error:function(res,status){
+				console.log("修改默认地址失败");
+			}
+		})
+	});
+	var $ww = $(window).width();
+	if($ww>640) {
+		$("#doc-modal-1").removeClass("am-modal am-modal-no-btn")
+	}
+	
+});
+
 function addAddr()
 {
 	$.ajax({
@@ -421,5 +495,18 @@ function loadAddr(type,index){
 	});
 }
 loadAddr("-1",1);
+</script>
+
+<script src="/ego/layui/layui.js"></script>
+<script>
+layui.use('layer',function(){
+	 var $ = layui.jquery,layer = layui.layer;
+});
+
+var total=${total};
+$("#coupon-select").change(function(){
+	total= ${total} - parseFloat($(this).val());
+	$("#pay-total").html(total);
+})
 </script>
 </html>>

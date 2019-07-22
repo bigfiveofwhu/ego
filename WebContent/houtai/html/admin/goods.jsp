@@ -74,9 +74,16 @@
                         <td>${ins.aab204}</td>
                         <td class="status">${ins.cnaab212}</td>
                         <td class="text-center">
-                            <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                    data-target="#sellerModal" onclick="getGoodDetail(${ins.aab203})">详情
+                        <c:if test="${ins.cnaab212 != '已删除' }">
+                            <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#sellerModal" onclick="getGoodDetail(${ins.aab203})" >详情
                             </button>
+                        </c:if>
+                        
+                        <c:if test="${ins.cnaab212 == '已删除' }">
+                        <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
+                                    data-target="#sellerModal"  disabled>详情
+                            </button>
+                        </c:if>
                         </td>
                     </tr>
                 </c:forEach>
@@ -138,10 +145,6 @@
                                 <tr>
                                     <td>商品价格</td>
                                     <td id="aab205" class="to_clear"></td>
-                                </tr>
-                                <tr>
-                                    <td>店铺状态</td>
-                                    <td id="aab107" class="to_clear"></td>
                                 </tr>
                                 <tr>
                                     <td>库存</td>
