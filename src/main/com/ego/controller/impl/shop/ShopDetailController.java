@@ -90,6 +90,19 @@ public class ShopDetailController extends ControllerSupport
 			}
 			this.saveAttribute("productImgs", productInfos);
 		}
+		//解析图片路径文本
+		describe=ins.get("aab208");
+		if(describe!=null)
+		{
+			List<String> productImgs=new ArrayList<>();
+			String a[]=describe.split(";");
+			for(String b:a)
+			{
+				productImgs.add(b);
+			}
+			this.saveAttribute("headImgs", productImgs);
+		}
+		
 		//////////////////////////////////添加优惠券功能
 		this.setServices(new Ab05ServiceImpl());
 		List<Map<String, String>>coupons= this.getServices().query();
@@ -123,7 +136,7 @@ public class ShopDetailController extends ControllerSupport
 		this.setServices(new Ab04ServicesImpl());
 		//好评
 		ins=this.getServices().findById("commentBestByAab203");
-		this.saveAttribute("bestSum", ins.get("commentsum"));
+		this.saveAttribute("bestSum", Integer.parseInt(ins.get("commentsum").toString()));
 		//中评
 		ins=this.getServices().findById("commentMidByAab203");
 		this.saveAttribute("midSum", ins.get("commentsum"));
@@ -132,7 +145,7 @@ public class ShopDetailController extends ControllerSupport
 		this.saveAttribute("badSum", ins.get("commentsum"));
 		//累计评价
 		ins=this.getServices().findById("comentCountByAab203");
-		this.saveAttribute("commentSum", ins.get("commentsum"));
+		this.saveAttribute("commentSum", Integer.parseInt(ins.get("commentsum").toString()));
 //		this.saveAttribute("aab103", "某宝");
 //		Map<String,String> shop=new HashMap<>();
 //		shop.put("url", "/ego/images/shop/shop_12.jpg");

@@ -50,7 +50,6 @@ public class HomeController extends ControllerSupport
 		    /*要返回多个list,无法使用savePageData*/
 		rows = this.getServices().query("findByUpToDate");
 		this.saveAttribute("productList", rows);
-		this.saveAttribute("productImg", "/ego/images/01_mid.jpg");
 		this.saveAttribute("isSendRedirect", false);
 		return "home/home";
 	}

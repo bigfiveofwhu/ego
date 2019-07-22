@@ -391,20 +391,6 @@
 								</a>
 							</div>
 						</c:forEach>
-						<%-- 
-						<c:forEach items="${productList}" var="item1" varStatus="">
-							<div class="am-u-sm-7 am-u-md-4 text-two">
-								<div class="outer-con ">
-									<div class="title ">${item1.aab202 }</div>
-									<div class="sub-title ">&yen;${item1.aab205 }</div>
-									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-								</div>
-								<!-- 甜品 -->
-								<a href="<%=path %>/shop/detail.html?productId=${item1.aab203}">
-								<img src="${productImg }" alt="${item1.aab202 }" /> 
-								</a>
-							</div>
-						</c:forEach>--%>
 					</div>
 					<div class="clear "></div>
 				</div>
@@ -448,12 +434,16 @@
 							</a>
 							<div class="triangle-topright"></div>
 						</div>
-						<c:forEach items="${productList}" var="item2" varStatus="">
+						<c:forEach items="${productList}" var="item2" varStatus="vs">
 							<div class="am-u-sm-4 text-four">
-							<!-- 坚果信息 -->
-								<%-- <a href="${item2.website }"> <img src="${item2.path }" /> --%>
 								<a href="<%=path %>/shop/detail.html?productId=${item2.aab203}">
-								    <img src="${productImg }" />
+								    <img id="pro${vs.count}" src="<%=path %>${item2.aab208}" />
+								    <script type="text/javascript">
+								    	$(function(){
+								    		var img${vs.count}='${item2.aab208}';
+								    		$("#pro${vs.count}").attr("src","<%=path %>"+img${vs.count}.split(";")[0]);
+								    	});
+								    </script>
 									<div class="outer-con ">
 										<div class="title ">${item2.aab202 }</div>
 										<div class="sub-title ">&yen;${item2.aab205 }</div>

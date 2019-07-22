@@ -107,24 +107,24 @@
 								});
 							</script>
 							<div class="tb-booth tb-pic tb-s310">
-								<a href="<%=path%>/images/01.jpg"><img src="<%=path%>/images/01_mid.jpg" alt="细节展示放大镜特效" rel="<%=path%>/images/01.jpg" class="jqzoom" /></a>
+							<c:forEach items="${headImgs}" var="Img" varStatus="vs">
+							<c:if test="${vs.count==1}">
+								<a href="<%=path%>${Img}">
+								<img src="<%=path%>${Img}" alt="细节展示放大镜特效" rel="<%=path%>${Img}" class="jqzoom" />
+								</a>
+							</c:if>
+							</c:forEach>
 							</div>
 							<ul class="tb-thumb" id="thumblist">
+							<c:forEach items="${headImgs}" var="Img" varStatus="vs">
 								<li class="tb-selected">
 									<div class="tb-pic tb-s40">
-										<a href="#"><img src="<%=path%>/images/01_small.jpg" mid="<%=path%>/images/01_mid.jpg" big="<%=path%>/images/01.jpg"></a>
+										<a href="#">
+										<img src="<%=path%>${Img}" mid="<%=path%>${Img}" big="<%=path%>${Img}">
+										</a>
 									</div>
 								</li>
-								<li>
-									<div class="tb-pic tb-s40">
-										<a href="#"><img src="<%=path%>/images/02_small.jpg" mid="<%=path%>/images/02_mid.jpg" big="<%=path%>/images/02.jpg"></a>
-									</div>
-								</li>
-								<li>
-									<div class="tb-pic tb-s40">
-										<a href="#"><img src="<%=path%>/images/03_small.jpg" mid="<%=path%>/images/03_mid.jpg" big="<%=path%>/images/03.jpg"></a>
-									</div>
-								</li>
+							</c:forEach>
 							</ul>
 						</div>
 						<div class="clear"></div>
@@ -569,7 +569,14 @@
 								<div class="am-tab-panel am-fade">
                                     <div class="actor-new">
                                     	<div class="rate">                
-                                    		<strong>100<span>%</span></strong><br> <span>好评度</span>            
+                                    		<strong>
+                                    		<c:if test="${commentSum==0}">
+                                    		100
+                                    		</c:if>
+                                    		<c:if test="${commentSum!=0}">
+                                    		${bestSum/(commentSum*1.0)}
+                                    		</c:if>
+                                    		<span>%</span></strong><br> <span>好评度</span>            
                                     	</div>
                                         <dl>                    
                                             <dt>买家印象</dt>                    
