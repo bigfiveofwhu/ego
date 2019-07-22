@@ -268,6 +268,8 @@
 							
 							<div class="clear"></div>
 							
+							<c:set var="total" value="${product.aab205*product.count+product.fee} "/>
+							
 							<!--含运费小计 -->
 							<div class="buy-point-discharge ">
 								<p class="price g_price ">
