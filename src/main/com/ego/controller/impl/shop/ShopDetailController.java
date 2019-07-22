@@ -43,8 +43,11 @@ public class ShopDetailController extends ControllerSupport
 		this.saveAttribute("product", ins);
 		//在dto中放入店铺id
 		this.dto.put("aab102", ins.get("aab102"));
-		String describe=(String)ins.get("aab209");
+		this.saveAttribute("shopId", ins.get("aab102"));   //在页面存入店铺id
+		this.saveAttribute("from_id", ins.get("aaa102"));  //在页面存入发送者id
+		this.saveAttribute("from_name", ins.get("aab103"));  //在页面存入店铺名称
 		//解析规格描述文本
+		String describe=(String)ins.get("aab209");
 		if(describe!=null)
 		{
 			List<Map<String,Object>> typeList=new ArrayList<>();

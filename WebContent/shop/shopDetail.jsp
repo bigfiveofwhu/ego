@@ -14,6 +14,7 @@
 		<link type="text/css" href="<%=path%>/css/style.css" rel="stylesheet" />
 		<link type="text/css" href="<%=path%>/css/shop/detail.css" rel="stylesheet" />
 		<link rel="stylesheet" href="/ego/layui/css/layui.css">
+		<link rel="stylesheet" type="text/css" href="<%=path %>/css/message/bbb.css">                     <!-- ÏûÏ¢¿òcss -->
 		<script type="text/javascript" src="<%=path%>/basic/js/jquery-1.7.min.js"></script>
 		<script type="text/javascript" src="<%=path%>/basic/js/quick_links.js"></script>
 		<script type="text/javascript" src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
