@@ -40,7 +40,6 @@ public class ShopDetailController extends ControllerSupport
 		//在dto中放入店铺id
 		this.dto.put("aab102", ins.get("aab102"));
 		String describe=(String)ins.get("aab209");
-		System.out.println(describe);
 		//解析规格描述文本
 		if(describe!=null)
 		{
@@ -67,6 +66,26 @@ public class ShopDetailController extends ControllerSupport
 			this.saveAttribute("spec", typeList);  //规格
 			System.out.println(typeList);
 		}
+		//解析产品参数/图片描述文本
+		describe=ins.get("aab207");
+		if(describe!=null)
+		{
+			List<String> productInfos=new ArrayList<>();   //参数详情
+			String infos[]=describe.split("&");
+			String a[]=infos[0].split(";");
+			for(String b:a)
+			{
+				productInfos.add(b);
+			}
+			this.saveAttribute("productInfos", productInfos);
+			productInfos=new ArrayList<>();     //商品图片详情url
+			a=infos[1].split(";");
+			for(String b:a)
+			{
+				productInfos.add(b);
+			}
+			this.saveAttribute("productImgs", productInfos);
+		}
 		//////////////////////////////////添加优惠券功能
 		this.setServices(new Ab05ServiceImpl());
 		List<Map<String, String>>coupons= this.getServices().query();
@@ -75,15 +94,25 @@ public class ShopDetailController extends ControllerSupport
 		
 		this.setServices(new Ab03ServiceImpl());
 		//上月销量
-		//ins=this.getServices().findById("orderSumLastMouth");
-		//this.saveAttribute("lastMouthSum", ins.get("lastMouthSum"));
+		ins=this.getServices().findById("orderSumLastMouth");
+		this.saveAttribute("lastMouthSum", ins.get("lastmouthsum"));
 		//累积销量
-		//ins=this.getServices().findById("orderSum");
-		//this.saveAttribute("Sum", ins.get("Sum"));
-		//累计评价
+		ins=this.getServices().findById("orderSum");
+		this.saveAttribute("Sum", ins.get("sum"));
+		
 		this.setServices(new Ab04ServicesImpl());
+		//好评
+		ins=this.getServices().findById("commentBestByAab203");
+		this.saveAttribute("bestSum", ins.get("commentsum"));
+		//中评
+		ins=this.getServices().findById("commentMidByAab203");
+		this.saveAttribute("midSum", ins.get("commentsum"));
+		//差评
+		ins=this.getServices().findById("commentBestByAab203");
+		this.saveAttribute("badSum", ins.get("commentsum"));
+		//累计评价
 		ins=this.getServices().findById("comentCountByAab203");
-		this.saveAttribute("commentSum", ins.get("commentSum"));
+		this.saveAttribute("commentSum", ins.get("commentsum"));
 //		this.saveAttribute("aab103", "某宝");
 //		Map<String,String> shop=new HashMap<>();
 //		shop.put("url", "/ego/images/shop/shop_12.jpg");
