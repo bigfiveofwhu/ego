@@ -450,4 +450,17 @@ function loadAddr(type,index){
 }
 loadAddr("-1",1);
 </script>
+
+<script src="/ego/layui/layui.js"></script>
+<script>
+layui.use('layer',function(){
+	 var $ = layui.jquery,layer = layui.layer;
+});
+
+var total=${total};
+$("#coupon-select").change(function(){
+	total= ${total} - parseFloat($(this).val());
+	$("#pay-total").html(total);
+})
+</script>
 </html>>
