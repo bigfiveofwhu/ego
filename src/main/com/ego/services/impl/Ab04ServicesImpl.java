@@ -55,6 +55,10 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 		{
 			return this.queryPoint();
 		}
+		else if(qtype.equalsIgnoreCase("queryCommentByAab203"))
+		{
+			return queryCommentByAab203();
+		}
 		else
 		{
 			throw new Exception("在类[ Ab04ServicesImpl ]中进行了未定义的批量查询动作调用,"
@@ -117,6 +121,26 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 		paramList.add(this.get("aaa102"));
 
 		return this.queryForList(sql.toString(),paramList.toArray());
+	}
+	
+	/**
+	 * 根据商品id查询所有的评论信息  每次限15条
+	 * hug
+	 * @return
+	 * @throws Exception
+	 */
+	private List<Map<String,String>> queryCommentByAab203() throws Exception
+	{
+		StringBuilder sql=new StringBuilder()
+				.append("select y.aaa102,y.aaa103,x.aab402,x.aab403,x.aab404,")
+				.append("       x.aab405,x.aab406,x.aab407,x.aab408,x.aab409,")
+				.append("       x.aab410,x.aab411")
+				.append("  from ab04 x,aa01 y")
+				.append(" where x.aaa102=y.aaa102")
+				.append("   and x.aab203=?")
+				.append(" limit 15")
+				;
+		return this.queryForList(sql.toString(), this.get("aab203"));
 	}
 	
 	/**

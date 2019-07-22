@@ -147,10 +147,6 @@
                                     <td id="aab205" class="to_clear"></td>
                                 </tr>
                                 <tr>
-                                    <td>µêÆÌ×´Ì¬</td>
-                                    <td id="aab107" class="to_clear"></td>
-                                </tr>
-                                <tr>
                                     <td>¿â´æ</td>
                                     <td id="aab206" class="to_clear"></td>
                                 </tr>

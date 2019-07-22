@@ -23,15 +23,36 @@
 			$('input[name="aab317"]').val(man);
 			$('input[name="aab318"]').val(phone);
 		}
+		
+		function sendOrder(){
+			var province=$(".defaultAddr").children(".new-p-re").children(".new-mu_l2cw") .children(".province").text();
+			var street=$(".defaultAddr").children(".new-p-re").children(".new-mu_l2cw") .children(".street").text();
+			var man=$(".defaultAddr").children(".new-p-re").children(".new-txt").text();
+			var phone=$(".defaultAddr").children(".new-p-re").children(".new-txt-rd2").text();
+			var vform = document.getElementById("myform");
+			$('input[name="aab311"]').val(province+street);
+			$('input[name="aab312"]').val($("#user_message").val());
+			$('input[name="aab317"]').val(man);
+			$('input[name="aab318"]').val(phone);
+			vform.action="<%=path%>/addOrder.html";
+			vform.submit();
+		}
 		</script>
 
 	</head>
 
 	<body>
 		<p id="xx"></p>
+		<p id="yy"></p>
+
 		<p>${product.aab203 }</p>
 		<p>${product.count }</p>
 		<p>${product.aab205 }</p>
+		<p>${product.fee }</p>
+		<p>${product.aab205*product.count}</p>
+		<p>${total }</p>
+
+
 		<form id="myform" action="###.html" method="post" > 
 			<input name="aaa102" type="hidden" value="<%=session.getAttribute("aaa102")%>"/>
 			<input name="aab203" type="hidden" value="${product.aab203 }"/>
@@ -44,9 +65,6 @@
 			<input name="aab317" type="hidden" value=""/>
 			<input name="aab318" type="hidden" value=""/>
 		</form>
-
-
-
 			<div class="clear"></div>
 			<div class="concent">
 				
@@ -250,20 +268,33 @@
 							
 							<div class="clear"></div>
 							
+							<c:set var="total" value="${product.aab205*product.count+product.fee} "/>
+							
 							<!--含运费小计 -->
 							<div class="buy-point-discharge ">
 								<p class="price g_price ">
-									合计（含运费） <span>&yen;</span><em class="pay-sum">244.00</em>
+									合计（含运费） <span>&yen;</span><em class="pay-sum">${total }</em>
 								</p>
 							</div>
 
 							
 							<div class="order-go clearfix">
 								<div class="pay-confirm clearfix">
-
+								
+								<div class="box">
+										<div tabindex="0" id="holyshit267" class="realPay">优惠后价格:&yen;<em class="t" id="pay-total">${total }</em>
+											<span class="price g_price ">
+                                   			 <span></span> <em class="style-large-bold-red " id="J_ActualFee">${price }</em>
+											</span>
+										</div>
+								</div>
+								
+								
+								
 									<div id="holyshit269" class="submitOrder">
 										<div class="go-btn-wrap">
-											<a id="J_Go" href="<%=path%>/success.html" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+
+											<a id="J_Go" href="javascript:;" class="btn-go" tabindex="0" onclick="sendOrder()">提交订单</a>
 										</div>
 									</div>
 									<div class="clear"></div>
@@ -465,5 +496,18 @@ function loadAddr(type,index){
 	});
 }
 loadAddr("-1",1);
+</script>
+
+<script src="/ego/layui/layui.js"></script>
+<script>
+layui.use('layer',function(){
+	 var $ = layui.jquery,layer = layui.layer;
+});
+
+var total=${total};
+$("#coupon-select").change(function(){
+	total= ${total} - parseFloat($(this).val());
+	$("#pay-total").html(total);
+})
 </script>
 </html>>

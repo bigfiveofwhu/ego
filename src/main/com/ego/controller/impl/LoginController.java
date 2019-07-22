@@ -63,6 +63,7 @@ public class LoginController extends ControllerSupport {
 		if(ins!=null)
 		{
 			session.setAttribute("aab102", ins.get("aab102"));  //µÍ∆Ãid
+			session.setAttribute("aab103", ins.get("aab103"));  //µÍ∆Ã√˚≥∆
 		}
 		return "home/home";
 	}
