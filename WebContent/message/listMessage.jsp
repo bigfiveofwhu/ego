@@ -10,11 +10,6 @@
     <title>消息发送记录</title>
 </head>
 <body>
-<c:if test="${msg!=null}">
-    <script>
-        alert(${msg});
-    </script>
-</c:if>
 <table lay-filter="message-table">
     <thead>
     <tr>

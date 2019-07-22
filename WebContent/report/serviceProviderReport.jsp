@@ -70,6 +70,7 @@
         var table = layui.table;
         table.init('service-table', {
             id: 'service-table',
+            page: true,
             done: function (res) {
                 exportData = res.data;
             }

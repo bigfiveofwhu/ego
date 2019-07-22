@@ -113,6 +113,7 @@
         var exportData2;
         var table = layui.table;
         table.init('shop-table', {
+            page: true,
             id: 'shop-table',
             done: function (res) {
                 exportData = res.data;
@@ -120,6 +121,7 @@
         });
 
         table.init('shop-table2', {
+            page: true,
             id: 'shop-table2',
             done: function (res) {
                 exportData2 = res.data;
