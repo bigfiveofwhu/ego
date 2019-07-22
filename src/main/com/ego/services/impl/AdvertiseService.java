@@ -399,7 +399,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 	 */
 	public List<Map<String, String>> gethotProducts()throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append(" select aad302,aad306,aad307,aab202,aab205 from ad03 join ab02")
+				.append(" select aad302,aad306,aad307,aab203,aab202,aab205 from ad03 join ab02")
 				.append(" on ad03.aad306 = ab02.aab203")
 				.append(" where aad305=").append(homePage)//11
 				.append(" and aad303=").append(productAd)//00
