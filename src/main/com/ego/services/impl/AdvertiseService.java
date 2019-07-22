@@ -385,7 +385,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 	 */
 	public List<Map<String, String>> getTopHeadLine() throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append(" select aad302,aad303,aad306 from ad03")
+				.append(" select aad302,aad303,aad306,aad307 from ad03")
 				.append(" where aad303="+headLine)
 				.append(" order by aad304 DESC ")
 				.append(" limit 5");
@@ -399,10 +399,10 @@ public class AdvertiseService extends JdbcServicesSupport{
 	 */
 	public List<Map<String, String>> gethotProducts()throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append(" select aad302,aad306,aab202,aab205 from ad03 join ab02")
+				.append(" select aad302,aad306,aad307,aab202,aab205 from ad03 join ab02")
 				.append(" on ad03.aad306 = ab02.aab203")
-				.append(" where aad305=").append(homePage)
-				.append(" and aad303=").append(productAd)
+				.append(" where aad305=").append(homePage)//11
+				.append(" and aad303=").append(productAd)//00
 				.append(" order by aad304 DESC ")
 				.append(" limit 8");
 		return this.queryForList(sql.toString());
@@ -415,7 +415,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 	 */
 	public List<Map<String, String>> gethotShops()throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append(" select aad302,aad306,aab103 from ad03 join ab01")
+				.append(" select aad302,aad306,aad307,aab103 from ad03 join ab01")
 				.append(" on ad03.aad306 = ab01.aab102")
 				.append(" where aad305=").append(homePage)
 				.append(" and aad303=").append(shoptAd)
@@ -431,7 +431,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 	 */
 	public List<Map<String, String>> getTargetAds()throws Exception{
 		StringBuilder sql=new StringBuilder()
-				.append(" select aad302,aad306,aab202,aab205 from ad03 join ab02")
+				.append(" select aad302,aad306,aad307,aab202,aab205 from ad03 join ab02")
 				.append(" on ad03.aad306 = ab02.aab203")//ref等于商品id
 				.append(" where aad305=").append(homePage)
 				.append(" and aad303=").append(shoptAd)

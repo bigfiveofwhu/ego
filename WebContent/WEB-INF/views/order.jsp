@@ -22,12 +22,19 @@
 		<script type="text/javascript">
 			function deleteOrder(vaab302)
 			{
-				window.location.href='payOrder.html';
 				var vform = document.getElementById("myform");
 				vform.action="<%=path%>/delOrderById.html?aab302="+vaab302;
 				vform.submit();
 			}
-				
+			function remind(){
+				alert("已提醒商家发货!");
+			}
+			function cancel(vaab302)
+			{
+				var vform = document.getElementById("myform");
+				vform.action="<%=path%>/cancelOrder.html?aab302="+vaab302;
+				vform.submit();
+			}	
 			function goPay(vaab302)
 			{
 				var vform = document.getElementById("myform");
@@ -195,7 +202,7 @@
 																<li class="td td-status">
 																	<div class="item-status">
 																		<p class="Mystatus">等待买家付款</p>
-																		<p class="order-info"><a href="#">取消订单</a></p>
+																		<p class="order-info"><a href="javascript:;" onclick="cancel(${ins.aab302})">取消订单</a></p>
 	
 																	</div>
 																</li>
@@ -275,7 +282,7 @@
 																</div>
 															</li>
 															<li class="td td-change">
-																<div class="am-btn am-btn-danger anniu">
+																<div class="am-btn am-btn-danger anniu" onclick="remind()">
 																	提醒发货</div>
 															</li>
 														</div>
@@ -729,7 +736,7 @@
 																<li class="td td-status">
 																	<div class="item-status">
 																		<p class="Mystatus">等待买家付款</p>
-																		<p class="order-info"><a href="#">取消订单</a></p>
+																		<p class="order-info"><a href="javascript:;" onclick="cancel(${ins.aab302})">取消订单</a></p>
 	
 																	</div>
 																</li>
@@ -855,7 +862,7 @@
 																	</div>
 																</li>
 																<li class="td td-change">
-																	<div class="am-btn am-btn-danger anniu">
+																	<div class="am-btn am-btn-danger anniu" onclick="remind()">
 																		提醒发货</div>
 																</li>
 															</div>

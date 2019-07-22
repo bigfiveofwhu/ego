@@ -198,137 +198,7 @@
 							</tr>
 							<div class="clear"></div>
 							
-							<%--
-							<tr class="item-list">
-								<div class="bundle  bundle-last">
-									<div class="bundle-main">
-										<ul class="item-content clearfix">
-											<div class="pay-phone">
-												<li class="td td-item">
-													<div class="item-pic">
-														<a href="#" class="J_MakePoint">
-															<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
-													</div>
-													<div class="item-info">
-														<div class="item-basic-info">
-															<a href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
-														</div>
-													</div>
-												</li>
-												<li class="td td-info">
-													<div class="item-props">
-														<span class="sku-line">颜色：12#川南玛瑙</span>
-														<span class="sku-line">包装：裸装</span>
-													</div>
-												</li>
-												<li class="td td-price">
-													<div class="item-price price-promo-promo">
-														<div class="price-content">
-															<em class="J_Price price-now">39.00</em>
-														</div>
-													</div>
-												</li>
-											</div>
-											<li class="td td-amount">
-												<div class="amount-wrapper ">
-													<div class="item-amount ">
-														<span class="phone-title">购买数量</span>
-														<div class="sl">
-															
-															<input class="text_box" readonly="readonly" type="text" value="3" style="width:30px;" />
-															
-														</div>
-													</div>
-												</div>
-											</li>
-											<li class="td td-sum">
-												<div class="td-inner">
-													<em tabindex="0" class="J_ItemSum number">117.00</em>
-												</div>
-											</li>
-											<li class="td td-oplist">
-												<div class="td-inner">
-													<span class="phone-title">配送方式</span>
-													<div class="pay-logis">
-														快递<b class="sys_item_freprice">10</b>元
-													</div>
-												</div>
-											</li>
-
-										</ul>
-										<div class="clear"></div>
-
-									</div>
-								</div>	
-							</tr>
 							
-							<div class="clear"></div>
-
-							<tr class="item-list">
-								<div class="bundle  bundle-last">
-									<div class="bundle-main">
-										<ul class="item-content clearfix">
-											<div class="pay-phone">
-												<li class="td td-item">
-													<div class="item-pic">
-														<a href="#" class="J_MakePoint">
-															<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
-													</div>
-													<div class="item-info">
-														<div class="item-basic-info">
-															<a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
-														</div>
-													</div>
-												</li>
-												<li class="td td-info">
-													<div class="item-props">
-														<span class="sku-line">颜色：10#蜜橘色+17#樱花粉</span>
-														<span class="sku-line">包装：两支手袋装（送彩带）</span>
-													</div>
-												</li>
-												<li class="td td-price">
-													<div class="item-price price-promo-promo">
-														<div class="price-content">
-															<em class="J_Price price-now">39.00</em>
-														</div>
-													</div>
-												</li>
-											</div>
-
-											<li class="td td-amount">
-												<div class="amount-wrapper ">
-													<div class="item-amount ">
-														<span class="phone-title">购买数量</span>
-														<div class="sl">
-															<input class="min am-btn" name="" type="button" value="-" />
-															<input class="text_box" name="" type="text" value="3" style="width:30px;" />
-															<input class="add am-btn" name="" type="button" value="+" />
-														</div>
-													</div>
-												</div>
-											</li>
-											<li class="td td-sum">
-												<div class="td-inner">
-													<em tabindex="0" class="J_ItemSum number">117.00</em>
-												</div>
-											</li>
-											<li class="td td-oplist">
-												<div class="td-inner">
-													<span class="phone-title">配送方式</span>
-													<div class="pay-logis">
-														包邮
-													</div>
-												</div>
-											</li>
-
-										</ul>
-										<div class="clear"></div>
-
-									</div>
-								</div>
-							</tr>
-							
-							<div class="clear"></div> --%>
 							
 							<div class="pay-total">
 								<!--留言-->
@@ -352,23 +222,26 @@
 									<li class="td td-coupon">
 	
 										<span class="coupon-title">优惠券</span>
-										<select data-am-selected>
-											<option value="a">
-												<div class="c-price">
-													<strong>￥8</strong>
-												</div>
-												<div class="c-limit">
-													【消费满195元可用】
-												</div>
-											</option>
-											<option value="b" selected>
-												<div class="c-price">
-													<strong>￥3</strong>
-												</div>
-												<div class="c-limit">
-													【无使用门槛】
-												</div>
-											</option>
+
+										<select data-am-selected id="coupon-select">
+											<option value="0" selected>不使用优惠券</option>
+											<c:forEach items="${coupons }" var="item">
+													<option value="${item.aaa503 }">
+														<div class="c-price">
+															<strong>&yen;${item.aaa503 }</strong>
+														</div>
+														<div class="c-limit">
+															<c:choose>
+																<c:when test="${item.aaa502==1 }"><%--无条件 --%>
+																	【无使用门槛】	
+																</c:when>
+																<c:when test="${item.aaa502==2 }"><%--有条件 --%>
+																	【消费满${item.aab504 }元可用】
+																</c:when>
+															</c:choose>
+														</div>
+													</option>
+											</c:forEach>
 										</select>
 									</li>
 	
@@ -384,37 +257,9 @@
 								</p>
 							</div>
 
-							<!--信息 -->
+							
 							<div class="order-go clearfix">
 								<div class="pay-confirm clearfix">
-									<div class="box">
-										<div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
-											<span class="price g_price ">
-                                    <span>&yen;</span> <em class="style-large-bold-red " id="J_ActualFee">244.00</em>
-											</span>
-										</div>
-
-										<div id="holyshit268" class="pay-address">
-
-											<p class="buy-footer-address">
-												<span class="buy-line-title buy-line-title-type">寄送至：</span>
-												<span class="buy--address-detail">
-								   <span class="province">湖北</span>省
-												<span class="city">武汉</span>市
-												<span class="dist">洪山</span>区
-												<span class="street">雄楚大道666号(中南财经政法大学)</span>
-												</span>
-												</span>
-											</p>
-											<p class="buy-footer-address">
-												<span class="buy-line-title">收货人：</span>
-												<span class="buy-address-detail">   
-                                         <span class="buy-user">艾迪 </span>
-												<span class="buy-phone">15871145629</span>
-												</span>
-											</p>
-										</div>
-									</div>
 
 									<div id="holyshit269" class="submitOrder">
 										<div class="go-btn-wrap">
@@ -424,6 +269,7 @@
 									<div class="clear"></div>
 								</div>
 							</div>
+							
 						</div>
 
 						<div class="clear"></div>

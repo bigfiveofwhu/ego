@@ -37,6 +37,10 @@ public class AddAdController extends AjaxControllerSupport {
 			double balance=Double.parseDouble(account.get("aad403"));
 			double money=Double.parseDouble(this.get("aad304").toString());
 			dto.put("decrement", money);
+			String productType=dto.get("aad303").toString();//获取推广品类型
+			if (productType.equals(AdvertiseService.shoptAd)) {
+				dto.put("aad306", dto.get("aab102"));
+			}
 			if (balance<money) {
 				this.put("result", false);
 				this.put("reason", "账户余额不足");
@@ -53,7 +57,7 @@ public class AddAdController extends AjaxControllerSupport {
 		} catch (Exception e) {
 			// TODO: handle exception
 			this.put("result", false);
-			this.put("reason", "添加失败");
+			this.put("reason", "数据库异常");
 			e.printStackTrace();
 			DBUtils.rollback();
 		}finally {
