@@ -14,6 +14,7 @@
 		<link type="text/css" href="<%=path%>/css/localCity/style.css" rel="stylesheet" />
 		<link type="text/css" href="<%=path%>/css/localCity/serviceDetail.css" rel="stylesheet" />
 		<link href="${path }/css/localCity/navigate.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="<%=path %>/css/message/bbb.css">                     <!-- ÏûÏ¢¿òcss -->
 		<script type="text/javascript" src="<%=path%>/basic/js/jquery-1.7.min.js"></script>
 		<script type="text/javascript" src="<%=path%>/basic/js/quick_links.js"></script>
 		<script type="text/javascript" src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>

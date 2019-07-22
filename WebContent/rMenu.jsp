@@ -148,6 +148,9 @@
             <img src="${path}/images/upload/user_${aaa102}.jpg" alt="${aaa103}" style="border-radius:75px;width: 48px;margin-bottom: 13px;"/>
             </div>
         </div>
+        <div class="top-right" onclick="closeChat()">
+        <i class="am-icon-close"></i>
+        </div>
     </div>
     <div class="box">
         <div class="chat-list"></div>
@@ -200,7 +203,7 @@
 				"from_id":'${from_id}',
 				"to_id":'${aaa102}',
 				"datetime":getNowFormatDate(),
-				"content":"你好!",
+				"content":"${from_name}客服 竭诚为您服务!",
 				"from_name":'${from_name}'
 			},
 			success:function(res,status){
@@ -376,5 +379,7 @@
     	$(".main").css("top",(top+dY)+"px");
     	$(".main").css("left",(left+dX)+"px");
     }
-    
+    function closeChat(){
+    	$(".main").css("display","none");
+    }
 </script>

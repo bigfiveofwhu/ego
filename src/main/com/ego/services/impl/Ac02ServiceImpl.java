@@ -30,9 +30,9 @@ public class Ac02ServiceImpl extends JdbcServicesSupport
 	private Map<String,String> findByAac202() throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-				.append("select y.aac102,y.aac103,y.aac104,y.aac110,x.aac202,")
-				.append("			  x.aac203,z.fvalue serviceType,s.fvalue serviceMethod,x.aac206,x.aac207,")
-				.append("             x.aac209,x.aac210")
+				.append("select y.aaa102,y.aac102,y.aac103,y.aac104,y.aac110,x.aac202,")
+				.append("		x.aac203,z.fvalue serviceType,s.fvalue serviceMethod,x.aac206,x.aac207,")
+				.append("       x.aac209,x.aac210")
 				.append("  from ac02 x, ac01 y,syscode z, syscode s")
 				.append(" where x.aac102=y.aac102 and x.aac202=? and x.aac208='02'")
 				.append("   and z.fcode=x.aac204 and z.fname='aac204'")

@@ -14,7 +14,7 @@ html, body {
 }
 
 .main {
-	position:absolute;
+	position:fixed;
 	max-height: 620px;
     width: 1005px;
     margin: auto;
@@ -52,6 +52,18 @@ html, body {
 
 .main .top .top-left .header:hover {
     border: 1px solid white;
+}
+
+.main .top .top-right{
+	float:right;
+	padding-right: 15px;
+	cursor: pointer;
+}
+.main .top .top-right i{
+	font-size:30px;
+}
+.main .top .top-right i:hover{
+	color:red;
 }
 
 .main .box {
