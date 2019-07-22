@@ -230,8 +230,6 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 	 */
 	private boolean comment()throws Exception
 	{
-		String aab402=Tools.getCommentId();
-		
 		
 		//1.´´½¨SQLÓï¾ä
 		StringBuilder sql = new StringBuilder()
@@ -247,7 +245,7 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 				this.get("aab302"),
 				this.get("aaa102"),
 				this.get("aab203"),
-				aab402,
+				this.get("aab402"),
 				this.get("aab403"),
 				//5
 				this.get("aab409"),
