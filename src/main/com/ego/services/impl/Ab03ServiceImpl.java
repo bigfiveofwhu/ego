@@ -30,11 +30,6 @@ public class Ab03ServiceImpl extends JdbcServicesSupport
 	 */
 	private Map<String,String> orderSumLastMouth() throws Exception
 	{
-		Date date=new Date();
-		SimpleDateFormat format=new SimpleDateFormat("yyyy MM");
-		String dates[]=format.format(date).split(" ");
-		String d1=dates[0]+"-"+(Integer.parseInt(dates[1])-1)+"-01 00:00:00";
-		String d2=dates[0]+"-"+(Integer.parseInt(dates[1])-1)+"-30 23:59:59";
 		StringBuilder sql=new StringBuilder()
 				.append("select sum(x.aab310) as lastmouthsum from ab03 x")
 				.append(" where PERIOD_DIFF(date_format(NOW( ),'%Y%m'),date_format(x.aab306,'%Y%m'))=1")   //1代表上个月的销量
