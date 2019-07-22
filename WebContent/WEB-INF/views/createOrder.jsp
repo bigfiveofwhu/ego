@@ -279,6 +279,17 @@
 							
 							<div class="order-go clearfix">
 								<div class="pay-confirm clearfix">
+								
+								<div class="box">
+										<div tabindex="0" id="holyshit267" class="realPay">优惠后价格:&yen;<em class="t" id="pay-total">${total }</em>
+											<span class="price g_price ">
+                                   			 <span></span> <em class="style-large-bold-red " id="J_ActualFee">${price }</em>
+											</span>
+										</div>
+								</div>
+								
+								
+								
 									<div id="holyshit269" class="submitOrder">
 										<div class="go-btn-wrap">
 											<a id="J_Go" href="javascript:;" class="btn-go" tabindex="0" onclick="sendOrder()">提交订单</a>
