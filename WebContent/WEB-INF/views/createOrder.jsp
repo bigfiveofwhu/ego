@@ -50,6 +50,7 @@
 		<p>${product.aab205 }</p>
 		<p>${product.fee }</p>
 		<p>${product.aab205*product.count}</p>
+		<p>${total }</p>
 
 
 		<form id="myform" action="###.html" method="post" > 
@@ -270,7 +271,7 @@
 							<!--含运费小计 -->
 							<div class="buy-point-discharge ">
 								<p class="price g_price ">
-									合计（含运费） <span>&yen;</span><em class="pay-sum">244.00</em>
+									合计（含运费） <span>&yen;</span><em class="pay-sum">${total }</em>
 								</p>
 							</div>
 
