@@ -36,9 +36,10 @@ public class HomeController extends ControllerSupport
 		rows=this.getServices().query("gethotShops");
 		this.saveAttribute("hotShop", rows);
 		//初始化猜你喜欢
-		rows=this.getServices().query("getTargetAds");
-		this.saveAttribute("guessProduct", rows);
-		
+		if (this.get("aaa102")!=null&&!this.get("aaa102").equals("")) {
+			rows=this.getServices().query("getTargetAds");
+			this.saveAttribute("guessProduct", rows);
+		}
 		//初始化热门活动
 		this.setServices(new Ab06ServiceImpl());
 		rows=this.getServices().query("findByUpToDate");
