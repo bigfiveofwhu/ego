@@ -621,7 +621,7 @@
 										</ul>
 									</div>
 									<div class="clear"></div>
-									<ul class="am-comments-list am-comments-list-flip">
+									<ul class="am-comments-list am-comments-list-flip" id="c10010">
 										<li class="am-comment">
 											<!-- 评论容器 -->
 											<a href="">
@@ -995,6 +995,58 @@
 											</div>
 										</li>
 									</ul>
+									<script type="text/javascript">
+										$(function(){
+											$.ajax({
+												url:"<%=path%>/getProductComment.ajax",
+												type:"post",
+												dataType:"json",
+												timeout:20000,
+												data:{
+													"type":"1",
+													"aab203":'${product.aab203}'
+												},
+												success:function(res,status){
+													if(res.status=='200'){
+														var comments=res.comments;
+														var n=comments.length;
+														var html="";
+														for(var i=0;i<n;i++){
+															var comment=comments[i];
+															html+="<li class='am-comment'>"+
+																  "	<a href=''>"+
+																  "		<img class='am-comment-avatar' src='<%=path%>/images/hwbn40x40.jpg' />"+
+																  "	</a>"+
+															 	  "	<div class='am-comment-main'>"+
+																  "		<header class='am-comment-hd'>"+
+																  "			<div class='am-comment-meta'>"+
+																  "				<a href='#link-to-user' class='am-comment-author'>"+comment.aaa103+" (匿名)</a>"+
+																  "				评论于"+
+																  "				<time datetime=''>"+comment.aab406+"</time>"+
+																  "			</div>"+
+																  "		</header>"+
+																  "		<div class='am-comment-bd'>"+
+																  "			<div class='tb-rev-item ' data-id='258040417670'>"+
+																  "				<div class='J_TbcRate_ReviewContent tb-tbcr-content '>"
+																  				+comment.aab403+
+																  "				</div>"+
+																  "				<div class='tb-r-act-bar'>"+
+																  "					物流评分："+comment.aab409+"&nbsp;&nbsp;商品评分："+comment.aab410+"&nbsp;&nbsp;服务评分："+comment.aab411+
+																  "				</div>"+
+																  "			</div>"+
+																  "		</div>"+
+																  "	</div>"+
+																  "</li>";
+														}
+														$("#c10010").html(html);
+													}
+												},
+												error:function(res,status){
+													
+												}
+											});
+										});
+									</script>
 									<div class="clear"></div>
 									<!--分页 -->
 									<ul class="am-pagination am-pagination-right">
