@@ -91,7 +91,7 @@ public class Ab01ServiceImpl extends JdbcServicesSupport
 	 */
 	private Map<String, String> loginByAaa102() throws Exception
 	{
-		String sql="select aab102 from ab01 where aaa102=?";
+		String sql="select aab102,aab103 from ab01 where aaa102=?";
 		return this.queryForMap(sql, this.get("aaa102"));
 	}
 }
