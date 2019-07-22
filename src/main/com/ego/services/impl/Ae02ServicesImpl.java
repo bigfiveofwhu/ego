@@ -18,10 +18,17 @@ import java.util.Map;
  * aae203:接收人
  * aae204:发送时间
  * aae205:内容
- * aae206:状态  0-未读 1-已读
+ * aae206:状态  01-未读 02-已读
  */
 public class Ae02ServicesImpl extends JdbcServicesSupport
 {
+	@Override
+	public boolean update(String utype) throws Exception {
+		if(utype.equalsIgnoreCase("insert"))
+			return insert(this.dto);
+		throw new Exception("Ae02ServicesImpl utype:"+utype);
+	}
+
 	/**
 	 * 保存聊天记录
 	 * @param dto
@@ -31,14 +38,16 @@ public class Ae02ServicesImpl extends JdbcServicesSupport
 	public boolean insert(Map<String, Object> dto) throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
-				.append("INSERT INTO ae02 (aae202,aae203,aae204,aae205,aae206)")
-				.append("     VALUES (?,?,CURRENT_TIMESTAMP,?,?)")
+				.append("INSERT INTO ae02 (aae202,aae203,aae204,aae205,aae206,aae207) ")
+				.append("VALUES (?,?,?,?,?,?)")
 				;
 		Object[] args = {
-				dto.get("from"),
-				dto.get("to"),
+				dto.get("from_id"),
+				dto.get("to_id"),
+				dto.get("datetime"),
 				dto.get("content"),
-				dto.get("state")
+				"01",
+				dto.get("from_name")
 				};
 		return this.executeUpdate(sql.toString(), args);
 	}
@@ -52,21 +61,19 @@ public class Ae02ServicesImpl extends JdbcServicesSupport
 	public List<Map<String, String>> query(Map<String, Object> dto) throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-				.append("SELECT aae201,aae202,aae203,aae204,aae205")
+				.append("SELECT aae201 id,aae202 from_id,aae203 to_id,aae204 datetime,aae205 content,aae206 state,aae207 from_name")
 				.append("  FROM ae02")
-				.append(" WHERE aae203=?");
+				.append(" WHERE aae203=? OR aae202=?")
+				.append(" ORDER BY datetime")
+				;
 		List<Object> paramList=new ArrayList<>();
-		paramList.add(dto.get("to"));
+		paramList.add(dto.get("to_id"));
+		paramList.add(dto.get("from_id"));
 
 		if(isNotNull(dto.get("state")))
 		{
 			sql.append(" AND aae206=?");
 			paramList.add(dto.get("state"));
-		}
-		if(isNotNull(dto.get("from")))
-		{
-			sql.append(" AND aae202=?");
-			paramList.add(dto.get("from"));
 		}
 		return this.queryForList(sql.toString(), paramList.toArray());
 	}
@@ -81,12 +88,12 @@ public class Ae02ServicesImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql=new StringBuilder()
     			.append("UPDATE ae02")
-    			.append("   SET aae206=02")
+    			.append("   SET aae206='02'")
     			.append(" WHERE aae202=? AND aae203=?")
     			;
 		Object[] args={
-		        dto.get("from"),
-                dto.get("to")
+		        dto.get("from_id"),
+                dto.get("to_id")
         };
     	return this.executeUpdate(sql.toString(), args);
 	}
