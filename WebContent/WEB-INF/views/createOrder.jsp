@@ -10,8 +10,7 @@
 		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 		<link href="<%=path%>/basic/css/demo.css" rel="stylesheet" type="text/css" />
 		<link href="<%=path%>/css/cartstyle.css" rel="stylesheet" type="text/css" />
-		<link href="<%=path%>/css/jsstyle.css" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" href="/ego/layui/css/layui.css">	
+		<link href="<%=path%>/css/jsstyle.css" rel="stylesheet" type="text/css" />	
 		<script type="text/javascript" src="<%=path%>/js/address.js"></script>
 		<script type="text/javascript">
 		function checkAddress(){
@@ -20,25 +19,9 @@
 			var man=$(".defaultAddr").children(".new-p-re").children(".new-txt").text();
 			var phone=$(".defaultAddr").children(".new-p-re").children(".new-txt-rd2").text();
 			$("#xx").text(province+street+man+phone);
-			$("#yy").text($("#user_message").val());
 			$('input[name="aab311"]').val(province+street);
-			$('input[name="aab312"]').val($("#user_message").val());
 			$('input[name="aab317"]').val(man);
 			$('input[name="aab318"]').val(phone);
-		}
-
-		function sendOrder(){
-			var province=$(".defaultAddr").children(".new-p-re").children(".new-mu_l2cw") .children(".province").text();
-			var street=$(".defaultAddr").children(".new-p-re").children(".new-mu_l2cw") .children(".street").text();
-			var man=$(".defaultAddr").children(".new-p-re").children(".new-txt").text();
-			var phone=$(".defaultAddr").children(".new-p-re").children(".new-txt-rd2").text();
-			var vform = document.getElementById("myform");
-			$('input[name="aab311"]').val(province+street);
-			$('input[name="aab312"]').val($("#user_message").val());
-			$('input[name="aab317"]').val(man);
-			$('input[name="aab318"]').val(phone);
-			vform.action="<%=path%>/addOrder.html";
-			vform.submit();
 		}
 		</script>
 
@@ -46,22 +29,18 @@
 
 	<body>
 		<p id="xx"></p>
-		<p id="yy"></p>
 		<p>${product.aab203 }</p>
 		<p>${product.count }</p>
 		<p>${product.aab205 }</p>
-		<p>${product.fee }</p>
-		<p>${product.aab205*product.count}</p>
-		
 		<form id="myform" action="###.html" method="post" > 
 			<input name="aaa102" type="hidden" value="<%=session.getAttribute("aaa102")%>"/>
 			<input name="aab203" type="hidden" value="${product.aab203 }"/>
 			<input name="aab310" type="hidden" value="${product.count }"/>	
 			<input name="aab311" type="hidden" value=""/>
-			<input name="aab312" type="hidden" value=""/>
-			<input name="aab313" type="hidden" value="${product.fee }"/>
+			<input name="aab312" type="hidden"/>
+			<input name="aab313" type="hidden"/>
 			<input name="aab314" type="hidden" value="${product.aab205 }"/>
-			<input name="aab316" type="hidden" value="${product.aab205*product.count}"/>
+			<input name="aab316" type="hidden"/>
 			<input name="aab317" type="hidden" value=""/>
 			<input name="aab318" type="hidden" value=""/>
 		</form>
@@ -103,9 +82,11 @@
 									</p>
 								</div>
 								<div class="new-addr-btn">
+								<!--  
 									<a onclick="window.location.href='<%=path %>/person/editAddress.html?aaa401=${ins.aaa401}';return false;"   href="javascript:void(0);"><i class="am-icon-edit"></i>编辑</a>
 									<span class="new-addr-bar">|</span>
-									<a onclick="window.location.href='<%=path%>/person/deleteAddress.html?aaa401=${ins.aaa401}';return false;"   href="javascript:void(0);" ><i class="am-icon-trash"></i>删除</a>
+								-->
+									<a onclick="delAddr('${ins.aaa401}');"   href="javascript:void(0);" ><i class="am-icon-trash"></i>删除</a>
 								</div>
 									</li>
 							</c:forEach>
@@ -355,12 +336,12 @@
 									<div class="order-user-info">
 										<div id="holyshit257" class="memo">
 											<label>买家留言：</label>
-											<input type="text"  id="user_message"
+											<input type="text" 
 												   title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" 
 												   placeholder="选填,建议填写和卖家达成一致的说明" 
 												   class="memo-input J_MakePoint c2c-text-default memo-close">
 											<div class="msg hidden J-msg">
-												<p class="error">最多输入50个字</p>
+												<p class="error">最多输入500个字符</p>
 											</div>
 										</div>
 									</div>
@@ -371,25 +352,23 @@
 									<li class="td td-coupon">
 	
 										<span class="coupon-title">优惠券</span>
-										<select data-am-selected id="coupon-select">
-											<option value="0" selected>不使用优惠券</option>
-											<c:forEach items="${coupons }" var="item">
-													<option value="${item.aaa503 }">
-														<div class="c-price">
-															<strong>￥${item.aaa503 }</strong>
-														</div>
-														<div class="c-limit">
-															<c:choose>
-																<c:when test="${item.aaa502==1 }"><%--无条件 --%>
-																	【无使用门槛】	
-																</c:when>
-																<c:when test="${item.aaa502==2 }"><%--有条件 --%>
-																	【消费满${item.aab504 }元可用】
-																</c:when>
-															</c:choose>
-														</div>
-													</option>
-											</c:forEach>
+										<select data-am-selected>
+											<option value="a">
+												<div class="c-price">
+													<strong>￥8</strong>
+												</div>
+												<div class="c-limit">
+													【消费满195元可用】
+												</div>
+											</option>
+											<option value="b" selected>
+												<div class="c-price">
+													<strong>￥3</strong>
+												</div>
+												<div class="c-limit">
+													【无使用门槛】
+												</div>
+											</option>
 										</select>
 									</li>
 	
@@ -399,10 +378,9 @@
 							<div class="clear"></div>
 							
 							<!--含运费小计 -->
-							<c:set var="total" value="${product.aab205*product.count+product.fee} "/>
 							<div class="buy-point-discharge ">
 								<p class="price g_price ">
-									合计（含运费） <span>&yen;</span><em class="pay-sum">${total }</em>
+									合计（含运费） <span>&yen;</span><em class="pay-sum">244.00</em>
 								</p>
 							</div>
 
@@ -410,9 +388,9 @@
 							<div class="order-go clearfix">
 								<div class="pay-confirm clearfix">
 									<div class="box">
-										<div tabindex="0" id="holyshit267" class="realPay">实付款：<em class="t" id="pay-total">${total }</em>
+										<div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
 											<span class="price g_price ">
-                                    <span>&yen;</span> <em class="style-large-bold-red " id="J_ActualFee">${price }</em>
+                                    <span>&yen;</span> <em class="style-large-bold-red " id="J_ActualFee">244.00</em>
 											</span>
 										</div>
 
@@ -440,14 +418,14 @@
 
 									<div id="holyshit269" class="submitOrder">
 										<div class="go-btn-wrap">
-											<a id="J_Go" href="javascript:;" class="btn-go" tabindex="0" onclick="sendOrder()">提交订单</a>
+											<a id="J_Go" href="success.html" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
 										</div>
 									</div>
 									<div class="clear"></div>
 								</div>
 							</div>
 						</div>
-	
+
 						<div class="clear"></div>
 					</div>
 				</div>
@@ -463,7 +441,7 @@
 				<hr/>
 
 				<div class="am-u-md-12">
-					<form id="form1" class="am-form am-form-horizontal" action="<%=path %>/person/addAddress.html?tag=buy" method="post">
+					<form id="form1" class="am-form am-form-horizontal" action="" method="post">
 
 						<div class="am-form-group">
 							<label for="user-name" class="am-form-label">收货人</label>
@@ -506,7 +484,7 @@
 
 						<div class="am-form-group theme-poptit">
 							<div class="am-u-sm-9 am-u-sm-push-3">
-								<input type="submit"  value = "保存"class="am-btn am-btn-danger"></input>
+								<input type="button"  onclick="addAddr();"value = "保存"class="am-btn am-btn-danger"></input>
 								<div class="am-btn am-btn-danger close">取消</div>
 							</div>
 						</div>
@@ -518,6 +496,42 @@
 			<div class="clear"></div>
 	</body>
 <script type="text/javascript">
+function addAddr()
+{
+	$.ajax({
+		url:"${path}/dealAddr.ajax?type=addAddr",
+		type:"post",
+		timeout:20000,
+		dataType:"json",
+		data:$("#form1").serialize(),
+		success:function(res,status){
+			console.log("操作成功");
+			location.reload();
+		},
+		error:function(res,status){
+			console.log("处理地址操作错误");
+		}
+	});
+}
+function delAddr(id)
+{
+	$.ajax({
+		url:"${path}/dealAddr.ajax?type=delAddr",
+		type:"post",
+		timeout:20000,
+		dataType:"json",
+		data:{
+			 "aaa401":id
+		},
+		success:function(res,status){
+			console.log("操作成功");
+			location.reload();
+		},
+		error:function(res,status){
+			console.log("处理地址操作错误");
+		}
+	});
+}
 
 $("#addr_1").change(function(){
 	var A_id=$(this).children("option:selected").attr("A_id");
@@ -562,16 +576,4 @@ function loadAddr(type,index){
 }
 loadAddr("-1",1);
 </script>
-<script src="/ego/layui/layui.js"></script>
-<script>
-layui.use('layer',function(){
-	 var $ = layui.jquery,layer = layui.layer;
-});
-
-var total=${total};
-$("#coupon-select").change(function(){
-	total= ${total} - parseFloat($(this).val());
-	$("#pay-total").html(total);
-})
-</script>
-</html>
+</html>>

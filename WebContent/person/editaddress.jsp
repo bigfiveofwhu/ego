@@ -1,12 +1,11 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%@include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
 
-		<title>ç¼–è¾‘åœ°å€</title>
+		<title>±à¼­µØÖ·</title>
 
 		<link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
 		<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
@@ -19,31 +18,31 @@
 <body>
 
 
-								<!--æ ‡é¢˜ -->
+								<!--±êÌâ -->
 								<div class="am-cf am-padding">
-									<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">ç¼–è¾‘åœ°å€</strong> / <small>Add&nbsp;address</small></div>
+									<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">±à¼­µØÖ·</strong> / <small>Add&nbsp;address</small></div>
 								</div>
 								<hr/>
 
 								<div class="am-u-md-12 am-u-lg-8" style="margin-top: 20px;">
-									<form  action="editAddressBack.html" class="am-form am-form-horizontal" method="post">
+									<form  action="<%=path %>/person/editAddressBack.html" class="am-form am-form-horizontal" method="post">
 
 										<div class="am-form-group">
-											<label for="user-name" class="am-form-label">æ”¶è´§äºº</label>
+											<label for="user-name" class="am-form-label">ÊÕ»õÈË</label>
 											<div class="am-form-content">
-												<input type="text" name="aaa405"  value="${address.aaa405}"id="user-name" required="required" placeholder="æ”¶è´§äºº">
+												<input type="text" name="aaa405"  value="${address.aaa405}"id="user-name" required="required" placeholder="ÊÕ»õÈË">
 											</div>
 										</div>
 
 										<div class="am-form-group">
-											<label for="user-phone"  class="am-form-label">æ‰‹æœºå·ç </label>
+											<label for="user-phone"  class="am-form-label">ÊÖ»úºÅÂë</label>
 											<div class="am-form-content">
-												<input  name= "aaa406" value="${address.aaa406 }" placeholder="æ‰‹æœºå·å¿…å¡«" required="required" type="text">
+												<input  name= "aaa406" value="${address.aaa406 }" placeholder="ÊÖ»úºÅ±ØÌî" required="required" type="text">
 											</div>
 										</div>
 										<div class="am-form-group">
-											<label for="user-address" class="am-form-label">æ‰€åœ¨åœ°</label>
-											<!-- åœ°å€æ’ä»¶ -->
+											<label for="user-address" class="am-form-label">ËùÔÚµØ</label>
+											<!-- µØÖ·²å¼ş -->
 											<div class="am-form-content address">
 												<select name="addr_1" id="addr_1" >
 												</select>
@@ -54,23 +53,23 @@
 											</div>
 										  </div>
                                       <div class="am-form-group">
-											<label  class="am-form-label">å¤‡æ³¨</label>
+											<label  class="am-form-label">±¸×¢</label>
 											<div class="am-form-content">
-												<input name="aaa404" value="${address.aaa404 }" placeholder="å¤‡æ³¨" type="text">
+												<input name="aaa404" value="${address.aaa404 }" placeholder="±¸×¢" type="text">
 											</div>
 										</div>
 										<div class="am-form-group">
-											<label for="user-intro" class="am-form-label">è¯¦ç»†åœ°å€</label>
+											<label for="user-intro" class="am-form-label">ÏêÏ¸µØÖ·</label>
 											<div class="am-form-content">
-												<textarea name="aaa403" class="" rows="3" id="user-intro" placeholder="è¾“å…¥è¯¦ç»†åœ°å€" required="required">${address.aaa403 }</textarea>
-												<small>100å­—ä»¥å†…å†™å‡ºä½ çš„è¯¦ç»†åœ°å€...</small>
+												<textarea name="aaa403" class="" rows="3" id="user-intro" placeholder="ÊäÈëÏêÏ¸µØÖ·" required="required">${address.aaa403 }</textarea>
+												<small>100×ÖÒÔÄÚĞ´³öÄãµÄÏêÏ¸µØÖ·...</small>
 											</div>
 										</div>
 
 										<div class="am-form-group">
 											<div class="am-u-sm-9 am-u-sm-push-3">
-												<input type="submit"  value = "ä¿å­˜"class="am-btn am-btn-danger"></input>
-												<a href="javascript: void(0)" onclick="window.location.href='showAddress.html';return false;"   href="javascript:void(0);"class="am-close am-btn am-btn-danger" data-am-modal-close>é€€å‡º</a>
+												<input type="submit"  value = "±£´æ"class="am-btn am-btn-danger"></input>
+												<a href="javascript: void(0)" onclick="window.location.href='javascript:history.go(-1)';return false;"   href="javascript:void(0);"class="am-close am-btn am-btn-danger" data-am-modal-close>ÍË³ö</a>
 											</div>
 											<P>${msg }</P>
 										</div>
@@ -93,7 +92,7 @@ $("#addr_2").change(function(){
 	loadAddr(A_id,3);
 });
 
-<%-- åœ°å€åˆå§‹åŒ–çš„å¼‚æ­¥åŠ è½½--%>
+<%-- µØÖ·³õÊ¼»¯µÄÒì²½¼ÓÔØ--%>
 function loadAddr(type,index){
 	if(index>3) return;
 	$.ajax({
@@ -135,7 +134,7 @@ function loadAddr(type,index){
 			loadAddr(addrs[p].areaid,++index);
 		},
 		error:function(res,status){
-			console.log("#addr_"+index+"åœ°å€å¼‚æ­¥åŠ è½½é”™è¯¯");
+			console.log("#addr_"+index+"µØÖ·Òì²½¼ÓÔØ´íÎó");
 		}
 	});
 }
