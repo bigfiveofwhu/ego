@@ -44,11 +44,11 @@
 											<label for="user-address" class="am-form-label">所在地</label>
 											<!-- 地址插件 -->
 											<div class="am-form-content address">
-												<select name="addr_1" id="addr_1" >
+												<select name="myaddr_1" id="addr_1" >
 												</select>
-												<select name="addr_2" id="addr_2" class="childs" >
+												<select name="myaddr_2" id="addr_2" class="childs" >
 												</select>
-												<select name="addr_3" id="addr_3" class="childs" >
+												<select name="myaddr_3" id="addr_3" class="childs" >
 												</select>
 											</div>
 										  </div>

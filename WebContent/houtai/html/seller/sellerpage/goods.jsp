@@ -86,15 +86,23 @@
 							  ${ins.cnaab212}
 							</td>
 						<td class="text-center">
-								<button type="button" class="btn bg-olive btn-xs"><a class="btn bg-olive btn-xs">修改</a></button>
-								<button type="button" class="btn bg-olive btn-xs" >
+						      <c:if test="${ins.cnaab212 != '已下架' }">
+								<button type="button" id="button_1" name="modify" class="btn bg-olive btn-xs"><a class="btn bg-olive btn-xs">修改</a></button>
+								<button type="button" id="button_2" class="btn bg-olive btn-xs" onclick="putoff_del('${ins.aab203}','putoff');" >
 									<a class="btn bg-olive btn-xs"  >
 										下架
 									</a>
+								</button>
+								</c:if>
+								
+								 <c:if test="${ins.cnaab212 == '已下架' }">
+								<button type="button" id="button_1" name="delete" class="btn bg-olive btn-xs" onclick="putoff_del('${ins.aab203}','del');"><a class="btn bg-olive btn-xs">删除</a></button>
+								<button type="button" id="button_2" class="btn bg-olive btn-xs" disabled >
 									<a class="btn bg-olive btn-xs"  >
-										上架
+										已下架
 									</a>
 								</button>
+								</c:if>
 							</td>
 						</tr>
 						</c:forEach>
@@ -129,5 +137,31 @@
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/SpecificationService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/BrandService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
-
+    <script type="text/javascript">
+    function putoff_del(id,type)
+    {
+    	$.ajax({
+    		url:"${path}/putOffGoods.ajax",
+    		type:"post",
+    		timeout:20000,
+    		dataType:"json",
+    		data:{
+    			"aab203":id,
+    			"type":type
+    		},
+    		success:function(res,status){
+	    			if(res.tag == 1)
+	    		{
+	    			console.log("操作成功");
+	    			location.reload();
+	    		}
+	    			else
+	    				console.log("操作失败");
+    		},
+    		error:function(res,status){
+    			console.log("操作错误");
+    		}
+    	});
+    }
+    </script>
 </html>

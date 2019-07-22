@@ -434,4 +434,6 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 		return this.queryForList(sql.toString(),this.get("aab102"));
 	}
 	
+
+	
 }
