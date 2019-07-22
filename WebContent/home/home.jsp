@@ -412,7 +412,7 @@
 					<!--新品推荐-->
 					<div class="am-container ">
 						<div class="shopTitle ">
-							<h4>坚果</h4>
+							<h4>最新商品</h4>
 							<h3>酥酥脆脆，回味无穷</h3>
 							<div class="today-brands ">
 								<a href="# ">腰果</a> 
@@ -508,7 +508,7 @@
 						<c:forEach items="${guessProduct}" var="item2" varStatus="">
 							<div class="am-u-sm-4 text-four">
 								<a href="<%=path %>/shop/detail.html?aId=${item2.aad302 }&productId=${item2.aad306}">
-								    <img src="<%=path %>/images/advertise/${item2.aad302}.jpg" />
+								    <img src="<%=path %>/images/advertise/${item2.aad307}" />
 									<div class="outer-con ">
 										<div class="title ">${item2.aab202 }</div>
 										<div class="sub-title ">&yen;${item2.aab205 }</div>

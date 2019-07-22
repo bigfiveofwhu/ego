@@ -4,10 +4,11 @@ import javax.servlet.http.HttpSession;
 
 import com.ego.controller.ajaxServlet.AjaxControllerSupport;
 import com.ego.services.impl.Aa02ServiceImpl;
+import com.ego.services.impl.PreferenceService;
 
 public class AddShopCartController extends AjaxControllerSupport
 {
-
+	
 	@Override
 	public void execute(HttpSession session) throws Exception
 	{
@@ -30,5 +31,9 @@ public class AddShopCartController extends AjaxControllerSupport
 		{
 			this.put("status", "201");   //失败状态
 		}
+		
+		//修改用户偏好
+		this.setService(new PreferenceService());
+		this.getService().update(PreferenceService.addToCart);
 	}
 }
