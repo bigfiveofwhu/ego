@@ -23,7 +23,7 @@
 <!-- .box-body -->
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">服务管理</h3>
+        <h3 class="box-title">服务审核</h3>
     </div>
 
     <div class="box-body">
@@ -266,30 +266,30 @@
             success: function (res) {
                 var map = res.map;
                 if (typeof (map) !== "undefined") {
-                    $("#aac202").html(map.aac202);
-                    $("#aac203").html(map.aac203);
-                    $("#aac204").html(map.cnaac204);
-                    $("#aac205").html(map.cnaac205);
-                    $("#aac206").html(map.aac206);
-                    $("#aac207").html(map.aac207);
-                    $("#aac208").html(map.cnaac208);
+                    $("#aac202").text(map.aac202);
+                    $("#aac203").text(map.aac203);
+                    $("#aac204").text(map.cnaac204);
+                    $("#aac205").text(map.cnaac205);
+                    $("#aac206").text(map.aac206);
+                    $("#aac207").text(map.aac207);
+                    $("#aac208").text(map.cnaac208);
 
-                    $("#aac102").html(map.aac102);
-                    $("#aac103").html(map.aac103);
-                    $("#aac104").html(map.aac104);
-                    $("#aac105").html(map.cnaac105);
-                    $("#aac106").html(map.cnaac106);
-                    $("#aac107").html(map.aac107);
-                    $("#aac109").html(map.aac109);
-                    $("#aac110").html(map.aac110);
+                    $("#aac102").text(map.aac102);
+                    $("#aac103").text(map.aac103);
+                    $("#aac104").text(map.aac104);
+                    $("#aac105").text(map.cnaac105);
+                    $("#aac106").text(map.cnaac106);
+                    $("#aac107").text(map.aac107);
+                    $("#aac109").text(map.aac109);
+                    $("#aac110").text(map.aac110);
 
-                    $("#aad802").html(map.aad802);
+                    $("#aad802").text(map.aad802);
 
-                    $("#aad801").html(map.aad801);
-                    $("#aad102").html(map.aad102);
-                    $("#aad104").html(map.aad104);
-                    $("#aad804").html(map.cnaad804);
-                    $("#aad806").html(map.aad806);
+                    $("#aad801").text(map.aad801);
+                    $("#aad102").text(map.aad102);
+                    $("#aad104").text(map.aad104);
+                    $("#aad804").text(map.cnaad804);
+                    $("#aad806").text(map.aad806);
 
                     console.log("获取服务详细信息成功")
                 }
@@ -330,7 +330,7 @@
                 "type": '8'
             },
             success: function () {
-                $('#tr-' + aac202).find('.status').html(val);
+                $('#tr-' + aac202).find('.status').text(val);
                 alert('操作成功')
             },
             error: function () {
@@ -341,7 +341,9 @@
     }
 
     function clearDetails() {
-        $(".to_clear").html("");
+        var to_clear = $('.to_clear');
+        to_clear.text('');
+        to_clear.html('');
     }
 </script>
 

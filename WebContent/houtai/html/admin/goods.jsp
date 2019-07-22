@@ -74,16 +74,17 @@
                         <td>${ins.aab204}</td>
                         <td class="status">${ins.cnaab212}</td>
                         <td class="text-center">
-                        <c:if test="${ins.cnaab212 != '已删除' }">
-                            <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#sellerModal" onclick="getGoodDetail(${ins.aab203})" >详情
-                            </button>
-                        </c:if>
-                        
-                        <c:if test="${ins.cnaab212 == '已删除' }">
-                        <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                    data-target="#sellerModal"  disabled>详情
-                            </button>
-                        </c:if>
+                            <c:if test="${ins.cnaab212 != '已删除' }">
+                                <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
+                                        data-target="#sellerModal" onclick="getGoodDetail(${ins.aab203})">详情
+                                </button>
+                            </c:if>
+
+                            <c:if test="${ins.cnaab212 == '已删除' }">
+                                <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
+                                        data-target="#sellerModal" disabled>详情
+                                </button>
+                            </c:if>
                         </td>
                     </tr>
                 </c:forEach>
@@ -284,34 +285,34 @@
             success: function (res) {
                 var map = res.map;
                 if (typeof (map) !== "undefined") {
-                    $("#aab202").html(map.aab202);
-                    $("#aab203").html(map.aab203);
-                    $("#aab204").html(map.cnaab204);
-                    $("#aab205").html(map.aab205);
-                    $("#aab206").html(map.aab206);
-                    $("#aab207").html(map.aab207);
-                    $("#aab208").html(map.aab208);
-                    $("#aab209").html(map.aab209);
-                    $("#aab211").html(map.aab211);
-                    $("#aab212").html(map.cnaab212);
+                    $("#aab202").text(map.aab202);
+                    $("#aab203").text(map.aab203);
+                    $("#aab204").text(map.cnaab204);
+                    $("#aab205").text(map.aab205);
+                    $("#aab206").text(map.aab206);
+                    $("#aab207").text(map.aab207);
+                    $("#aab208").text(map.aab208);
+                    $("#aab209").text(map.aab209);
+                    $("#aab211").text(map.aab211);
+                    $("#aab212").text(map.cnaab212);
 
-                    $("#aab102").html(map.aab102);
-                    $("#aab103").html(map.aab103);
-                    $("#aab104").html(map.aab104);
-                    $("#aab105").html(map.aab105);
-                    $("#aab106").html(map.aab106);
-                    $("#aab108").html(map.aab108);
-                    $("#aab109").html(map.aab109);
-                    $("#aab110").html(map.aab110);
-                    $("#aab111").html(map.aab111);
+                    $("#aab102").text(map.aab102);
+                    $("#aab103").text(map.aab103);
+                    $("#aab104").text(map.aab104);
+                    $("#aab105").text(map.aab105);
+                    $("#aab106").text(map.aab106);
+                    $("#aab108").text(map.aab108);
+                    $("#aab109").text(map.aab109);
+                    $("#aab110").text(map.aab110);
+                    $("#aab111").text(map.aab111);
 
-                    $("#aad802").html(map.aad802);
+                    $("#aad802").text(map.aad802);
 
-                    $("#aad801").html(map.aad801);
-                    $("#aad102").html(map.aad102);
-                    $("#aad104").html(map.aad104);
-                    $("#aad804").html(map.cnaad804);
-                    $("#aad806").html(map.aad806);
+                    $("#aad801").text(map.aad801);
+                    $("#aad102").text(map.aad102);
+                    $("#aad104").text(map.aad104);
+                    $("#aad804").text(map.cnaad804);
+                    $("#aad806").text(map.aad806);
 
                     console.log("获取商品详细信息成功")
                 }
@@ -352,7 +353,7 @@
                 "type": '4'
             },
             success: function () {
-                $('#tr-' + aab203).find('.status').html(val);
+                $('#tr-' + aab203).find('.status').text(val);
                 alert('操作成功')
             },
             error: function () {
@@ -363,7 +364,9 @@
     }
 
     function clearDetails() {
-        $(".to_clear").html("");
+        var to_clear = $('.to_clear');
+        to_clear.text('');
+        to_clear.html('');
     }
 </script>
 

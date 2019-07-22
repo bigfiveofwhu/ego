@@ -256,28 +256,28 @@
             success: function (res) {
                 var map = res.map;
                 if (typeof (map) !== "undefined") {
-                    $("#aab102").html(map.aab102);
-                    $("#aab103").html(map.aab103);
-                    $("#aab105").html(map.aab105);
-                    $("#aab106").html(map.aab106);
-                    $("#aab107").html(map.cnaab107);
-                    $("#aab108").html(map.aab108);
+                    $("#aab102").text(map.aab102);
+                    $("#aab103").text(map.aab103);
+                    $("#aab105").text(map.aab105);
+                    $("#aab106").text(map.aab106);
+                    $("#aab107").text(map.cnaab107);
+                    $("#aab108").text(map.aab108);
 
-                    $("#aaa102").html(map.aaa102);
-                    $("#aaa103").html(map.aaa103);
-                    $("#aaa104").html(map.aaa104);
-                    $("#aaa105").html(map.aaa105);
-                    $("#aaa106").html(map.aaa106);
-                    $("#aaa108").html(map.aaa108);
-                    $("#aaa109").html(map.aaa109);
+                    $("#aaa102").text(map.aaa102);
+                    $("#aaa103").text(map.aaa103);
+                    $("#aaa104").text(map.aaa104);
+                    $("#aaa105").text(map.aaa105);
+                    $("#aaa106").text(map.aaa106);
+                    $("#aaa108").text(map.aaa108);
+                    $("#aaa109").text(map.aaa109);
 
-                    $("#aad802").html(map.aad802);
+                    $("#aad802").text(map.aad802);
 
-                    $("#aad801").html(map.aad801);
-                    $("#aad102").html(map.aad102);
-                    $("#aad104").html(map.aad104);
-                    $("#aad804").html(map.cnaad804);
-                    $("#aad806").html(map.aad806);
+                    $("#aad801").text(map.aad801);
+                    $("#aad102").text(map.aad102);
+                    $("#aad104").text(map.aad104);
+                    $("#aad804").text(map.cnaad804);
+                    $("#aad806").text(map.aad806);
 
                     console.log("获取店铺详细信息成功")
                 }
@@ -318,7 +318,7 @@
                 "type": '2'
             },
             success: function () {
-                $('#tr-' + aab102).find('.status').html(val);
+                $('#tr-' + aab102).find('.status').text(val);
                 alert('操作成功')
             },
             error: function () {
@@ -329,7 +329,9 @@
     }
 
     function clearDetails() {
-        $(".to_clear").html("");
+        var to_clear = $('.to_clear');
+        to_clear.text('');
+        to_clear.html('');
     }
 </script>
 

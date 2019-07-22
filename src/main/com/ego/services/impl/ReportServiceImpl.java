@@ -2,9 +2,7 @@ package com.ego.services.impl;
 
 import com.ego.services.JdbcServicesSupport;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * aaa102:”√ªßid
@@ -481,30 +479,50 @@ public class ReportServiceImpl extends JdbcServicesSupport
     private List<Map<String, String>> shopMonthlyReportDetailForGoods() throws Exception
     {
         Object aab102 = this.get("aab102");
+        Map<String,Map.Entry<String,String>> tmp1=new HashMap<>();
+        Map<String,String> tmp2=new HashMap<>();
 
-        StringBuilder sql = new StringBuilder()
-                .append("	SELECT CONCAT(aab202,'_',aab203) name,COALESCE ( views, 0 ) views,COALESCE ( count, 0 ) count,COALESCE ( sum, 0 ) sum")
-                .append("	FROM")
-                .append("		( SELECT aab203, aab202 FROM ab02 WHERE aab102 = ? ) c")
-                .append("	 LEFT JOIN (")
-                .append("		  SELECT a.id,views,count,sum ")
-                .append("			FROM(")
-                .append("			SELECT a2.aab203 id,SUM( aaa703 ) views ")
-                .append("			  FROM ab02 a2,aa07 a7 ")
-                .append("			 WHERE a2.aab203 = a7.aab203 AND PERIOD_DIFF( date_format( NOW( ), '%Y%m' ), date_format( aaa702, '%Y%m' ) ) = 0 AND aab102 = ? ")
-                .append("			 GROUP BY a2.aab203 ")
-                .append("			) a")
-                .append("			JOIN (")
-                .append("			SELECT")
-                .append("				a2.aab203 id,SUM( aab310 ) count,SUM( aab316 ) sum ")
-                .append("			  FROM ab02 a2,ab03 a3 ")
-                .append("			 WHERE a2.aab203 = a3.aab203 AND PERIOD_DIFF( date_format( NOW( ), '%Y%m' ), date_format( aab305, '%Y%m' ) ) = 0 AND aab102 = ? ")
-                .append("			 GROUP BY a2.aab203 ")
-                .append("			) b ON a.id = b.id ")
-                .append("		) d ON c.aab203 = d.id ")
-                .append("	ORDER BY sum DESC");
+        StringBuilder sql1=new StringBuilder()
+                .append("SELECT aab203 id,CONCAT(aab202,'_',aab203) name")
+                .append("  FROM ab02")
+                .append(" WHERE aab102=?");
+        List<Map<String, String>> list1=this.queryForList(sql1.toString(),aab102);
 
-        return this.queryForList(sql.toString(), aab102, aab102, aab102);
+        StringBuilder sql2=new StringBuilder()
+                .append("SELECT a2.aab203 id,SUM( aab310 ) count,SUM( aab316 ) sum")
+                .append("  FROM ab02 a2,ab03 a3")
+                .append(" WHERE a2.aab203 = a3.aab203 AND PERIOD_DIFF( date_format( NOW( ), '%Y%m' ), date_format( aab305, '%Y%m' ) ) = 0 AND aab102 = ?")
+                .append(" GROUP BY a2.aab203");
+        List<Map<String, String>> list2=this.queryForList(sql2.toString(),aab102);
+
+        StringBuilder sql3=new StringBuilder()
+                .append("SELECT a2.aab203 id,SUM( aaa703 ) views")
+                .append("  FROM ab02 a2,aa07 a7")
+                .append(" WHERE a2.aab203 = a7.aab203 AND PERIOD_DIFF( date_format( NOW( ), '%Y%m' ), date_format( aaa702, '%Y%m' ) ) = 0 AND aab102 = ?")
+                .append(" GROUP BY a2.aab203");
+        List<Map<String, String>> list3=this.queryForList(sql3.toString(),aab102);
+
+        for(Map<String,String> map:list2)
+            tmp1.put(map.get("id"), new AbstractMap.SimpleEntry<>(map.get("count"), map.get("sum")));
+        for (Map<String,String> map:list3)
+            tmp2.put(map.get("id"),map.get("views"));
+        for (Map<String,String> map:list1)
+        {
+            String id=map.get("id");
+            if(tmp1.containsKey(id))
+            {
+                map.put("count",tmp1.get(id).getKey());
+                map.put("sum",tmp1.get(id).getValue());
+            }
+            else
+            {
+                map.put("count","0");
+                map.put("sum","0");
+            }
+
+            map.put("views", tmp2.getOrDefault(id, "0"));
+        }
+        return list1;
     }
 
     /**

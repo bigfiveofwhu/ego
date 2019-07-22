@@ -266,30 +266,30 @@
             success: function (res) {
                 var map = res.map;
                 if (typeof (map) !== "undefined") {
-                    $("#aac102").html(map.aac102);
-                    $("#aac103").html(map.aac103);
-                    $("#aac104").html(map.aac104);
-                    $("#aac105").html(map.cnaac105);
-                    $("#aac106").html(map.cnaac106);
-                    $("#aac107").html(map.aac107);
-                    $("#aac108").html(map.cnaac108);
-                    $("#aac109").html(map.aac109);
+                    $("#aac102").text(map.aac102);
+                    $("#aac103").text(map.aac103);
+                    $("#aac104").text(map.aac104);
+                    $("#aac105").text(map.cnaac105);
+                    $("#aac106").text(map.cnaac106);
+                    $("#aac107").text(map.aac107);
+                    $("#aac108").text(map.cnaac108);
+                    $("#aac109").text(map.aac109);
 
-                    $("#aaa102").html(map.aaa102);
-                    $("#aaa103").html(map.aaa103);
-                    $("#aaa104").html(map.aaa104);
-                    $("#aaa105").html(map.aaa105);
-                    $("#aaa106").html(map.aaa106);
-                    $("#aaa108").html(map.aaa108);
-                    $("#aaa109").html(map.aaa109);
+                    $("#aaa102").text(map.aaa102);
+                    $("#aaa103").text(map.aaa103);
+                    $("#aaa104").text(map.aaa104);
+                    $("#aaa105").text(map.aaa105);
+                    $("#aaa106").text(map.aaa106);
+                    $("#aaa108").text(map.aaa108);
+                    $("#aaa109").text(map.aaa109);
 
-                    $("#aad802").html(map.aad802);
+                    $("#aad802").text(map.aad802);
 
-                    $("#aad801").html(map.aad801);
-                    $("#aad102").html(map.aad102);
-                    $("#aad104").html(map.aad104);
-                    $("#aad804").html(map.cnaad804);
-                    $("#aad806").html(map.aad806);
+                    $("#aad801").text(map.aad801);
+                    $("#aad102").text(map.aad102);
+                    $("#aad104").text(map.aad104);
+                    $("#aad804").text(map.cnaad804);
+                    $("#aad806").text(map.aad806);
 
                     console.log("获取服务商详细信息成功")
                 }
@@ -330,7 +330,7 @@
                 "type": '6'
             },
             success: function () {
-                $('#tr-' + aac102).find('.status').html(val);
+                $('#tr-' + aac102).find('.status').text(val);
                 alert('操作成功')
             },
             error: function () {
@@ -341,7 +341,9 @@
     }
 
     function clearDetails() {
-        $(".to_clear").html("");
+        var to_clear = $('.to_clear');
+        to_clear.text('');
+        to_clear.html('');
     }
 </script>
 
