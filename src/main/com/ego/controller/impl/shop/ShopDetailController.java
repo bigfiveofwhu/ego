@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.jdt.internal.compiler.ast.ThisReference;
+
 import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.Aa05ServiceImpl;
 import com.ego.services.impl.Aa07ServiceImpl;
@@ -17,6 +19,8 @@ import com.ego.services.impl.Ab03ServiceImpl;
 import com.ego.services.impl.Ab03ServicesImpl;
 import com.ego.services.impl.Ab04ServicesImpl;
 import com.ego.services.impl.Ab05ServiceImpl;
+import com.ego.services.impl.AdStatistic;
+import com.ego.services.impl.PreferenceService;
 
 public class ShopDetailController extends ControllerSupport 
 {
@@ -90,7 +94,17 @@ public class ShopDetailController extends ControllerSupport
 		this.setServices(new Ab05ServiceImpl());
 		List<Map<String, String>>coupons= this.getServices().query();
 		saveAttribute("coupons", coupons);
-		//////////////////////////////////
+		///////////////修改用户偏好
+		this.setServices(new PreferenceService());
+		this.getServices().update("click");
+		//////////////更新广告点击信息
+		String aad302=(String)this.get("aId");
+		if (aad302!=null&&!aad302.equals("")) {
+			dto.put("aad302", this.get("aId"));
+			this.setServices(new AdStatistic());
+			this.getServices().update("click");
+		}
+		
 		
 		this.setServices(new Ab03ServiceImpl());
 		//上月销量

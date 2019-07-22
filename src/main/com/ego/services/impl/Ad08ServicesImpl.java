@@ -110,16 +110,16 @@ public class Ad08ServicesImpl extends JdbcServicesSupport
 	private Map<String, String> findAc01ById() throws Exception 
 	{
 		StringBuilder sql=new StringBuilder()
-				.append("SELECT aac102,aac103,aac104,aac105,s3.fvalue cnaac106,")
-				.append("	    aac107,s1.fvalue cnaac108,aac109,a.aaa102,aaa103,")
-				.append("	    aaa104,aaa105,aaa106,aaa108,aaa109,")
-				.append("	    aad802,aad801,c.aad102,aad104,s2.fvalue cnaad804,")
-				.append("	    aad806")
-				.append("  FROM aa01 a,ac01 b,ad01 c,ad08 d,syscode s1,syscode s2,syscode s3")
-				.append(" WHERE a.aaa102=b.aaa102 AND d.aad803='03' AND d.aad805=b.aac102 ")
+				.append("SELECT aac102,aac103,aac104,t.areaName cnaac105,s3.fvalue cnaac106,")
+				.append("	   aac107,s1.fvalue cnaac108,aac109,a.aaa102,aaa103,")
+				.append("	   aaa104,aaa105,aaa106,aaa108,aaa109,")
+				.append("	   aad802,aad801,c.aad102,aad104,s2.fvalue cnaad804,")
+				.append("	   aad806")
+				.append("  FROM aa01 a,ac01 b,ad01 c,ad08 d,syscode s1,syscode s2,syscode s3,t_area t")
+				.append(" WHERE a.aaa102=b.aaa102 AND d.aad803='03' AND d.aad805=b.aac102")
 				.append("   AND c.aad102=d.aad102 AND s1.fcode=aac108 AND s1.fname='aac108'")
-				.append("   AND s2.fcode=aad804 AND s2.fname='aad804' AND s3.fcode=aac106 ")
-				.append("   AND s3.fname='aac106' AND aac102=?")
+				.append("   AND s2.fcode=aad804 AND s2.fname='aad804' AND s3.fcode=aac106")
+				.append("   AND s3.fname='aac106' AND t.areaId=aac105 AND aac102=?")
 				;
 		Object[] args = { 
 				this.get("aac102")
@@ -135,17 +135,17 @@ public class Ad08ServicesImpl extends JdbcServicesSupport
 	private Map<String, String> findAc02ById() throws Exception 
 	{
 		StringBuilder sql=new StringBuilder()
-				.append("SELECT a.aac102,aac103,aac104,aac105,s3.fvalue cnaac106,")
-				.append("	    aac107,aac109,aac110,aac202,aac203,")
-				.append("	    s1.fvalue cnaac204,s4.fvalue cnaac205,aac206,aac207,s5.fvalue cnaac208,")
-				.append("	    aad802,aad801,c.aad102,aad104,s2.fvalue cnaad804,")
-				.append("	    aad806")
-				.append("  FROM ac02 a,ac01 b,ad01 c,ad08 d,syscode s1,syscode s2,syscode s3,syscode s4,syscode s5")
-				.append(" WHERE a.aac102=b.aac102 AND d.aad803='04' AND d.aad805=a.aac202 ")
+				.append("SELECT a.aac102,aac103,aac104,t.areaName cnaac105,s3.fvalue cnaac106,")
+				.append("	   aac107,aac109,aac110,aac202,aac203,")
+				.append("	   s1.fvalue cnaac204,s4.fvalue cnaac205,aac206,aac207,s5.fvalue cnaac208,")
+				.append("	   aad802,aad801,c.aad102,aad104,s2.fvalue cnaad804,")
+				.append("	   aad806")
+				.append("  FROM ac02 a,ac01 b,ad01 c,ad08 d,syscode s1,syscode s2,syscode s3,syscode s4,syscode s5,t_area t")
+				.append(" WHERE a.aac102=b.aac102 AND d.aad803='04' AND d.aad805=a.aac202")
 				.append("   AND c.aad102=d.aad102 AND s1.fcode=aac204 AND s1.fname='aac204'")
 				.append("   AND s2.fcode=aad804 AND s2.fname='aad804' AND s3.fcode=aac106")
 				.append("   AND s3.fname='aac106' AND s4.fcode=aac205 AND s4.fname='aac205'")
-				.append("   AND s5.fcode=aac208 AND s5.fname='aac208' AND aac202=?")
+				.append("   AND s5.fcode=aac208 AND s5.fname='aac208' AND t.areaId=aac105 AND aac202=?")
 				;
 		Object[] args = { 
 				this.get("aac202")

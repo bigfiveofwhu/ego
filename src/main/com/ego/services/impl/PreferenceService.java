@@ -1,8 +1,10 @@
 package com.ego.services.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import com.ego.services.JdbcServicesSupport;
+import com.sun.javafx.binding.SelectBinding.AsDouble;
 
 public class PreferenceService extends JdbcServicesSupport{
 	//搜索商品，添加购物车，收藏，购买，点击
@@ -32,12 +34,25 @@ public class PreferenceService extends JdbcServicesSupport{
 		case like:
 			return this.updatePreference(likeWeight);
 		case search:
-			return this.updatePreference(searchWeight);
+			return this.updateRows();
 		default:
 			throw new Exception("不支持的类型");
 		}
 	}
-
+	/**
+	 * 要求在dto中传递rows参数，即搜索列表
+	 * @return
+	 * @throws Exception
+	 */
+	private boolean updateRows()throws Exception {
+		List<Map<String, String>> list=(List<Map<String,String>>)this.get("rows");
+		boolean flag=true;
+		for (Map<String, String> map : list) {
+			flag&=add(searchWeight,map.get("aab204"));
+		}
+		return flag;
+	}
+	
 	private boolean updatePreference(int weight) throws Exception {
 		String type=getType();
 		if (ifExist(type)) {
@@ -71,7 +86,7 @@ public class PreferenceService extends JdbcServicesSupport{
 		return result==null?false:true;
 	}
 	
-	//获取商品类型
+	//获取通过商品id获得商品类型
 	private  String getType() throws Exception {
 		String sql="select aab204 from ab02 where aab203=?";
 		return this.queryForMap(sql, this.get("aab203")).get("aab204");

@@ -6,6 +6,7 @@ import java.util.Map;
 import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.Ab01ServiceImpl;
 import com.ego.services.impl.Ab02ServiceImpl;
+import com.ego.services.impl.AdStatistic;
 
 public class ShopController extends ControllerSupport 
 {
@@ -21,6 +22,13 @@ public class ShopController extends ControllerSupport
 		this.setServices(new Ab02ServiceImpl());
 		List<Map<String,String>> rows=this.getServices().query("findProductsByAab102");
 		this.saveAttribute("productList", rows);
+		//更新广告信息
+		String aad302=(String)this.get("aId");
+		if (aad302!=null&&!aad302.equals("")) {
+			dto.put("aad302", this.get("aId"));
+			this.setServices(new AdStatistic());
+			this.getServices().update("click");
+		}
 		return "shop/home";
 	}
 

@@ -6,6 +6,7 @@ import java.util.Map;
 import com.ego.services.impl.Aa04ServiceImpl;
 import com.ego.services.impl.Aa05ServiceImpl;
 import com.ego.services.impl.Ab02ServiceImpl;
+import com.ego.services.impl.PreferenceService;
 
 public class CreateOrderServlet extends OrderControllerSupport
 {
@@ -40,6 +41,9 @@ public class CreateOrderServlet extends OrderControllerSupport
 		dto.put("price", prince);
 		List<Map<String, String>> coupons=this.getServices().query("getUsableCoupons");
 		saveAttribute("coupons",coupons);
+		//修改用户偏好
+		this.setServices(new PreferenceService());
+		this.getServices().update("purchase");
 		
 		return "WEB-INF/views/createOrder";
 		

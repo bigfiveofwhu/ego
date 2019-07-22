@@ -95,21 +95,21 @@ public class ReportServiceImpl extends JdbcServicesSupport
             //用户查询
             if (type.equals("1") && this.isNotNull(aaa102))
             {
-                sql.append("SELECT DAY(aab305) day,SUM(aab310 * aab314) sum");
+                sql.append("SELECT DAY(aab305) day,SUM(aab316) sum");
                 tmp = " AND aaa102=? GROUP BY DAY(aab305)";
                 paramList.add(aaa102);
             }
             //店铺查询
             else if (type.equals("2") && this.isNotNull(aab102))
             {
-                sql.append("SELECT CONCAT(aab202,'_',a3.aab203) name,DAY(aab305) day,SUM(aab310 * aab314) sum");
+                sql.append("SELECT CONCAT(aab202,'_',a3.aab203) name,DAY(aab305) day,SUM(aab316) sum");
                 tmp = " AND aab102=? GROUP BY a3.aab203,DAY(aab305)";
                 paramList.add(aab102);
             }
             //管理员查询
             else if (type.equals("4"))
             {
-                sql.append("SELECT DAY(aab305) day,SUM(aab310 * aab314) sum");
+                sql.append("SELECT DAY(aab305) day,SUM(aab316) sum");
                 tmp = " GROUP BY DAY(aab305)";
             }
             else
@@ -211,21 +211,21 @@ public class ReportServiceImpl extends JdbcServicesSupport
             //用户查询
             if (type.equals("1") && this.isNotNull(aaa102))
             {
-                sql.append("SELECT Month(aab305) month,SUM(aab310 * aab314) sum");
+                sql.append("SELECT Month(aab305) month,SUM(aab316) sum");
                 tmp = " AND aaa102=? GROUP BY Month(aab305)";
                 paramList.add(aaa102);
             }
             //店铺查询
             else if (type.equals("2") && this.isNotNull(aab102))
             {
-                sql.append("SELECT CONCAT(aab202,'_',a3.aab203) name,Month(aab305) month,SUM(aab310 * aab314) sum");
+                sql.append("SELECT CONCAT(aab202,'_',a3.aab203) name,Month(aab305) month,SUM(aab316) sum");
                 tmp = " AND aab102=? GROUP BY a3.aab203,Month(aab305)";
                 paramList.add(aab102);
             }
             //管理员查询
             else if (type.equals("4"))
             {
-                sql.append("SELECT Month(aab305) month,SUM(aab310 * aab314) sum");
+                sql.append("SELECT Month(aab305) month,SUM(aab316) sum");
                 tmp = " GROUP BY Month(aab305)";
             }
             else
@@ -480,7 +480,7 @@ public class ReportServiceImpl extends JdbcServicesSupport
                 .append("			) a")
                 .append("			JOIN (")
                 .append("			SELECT")
-                .append("				a2.aab203 id,SUM( aab310 ) count,SUM( aab310 * aab314 ) sum ")
+                .append("				a2.aab203 id,SUM( aab310 ) count,SUM( aab316 ) sum ")
                 .append("			  FROM ab02 a2,ab03 a3 ")
                 .append("			 WHERE a2.aab203 = a3.aab203 AND PERIOD_DIFF( date_format( NOW( ), '%Y%m' ), date_format( aab305, '%Y%m' ) ) = 0 AND aab102 = ? ")
                 .append("			 GROUP BY a2.aab203 ")
@@ -502,7 +502,7 @@ public class ReportServiceImpl extends JdbcServicesSupport
         Object aab102 = this.get("aab102");
 
         StringBuilder sql = new StringBuilder()
-                .append("SELECT Month(aab305) month,SUM(aab310 * aab314) sum,SUM(aab310) count")
+                .append("SELECT Month(aab305) month,SUM(aab316) sum,SUM(aab310) count")
                 .append("  FROM ab03 a3,ab02 a2")
                 .append(" WHERE a3.aab203=a2.aab203 AND PERIOD_DIFF(date_format(NOW( ),'%Y'),date_format(aab305,'%Y'))=0");
 
@@ -592,7 +592,7 @@ public class ReportServiceImpl extends JdbcServicesSupport
         Object aab102 = this.get("aab102");
 
         StringBuilder sql = new StringBuilder()
-                .append("SELECT CONCAT(aab202,'_',a3.aab203) name,DAY(aab305) day,SUM(aab310 * aab314) sum,SUM(aab310) count")
+                .append("SELECT CONCAT(aab202,'_',a3.aab203) name,DAY(aab305) day,SUM(aab316) sum,SUM(aab310) count")
                 .append("  FROM ab03 a3,ab02 a2")
                 .append(" WHERE a3.aab203=a2.aab203 AND PERIOD_DIFF(date_format(NOW( ),'%Y%m'),date_format(aab305,'%Y%m'))=0");
 
