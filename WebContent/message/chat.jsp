@@ -159,8 +159,8 @@
                     RightCont.scrollTop = RightCont.scrollHeight;
                     //修改聊天消息为已读
                     var message = JSON.stringify({
-                        "from": from,
-                        "to": to,
+                        "fromId": from,
+                        "toId": to,
                         "type": "01",
                     });
                     ws.send(message);
