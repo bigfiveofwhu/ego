@@ -14,6 +14,7 @@
 		<link type="text/css" href="<%=path%>/css/style.css" rel="stylesheet" />
 		<link type="text/css" href="<%=path%>/css/shop/detail.css" rel="stylesheet" />
 		<link rel="stylesheet" href="/ego/layui/css/layui.css">
+		<link rel="stylesheet" type="text/css" href="<%=path %>/css/message/bbb.css">                     <!-- 消息框css -->
 		<script type="text/javascript" src="<%=path%>/basic/js/jquery-1.7.min.js"></script>
 		<script type="text/javascript" src="<%=path%>/basic/js/quick_links.js"></script>
 		<script type="text/javascript" src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
@@ -92,6 +93,11 @@
 					</div>
 				</section>
 			</div>
+				<div class="shopDetail">
+				<img alt="${product.aab103}" src="<%=path%>/images/02.jpg">
+				<p>${product.aab103}</p>
+				<a onclick="location.href='<%=path%>/shop/home.html?shopId=${product.aab102}'">进入店铺</a>
+				</div>
 				<!--放大镜-->
 				<div class="item-inform">
 					<div class="clearfixLeft" id="clearcontent">

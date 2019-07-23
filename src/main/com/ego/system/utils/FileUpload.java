@@ -20,6 +20,8 @@ import org.apache.commons.fileupload.ProgressListener;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import sun.misc.BASE64Decoder;
+
 
 
 public class FileUpload 
@@ -205,6 +207,34 @@ public class FileUpload
          }
      }		  
   }
+    
+	public static String BASE64CodeToBeImage(String BASE64str,String path,String ext){
+		File fileDir = new File(path);
+		if (!fileDir.exists()) {
+			fileDir.setWritable(true);
+			fileDir.mkdirs();
+		}
+        //ÎÄ¼þÃû³Æ
+
+		String uploadFileName = UUID.randomUUID().toString() + "."+ext;
+		File targetFile = new File(path, uploadFileName);
+		BASE64Decoder decoder = new BASE64Decoder();
+		try(OutputStream out = new FileOutputStream(targetFile)){
+			byte[] b = decoder.decodeBuffer(BASE64str);
+			for (int i = 0; i <b.length ; i++) {
+				if (b[i] <0) {
+					b[i]+=256;
+				}
+			}
+			out.write(b);
+			out.flush();
+			return  uploadFileName;
+		}catch (Exception e){
+			e.printStackTrace();
+			return null;
+		}
+
+    }
 	
 	/**
 	 * 

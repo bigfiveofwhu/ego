@@ -110,7 +110,7 @@ public class Ab02ServiceImpl extends JdbcServicesSupport
 	 */
 	private Map<String, String> findByAab203() throws Exception
 	{
-		String sql="select aab102,aab202,aab203,aab205,aab206,aab207,aab208,aab209 from ab02 where aab203=? order by aab210 desc";
+		String sql="select y.aaa102,y.aab103,x.aab102,x.aab202,x.aab203,x.aab205,x.aab206,x.aab207,x.aab208,x.aab209 from ab02 x,ab01 y where y.aab102=x.aab102 and aab203=? order by aab210 desc";
 		return this.queryForMap(sql,this.get("aab203"));
 	}
 	/**

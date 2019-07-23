@@ -7,13 +7,13 @@ import com.ego.controller.ControllerSupport;
 import com.ego.services.BaseServices;
 import com.ego.services.impl.Ab01ServiceImpl;
 import com.ego.services.impl.Ab02ServiceImpl;
-import com.ego.services.impl.Ab03ServiceImpl;
+import com.ego.services.impl.Ab03ServicesImpl;
 import com.ego.services.impl.AdStatistic;
 
 public class ShopController extends ControllerSupport 
 {
 
-	BaseServices ab03Service=new Ab03ServiceImpl();
+	BaseServices ab03Service=new Ab03ServicesImpl();
 	
 	@Override
 	public void setMapDto(Map<String, Object> dto) {

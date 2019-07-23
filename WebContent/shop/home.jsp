@@ -63,7 +63,7 @@
 				<p style="color:red;">地点:</p>
 				<p>${shop.aab105 }</p>
 			</div>
-			<div>
+			<div style="padding-top: 10px;cursor:pointer;">
 			 <a><span onclick="addShopCollection();" class="am-icon-heart">收藏本店</span></a>
 			 </div>
 		</div>
@@ -97,13 +97,19 @@
 		</c:forEach>
 		--%>
 		<div class="products1 selected" style="width:100%;">
-		<c:forEach items="${productList }" var="product">
+		<c:forEach items="${productList }" var="product" varStatus="vs">
 			<div class="product">
 				<a href="<%=path%>/shop/detail.html?productId=${product.aab203}">
-				<img alt="${product.aab202 }" src="${product.aab208 }"/>
+				<img id="pro102_${vs.count}" alt="${product.aab202 }" src="${product.aab208 }"/>
 				<span>${product.aab202 }</span>
 				</a>
 			</div>
+			<script type="text/javascript">
+				$(function(){
+					var pro102_${vs.count}='${product.aab208 }';
+					$("#pro102_${vs.count}").attr("src","/ego"+pro102_${vs.count}.split(";")[0]);
+				});
+			</script>
 		</c:forEach>
 		</div>
 		<div class="products2" style="width:100%;display:none;">
@@ -141,7 +147,7 @@
 							var product=products[i];
 							html+="<div class='product'>"+
 								  "<a href='/ego/shop/detail.html?productId="+product.aab203+"'>"+
-								  "<img alt='"+product.aab202+"' src='"+product.aab208+"'/>"+
+								  "<img alt='"+product.aab202+"' src='/ego"+product.aab208.split(";")[0]+"'/>"+
 								  "<span>"+product.aab202+"</span></a></div>"
 						}
 						$(".shopNav>.selected").html(html);

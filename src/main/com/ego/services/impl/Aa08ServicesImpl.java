@@ -42,6 +42,10 @@ public class Aa08ServicesImpl extends JdbcServicesSupport
 		{
 			return this.refundDetail();
 		}
+		else if(qtype.equals("refundDetailFromOrder"))
+		{
+			return this.refundDetailFromOrder();
+		}
 		else
 		{
 			throw new Exception("aa08:未知的单一实例查询类型: "+qtype);
@@ -74,7 +78,7 @@ public class Aa08ServicesImpl extends JdbcServicesSupport
 	//************************************************
 	
 	/**
-	 * 单一实例查询退款详情
+	 * 单一实例查询退款详情(根据售后id)
 	 * @return
 	 * @throws Exception
 	 */
@@ -93,6 +97,28 @@ public class Aa08ServicesImpl extends JdbcServicesSupport
 		System.out.println(sql.toString()+"订单号:"+this.get("aaa802"));
 		
 		return this.queryForMap(sql.toString(), this.get("aaa802"));
+	}
+	
+	/**
+	 * 单一实例查询退款详情(根据订单号)
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String,String>refundDetailFromOrder() throws Exception
+	{
+		StringBuilder sql =null;
+		sql = new StringBuilder()
+				.append("select c.aab202,b.aab302,a.aaa802,a.aaa807,a.aaa808,")
+				.append("       a.aaa809,b.aab310,b.aab314,a.aaa803,a.aaa804,")
+				.append("       a.aaa806,a.aaa805,c.aab203")
+    			.append("  from aa08 a, ab03 b, ab02 c")
+    			.append(" where a.aab302=b.aab302 and a.aab203=c.aab203")
+    			.append(" and a.aab302=?")
+    			;
+		System.out.println("***查询单一售后详情:显示findById()的SQL查询语句****");
+		System.out.println(sql.toString()+"订单号:"+this.get("aab302"));
+		
+		return this.queryForMap(sql.toString(), this.get("aab302"));
 	}
 	
 	/**

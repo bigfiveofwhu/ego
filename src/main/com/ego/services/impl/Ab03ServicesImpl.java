@@ -78,6 +78,14 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		{
 			return this.queryForRefund();
 		}
+		else if(qtype.equalsIgnoreCase("orderSumLastMouth"))
+		{
+			return orderSumLastMouth();
+		}
+		else if(qtype.equalsIgnoreCase("orderSum"))
+		{
+			return orderSum();
+		}
 		else
 		{
 			throw new Exception("ab03:未知的单一实例查询类型: "+qtype);
@@ -138,6 +146,34 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
   		System.out.println(paramList);
   		
   		return this.queryForList(sql.toString(),paramList.toArray());
+	}
+	
+	/**
+	 * @author hug
+	 *  通过商品id查找上个月的销量(卖的商品的数量), 01 --代付款,03--已取消,08--已退款,09--已申述等状态除外
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String,String> orderSumLastMouth() throws Exception
+	{
+		StringBuilder sql=new StringBuilder()
+				.append("select sum(x.aab310) as lastmouthsum from ab03 x")
+				.append(" where PERIOD_DIFF(date_format(NOW( ),'%Y%m'),date_format(x.aab306,'%Y%m'))=1")   //1代表上个月的销量
+				.append(" and x.aab303!='01' and x.aab303!='03' ")
+				.append("and x.aab303!='08' and x.aab303!='09' and x.aab203=?")
+				;
+		return this.queryForMap(sql.toString(), this.get("aab203"));
+	}
+	/**
+	 * 累积销量 
+	 * hug
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String,String> orderSum() throws Exception
+	{
+		String sql="select sum(x.aab310) as sum from ab03 x where x.aab303!='01' and x.aab303!='03' and x.aab303!='08' and x.aab303!='09' and x.aab203=?";
+		return this.queryForMap(sql, this.get("aab203"));
 	}
 	
 	/**
