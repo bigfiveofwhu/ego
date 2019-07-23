@@ -93,6 +93,11 @@
 					</div>
 				</section>
 			</div>
+				<div class="shopDetail" onclick="location.href='<%=path%>/shop/home.html?shopId=${product.aab102}'">
+				<img alt="${product.aab103}" src="<%=path%>/images/02.jpg">
+				<p>${product.aab103}</p>
+				<a>进入店铺</a>
+				</div>
 				<!--放大镜-->
 				<div class="item-inform">
 					<div class="clearfixLeft" id="clearcontent">

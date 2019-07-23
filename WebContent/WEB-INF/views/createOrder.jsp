@@ -18,6 +18,8 @@
 			var man=$(".defaultAddr").children(".new-p-re").children(".new-txt").text();
 			var phone=$(".defaultAddr").children(".new-p-re").children(".new-txt-rd2").text();
 			$("#xx").text(province+street+man+phone);
+			$("#yy").text($("#user_message").val());
+			$("#zz").text($("#pay-total").text());
 			$('input[name="aab311"]').val(province+street);
 			$('input[name="aab317"]').val(man);
 			$('input[name="aab318"]').val(phone);
@@ -31,10 +33,17 @@
 			var vform = document.getElementById("myform");
 			$('input[name="aab311"]').val(province+street);
 			$('input[name="aab312"]').val($("#user_message").val());
+			$('input[name="aab316"]').val($("#pay-total").text());
 			$('input[name="aab317"]').val(man);
 			$('input[name="aab318"]').val(phone);
 			vform.action="<%=path%>/addOrder.html";
-			vform.submit();
+			if(province.lenth==0){
+				alert("请填写地址！");
+			}
+			else{
+				vform.submit();
+			}
+			
 		}
 		</script>
 
@@ -43,6 +52,7 @@
 	<body>
 		<p id="xx"></p>
 		<p id="yy"></p>
+		<p id="zz"></p>
 
 		<p>${product.aab203 }</p>
 		<p>${product.count }</p>
@@ -58,9 +68,9 @@
 			<input name="aab310" type="hidden" value="${product.count }"/>	
 			<input name="aab311" type="hidden" value=""/>
 			<input name="aab312" type="hidden"/>
-			<input name="aab313" type="hidden"/>
+			<input name="aab313" type="hidden" value="${product.fee }"/>
 			<input name="aab314" type="hidden" value="${product.aab205 }"/>
-			<input name="aab316" type="hidden"/>
+			<input name="aab316" type="hidden" value="${total }"/>
 			<input name="aab317" type="hidden" value=""/>
 			<input name="aab318" type="hidden" value=""/>
 		</form>
@@ -223,7 +233,7 @@
 									<div class="order-user-info">
 										<div id="holyshit257" class="memo">
 											<label>买家留言：</label>
-											<input type="text" 
+											<input type="text" id="user_message"
 												   title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" 
 												   placeholder="选填,建议填写和卖家达成一致的说明" 
 												   class="memo-input J_MakePoint c2c-text-default memo-close">

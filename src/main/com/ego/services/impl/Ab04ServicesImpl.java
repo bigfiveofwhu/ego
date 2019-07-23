@@ -118,9 +118,10 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 	private List<Map<String, String>> queryPoint()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
-				.append("select a.aaa1003,a.aaa1004,a.aaa1005")
-				.append("  from aa10 a")
-				.append("  where a.aaa102=? ")
+				.append("select a.aaa1003,b.fvalue,a.aaa1005")
+				.append("  from aa10 a,syscode b")
+				.append("  where b.fname='aaa1004' and b.fcode=a.aaa1004 ")
+				.append("  and a.aaa102=? ")
 				.append("  order by a.aaa1005 desc")
 				;
 		

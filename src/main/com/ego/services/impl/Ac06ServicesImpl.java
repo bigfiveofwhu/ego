@@ -29,6 +29,10 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
 		{
 			return this.prepay();
 		}
+		else if(utype.equalsIgnoreCase("del"))
+		{
+			return this.delNeed();
+		}
 		else
 		{
 			throw new Exception("在类[ Ac04ServicesImpl ]中进行了未定义的动作调用,"
@@ -79,6 +83,10 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
 		if(qtype.equalsIgnoreCase("queryRequireByAac102"))
 		{
 			return queryRequireByAac102();
+		}
+		if(qtype.equalsIgnoreCase("serviceType"))
+		{
+			return queryServiceType();
 		}
 		else
 		{
@@ -192,6 +200,24 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
 		this.executeUpdate(sql2.toString(), args2);
 	}
 	
+	/**
+	 * 删除订单(实际上是修改可见状态)
+	 * @throws Exception
+	 */
+	private boolean delNeed()throws Exception
+	{
+		
+		StringBuilder sql = new StringBuilder()
+				.append("update ac06 a set")
+				.append("  a.aac610='02'")
+				.append("  where a.aac602=?")
+				;
+		
+
+		return this.executeUpdate(sql.toString(), this.getIdList("aac602"));
+
+	}
+	
 	
 	/**
 	 * 查询所有需求
@@ -203,14 +229,35 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
 		//定义SQL主体
 		StringBuilder sql = new StringBuilder()
 				.append("select x.aac602,x.aac603,x.aac604,x.aac608,x.aac609,")
-				.append("		x.aac605")
-				.append("  from ac06 x ")
-				.append("  where x.aaa102=?")
+				.append("		x.aac605,y.fvalue type,z.fvalue method")
+				.append("  from ac06 x,syscode y, syscode z ")
+				.append("  where x.aac603=y.fcode and x.aac604=z.fcode ")
+				.append("  and   z.fname='aac205' and y.fname='aac106' ")
+				.append("  and   x.aac610='01' and x.aaa102=?")
 				;
 		
 		
   		
   		return this.queryForList(sql.toString(),this.get("aaa102"));
+	}
+	
+	/**
+	 * 查询所有的服务种类
+	 * @return
+	 * @throws Exception
+	 */
+	private List<Map<String,String>> queryServiceType()throws Exception
+	{
+		//定义SQL主体
+		StringBuilder sql = new StringBuilder()
+				.append("select x.fcode,x.fvalue")
+				.append("  from syscode x ")
+				.append("  where x.fname='aac106' ")
+				;
+		
+		
+  		
+  		return this.queryForList(sql.toString());
 	}
 	
 	/**

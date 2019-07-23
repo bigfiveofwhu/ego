@@ -48,9 +48,51 @@
 			</div>
 		</div>
 		<div class="clear"></div>
-		<div class="loopShow">
+		<div class="loopShow" id="container"></div>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=DD279b2a90afdf0ae7a3796787a0742e"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+		<script type="text/javascript">
+			var myCity = new BMap.LocalCity();
+			var map = new BMap.Map("container");    // 创建Map实例,可关闭底图可点功能,{enableMapClick:false}
+			var address = null;
 			
-		</div>
+			myCity.get(function(result){
+			    // 初始化地图,设置中心点坐标和地图级别 
+			    map.centerAndZoom(new BMap.Point(${position.center}), 15);
+			    console.log(result.level);
+				//lng:地理精度,lat:地理纬度,level:展示当前城市的最佳地图级别
+			    //添加地图类型控件
+			    map.addControl(new BMap.MapTypeControl());
+			    //开启鼠标滚轮缩放
+			    map.enableScrollWheelZoom(true);
+				address = result.name;
+				//alert("当前所在城市:"+result.name);
+			}); 
+		
+		   function findPlace(){
+			var myGeo = new BMap.Geocoder();
+				// 将地址解析结果显示在地图上,并调整地图视野
+			myGeo.getPoint(document.getElementById("address").value, function(point){
+				if (point) {
+					 map.centerAndZoom(point, 18);
+					 map.enableScrollWheelZoom(true);
+					map.addOverlay(new BMap.Marker(point));
+				}else{
+					alert("你选择的商店不在该市范围内!");
+				}
+			}, address);
+		  }
+		   var MAX = 10;
+		   var markers = [];
+		   var pt = null;
+		   var i = 0;
+	       pt = new BMap.Point(${position.center});
+	       markers.push(new BMap.Marker(pt));
+		   
+		   //最简单的用法，生成一个marker数组，然后调用markerClusterer类即可。
+		   var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
+		</script>  
 		<div class="clear"></div>
 		<div class="sort">
 			<div class="element selected" index="1">

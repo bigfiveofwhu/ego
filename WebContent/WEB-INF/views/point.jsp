@@ -57,7 +57,7 @@
 										<c:when test="${rows!=null }">
 										<c:forEach items="${rows }" var="ins" varStatus="vs">
 											<tr>
-												<td class="pointType">变化类型: ${ins.aaa1004 }</td>
+												<td class="pointType">${ins.fvalue }</td>
 												<td class="pointNum">${ins.aaa1003 }</td>
 												<td class="pointTime">${ins.aaa1005 }</td>
 											</tr>

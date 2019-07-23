@@ -59,7 +59,7 @@
 											<td class="td-inner">服务商</td>
 										</div>
 										<div class="th th-price">
-											<td class="td-inner">服务类型</td>
+											<td class="td-inner">交易情况</td>
 										</div>
 										<div class="th th-change">
 											<td class="td-inner">交易操作</td>
@@ -90,7 +90,7 @@
 																	<div class="item-basic-info">
 																		<a href="#">
 																			<p>${ins.aac103 }</p>
-																			<p class="info-little">服务类型:${ins.aac410 }</p>
+																			<p class="info-little">服务类型:${ins.fvalue }</p>
 																		</a>
 																	</div>
 																</div>
@@ -120,7 +120,7 @@
 															<c:when test="${ins.aac408 eq '03' }">
 																<div class="item-status"><br/>
 																	<p class="Mystatus">已评价</p>
-																	<p style="color:orange;">查看评价>>></p><br/>
+																	
 																</div>
 															</c:when>
 														</c:choose>
