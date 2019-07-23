@@ -25,6 +25,12 @@
 			vform.action="<%=path%>/showNeedTarget.html?aac602="+vaac602;
 			vform.submit();
 		}
+		function del(vaac602)
+		{
+			var vform = document.getElementById("myform");
+			vform.action="<%=path%>/delNeed.html?aac602="+vaac602;
+			vform.submit();
+		}
 		</script>
 
 	</head>
@@ -61,7 +67,7 @@
 								<div class="am-tab-panel am-fade am-in am-active" id="tab1">
 									<div class="order-top">
 										<div class="th th-item">
-											<td class="td-inner">需求类型</td>
+											<td class="td-inner">需求信息</td>
 										</div>
 										<div class="th th-price">
 											<td class="td-inner">服务方式</td>
@@ -87,8 +93,9 @@
 																	<div class="item-info">
 																		<div class="item-basic-info">
 																			<a href="#">
-																				<p>${ins.aac603 }</p>
+																				<p><span style="color:orange;">服务类型:<br/></span>${ins.type }</p>
 																				<p class="info-little">
+																				<span style="color:orange;">具体服务描述:<br/></span>
 																				${ins.aac605 }
 																				</p>
 																			</a>
@@ -97,7 +104,7 @@
 																</li>
 																<li class="td td-price">
 																	<div class="item-price">
-																		${ins.aac604 }
+																		${ins.method	 }
 																	</div>
 																</li>
 																
@@ -124,13 +131,16 @@
 																<li class="td td-change">
 																<c:choose>
 																	<c:when test="${(ins.aac609 eq '01')||(ins.aac609 eq '03') }">
-																		<div class="am-btn am-btn-danger anniu">
-																			详情
+																		<div class="am-btn am-btn-danger anniu" href="javascript:;" onclick="del(${ins.aac602})">
+																			删除需求
 																		</div>
 																	</c:when>
 																	<c:when test="${ins.aac609 eq '02' }">
 																		<div class="am-btn am-btn-danger anniu" href="javascript:;" onclick="selectTarget(${ins.aac602})">
 																			去看报价
+																		</div>
+																		<div class="am-btn am-btn-danger anniu" href="javascript:;" onclick="del(${ins.aac602})">
+																			删除需求
 																		</div>
 																	</c:when>
 																</c:choose>

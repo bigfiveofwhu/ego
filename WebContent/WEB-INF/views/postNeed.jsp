@@ -122,8 +122,20 @@
 											<label for="user-address" class="am-form-label">服务类型</label>
 											<div class="am-form-content address">
 												<select id="service-type" data-am-selected>
-													<option value="01">家政服务</option>
-													<option value="02" selected>维修服务</option>
+													<c:choose>
+													<c:when test="${rows!=null }">
+													<c:forEach items="${rows }" var="ins" varStatus="vs">
+														<c:choose>
+														<c:when test="${ins.fcode eq '01' }">
+														<option value="${ins.fcode }"  selected>${ins.fvalue }</option>
+														</c:when>
+														<c:otherwise>
+														<option value="${ins.fcode }" >${ins.fvalue }</option>
+														</c:otherwise>
+														</c:choose>
+													</c:forEach>
+													</c:when>
+													</c:choose>
 												</select>
 											</div>
 										</div>
@@ -132,8 +144,9 @@
 											<label for="user-address" class="am-form-label">服务方式</label>
 											<div class="am-form-content address">
 												<select id="service-method" data-am-selected>
-													<option value="01">上门服务</option>
-													<option value="02" selected>自行前往</option>
+													<option value="01" selected>上门服务</option>
+													<option value="02" >线上服务</option>
+													<option value="03" >门店服务</option>
 												</select>
 											</div>
 										</div>

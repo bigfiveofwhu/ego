@@ -67,10 +67,10 @@
 				vform.action="<%=path%>/goRefund.html?aab302="+vaab302;
 				vform.submit();
 			}
-			function goRefundDetail(vaaa802)
+			function goRefundDetail(vaab302)
 			{
 				var vform = document.getElementById("myform");
-				vform.action="<%=path%>/goRefundDetail.html?aaa802="+vaaa802;
+				vform.action="<%=path%>/goRefundDetailFromOrder.html?aab302="+vaab302;
 				vform.submit();
 			}
 		</script>
@@ -574,14 +574,14 @@
 																<c:when test="${ins.aab303 eq '08'}">
 																	<li class="td td-operation">
 																	<div class="item-operation">
-																		<a href="javascript:;" onclick="goRefundDetail(${ins.aaa802})">售后详情</a>
+																		<a href="javascript:;" onclick="goRefundDetail(${ins.aab302})">售后详情</a>
 																	</div>
 																	</li>
 																</c:when>
 																<c:when test="${ins.aab303 eq '09'}">
 																	<li class="td td-operation">
 																	<div class="item-operation">
-																		<a href="javascript:;" onclick="goRefundDetail(${ins.aaa802})">售后详情</a>
+																		<a href="javascript:;" onclick="goRefundDetail(${ins.aab302})">售后详情</a>
 																	</div>
 																	</li>
 																</c:when>

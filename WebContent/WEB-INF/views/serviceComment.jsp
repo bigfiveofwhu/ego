@@ -91,7 +91,7 @@
 															${ins.aac103 }
 															</p>
 														</a>
-														<p class="item-basic-info" style="color:orange;">服务类型:${ins.aac410 }</p>
+														<p class="item-basic-info" style="color:orange;">服务类型:${ins.type }</p>
 														<p>
 														<br/><span style="color:orange;">服务内容:</span><br/>
 														${ins.aac411 }

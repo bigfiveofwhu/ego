@@ -161,10 +161,10 @@ public class Ac05ServicesImpl extends JdbcServicesSupport
 		//定义SQL主体
 		StringBuilder sql = new StringBuilder()
 				.append("select x.aac402,x.aac502,x.aac503,x.aac505,x.aac507,")
-				.append("       y.aac410,y.aac411,z.aac103")
-				.append("  from ac05 x, ac04 y, ac01 z")
-				.append("  where x.aac402=y.aac402 ")
-				.append("  and  y.aac102=z.aac102 and x.aaa102=? ")
+				.append("       y.aac410,y.aac411,z.aac103,s.fvalue type")
+				.append("  from ac05 x, ac04 y, ac01 z,syscode s")
+				.append("  where x.aac402=y.aac402 and  y.aac102=z.aac102 and s.fcode= y.aac410 ")
+				.append("  and s.fname='aac106' and x.aaa102=? ")
 				;
 		
 
