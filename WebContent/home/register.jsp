@@ -56,7 +56,7 @@
 	                                   <div class="user_element" style="display: flex;">
 										    <label for="code"><i class="am-icon-rocket"></i></label>
 										    <input type="text" class="input_block" name="verifyCode" id="verifyCode" onblur="checkVerify()" 
-										    	   maxlength="6" placeholder="请输入验证码">
+										    	   maxlength="6" placeholder="请输入验证码" required="required">
 										    <div style="width:40px;height:30px;font-size:12px;padding-top:11px">
 										    	<span class="successIcon"><i class="am-icon-check-circle-o" style="color:green"></i>成功</span>
 										    	<span class="failIcon"><i class="am-icon-close" style="color:red"></i>失败</span>
@@ -82,17 +82,17 @@
 	                                   </div>
 	                                   <div class="user_element">
 										    <label for="gender"><i class="am-icon-female"></i></label>
-										    <span class="input_group">
+										    <span class="input_group" required="required">
 											    <input type="radio" name="gender" class="gender" value="1">男
 											    <input type="radio" name="gender" class="gender" value="2">女
 											    <input type="radio" name="gender" class="gender" value="3" checked="checked">保密
 										    </span>
 	                                   </div>
-	                                   <div class="user_element">
+	                                   <div class="user_element" required="required">
 										    <label for="birthday"><i class="am-icon-birthday-cake"></i></label>
 										    <input type="date" class="input_block" name="birthday" id="birthday" placeholder="确认密码" required="required">
 	                                   </div>
-	                                    <div class="user_element">
+	                                    <div class="user_element" required="required">
 										    <label for="addr"><i class="am-icon-area-chart"></i></label>
 										    <span class="input_block">
 											    <select name="addr_1" id="addr_1" required="required"></select>
@@ -174,7 +174,7 @@
 				$("#prop").html("亲，输入手机号码格式不正确");
 	   	    }else
 	   	    {
-	   			 $("#prop").css("visibility","hidden");	
+	   			 $("#prop").css("visibility","hidden");
 	    	}
 		}
 		function checkVerify()
@@ -257,6 +257,10 @@
 			
 			<%-- 验证码的异步发送--%>
 			$(".sendVerifyCode").click(function(){
+				if($("#email").val()===''){
+						alert("邮箱不能为空");
+						return false;
+				}
 				$(".sendVerifyCode").attr("disabled",true);
 				$(".sendVerifyCode").text("正在发送...");
 				console.log("发送验证码...");
