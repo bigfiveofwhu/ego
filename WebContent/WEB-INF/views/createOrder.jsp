@@ -3,7 +3,6 @@
 
 
 <html>
-
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0 ,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<title>结算页面</title>
@@ -81,13 +80,13 @@
 								<c:forEach items="${addrlist }" var="ins" varStatus="vs">
 							 	<c:choose>
 								   <c:when test="${ins.aaa407 > 0 }">
-								   <li id="myAddress" class="user-addresslist defaultAddr">
+								   <li id="myAddressinOrder" value="${ins.aaa401 }" class="user-addresslist defaultAddr">
 								   </c:when>
 								   <c:otherwise>
-								   <li id="myAddress" class="user-addresslist">
+								   <li id="myAddressinOrder" value="${ins.aaa401 }" class="user-addresslist">
 								   </c:otherwise>
 							    </c:choose>
-								<span class="new-option-r" value="${ins.aaa401 }"><i class="am-icon-check-circle"></i>默认地址</span>
+								<span class="new-option-r"  value="${ins.aaa401 }"><i class="am-icon-check-circle"></i>默认地址</span>
 								<p class="new-tit new-p-re">
 									<span class="new-txt">${ins.aaa405 }</span>
 									<span class="new-txt-rd2">${ins.aaa406}</span>
@@ -293,6 +292,7 @@
 								
 									<div id="holyshit269" class="submitOrder">
 										<div class="go-btn-wrap">
+
 											<a id="J_Go" href="javascript:;" class="btn-go" tabindex="0" onclick="sendOrder()">提交订单</a>
 										</div>
 									</div>
@@ -336,11 +336,11 @@
 						<div class="am-form-group">
 							<label for="user-phone" class="am-form-label">所在地</label>
 							<div class="am-form-content address">
-								<select name="addr_1" id="addr_1" >
+								<select name="myaddr_1" id="addr_1" >
 								</select>
-								<select name="addr_2" id="addr_2" class="childs" >
+								<select name="myaddr_2" id="addr_2" class="childs" >
 								</select>
-								<select name="addr_3" id="addr_3" class="childs" >
+								<select name="myaddr_3" id="addr_3" class="childs" >
 								</select>
 							</div>
 						</div>
@@ -372,6 +372,50 @@
 			<div class="clear"></div>
 	</body>
 <script type="text/javascript">
+$(document).ready(function() {							
+	$(".new-option-r").click(function() {
+		$(this).parent('.user-addresslist').addClass("defaultAddr").siblings().removeClass("defaultAddr");
+		$.ajax({
+			url:"<%=basePath%>/setDefAddr.ajax",
+			type:"post",
+			dataType:"json",
+			timeout:20000,
+			data:{
+				"aaa401":$(this).attr("value")
+			},
+			success:function(res,status){
+              console.log("修改默认地址成功");
+			},
+			error:function(res,status){
+				console.log("修改默认地址失败");
+			}
+		});
+	});
+	
+	$("#myAddressinOrder").click(function(){
+		$.ajax({
+			url:"<%=basePath%>/setDefAddr.ajax",
+			type:"post",
+			dataType:"json",
+			timeout:20000,
+			data:{
+				"aaa401":$(this).attr("value")
+			},
+			success:function(res,status){
+              console.log("修改默认地址成功");
+			},
+			error:function(res,status){
+				console.log("修改默认地址失败");
+			}
+		})
+	});
+	var $ww = $(window).width();
+	if($ww>640) {
+		$("#doc-modal-1").removeClass("am-modal am-modal-no-btn")
+	}
+	
+});
+
 function addAddr()
 {
 	$.ajax({

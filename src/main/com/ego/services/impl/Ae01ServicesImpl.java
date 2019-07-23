@@ -296,7 +296,6 @@ public class Ae01ServicesImpl extends JdbcServicesSupport {
                 .append(" WHERE a1.aae101=a3.aae101")
                 ;
 
-        List<Object> paramList=new ArrayList<>();
         //…Ã∆Ã
         if(type.equals("2")&&this.isNotNull(aab102))
         {

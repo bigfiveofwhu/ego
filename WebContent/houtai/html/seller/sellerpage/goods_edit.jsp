@@ -16,6 +16,131 @@
 		<!-- 富文本编辑器 -->
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/kindeditor/themes/default/default.css" />
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/kindeditor/themes/default/default.css" />
+		  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .wrap {
+      width: 410px;
+      margin: 100px auto 0;
+    }
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid #c0c0c0;
+    }
+    th,
+    td {
+      border: 1px solid #d0d0d0;
+      color: #404060;
+      padding: 10px;
+    }
+    th {
+      background-color: #09c;
+      font: bold 16px "微软雅黑";
+      color: #fff;
+    }
+    td {
+      font: 14px "微软雅黑";
+    }
+    td a.get {
+      text-decoration: none;
+    }
+    a.del:hover {
+      text-decoration: underline;
+    }
+    tbody tr {
+      background-color: #f0f0f0;
+    }
+    tbody tr:hover {
+      cursor: pointer;
+      background-color: #fafafa;
+    }
+    .btnAdd {
+      width: 110px;
+      height: 30px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .form-item {
+      height: 100%;
+      position: relative;
+      padding-left: 100px;
+      padding-right: 20px;
+      margin-bottom: 34px;
+      line-height: 36px;
+    }
+    .form-item > .lb {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 100px;
+      text-align: right;
+    }
+    .form-item > .txt {
+      width: 300px;
+      height: 32px;
+    }
+    .mask {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      opacity: 0.15;
+      display: none;
+    }
+    .form-add {
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      margin-left: -197px;
+      padding-bottom: 20px;
+      background: #fff;
+      display: none;
+    }
+    .form-add-title {
+      background-color: #f7f7f7;
+      border-width: 1px 1px 0 1px;
+      border-bottom: 0;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    .form-add-title span {
+      width: auto;
+      height: 30px;
+      font-size: 18px;
+      font-family: 宋体;
+      font-weight: bold;
+      color: rgb(102, 102, 102);
+      text-indent: 12px;
+      padding: 8px 0px 10px;
+      margin-right: 10px;
+      display: block;
+      overflow: hidden;
+      text-align: left;
+    }
+    .form-add-title div {
+      width: 16px;
+      height: 30px;
+      position: absolute;
+      right: 10px;
+      top: 6px;
+      font-size: 30px;
+      line-height: 16px;
+      cursor: pointer;
+    }
+    .form-submit {
+      text-align: center;
+    }
+    .form-submit input {
+      width: 170px;
+      height: 32px;
+    }
+  </style>
 	</head>
 
 	<body class="hold-transition skin-red sidebar-mini" ng-app="shopping" ng-controller="GoodsController" ng-init="selectItemCat1List();findOne()">
@@ -33,12 +158,17 @@
 						<li class="active">
 							<a href="#home" data-toggle="tab">商品基本信息</a>
 						</li>
+						
 						<li>
 							<a href="#pic_upload" data-toggle="tab">商品图片</a>
 						</li>
 						<li>
+							<a href="#pro_para" data-toggle="tab">产品参数</a>
+						</li>
+						<li>
 							<a href="#spec" data-toggle="tab">规格</a>
 						</li>
+						
 					</ul>
 					<!--tab头/-->
 
@@ -82,11 +212,6 @@
 									</div>
 								</div>
 
-								<div class="col-md-2 title editer">商品介绍</div>
-								<div class="col-md-10 data editer">
-									<textarea name="content" name="aab207" style="width:800px;height:400px;visibility:hidden;"></textarea>
-								</div>
-
 
 								<div class="col-md-2 title">售后服务</div>
 								<div class="col-md-10 data">
@@ -105,10 +230,7 @@
 						<div class="tab-pane" id="pic_upload">
 							<div class="row data-type">
 								<!-- 颜色图片 -->
-								<div class="btn-group">
-									<button type="button" class="btn btn-default" title="新建" data-target="#uploadModal" data-toggle="modal" ng-click="image_entity={}"><i class="fa fa-file-o"></i> 新建</button>
 
-								</div>
 
 								<table class="table table-bordered table-striped table-hover dataTable">
 									<thead>
@@ -128,7 +250,44 @@
 							</div>
 						</div>
 
-						
+         <!-- 产品参数 -->
+                  <div class="tab-pane" id="pro_para">
+									<div class="wrap">
+										  <div>
+										    <input type="button" value="添加数据" id="j_btnAddData" class="btnAdd"/>
+										  </div>
+										  <table>
+										    <thead>
+										    <tr>
+										      <!-- <th><input type="checkbox" id="j_cbAll" /></th> -->
+										      <th>产品参数</th>
+										      <th>具体描述</th>
+										    </tr>
+										    </thead>
+										    <tbody id="j_tb">
+										    
+										    </tbody>
+										  </table>
+										</div>
+										<div id="j_mask" class="mask"></div>
+										<div id="j_formAdd" class="form-add">
+										  <div class="form-add-title">
+										    <span>添加参数</span>
+										    <div id="j_hideFormAdd">x</div>
+										  </div>
+										  <div class="form-item">
+										    <label class="lb" for="j_txtLesson">产品参数：</label>
+										    <input class="txt" type="text" id="j_txtLesson" ">
+										  </div>
+										  <div class="form-item">
+										    <label class="lb" for="j_txtBelSch">具体描述：</label>
+										    <input class="txt" type="text" id="j_txtBelSch" >
+										  </div>
+										  <div class="form-submit">
+										    <input type="button" value="添加" id="j_btnAdd">
+										  </div>
+										</div>
+                  </div>
 
 						<!--规格-->
 						<div class="tab-pane" id="spec">
@@ -200,7 +359,6 @@
 
 	</body>
 
-
 	<script src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
 	<script src="<%=path%>/houtai/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<script charset="utf-8" src="<%=path%>/houtai/plugins/kindeditor/kindeditor.js"></script>
@@ -217,6 +375,39 @@
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/ItemCatService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/common/common.js"></script>
+	
+<script>
+  $(document).ready(function () {
+    $("#j_btnAddData").click(function () {
+      $("#j_mask").show();
+      $("#j_formAdd").show();
+      $("#j_txtLesson").val("");
+      $("#j_txtBelSch").val("");
+    });
+    $("#j_hideFormAdd").click(function () {
+      $("#j_mask").hide();
+      $("#j_formAdd").hide();
+    });
+    $("#j_btnAdd").click(function () {
+      var txtLesson = $("#j_txtLesson").val();
+      var txtBelSch = $("#j_txtBelSch").val();
+      if (txtLesson == "" || txtBelSch == "") {
+        alert("产品参数或具体描述不能为空");
+        return;
+      }
+      var str = '<tr>'
+          + '<td>' + txtLesson + '</td>'
+          + '<td>' + txtBelSch + '</td>'
+          + '</tr>';
+      $("#j_tb").append(str);
+      $("#j_mask").hide();
+      $("#j_formAdd").hide();
+    });
+    $("#j_tb").on("click",".get",function(){
+      $(this).parent().parent().remove();
+    });
+  });
+</script>
 	<script>
 	 var lv1HTML = '<div class="control-group lv1">' +
      '<label class="control-label">规格名称</label>' +

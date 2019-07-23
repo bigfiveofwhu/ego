@@ -37,6 +37,21 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
     }
 	
 	/**
+	 * 商品单例查询
+	 */
+	@Override
+	public Map<String, String> findById() throws Exception {
+		StringBuilder sql=new StringBuilder()
+  		  		.append("	select x.aab202,x.aab203,x.aab205,x.aab206,a.fvalue cnaab212,b.fvalue cnaab204,c.fvalue cnaab211	")
+  		  		.append("  from syscode a, ab02 x ,syscode b ,syscode c	")
+  		 	    .append("  where x.aab212=a.fcode and a.fname='aab212' 	")
+  		 	    .append("  and  x.aab204=b.fcode and b.fname='aab204' ")
+  		 	    .append( "  and x.aab211=c.fcode and c.fname='aab211' ")
+  		 	    .append("  and x.aab203 = ? ")
+  				;
+		return this.queryForMap(sql.toString(), this.get("aab203"));
+	}
+	/**
 	 * 商品页面查询(某个商铺)
 	 */
 	public List<Map<String,String>> query() throws Exception
@@ -50,9 +65,11 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
   		
   		//定义SQL主体
   		StringBuilder sql=new StringBuilder()
-  		  		.append("	select x.aab202,x.aab203,x.aab205,x.aab206,a.fvalue cnaab212,x.aab204	")
-  		  		.append("  from syscode a, ab02 x	")
+  		  		.append("	select x.aab202,x.aab203,x.aab205,x.aab206,a.fvalue cnaab212,b.fvalue cnaab204	")
+  		  		.append("  from syscode a, ab02 x ,syscode b	")
   		 	    .append("  where x.aab212=a.fcode and a.fname='aab212' 	")
+  		 	    .append("  and  x.aab204=b.fcode and b.fname='aab204' ")
+  		 	    .append( "  and x.aab212 <> '05' ")
   				;
   		
   		//参数列表
@@ -73,7 +90,7 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
   			sql.append(" and x.aab102 = ?");
   			paramList.add(aab102);
   		}
-  		//sql.append(" order by x.aab101");
+  		sql.append(" order by x.aab203");
   		return this.queryForList(sql.toString(), paramList.toArray());
 	}
 	
@@ -84,8 +101,12 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 	public boolean deleteById() throws Exception
 	{
 		Object id = this.get("aab203");
-		String sql = "delete from ab02 where aab203=? ";
-		return this.executeUpdate(sql,id);
+		System.out.println("id:"+id);
+		String sql = "update ab02 set aab212 = '05' where aab203 = ?";
+		
+	
+			return this.executeUpdate(sql, id);
+
 	}
 	
 	/**
@@ -110,7 +131,7 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 	 */
 	public boolean addProduct() throws Exception
 	{
-		Object aab102 = 1;//店铺id session获取
+		Object aab102 = this.get("aab102");//店铺id session获取
 		//获取当前商品编号
     	int aab203=Tools.getIncrementId("ab02");
     
@@ -125,17 +146,17 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
         aab204 = this.getSortCode(sortName);
     	
     	//1.编写SQL语句
-    	StringBuilder sql=new StringBuilder()
+    	StringBuilder sql1=new StringBuilder()
     			.append("insert into ab02(aab102,aab202,aab203,aab204,aab205,")
     			.append("                 aab206,aab207,aab208,aab209,aab210,")
     			.append("                 aab211,aab212)")
     			.append("          values(?,?,?,?,?,")
-    			.append("                 ?,?,?,?,?,")
+    			.append("                 ?,?,?,?,current_timestamp,")
     			.append("                 ?,?)")
     			;
 	 
     	//2.编写参数数组
-    	Object args[]={
+    	Object args1[]={
     			aab102,   //店铺id
     			this.get("aab202"),
     			aab203,               //商品id
@@ -145,11 +166,34 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
     			this.get("aab207"),
     			this.get("aab208"),
     			this.get("aab209"),
-    			this.get("aab210"),
     			this.get("aab211"),
     			"01"
     	};
-        return this.executeUpdate(sql.toString(), args);	
+    	
+
+    	
+    	//添加审核表
+    	StringBuilder sql2 = new StringBuilder()
+    			.append("insert into ad08(aaa102,aad802,aad803,aad804,aad805) ")
+    		  	.append("        VALUES(?,?,?,?,?) ")
+    			;
+    	Object args2[] = {
+    		this.get("aaa102"),
+    		this.get("aab202")+":请求通过",
+    		"02",
+    		"01",
+    		aab203
+    	};
+    	
+//    	String updateSql ="update ab02 set aab210 = current_time where aab203 = ?";
+//    	this.executeUpdate(updateSql, aab203);
+    	
+       if( this.executeUpdate(sql1.toString(), args1))
+       {
+    	   return this.executeUpdate(sql2.toString(), args2);
+       }
+       else
+    	   return false;
 	}
 	
 	/**
@@ -168,5 +212,54 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 		return map.get("fcode");
 	}
 	
+	/**
+	 * 商品下架
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean putOffSale() throws Exception
+	{
+		String sql = "update ab02 set aab212 = '04' where aab203 = ? ";
+		return this.executeUpdate(sql, this.get("aab203"));
+	}
+	
+	/**
+	 * 存商品图片
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean saveShopImg() throws Exception
+	{
+		//判断aab208是否为空
+		String sql = "select aab208 from ab02 where aab203 = ?";
+		Map<String,String> map = this.queryForMap(sql, this.get("aab203"));
+		String path = ";"+(String)this.get("imgPath");
+		String sql1;
+		if(map.get("aab208") == null)
+			sql1="update ab02 set aab208='"+path+"' where aab203 = ?";
+		else
+		    sql1 = "update ab02 set aab208=CONCAT(aab208,'"+ path + "') where aab203=?";
+		System.out.println(sql1);
+		return this.executeUpdate(sql1, this.get("aab203"));
+	}
+	
+	/**
+	 * 存取详情图片
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean saveSpecImg() throws Exception
+	{
+		String sql = "select aab207 from ab02 where aab203 = ?";
+		Map<String,String> map = this.queryForMap(sql, this.get("aab203"));
+		String path = ";"+(String)this.get("imgPath");
+		String sql1;
+		if(map.get("aab207") == null)
+			sql1="update ab02 set aab207='"+path+"' where aab203 = ?";
+		else
+		    sql1 = "update ab02 set aab207=CONCAT(aab207,'"+ path + "') where aab203=?";
+		System.out.println(sql1);
+		return this.executeUpdate(sql1, this.get("aab203"));
+	}
 	
 }

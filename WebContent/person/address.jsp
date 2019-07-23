@@ -89,11 +89,11 @@
 											<label for="user-address" class="am-form-label">所在地</label>
 											<!-- 地址插件 -->
 											<div class="am-form-content address">
-												<select name="addr_1" id="addr_1" >
+												<select name="myaddr_1" id="myaddr_1" >
 												</select>
-												<select name="addr_2" id="addr_2" class="childs" >
+												<select name="myaddr_2" id="myaddr_2" class="childs" >
 												</select>
-												<select name="addr_3" id="addr_3" class="childs" >
+												<select name="myaddr_3" id="myaddr_3" class="childs" >
 												</select>
 											</div>
 										  </div>
@@ -156,15 +156,15 @@
 					
 						
 			
-			$("#addr_1").change(function(){
+			$("#myaddr_1").change(function(){
 				var A_id=$(this).children("option:selected").attr("A_id");
-				$("#addr_2").html("");
-				$("#addr_3").html("");
+				$("#myaddr_2").html("");
+				$("#myaddr_3").html("");
 				loadAddr(A_id,2);
 			});
-			$("#addr_2").change(function(){
+			$("#myaddr_2").change(function(){
 				var A_id=$(this).children("option:selected").attr("A_id");
-				$("#addr_3").html("");
+				$("#myaddr_3").html("");
 				loadAddr(A_id,3);
 			});
 			
@@ -189,11 +189,11 @@
 								html+="<option value='"+addrs[i].areaname+"' A_id='"+addrs[i].areaid+"'>"+addrs[i].areaname+"</option>";
 							}
 						}
-						$("#addr_"+index).html(html);
+						$("#myaddr_"+index).html(html);
 						loadAddr(addrs[0].areaid,++index);
 					},
 					error:function(res,status){
-						console.log("#addr_"+index+"地址异步加载错误");
+						console.log("#myaddr_"+index+"地址异步加载错误");
 					}
 				});
 			}

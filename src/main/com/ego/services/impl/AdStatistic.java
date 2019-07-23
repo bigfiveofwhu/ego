@@ -82,6 +82,7 @@ public class AdStatistic extends JdbcServicesSupport{
 		return this.queryForMap(sql, this.get("aad302"));
 	}
 	
+	
 	private boolean click()throws Exception{
 		Map<String, String> map=getRecord();
 		if (map==null) {

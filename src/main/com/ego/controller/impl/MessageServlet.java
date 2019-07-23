@@ -44,7 +44,7 @@ public class MessageServlet extends ControllerSupport
                     msg = "·¢ËÍÊ§°Ü£º" + e.getMessage();
                 }
                 this.saveAttribute("msg", msg);
-                path = "message/listMessage";
+                path = "message/sendMessage";
                 break;
 
             case "readMessage":

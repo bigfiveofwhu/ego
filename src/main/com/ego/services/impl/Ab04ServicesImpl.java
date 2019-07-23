@@ -85,7 +85,18 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 		{
 			return this.comentCountByAab203();
 		}
-		
+		else if(qtype.equalsIgnoreCase("commentBestByAab203"))
+		{
+			return commentBestByAab203();
+		}
+		else if(qtype.equalsIgnoreCase("commentMidByAab203"))
+		{
+			return commentMidByAab203();
+		}
+		else if(qtype.equalsIgnoreCase("commentBadByAab203"))
+		{
+			return commentBadByAab203();
+		}
 		else
 		{
 			throw new Exception("在类[ Ab04ServicesImpl ]中进行了未定义的单一查询动作调用,"
@@ -220,8 +231,6 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 	 */
 	private boolean comment()throws Exception
 	{
-		String aab402=Tools.getCommentId();
-		
 		
 		//1.创建SQL语句
 		StringBuilder sql = new StringBuilder()
@@ -237,7 +246,7 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 				this.get("aab302"),
 				this.get("aaa102"),
 				this.get("aab203"),
-				aab402,
+				this.get("aab402"),
 				this.get("aab403"),
 				//5
 				this.get("aab409"),
@@ -346,7 +355,42 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 	 */
 	private Map<String,String> comentCountByAab203() throws Exception
 	{
-		String sql="select count(*) as commentSum from ab04 where aab203=?";
+		String sql="select count(*) as commentsum from ab04 where aab203=?";
+		return this.queryForMap(sql, this.get("aab203"));
+	}
+	/**
+	 * 查询好评数
+	 * hug
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String,String> commentBestByAab203() throws Exception
+	{
+		String sql="select count(*) as commentsum from ab04 where aab410>=4 and aab410<=5 and aab203=?";
+		return this.queryForMap(sql, this.get("aab203"));
+	}
+	
+	/**
+	 * 查询中评数
+	 * hug
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String,String> commentMidByAab203() throws Exception
+	{
+		String sql="select count(*) as commentsum from ab04 where aab410>2 and aab410<4 and aab203=?";
+		return this.queryForMap(sql, this.get("aab203"));
+	}
+	
+	/**
+	 * 查询差评数
+	 * hug
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String,String> commentBadByAab203() throws Exception
+	{
+		String sql="select count(*) as commentsum from ab04 where aab410>=0 and aab410<=2 and aab203=?";
 		return this.queryForMap(sql, this.get("aab203"));
 	}
 }

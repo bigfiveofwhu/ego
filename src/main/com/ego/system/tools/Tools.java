@@ -229,6 +229,14 @@ public class Tools
 	}
 	
 	/**
+	 * 获取当前时间
+	 * @return
+	 */
+	public static String getCurrentTime()
+	{
+		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+	}
+	/**
 	 * 获取评论id
 	 * @return
 	 * @throws Exception
