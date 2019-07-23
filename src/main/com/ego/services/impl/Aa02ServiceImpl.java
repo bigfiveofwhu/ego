@@ -59,10 +59,11 @@ public class Aa02ServiceImpl extends JdbcServicesSupport
 	 */
 	private boolean insertAa02() throws Exception
 	{
-		String sql="select aaa202 from aa02 where aaa102=? and aab203=?";
+		String sql="select aaa202 from aa02 where aaa102=? and aab203=? and aaa204='01' and aaa205=?";
 		Object args[]= {
 				this.get("aaa102"),
-				this.get("aab203")
+				this.get("aab203"),
+				this.get("aaa205")
 		};
 		Map<String,String> ins=this.queryForMap(sql, args);
 		int aaa202=Integer.parseInt((String)this.get("aaa202"));   //从dto中获取
@@ -71,11 +72,11 @@ public class Aa02ServiceImpl extends JdbcServicesSupport
 			aaa202=Integer.parseInt((String)ins.get("aaa202"))+aaa202;
 			args=new Object[] {
 					aaa202,
-					this.get("aaa205"),
 					this.get("aaa102"),
-					this.get("aab203")
+					this.get("aab203"),
+					this.get("aaa205")
 			};
-			sql="update aa02 set aaa202=?,aaa203=current_timestamp,aaa205=? where aaa102=? and aab203=?";
+			sql="update aa02 set aaa202=?,aaa203=current_timestamp where aaa102=? and aab203=? and aaa204='01' and aaa205=?";
 			return this.executeUpdate(sql, args);
 		}
 		sql="insert into aa02(aaa102,aab203,aaa202,aaa203,aaa204,aaa205) values(?,?,?,current_timestamp,'01',?)";  //01 --可见
