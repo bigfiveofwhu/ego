@@ -24,7 +24,7 @@ public class Ab03ServiceImpl extends JdbcServicesSupport
 	
 	/**
 	 * @author hug
-	 *  通过店铺id查找上个月的销量(卖的商品的数量), 01 --代付款,03--已取消,08--已退款,09--已申述等状态除外
+	 *  通过商品id查找上个月的销量(卖的商品的数量), 01 --代付款,03--已取消,08--已退款,09--已申述等状态除外
 	 * @return
 	 * @throws Exception
 	 */
