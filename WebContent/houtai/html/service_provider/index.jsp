@@ -187,7 +187,7 @@
 							<a href="#" >
 								<i class="fa fa-folder"></i>
 								<span>需求管理</span>
-								<span class="pull-right-container">
+								<span class="pull-right-container"></span>
 				       			<i class="fa fa-angle-left pull-right"></i>
 				       		</a>
 				       		<ul class="treeview-menu">
@@ -218,7 +218,7 @@
 									</a>
 								</li>
 								<li id="admin-login">
-									<a href="<%=path %>/message/checkMessage.html" target="iframe">
+									<a href="<%=path %>/message/checkMessage.html?type=3" target="iframe">
 										<i class="fa fa-circle-o"></i> 查看消息
 									</a>
 								</li>

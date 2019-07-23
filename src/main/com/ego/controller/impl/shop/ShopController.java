@@ -4,13 +4,24 @@ import java.util.List;
 import java.util.Map;
 
 import com.ego.controller.ControllerSupport;
+import com.ego.services.BaseServices;
 import com.ego.services.impl.Ab01ServiceImpl;
 import com.ego.services.impl.Ab02ServiceImpl;
+import com.ego.services.impl.Ab03ServicesImpl;
 import com.ego.services.impl.AdStatistic;
 
 public class ShopController extends ControllerSupport 
 {
 
+	BaseServices ab03Service=new Ab03ServicesImpl();
+	
+	@Override
+	public void setMapDto(Map<String, Object> dto) {
+		// TODO Auto-generated method stub
+		super.setMapDto(dto);
+		ab03Service.setMapDto(dto);
+	}
+	
 	@Override
 	public String execute() throws Exception 
 	{
@@ -32,8 +43,10 @@ public class ShopController extends ControllerSupport
 			}
 		}
 		
+		//获得热门商品和新增商品
 		
 		return "shop/home";
 	}
 
+	
 }
