@@ -80,9 +80,6 @@
 			<div class="element" index="3">
 			新增商品
 			</div>
-			<div class="element" index="4">
-			优惠商品
-			</div>
 		</div>
 		<div class="clear"></div>
 		<div class="shopNav">
@@ -113,49 +110,62 @@
 		</c:forEach>
 		</div>
 		<div class="products2" style="width:100%;display:none;">
-			热门商品
+			<c:forEach items="${hotProducts }" var="item">
+				<div class="product">
+					<a href="<%=path%>/shop/detail.html?productId=${item.aab203}">
+					<img alt="${item.aab202 }" src="/ego${item.path }"/>
+					<span>${item.aab202 }</span>
+					</a>
+				</div>
+			</c:forEach>
 		</div>
 		<div class="products3" style="width:100%;display:none;">
-			新增商品
+			<c:forEach items="${latestProducts }" var="item">
+				<div class="product">
+					<a href="<%=path%>/shop/detail.html?productId=${item.aab203}">
+					<img alt="${item.aab202 }" src="/ego${item.path }"/>
+					<span>${item.aab202 }</span>
+					</a>
+				</div>
+			</c:forEach>
 		</div>
-		<div class="products4" style="width:100%;display:none;">
-			优惠商品
-		</div>
+
 		</div>
 		<div class="clear" style="margin-bottom: 33px;"></div>
 		<script type="text/javascript">
+			
 			$(".element").click(function(){
 				$(this).addClass("selected").siblings(".selected").removeClass("selected");
 				var type=$(this).attr("index");
 				var index=".products"+type;
 				$(index).addClass("selected").css("display","inline")
 						.siblings(".selected").css("display","none").removeClass("selected");
-				$.ajax({
-					url:"<%=path%>/getProducts.ajax",
-					type:"post",
-					dataType:"json",
-					timeout:20000,
-					data:{
-						"type":type,
-						"id":'${shop.aab102}'
-					},
-					success:function(res,status){
-						var products=res.products;
-						var n=products.length;
-						var html="";
-						for(var i=0;i<n;i++){
-							var product=products[i];
-							html+="<div class='product'>"+
-								  "<a href='/ego/shop/detail.html?productId="+product.aab203+"'>"+
-								  "<img alt='"+product.aab202+"' src='/ego"+product.aab208.split(";")[0]+"'/>"+
-								  "<span>"+product.aab202+"</span></a></div>"
-						}
-						$(".shopNav>.selected").html(html);
-					},
-					error:function(res,status){
-						console.log("请求失败");
-					}
-				});
+// 				$.ajax({
+<%-- 					url:"<%=path%>/getProducts.ajax", --%>
+// 					type:"post",
+// 					dataType:"json",
+// 					timeout:20000,
+// 					data:{
+// 						"type":type,
+// 						"id":'${shop.aab102}'
+// 					},
+// 					success:function(res,status){
+// 						var products=res.products;
+// 						var n=products.length;
+// 						var html="";
+// 						for(var i=0;i<n;i++){
+// 							var product=products[i];
+// 							html+="<div class='product'>"+
+// 								  "<a href='/ego/shop/detail.html?productId="+product.aab203+"'>"+
+// 								  "<img alt='"+product.aab202+"' src='/ego"+product.aab208.split(";")[0]+"'/>"+
+// 								  "<span>"+product.aab202+"</span></a></div>"
+// 						}
+// 						$(".shopNav>.selected").html(html);
+// 					},
+// 					error:function(res,status){
+// 						console.log("请求失败");
+// 					}
+// 				});
 			});
 		</script>
 		<script src="/ego/layui/layui.js"></script>
