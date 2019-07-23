@@ -1,5 +1,7 @@
 package com.ego.controller.ajaxServlet.impl;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import com.ego.controller.ajaxServlet.AjaxControllerSupport;
@@ -23,6 +25,11 @@ public class PutOffGoodsController extends AjaxControllerSupport {
 		        	 this.put("tag", 1);
 		         else
 		        	 this.put("tag", 0);
+				break;
+			case "pro":
+				Map<String,String> map = this.getService().findById();
+				this.put("map", map);
+				this.put("tag", 1);
 				break;
 			default:
 				break;
