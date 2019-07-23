@@ -23,7 +23,7 @@
     }
     .wrap {
       width: 410px;
-      margin: 100px auto 0;
+      margin: auto 0;
     }
     table {
       border-collapse: collapse;
@@ -156,17 +156,17 @@
 					<!--tab头-->
 					<ul class="nav nav-tabs">
 						<li class="active">
-							<a href="#home" data-toggle="tab">商品基本信息</a>
+							<a href="#home" data-toggle="tab" onclick="showSave()" >商品基本信息</a>
 						</li>
 						
 						<li>
-							<a href="#pic_upload" data-toggle="tab">商品图片</a>
+							<a href="#pic_upload" data-toggle="tab" onclick="hideSave()">商品图片</a>
 						</li>
 						<li>
-							<a href="#pro_para" data-toggle="tab">产品参数</a>
+							<a href="#pro_para" data-toggle="tab" onclick="hideSave()">产品参数</a>
 						</li>
 						<li>
-							<a href="#spec" data-toggle="tab">规格</a>
+							<a href="#spec" data-toggle="tab" onclick="hideSave()">规格</a>
 						</li>
 						
 					</ul>
@@ -179,7 +179,7 @@
                        
 						<!--表单内容-->
 						<div class="tab-pane active" id="home">
-						  <form id="myform" action="<%=path %>/shop/addProduct.html" method="post">
+						  <form id="myform" action="" method="post">
 							<div class="row data-type">
 								<div class="col-md-2 title">商品分类</div>
 
@@ -187,20 +187,20 @@
 								
                                    <button class="btn btn-default"><a href="<%=path %>/houtai/html/seller/sellerpage/sort.jsp">选择分类</a></button>
                                
-                                   <input type="text" value="${sortName }" name="aab204" readonly="readonly" required/>
+                                   <input type="text" value="${sortName }" name="aab204" id="gaab204" readonly="readonly" required/>
 
 								</div>
 
 								<div class="col-md-2 title">商品名称</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control"  required="required" placeholder="商品名称"  name="aab202" value=""/>
+									<input type="text" class="form-control" id="gaab202"  placeholder="商品名称"  name="aab202" value="" required/>
 								</div>
 
 
 								<div class="col-md-2 title">价格</div>
 								<div class="col-md-10 data">
 									<div class="input-group">
-										<input type="text" class="form-control" placeholder="价格" name="aab205" required="required"  />
+										<input type="text" class="form-control" placeholder="价格" id="gaab205" name="aab205" required />
 										<span class="input-group-addon">元</span>
 									</div>
 								</div>
@@ -208,7 +208,7 @@
 								<div class="col-md-2 title">总库存</div>
 								<div class="col-md-10 data">
 									<div class="input-group">
-										<input type="text" class="form-control" placeholder="库存" name="aab206" required="required" />
+										<input type="text" class="form-control" id="gaab206" placeholder="库存" name="aab206" required/>
 									</div>
 								</div>
 
@@ -254,7 +254,7 @@
                   <div class="tab-pane" id="pro_para">
 									<div class="wrap">
 										  <div>
-										    <input type="button" value="添加数据" id="j_btnAddData" class="btnAdd"/>
+										    <input type="button" value="添加数据" id="j_btnAddData" class="btn btn-primary""/>
 										  </div>
 										  <table>
 										    <thead>
@@ -262,6 +262,7 @@
 										      <!-- <th><input type="checkbox" id="j_cbAll" /></th> -->
 										      <th>产品参数</th>
 										      <th>具体描述</th>
+										      <th>操作</th>
 										    </tr>
 										    </thead>
 										    <tbody id="j_tb">
@@ -315,45 +316,12 @@
 			</div>
 			
 			<div class="btn-toolbar list-toolbar">
-				<button class="btn btn-primary"   onclick="saveData()"><i class="fa fa-save" ></i>保存</button>
+				<button class="btn btn-primary"  id="goods_savehhh" onclick="saveData()"><i class="fa fa-save" ></i>保存</button>
 				<button class="btn btn-default" onclick="window.location.href='<%=path %>/shop/queryProduct.html';">返回列表</button>
 			</div>
 			 
 		</section>
 		   
-
-		<!-- 上传窗口 -->
-		<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h3 id="myModalLabel">上传商品图片</h3>
-					</div>
-					<div class="modal-body">
-
-						<table class="table table-bordered table-striped">
-							<tr>
-								<td>商品图片</td>
-								<td>
-									<table>
-										<tr>
-											<div class="filePic">
-												<input id="pop_file" type="file"  class="inputPic" onchange="uploadFile(event)" name="fileTrans" ref="file" value="" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
-												<img id="preview" width="200px" height="200px" src="" alt="no image" />
-											</div>
-										</tr>
-									</table>
-								</td>
-							</tr>
-						</table>
-
-					</div>
-					<div class="modal-footer">
-						<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="add_image_entity()" onclick="uploadImg()">确定</button>
-						<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
-					</div>
-				</div>
 			</div>
 		</div>
 
@@ -376,7 +344,58 @@
 	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/common/common.js"></script>
 	
-<script>
+<script >
+function showSave()
+{
+	$("#goods_savehhh").show();
+}
+function hideSave()
+{
+	$("#goods_savehhh").hide();
+}
+
+function saveData()
+{   
+	 if($("#gaab202").val().length == 0 || $("#gaab204").val().length == 0 || $("#gaab205").val().length == 0 || $("#gaab206").val().length == 0)
+	 {
+		 alert("基本信息不能为空!");
+		 return;
+	 }
+	
+	  var proStr = "";
+	  var proTable = document.getElementById("j_tb");
+	  var rows = proTable.rows;
+	  for(var i=0;i<rows.length;i++){ //遍历表格的行
+		  if(i == rows.length-1)
+              proStr=proStr + rows[i].cells[0].innerHTML + ":" + rows[i].cells[1].innerHTML+"&";
+         else 
+        	 proStr=proStr + rows[i].cells[0].innerHTML + ":" + rows[i].cells[1].innerHTML + ";";
+       }
+	  proStr = proStr;
+	  console.log(proStr);
+	  
+	  var specStr = "";
+	  var specTable=document.getElementsByClassName("control-group lv1");
+	  for(var i=0;i<specTable.length;i++){ //遍历
+         // var spec = specTable[i].getElementById("spec_name").value;
+	      var para = specTable[i].getElementsByTagName("input");
+	      var paraStr = "";
+	      for(var j = 0;j<para.length;j++)
+	     {
+	    	  if(j == para.length - 1)
+	    	   paraStr = paraStr+para[j].value+";";
+	    	else
+	    		paraStr = paraStr+para[j].value+",";
+	     }
+	      specStr = specStr + paraStr;
+       }
+	  console.log(specStr);
+		 var vform = document.getElementById("myform");
+		 vform.action="<%=path %>/shop/addProduct.html?aab209="+encodeURI(specStr)+"&aab207="+encodeURI(proStr);
+		 vform.submit();
+		 
+}
+
   $(document).ready(function () {
     $("#j_btnAddData").click(function () {
       $("#j_mask").show();
@@ -398,6 +417,7 @@
       var str = '<tr>'
           + '<td>' + txtLesson + '</td>'
           + '<td>' + txtBelSch + '</td>'
+          + '<td><a href="javascrip:;" rel="external nofollow" rel="external nofollow" rel="external nofollow" rel="external nofollow" rel="external nofollow" class="get">删除</a></td>'
           + '</tr>';
       $("#j_tb").append(str);
       $("#j_mask").hide();
@@ -408,11 +428,14 @@
     });
   });
 </script>
+<script>
+
+</script>
 	<script>
 	 var lv1HTML = '<div class="control-group lv1">' +
      '<label class="control-label">规格名称</label>' +
      '<div class="controls">' +
-     '<input type="text" name="lv1" placeholder="规格名称">' +
+     '<input type="text" id="spec_name" name="lv1" placeholder="规格名称">' +
      '<button class="btn btn-primary add_lv2" type="button">添加参数</button>' +
      '<button class="btn btn-danger remove_lv1" type="button">删除规格</button>' +
      '</div>' +
@@ -420,7 +443,7 @@
      '</div>';
 
  var lv2HTML = '<div style="margin-top: 5px;">' +
-     '<input type="text" name="lv2" placeholder="参数名称">' +
+     '<input type="text" id="spec_para" name="lv2" placeholder="参数名称">' +
      '<button class="btn btn-danger remove_lv2" type="button">删除参数</button>' +
      '</div>';
 
@@ -462,7 +485,7 @@
          }
 
          var tableHTML = '';
-         tableHTML += '<table class="table table-bordered">';
+         tableHTML += '<table class="table table-bordered" id="spec_table">';
          tableHTML += '    <thead>';
          tableHTML += '        <tr>';
          for (var i = 0; i < lv1Arr.length; i++) {
@@ -538,52 +561,7 @@
          $('#lv_table').html(tableHTML);
      });
  });
- 
- /////////////////
- 
-  var formdata = new FormData();
- function uploadFile(ev){
-    var that = this;
-    const file = document.getElementById('pop_file');
-    const fileObj = file.files[0];
-    formdata.append("file",fileObj);
-    const windowURL = window.URL || window.webkitURL;
-    const img = document.getElementById('preview');
-    if(file && fileObj) {
-        const dataURl = windowURL.createObjectURL(fileObj);
-        console.log(dataURl);
-        img.setAttribute('src',dataURl);
-    }
-    
-   // var ftype = "user_${user.aaa102}";
-  
-}
- 
- function uploadImg()
- {    
-	    $.ajax({
-			url:"<%=path%>/fileUpload.ajax?type=product&id=1",
-			type:"post",
-			dataType:"json",
-			processData : false,
-			contentType : false,
-			timeout : 20000,
-			data : formdata,
-			success:function(res,status){
-				//img.setAttribute('src',"<%=path%>/images/upload/user_1.jpg")
-	            console.log("上传图片成功");
-				},
-				error:function(res,status){
-					console.log("上传图片失败");
-				}
-		 });
- }
- 
- function saveData()
- {
-	 var vform = document.getElementById("myform");
-	 vform.submit();
- }
+
 
 	</script>
 
