@@ -26,6 +26,8 @@ public class Ae02ServicesImpl extends JdbcServicesSupport
 	public boolean update(String utype) throws Exception {
 		if(utype.equalsIgnoreCase("insert"))
 			return insert(this.dto);
+		if (utype.equalsIgnoreCase("exist"))
+			return exist(this.dto);
 		throw new Exception("Ae02ServicesImpl utype:"+utype);
 	}
 
@@ -96,5 +98,26 @@ public class Ae02ServicesImpl extends JdbcServicesSupport
                 dto.get("to_id")
         };
     	return this.executeUpdate(sql.toString(), args);
+	}
+
+	/**
+	 * 判断是否存在from_id到to_id的消息记录
+	 * @param dto
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean exist(Map<String, Object> dto) throws Exception
+	{
+		StringBuilder sql=new StringBuilder()
+				.append("SELECT aae201")
+				.append("  FROM ae02")
+				.append(" WHERE aae202=? AND aae203=?")
+				;
+		Object[] args={
+				dto.get("from_id"),
+				dto.get("to_id")
+		};
+		List<Map<String, String>> list = this.queryForList(sql.toString(), args);
+		return !list.isEmpty();
 	}
 }
