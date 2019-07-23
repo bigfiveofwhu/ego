@@ -34,7 +34,12 @@ public class ShopController extends ControllerSupport
 		List<Map<String,String>> rows=this.getServices().query("findProductsByAab102");
 		for (Map<String, String> map : rows) {
 			String info=map.get("aab208");
-			map.put("path", info.substring(0, info.indexOf(";")));
+			if (info.contains(";")) {
+				map.put("path", info.substring(0, info.indexOf(";")));
+			}else {
+				map.put("path", info);
+			}
+			
 		}
 		this.saveAttribute("productList", rows);
 		//更新广告信息

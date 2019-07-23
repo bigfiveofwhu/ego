@@ -79,8 +79,8 @@
 	      <select class="custom-select" name="aad306" size="1">
 			<c:forEach items="${products}" var="item">
 				<option value="${item.aab203 }">${item.aab202 }</option>
-			</c:forEach>	 
-				<option value="${shop.aab102 }"  id="shopItem" hidden>${shop.aab103 }</option> 	
+			</c:forEach>
+				<option value="${shop.aab102 }"  id="shopItem" hidden>${shop.aab103 }</option>
 		</select>
 	    </div>
 	  </div>

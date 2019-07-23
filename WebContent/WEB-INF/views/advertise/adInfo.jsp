@@ -15,11 +15,13 @@
 
  
 <div class="layui-tab">
+  
   <ul class="layui-tab-title">
     <li class="layui-this">基本信息</li>
     <li>点击量报表</li>
     <li>点击用户详情</li>
   </ul>
+  
   <div class="layui-tab-content">
     
     <div class="layui-tab-item layui-show">

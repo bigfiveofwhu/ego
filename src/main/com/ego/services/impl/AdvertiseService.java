@@ -422,6 +422,19 @@ public class AdvertiseService extends JdbcServicesSupport{
 		return this.queryForList(sql.toString());
 	}
 	
+	public List<Map<String, String>> getSerachTop()throws Exception {
+		StringBuilder sql=new StringBuilder()
+				.append(" select aad302,aad306,aad307,aab202,aab203,aab205 from ad03 join ab02")
+				.append(" on ad03.aad306 = ab02.aab203")
+				.append(" where aad305=").append(search)//11
+				.append(" and aad303=").append(productAd)//00
+				.append(" and aab204=?")
+				.append(" order by aad304 DESC ")
+				.append(" limit 8");
+		return this.queryForList(sql.toString());
+	}
+	
+	
 	/**
 	 * 获得用户的定向广告
 	 * @return aad302广告id，aad306为商品id，aab202为商品名称,最多返回8个
