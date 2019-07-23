@@ -87,6 +87,7 @@
 							<option value="00" selected>全部</option>
 							<option value="01">未参与竞标</option>
 							<option value="02">已参与竞标</option>
+							<option value="03">定向需求</option>
 						</select>
 					</div>
 				</div>
@@ -95,13 +96,44 @@
 						$("#selectReq").change(function(){
 							var option=$("#selectReq option:selected").attr("value");
 							if(option=='00'){
-								
+								var tr=$("tr:gt(0)");
+								var n=tr.length;
+								for(var i=0;i<n;i++){
+									$(tr[i]).css("display","");
+								}
 							}else if(option=='01'){
-								
+								hiddenShowTr('查看竞标详情','参与竞标');
 							}else if(option=='02'){
-								
+								hiddenShowTr('参与竞标','查看竞标详情');
+							}else if(option=='03'){
+								showDir();
 							}
 						});
+						function hiddenShowTr(hidden,show){
+							var tr=$("tr:gt(0)");
+							var n=tr.length;
+							for(var i=0;i<n;i++){
+								var tmp=$(tr[i]).children("td:last").text().trim();
+								if(tmp==hidden){
+									$(tr[i]).css("display","none");
+								}else if(tmp==show){
+									$(tr[i]).css("display","");
+								}
+							}
+						}
+						function showDir(){
+							var tr=$("tr:gt(0)");
+							var n=tr.length;
+							for(var i=0;i<n;i++){
+								var tmp=$(tr[i]).children("td:last").children("button").attr("direct101").trim();
+								if(tmp=='no'){
+									$(tr[i]).css("display","none");
+								}else if(tmp=='yes'){
+									$(tr[i]).css("display","");
+								}
+							}
+						}
+						
 					});
 				</script>
 				</form>
@@ -144,7 +176,8 @@
 									timeout:20000,
 									data:{
 										"type":"1",
-										"aac602":'${ins.aac602}'
+										"aac602":'${ins.aac602}',
+										"aac202":('${ins.aac202}'=='')?"-1":'${ins.aac202}'
 									},
 									success:function(res,status){
 										var text="";
@@ -154,6 +187,11 @@
 										}else if(res.status=='01'){
 											text='查看竞标详情';
 											$("#require${vs.count}").attr("data-id",res.aac302);
+										}
+										if(res.direct){
+											$("#require${vs.count}").attr("direct101","yes");
+										}else{
+											$("#require${vs.count}").attr("direct101","no");
 										}
 										$("#require${vs.count}").text(text);
 									},
