@@ -25,6 +25,8 @@ public class SearchController extends ControllerSupport
 			dto.put("rows", rows);
 			this.setServices(new PreferenceService());
 			this.getServices().update(PreferenceService.search);
+			//获取搜索广告
+			
 		}else if(this.get("type")!=null)
 		{
 			List<Map<String,String>> rows=this.getServices().query("queryBySort");

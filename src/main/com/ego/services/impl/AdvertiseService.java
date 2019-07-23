@@ -422,6 +422,11 @@ public class AdvertiseService extends JdbcServicesSupport{
 		return this.queryForList(sql.toString());
 	}
 	
+	/**
+	 * Í¨¹ý
+	 * @return
+	 * @throws Exception
+	 */
 	public List<Map<String, String>> getSerachTop()throws Exception {
 		StringBuilder sql=new StringBuilder()
 				.append(" select aad302,aad306,aad307,aab202,aab203,aab205 from ad03 join ab02")
@@ -431,7 +436,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 				.append(" and aab204=?")
 				.append(" order by aad304 DESC ")
 				.append(" limit 8");
-		return this.queryForList(sql.toString());
+		return this.queryForList(sql.toString(),this.get("productType"));
 	}
 	
 	
