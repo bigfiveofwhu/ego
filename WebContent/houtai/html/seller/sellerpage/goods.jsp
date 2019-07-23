@@ -142,13 +142,10 @@
 				<table id="dataList" class="table table-bordered table-striped table-hover dataTable">
 					<thead>
 						<tr>
-							<th class="" style="padding-right:0px">
-								<input id="selall" type="checkbox" class="icheckbox_square-blue">
-							</th>
 							<th class="sorting">序号</th>
 							<th class="sorting">商品ID</th>
 							<th class="sorting">商品名称</th>
-							<th class="sorting">商品价格</th>
+							<th class="sorting">商品价格(元)</th>
 							<th class="sorting">商品分类</th>
 							<th class="sorting">库存</th>
 							<th class="sorting">状态</th>
@@ -158,7 +155,6 @@
 					<tbody>
 						<c:forEach items="${productList}" var="ins" varStatus="vs">
 						<tr>
-							<td><input type="checkbox" ></td>
 							<td>${vs.count}</td>
 							<td>${ins.aab203}</td>
 							<td>${ins.aab202}</td>
@@ -170,6 +166,10 @@
 							</td>
 						<td class="text-center">
 						      <c:if test="${ins.cnaab212 != '已下架' }">
+						      <button type="button" id="button_0" class="btn bg-olive btn-xs" data-toggle="modal"
+                                    data-target="#imgModal" onclick="getProImg('${ins.aab203}','img')" >
+										图片
+								</button>
 								<button type="button" id="button_1"  class="btn bg-olive btn-xs" data-toggle="modal"
                                     data-target="#sellerModal" onclick="getGoodDetail('${ins.aab203}','pro')"> 详情</button>
 								<button type="button" id="button_2" class="btn bg-olive btn-xs" onclick="putoff_del('${ins.aab203}','putoff');" >
@@ -204,7 +204,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                            onclick="clearDetails()">×
+                            >×
                     </button>
                     <h3 id="myModalLabel">商品详情</h3>
                 </div>
@@ -215,9 +215,6 @@
                         </li>
                         <li>
                             <a href="#shopimg" data-toggle="tab">上传图片</a>
-                        </li>
-                        <li>
-                            <a href="#detail" data-toggle="tab">商品规格</a>
                         </li>
                     </ul>
 
@@ -239,12 +236,16 @@
                                     <td id="aab204" class="to_clear"></td>
                                 </tr>
                                 <tr>
-                                    <td>商品价格</td>
-                                    <td id="aab205" class="to_clear"></td>
+                                    <td>修改商品价格</td>
+                                    <td id="aab205" class="to_clear">
+                                    <input type="text" id="modify_price" value=""></input>元
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>库存</td>
-                                    <td id="aab206" class="to_clear"></td>
+                                    <td>修改库存</td>
+                                    <td id="aab206" class="to_clear">
+                                    <input type="number" id="modify_amount" value=""></input>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>售后类型</td>
@@ -272,35 +273,58 @@
 							<button class="btn" id="submit1">上传商品图片</button>
 							<button class="btn" id="submit2">上传详情图片</button>
                         </div>
+                    </div>
+                    <!-- 选项卡结束 -->
 
-                        <div class="tab-pane fade" id="detail">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" onclick="updatePro()">
+                              保存
+                    </button>
+                    <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" >关闭
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 图片 -->
+       <div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                            onclick="clearDetails()">×
+                    </button>
+                    <h3 id="myModalLabel">图片</h3>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#proimghhh" data-toggle="tab">商品图片</a>
+                        </li>
+                        <li>
+                            <a href="#specimghhh" data-toggle="tab">详情图片</a>
+                        </li>
+                    </ul>
+
+                    <!-- 选项卡开始 -->
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane active in" id="proimghhh">
                             <br>
-                           <div class="control-group">
-							    <label class="control-label"> </label>
-							    <div class="controls">
-							        <button id="add_lv1" class="btn btn-primary" type="button">添加规格项</button>
-							        <button id="update_table" class="btn btn-success" type="button">刷新规格项目表</button>
-							    </div>
-							</div>
-							<div id="lv_table_con" class="control-group" style="display: none;">
-							    <label class="control-label">规格项目表</label>
-							    <div class="controls">
-							        <div id="lv_table">
-							            
-							        </div>
-							    </div>
-                             </div>
+                          <!-- 商品图片 -->
+                        
+                        </div>
+                        <div class="tab-pane fade" id="specimghhh">
+                            <!-- 详情图片 -->
                         </div>
                     </div>
                     <!-- 选项卡结束 -->
 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" onclick="updateState('04')">
-                              保存
-                    </button>
-                    <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" onclick="clearDetails()">关闭
-                    </button>
+                    
                 </div>
             </div>
         </div>
@@ -326,137 +350,6 @@
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/BrandService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
     <script type="text/javascript">
-    var lv1HTML = '<div class="control-group lv1">' +
-    '<label class="control-label">规格名称</label>' +
-    '<div class="controls">' +
-    '<input type="text" name="lv1" placeholder="规格名称">' +
-    '<button class="btn btn-primary add_lv2" type="button">添加参数</button>' +
-    '<button class="btn btn-danger remove_lv1" type="button">删除规格</button>' +
-    '</div>' +
-    '<div class="controls lv2s"></div>' +
-    '</div>';
-
-var lv2HTML = '<div style="margin-top: 5px;">' +
-    '<input type="text" name="lv2" placeholder="参数名称">' +
-    '<button class="btn btn-danger remove_lv2" type="button">删除参数</button>' +
-    '</div>';
-
-$(document).ready(function() {
-    $('#add_lv1').on('click', function() {
-        var last = $('.control-group.lv1:last');
-        if (!last || last.length == 0) {
-            $(this).parents('.control-group').eq(0).after(lv1HTML);
-        } else {
-            last.after(lv1HTML);
-        }
-    });
-
-    $(document).on('click', '.remove_lv1', function() {
-        $(this).parents('.lv1').remove();
-    });
-
-    $(document).on('click', '.add_lv2', function() {
-        $(this).parents('.lv1').find('.lv2s').append(lv2HTML);
-    });
-
-    $(document).on('click', '.remove_lv2', function() {
-        $(this).parent().remove();
-    });
-
-    $('#update_table').on('click', function() {
-        var lv1Arr = $('input[name="lv1"]');
-        if (!lv1Arr || lv1Arr.length == 0) {
-            $('#lv_table_con').hide();
-            $('#lv_table').html('');
-            return;
-        }
-        for (var i = 0; i < lv1Arr.length; i++) {
-            var lv2Arr = $(lv1Arr[i]).parents('.lv1').find('input[name="lv2"]');
-            if (!lv2Arr || lv2Arr.length == 0) {
-                alert('请先删除无参数的规格项！');
-                return;
-            }
-        }
-
-        var tableHTML = '';
-        tableHTML += '<table class="table table-bordered">';
-        tableHTML += '    <thead>';
-        tableHTML += '        <tr>';
-        for (var i = 0; i < lv1Arr.length; i++) {
-            tableHTML += '<th width="50">' + $(lv1Arr[i]).val() + '</th>';
-        }
-        tableHTML += '            <th width="20">价格</th>';
-        tableHTML += '            <th width="20">库存</th>';
-        tableHTML += '        </tr>';
-        tableHTML += '    </thead>';
-        tableHTML += '    <tbody>';
-
-        var numsArr = new Array();
-        var idxArr = new Array();
-        //numsArr记录每个规格又多少个参数，并用idxarr记录规格数组下标 方便后边标记name
-        for (var i = 0; i < lv1Arr.length; i++) {
-            numsArr.push($(lv1Arr[i]).parents('.lv1').find('input[name="lv2"]').length);
-            idxArr[i] = 0;
-        }
-
-        var len = 1;
-        var rowsArr = new Array();
-        for (var i = 0; i < numsArr.length; i++) {
-            //len  记录参数总行数
-            len = len * numsArr[i];
-
-            var tmpnum = 1;
-            for (var j = numsArr.length - 1; j > i; j--) {
-                tmpnum = tmpnum * numsArr[j];
-            }
-            //当前规格每个参数所占行数
-            rowsArr.push(tmpnum);
-        }
-
-        for (var i = 0; i < len; i++) {
-            tableHTML += '        <tr data-row="' + (i+1) + '">';
-
-            var name = '';
-            for (var j = 0; j < lv1Arr.length; j++) {
-                var n = parseInt(i / rowsArr[j]);
-                if (j == 0) {
-                } else if (j == lv1Arr.length - 1) {
-                    n = idxArr[j];
-                    if (idxArr[j] + 1 >= numsArr[j]) {
-                        idxArr[j] = 0;
-                    } else {
-                        idxArr[j]++;
-                    }
-                } else {
-                    var m = parseInt(i / rowsArr[j]);
-                    n = m % numsArr[j];
-                }
-
-                var text = $(lv1Arr[j]).parents('.lv1').find('input[name="lv2"]').eq(n).val();
-                if (j != lv1Arr.length - 1) {
-                    name += text + '_';
-                } else {
-                    name += text;
-                }
-
-                if (i % rowsArr[j] == 0) {
-                    tableHTML += '<td width="50" rowspan="' + rowsArr[j] + '" data-rc="' + (i+1) + '_' + (j+1) + '">' + text + '</td>';
-                }
-            }
-
-            tableHTML += '<td width="20"><input type="text" name="' + name + '[price]" /></td>';
-            tableHTML += '<td width="20"><input type="text" name="' + name + '[amount]" /></td>';
-            tableHTML += '</tr>';
-        }
-        tableHTML += '</tbody>';
-        tableHTML += '</table>';
-
-        $('#lv_table_con').show();
-        $('#lv_table').html(tableHTML);
-    });
-});
-    </script>
-    <script type="text/javascript">
     var pid;
     function getGoodDetail(id,type) {
     	pid = id
@@ -477,8 +370,8 @@ $(document).ready(function() {
 	                    $("#aab202").html(map.aab202);
 	                    $("#aab203").html(map.aab203);
 	                    $("#aab204").html(map.cnaab204);
-	                    $("#aab205").html(map.aab205);
-	                    $("#aab206").html(map.aab206);
+	                    $("#modify_price").val(map.aab205);
+	                    $("#modify_amount").val(map.aab206);
 	                    $("#cnaab211").html(map.cnaab211);
 	                    $("#aab212").html(map.cnaab212);
 	
@@ -494,6 +387,33 @@ $(document).ready(function() {
     
     function clearDetails() {
         $(".to_clear").html("");
+    }
+    
+    function updatePro()
+    {
+    	$.ajax({
+    		url:"${path}/putOffGoods.ajax",
+    		type:"post",
+    		timeout:20000,
+    		dataType:"json",
+    		data:{
+    			"aab203":pid,
+    			"type":"update",
+    			"aab205":$("#modify_price").val(),
+    			"aab206":$("#modify_amount").val()
+    		},
+    		success:function(res,status){
+	    			if(res.tag == 1)
+	    		{
+	    			console.log("操作成功");
+	    		}
+	    			else
+	    				console.log("操作失败");
+    		},
+    		error:function(res,status){
+    			console.log("操作错误");
+    		}
+    	});
     }
     
     function putoff_del(id,type)
@@ -521,6 +441,46 @@ $(document).ready(function() {
     		}
     	});
     }
+    
+    function getProImg(id,type)
+    {
+    	$.ajax({
+    		url:"${path}/putOffGoods.ajax",
+    		type:"post",
+    		timeout:20000,
+    		dataType:"json",
+    		data:{
+    			"aab203":id,
+    			"type":type
+    		},
+    		success:function(res,status){
+    			$("#proimghhh").html("");
+    			$("#specimghhh").html("");
+    			var prodiv = document.getElementById("proimghhh");
+    			for(var i =0;i<res.proimgUrl.length;i++)
+	    		{
+	    			var div = document.createElement('div');
+	    			var imgurl = '${path}' + res.proimgUrl[i];
+	    			var result = '<img style="width:150px;heigth:150px;float:left;margin-left:30px"  src="' + imgurl + '" />';
+	    			div.innerHTML=result;
+	    			prodiv.appendChild(div);
+	    		}
+    			
+    			var prodiv = document.getElementById("specimghhh");
+    			for(var i =0;i<res.specimgUrl.length;i++)
+	    		{
+	    			var div = document.createElement('div');
+	    			var imgurl = '${path}' + res.specimgUrl[i];
+	    			var result = '<img style="width:150px;heigth:150px;float:left;margin-left:30px"  src="' + imgurl + '" />';
+	    			div.innerHTML=result;
+	    			prodiv.appendChild(div);
+	    		}	
+    		},
+    		error:function(res,status){
+    			console.log("图片显示错误");
+    		}
+    	});
+    }
 	window.onload = function() {
 		var input = document.getElementById("upgteimg");
 		var showui = document.getElementById("showui");
@@ -531,7 +491,7 @@ $(document).ready(function() {
 		var oSubmit1 = document.getElementById("submit1");
 		var oSubmit2 = document.getElementById("submit2");
 		var dateli, dateinput;
-		function randomString(len) {　　
+		function randomString(len) {
 			len = len || 32;　　
 			var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/ 　　
 			var maxPos = $chars.length;　　

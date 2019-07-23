@@ -14,7 +14,6 @@
 		<link type="text/css" href="<%=path%>/css/style.css" rel="stylesheet" />
 		<link type="text/css" href="<%=path%>/css/shop/detail.css" rel="stylesheet" />
 		<link rel="stylesheet" href="/ego/layui/css/layui.css">
-		<link rel="stylesheet" type="text/css" href="<%=path %>/css/message/bbb.css">                     <!-- 消息框css -->
 		<script type="text/javascript" src="<%=path%>/basic/js/jquery-1.7.min.js"></script>
 		<script type="text/javascript" src="<%=path%>/basic/js/quick_links.js"></script>
 		<script type="text/javascript" src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
@@ -300,7 +299,7 @@
 															<input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
 															<span id="Stock" class="tb-hidden">库存<span class="stock">${product.aab206 }</span>件</span>
 														</dd>
-													</div>
+							</dl></div>
 													<div class="clear"></div>
 													<div class="btn-op">
 														<div class="btn am-btn am-btn-warning">确认</div>
