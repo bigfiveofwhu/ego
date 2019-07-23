@@ -42,7 +42,7 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 	@Override
 	public Map<String, String> findById() throws Exception {
 		StringBuilder sql=new StringBuilder()
-  		  		.append("	select x.aab202,x.aab203,x.aab205,x.aab206,a.fvalue cnaab212,b.fvalue cnaab204,c.fvalue cnaab211	")
+  		  		.append("	select x.aab202,x.aab203,x.aab205,x.aab206,x.aab204,a.fvalue cnaab212,b.fvalue cnaab204,c.fvalue cnaab211	")
   		  		.append("  from syscode a, ab02 x ,syscode b ,syscode c	")
   		 	    .append("  where x.aab212=a.fcode and a.fname='aab212' 	")
   		 	    .append("  and  x.aab204=b.fcode and b.fname='aab204' ")
@@ -125,7 +125,7 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 	}
      
 	/**
-	 * 添加商品
+	 * 添加商品,上架
 	 * @return
 	 * @throws Exception
 	 */
@@ -145,6 +145,13 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
     	if(type!=null)
         aab204 = this.getSortCode(sortName);
     	
+    	//
+    	String aab207 =(String)this.get("aab207");
+    	aab207 = aab207 + "&";
+    	
+    	String aab209=(String)this.get("aab209");
+    	aab209 = aab209.substring(0,aab209.length()-1);
+    	
     	//1.编写SQL语句
     	StringBuilder sql1=new StringBuilder()
     			.append("insert into ab02(aab102,aab202,aab203,aab204,aab205,")
@@ -163,9 +170,9 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
     			aab204,
     			this.get("aab205"),
     			this.get("aab206"),
-    			this.get("aab207"),
+    			aab207,
     			this.get("aab208"),
-    			this.get("aab209"),
+    			aab209,
     			this.get("aab211"),
     			"01"
     	};
@@ -223,6 +230,16 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 		return this.executeUpdate(sql, this.get("aab203"));
 	}
 	
+	public boolean updateById() throws Exception
+	{
+		String sql = "update ab02 set aab205 = ?,aab206 = ? where aab203 = ?";
+		Object args[] = {
+				this.get("aab205"),
+				this.get("aab206")
+		};
+		return this.batchUpdate(sql, args, this.get("aab203"));
+	}
+	
 	/**
 	 * 存商品图片
 	 * @return
@@ -233,12 +250,15 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 		//判断aab208是否为空
 		String sql = "select aab208 from ab02 where aab203 = ?";
 		Map<String,String> map = this.queryForMap(sql, this.get("aab203"));
-		String path = ";"+(String)this.get("imgPath");
+		String path = (String)this.get("imgPath");
 		String sql1;
 		if(map.get("aab208") == null)
 			sql1="update ab02 set aab208='"+path+"' where aab203 = ?";
 		else
+		{
+			path = ";" + path;
 		    sql1 = "update ab02 set aab208=CONCAT(aab208,'"+ path + "') where aab203=?";
+		}
 		System.out.println(sql1);
 		return this.executeUpdate(sql1, this.get("aab203"));
 	}
@@ -252,14 +272,43 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 	{
 		String sql = "select aab207 from ab02 where aab203 = ?";
 		Map<String,String> map = this.queryForMap(sql, this.get("aab203"));
-		String path = ";"+(String)this.get("imgPath");
+		String path = (String)this.get("imgPath");
 		String sql1;
-		if(map.get("aab207") == null)
+		if(map.get("aab207")==null)
+		{
 			sql1="update ab02 set aab207='"+path+"' where aab203 = ?";
-		else
+		}
+		else if(map.get("aab207").endsWith("&"))
+		{
 		    sql1 = "update ab02 set aab207=CONCAT(aab207,'"+ path + "') where aab203=?";
+		}
+		else 
+		{
+			path = ";"+path;
+		    sql1 = "update ab02 set aab207=CONCAT(aab207,'"+ path + "') where aab203=?";
+		}
 		System.out.println(sql1);
 		return this.executeUpdate(sql1, this.get("aab203"));
 	}
 	
+	
+	@Override
+	public Map<String, String> findById(String qtype) throws Exception {
+		if(qtype.equalsIgnoreCase("getProImgPath"))
+		{
+			return this.getProImgPath();
+		}
+		else
+		 throw new Exception("未定义的qtype:" + qtype);
+	}
+	/**
+	 * 获取图片路径
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String,String> getProImgPath() throws Exception
+	{
+		String sql = "select aab207,aab208 from ab02 where aab203=? ";
+		return this.queryForMap(sql, this.get("aab203"));
+	}
 }

@@ -1,5 +1,7 @@
 <%@ page language="java" pageEncoding="GBK" %>
 
+<link rel="stylesheet" type="text/css" href="<%=path%>/css/message/chat.css">
+<!-- 消息框css -->
 <!--菜单 -->
 <div class=tip>
     <div id="sidebar">
@@ -145,7 +147,7 @@
 </div>
 
 <!-- 消息框 -->
-<div class="main">
+<div class="main" style="display:none;">
     <div class="top">
         <div class="top-left">
             <div class="header">
@@ -272,6 +274,7 @@
         var target;
         var list_box_id;
         var pic_id = curr_from;
+        var timeout = null;
         //判断是否为当前用户发送的消息
         if (from !== curr_from) {
             type = 'other';
@@ -304,13 +307,17 @@
                     $('.newsList').css({display: "none"});
                     $('#newsList-' + from).css({display: ""});
                     news_top.scrollTop = news_top.scrollHeight;
-                    //修改聊天消息为已读
-                    var message = JSON.stringify({
-                        "from_id": from,
-                        "to_id": to,
-                        "type": "01",
-                    });
-                    ws.send(message);
+
+                    clearTimeout(timeout);
+                    timeout = setTimeout(function () {
+                        //修改聊天消息为已读，最多10s执行一次
+                        var message = JSON.stringify({
+                            "from_id": from,
+                            "to_id": to,
+                            "type": "01",
+                        });
+                        ws.send(message);
+                    }, 10000)
                 });
             }
             target = $('#newsList-' + from);
@@ -330,11 +337,6 @@
         //将左侧聊天列表文字改成当前消息
         $('#list-box-' + list_box_id + ' .text').text(content);
     }
-
-    //加载完成后自动选中第一个
-    setTimeout(function () {
-        $('.list-box:first').click();
-    }, 1000);
 
     var timer, timerId;
 
