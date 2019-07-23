@@ -59,6 +59,10 @@ public class AdvertiseService extends JdbcServicesSupport{
 		case "getTargetAds":
 			//aad302广告id，aad306为商品id，aab202为商品名称,aab205为价格最多返回8个
 			return this.getTargetAds();
+		case "getSerachTop":
+			return getSearchTop();
+		case "getSearchTopByKey":
+			return getSearchTopByKey();
 		default:
 			throw new Exception("不支持的类型");
 		}
@@ -422,16 +426,38 @@ public class AdvertiseService extends JdbcServicesSupport{
 		return this.queryForList(sql.toString());
 	}
 	
-	public List<Map<String, String>> getSerachTop()throws Exception {
+	/**
+	 * 通过类型获得广告，需要传递productType
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Map<String, String>> getSearchTop()throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append(" select aad302,aad306,aad307,aab202,aab203,aab205 from ad03 join ab02")
+				.append(" select aad302,aab202,aab203,aab205,aab208 from ad03 join ab02")
 				.append(" on ad03.aad306 = ab02.aab203")
 				.append(" where aad305=").append(search)//11
 				.append(" and aad303=").append(productAd)//00
 				.append(" and aab204=?")
 				.append(" order by aad304 DESC ")
-				.append(" limit 8");
-		return this.queryForList(sql.toString());
+				.append(" limit 3");
+		return this.queryForList(sql.toString(),this.get("productType"));
+	}
+	
+	/**
+	 * 通过类型获得广告，需要传递productType
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Map<String, String>> getSearchTopByKey()throws Exception {
+		StringBuilder sql=new StringBuilder()
+				.append(" select aad302,aab202,aab203,aab205,aab208 from ad03 join ab02")
+				.append(" on ad03.aad306 = ab02.aab203")
+				.append(" where aad305=?")//11
+				.append(" and aad303=?")//00
+				.append(" and aab202 like ?")
+				.append(" order by aad304 DESC ")
+				.append(" limit 3");
+		return this.queryForList(sql.toString(),"11","00",this.get("key"));
 	}
 	
 	
@@ -449,7 +475,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 				.append(" and aab204 in (select * from (select aaa902 from aa09")//商品类型满足条件
 				.append(" where aaa102=? order by aaa903 limit 3)as t)")
 				.append(" order by aad304 DESC ")
-				.append(" limit 8");
+				.append(" limit 4");
 		return this.queryForList(sql.toString(),this.get("aaa102"));
 	}
 }

@@ -68,5 +68,11 @@
     <input type="submit" value ="预付页测试" >
     </form>
     
+     <form action="<%=path%>/goPostAimedNeed.html" method="post">
+     <input type="text" name="aac202" value="10">
+     <input type="text" name="aaa102" value="23">
+    <input type="submit" value ="定向服务需求提交测试" >
+    </form>
+    
 </body>
 </html>

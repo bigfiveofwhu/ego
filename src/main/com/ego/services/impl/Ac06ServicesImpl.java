@@ -25,6 +25,10 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
 		{
 			return this.postNeed();
 		}
+		else if(utype.equalsIgnoreCase("postAimedNeed"))
+		{
+			return this.postAimedNeed();
+		}
 		else if(utype.equalsIgnoreCase("prepay"))
 		{
 			return this.prepay();
@@ -52,9 +56,9 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
 		{
 			return selectTarget();
 		}
-		else if(qtype.equals("detail"))
+		else if(qtype.equals("service"))
 		{
-			return null;
+			return queryService();
 		}
 		else
 		{
@@ -120,6 +124,27 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
 		System.out.println(sql.toString()+"订单号:"+this.get("aac302"));
 		
 		return this.queryForMap(sql.toString(), this.get("aac302"));
+	}
+	
+	/**
+	 * 去提交定向需求时,查询服务相关信息
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String,String> queryService()throws Exception
+	{
+		StringBuilder sql =null;
+		sql = new StringBuilder()
+				.append("select a.aac204,a.aac205,b.fvalue type,c.fvalue method,a.aac203")
+    			.append("  from ac02 a,syscode b,syscode c")
+    			.append(" where a.aac204=b.fcode and a.aac205=c.fcode")
+    			.append(" and   b.fname='aac106' and c.fname='aac205'")
+    			.append(" and   a.aac202=?")
+    			;
+		System.out.println("***定向服务需求查询服务:显示findById()的SQL查询语句****");
+		System.out.println(sql.toString()+"订单号:"+this.get("aac202"));
+		
+		return this.queryForMap(sql.toString(), this.get("aac202"));
 	}
 	
 	
@@ -281,15 +306,14 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
   		return this.queryForList(sql.toString(),this.get("aac602"));
 	}
 	
-	
 	/**
-	 * 插入新服务需求
+	 * 生成服务需求
 	 * @return
 	 * @throws Exception
 	 */
 	private boolean postNeed()throws Exception
 	{
-		//获取订单编号
+		//获取需求id
 		int aac602 =Tools.getSequence("aac602");
 		this.put("aab302", aac602);
 		//1.创建SQL语句
@@ -309,10 +333,54 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
 				//5
 				this.get("provinceTmp").toString()+" "+this.get("cityTmp")+" "+this.get("areaTmp"),
 				this.get("aac607"),
-				"01"
+				"01",
+
+
 				
 		};
 		System.out.println("***生成新服务需求***");
+		System.out.println(sql.toString());
+		
+		return this.executeUpdate(sql.toString(), args);
+		
+	}
+	
+	/**
+	 * 生成新服务需求
+	 * @return
+	 * @throws Exception
+	 */
+	private boolean postAimedNeed()throws Exception
+	{
+		//获取需求id
+		int aac602 =Tools.getSequence("aac602");
+		this.put("aab302", aac602);
+		//1.创建SQL语句
+		StringBuilder sql = new StringBuilder()
+				.append("insert into ac06(aaa102,aac602,aac603,aac604,aac605,")
+    			.append("                 aac606,aac607,aac608,aac609,aac611,")
+    			.append("                 aac202)")
+    			.append("          values (?,?,?,?,?,")
+    			.append("                  ?,?,current_timestamp,?,?,")
+    			.append("                  ?)")
+    			;
+		//2.编写参数数组
+		Object args[]={
+				this.get("aaa102"),
+				aac602,
+				this.get("aac603"),
+				this.get("aac604"),
+				this.get("aac605"),
+				//5
+				this.get("provinceTmp").toString()+" "+this.get("cityTmp")+" "+this.get("areaTmp"),
+				this.get("aac607"),
+				"01",
+				"02",
+				//10
+				this.get("aac202")
+				
+		};
+		System.out.println("***生成新定向服务需求***");
 		System.out.println(sql.toString());
 		
 		return this.executeUpdate(sql.toString(), args);
