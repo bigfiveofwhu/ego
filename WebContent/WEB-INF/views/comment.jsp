@@ -133,7 +133,7 @@
 																</div>
 																<div class="item-comment">
 																	<a href="javascript:;" onclick="goCommentDetail(${ins.aab302})">${ins.aab403 }</a>
-																<div class="filePic"><img src="<%=path%>/images/image.jpg" alt=""></div>	
+																<div class="filePic"><img src="<%=path%>/images/comments/${ins.aab402}" alt=""></div>	
 																</div>
 			
 																<div class="item-info">
