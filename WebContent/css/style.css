@@ -247,7 +247,7 @@ flex: 1 1 0%;line-height: 16px;cursor: pointer;}
 /*购物车*/
 .tb-btn-buy{margin-left:60px; margin-right:10px;}
 .tb-btn a{width:98px ;border: 1px solid #F03726;}
-.pay .pay-opt{display:none ;}
+.pay .pay-opt{display:block ;}
 .pay li{width: auto;}
 
 /*印象*/

@@ -36,7 +36,7 @@
      </ul>
      <div class="option">
        <span class="info">您可以</span>
-        <a href="<%=path%>/entry.html" class="J_MakePoint">返回个人主页</span></a>
+        <a href="<%=path%>/person/entry.html" class="J_MakePoint">返回个人主页</span></a>
      </div>
     </div>
   </div>

@@ -15,11 +15,12 @@
 	top: 188px;
 	right: 55px;
 	width: 300px;
-	height: 180px;
+	height: 68px;
 	background-color: pink;
 	display: flex;
 	background-color: rgba(255,255,255,0);
 	z-index: 1000;
+	cursor: pointer;
 }
 .shopDetail img{
 	border-radius: 30px;

@@ -45,4 +45,14 @@ public class T_AreaService extends JdbcServicesSupport
 		};
 		return this.queryForMap(sql.toString(), args);
 	}
+	/**
+	 * 通过地址信息查找经纬度
+	 * hug
+	 * @return
+	 */
+	private Map<String,String> findByAab105() throws Exception
+	{
+		String sql="select center from t_area where areaName=?";
+		return this.queryForMap(sql, this.get("aab105"));
+	}
 }

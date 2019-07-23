@@ -63,9 +63,13 @@
 										<a href="#" target="_blank"
 											data-title="${cart.aab202}"
 											class="J_MakePoint" data-point="tbcart.8.12"> 
-											<img src="${cart.aab208}" class="itempic J_ItemImg"
+											<img id="p9826_${vs.count }" src="" class="itempic J_ItemImg"
 											style="height: 80px;width: 80px;">
 										</a>
+										<script type="text/javascript">
+											var p9826_${vs.count }='${cart.aab208}';
+											$("#p9826_${vs.count }").attr("src","/ego"+p9826_${vs.count }.split(";")[0]);
+										</script>
 									</div>
 									<div class="item-info">
 										<div class="item-basic-info">

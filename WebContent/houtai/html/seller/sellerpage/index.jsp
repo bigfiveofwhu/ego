@@ -259,7 +259,7 @@
 									</a>
 								</li>
 								<li id="admin-login">
-									<a href="<%=path %>/message/checkMessage.html" target="iframe">
+									<a href="<%=path %>/message/checkMessage.html?type=2" target="iframe">
 										<i class="fa fa-circle-o"></i> 查看消息
 									</a>
 								</li>

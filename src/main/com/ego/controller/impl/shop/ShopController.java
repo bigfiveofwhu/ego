@@ -10,6 +10,7 @@ import com.ego.services.impl.Ab02ServiceImpl;
 import com.ego.services.impl.Ab03ServicesImpl;
 import com.ego.services.impl.AdStatistic;
 import com.ego.services.impl.shop.shopSercvice;
+import com.ego.services.impl.T_AreaService;
 
 public class ShopController extends ControllerSupport 
 {
@@ -22,6 +23,13 @@ public class ShopController extends ControllerSupport
 		this.setServices(new Ab01ServiceImpl());
 		Map<String,String> ins=this.getServices().findById("aab102");
 		this.saveAttribute("shop", ins);
+		//获取店铺地址信息
+		String aab105=(String)ins.get("aab105");
+		this.dto.put("aab105", aab105.split(" ")[2]);
+		this.setServices(new T_AreaService());
+		ins=this.getServices().findById("findByAab105");
+		this.saveAttribute("position", ins);
+		//根据店铺id查找商品信息
 		this.setServices(new Ab02ServiceImpl());
 		List<Map<String,String>> rows=this.getServices().query("findProductsByAab102");
 		for (Map<String, String> map : rows) {
