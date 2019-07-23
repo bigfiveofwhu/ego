@@ -12,7 +12,7 @@
 <img src="https://cfl.dropboxstatic.com/static/images/illustration_catalog/404_error-illo.png" srcset="https://cfl.dropboxstatic.com/static/images/illustration_catalog/404_error-illo@2x.png 2x" alt="Error: 4xx"/>
 </div>
 <div id="errorbox">
-<div class="not-found"> <h1>服务器内部错误</h1>
+<div class="not-found"> <h1>Error (404)</h1>我们无法找到您正在寻找的页面
 <br> 可能的原因:${msg }<div class="not-found--links"> 以下几个链接可能会有用: <ul> <li><a href="/ego/home/home.html">Home</a></li></ul> </div> </div>
 </div>
 <script>

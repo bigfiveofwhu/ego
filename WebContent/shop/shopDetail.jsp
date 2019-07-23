@@ -299,7 +299,7 @@
 															<input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
 															<span id="Stock" class="tb-hidden">©Б╢Ф<span class="stock">${product.aab206 }</span>╪Ч</span>
 														</dd>
-							</dl></div>
+													</div>
 													<div class="clear"></div>
 													<div class="btn-op">
 														<div class="btn am-btn am-btn-warning">х╥хо</div>
