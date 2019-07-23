@@ -37,7 +37,13 @@
 			$('input[name="aab317"]').val(man);
 			$('input[name="aab318"]').val(phone);
 			vform.action="<%=path%>/addOrder.html";
-			vform.submit();
+			if(province.lenth==0){
+				alert("«ÎÃÓ–¥µÿ÷∑£°");
+			}
+			else{
+				vform.submit();
+			}
+			
 		}
 		</script>
 
