@@ -92,14 +92,19 @@
 					<div class="clear"></div>
 					<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
 					<!-- 一个商品信息模板 -->
-						<c:forEach items="${productList}" var="goods">
+						<c:forEach items="${productList}" var="goods" varStatus="vs">
 						<li>
 							<div class="i-pic limit">
 								<div id="imgsize">
 								<!-- 显示图片详细信息 -->
-							<a href="<%=path%>/shop/detail.html?productId=${goods.aab203}"><img src="${goods.aab208}"/></a>
-							<%-- <a href="<%=path%>/intrServlet?goodId=${goods.id}"><img src="E:/tomcat/apache-tomcat-7.0.57-windows-x64/apache-tomcat-7.0.57/webapps/shoppingPro/images/01.jpg"/></a> --%> 
-								</div>										
+							<a href="<%=path%>/shop/detail.html?productId=${goods.aab203}"><img id="goods${vs.count}" src="${goods.aab208}"/></a>
+								</div>
+								<script type="text/javascript">
+								 $(function(){
+									var  goods${vs.count}='${goods.aab208}';
+									$("#goods${vs.count}").attr("src","/ego"+goods${vs.count}.split(";")[0])
+								 });
+								</script>									
 								<p class="title fl">【良品铺子旗舰店】${goods.aab202}${goods.introduce}</p>
 								<p class="price fl">
 									<b>&yen;</b>
