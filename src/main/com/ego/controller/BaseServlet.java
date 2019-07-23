@@ -70,7 +70,7 @@ public class BaseServlet extends HttpServlet
         {
             request.setAttribute("msg", ex.getMessage());
             ex.printStackTrace();
-            toPath = BaseServlet.prefix + "error";
+            toPath = "errorPage/error";
         }
 
         request.getRequestDispatcher("/" + toPath + ".jsp").forward(request, response);

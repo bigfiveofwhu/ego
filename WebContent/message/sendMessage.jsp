@@ -14,6 +14,9 @@
     <title></title>
 </head>
 <body>
+<c:if test="${msg!=null}">
+    ${msg}
+</c:if>
 <form action="sendMessage.html">
     <div class="form-group row ml-5 mt-5">
         <label for="input-header" class="col-sm-1 col-form-label">标题:</label>

@@ -77,6 +77,7 @@
         var exportData;
         var table = layui.table;
         table.init('user-table', {
+            page: true,
             id: 'user-table',
             done: function (res) {
                 exportData = res.data;

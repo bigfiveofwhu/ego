@@ -182,7 +182,7 @@
 
     Highcharts.chart('container-7', {
         title: {
-            text: '商品销售额排行'
+            text: '平台点击量'
         },
         xAxis: {
             categories: year_12

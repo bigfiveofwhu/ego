@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.jdt.internal.compiler.ast.ThisReference;
+
 import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.Aa05ServiceImpl;
 import com.ego.services.impl.Aa07ServiceImpl;
@@ -17,6 +19,8 @@ import com.ego.services.impl.Ab03ServiceImpl;
 import com.ego.services.impl.Ab03ServicesImpl;
 import com.ego.services.impl.Ab04ServicesImpl;
 import com.ego.services.impl.Ab05ServiceImpl;
+import com.ego.services.impl.AdStatistic;
+import com.ego.services.impl.PreferenceService;
 
 public class ShopDetailController extends ControllerSupport 
 {
@@ -39,9 +43,11 @@ public class ShopDetailController extends ControllerSupport
 		this.saveAttribute("product", ins);
 		//在dto中放入店铺id
 		this.dto.put("aab102", ins.get("aab102"));
-		String describe=(String)ins.get("aab209");
-		System.out.println(describe);
+		this.saveAttribute("shopId", ins.get("aab102"));   //在页面存入店铺id
+		this.saveAttribute("from_id", ins.get("aaa102"));  //在页面存入发送者id
+		this.saveAttribute("from_name", ins.get("aab103"));  //在页面存入店铺名称
 		//解析规格描述文本
+		String describe=(String)ins.get("aab209");
 		if(describe!=null)
 		{
 			List<Map<String,Object>> typeList=new ArrayList<>();
@@ -67,23 +73,82 @@ public class ShopDetailController extends ControllerSupport
 			this.saveAttribute("spec", typeList);  //规格
 			System.out.println(typeList);
 		}
+		//解析产品参数/图片描述文本
+		describe=ins.get("aab207");
+		if(describe!=null)
+		{
+			List<String> productInfos=new ArrayList<>();   //参数详情
+			String infos[]=describe.split("&");
+			String a[]=infos[0].split(";");
+			for(String b:a)
+			{
+				productInfos.add(b);
+			}
+			this.saveAttribute("productInfos", productInfos);
+			productInfos=new ArrayList<>();     //商品图片详情url
+			a=infos[1].split(";");
+			for(String b:a)
+			{
+				productInfos.add(b);
+			}
+			this.saveAttribute("productImgs", productInfos);
+		}
+		//解析图片路径文本
+		describe=ins.get("aab208");
+		if(describe!=null)
+		{
+			List<String> productImgs=new ArrayList<>();
+			String a[]=describe.split(";");
+			for(String b:a)
+			{
+				productImgs.add(b);
+			}
+			this.saveAttribute("headImgs", productImgs);
+		}
+		
 		//////////////////////////////////添加优惠券功能
 		this.setServices(new Ab05ServiceImpl());
 		List<Map<String, String>>coupons= this.getServices().query();
 		saveAttribute("coupons", coupons);
-		//////////////////////////////////
+		///////////////修改用户偏好
+		if (this.get("aaa102")!=null&&!this.get("aaa102").equals("")) {
+			this.setServices(new PreferenceService());
+			this.getServices().update("click");
+		}
+		
+		//////////////更新广告点击信息
+		if (this.get("aaa102")!=null&&!this.get("aaa102").equals("")) {
+			String aad302=(String)this.get("aId");
+			if (aad302!=null&&!aad302.equals("")) {
+				dto.put("aad302", this.get("aId"));
+				this.setServices(new AdStatistic());
+				this.getServices().update("click");
+			}
+		}
+		
+		
 		
 		this.setServices(new Ab03ServiceImpl());
 		//上月销量
-		//ins=this.getServices().findById("orderSumLastMouth");
-		//this.saveAttribute("lastMouthSum", ins.get("lastMouthSum"));
+		ins=this.getServices().findById("orderSumLastMouth");
+		this.saveAttribute("lastMouthSum", ins.get("lastmouthsum"));
 		//累积销量
-		//ins=this.getServices().findById("orderSum");
-		//this.saveAttribute("Sum", ins.get("Sum"));
-		//累计评价
+		ins=this.getServices().findById("orderSum");
+		this.saveAttribute("Sum", ins.get("sum"));
+		
 		this.setServices(new Ab04ServicesImpl());
+		//好评
+		ins=this.getServices().findById("commentBestByAab203");
+		this.saveAttribute("bestSum", Integer.parseInt(ins.get("commentsum").toString()));
+		//中评
+		ins=this.getServices().findById("commentMidByAab203");
+		this.saveAttribute("midSum", ins.get("commentsum"));
+		//差评
+		ins=this.getServices().findById("commentBestByAab203");
+		this.saveAttribute("badSum", ins.get("commentsum"));
+		//累计评价
 		ins=this.getServices().findById("comentCountByAab203");
-		this.saveAttribute("commentSum", ins.get("commentSum"));
+		this.saveAttribute("commentSum", Integer.parseInt(ins.get("commentsum").toString()));
 //		this.saveAttribute("aab103", "某宝");
 //		Map<String,String> shop=new HashMap<>();
 //		shop.put("url", "/ego/images/shop/shop_12.jpg");

@@ -258,6 +258,11 @@
 										<i class="fa fa-circle-o"></i> 查看已发送通知
 									</a>
 								</li>
+								<li id="admin-login">
+									<a href="<%=path %>/message/checkMessage.html" target="iframe">
+										<i class="fa fa-circle-o"></i> 查看消息
+									</a>
+								</li>
 							</ul>
 						</li>
 
