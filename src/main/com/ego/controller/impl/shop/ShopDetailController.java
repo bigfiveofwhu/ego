@@ -9,13 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.jdt.internal.compiler.ast.ThisReference;
-
 import com.ego.controller.ControllerSupport;
-import com.ego.services.impl.Aa05ServiceImpl;
 import com.ego.services.impl.Aa07ServiceImpl;
 import com.ego.services.impl.Ab02ServiceImpl;
-import com.ego.services.impl.Ab03ServiceImpl;
 import com.ego.services.impl.Ab03ServicesImpl;
 import com.ego.services.impl.Ab04ServicesImpl;
 import com.ego.services.impl.Ab05ServiceImpl;
@@ -128,7 +124,7 @@ public class ShopDetailController extends ControllerSupport
 		
 		
 		
-		this.setServices(new Ab03ServiceImpl());
+		this.setServices(new Ab03ServicesImpl());
 		//上月销量
 		ins=this.getServices().findById("orderSumLastMouth");
 		this.saveAttribute("lastMouthSum", ins.get("lastmouthsum"));
