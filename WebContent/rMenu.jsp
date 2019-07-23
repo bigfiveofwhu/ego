@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="GBK" %>
 
-<link rel="stylesheet" type="text/css" href="<%=path%>/css/message/chat.css">
+<link rel="stylesheet" type="text/css" href="${path}>/css/message/chat.css">
 <!-- ÏûÏ¢¿òcss -->
 <!--²Ëµ¥ -->
 <div class=tip>
