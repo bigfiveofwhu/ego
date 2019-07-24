@@ -244,6 +244,7 @@
 
 <script>
     function getShopDetail(id) {
+        clearDetails();
         $.ajax({
             url: "<%=path%>/adminReview.ajax",
             type: "post",

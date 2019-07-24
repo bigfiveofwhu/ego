@@ -254,6 +254,7 @@
 
 <script>
     function getServiceDetail(id) {
+        clearDetails();
         $.ajax({
             url: "<%=path%>/adminReview.ajax",
             type: "post",
