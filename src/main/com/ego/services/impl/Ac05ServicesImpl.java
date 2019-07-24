@@ -51,24 +51,7 @@ public class Ac05ServicesImpl extends JdbcServicesSupport
 			
 		}
 	}
-	/**
-	 * 计算好评率  中评  差评
-	 * hug
-	 * @return
-	 */
-	private Map<String,String> compute5Comment() throws Exception
-	{
-		StringBuilder sql=new StringBuilder()
-				.append("select count(z.aac507) grade,count(m.aac507) mid,count(b.aac507) bad")
-				.append("  from ac04 x,ac05 z,ac05 m,ac05 b")
-				.append(" where b.aac507<=2") 
-				.append("   and (b.aac507<2 and x.aac402=b.aac402)")              //中评
-				.append("   and (m.aac507<4 and m.aac507>2 and x.aac402=m.aac402)")  //连接m
-				.append("   and (z.aac507>=4 and x.aac402=z.aac402)")     //连接z
-				.append("   and (x.aac408='03' and x.aac202=?)")
-				;
-		return this.queryForMap(sql.toString(),this.get("aac202"));
-	}
+
 	
 	/**
 	 * 批量查询操作分支入口
@@ -97,6 +80,25 @@ public class Ac05ServicesImpl extends JdbcServicesSupport
 	//********************************************************************
 	//								具体业务
 	//********************************************************************
+	
+	/**
+	 * 计算好评率  中评  差评
+	 * hug
+	 * @return
+	 */
+	private Map<String,String> compute5Comment() throws Exception
+	{
+		StringBuilder sql=new StringBuilder()
+				.append("select count(z.aac507) grade,count(m.aac507) mid,count(b.aac507) bad")
+				.append("  from ac04 x,ac05 z,ac05 m,ac05 b")
+				.append(" where b.aac507<=2") 
+				.append("   and (b.aac507<2 and x.aac402=b.aac402)")              //中评
+				.append("   and (m.aac507<4 and m.aac507>2 and x.aac402=m.aac402)")  //连接m
+				.append("   and (z.aac507>=4 and x.aac402=z.aac402)")     //连接z
+				.append("   and (x.aac408='03' and x.aac202=?)")
+				;
+		return this.queryForMap(sql.toString(),this.get("aac202"));
+	}
 	
 	/**
 	 * 生成评价

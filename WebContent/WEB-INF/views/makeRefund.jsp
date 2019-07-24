@@ -92,9 +92,13 @@
 					
 					
 						<div class="refund-aside">
+						<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+						<% String url=(request.getAttribute("url")).toString();
+					  		String[] arr=url.split(";");
+						%>
 							<div class="item-pic">
 								<a href="#" class="J_MakePoint">
-									<img src="<%=path%>/images/comment.jpg_400x400.jpg" class="itempic">
+									<img src="<%=path%><%=arr[0]%>" class="itempic">
 								</a>
 							</div>
 
@@ -106,8 +110,7 @@
 									</a>
 								</div>
 								<div class="info-little">
-									<span>属性1:尚无</span>
-									<span>属性2:尚无</span>
+									<span>商品ID:${ins.aab203 }</span>
 								</div>
 							</div>
 							<div class="item-info">
@@ -156,7 +159,8 @@
 										</select>
 									</div>
 								</div>
-								<p id="showtype">asdfasdfasdfadsfadsfasdf</p>
+								
+								
 								<div class="am-form-group">
 									<label for="refund-reason" class="am-form-label">退款原因</label>
 									<div class="am-form-content">
@@ -169,7 +173,7 @@
 									</div>
 								</div>
 								
-								<p id="showreason">asdfasdfasdfadsfadsfasdf</p>
+								
 								
 
 								<div class="am-form-group">
@@ -186,13 +190,13 @@
 								</div>
 
 							</div>
-							<div class="refund-tip">
+							<!--div class="refund-tip">
 								<div class="filePic">
 									<input type="file" class="inputPic" value="选择凭证图片" name="file" max="5" maxsize="5120" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
 									<img src="<%=path%>/images/image.jpg" alt="">
 								</div>
 								<span class="desc">上传凭证&nbsp;最多三张</span>
-							</div>
+							</div-->
 							
 						</div>
 						<div class="info-btn">

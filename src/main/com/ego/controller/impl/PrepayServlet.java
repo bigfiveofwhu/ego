@@ -10,7 +10,7 @@ public class PrepayServlet extends NeedControllerSupport
 	{
 		this.update("prepay", "预付");
 		setServices(new Ac04ServicesImpl());
-		this.update("allServiceOrder", "查询所有服务订单");
+		this.savePageData("allServiceOrder");
 		return "WEB-INF/views/serviceOrder";
 	}
 

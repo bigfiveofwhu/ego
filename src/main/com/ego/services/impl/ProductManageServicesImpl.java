@@ -150,6 +150,7 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
     	aab207 = aab207 + "&";
     	
     	String aab209=(String)this.get("aab209");
+    	if(aab209 != null)
     	aab209 = aab209.substring(0,aab209.length()-1);
     	
     	//1.±‡–¥SQL”Ôæ‰

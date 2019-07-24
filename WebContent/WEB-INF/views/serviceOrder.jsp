@@ -30,6 +30,7 @@
 	</head>
 
 	<body>
+		<%String url="";String[] arr=null; %>
 		<form id="myform" action="<%=path%>/###.html" method="post"></form>
 		
             
@@ -83,7 +84,7 @@
 															<li class="td td-item">
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%>/images/server.jpg" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
@@ -111,6 +112,7 @@
 																<div class="item-status"><br/>
 																	<p class="Mystatus">已预付</p>
 																</div>
+																
 															</c:when>
 															<c:when test="${ins.aac408 eq '02' }">
 																<div class="item-status"><br/>
@@ -126,11 +128,25 @@
 														</c:choose>
 														</li>
 													</div>
-													<!--div class="am-btn am-btn-danger anniu" onclick="goDetail(${ins.aac402})">
-														订单详情
-													</div-->	
+													<div style="text-align:right">
+														<div class="am-btn am-btn-danger anniu" onclick="goComment(${ins.aac402})">
+															<c:choose>
+																<c:when test="${ins.aac408 eq '01' }">
+																	订单详情
+																	
+																</c:when>
+																<c:when test="${ins.aac408 eq '02' }">
+																	订单详情
+																</c:when>
+																<c:when test="${ins.aac408 eq '03' }">
+																	订单详情
+																</c:when>
+															</c:choose>
+														</div>
+													</div>
 												</div>
 											</div>
+											<br/><br/><br/>
 										</c:forEach>
 										</c:when>
 										</c:choose>

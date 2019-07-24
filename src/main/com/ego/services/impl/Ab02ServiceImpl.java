@@ -120,7 +120,7 @@ public class Ab02ServiceImpl extends JdbcServicesSupport
 	 */
 	private Map<String, String> findNameAndPriceByAab203() throws Exception
 	{
-		String sql="select aab202,aab203,aab205 from ab02 where aab203=?";
+		String sql="select aab202,aab203,aab205,aab208 from ab02 where aab203=?";
 		return this.queryForMap(sql, this.get("aab203"));
 	}
 }

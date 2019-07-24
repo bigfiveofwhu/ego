@@ -122,9 +122,10 @@ public class Ac04ServicesImpl extends JdbcServicesSupport
 		sql = new StringBuilder()
 				.append("select x.aac402,x.aac403,x.aac404,x.aac405,x.aac406,")
 				.append("       x.aac407,x.aac408,x.aac409,x.aac410,x.aac411,")
-				.append("       y.aac103")
-    			.append("  from ac04 x,ac01 y")
-    			.append(" where x.aac102=y.aac102 and x.aac402=?")
+				.append("       y.aac103,z.fvalue type")
+    			.append("  from ac04 x,ac01 y,syscode z")
+    			.append(" where x.aac410=z.fcode and z.fname='aac106'")
+    			.append(" and   x.aac102=y.aac102 and x.aac402=?")
     			;
 		System.out.println("***服务订单详情单一:显示findById()的SQL查询语句****");
 		System.out.println(sql.toString()+"订单号:"+this.get("aac402"));
@@ -141,9 +142,10 @@ public class Ac04ServicesImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql =null;
 		sql = new StringBuilder()
-				.append("select y.aac103,x.aac402,x.aac407,x.aac410")
-    			.append("  from ac04 x,ac01 y")
-    			.append(" where x.aac102=y.aac102 and x.aac402=?")
+				.append("select y.aac103,x.aac402,x.aac407,x.aac410,z.fvalue type")
+    			.append("  from ac04 x,ac01 y,syscode z")
+    			.append(" where x.aac410=z.fcode and z.fname='aac106' ")
+    			.append(" and  x.aac102=y.aac102 and x.aac402=?")
     			;
 
 		

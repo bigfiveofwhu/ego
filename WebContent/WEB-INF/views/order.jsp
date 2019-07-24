@@ -78,7 +78,7 @@
 	</head>
 
 	<body>
-		<%double total=0; %>
+		<%double total=0;String url=""; String[] arr=null;%>
 		<%DecimalFormat df=new DecimalFormat("0.00"); %>
 		<form id="myform" action="<%=path%>/###.html" method="post">
 		
@@ -152,17 +152,22 @@
 														<div class="order-left">
 															<ul class="item-list">
 																<li class="td td-item">
+																<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+																<% url=(request.getAttribute("url")).toString();
+															  		arr=url.split(";");
+																%>
 																	<div class="item-pic">
 																		<a href="#" class="J_MakePoint">
-																			<img src="<%=path %>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																			<img src="<%=path %><%=arr[0] %>" class="itempic J_ItemImg">
 																		</a>
 																	</div>
 																	<div class="item-info">
 																		<div class="item-basic-info">
 																			<a href="#">
 																				<p>商品名:${ins.aab202 }</p>
-																				<p class="info-little">属性1:还没填
-																					<br/>属性2:还没填 </p>
+																				<p class="info-little">
+																				店铺:${ins.aab103 }
+																				</p>
 																			</a>
 																		</div>
 																	</div>
@@ -228,17 +233,22 @@
 													<div class="order-left">
 														<ul class="item-list">
 															<li class="td td-item">
+															<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+																<% url=(request.getAttribute("url")).toString();
+															  		arr=url.split(";");
+																%>
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="<%=path%>/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%><%=arr[0] %>" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
 																			<p>商品名:${ins.aab202 } </p>
-																			<p class="info-little">属性1:尚无
-																				<br/>属性2:尚无</p>
+																			<p class="info-little">
+																			店铺:${ins.aab103 }
+																			</p>
 																		</a>
 																	</div>
 																</div>
@@ -302,17 +312,22 @@
 													<div class="order-left">
 														<ul class="item-list">
 															<li class="td td-item">
+															<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+																<% url=(request.getAttribute("url")).toString();
+															  		arr=url.split(";");
+																%>
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%><%=arr[0] %>" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
 																			<p>商品名:${ins.aab202 }</p>
-																			<p class="info-little">属性1:尚无
-																				<br/>属性2:尚无</p>
+																			<p class="info-little">
+																			店铺:${ins.aab103 }
+																			</p>
 																		</a>
 																	</div>
 																</div>
@@ -354,7 +369,7 @@
 																	<p class="Mystatus">卖家已发货</p>
 																	<p class="order-info"><a href="#" onclick="goOrderDetail(${ins.aab302})">订单详情</a></p>
 																	
-																	<p class="order-info"><a href="#">延长收货</a></p>
+																	
 																</div>
 															</li>
 															<li class="td td-change">
@@ -379,17 +394,22 @@
 													<div class="order-left">
 														<ul class="item-list">
 															<li class="td td-item">
+															<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+																<% url=(request.getAttribute("url")).toString();
+															  		arr=url.split(";");
+																%>
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%><%=arr[0] %>" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
 																			<p>商品名:${ins.aab202 }</p>
-																			<p class="info-little">属性1:尚无
-																				<br/>属性2:尚无 </p>
+																			<p class="info-little">
+																			店铺:${ins.aab103 } 
+																			</p>
 																		</a>
 																	</div>
 																</div>
@@ -471,17 +491,22 @@
 													<div class="order-left">
 														<ul class="item-list">
 															<li class="td td-item">
+															<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+																<% url=(request.getAttribute("url")).toString();
+															  		arr=url.split(";");
+																%>
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																		<img src="<%=path%><%=arr[0] %>" class="itempic J_ItemImg">
 																	</a>
 																</div>
 																<div class="item-info">
 																	<div class="item-basic-info">
 																		<a href="#">
 																			<p>商品名:${ins.aab202 }</p>
-																			<p class="info-little">属性1:尚无
-																				<br/>属性2:尚无 </p>
+																			<p class="info-little">
+																			店铺:${ins.aab103 }
+																			</p>
 																		</a>
 																	</div>
 																</div>
@@ -545,17 +570,22 @@
 														<div class="order-left">
 															<ul class="item-list">
 																<li class="td td-item">
+																<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+																<% url=(request.getAttribute("url")).toString();
+															  		arr=url.split(";");
+																%>
 																	<div class="item-pic">
 																		<a href="#" class="J_MakePoint">
-																			<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																			<img src="<%=path%><%=arr[0] %>" class="itempic J_ItemImg">
 																		</a>
 																	</div>
 																	<div class="item-info">
 																		<div class="item-basic-info">
 																			<a href="#">
 																				<p>商品名:${ins.aab202 }</p>
-																				<p class="info-little">规格1:还没填
-																								  <br/>规格2:还没填 </p>
+																				<p class="info-little">
+																					店铺:${ins.aab103 }
+																				</p>
 																			</a>
 																		</div>
 																	</div>
@@ -686,17 +716,22 @@
 														<div class="order-left">
 															<ul class="item-list">
 																<li class="td td-item">
+																<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+																<% url=(request.getAttribute("url")).toString();
+															  		arr=url.split(";");
+																%>
 																	<div class="item-pic">
 																		<a href="#" class="J_MakePoint">
-																			<img src="<%=path %>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																			<img src="<%=path %><%=arr[0] %>" class="itempic J_ItemImg">
 																		</a>
 																	</div>
 																	<div class="item-info">
 																		<div class="item-basic-info">
 																			<a href="#">
 																				<p>商品名:${ins.aab202 }</p>
-																				<p class="info-little">属性1:还没填
-																					<br/>属性2:还没填 </p>
+																				<p class="info-little">
+																				店铺:${ins.aab103 } 
+																				</p>
 																			</a>
 																		</div>
 																	</div>
@@ -808,17 +843,22 @@
 														<div class="order-left">
 															<ul class="item-list">
 																<li class="td td-item">
+																<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+																<% url=(request.getAttribute("url")).toString();
+															  		arr=url.split(";");
+																%>
 																	<div class="item-pic">
 																		<a href="#" class="J_MakePoint">
-																			<img src="<%=path%>/images/62988.jpg_80x80.jpg" class="itempic J_ItemImg">
+																			<img src="<%=path%><%=arr[0] %>" class="itempic J_ItemImg">
 																		</a>
 																	</div>
 																	<div class="item-info">
 																		<div class="item-basic-info">
 																			<a href="#">
 																				<p>商品名:${ins.aab202 } </p>
-																				<p class="info-little">属性1:尚无
-																					<br/>属性2:尚无</p>
+																				<p class="info-little">
+																				店铺:${ins.aab103 }
+																				</p>
 																			</a>
 																		</div>
 																	</div>
@@ -923,17 +963,22 @@
 															<div class="order-left">
 																<ul class="item-list">
 																	<li class="td td-item">
+																	<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+																	<% url=(request.getAttribute("url")).toString();
+																  		arr=url.split(";");
+																	%>
 																		<div class="item-pic">
 																			<a href="#" class="J_MakePoint">
-																				<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																				<img src="<%=path%><%=arr[0] %>" class="itempic J_ItemImg">
 																			</a>
 																		</div>
 																		<div class="item-info">
 																			<div class="item-basic-info">
 																				<a href="#">
 																					<p>商品名:${ins.aab202 }</p>
-																					<p class="info-little">属性1:尚无
-																						<br/>属性2:尚无</p>
+																					<p class="info-little">
+																					店铺:${ins.aab103 }
+																					</p>
 																				</a>
 																			</div>
 																		</div>
@@ -975,7 +1020,7 @@
 																			<p class="Mystatus">卖家已发货</p>
 																			<p class="order-info"><a href="#" onclick="goOrderDetail(${ins.aab302})">订单详情</a></p>
 																			
-																			<p class="order-info"><a href="#">延长收货</a></p>
+																			
 																		</div>
 																	</li>
 																	<li class="td td-change">
@@ -1041,17 +1086,22 @@
 														<div class="order-left">
 															<ul class="item-list">
 																<li class="td td-item">
+																<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+																<% url=(request.getAttribute("url")).toString();
+															  		arr=url.split(";");
+																%>
 																	<div class="item-pic">
 																		<a href="#" class="J_MakePoint">
-																			<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																			<img src="<%=path%><%=arr[0] %>" class="itempic J_ItemImg">
 																		</a>
 																	</div>
 																	<div class="item-info">
 																		<div class="item-basic-info">
 																			<a href="#">
 																				<p>商品名:${ins.aab202 }</p>
-																				<p class="info-little">属性1:尚无
-																					<br/>属性2:尚无 </p>
+																				<p class="info-little">
+																				店铺:${ins.aab103 } 
+																				</p>
 																			</a>
 																		</div>
 																	</div>

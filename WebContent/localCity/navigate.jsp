@@ -84,7 +84,7 @@
 			<div class="menu-hd">
 			<c:choose>
 				<c:when test="${aab102!=null}">
-				  <a id="mc-menu-shop" href="${path}/shop/background.html" target="_top">
+				  <a id="mc-menu-shop" onclick="checkIn();" href="#" target="_top">
 				  <span>进入店铺</span>
 				  </a>
 				</c:when>
@@ -117,3 +117,31 @@
 		</c:if>
 	</ul>
 </div>
+
+<script src="/ego/layui/layui.js"></script>
+<script>
+layui.use('layer', function(){
+	layer = layui.layer;
+});
+	function checkIn()
+{
+	$.ajax({
+		url:"${path}/checkInShop.ajax",
+		type:"post",
+		dataType:"json",
+		timeout:20000,
+		data:{
+		},
+		success:function(res,status){
+			console.log(res.check);
+			if(res.check == 1)
+			location.href="${path}/shop/background.html";
+			else
+				layer.msg("你注册的店铺正在审核中...");
+		},
+		error:function(res){
+			 alert("网络错误");
+		}
+	});
+}
+</script>

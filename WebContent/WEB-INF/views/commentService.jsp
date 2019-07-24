@@ -132,13 +132,15 @@
 								<div class="item-title">
 									<div class="item-name">
 										<a href="#">
-											<p class="item-basic-info" align="center" style="font-size:18px">商品评价</p>
+											<p class="item-basic-info" align="center" style="font-size:18px">服务评价</p>
 										</a>
 									</div>
 								</div>
 								<div class="item-pic">
+								<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+								
 									<a href="#" class="J_MakePoint">
-										<img src="<%=path%>/images/comment.jpg_400x400.jpg" class="itempic">
+										<img src="<%=path%>/images/server.jpg" class="itempic">
 									</a>
 								</div>
 								<div class="item-title">
@@ -150,7 +152,7 @@
 									<div class="item-info">
 										<div class="info-little">
 											<span>订单号:${ins.aac402 }</span>
-											<span>服务类型:${ins.aac410 }</span>
+											<span>服务类型:${ins.type }</span>
 										</div>
 										<div class="item-price">
 											成交额：${ins.aac407 }<strong></strong>
@@ -166,11 +168,7 @@
 								<div class="item-comment">
 									<textarea id="comment_text" placeholder="请写下对服务的感受吧，对他人帮助很大哦！"></textarea>
 								</div>
-								<div class="filePic">
-									<input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*" >
-									<span>晒照片(0/5)</span>
-									<img src="<%=path%>/images/image.jpg" alt="">
-								</div>
+								
 								
 								<div id="comment3" class="item-opinion">
 									<li value="1" ><i class="op1"></i></li>

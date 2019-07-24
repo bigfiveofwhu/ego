@@ -283,6 +283,8 @@ public class ReportServlet extends ControllerSupport
         {
             str.append(",").append(v);
         }
+        if(str.length()==0)
+            return "{ name: '" + name + "', data: []},";
         return "{ name: '" + name + "', data: [" + str.toString().substring(1) + "]},";
     }
 
@@ -546,6 +548,8 @@ public class ReportServlet extends ControllerSupport
      */
     private String arrayToString(String[] array)
     {
+        if(array.length==0)
+            return "";
         StringBuilder sb = new StringBuilder();
         for (String s : array)
             sb.append(",'").append(s).append("'");

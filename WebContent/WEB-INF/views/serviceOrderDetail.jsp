@@ -33,6 +33,12 @@
 				vform.action="<%=path%>/goCommentService.html?aac402="+vaac402;
 				vform.submit();
 			}
+			function showComment()
+			{
+				var vform = document.getElementById("myform");
+				vform.action="<%=path%>/showServiceComment.html";
+				vform.submit();
+			}
 		</script>
 	</head>
 
@@ -44,7 +50,7 @@
 			<b class="line"></b>
 		<div class="center">
 			<div class="col-main">
-				<div class="main-wrap">
+				<div class="main-wrap" style="margin-left:0px;">
 
 					<div class="user-orderinfo">
 
@@ -97,7 +103,7 @@
 										<span style="font-size:18px;color:orange;">创建时间:</span><br/>
 										<p>${ins.aac403 }</p>
 										<span style="font-size:18px;color:orange;">服务类型:</span><br/>
-										<p>${ins.aac410 }</p>
+										<p>${ins.type }</p>
 										<span style="font-size:18px;color:orange;">具体服务描述:</span><br/>
 										<p>${ins.aac411 }</p>
 										<span style="font-size:18px;color:orange;">具体服务地址:</span><br/>
@@ -114,7 +120,7 @@
 								<span>预付时间：${ins.aac404 }</span><br/>
 								<span>完工时间：${ins.aac405 }</span><br/>
 		
-							
+								<div style="text-align:right;">
 								<c:choose>
 									<c:when test="${ins.aac408 eq '01' }">
 									<div style="float:center;" class="am-btn am-btn-danger anniu" onclick="checkService(${ins.aac402})">
@@ -127,12 +133,12 @@
 									</div>
 									</c:when>
 									<c:when test="${ins.aac408 eq '03' }">
-									<div style="float:center;" class="am-btn am-btn-danger anniu" onclick="goCommentDetail(${ins.aac402})">
+									<div style="float:center;" class="am-btn am-btn-danger anniu" onclick="showComment()">
 											查看评价
 									</div>
 									</c:when>
 								</c:choose>
-							
+								</div>
 									
 						</div>
 					</div>
