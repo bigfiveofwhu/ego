@@ -149,7 +149,7 @@
      </div>
     <div class="content">
     <form action="<%=path %>/shop/deliver.html" method="post">
-              物流单号:<input type="text" class="form-control" name="aab309"/>
+              物流单号:<input type="text" class="form-control" name="aab309" required/>
     	<select class="has-feedback">
 							<option value="">选择快递方</option>
 							<option value="02">圆通</option>

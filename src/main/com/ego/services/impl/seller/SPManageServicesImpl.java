@@ -54,6 +54,31 @@ public class SPManageServicesImpl extends JdbcServicesSupport
 		return this.queryForMap(sql.toString(), this.get("aaa102"));
 	}
 	
+	/**
+	 * 查询某个服务具体详情
+	 */
+	@Override
+	public Map<String, String> findById(String qtype) throws Exception {
+		if(qtype.equals("service"))
+		{
+			StringBuilder sql=new StringBuilder()
+	  		  		.append("SELECT aac202,aac203,s1.fvalue cnaac204,s2.fvalue cnaac205, aac206 ,aac207,")
+	  		  		.append("	    s3.fvalue cnaac208,aac209")
+	  		 	    .append("  FROM ac02,syscode s1,syscode s2,syscode s3")
+	  		     	.append(" WHERE s1.fcode=aac204 AND s1.fname='aac204' AND s2.fcode=aac205")
+	  		     	.append("	AND s2.fname='aac205' AND s3.fcode=aac208 AND s3.fname='aac208'")
+	  		     	.append("     AND aac202 = ?")
+	  				;
+			return this.queryForMap(sql.toString(), this.get("aac202"));
+		}
+		if(qtype.equalsIgnoreCase("getProImgPath"))
+		{
+			return this.getProImgPath();
+		}
+		else
+			throw new Exception("未定义的qtype"+qtype);
+	}
+	
 	/**服务管理***/
 /**服务表:ac02
  Name    	Code	
@@ -142,8 +167,7 @@ Name	Code
 		//还原页面查询条件
 		Object aac203=this.get("qaac203");       //评论服务名称
   		Object isreply=this.get("isreply");     //评论是否回复
-  		Object aac102= 15;
-  				//this.get("aac102");    //服务商id,session获取
+  		Object aac102= this.get("aac102");    //服务商id,session获取
   		System.out.println("aac102:" +aac102);
   	
 
@@ -283,9 +307,9 @@ Name	Code
     	//1.编写SQL语句
     	StringBuilder sql1=new StringBuilder()
     			.append("insert into ac02(aac102,aac202,aac203,aac204,aac205,")
-    			.append("                 aac206,aac207,aac208,aac209,aac210)")
+    			.append("                 aac206,aac207,aac208,aac209)")
     			.append("          values(?,?,?,?,?,")
-    			.append("                 ?,?,?,?,?)")
+    			.append("                 ?,?,?,?)")
     			;
 	 
     	//2.编写参数数组
@@ -298,8 +322,7 @@ Name	Code
     			this.get("aac206"),
     			this.get("aac207"),
     			"01",
-    			this.get("aac209"),
-    			"/images/service/071803.jpg;/images/service/071801.jpg;/images/service/071802.jpg"
+    			this.get("aac209")
     	};
     	
 
@@ -321,6 +344,78 @@ Name	Code
         }
         else
        	   return false;
+	}
+	
+	/**
+	 * 服务单例删除
+	 * @throws Exception 
+	 */
+	public boolean deleteById() throws Exception
+	{
+		Object id = this.get("aac202");
+		System.out.println("id:"+id);
+		String sql = "update ac02 set aac208 = '05' where aac202 = ?";
+		
+	
+			return this.executeUpdate(sql, id);
+
+	}
+	
+	/**
+	 * 服务下架
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean putOffSale() throws Exception
+	{
+		String sql = "update ac02 set aac208 = '04' where aac202 = ? ";
+		return this.executeUpdate(sql, this.get("aac202"));
+	}
+	
+	/**
+	 * 存取服务图片
+	 * @return
+	 * @throws Exception
+	 */
+	private boolean saveSerImg() throws Exception
+	{
+		//判断aac202是否为空
+				String sql = "select aac210 from ac02 where aac202 = ?";
+				Map<String,String> map = this.queryForMap(sql, this.get("aac202"));
+				String path = (String)this.get("imgPath");
+				String sql1;
+				if(map.get("aac210") == null)
+					sql1="update ac02 set aac210='"+path+"' where aac202 = ?";
+				else
+				{
+					path = ";" + path;
+				    sql1 = "update ac02 set aac210=CONCAT(aac210,'"+ path + "') where aac202=?";
+				}
+				System.out.println(sql1);
+				return this.executeUpdate(sql1, this.get("aac202"));
+	}
+	
+	/**
+	 * 获取图片路径
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String,String> getProImgPath() throws Exception
+	{
+		String sql = "select aac210 from ac02 where aac202=? ";
+		return this.queryForMap(sql, this.get("aac202"));
+	}
+	
+	/**
+	 * 重新上架,不需经过审核
+	 * @return
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unused")
+	private boolean putOn2() throws Exception
+	{
+		String sql = "update ac02 set aac208 = '02' where aac202 = ? ";
+		return this.executeUpdate(sql, this.get("aac202"));
 	}
 	
 }
