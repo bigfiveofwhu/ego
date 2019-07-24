@@ -44,7 +44,6 @@ public class CreateOrderServlet extends OrderControllerSupport
 		//修改用户偏好
 		this.setServices(new PreferenceService());
 		this.getServices().update("purchase");
-		
 		return "WEB-INF/views/createOrder";
 		
 	}

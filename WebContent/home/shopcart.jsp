@@ -53,14 +53,14 @@
 							<ul class="item-content clearfix">
 								<li class="td td-chk">
 									<div class="cart-checkbox ">
-										<input class="check" id="J_CheckBox_${cart.aab203}" name="items[]" value="${cart.aab203}" type="checkbox"
+										<input class="check" id="J_CheckBox_${cart.aab203}" product_id="${cart.aab203}" name="items[]" value="${cart.aab203}" type="checkbox"
 											onchange="selectCart(true)">
 										<label for="J_CheckBox_170037950254"></label>
 									</div>
 								</li>
 								<li class="td td-item">
 									<div class="item-pic">
-										<a href="#" target="_blank"
+										<a href="${path}/shop/detail.html?productId=${cart.aab203}" target="_blank"
 											data-title="${cart.aab202}"
 											class="J_MakePoint" data-point="tbcart.8.12"> 
 											<img id="p9826_${vs.count }" src="" class="itempic J_ItemImg"
@@ -73,7 +73,7 @@
 									</div>
 									<div class="item-info">
 										<div class="item-basic-info">
-											<a href="#" target="_blank"
+											<a href="${path}/shop/detail.html?productId=${cart.aab203}" target="_blank"
 												title="${cart.aab202}"
 												class="item-title J_MakePoint" data-point="tbcart.8.11">${cart.aab202}</a>
 										</div>
@@ -97,6 +97,7 @@
 												for(var i=0;i<n;i++){
 													html+="<span class='sku-line'>"+ts[i].replace(',',':')+"</span> ";
 												}
+												html+="<input type='hidden' class='hgInfo${cart.aab203}' value='${cart.aaa205 }'>"
 												$("#describe${vs.count }").html(html);
 											})();
 										});
@@ -119,7 +120,7 @@
 										<div class="item-amount ">
 											<div class="sl">
 												<input class="min am-btn" name="" type="button" value="-" onclick="changeNum(true,${vs.index },${cart.aab203})" /> 
-												<input id="count${vs.index }" name="" type="text" value="${cart.aaa202}" style="width:30px;" readonly="readonly" /> 
+												<input id="count${vs.index }" class="hgCount${cart.aab203}" name="" type="text" value="${cart.aaa202}" style="width:30px;" readonly="readonly" /> 
 												<input class="add am-btn" name="" type="button" value="+" onclick="changeNum(false,${vs.index },${cart.aab203})" />
 											</div>
 										</div>
@@ -212,13 +213,37 @@
 					<em id="J_Total">${totalPrice}0</em> </strong>
 				</div>
 				<div class="btn-area">
-					<a href="${pageContext.request.contextPath}/orderServlet" id="J_Go"
+					<a onclick="purchase()" id="J_Go"
 						class="submit-btn submit-btn-disabled"
 						aria-label="请注意如果没有选择宝贝，将无法结算"> <span>结&nbsp;算</span> </a>
 				</div>
 			</div>
 
 		</div>
+		<form action="<%=path%>/createOrder.html" method="post" id="f7753">
+		<input type="hidden" name="aab203" id="pId" value="">
+		<input type="hidden" name="count" id="count" value="">
+		<input type="hidden" name="args" id="args" value="">
+		<input type="hidden" name="fee" id="fee" value="">
+		</form>
+		<script type="text/javascript">
+			function purchase(){
+				var box=$(".check:checked");
+				if(box.length==0){
+					alert("请选择商品!");
+					return;
+				}
+				var pId=$(box[0]).attr("product_id");
+				var count=$(".hgCount"+pId).val();
+				var args=$(".hgInfo"+pId).val();
+				var fee=10;
+				$("#pId").val(pId);
+				$("#count").val(count);
+				$("#args").val(args);
+				$("#fee").val(fee);
+				$("#f7753").submit();
+			}
+		</script>
 
 		<%@ include file="/footer.jsp" %>
 

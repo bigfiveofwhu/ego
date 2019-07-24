@@ -367,7 +367,6 @@
 								var sum=parseInt('${product.aab206 }');
 								if(count>sum){
 									alert("请重新选择数量!");
-									
 									return;
 								}
 								$("#pur-count").attr("value",count);
