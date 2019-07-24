@@ -56,7 +56,7 @@
 				  </a>
 				</c:when>
 				<c:otherwise>
-					<a id="mc-menu-hd" href="${path }/home/shopcart.jsp" target="_top">
+					<a id="mc-menu-hd" href="${path }/home/shopcart.html" target="_top">
 					<i class="am-icon-shopping-cart  am-icon-fw"></i>
 					<span>¹ºÎï³µ</span>
 					<strong id="J_MiniCartNum" class="h">${CARTNUM_IN_SESSION}</strong>
@@ -79,6 +79,7 @@
 				</a>
 			</div>
 		</div>
+		<c:if test="${aaa102!=null}">
 		<div class="topMessage shop">
 			<div class="menu-hd">
 			<c:choose>
@@ -113,6 +114,7 @@
 				</a>
 			</div>
 		</div>
+		</c:if>
 	</ul>
 </div>
 

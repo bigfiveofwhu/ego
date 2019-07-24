@@ -34,12 +34,16 @@
 						<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">售后详情</strong> / <small>Refund&nbsp;Detail</small></div>
 					</div>
 					<hr/>
+					<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+					<% String url=(request.getAttribute("url")).toString();
+				  	   String[] arr=url.split(";");
+					%>
 					<div class="comment-list">
-
 						<div class="record-aside">
 							<div class="item-pic">
 								<a href="#" class="J_MakePoint">
-									<img src="<%=path%>/images/comment.jpg_400x400.jpg" class="itempic">
+									
+									<img src="<%=path%><%=arr[0] %>" class="itempic">
 								</a>
 							</div>
 
@@ -51,8 +55,7 @@
 									</a>
 								</div>
 								<div class="info-little">
-									<span>商品id:${ins.aab203 }</span>
-									<span>属性2:尚无</span>
+									<span>商品ID:${ins.aab203 }</span>
 								</div>
 							</div>
 							<div class="clear"></div>
@@ -61,10 +64,10 @@
 									<span class="info-title">退款编号：</span><a>${ins.aaa802 }</a>
 								</div>
 								<div class="item-ordernumber">
-									<span class="info-title">退款类型：</span><a>${ins.aaa804 }</a>
+									<span class="info-title">退款类型：</span><a>${ins.type }</a>
 								</div>
 								<div class="item-ordernumber">
-									<span class="info-title">退款原因：</span><a>${ins.aaa806 }</a>
+									<span class="info-title">退款原因：</span><a>${ins.reason }</a>
 								</div>
 								<div class="item-ordernumber">
 									<span class="info-title">原因描述：</span><a>${ins.aaa805 }</a>

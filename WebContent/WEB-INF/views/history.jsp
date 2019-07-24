@@ -52,6 +52,8 @@
 		java.text.SimpleDateFormat formatter4 =  new java.text.SimpleDateFormat("yyyy-MM-dd");
 		String lastMonth = formatter3.format(c3.getTime());
 		request.setAttribute("lastMonth", lastMonth);
+		
+		String url="";String[] arr=null;
 		 %>
 		
 			<b class="line"></b>
@@ -83,8 +85,12 @@
 								<div class="goods-box first-box">
 									<div class="goods-pic">
 										<div class="goods-pic-box">
-											<a class="goods-pic-link" target="_blank" href="#" title="${ins.aab202 }">
-												<img src="<%=path%>/images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
+										<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+										<% url=(request.getAttribute("url")).toString();
+									  		arr=url.split(";");
+										%>
+											<a class="goods-pic-link" target="_blank" href="<%=path%>/shop/detail.html?productId=${ins.aab203 }" title="${ins.aab202 }">
+												<img src="<%=path%><%=arr[0] %>" class="goods-img"></a>
 										</div>
 										<a class="goods-delete" href="javascript:;" onclick="delHistory(${ins.aaa701})">
 											<i class="am-icon-trash"></i>
@@ -106,7 +112,7 @@
 	
 									<div class="goods-attr">
 										<div class="good-title">
-											<a class="title" href="#" target="_blank" style="align:center">${ins.aab202 }</a>
+											<a class="title" href="<%=path%>/shop/detail.html?productId=${ins.aab203 }" target="_blank" style="align:center">${ins.aab202 }</a>
 										</div>
 										<div class="goods-price">
 											<span class="g_price">                                    
@@ -117,7 +123,7 @@
 										<div class="clear"></div>
 										<div class="goods-num">
 											<div class="match-recom">
-												<a href="#" class="match-recom-item">’“œ‡À∆</a>
+												<a href="<%=path %>/search.html?type=${ins.aab204}" target="_blank" class="match-recom-item">’“œ‡À∆</a>
 												<a href="#" class="match-recom-item">’“¥Ó≈‰</a>
 												<i><em></em><span></span></i>
 											</div>
@@ -149,8 +155,12 @@
 								<div class="goods-box first-box">
 									<div class="goods-pic">
 										<div class="goods-pic-box">
-											<a class="goods-pic-link" target="_blank" href="#" title="${ins.aab202 }">
-												<img src="<%=path%>/images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
+										<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+										<% url=(request.getAttribute("url")).toString();
+									  		arr=url.split(";");
+										%>
+											<a class="goods-pic-link" target="_blank" href="<%=path%>/shop/detail.html?productId=${ins.aab203 }" title="${ins.aab202 }">
+												<img src="<%=path%><%=arr[0] %>" class="goods-img"></a>
 										</div>
 										<a class="goods-delete" href="javascript:;" onclick="delHistory(${ins.aaa701})">
 											<i class="am-icon-trash"></i>
@@ -172,7 +182,7 @@
 	
 									<div class="goods-attr">
 										<div class="good-title">
-											<a class="title" href="#" target="_blank" style="align:center">${ins.aab202 }</a>
+											<a class="title" href="<%=path%>/shop/detail.html?productId=${ins.aab203 }" target="_blank" style="align:center">${ins.aab202 }</a>
 										</div>
 										<div class="goods-price">
 											<span class="g_price">                                    
@@ -183,7 +193,7 @@
 										<div class="clear"></div>
 										<div class="goods-num">
 											<div class="match-recom">
-												<a href="#" class="match-recom-item">’“œ‡À∆</a>
+												<a href="<%=path %>/search.html?type=${ins.aab204}" target="_blank" class="match-recom-item">’“œ‡À∆</a>
 												<a href="#" class="match-recom-item">’“¥Ó≈‰</a>
 												<i><em></em><span></span></i>
 											</div>
@@ -215,8 +225,12 @@
 								<div class="goods-box first-box">
 									<div class="goods-pic">
 										<div class="goods-pic-box">
-											<a class="goods-pic-link" target="_blank" href="#" title="${ins.aab202 }">
-												<img src="<%=path%>/images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
+										<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+										<% url=(request.getAttribute("url")).toString();
+									  		arr=url.split(";");
+										%>
+											<a class="goods-pic-link" target="_blank" href="<%=path%>/shop/detail.html?productId=${ins.aab203 }" title="${ins.aab202 }">
+												<img src="<%=path%><%=arr[0] %>" class="goods-img"></a>
 										</div>
 										<a class="goods-delete" href="javascript:;" onclick="delHistory(${ins.aaa701})">
 											<i class="am-icon-trash"></i>
@@ -238,7 +252,7 @@
 	
 									<div class="goods-attr">
 										<div class="good-title">
-											<a class="title" href="#" target="_blank" style="align:center">${ins.aab202 }</a>
+											<a class="title" href="<%=path%>/shop/detail.html?productId=${ins.aab203 }" target="_blank" style="align:center">${ins.aab202 }</a>
 										</div>
 										<div class="goods-price">
 											<span class="g_price">                                    
@@ -249,7 +263,7 @@
 										<div class="clear"></div>
 										<div class="goods-num">
 											<div class="match-recom">
-												<a href="#" class="match-recom-item">’“œ‡À∆</a>
+												<a href="<%=path %>/search.html?type=${ins.aab204}"  target="_blank" class="match-recom-item">’“œ‡À∆</a>
 												<a href="#" class="match-recom-item">’“¥Ó≈‰</a>
 												<i><em></em><span></span></i>
 											</div>
@@ -281,8 +295,12 @@
 								<div class="goods-box first-box">
 									<div class="goods-pic">
 										<div class="goods-pic-box">
-											<a class="goods-pic-link" target="_blank" href="#" title="${ins.aab202 }">
-												<img src="<%=path%>/images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
+										<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+										<% url=(request.getAttribute("url")).toString();
+									  		arr=url.split(";");
+										%>
+											<a class="goods-pic-link" target="_blank" href="<%=path%>/shop/detail.html?productId=${ins.aab203 }" title="${ins.aab202 }">
+												<img src="<%=path%><%=arr[0] %>" class="goods-img"></a>
 										</div>
 										<a class="goods-delete" href="javascript:;" onclick="delHistory(${ins.aaa701})">
 											<i class="am-icon-trash"></i>
@@ -304,7 +322,7 @@
 	
 									<div class="goods-attr">
 										<div class="good-title">
-											<a class="title" href="#" target="_blank" style="align:center">${ins.aab202 }</a>
+											<a class="title" href="<%=path%>/shop/detail.html?productId=${ins.aab203 }" target="_blank" style="align:center">${ins.aab202 }</a>
 										</div>
 										<div class="goods-price">
 											<span class="g_price">                                    
@@ -315,7 +333,7 @@
 										<div class="clear"></div>
 										<div class="goods-num">
 											<div class="match-recom">
-												<a href="#" class="match-recom-item">’“œ‡À∆</a>
+												<a href="<%=path %>/search.html?type=${ins.aab204}"  target="_blank" class="match-recom-item">’“œ‡À∆</a>
 												<a href="#" class="match-recom-item">’“¥Ó≈‰</a>
 												<i><em></em><span></span></i>
 											</div>

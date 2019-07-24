@@ -31,6 +31,7 @@
 	</head>
 
 	<body>
+	<%String url="";String[] arr=null; %>
 	<form id="myform" action="<%=path%>/###.html" method="post"></form>
 	
 		
@@ -73,26 +74,32 @@
 												<c:when test="${ins.aab412 eq '02' }">
 												<div class="comment-list">
 													<ul class="item-list">
-														
 															<li class="td td-item">
+															<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+																<% url=(request.getAttribute("url")).toString();
+															  		arr=url.split(";");
+																%>
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic">
+																		<img src="<%=path%><%=arr[0] %>" class="itempic">
 																	</a>
 																</div>
 															</li>
 			
 															<li class="td td-comment">
 																<div class="item-title">
-																	<div class="item-opinion">${ins.aab410 }分</div>
+																	<div class="item-opinion" style="width:60px;">${ins.aab410 }分</div>
 																	<div class="item-name">
 																		<a href="#">
-																			<p class="item-basic-info">${ins.aab202 }</p>
+																			<p class="item-basic-info" style="font-size:20px;">${ins.aab202 }</p>
 																		</a>
 																	</div>
 																</div>
 																<div class="item-comment">
-																	<a href="javascript:;" onclick="goCommentDetail(${ins.aab302})">${ins.aab403 }</a>
+																	<a href="javascript:;" onclick="goCommentDetail(${ins.aab302})">
+																	<span style="color:orange;">初次评价:</span>
+																	${ins.aab403 }
+																	</a>
 																</div>
 			
 																<div class="item-info">
@@ -112,27 +119,30 @@
 												<c:when test="${ins.aab412 eq '01' }">
 													<div class="comment-list">
 														<ul class="item-list">
-															
-															
 															<li class="td td-item">
+															<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+																<% url=(request.getAttribute("url")).toString();
+															  		arr=url.split(";");
+																%>
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic">
+																		<img src="<%=path%><%=arr[0] %>" class="itempic">
 																	</a>
 																</div>
 															</li>											
 															
 															<li class="td td-comment">
 																<div class="item-title">
-																	<div class="item-opinion">${ins.aab410 }分</div>
+																	<div class="item-opinion" style="width:60px;">${ins.aab410 }分</div>
 																	<div class="item-name">
-																		<a href="#">
-																			<p class="item-basic-info">${ins.aab202 }</p>
-																		</a>
+																		<p class="item-basic-info" style="font-size:20px;">${ins.aab202 }</p>
 																	</div>
 																</div>
 																<div class="item-comment">
-																	<a href="javascript:;" onclick="goCommentDetail(${ins.aab302})">${ins.aab403 }</a>
+																	<a href="javascript:;" onclick="goCommentDetail(${ins.aab302})">
+																	<span style="color:orange;">初次评价:</span>
+																	${ins.aab403 }
+																	</a>
 																<div class="filePic"><img src="<%=path%>/images/comments/${ins.aab402}" alt=""></div>	
 																</div>
 			
@@ -175,16 +185,20 @@
 																</div>													
 															</div>
 															<li class="td td-item">
+															<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+																<% url=(request.getAttribute("url")).toString();
+															  		arr=url.split(";");
+																%>
 																<div class="item-pic">
 																	<a href="#" class="J_MakePoint">
-																		<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic">
+																		<img src="<%=path%><%=arr[0] %>" class="itempic">
 																	</a>
 																</div>
 															</li>											
 															
 															<li class="td td-comment">
 																<div class="item-title">
-																	<div class="item-opinion">${ins.aab410 }分</div>
+																	<div class="item-opinion" style="width:60px;">${ins.aab410 }分</div>
 																	<div class="item-name">
 																		<a href="#">
 																			<p class="item-basic-info">${ins.aab202 }</p>
@@ -193,7 +207,7 @@
 																</div>
 																<div class="item-comment">
 																	<a href="javascript:;" onclick="goCommentDetail(${ins.aab302})">${ins.aab403 }</a>
-																<div class="filePic"><img src="<%=path%>/images/image.jpg" alt=""></div>	
+																<div class="filePic"><img src="<%=path%>/images/comments/${ins.aab402}" alt=""></div>	
 																</div>
 			
 																<div class="item-info">

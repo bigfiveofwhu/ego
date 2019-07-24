@@ -325,7 +325,6 @@
             data: {
                 "aac102": aac102,
                 "aac108": state,
-                "aad102": '7001',
                 "aad801": $("#aad801").text(),
                 "aad804": state,
                 "type": '6',

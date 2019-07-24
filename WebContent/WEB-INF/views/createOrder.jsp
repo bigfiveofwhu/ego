@@ -12,18 +12,6 @@
 		<link href="<%=path%>/css/jsstyle.css" rel="stylesheet" type="text/css" />	
 		<script type="text/javascript" src="<%=path%>/js/address.js"></script>
 		<script type="text/javascript">
-		function checkAddress(){
-			var province=$(".defaultAddr").children(".new-p-re").children(".new-mu_l2cw") .children(".province").text();
-			var street=$(".defaultAddr").children(".new-p-re").children(".new-mu_l2cw") .children(".street").text();
-			var man=$(".defaultAddr").children(".new-p-re").children(".new-txt").text();
-			var phone=$(".defaultAddr").children(".new-p-re").children(".new-txt-rd2").text();
-			$("#xx").text(province+street+man+phone);
-			$("#yy").text($("#user_message").val());
-			$("#zz").text($("#pay-total").text());
-			$('input[name="aab311"]').val(province+street);
-			$('input[name="aab317"]').val(man);
-			$('input[name="aab318"]').val(phone);
-		}
 		
 		function sendOrder(){
 			var province=$(".defaultAddr").children(".new-p-re").children(".new-mu_l2cw") .children(".province").text();
@@ -50,17 +38,6 @@
 	</head>
 
 	<body>
-		<p id="xx"></p>
-		<p id="yy"></p>
-		<p id="zz"></p>
-
-		<p>${product.aab203 }</p>
-		<p>${product.count }</p>
-		<p>${product.aab205 }</p>
-		<p>${product.fee }</p>
-		<p>${product.aab205*product.count}</p>
-		<p>${total }</p>
-
 
 		<form id="myform" action="###.html" method="post" > 
 			<input name="aaa102" type="hidden" value="<%=session.getAttribute("aaa102")%>"/>
@@ -124,7 +101,6 @@
 					
 					
 					<div class="clear"></div>
-					<a href="javascript:;" onclick="checkAddress()">»∑»œ233333333333333333333333</a>
 					<!--∂©µ• -->
 					<div class="concent">
 						<div id="payTable">
@@ -158,9 +134,13 @@
 										<ul class="item-content clearfix">
 											<div class="pay-phone">
 												<li class="td td-item">
+												<c:set var="url" value="${product.aab208 }" scope="request"></c:set>
+													<% String url=(request.getAttribute("url")).toString();
+												  	   String[] arr=url.split(";");
+													%>
 													<div class="item-pic">
 														<a href="#" class="J_MakePoint">
-															<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+															<img src="<%=path%><%=arr[0] %>" style="width:100%;" class="itempic J_ItemImg">
 														</a>
 													</div>
 													<div class="item-info">
@@ -515,7 +495,8 @@ layui.use('layer',function(){
 
 var total=${total};
 $("#coupon-select").change(function(){
-	total= ${total} - parseFloat($(this).val());
+	var temp= ${total} - parseFloat($(this).val());
+	total=temp>0?temp:0;
 	$("#pay-total").html(total);
 })
 </script>

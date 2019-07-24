@@ -9,6 +9,10 @@ public class ShopRegisteredController extends ControllerSupport
 	@Override
 	public String execute() throws Exception 
 	{
+		if(this.get("aaa102")==null)    //若未登录返回登录
+		{
+			return "home/login";
+		}
 		//向店铺中插入数据
 		this.setServices(new Ab01ServiceImpl());
 		this.dto.put("aab103", this.get("shopname"));

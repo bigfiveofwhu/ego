@@ -109,7 +109,7 @@
 	          </label>
 	        </div>
 	        <div class="form-check disabled">
-	          <input class="form-check-input" type="radio" name="aad303" id="gridRadios3" value="10" >
+	          <input class="form-check-input" type="radio" name="aad303" id="gridRadios3" value="10" disabled>
 	          <label class="form-check-label" for="gridRadios3">
 	           	服务
 	          </label>
@@ -130,14 +130,14 @@
 	        </div>
 	        
 	        <div class="form-check">
-	          <input class="form-check-input" type="radio" name="aad305" id="serchAhead" value="01">
+	          <input class="form-check-input" type="radio" name="aad305" id="serchAhead" value="01" data-tag="true">
 	          <label class="form-check-label" for="serchAhead">
 	           	搜索靠前
 	          </label>
 	        </div>
 	        
 	        <div class="form-check ">
-	          <input class="form-check-input" type="radio" name="aad305" id="targetAd" value="10" >
+	          <input class="form-check-input" type="radio" name="aad305" id="targetAd" value="10" data-tag="true">
 	          <label class="form-check-label" for="targetAd">
 	           	定向推介
 	          </label>
@@ -283,7 +283,12 @@ $("[tag='retract']").click(function(){
 		  layer.msg('撤回失败');
 	  })
 })
-
+$("#gridRadios2").click(function(){
+	$("[data-tag='true']").attr("disabled","true");
+})
+$("#gridRadios1").click(function(){
+	$("[data-tag='true']").removeAttr("disabled");
+})
 </script>
 
 </body>

@@ -81,9 +81,13 @@
 											</div>													
 										</div>
 											<li class="td td-item">
+											<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+												<% String url=(request.getAttribute("url")).toString();
+											  	   String[] arr=url.split(";");
+												%>
 												<div class="item-pic">
 													<a href="#" class="J_MakePoint">
-														<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic">
+														<img src="<%=path%><%=arr[0] %>" class="itempic">
 													</a>
 												</div>
 											</li>											
@@ -92,20 +96,32 @@
 												<div class="item-title">
 													
 													<div class="item-name">
-														<a href="#">
-															<p class="item-basic-info" align="center">${ins.aab202 }</p>
-														</a>
+														<p class="item-basic-info" align="left" style="font-size:20px;">
+														<span style="color:orange;font-size:20px;">商品:</span> 
+														${ins.aab202 }</p>
 													</div>
 												</div>
 												<div class="item-comment">
-													<a href="javascript:;" onclick="goCommentDetail(${ins.aab302})">${ins.aab403 }</a>
+													<a href="javascript:;" onclick="goCommentDetail(${ins.aab302})">
+													<span style="color:orange;">我的评价:</span>
+													${ins.aab403 }
+													</a>
 													<br/>
-													<div class="item-opinion" style="width:60%">物流评价:${ins.aab409 }分</div>
-													<div class="item-opinion" style="width:60%">服务评价:${ins.aab411 }分</div>
-													<div class="item-opinion" style="width:60%">商品评价:${ins.aab410 }分</div>
+													<div class="item-opinion" style="width:60%">
+														<span style="color:orange;">物流评价:</span>
+														${ins.aab409 }分
+													</div>
+													<div class="item-opinion" style="width:60%">
+														<span style="color:orange;">服务评价:</span>
+														${ins.aab411 }分
+													</div>
+													<div class="item-opinion" style="width:60%">
+														<span style="color:orange;">商品评价:</span>
+														${ins.aab410 }分
+													</div>
 													<c:choose>
 													<c:when test="${ins.aab412 eq '01' }">
-														<div class="filePic"><img src="<%=path%>/images/image.jpg" alt=""></div>	
+														<div class="filePic"><img src="<%=path%>/images/comments/${ins.aab402}" alt=""></div>	
 													</c:when>
 													</c:choose>
 												
@@ -142,8 +158,9 @@
 												</div>								
 												<li class="td td-comment">
 													<div class="item-comment">
-													${ins.aab404 }
-													<br/>
+														<span style="color:orange;">追加评价:</span>
+														${ins.aab404 }
+														<br/>
 													</div>
 													<div class="item-info">
 														<div>
@@ -170,7 +187,8 @@
 												</div>								
 												<li class="td td-comment">
 													<div class="item-comment">
-														商家回复:<br/>${ins.aab405 }
+														<span style="color:orange;">商家回复:</span>
+														${ins.aab405 }
 														<br/>
 													</div>
 													<div class="item-info">

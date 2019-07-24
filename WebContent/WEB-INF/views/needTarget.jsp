@@ -80,7 +80,7 @@
 																<li class="td td-item">
 																	<div class="item-pic">
 																		<a href="#" class="J_MakePoint">
-																			<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																			<img src="<%=path%>/images/server.jpg" class="itempic J_ItemImg">
 																		</a>
 																	</div>
 																	<div class="item-info">

@@ -216,19 +216,19 @@
      <div id="popBox">
        <div class="close">
         <a href="javascript:void(0)" onclick="closeBox()">×</a>
-     </div>
-    <div class="content">
-    <form id="myform1" method="post">
-    <div id="msg101" style="color:red">参与竞标</div>
-    <div>
-    <i class=""></i>
-    <input type="number" id="aac303" name="aac303" placeholder="竞标价格" required="required" >
-    </div>
-    <textarea id="aac304" rows="15" cols="48" name="aac304" placeholder="填写竞标描述" required="required"></textarea>
-    <input type="hidden" id="aac602" value="">
-    <input class="btn bg-olive btn-xs" type="submit" onclick="joinRequire()" id="1314p"  value="参与竞标"></input>
-    </form>
-    </div>
+     	</div>
+	    <div class="content">
+	    <form id="myform1" method="post">
+	    <div id="msg101" style="color:red">参与竞标</div>
+	    <div>
+	    <i class=""></i>
+	    <input type="number" id="aac303" name="aac303" placeholder="竞标价格" required="required" >
+	    </div>
+	    <textarea id="aac304" rows="15" cols="48" name="aac304" placeholder="填写竞标描述" required="required"></textarea>
+	    <input type="hidden" id="aac602" value="">
+	    <input class="btn bg-olive btn-xs" type="submit" onclick="joinRequire()" id="1314p"  value="参与竞标"></input>
+	    </form>
+	    </div>
     </div>
 	</body>
 
@@ -284,9 +284,15 @@
     function popBox(id,index) {
     	var data_id=$("#require"+index).attr("data-id");
     	if(data_id=='0'){
+			$("#aac303").val("");
+			$("#aac303").attr("readonly",false);
+			$("#aac304").val("");
+			$("#aac304").attr("readonly",false);
+			$("#msg101").text("");
             $("#popBox").css("display","block");
             $("#popLayer").css("display","block");
             $("#aac602").attr("value",id);
+			$("#1314p").attr("disabled",false);
     	}else{
     		$.ajax({
     			url:"<%=path%>/require.ajax",

@@ -349,6 +349,8 @@ public class ReportServiceImpl extends JdbcServicesSupport
         else if (tag == 2)
             sql.append(" AND PERIOD_DIFF(date_format(NOW( ),'%Y'),date_format(aab305,'%Y'))=0");
         //否则（tag=3）为生涯流水
+        else
+            sql.append(" AND aab305 IS NOT NULL");
 
         return queryForList(sql.toString(), paramList.toArray());
     }
@@ -400,6 +402,8 @@ public class ReportServiceImpl extends JdbcServicesSupport
         else if (tag == 2)
             sql.append(" AND PERIOD_DIFF(date_format(NOW( ),'%Y'),date_format(aac405,'%Y'))=0");
         //否则（tag=3）为生涯流水
+        else
+            sql.append(" AND aac405 IS NOT NULL");
 
         return queryForList(sql.toString(), paramList.toArray());
     }

@@ -84,13 +84,15 @@ public class Aa08ServicesImpl extends JdbcServicesSupport
 	 */
 	private Map<String,String>refundDetail() throws Exception
 	{
-		StringBuilder sql =null;
+		StringBuilder sql =null;  
 		sql = new StringBuilder()
 				.append("select c.aab202,b.aab302,a.aaa802,a.aaa807,a.aaa808,")
 				.append("       a.aaa809,b.aab310,b.aab314,a.aaa803,a.aaa804,")
-				.append("       a.aaa806,a.aaa805,c.aab203")
-    			.append("  from aa08 a, ab03 b, ab02 c")
+				.append("       a.aaa806,a.aaa805,c.aab203,e.fvalue type,f.fvalue reason,c.aab208")
+    			.append("  from aa08 a, ab03 b, ab02 c,syscode e,syscode f")
     			.append(" where a.aab302=b.aab302 and a.aab203=c.aab203")
+    			.append(" and a.aaa804=e.fcode and a.aaa806=f.fcode")
+    			.append(" and e.fname='aaa804' and f.fname='aaa806'")
     			.append(" and a.aaa802=?")
     			;
 		System.out.println("***查询单一售后详情:显示findById()的SQL查询语句****");
@@ -191,7 +193,7 @@ public class Aa08ServicesImpl extends JdbcServicesSupport
 		//定义SQL主体
 		StringBuilder sql = new StringBuilder()
 				.append("select z.aaa802,z.aaa807,x.aab203,z.aaa803,z.aaa804,")
-				.append("       x.aab302,x.aab310,x.aab313,x.aab314,y.aab202")
+				.append("       x.aab302,x.aab310,x.aab313,x.aab314,y.aab202,y.aab208")
 				.append("  from ab03 x,ab02 y, aa08 z ")
 				.append("  where z.aab302=x.aab302 and z.aab203=y.aab203 ")
 				.append("  and z.aaa102=? ")

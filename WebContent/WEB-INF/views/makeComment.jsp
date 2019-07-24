@@ -136,9 +136,13 @@
 										</a>
 									</div>
 								</div>
+								<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+								<% String url=(request.getAttribute("url")).toString();
+							  		String[] arr=url.split(";");
+								%>
 								<div class="item-pic">
 									<a href="#" class="J_MakePoint">
-										<img src="<%=path%>/images/comment.jpg_400x400.jpg" class="itempic">
+										<img src="<%=path%><%=arr[0] %>" class="itempic">
 									</a>
 								</div>
 								<div class="item-title">
@@ -150,7 +154,7 @@
 									<div class="item-info">
 										<div class="info-little">
 											<span>订单号:${ins.aab302 }</span>
-											<span>属性2:尚无</span>
+											
 										</div>
 										<div class="item-price">
 											价格：<strong>&yen;${ins.aab314 }</strong>

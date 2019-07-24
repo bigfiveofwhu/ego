@@ -42,7 +42,7 @@ public class RegisteredController extends ControllerSupport
 		//在审核表中插入服务商审核数据
 		this.dto.put("aad802", this.get("describe"));
 		this.dto.put("aad805", this.get("aac102"));   //审核对象id
-		this.dto.put("aad803", "02");   //审核类型 02--服务商注册
+		this.dto.put("aad803", "03");   //审核类型 03--服务商注册
 		this.setServices(new Ad08ServicesImpl());
 		this.getServices().update("insertAd08");
 		this.getSession().setAttribute("aac102", this.get("aac102"));  //已放入dto的服务商id
