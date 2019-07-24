@@ -532,7 +532,6 @@
 		function readFile() {
 			fd = new FormData();
 			var iLen = this.files.length;
-			alert(iLen);
 			var index = 0;
 			var currentReViewImgIndex = 0;
 			for(var i = 0; i < iLen; i++) {
@@ -554,7 +553,6 @@
 					for(var j = 0; j < dataArr.length; j++) {
 						currentReViewImgIndex = j
 					}
-					alert(this.result);
 					result = '<div class="showdiv"><img class="left" src="${path}/images/Arrow_left.svg" /><img class="center" src="${path}/images/delete.svg" /><img class="right" src="${path}/images/Arrow_right.svg" /></div><img id="img' +currentReViewImgIndex+randomString(1)+randomString(2) +randomString(5) + '" class="showimg" src="' + this.result + '" />';
 					var li = document.createElement('li');
 					li.innerHTML = result;
