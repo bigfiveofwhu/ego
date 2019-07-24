@@ -302,7 +302,16 @@
                         $("#aab207").text('');
                     }
 
-                    $("#aab208").html('<img src="<%=path%>' + map.aab208 + '" alt="" onerror="this.style.display=\'none\'">');
+                    var text2 = '';
+                    if (map.aab208 !== '') {
+                        var pics2 = map.aab208.split(';');
+                        for (var ii = 0; ii < pics2.length; ii++) {
+                            text2 = text2 + '<img src="<%=path%>' + pics2[ii] + '" alt="" onerror="this.style.display=\'none\'">';
+                        }
+                        $("#aab208").html(text2);
+                    } else {
+                        $("#aab208").text('');
+                    }
                     $("#aab209").text(map.aab209);
                     $("#aab211").text(map.aab211);
                     $("#aab212").text(map.cnaab212);
@@ -329,6 +338,7 @@
                 }
             },
             error: function () {
+                clearDetails();
                 console.log("商品详细信息异步加载错误");
             }
         });
