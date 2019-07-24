@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ego.controller.ajaxServlet.AjaxControllerSupport;
 import com.ego.services.impl.ProductManageServicesImpl;
+import com.ego.services.impl.seller.SPManageServicesImpl;
 import com.ego.system.tools.Tools;
 import com.ego.system.utils.FileUpload;
 
@@ -29,6 +30,13 @@ public class MulImgUploadController extends AjaxControllerSupport {
 		if(this.get("type").equals("spec"))//œÍ«ÈÕº∆¨
 		{
 			this.getService().update("saveSpecImg");
+			this.put("tag", 1);
+		}
+		
+		if(this.get("type").equals("ser"))
+		{
+			this.setService(new SPManageServicesImpl());
+			this.getService().update("saveSerImg");
 			this.put("tag", 1);
 		}
 	}

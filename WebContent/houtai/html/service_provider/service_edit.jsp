@@ -16,6 +16,89 @@
 		<!-- 富文本编辑器 -->
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/kindeditor/themes/default/default.css" />
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/kindeditor/themes/default/default.css" />
+		<style>
+			.main {
+				width: 80%;
+				margin: auto;
+			}
+			
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.upimg {
+				position: relative;
+				width: 100px;
+				height: 100px;
+				border-radius: 5px;
+				border: dashed #999999;
+				background: url(${path}/images/addimg.svg) no-repeat;
+				background-position: 33px;
+			}
+			
+			.upimg input {
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				opacity: 0;
+			}
+			
+			#showui {
+				display: flex;
+				justify-content: flex-start;
+			}
+			
+			#showui li {
+				width: 150px;
+				height: 150px;
+				position: relative;
+				overflow: hidden;
+				display: inline-block;
+				margin-right: 5px;
+			}
+			
+			#showui li img.showimg {
+				position: absolute;
+				text-align: center;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				z-index: 6;
+			}
+			
+			.showdiv {
+				position: absolute;
+				z-index: 9;
+				bottom: 0;
+				width: calc(100% - 20px);
+				padding: 10px;
+				display: flex;
+				justify-content: space-around;
+				background: rgba(0, 0, 0, .6);
+			}
+			
+			.showdiv img {
+				width: 20px;
+				height: 20px;
+				cursor: pointer;
+			}
+			
+			#showui li:first-child img.left {
+				opacity: .6;
+				cursor: no-drop;
+			}
+			
+			#showui li:last-child img.right {
+				opacity: .6;
+				cursor: no-drop;
+			}
+			
+			.oneright {
+				opacity: .6;
+				cursor: no-drop !important;
+			}
+		</style>
 	</head>
 
 	<body class="hold-transition skin-red sidebar-mini" ng-app="shopping" ng-controller="GoodsController" ng-init="selectItemCat1List();findOne()">
@@ -92,9 +175,10 @@
 							</div>
 						  </form>
 						</div>
+						
                   </div>
                   <div class="btn-toolbar list-toolbar">
-				<button class="btn btn-primary"   onclick="saveData()"><i class="fa fa-save" ></i>保存</button>
+				<button class="btn btn-primary"  id="submitservice" onclick="saveData()"><i class="fa fa-save" ></i>保存</button>
 				<span>${msg}</span>
 				<button class="btn btn-default" onclick="window.location.href='<%=path %>/service/queryService.html';">返回列表</button>
 			</div>

@@ -230,6 +230,22 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 		return this.executeUpdate(sql, this.get("aab203"));
 	}
 	
+	/**
+	 * 重新上架,不需经过审核
+	 * @return
+	 * @throws Exception
+	 */
+	private boolean putOn2() throws Exception
+	{
+		String sql = "update ab02 set aab212 = '02' where aab203 = ? ";
+		return this.executeUpdate(sql, this.get("aab203"));
+	}
+	
+	/**
+	 * 修改商品价格和库存
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean updateById() throws Exception
 	{
 		String sql = "update ab02 set aab205 = ?,aab206 = ? where aab203 = ?";
