@@ -515,7 +515,8 @@ layui.use('layer',function(){
 
 var total=${total};
 $("#coupon-select").change(function(){
-	total= ${total} - parseFloat($(this).val());
+	var temp= ${total} - parseFloat($(this).val());
+	total=temp>0?temp:0;
 	$("#pay-total").html(total);
 })
 </script>

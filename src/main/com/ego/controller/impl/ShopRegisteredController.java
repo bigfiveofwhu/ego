@@ -9,7 +9,7 @@ public class ShopRegisteredController extends ControllerSupport
 	@Override
 	public String execute() throws Exception 
 	{
-		if(this.get("aaa202")==null)    //ÈôÎ´µÇÂ¼·µ»ØµÇÂ¼
+		if(this.get("aaa102")==null)    //ÈôÎ´µÇÂ¼·µ»ØµÇÂ¼
 		{
 			return "home/login";
 		}
