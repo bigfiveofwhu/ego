@@ -107,12 +107,12 @@
 										$("#agoods${vs.count}").attr("src","/ego"+agoods${vs.count}.split(";")[0])
 									 });
 								</script>									
-								<p class="title fl">¡¾Á¼Æ·ÆÌ×ÓÆì½¢µê¡¿${goods.aab202}${goods.introduce}</p>
+								<p class="title fl">${goods.aab202}</p>
 								<p class="price fl">
 									<b>&yen;</b>
 									<strong>${goods.aab205}</strong>
 								</p>
-								<p class="number fl">ÏúÁ¿<span>1110</span>
+								<p class="number fl">¿â´æ<span>${goods.aab206}</span>
 								</p>
 							</div>
 						</li>
@@ -133,12 +133,12 @@
 									$("#goods${vs.count}").attr("src","/ego"+goods${vs.count}.split(";")[0])
 								 });
 								</script>									
-								<p class="title fl">¡¾Á¼Æ·ÆÌ×ÓÆì½¢µê¡¿${goods.aab202}${goods.introduce}</p>
+								<p class="title fl">${goods.aab202}</p>
 								<p class="price fl">
 									<b>&yen;</b>
 									<strong>${goods.aab205}</strong>
 								</p>
-								<p class="number fl">ÏúÁ¿<span>1110</span>
+								<p class="number fl">¿â´æ<span>${goods.aab206}</span>
 								</p>
 							</div>
 						</li>

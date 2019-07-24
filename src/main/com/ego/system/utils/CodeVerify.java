@@ -1,8 +1,7 @@
 package com.ego.system.utils;
 
-import java.util.Date;
-
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 public class CodeVerify
 {
@@ -18,7 +17,7 @@ public class CodeVerify
 	    }
 		 else
 	    {
-	    	if(code.equals(oldCode))   //在此处验证, 通过后移除相应属性
+	    	if(code.equalsIgnoreCase(oldCode))   //在此处验证, 通过后移除相应属性
 	    	{
 	    		session.removeAttribute("regVerCode");
 	    		session.removeAttribute("regVerCodeTime");

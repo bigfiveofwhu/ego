@@ -237,13 +237,13 @@
                                 </tr>
                                 <tr>
                                     <td>修改商品价格</td>
-                                    <td id="aab205" class="to_clear">
+                                    <td id="aab205" class="">
                                     <input type="text" id="modify_price" value=""></input>元
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>修改库存</td>
-                                    <td id="aab206" class="to_clear">
+                                    <td id="aab206" class="">
                                     <input type="number" id="modify_amount" value=""></input>
                                     </td>
                                 </tr>

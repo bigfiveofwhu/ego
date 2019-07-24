@@ -388,6 +388,7 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
 	}
 	/**
 	 * 根据服务商id查询所有满足要求(同城市,投标中)的需求订单
+	 * hug
 	 * @return
 	 * @throws Exception
 	 */
@@ -395,13 +396,14 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql=new StringBuilder()
 				.append("select a.aaa103,y.aaa102,y.aac602,b.fvalue aac603,c.fvalue aac604,y.aac605,")
-				.append("		CONCAT(y.aac606,' ',y.aac607) as addr,y.aac608")
+				.append("		CONCAT(y.aac606,' ',y.aac607) as addr,y.aac608,y.aac202")
 				.append("  from ac01 x,ac06 y,t_area z,aa01 a,syscode b,syscode c")
 				.append(" where c.fcode=y.aac604 and c.fname='aac205'")
+				.append("   and c.fcode=y.aac604 and c.fname='aac205'")
 				.append("   and b.fcode=y.aac603 and b.fname='aac106'")
 				.append("   and a.aaa102=y.aaa102")
 				.append("   and y.aac603=x.aac106")                   //匹配服务类型相同的需求信息
-				.append("   and y.aac609='02' and y.aac606 like CONCAT('%',z.areaName,'%')")   // 需求状态  02 --已投标(未处理)
+				.append("   and y.aac609='02' and y.aac610='01' and y.aac606 like CONCAT('%',z.areaName,'%')")   // 需求状态  02 --已投标(未处理)   可见状态 01 --可见
 				.append("   and (x.aac105=z.areaId and x.aac102=?)")
 				.append(" limit 15")      //限制为15条
 				;

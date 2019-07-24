@@ -10,14 +10,9 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>eGo首页</title>
-<link href="<%=path %>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-<link href="<%=path %>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
-<link href="<%=path %>/basic/css/demo.css" rel="stylesheet" type="text/css" />
+<%@include file="/head.jsp" %>
 <link href="<%=path %>/css/hmstyle.css" rel="stylesheet" type="text/css" />
 <link href="<%=path %>/css/skin.css" rel="stylesheet" type="text/css" />
-<script src="<%=path %>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="${path}/js/jquery-1.7.2.min.js"></script>
-<script src="<%=path %>/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
 <c:if test="${msg!=null }">
 	<script type="text/javascript">
 	$(function(){
@@ -40,7 +35,7 @@
 			id="demo-slider-0">
 			<ul class="am-slides">
 			<c:forEach items="${loopShow }" var="Img">
-				<li class="banner1">
+				<li class="banner4">
 				<%--商品类型 --%>
 				<c:if test="${Img.aad303=='00' }">
 				<a href="<%=path%>/shop/detail.html?aId=${Img.aad302 }&productId=${Img.aad306}"><img src="<%=path%>/images/advertise/${Img.aad307 }" /></a>
@@ -68,21 +63,6 @@
 				<a><img src="<%=path%>/images/ad4.jpg" /> </a>
 				</li>--%>
 			</ul> 
-			<script type="text/javascript">
-			    $(function (){
-			    	$.ajax({
-			    		url:"",
-			    		data:"",
-			    		dataType:"",
-			    		success:function (){
-			    			
-			    		},
-			    		error:function(){
-			    			
-			    		}
-			    	});
-			    })
-			</script>
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -240,8 +220,6 @@
 			}
 		</script>
 	</div>
-   <%--  <iframe id="google_ads_frame3" name="google_ads_frame3" sandbox="allow-forms allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="728" height="90" frameborder="0" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-1341152667756824&amp;output=html&amp;h=90&amp;slotname=5754098212&amp;adk=1811165632&amp;adf=3847671124&amp;w=728&amp;lmt=1562068081&amp;guci=2.2.0.0.2.2.0.0&amp;format=728x90&amp;url=https%3A%2F%2Fconvertio.co%2Fzh%2Fpng-svg%2F&amp;flash=0&amp;wgl=1&amp;dt=1562068081169&amp;bpp=17&amp;bdt=307&amp;fdt=18&amp;idt=18&amp;shv=r20190626&amp;cbv=r20190131&amp;saldr=aa&amp;abxe=1&amp;prev_fmts=728x90%2C728x90&amp;correlator=7564648527725&amp;frm=20&amp;pv=1&amp;ga_vid=1553896000.1562067597&amp;ga_sid=1562068081&amp;ga_hid=2108996575&amp;ga_fc=0&amp;iag=0&amp;icsg=41130&amp;dssz=13&amp;mdo=0&amp;mso=0&amp;u_tz=480&amp;u_his=3&amp;u_java=0&amp;u_h=1080&amp;u_w=1920&amp;u_ah=1040&amp;u_aw=1920&amp;u_cd=24&amp;u_nplug=3&amp;u_nmime=4&amp;adx=588&amp;ady=926&amp;biw=1903&amp;bih=888&amp;scr_x=0&amp;scr_y=0&amp;eid=21060853%2C368226351%2C368226361%2C633794000%2C633794002&amp;oid=3&amp;ref=https%3A%2F%2Fconvertio.co%2Fzh%2Fimage-converter%2F&amp;rx=0&amp;eae=0&amp;fc=656&amp;brdim=0%2C0%2C0%2C0%2C1920%2C0%2C1920%2C1040%2C1920%2C888&amp;vis=1&amp;rsz=%7C%7CpeEbr%7C&amp;abl=CS&amp;pfx=0&amp;fu=24&amp;bc=31&amp;osw_key=2046013984&amp;ifi=3&amp;uci=3.8obyei4cvcy4&amp;fsb=1&amp;xpc=njCIeAerN8&amp;p=https%3A//convertio.co&amp;dtd=27" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="3.8obyei4cvcy4" data-google-query-id="CPrY4YiVluMCFdMlrQYd1s4Msg" data-load-complete="true"></iframe>
-           --%> 
 	<div class="shopMainbg">
 		<div class="shopMain" id="shopmain">
 			<!--今日推荐 -->
@@ -262,12 +240,6 @@
 						</a>
 					</div>
 				</div>
-			<%-- 	<%
-					//生成随机数
-					
-					//把随机数放在session中
-					request.getSession().setAttribute("TOKEN_IN_SESSION", ${list4 });
-				%> --%>
 				<c:forEach items="${list4 }" varStatus="" var="item3">
 
 					<div class="am-u-sm-4 am-u-lg-3 ">

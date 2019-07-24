@@ -128,7 +128,12 @@
 							<td>${ins.aab403}</td>
 							<td>${ins.aab410}</td>
 							<td>
-							  <button class="btn bg-olive btn-xs">图片</button>
+							  <c:if test="${ins.aab412 == 01 }">
+							  <button class="btn bg-olive btn-xs" onclick="showImg('${ins.aab402 }')">图片</button>
+							  </c:if>
+							  <c:if test="${ins.aab412 == 02 }">
+							    无
+							  </c:if>
 							</td>
 						<td class="text-center">
 						    <c:if test="${ins.aab405 == null }">
@@ -156,9 +161,9 @@
         <a href="javascript:void(0)" onclick="closeBox()">×</a>
      </div>
     <div class="content">
-    <form in="myform" method="post">
-    <textarea id="replyText" rows="15" cols="48" name="aab405"></textarea>
-    <input type="submit"  value="回复"></input>
+    <form id="myformhhh"  method="post">
+    <textarea id="replyText"  rows="15" cols="48" name="aab405"  class="form-control" required ></textarea>
+    <input type="submit" onclick="onSubmit()" value="回复" class="btn bg-olive"></input>
     </form>
     </div>
     </div>
@@ -183,18 +188,35 @@
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/SpecificationService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/BrandService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
-	<script>
+	<script type="text/javascript" src="<%=path%>/layui/layui.js"></script>
+	<script> 
+	layui.use('layer', function(){
+		layer = layui.layer;
+	});
+	function showImg(id) 
+	{
+		var imgpath = "${path}/images/comments/"+id
+		layer.open({
+			  title: '评论图片'
+			  ,content: '<img src='+imgpath+'>'
+			});  
+	}
+	
     /*点击弹出按钮*/
     function popBox(v,id) {
         var popBox = document.getElementById("popBox");
         var popLayer = document.getElementById("popLayer");
         $("#replyText").val(v);
-        $("#myform").action="<%=path%>/shop/reply.html?aab402="+id;
+        $("#myformhhh").attr("action","<%=path%>/shop/replyComment.html?aab402="+id)
        // document.getElementById("replyText").value = v;
         popBox.style.display = "block";
         popLayer.style.display = "block";
     };
     
+    function onSubmit()
+    {
+    	$("#myformhhh").submit();
+    }
     /*点击关闭按钮*/
     function closeBox() {
         var popBox = document.getElementById("popBox");
