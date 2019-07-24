@@ -54,12 +54,13 @@
 		<p id="yy"></p>
 		<p id="zz"></p>
 
+<%-- 
 		<p>${product.aab203 }</p>
 		<p>${product.count }</p>
 		<p>${product.aab205 }</p>
 		<p>${product.fee }</p>
 		<p>${product.aab205*product.count}</p>
-		<p>${total }</p>
+		<p>${total }</p>--%>
 
 
 		<form id="myform" action="###.html" method="post" > 
