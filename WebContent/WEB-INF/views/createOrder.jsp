@@ -38,6 +38,7 @@
 	</head>
 
 	<body>
+
 		<form id="myform" action="###.html" method="post" > 
 			<input name="aaa102" type="hidden" value="<%=session.getAttribute("aaa102")%>"/>
 			<input name="aab203" type="hidden" value="${product.aab203 }"/>
@@ -494,7 +495,8 @@ layui.use('layer',function(){
 
 var total=${total};
 $("#coupon-select").change(function(){
-	total= ${total} - parseFloat($(this).val());
+	var temp= ${total} - parseFloat($(this).val());
+	total=temp>0?temp:0;
 	$("#pay-total").html(total);
 })
 </script>

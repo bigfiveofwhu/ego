@@ -92,12 +92,40 @@
 					<div class="clear"></div>
 					<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
 					<!-- 一个商品信息模板 -->
+						<!-- 广告 -->
+						<c:forEach items="${searceAds}" var="goods" varStatus="vs">
+						<li>
+							<div class="i-pic limit">
+								<div id="imgsize">
+								<!-- 显示图片详细信息 -->
+								<p style="float:right;position:absolute">广告</p>
+							<a href="<%=path%>/shop/detail.html?aId=${goods.aad302 }&productId=${goods.aab203}"><img id="agoods${vs.count}" src="${goods.aab208}"/></a>
+								</div>
+								<script type="text/javascript">
+									$(function(){
+										var  agoods${vs.count}='${goods.aab208}';
+										$("#agoods${vs.count}").attr("src","/ego"+agoods${vs.count}.split(";")[0])
+									 });
+								</script>									
+								<p class="title fl">${goods.aab202}</p>
+								<p class="price fl">
+									<b>&yen;</b>
+									<strong>${goods.aab205}</strong>
+								</p>
+								<p class="number fl">库存<span>${goods.aab206}</span>
+								</p>
+							</div>
+						</li>
+						</c:forEach>
+					
+					
 						<c:forEach items="${productList}" var="goods" varStatus="vs">
 						<li>
 							<div class="i-pic limit">
 								<div id="imgsize">
 								<!-- 显示图片详细信息 -->
-							<a href="<%=path%>/shop/detail.html?productId=${goods.aab203}"><img id="goods${vs.count}" src="${goods.aab208}"/></a>
+							<a href="<%=path%>/shop/detail.html?productId=${goods.aab203}">
+							<img id="goods${vs.count}" /></a>
 								</div>
 								<script type="text/javascript">
 								 $(function(){
@@ -105,13 +133,12 @@
 									$("#goods${vs.count}").attr("src","/ego"+goods${vs.count}.split(";")[0])
 								 });
 								</script>									
-								<p class="title fl">【良品铺子旗舰店】${goods.aab202}${goods.introduce}</p>
+								<p class="title fl">${goods.aab202}</p>
 								<p class="price fl">
 									<b>&yen;</b>
 									<strong>${goods.aab205}</strong>
 								</p>
-								<p class="number fl">
-									销量<span>1110</span>
+								<p class="number fl">库存<span>${goods.aab206}</span>
 								</p>
 							</div>
 						</li>

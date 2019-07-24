@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ego.controller.ajaxServlet.AjaxControllerSupport;
 import com.ego.services.impl.ProductManageServicesImpl;
+import com.ego.services.impl.seller.SPManageServicesImpl;
 import com.ego.system.tools.Tools;
 
 public class PutOffGoodsController extends AjaxControllerSupport {
@@ -21,7 +22,34 @@ public class PutOffGoodsController extends AjaxControllerSupport {
 		         else
 		        	 this.put("tag", 0);
 				break;
+			case "serputoff"://服务下架
+				this.setService(new SPManageServicesImpl());
+				if( this.getService().update("putOffSale"))
+		        	 this.put("tag", 1);
+		         else
+		        	 this.put("tag", 0);
+				break;
+			case "puton"://上架
+				if( this.getService().update("putOn2"))
+		        	 this.put("tag", 1);
+		         else
+		        	 this.put("tag", 0);
+				break;
+			case "serputon"://服务上架
+				this.setService(new SPManageServicesImpl());
+				if( this.getService().update("putOn2"))
+		        	 this.put("tag", 1);
+		         else
+		        	 this.put("tag", 0);
+				break;
 			case "del"://删除
+				if( this.getService().update("deleteById"))
+		        	 this.put("tag", 1);
+		         else
+		        	 this.put("tag", 0);
+				break;
+			case "serdel"://服务删除
+				this.setService(new SPManageServicesImpl());
 				if( this.getService().update("deleteById"))
 		        	 this.put("tag", 1);
 		         else
@@ -45,11 +73,25 @@ public class PutOffGoodsController extends AjaxControllerSupport {
 				this.put("proimgUrl", proimgs);
 				this.put("specimgUrl", specimgs);
 				break;
+			case "serimg"://服务图片
+				this.setService(new SPManageServicesImpl());
+				Map<String,String> map3 = this.getService().findById("getProImgPath");
+				String proPath1 = map3.get("aac210");
+				String [] proimgs1 = proPath1.split(";");
+				
+				this.put("proimgUrl", proimgs1);
+				break;
 			case "update"://修改
 				if( this.getService().update("updateById"))
 		        	 this.put("tag", 1);
 		         else
 		        	 this.put("tag", 0);
+				break;
+			case "ser"://服务详情
+				this.setService(new SPManageServicesImpl());
+				Map<String,String> map2 = this.getService().findById("service");
+				this.put("map", map2);
+				this.put("tag", 1);
 				break;
 			default:
 				break;

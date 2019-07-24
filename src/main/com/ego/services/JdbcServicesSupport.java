@@ -37,7 +37,7 @@ public abstract class JdbcServicesSupport implements BaseServices
 	public void setMapDto(Map<String, Object> dto) 
 	{
 		this.dto = dto;
-		System.out.println(this.dto);
+		//System.out.println(this.dto);
 	}
 
 	/**************************************************************

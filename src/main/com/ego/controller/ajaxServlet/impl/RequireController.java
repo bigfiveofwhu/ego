@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import com.ego.controller.ajaxServlet.AjaxControllerSupport;
+import com.ego.services.impl.Ac02ServiceImpl;
 import com.ego.services.impl.Ac03ServiceImpl;
 
 public class RequireController extends AjaxControllerSupport
@@ -52,6 +53,20 @@ public class RequireController extends AjaxControllerSupport
 		else if(type.equals("4"))  //异步批量查询服务需求
 		{
 			
+		}
+		String aac202=(String)this.get("aac202");   //对定向需求的查询
+		if(aac202!=null&&!aac202.equals("-1"))
+		{
+			this.dto.put("aac202", aac202);
+			this.setService(new Ac02ServiceImpl());
+			Map<String,String> ins=this.getService().findById("findByAac202AndAac102");
+			if(ins!=null)
+			{
+				this.put("direct", true);
+			}else
+			{
+				this.put("direct", false);
+			}
 		}
 	}
 

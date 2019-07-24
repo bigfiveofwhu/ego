@@ -215,7 +215,7 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 		  		
 		  		//定义SQL主体
 		  		StringBuilder sql=new StringBuilder()
-		  		  		.append("	select y.aab202,y.aab203,z.aaa103,x.aab403,x.aab410,x.aab405,x.aab402 ")
+		  		  		.append("	select y.aab202,y.aab203,z.aaa103,x.aab403,x.aab410,x.aab405,x.aab402,x.aab412 ")
 		  		  		.append("  from ab04 x, ab02 y, aa01 z 	")
 		  		 	    .append(" where x.aab203=y.aab203 and x.aaa102=z.aaa102	")
 		  				;
@@ -255,11 +255,14 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 	 * @return
 	 * @throws Exception
 	 */
-	public boolean replyComment() throws Exception
+	@SuppressWarnings("unused")
+	private boolean replyComment() throws Exception
 	{
 		//Object aab405 = this.get("aab405");
 		String  sql = "update ab04 a set a.aab405=?,a.aab408 = current_time where a.aab402=?";
 		
+		//System.out.println("aab405"+(String)this.get("aab405"));
+		//String aab402 = (String)this.get("aab402");
 	
 		return this.batchUpdate(sql, new Object[] { this.get("aab405") },this.get("aab402"));
 	}

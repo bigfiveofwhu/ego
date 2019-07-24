@@ -41,6 +41,21 @@ public class Ac02ServiceImpl extends JdbcServicesSupport
 		return this.queryForMap(sql.toString(), this.get("aac202"));
 	}
 	
+	/**
+	 * 通过服务id和服务商id查找是否有数据存在
+	 * hug
+	 * @return
+	 */
+	private Map<String,String> findByAac202AndAac102() throws Exception
+	{
+		String sql="select aac102 from ac02 where aac202=? and aac102=?";
+		Object args[]= {
+				this.get("aac202"),
+				this.get("aac102")
+		};
+		return this.queryForMap(sql, args);
+	}
+	
 	/*******************************************************************
 	 *      以下为批量查询方法
 	 *******************************************************************/

@@ -16,6 +16,89 @@
 		<!-- 富文本编辑器 -->
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/kindeditor/themes/default/default.css" />
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/kindeditor/themes/default/default.css" />
+		<style>
+			.main {
+				width: 80%;
+				margin: auto;
+			}
+			
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.upimg {
+				position: relative;
+				width: 100px;
+				height: 100px;
+				border-radius: 5px;
+				border: dashed #999999;
+				background: url(${path}/images/addimg.svg) no-repeat;
+				background-position: 33px;
+			}
+			
+			.upimg input {
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				opacity: 0;
+			}
+			
+			#showui {
+				display: flex;
+				justify-content: flex-start;
+			}
+			
+			#showui li {
+				width: 150px;
+				height: 150px;
+				position: relative;
+				overflow: hidden;
+				display: inline-block;
+				margin-right: 5px;
+			}
+			
+			#showui li img.showimg {
+				position: absolute;
+				text-align: center;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				z-index: 6;
+			}
+			
+			.showdiv {
+				position: absolute;
+				z-index: 9;
+				bottom: 0;
+				width: calc(100% - 20px);
+				padding: 10px;
+				display: flex;
+				justify-content: space-around;
+				background: rgba(0, 0, 0, .6);
+			}
+			
+			.showdiv img {
+				width: 20px;
+				height: 20px;
+				cursor: pointer;
+			}
+			
+			#showui li:first-child img.left {
+				opacity: .6;
+				cursor: no-drop;
+			}
+			
+			#showui li:last-child img.right {
+				opacity: .6;
+				cursor: no-drop;
+			}
+			
+			.oneright {
+				opacity: .6;
+				cursor: no-drop !important;
+			}
+		</style>
 	</head>
 
 	<body class="hold-transition skin-red sidebar-mini" ng-app="shopping" ng-controller="GoodsController" ng-init="selectItemCat1List();findOne()">
@@ -56,7 +139,7 @@
 
 								<div class="col-md-2 title">服务名称</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control"  required="required" placeholder="服务名称"  name="aac203" value=""/>
+									<input type="text" class="form-control" id="aac203" required="required" placeholder="服务名称"  name="aac203" value=""/>
 								</div>
 
 
@@ -72,29 +155,30 @@
 								<div class="col-md-2 title">服务区间</div>
 								<div class="col-md-10 data">
 									<div class="input-group">
-										<input type="text" class="form-control" placeholder="服务区间" name="aac206" required="required" />
+										<input type="text" class="form-control" id="aac206" placeholder="服务区间" name="aac206" required="required" />
 									</div>
 								</div>
 								
 								<div class="col-md-2 title">联系电话</div>
 								<div class="col-md-10 data">
 									<div class="input-group">
-										<input type="text" class="form-control" placeholder="联系电话" name="aac209" required="required" />
+										<input type="text" class="form-control" id="aac209" placeholder="联系电话" name="aac209" required="required" />
 									</div>
 								</div>
                                
 								<div class="col-md-2 title editer">服务描述</div>
 								<div class="col-md-10 data editer">
-									<textarea name="aac207" style="width:800px;height:400px;"></textarea>
+									<textarea name="aac207" id="aac207" style="width:800px;height:400px;"></textarea>
 								</div>
 
 
 							</div>
 						  </form>
 						</div>
+						
                   </div>
                   <div class="btn-toolbar list-toolbar">
-				<button class="btn btn-primary"   onclick="saveData()"><i class="fa fa-save" ></i>保存</button>
+				<button class="btn btn-primary"  id="submitservice" onclick="saveData()"><i class="fa fa-save" ></i>保存</button>
 				<span>${msg}</span>
 				<button class="btn btn-default" onclick="window.location.href='<%=path %>/service/queryService.html';">返回列表</button>
 			</div>
@@ -122,6 +206,11 @@
  
  function saveData()
  {
+	 if($("#aac203").val().length == 0 || $("#aac206").val().length == 0 || $("#aac209").val().length == 0 || $("#aac207").val().length == 0)
+	 {
+		 alert("基本信息不能为空!");
+		 return;
+	 }
 	 var vform = document.getElementById("myform");
 	 vform.submit();
  }

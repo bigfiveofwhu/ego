@@ -49,6 +49,14 @@ public class Ac04ServicesImpl extends JdbcServicesSupport
 		{
 			return this.queryForComment();
 		}
+		else if(qtype.equalsIgnoreCase("countLastSell"))
+		{
+			return countLastSell();
+		}
+		else if(qtype.equalsIgnoreCase("countAllSell"))
+		{
+			return countAllSell();
+		}
 		else
 		{
 			throw new Exception("ac04:未知的单一实例查询类型: "+qtype);
@@ -166,5 +174,27 @@ public class Ac04ServicesImpl extends JdbcServicesSupport
   		System.out.println(sql.toString());
   		
   		return this.queryForList(sql.toString(),this.get("aaa102"));
+	}
+	/**
+	 * 根据服务id计算上月销量  按成交时间计算
+	 * hug
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String,String> countLastSell() throws Exception
+	{
+		String sql="select count(*) lastsell from ac04 where aac202=? and PERIOD_DIFF(date_format(NOW( ),'%Y%m'),date_format(aac405,'%Y%m'))=1";
+		return this.queryForMap(sql, this.get("aac202"));
+	}
+	/**
+	 * 根据服务id计算累积销量
+	 * hug
+	 * @return
+	 * @throws Exception
+	 */
+	private Map<String,String> countAllSell() throws Exception
+	{
+		String sql="select count(*) allsell from ac04 where aac202=?";
+		return this.queryForMap(sql, this.get("aac202"));
 	}
 }

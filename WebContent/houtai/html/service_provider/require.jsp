@@ -87,6 +87,7 @@
 							<option value="00" selected>全部</option>
 							<option value="01">未参与竞标</option>
 							<option value="02">已参与竞标</option>
+							<option value="03">定向需求</option>
 						</select>
 					</div>
 				</div>
@@ -95,13 +96,44 @@
 						$("#selectReq").change(function(){
 							var option=$("#selectReq option:selected").attr("value");
 							if(option=='00'){
-								
+								var tr=$("tr:gt(0)");
+								var n=tr.length;
+								for(var i=0;i<n;i++){
+									$(tr[i]).css("display","");
+								}
 							}else if(option=='01'){
-								
+								hiddenShowTr('查看竞标详情','参与竞标');
 							}else if(option=='02'){
-								
+								hiddenShowTr('参与竞标','查看竞标详情');
+							}else if(option=='03'){
+								showDir();
 							}
 						});
+						function hiddenShowTr(hidden,show){
+							var tr=$("tr:gt(0)");
+							var n=tr.length;
+							for(var i=0;i<n;i++){
+								var tmp=$(tr[i]).children("td:last").text().trim();
+								if(tmp==hidden){
+									$(tr[i]).css("display","none");
+								}else if(tmp==show){
+									$(tr[i]).css("display","");
+								}
+							}
+						}
+						function showDir(){
+							var tr=$("tr:gt(0)");
+							var n=tr.length;
+							for(var i=0;i<n;i++){
+								var tmp=$(tr[i]).children("td:last").children("button").attr("direct101").trim();
+								if(tmp=='no'){
+									$(tr[i]).css("display","none");
+								}else if(tmp=='yes'){
+									$(tr[i]).css("display","");
+								}
+							}
+						}
+						
 					});
 				</script>
 				</form>
@@ -144,7 +176,8 @@
 									timeout:20000,
 									data:{
 										"type":"1",
-										"aac602":'${ins.aac602}'
+										"aac602":'${ins.aac602}',
+										"aac202":('${ins.aac202}'=='')?"-1":'${ins.aac202}'
 									},
 									success:function(res,status){
 										var text="";
@@ -154,6 +187,11 @@
 										}else if(res.status=='01'){
 											text='查看竞标详情';
 											$("#require${vs.count}").attr("data-id",res.aac302);
+										}
+										if(res.direct){
+											$("#require${vs.count}").attr("direct101","yes");
+										}else{
+											$("#require${vs.count}").attr("direct101","no");
 										}
 										$("#require${vs.count}").text(text);
 									},
@@ -178,19 +216,19 @@
      <div id="popBox">
        <div class="close">
         <a href="javascript:void(0)" onclick="closeBox()">×</a>
-     </div>
-    <div class="content">
-    <form id="myform1" method="post">
-    <div id="msg101" style="color:red">参与竞标</div>
-    <div>
-    <i class=""></i>
-    <input type="number" id="aac303" name="aac303" placeholder="竞标价格" required="required" >
-    </div>
-    <textarea id="aac304" rows="15" cols="48" name="aac304" placeholder="填写竞标描述" required="required"></textarea>
-    <input type="hidden" id="aac602" value="">
-    <input class="btn bg-olive btn-xs" type="submit" onclick="joinRequire()" id="1314p"  value="参与竞标"></input>
-    </form>
-    </div>
+     	</div>
+	    <div class="content">
+	    <form id="myform1" method="post">
+	    <div id="msg101" style="color:red">参与竞标</div>
+	    <div>
+	    <i class=""></i>
+	    <input type="number" id="aac303" name="aac303" placeholder="竞标价格" required="required" >
+	    </div>
+	    <textarea id="aac304" rows="15" cols="48" name="aac304" placeholder="填写竞标描述" required="required"></textarea>
+	    <input type="hidden" id="aac602" value="">
+	    <input class="btn bg-olive btn-xs" type="submit" onclick="joinRequire()" id="1314p"  value="参与竞标"></input>
+	    </form>
+	    </div>
     </div>
 	</body>
 
@@ -246,9 +284,15 @@
     function popBox(id,index) {
     	var data_id=$("#require"+index).attr("data-id");
     	if(data_id=='0'){
+			$("#aac303").val("");
+			$("#aac303").attr("readonly",false);
+			$("#aac304").val("");
+			$("#aac304").attr("readonly",false);
+			$("#msg101").text("");
             $("#popBox").css("display","block");
             $("#popLayer").css("display","block");
             $("#aac602").attr("value",id);
+			$("#1314p").attr("disabled",false);
     	}else{
     		$.ajax({
     			url:"<%=path%>/require.ajax",

@@ -11,23 +11,36 @@
                 <div class="ibar_login_box status_login ">
                     <div class="avatar_box ">
                         <p class="avatar_imgbox ">
+                        <c:if test="${aaa102!=null }">
+                            <img src="${path}/images/upload/user_${aaa102}.jpg "/>
+                        </c:if>
+                        <c:if test="${aaa102==null }">
                             <img src="../images/no-img_mid_.jpg "/>
+                        </c:if>
                         </p>
                         <ul class="user_info ">
-                            <c:if test="${aaa103!=null }">
+                            <c:if test="${aaa102!=null }">
                                 <li>用户名${aaa103 }</li>
                                 <li>&nbsp;普通会员</li>
                             </c:if>
-                            <c:if test="${aaa103==null }">
+                            <c:if test="${aaa102==null }">
                                 <li>游客状态</li>
                                 <li>&nbsp;请先登录</li>
                             </c:if>
                         </ul>
                     </div>
+                    <c:if test="${aaa102!=null }">
                     <div class="login_btnbox ">
                         <a href="# " class="login_order ">我的订单</a>
                         <a href="# " class="login_favorite ">我的收藏</a>
+                    </div>   
+                    </c:if>
+                    <c:if test="${aaa102==null }">
+                    <div class="login_btnbox ">
+                        <a href="# " class="login_order ">系统消息</a>
+                        <a href="${path}/home/login.jsp" class="login_favorite ">登录</a>
                     </div>
+                    </c:if>
                     <i class="icon_arrow_white "></i>
                 </div>
 
@@ -87,7 +100,7 @@
             </div>
 
             <!--回到顶部 -->
-            <div id="quick_links_pop " class="quick_links_pop hide "></div>
+            <div id="quick_links_pop" class="quick_links_pop hide "></div>
 
         </div>
 

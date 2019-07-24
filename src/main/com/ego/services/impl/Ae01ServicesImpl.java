@@ -71,7 +71,7 @@ public class Ae01ServicesImpl extends JdbcServicesSupport {
      *
      * 系统消息：this.get("to")：1id（1后面接id）
      *           this.get("aae102")：内容
-     *           this.get("aae103"),：发送人id
+     *           this.get("aae103"),：发送人id(系统默认0)
      *           this.get("aae105")：标题
      *
      * @return

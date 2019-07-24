@@ -165,7 +165,16 @@
 							  ${ins.cnaab212}
 							</td>
 						<td class="text-center">
-						      <c:if test="${ins.cnaab212 != '已下架' }">
+						<c:if test="${ins.cnaab212 == '未审核' }">
+									      <button type="button" id="button_0" class="btn bg-olive btn-xs" data-toggle="modal"
+                                    data-target="#imgModal" onclick="getProImg('${ins.aab203}','img')" >
+										图片
+								</button>
+								<button type="button" id="button_1"  class="btn bg-olive btn-xs" data-toggle="modal"
+                                    data-target="#sellerModal" onclick="getGoodDetail('${ins.aab203}','pro')"> 详情</button>
+						</c:if>
+						
+						      <c:if test="${ins.cnaab212 == '审核通过' }">
 						      <button type="button" id="button_0" class="btn bg-olive btn-xs" data-toggle="modal"
                                     data-target="#imgModal" onclick="getProImg('${ins.aab203}','img')" >
 										图片
@@ -177,10 +186,21 @@
 								</button>
 								</c:if>
 								
+								  <c:if test="${ins.cnaab212 == '审核未通过' }">
+								   <button type="button" id="button_0" class="btn bg-olive btn-xs" data-toggle="modal"
+                                    data-target="#imgModal" onclick="getProImg('${ins.aab203}','img')" >
+										图片
+								   </button>
+								   <button type="button" id="button_1"  class="btn bg-olive btn-xs" data-toggle="modal"
+                                    data-target="#sellerModal" onclick="getGoodDetail('${ins.aab203}','pro')"> 详情</button>
+                                    <button type="button" id="button_1" name="delete" class="btn bg-olive btn-xs" onclick="putoff_del('${ins.aab203}','del');">删除</button>
+								  
+								  </c:if>
+								
 								 <c:if test="${ins.cnaab212 == '已下架' }">
 								<button type="button" id="button_1" name="delete" class="btn bg-olive btn-xs" onclick="putoff_del('${ins.aab203}','del');">删除</button>
-								<button type="button" id="button_2" class="btn bg-olive btn-xs" disabled >
-										已下架
+								<button type="button" id="button_2" class="btn bg-olive btn-xs" onclick="putoff_del('${ins.aab203}','puton');"  >
+										重新上架
 								</button>
 								</c:if>
 							</td>
@@ -237,13 +257,13 @@
                                 </tr>
                                 <tr>
                                     <td>修改商品价格</td>
-                                    <td id="aab205" class="to_clear">
+                                    <td id="aab205" class="">
                                     <input type="text" id="modify_price" value=""></input>元
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>修改库存</td>
-                                    <td id="aab206" class="to_clear">
+                                    <td id="aab206" class="">
                                     <input type="number" id="modify_amount" value=""></input>
                                     </td>
                                 </tr>
@@ -481,7 +501,7 @@
     		}
     	});
     }
-	window.onload = function() {
+    window.onload = function() {
 		var input = document.getElementById("upgteimg");
 		var showui = document.getElementById("showui");
 		var result;

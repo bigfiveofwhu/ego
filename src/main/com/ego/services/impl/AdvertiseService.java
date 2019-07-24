@@ -59,6 +59,12 @@ public class AdvertiseService extends JdbcServicesSupport{
 		case "getTargetAds":
 			//aad302广告id，aad306为商品id，aab202为商品名称,aab205为价格最多返回8个
 			return this.getTargetAds();
+		case "getSerachTop":
+			return getSearchTop();
+		case "getSearchTopByKey":
+			return getSearchTopByKey();
+		case "getSameProducts":
+			return getSameProducts();
 		default:
 			throw new Exception("不支持的类型");
 		}
@@ -337,7 +343,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 	 */
 	public String getAuditStatus() throws Exception {
 		//获取是否还未审核
-		String sql="select aad804 from ad08 where aaa102=? and aad803='ad' and aad804='01' and aad102 is null" ;
+		String sql="select aad804 from ad08 where aaa102=? and aad803='ad' and aad804='01' and aad102=0" ;
 		StringBuilder sql2=new StringBuilder()
 				.append(" select aad806 from ad08 where aaa102=? and ")
 				.append(" aad803='ad' and aad804='03'")
@@ -384,10 +390,10 @@ public class AdvertiseService extends JdbcServicesSupport{
 	public List<Map<String, String>> getTopHeadLine() throws Exception {
 		StringBuilder sql=new StringBuilder()
 				.append(" select aad302,aad303,aad306,aad307 from ad03")
-				.append(" where aad303="+headLine)
+				.append(" where aad305=?")
 				.append(" order by aad304 DESC ")
 				.append(" limit 5");
-		return this.queryForList(sql.toString());
+		return this.queryForList(sql.toString(),headLine);
 	}
 	
 	/**
@@ -399,11 +405,11 @@ public class AdvertiseService extends JdbcServicesSupport{
 		StringBuilder sql=new StringBuilder()
 				.append(" select aad302,aad306,aad307,aab202,aab203,aab205 from ad03 join ab02")
 				.append(" on ad03.aad306 = ab02.aab203")
-				.append(" where aad305=").append(homePage)//11
-				.append(" and aad303=").append(productAd)//00
+				.append(" where aad305=?")//11
+				.append(" and aad303=?")//00
 				.append(" order by aad304 DESC ")
 				.append(" limit 8");
-		return this.queryForList(sql.toString());
+		return this.queryForList(sql.toString(),homePage,productAd);
 	}
 	
 	/**
@@ -415,28 +421,62 @@ public class AdvertiseService extends JdbcServicesSupport{
 		StringBuilder sql=new StringBuilder()
 				.append(" select aad302,aad306,aad307,aab103 from ad03 join ab01")
 				.append(" on ad03.aad306 = ab01.aab102")
-				.append(" where aad305=").append(homePage)
-				.append(" and aad303=").append(shoptAd)
+				.append(" where aad305=?")
+				.append(" and aad303=?")
 				.append(" order by aad304 DESC ")
 				.append(" limit 8");
-		return this.queryForList(sql.toString());
+		return this.queryForList(sql.toString(),homePage,shoptAd);
 	}
 	
 	/**
-	 * 通过
+	 * 通过类型获得广告，需要传递productType
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Map<String, String>> getSerachTop()throws Exception {
+	public List<Map<String, String>> getSearchTop()throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append(" select aad302,aad306,aad307,aab202,aab203,aab205 from ad03 join ab02")
+				.append(" select aad302,aab202,aab203,aab205,aab206,aab208 from ad03 join ab02")
 				.append(" on ad03.aad306 = ab02.aab203")
-				.append(" where aad305=").append(search)//11
-				.append(" and aad303=").append(productAd)//00
+				.append(" where aad305=?")//11
+				.append(" and aad303=?")//00
+				.append(" and aab204=?")
+				.append(" order by aad304 DESC ")
+				.append(" limit 3");
+		return this.queryForList(sql.toString(),search,productAd,this.get("productType"));
+	}
+	
+	/**
+	 * 根据productType从广告里获取同类商品
+	 * @return
+	 * @throws Exception
+	 */
+	private List<Map<String, String>> getSameProducts()throws Exception {
+		StringBuilder sql=new StringBuilder()
+				.append(" select aad302,aab202,aab203,aab205,aab206,aab208 from ad03 join ab02")
+				.append(" on ad03.aad306 = ab02.aab203")
+				.append(" where aad305=?")//11
+				.append(" and aad303=?")//00
 				.append(" and aab204=?")
 				.append(" order by aad304 DESC ")
 				.append(" limit 8");
-		return this.queryForList(sql.toString(),this.get("productType"));
+		return this.queryForList(sql.toString(),search,productAd,this.get("productType"));
+	}
+	
+	/**
+	 * 通过类型获得广告，需要传递productType
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Map<String, String>> getSearchTopByKey()throws Exception {
+		StringBuilder sql=new StringBuilder()
+				.append(" select aad302,aab202,aab203,aab205,aab206,aab208 from ad03 join ab02")
+				.append(" on ad03.aad306 = ab02.aab203")
+				.append(" where aad305=?")//11
+				.append(" and aad303=?")//00
+				.append(" and aab202 like ?")
+				.append(" order by aad304 DESC ")
+				.append(" limit 3");
+		return this.queryForList(sql.toString(),search,productAd,this.get("key"));
 	}
 	
 	
@@ -449,12 +489,12 @@ public class AdvertiseService extends JdbcServicesSupport{
 		StringBuilder sql=new StringBuilder()
 				.append(" select aad302,aad306,aad307,aab202,aab205 from ad03 join ab02")
 				.append(" on ad03.aad306 = ab02.aab203")//ref等于商品id
-				.append(" where aad305=").append(homePage)
-				.append(" and aad303=").append(shoptAd)
+				.append(" where aad305=?")
+				.append(" and aad303=?")
 				.append(" and aab204 in (select * from (select aaa902 from aa09")//商品类型满足条件
 				.append(" where aaa102=? order by aaa903 limit 3)as t)")
 				.append(" order by aad304 DESC ")
-				.append(" limit 8");
-		return this.queryForList(sql.toString(),this.get("aaa102"));
+				.append(" limit 4");
+		return this.queryForList(sql.toString(),AIads,shoptAd,this.get("aaa102"));
 	}
 }

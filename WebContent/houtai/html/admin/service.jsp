@@ -254,6 +254,7 @@
 
 <script>
     function getServiceDetail(id) {
+        clearDetails();
         $.ajax({
             url: "<%=path%>/adminReview.ajax",
             type: "post",
@@ -324,7 +325,6 @@
             data: {
                 "aac202": aac202,
                 "aac208": state,
-                "aad102": '7001',
                 "aad801": $("#aad801").text(),
                 "aad804": state,
                 "type": '8'

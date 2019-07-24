@@ -60,7 +60,7 @@ public class Ab02ServiceImpl extends JdbcServicesSupport
 	 */
 	private List<Map<String,String>> queryByKey() throws Exception
 	{
-		String sql="select aab202,aab203,aab205,aab208 from ab02 where aab212='02' and aab202 like ?";
+		String sql="select aab202,aab203,aab205,aab206,aab208 from ab02 where aab212='02' and aab202 like ?";
 		System.out.println("通过关键字模糊查询");
 		return this.queryForList(sql, this.get("key"));
 	}
@@ -73,7 +73,7 @@ public class Ab02ServiceImpl extends JdbcServicesSupport
 	private List<Map<String,String>> queryBySort() throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-				.append("select x.aab202,x.aab203,x.aab205,x.aab208,s.fcode,y.fcode,z.fcode ")
+				.append("select x.aab202,x.aab204,x.aab203,x.aab205,x.aab206,x.aab208,s.fcode,y.fcode,z.fcode ")
 				.append("  from ab02 x, syscode s, syscode y,syscode z")
 				.append(" where x.aab212='02'      and s.fname='aab204' and y.fname='aab204'")
 				.append("   and ((x.aab204=?       and s.fcode =?       and y.fcode=s.pfcode and z.fcode=y.pfcode)")
@@ -99,7 +99,7 @@ public class Ab02ServiceImpl extends JdbcServicesSupport
 	 */
 	private List<Map<String,String>> findByUpToDate() throws Exception
 	{
-		String sql="select aab202,aab203,aab205,aab208 from ab02 where aab212='02' order by aab210 desc limit 8";
+		String sql="select aab202,aab203,aab205,aab206,aab208 from ab02 where aab212='02' order by aab210 desc limit 8";
 		return this.queryForList(sql);
 	}
 	/**
@@ -110,7 +110,7 @@ public class Ab02ServiceImpl extends JdbcServicesSupport
 	 */
 	private Map<String, String> findByAab203() throws Exception
 	{
-		String sql="select y.aaa102,y.aab103,x.aab102,x.aab202,x.aab203,x.aab205,x.aab206,x.aab207,x.aab208,x.aab209 from ab02 x,ab01 y where y.aab102=x.aab102 and aab203=? order by aab210 desc";
+		String sql="select y.aaa102,y.aab103,x.aab102,x.aab202,x.aab203,x.aab204,x.aab205,x.aab206,x.aab207,x.aab208,x.aab209 from ab02 x,ab01 y where y.aab102=x.aab102 and aab203=? order by aab210 desc";
 		return this.queryForMap(sql,this.get("aab203"));
 	}
 	/**

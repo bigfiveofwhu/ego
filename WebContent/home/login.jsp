@@ -78,14 +78,14 @@
 						<a href="<%=path %>/home/register.jsp" class="zcnext am-fr am-btn-default">×¢²á</a>
 						<br />
 		            </div>
-					<div class="partner">		
+					<div class="partner" style="display:none;">		
 					<h3>ºÏ×÷ÕËºÅ</h3>
 					<div class="am-btn-group">
 						<li><a href="#"><i class="am-icon-qq am-icon-sm"></i><span>QQµÇÂ¼</span></a></li>
 						<li><a href="#"><i class="am-icon-weibo am-icon-sm"></i><span>Î¢²©µÇÂ¼</span> </a></li>
 						<li><a href="#"><i class="am-icon-weixin am-icon-sm"></i><span>Î¢ÐÅµÇÂ¼</span> </a></li>
 					</div>
-				</div>	
+					</div>	
 				</div>
 			</div>
 		</div>
