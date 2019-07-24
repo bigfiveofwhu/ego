@@ -15,7 +15,6 @@
 <link href="<%=path %>/basic/css/demo.css" rel="stylesheet" type="text/css" />
 <link href="<%=path %>/css/hmstyle.css" rel="stylesheet" type="text/css" />
 <link href="<%=path %>/css/skin.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="<%=path %>/css/message/bbb.css">                     <!-- 消息框css -->
 <script src="<%=path %>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="${path}/js/jquery-1.7.2.min.js"></script>
 <script src="<%=path %>/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
@@ -247,7 +246,7 @@
 		<div class="shopMain" id="shopmain">
 			<!--今日推荐 -->
 			<div class="am-g am-g-fixed recommendation">
-				<div class="clock am-u-sm-3"">
+				<div class="clock am-u-sm-3">
 					<img src="<%=path%>/images/2016.png "/>
 					<p>
 						今日<br>推荐

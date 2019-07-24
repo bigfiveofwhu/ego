@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.ego.services.JdbcServicesSupport;
-import com.sun.javafx.binding.SelectBinding.AsDouble;
 
 public class PreferenceService extends JdbcServicesSupport{
 	//搜索商品，添加购物车，收藏，购买，点击

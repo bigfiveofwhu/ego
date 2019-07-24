@@ -14,7 +14,6 @@
 		<link type="text/css" href="<%=path%>/css/style.css" rel="stylesheet" />
 		<link type="text/css" href="<%=path%>/css/shop/detail.css" rel="stylesheet" />
 		<link rel="stylesheet" href="/ego/layui/css/layui.css">
-		<link rel="stylesheet" type="text/css" href="<%=path %>/css/message/bbb.css">                     <!-- ÏûÏ¢¿òcss -->
 		<script type="text/javascript" src="<%=path%>/basic/js/jquery-1.7.min.js"></script>
 		<script type="text/javascript" src="<%=path%>/basic/js/quick_links.js"></script>
 		<script type="text/javascript" src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
@@ -27,19 +26,7 @@
 		<!--¶¥²¿µ¼º½Ìõ -->
 		<%@include file="/navigate.jsp" %>
 		<!--Ðü¸¡ËÑË÷¿ò-->
-		<div class="nav white">
-			<div class="logo"><img src="<%=path%>/images/logo.png" /></div>
-			<div class="logoBig">
-				<li><img src="<%=path%>/images/logobig.png" /></li>
-			</div>
-			<div class="search-bar pr">
-				<a name="index_none_header_sysc" href="#"></a>
-				<form>
-					<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="ËÑË÷" autocomplete="off">
-					<input id="ai-topsearch" class="submit am-btn" value="ËÑË÷" index="1" type="submit">
-				</form>
-			</div>
-		</div>
+		<%@include file="/navSearch.jsp" %>
 		<div class="clear"></div>
         <b class="line"></b>
 			<div class="listMain">
@@ -300,7 +287,7 @@
 															<input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
 															<span id="Stock" class="tb-hidden">¿â´æ<span class="stock">${product.aab206 }</span>¼þ</span>
 														</dd>
-													</div>
+							  						</div>
 													<div class="clear"></div>
 													<div class="btn-op">
 														<div class="btn am-btn am-btn-warning">È·ÈÏ</div>

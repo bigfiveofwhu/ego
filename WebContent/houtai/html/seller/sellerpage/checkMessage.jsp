@@ -8,7 +8,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>聊天窗口</title>
-    <link rel="stylesheet" type="text/css" href="<%=path %>/houtai/css/message/bbb.css">         <!-- 消息框css -->
+    <link rel="stylesheet" type="text/css" href="<%=path%>/houtai/css/message/chat.css">         <!-- 消息框css -->
     <script type="text/javascript" src="${path}/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="${path}/js/message/websocket.js"></script>
 </head>
@@ -46,22 +46,10 @@
 <script type="text/javascript" src="${path}/js/message/websocket.js"></script>
 <script>
     var curr_from = '${aaa102}';//当前用户id
-    var curr_from_name = '';//当前用户名字
+    var curr_from_name = '${aab103}';//当前用户名字
     var curr_to = '';//当前选中接收者id
     var curr_list = [];//当前列表中接收者
     var news_top = document.querySelector('.news-top');
-
-    <c:choose>
-        <c:when test="${type==2}">
-            curr_from_name = '${aab103}';
-        </c:when>
-        <c:when test="${type==3}">
-            curr_from_name = '${aac103}';
-        </c:when>
-        <c:otherwise>
-            curr_from_name = '${aaa103}';
-        </c:otherwise>
-    </c:choose>
 
     var ws = null;
     ws = new WS("ws://" + location.host + "${pageContext.request.contextPath}" + "/websocket/" + curr_from);
@@ -109,6 +97,7 @@
         var target;
         var list_box_id;
         var pic_id = curr_from;
+        var timeout = null;
         //判断是否为当前用户发送的消息
         if (from !== curr_from) {
             type = 'other';
@@ -141,13 +130,17 @@
                     $('.newsList').css({display: "none"});
                     $('#newsList-' + from).css({display: ""});
                     news_top.scrollTop = news_top.scrollHeight;
-                    //修改聊天消息为已读
-                    var message = JSON.stringify({
-                        "from_id": from,
-                        "to_id": to,
-                        "type": "01",
-                    });
-                    ws.send(message);
+
+                    clearTimeout(timeout);
+                    timeout = setTimeout(function () {
+                        //修改聊天消息为已读，最多10s执行一次
+                        var message = JSON.stringify({
+                            "from_id": from,
+                            "to_id": to,
+                            "type": "01",
+                        });
+                        ws.send(message);
+                    }, 10000)
                 });
             }
             target = $('#newsList-' + from);
@@ -167,11 +160,6 @@
         //将左侧聊天列表文字改成当前消息
         $('#list-box-' + list_box_id + ' .text').text(content);
     }
-
-    //加载完成后自动选中第一个
-    setTimeout(function () {
-        $('.list-box:first').click();
-    }, 1000);
 
     var timer, timerId;
 

@@ -59,9 +59,11 @@ public class Ac05ServicesImpl extends JdbcServicesSupport
 	private Map<String,String> compute5Comment() throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-				.append("select count(y.aac507) as A,count(z.aac507)/count(y.aac507) as grade")
-				.append("  from ac04 x,ac05 y,ac05 z")
-				.append(" where (z.aac507>=4 and z.aac402=y.aac402)")
+				.append("select count(y.aac507) A,count(z.aac507) grade,count(m.aac507) mid,count(b.aac507) bad")
+				.append("  from ac04 x,ac05 y,ac05 z,ac05 m,ac05 b")
+				.append(" where b.aac507<=2") 
+				.append("   and m.aac507<4 and m.aac507>2")              //ÖÐÆÀ
+				.append("   and (z.aac507>=4 and z.aac402=y.aac402)")
 				.append("   and (x.aac402=y.aac402)")
 				.append("   and (x.aac408='03' and x.aac202='1')")
 				;
