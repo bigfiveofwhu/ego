@@ -16,6 +16,7 @@ import com.ego.services.impl.Ab03ServicesImpl;
 import com.ego.services.impl.Ab04ServicesImpl;
 import com.ego.services.impl.Ab05ServiceImpl;
 import com.ego.services.impl.AdStatistic;
+import com.ego.services.impl.AdvertiseService;
 import com.ego.services.impl.PreferenceService;
 
 public class ShopDetailController extends ControllerSupport 
@@ -121,7 +122,14 @@ public class ShopDetailController extends ControllerSupport
 				this.getServices().update("click");
 			}
 		}
-		
+		//获取猜你喜欢的广告
+		this.setServices(new AdvertiseService());
+		dto.put("productType",ins.get("aab204"));
+		List<Map<String, String>> products=this.getServices().query("getSameProducts");
+		for (Map<String, String> map : products) {
+			map.put("path_info", map.get("aab208").split(";")[0] );
+		}
+		saveAttribute("sameProducts",products);
 		
 		
 		this.setServices(new Ab03ServicesImpl());
@@ -160,6 +168,7 @@ public class ShopDetailController extends ControllerSupport
 //		this.saveAttribute("sale_count", "193");    //售卖总数
 //		this.saveAttribute("repertory", "33");  //库存
 //		this.saveAttribute("collect_count", "2081");
+
 		return "shop/shopDetail";
 	}
 }

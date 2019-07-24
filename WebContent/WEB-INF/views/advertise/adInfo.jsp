@@ -47,9 +47,9 @@
 <script src="/ego/js/jquery-3.2.0.min.js" ></script>
 <script src="/ego/js/bootstrap.bundle.js"></script>
 <script src="/ego/layui/layui.js"></script>
-<script src="/ego/report/highcharts.js"></script>
-<script src="/ego/report/exporting.js"></script>
-<script src="/ego/report/export-data.js"></script>
+<script src="/ego/js/highcharts.js"></script>
+<script src="/ego/js/exporting.js"></script>
+<script src="/ego/js/export-data.js"></script>
 <!-- insert your javascript here-->
 <script>
 layui.use('element', function(){

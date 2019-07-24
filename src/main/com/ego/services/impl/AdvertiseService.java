@@ -63,6 +63,8 @@ public class AdvertiseService extends JdbcServicesSupport{
 			return getSearchTop();
 		case "getSearchTopByKey":
 			return getSearchTopByKey();
+		case "getSameProducts":
+			return getSameProducts();
 		default:
 			throw new Exception("不支持的类型");
 		}
@@ -341,7 +343,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 	 */
 	public String getAuditStatus() throws Exception {
 		//获取是否还未审核
-		String sql="select aad804 from ad08 where aaa102=? and aad803='ad' and aad804='01' and aad102 is null" ;
+		String sql="select aad804 from ad08 where aaa102=? and aad803='ad' and aad804='01' and aad102=0" ;
 		StringBuilder sql2=new StringBuilder()
 				.append(" select aad806 from ad08 where aaa102=? and ")
 				.append(" aad803='ad' and aad804='03'")
@@ -440,6 +442,23 @@ public class AdvertiseService extends JdbcServicesSupport{
 				.append(" and aab204=?")
 				.append(" order by aad304 DESC ")
 				.append(" limit 3");
+		return this.queryForList(sql.toString(),search,productAd,this.get("productType"));
+	}
+	
+	/**
+	 * 根据productType从广告里获取同类商品
+	 * @return
+	 * @throws Exception
+	 */
+	private List<Map<String, String>> getSameProducts()throws Exception {
+		StringBuilder sql=new StringBuilder()
+				.append(" select aad302,aab202,aab203,aab205,aab206,aab208 from ad03 join ab02")
+				.append(" on ad03.aad306 = ab02.aab203")
+				.append(" where aad305=?")//11
+				.append(" and aad303=?")//00
+				.append(" and aab204=?")
+				.append(" order by aad304 DESC ")
+				.append(" limit 8");
 		return this.queryForList(sql.toString(),search,productAd,this.get("productType"));
 	}
 	
