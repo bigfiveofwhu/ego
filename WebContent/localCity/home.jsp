@@ -10,19 +10,16 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>eGoÍ¬³Ç</title>
-<link href="<%=path %>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-<link href="<%=path %>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
-<link href="<%=path %>/basic/css/demo.css" rel="stylesheet" type="text/css" />
+<%@include file="/head.jsp" %>
 <link href="<%=path %>/css/localCity/hmstyle.css" rel="stylesheet" type="text/css" />
 <link href="<%=path %>/css/localCity/skin.css" rel="stylesheet" type="text/css" />
 <link href="<%=path %>/css/localCity/navigate.css" rel="stylesheet" type="text/css" />
 <link href="<%=path %>/css/localCity/home.css" rel="stylesheet" type="text/css" />
-<script src="<%=path %>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-<script src="<%=path %>/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+<%@include file="/prompt.jsp" %>
 <c:if test="${msg!=null }">
 	<script type="text/javascript">
 	$(function(){
-		alert('${msg}');
+		promptGlobal("${msg}")
 	});
 	</script>
 </c:if>
@@ -68,22 +65,7 @@
 				<li class="banner4">
 				<a><img src="<%=path%>/images/ad4.jpg" /> </a>
 				</li>
-			</ul> 
-			<script type="text/javascript">
-			    $(function (){
-			    	$.ajax({
-			    		url:"",
-			    		data:"",
-			    		dataType:"",
-			    		success:function (){
-			    			
-			    		},
-			    		error:function(){
-			    			
-			    		}
-			    	});
-			    })
-			</script>
+			</ul>
 		</div>
 		<div class="clear"></div>
 	</div>
