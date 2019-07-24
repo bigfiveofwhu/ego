@@ -56,7 +56,7 @@
 
 								<div class="col-md-2 title">服务名称</div>
 								<div class="col-md-10 data">
-									<input type="text" class="form-control"  required="required" placeholder="服务名称"  name="aac203" value=""/>
+									<input type="text" class="form-control" id="aac203" required="required" placeholder="服务名称"  name="aac203" value=""/>
 								</div>
 
 
@@ -72,20 +72,20 @@
 								<div class="col-md-2 title">服务区间</div>
 								<div class="col-md-10 data">
 									<div class="input-group">
-										<input type="text" class="form-control" placeholder="服务区间" name="aac206" required="required" />
+										<input type="text" class="form-control" id="aac206" placeholder="服务区间" name="aac206" required="required" />
 									</div>
 								</div>
 								
 								<div class="col-md-2 title">联系电话</div>
 								<div class="col-md-10 data">
 									<div class="input-group">
-										<input type="text" class="form-control" placeholder="联系电话" name="aac209" required="required" />
+										<input type="text" class="form-control" id="aac209" placeholder="联系电话" name="aac209" required="required" />
 									</div>
 								</div>
                                
 								<div class="col-md-2 title editer">服务描述</div>
 								<div class="col-md-10 data editer">
-									<textarea name="aac207" style="width:800px;height:400px;"></textarea>
+									<textarea name="aac207" id="aac207" style="width:800px;height:400px;"></textarea>
 								</div>
 
 
@@ -122,6 +122,11 @@
  
  function saveData()
  {
+	 if($("#aac203").val().length == 0 || $("#aac206").val().length == 0 || $("#aac209").val().length == 0 || $("#aac207").val().length == 0)
+	 {
+		 alert("基本信息不能为空!");
+		 return;
+	 }
 	 var vform = document.getElementById("myform");
 	 vform.submit();
  }
