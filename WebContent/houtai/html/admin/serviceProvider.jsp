@@ -328,7 +328,11 @@
                 "aad102": '7001',
                 "aad801": $("#aad801").text(),
                 "aad804": state,
-                "type": '6'
+                "type": '6',
+                "aaa102": $("#aaa102").text(),
+                "aaa103": $("#aaa103").text(),
+                "aac103": $("#aac103").text(),
+                "val": val
             },
             success: function () {
                 $('#tr-' + aac102).find('.status').text(val);

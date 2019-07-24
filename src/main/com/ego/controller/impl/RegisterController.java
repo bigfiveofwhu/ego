@@ -13,7 +13,7 @@ public class RegisterController extends ControllerSupport
 	public String execute() throws Exception 
 	{
 
-		Boolean isVerified=(boolean)this.get("isVeriFied");   //记得做验证码的再次验证
+		Boolean isVerified=(boolean)this.get("isVeriFied");   //验证码的二次验证
 		HttpSession session=this.getSession();
 		if(isVerified==null || !isVerified)
 		{
@@ -23,7 +23,7 @@ public class RegisterController extends ControllerSupport
 		long time=(long)session.getAttribute("isVerifiedTimeout");
 		long internel=(long)session.getAttribute("internel");
 	    long now=new Date().getTime();
-	    if((now-time)>internel)    //失效一分钟  ,验证码失效
+	    if((now-time)>internel)    //一分钟失效  ,验证码失效
 	    {
 	    	this.saveAttribute("msg", "验证码已失效!");
 	    	return "home/register";

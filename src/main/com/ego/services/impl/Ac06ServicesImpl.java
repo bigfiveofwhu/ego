@@ -388,6 +388,7 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
 	}
 	/**
 	 * 根据服务商id查询所有满足要求(同城市,投标中)的需求订单
+	 * hug
 	 * @return
 	 * @throws Exception
 	 */

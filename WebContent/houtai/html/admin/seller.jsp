@@ -291,6 +291,8 @@
 
     function updateState(state) {
         var aab102 = $("#aab102").text();
+        if (aab102 === '')
+            return;
         var val = '';
         switch (state) {
             case '02':
@@ -316,7 +318,11 @@
                 "aad102": '7001',
                 "aad801": $("#aad801").text(),
                 "aad804": state,
-                "type": '2'
+                "type": '2',
+                "aaa102": $("#aaa102").text(),
+                "aaa103": $("#aaa103").text(),
+                "aab103": $("#aab103").text(),
+                "val": val
             },
             success: function () {
                 $('#tr-' + aab102).find('.status').text(val);
