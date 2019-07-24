@@ -36,8 +36,8 @@
             display: none;
             background-color: #FFFFFF;
             z-index: 11;
-            width: 400px;
-            height: 400px;
+            width: 300px;
+            height: 200px;
             position:fixed;
             top:0;
             right:0;
@@ -99,7 +99,7 @@
 							<th class="sorting">订单编号</th>
 							<th class="sorting">下单时间</th>
 							<th class="sorting">消费金额</th>
-							<th class="sorting">状态</th>
+							<th class="sorting">买家状态</th>
 							<th class="sorting">买家留言</th>
 							<th class="sorting">发货时间</th>
 							<th class="text-center">操作</th>
@@ -116,8 +116,8 @@
 							<td>${ins.aab312}</td>
 							<td>${ins.aab306}</td>
 						<td class="text-center">
-						<c:if test="${ins.aab306 == null }">
-								<button type="button" class="btn bg-olive btn-xs" disabled="disabled">删除</button>
+						<c:if test="${ins.cnaab303 == '待发货' }">
+								<button type="button" class="btn bg-olive btn-xs" disabled="disabled">删&nbsp除</button>
 								<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aab302}')">
 										发货
 								</button>
@@ -149,15 +149,16 @@
      </div>
     <div class="content">
     <form action="<%=path %>/shop/deliver.html" method="post">
-    	<select ng-model="search_domain.auditStatus">
+              物流单号:<input type="text" class="form-control" name="aab309"/>
+    	<select class="has-feedback">
 							<option value="">选择快递方</option>
 							<option value="02">圆通</option>
 							<option value="04">申通</option>
 							<option value="05">韵达</option>
 			</select>
-			物流单号:<input type="text" name="aab309"/>
+			<br>
 			<input type="hidden" id="ddbh" name="aab302"/>
-    <input type="submit"  value="确定"></input>
+    <input type="submit" class="btn" value="确定"></input>
     </form>
     </div>
     </div>
