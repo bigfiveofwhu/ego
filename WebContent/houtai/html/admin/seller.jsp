@@ -315,7 +315,6 @@
             data: {
                 "aab102": aab102,
                 "aab107": state,
-                "aad102": '7001',
                 "aad801": $("#aad801").text(),
                 "aad804": state,
                 "type": '2',

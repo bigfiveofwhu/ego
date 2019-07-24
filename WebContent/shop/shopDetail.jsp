@@ -686,138 +686,47 @@
 								<div class="am-tab-panel am-fade">
 									<div class="like">
 										<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
-											<li>
-												<div class="i-pic limit">
-													<img src="<%=path%>/images/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>&yen;</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="<%=path%>/images/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>&yen;</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="<%=path%>/images/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>&yen;</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="<%=path%>/images/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>&yen;</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="<%=path%>/images/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>&yen;</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="<%=path%>/images/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>&yen;</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="<%=path%>/images/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>&yen;</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="<%=path%>/images/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>&yen;</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="<%=path%>/images/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>&yen;</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="<%=path%>/images/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>&yen;</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="<%=path%>/images/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>&yen;</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="<%=path%>/images/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>&yen;</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
+											<!-- 动态展示广告 -->
+											<c:forEach items="${sameProducts }" var="goods" varStatus="vs">
+												<li>
+													<div class="i-pic limit">
+														<div id="imgsize">
+														<!-- 显示图片详细信息 -->
+													<a href="<%=path%>/shop/detail.html?aId=${goods.aad302 }&productId=${goods.aab203}"><img id="agoods${vs.count}" src="${goods.aab208}"/></a>
+														</div>
+														<script type="text/javascript">
+															$(function(){
+																var  agoods${vs.count}='${goods.aab208}';
+																$("#agoods${vs.count}").attr("src","/ego"+agoods${vs.count}.split(";")[0])
+															 });
+														</script>									
+														<p class="title fl">${goods.aab202}</p>
+														<p class="price fl">
+															<b>&yen;</b>
+															<strong>${goods.aab205}</strong>
+														</p>
+														<p class="number fl">库存<span>${goods.aab206}</span>
+														</p>
+													</div>
+												</li>
+											</c:forEach>
+											
+<%-- 											<c:forEach items="${sameProducts }" var="item"> --%>
+<!-- 												<li> -->
+<!-- 													<div class="i-pic limit"> -->
+<%-- 														<img src="<%=path%>${item.path_info }" /> --%>
+<%-- 														<p>${item.aab202 } --%>
+<!-- 															<span></span></p> -->
+<!-- 														<p class="price fl"> -->
+<!-- 															<b>&yen;</b> -->
+<%-- 															<strong>${item.aab205 }</strong> --%>
+<!-- 														</p> -->
+<!-- 													</div> -->
+<!-- 												</li> -->
+<%-- 											</c:forEach> --%>
+											
+											<!-- 静态广告 -->
+											
 										</ul>
 									</div>
 									<div class="clear"></div>

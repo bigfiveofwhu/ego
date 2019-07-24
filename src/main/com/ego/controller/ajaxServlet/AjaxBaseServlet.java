@@ -77,6 +77,16 @@ public class AjaxBaseServlet extends HttpServlet
 
 		// 4.定义DTO容器
 		Map<String, Object> dto = new HashMap<>(initSize);
+
+		// 将session数据存入dto
+		HttpSession session = request.getSession();
+		Enumeration<String> attributes = session.getAttributeNames();
+		while (attributes.hasMoreElements())
+		{
+			String name = attributes.nextElement();
+			dto.put(name, session.getAttribute(name));
+		}
+
 		// 5.循环读取entrySet,获取每个键值对
 		for (Entry<String, String[]> entry : entrySet) 
 		{
@@ -96,14 +106,6 @@ public class AjaxBaseServlet extends HttpServlet
 				dto.put(entry.getKey(), value);
 			}
 		}
-
-		HttpSession session = request.getSession();
-        Enumeration<String> attributes = session.getAttributeNames();
-        while (attributes.hasMoreElements())
-        {
-            String name = attributes.nextElement();
-            dto.put(name, session.getAttribute(name));
-        }
 		// System.out.println(dto);
 		return dto;
 	}
