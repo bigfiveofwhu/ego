@@ -55,7 +55,7 @@ public class RequireController extends AjaxControllerSupport
 			
 		}
 		String aac202=(String)this.get("aac202");   //对定向需求的查询
-		if(aac202!=null&!aac202.equals("-1"))
+		if(aac202!=null&&!aac202.equals("-1"))
 		{
 			this.dto.put("aac202", aac202);
 			this.setService(new Ac02ServiceImpl());

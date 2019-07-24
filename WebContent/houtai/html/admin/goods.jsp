@@ -295,14 +295,23 @@
                         var text = description.split('&')[0];
                         var pics = description.split('&')[1].split(';');
                         for (var i = 0; i < pics.length; i++) {
-                            text = text + '<img src="<%=request.getContextPath()%>' + pics[i] + '" alt="" onerror="this.style.display=\'none\'">';
+                            text = text + '<img src="<%=path%>' + pics[i] + '" alt="" onerror="this.style.display=\'none\'"><br>';
                         }
                         $("#aab207").html(text);
                     } else {
                         $("#aab207").text('');
                     }
 
-                    $("#aab208").html('<img src="<%=request.getContextPath()%>' + map.aab208 + '" alt="" onerror="this.style.display=\'none\'">');
+                    var text2 = '';
+                    if (map.aab208 !== '') {
+                        var pics2 = map.aab208.split(';');
+                        for (var ii = 0; ii < pics2.length; ii++) {
+                            text2 = text2 + '<img src="<%=path%>' + pics2[ii] + '" alt="" onerror="this.style.display=\'none\'"><br>';
+                        }
+                        $("#aab208").html(text2);
+                    } else {
+                        $("#aab208").text('');
+                    }
                     $("#aab209").text(map.aab209);
                     $("#aab211").text(map.aab211);
                     $("#aab212").text(map.cnaab212);
@@ -329,6 +338,7 @@
                 }
             },
             error: function () {
+                clearDetails();
                 console.log("商品详细信息异步加载错误");
             }
         });
@@ -358,7 +368,6 @@
             data: {
                 "aab203": aab203,
                 "aab212": state,
-                "aad102": '7001',
                 "aad801": $("#aad801").text(),
                 "aad804": state,
                 "type": '4'

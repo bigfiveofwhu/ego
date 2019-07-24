@@ -148,7 +148,7 @@ public class ShopDetailController extends ControllerSupport
 		ins=this.getServices().findById("commentMidByAab203");
 		this.saveAttribute("midSum", ins.get("commentsum"));
 		//≤Ó∆¿
-		ins=this.getServices().findById("commentBestByAab203");
+		ins=this.getServices().findById("commentBadByAab203");
 		this.saveAttribute("badSum", ins.get("commentsum"));
 		//¿€º∆∆¿º€
 		ins=this.getServices().findById("comentCountByAab203");

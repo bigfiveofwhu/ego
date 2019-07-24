@@ -6,20 +6,17 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<title>商品详情</title>
-		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
-		<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-		<link href="<%=path%>/basic/css/demo.css" rel="stylesheet" type="text/css" />
+		<%@include file="/head.jsp" %>
 		<link href="<%=path %>/css/hmstyle.css" rel="stylesheet" type="text/css" />
 		<link type="text/css" href="<%=path%>/css/optstyle.css" rel="stylesheet" />
 		<link type="text/css" href="<%=path%>/css/style.css" rel="stylesheet" />
 		<link type="text/css" href="<%=path%>/css/shop/detail.css" rel="stylesheet" />
 		<link rel="stylesheet" href="/ego/layui/css/layui.css">
-		<script type="text/javascript" src="<%=path%>/basic/js/jquery-1.7.min.js"></script>
 		<script type="text/javascript" src="<%=path%>/basic/js/quick_links.js"></script>
-		<script type="text/javascript" src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 		<script type="text/javascript" src="<%=path%>/js/jquery.imagezoom.min.js"></script>
 		<script type="text/javascript" src="<%=path%>/js/jquery.flexslider.js"></script>
 		<script type="text/javascript" src="<%=path%>/js/list.js"></script>
+		<%@include file="/prompt.jsp" %>
 		
 	</head>
 	<body>
@@ -364,12 +361,13 @@
 							function purchase(){
 								var count=parseInt($("#text_box").val());
 								if(isNaN(count)){
-									alert("格式错误!");
+									promptGlobal("格式错误!")
 									return;
 								}
 								var sum=parseInt('${product.aab206 }');
 								if(count>sum){
 									alert("请重新选择数量!");
+									
 									return;
 								}
 								$("#pur-count").attr("value",count);
@@ -380,12 +378,12 @@
 								var count=parseInt($("#text_box").val());
 								console.log($("#text_box").val());
 								if(isNaN(count)){
-									alert("格式错误!");
+									promptGlobal("格式错误!");
 									return;
 								}
 								var sum=parseInt('${product.aab206 }');
 								if(count>sum){
-									alert("请重新选择数量!");
+									promptGlobal("请重新选择数量!");
 									return;
 								}
 								$.ajax({
@@ -400,16 +398,16 @@
 									},
 									success:function(res,status){
 										if(res.status=='200'){
-											alert("加入成功");
+											promptGlobal("加入购物车成功!");
 										}else if(res.status=='201'){
-											alert("加入失败");
+											promptGlobal("加入购物车失败!");
 										}else if(res.status='202'){
-											alert("请先登录!");
+											promptGlobal("请先登录!");
 											location.href="/ego/home/login.jsp";
 										}
 									},
 									error:function(res,status){
-										alert("网络故障!");
+										promptGlobal("网络故障!");
 									}
 								});
 							}
@@ -567,7 +565,7 @@
                                     		100
                                     		</c:if>
                                     		<c:if test="${commentSum!=0}">
-                                    		${bestSum/(commentSum*1.0)}
+                                    		${bestSum/(commentSum*1.0)*100}
                                     		</c:if>
                                     		<span>%</span></strong><br> <span>好评度</span>            
                                     	</div>
@@ -757,60 +755,60 @@
 			<!--菜单 -->
 			<%@include file="/rMenu.jsp" %>
 			
-<script src="/ego/layui/layui.js"></script>
-<script>
-layui.use('layer', function(){
-	layer = layui.layer;
-});
-var memory;
-$(".coupon-item").hover(function(){
-	memory=$(this).html();
-	$(this).html("点击领取");
-},function(){
-	$(this).html(memory);
-})
-var ifClick=false;
-function getCoupon(couponId){
-	if(ifClick==true){
-		layer.msg("您今天已经领取过了，请明天再来");
-		return ;
-	}
-	$.getJSON("getCoupon.ajax",{aab501:couponId},function(res){
-		if(res.result==true){
-			layer.msg("领取成功")
-		}else{
-			layer.msg("失败,"+res.reason)
-		}
-	}).fail(function(){
-		layer.msg("网络故障");
-	})
-	ifClick=true;
-}
-
-function addCollection()
-{
-	if('${aaa102}' == '')
-		return;
-	$.ajax({
-		url:"${path}/addCollection.ajax",
-		type:"post",
-		dataType:"json",
-		timeout:20000,
-		data:{
-			"aaa303": '${product.aab203}',
-			"aaa302": "01"
-		},
-		success:function(res,status){
-			if(res.tag == 1)
-			    layer.msg("收藏成功");
-			else
-				layer.msg("该商品已被收藏")
-		},
-		error:function(res,status){
-			console.log("收藏失败");
-		}
+	<script src="/ego/layui/layui.js"></script>
+	<script>
+	layui.use('layer', function(){
+		layer = layui.layer;
 	});
-}
-</script>
+	var memory;
+	$(".coupon-item").hover(function(){
+		memory=$(this).html();
+		$(this).html("点击领取");
+	},function(){
+		$(this).html(memory);
+	})
+	var ifClick=false;
+	function getCoupon(couponId){
+		if(ifClick==true){
+			layer.msg("您今天已经领取过了，请明天再来");
+			return ;
+		}
+		$.getJSON("getCoupon.ajax",{aab501:couponId},function(res){
+			if(res.result==true){
+				layer.msg("领取成功")
+			}else{
+				layer.msg("失败,"+res.reason)
+			}
+		}).fail(function(){
+			layer.msg("网络故障");
+		})
+		ifClick=true;
+	}
+	
+	function addCollection()
+	{
+		if('${aaa102}' == '')
+			return;
+		$.ajax({
+			url:"${path}/addCollection.ajax",
+			type:"post",
+			dataType:"json",
+			timeout:20000,
+			data:{
+				"aaa303": '${product.aab203}',
+				"aaa302": "01"
+			},
+			success:function(res,status){
+				if(res.tag == 1)
+				    layer.msg("收藏成功");
+				else
+					layer.msg("该商品已被收藏")
+			},
+			error:function(res,status){
+				console.log("收藏失败");
+			}
+		});
+	}
+	</script>
 	</body>
 </html>

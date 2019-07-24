@@ -3,8 +3,10 @@ package com.ego.controller.ajaxServlet.impl;
 import com.ego.controller.ajaxServlet.AjaxControllerSupport;
 import com.ego.services.BaseServices;
 import com.ego.services.impl.Ad08ServicesImpl;
+import com.ego.services.impl.Ae01ServicesImpl;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +33,9 @@ public class AdminReviewController extends AjaxControllerSupport {
 		System.out.println(type);
 		Map<String,String> map=null;
 		String msg;
+		BaseServices services2=new Ae01ServicesImpl();
+		Map<String, Object> dto2=new HashMap<>();
+		services2.setMapDto(dto2);
 		switch (type)
 		{
 		case 1:
@@ -39,6 +44,11 @@ public class AdminReviewController extends AjaxControllerSupport {
 			break;
 		case 2:
 			msg=services.update("modifyAb01")?"修改成功":"修改失败";
+			dto2.put("to","1" + this.get("aaa102"));
+			dto2.put("aae102",this.get("aaa103") + "你好，你申请的商铺[" + this.get("aab103") + "]，审核结果是：" + this.get("val"));
+			dto2.put("aae103","0");
+			dto2.put("aae105","商家注册审核");
+			services2.update("insert");
 			this.put("msg",msg);
 			break;
 		case 3:
@@ -55,6 +65,11 @@ public class AdminReviewController extends AjaxControllerSupport {
 			break;
 		case 6:
 			msg=services.update("modifyAc01")?"修改成功":"修改失败";
+			dto2.put("to","1" + this.get("aaa102"));
+			dto2.put("aae102",this.get("aaa103") + "你好，你申请的服务商[" + this.get("aac103") + "]，审核结果是：" + this.get("val"));
+			dto2.put("aae103","0");
+			dto2.put("aae105","服务商注册审核");
+			services2.update("insert");
 			this.put("msg",msg);
 			break;
 		case 7:
