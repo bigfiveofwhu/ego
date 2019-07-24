@@ -67,7 +67,7 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 
 	 
 	    	Object args[]={
-	    			this.get("aaa103"),
+	    			this.get("naaa103"),
 	    			this.get("aaa104"),
 	    			this.get("aaa108"),
 	    			this.get("aaa109"),

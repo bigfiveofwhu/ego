@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="GBK"%>
+<%@include file="/prompt.jsp" %>
 <!--顶部导航条 -->
 <div class="am-container header">
 	<ul class="message-l">
@@ -90,7 +91,11 @@
 	</ul>
 </div>
 
-	<script type="text/javascript">
+<script src="/ego/layui/layui.js"></script>
+<script>
+layui.use('layer', function(){
+	layer = layui.layer;
+});
 	function checkIn()
 {
 	$.ajax({
@@ -105,7 +110,7 @@
 			if(res.check == 1)
 			location.href="${path}/shop/background.html";
 			else
-				alert("不具备进店资格");
+				layer.msg("你注册的店铺正在审核中...");
 		},
 		error:function(res){
 			 alert("网络错误");

@@ -157,7 +157,7 @@
 						   <c:when test="${aaa102!=null}">
 				   				<div class="m-baseinfo">
 								<a href="<%=path%>/person/index.jsp"> 
-								<img src="<%=path%>/images/getAvatar.do.jpg"> </a> 
+								<img src="<%=path%>/images/upload/user_${aaa102 }.jpg"> </a> 
 								<em> Hi,<span class="s-name">${aaa103}</span> <a href="#"><p>点击更多优惠活动</p> </a> </em>
 								</div>
 							</c:when>
@@ -166,7 +166,7 @@
 									<a href="#"> 
 									<img src="<%=path%>/images/getAvatar.do.jpg"> 
 									</a> 
-									<em> Hi,<span class="s-name">小叮当</span> <a href="#"><p>点击更多优惠活动</p> </a> </em>
+									<em> Hi,<span class="s-name">欢迎</span> <a href="#"><p>点击更多优惠活动</p> </a> </em>
 								</div>
 								<div class="member-logout">
 									<a class="am-btn-warning btn" href="login.jsp">登录</a>
