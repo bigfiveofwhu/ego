@@ -46,10 +46,13 @@ public class ServiceDetailController extends ControllerSupport
 		//计算好评率
 		this.setServices(new Ac05ServicesImpl());
 		ins=this.getServices().findById("compute5Comment");
-		this.saveAttribute("goodComment", Integer.parseInt(ins.get("grade").toString()));
-		this.saveAttribute("midComment", Integer.parseInt(ins.get("mid").toString()));
-		this.saveAttribute("badComment", Integer.parseInt(ins.get("bad").toString()));
-		this.saveAttribute("AllComment", Integer.parseInt(ins.get("a").toString()));
+		int g=Integer.parseInt(ins.get("grade").toString());
+		int m=Integer.parseInt(ins.get("mid").toString());
+		int b=Integer.parseInt(ins.get("bad").toString());
+		this.saveAttribute("goodComment", g);
+		this.saveAttribute("midComment", m);
+		this.saveAttribute("badComment", b);
+		this.saveAttribute("AllComment", g+m+b);
 		//查询服务的评论信息
 		List<Map<String,String>> rows=this.getServices().query("queryCommentForAac202");
 		this.saveAttribute("comments", rows);

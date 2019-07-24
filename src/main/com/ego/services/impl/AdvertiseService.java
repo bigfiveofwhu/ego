@@ -433,7 +433,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 	 */
 	public List<Map<String, String>> getSearchTop()throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append(" select aad302,aab202,aab203,aab205,aab208 from ad03 join ab02")
+				.append(" select aad302,aab202,aab203,aab205,aab206,aab208 from ad03 join ab02")
 				.append(" on ad03.aad306 = ab02.aab203")
 				.append(" where aad305=").append(search)//11
 				.append(" and aad303=").append(productAd)//00
@@ -450,7 +450,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 	 */
 	public List<Map<String, String>> getSearchTopByKey()throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append(" select aad302,aab202,aab203,aab205,aab208 from ad03 join ab02")
+				.append(" select aad302,aab202,aab203,aab205,aab206,aab208 from ad03 join ab02")
 				.append(" on ad03.aad306 = ab02.aab203")
 				.append(" where aad305=?")//11
 				.append(" and aad303=?")//00
