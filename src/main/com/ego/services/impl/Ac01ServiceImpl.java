@@ -30,9 +30,11 @@ public class Ac01ServiceImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql=new StringBuilder()
 				.append("insert into ac01(aaa102,aac102,aac103,aac104,aac105,")
-				.append("				  aac106,aac107,aac108,aac109,aac110)")
+				.append("				  aac106,aac107,aac108,aac109,aac110,")
+				.append("                 aac111,aac112)")
 				.append("          values(?,?,?,?,?,")
-				.append("				  ?,?,'01',?,0.00)")
+				.append("				  ?,?,'01',?,0.00,")
+				.append("                 ?,current_timestamp)")
 				;
 		int id=Tools.getIncrementId("aac102");
 		this.dto.put("aac102", id+"");
@@ -44,7 +46,8 @@ public class Ac01ServiceImpl extends JdbcServicesSupport
 				this.get("aac105"),
 				this.get("aac106"),
 				this.get("aac107"),
-				this.get("aac109")
+				this.get("aac109"),
+				this.get("aac111")
 		};
 		return this.executeUpdate(sql.toString(), args);
 	}

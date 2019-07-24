@@ -34,6 +34,7 @@ public class RegisteredController extends ControllerSupport
 		this.dto.put("aac106", this.get("serviceSort"));  //服务类型
 		this.dto.put("aac107", this.get("describe"));     //认证信息
 		this.dto.put("aac109", this.get("amount"));
+		this.dto.put("aac111", this.get("phone"));     //服务商电话
 		//在服务商表中插入数据,并在dto中返回服务商id --aac102
 		this.setServices(new Ac01ServiceImpl());
 		this.getServices().update("insertAc01");

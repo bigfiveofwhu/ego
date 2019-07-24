@@ -14,13 +14,6 @@
 		<link href="<%=path%>/css/localCity/dlstyle.css" rel="stylesheet" type="text/css">
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
-
-        <script type="text/javascript">
-        function getchang()
-        {
-		  document.getElementById("randomCodeImg").src="<%=path%>/randomCode?"+new Date().getTime();
-	     }
-        </script>
 	</head>
 	<body>
 		<div class="login-boxtitle">
@@ -35,7 +28,6 @@
 						<div class="am-tabs" id="doc-my-tabs">
 							<ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
 								<li class="am-active"><a href="">服务商注册</a></li>
-								<li><a href="">手机号注册</a></li>
 							</ul>
 							<div class="am-tabs-bd">
 								<div class="am-tab-panel am-active">
@@ -49,6 +41,10 @@
 									    <div class="service_element">
 										    <label for="passwordRepeat"><i class="am-icon-cc-paypal"></i></label>
 										    <input type="number" class="input_block" name="amount" id="amount" placeholder="保证金" required="required">
+	                                   </div>
+	                                   <div class="service_element">
+										    <label for="phone"><i class="am-icon-phone"></i></label>
+										    <input type="text" class="input_block" name="phone" id="phone" placeholder="电话号码" required="required">
 	                                   </div>
 	                                    <div class="service_element_textarea">
 										    <label for="realname"><i class="am-icon-child"></i></label>
