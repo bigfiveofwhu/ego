@@ -30,6 +30,7 @@
 	</head>
 
 	<body>
+		<%String url="";String[] arr=null; %>
 		<form id="myform" action="###.html" method="post">
 		
 		</form>
@@ -92,17 +93,22 @@
 												<div class="order-left">
 													<ul class="item-list">
 														<li class="td td-item">
+														<c:set var="url" value="${ins.aab208 }" scope="request"></c:set>
+																<% url=(request.getAttribute("url")).toString();
+															  		arr=url.split(";");
+																%>
 															<div class="item-pic">
 																<a href="#" class="J_MakePoint">
-																	<img src="<%=path%>/images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+																	<img src="<%=path%><%=arr[0] %>" class="itempic J_ItemImg">
 																</a>
 															</div>
 															<div class="item-info">
 																<div class="item-basic-info">
 																	<a href="#">
-																		<p>${ins.aab202 }</p>
-																		<p class="info-little">订单号:${ins.aab302 }
-																			<br/>商品:${ins.aab202 } </p>
+																		<p><span style="color:orange;">退款商品:</span>${ins.aab202 }</p>
+																		<p class="info-little">
+																			订单号:${ins.aab302 }
+																		</p>
 																	</a>
 																</div>
 															</div>

@@ -32,7 +32,7 @@
 						<hr/>
 						<div class="pointsTitle">
 						   <div class="usable">可用积分<span>${ins.aaa106 }</span></div>
-						   <div class="pointshop"><a href="#"><i><img src="<%=path%>/images/u5.png" /></i>积分商城</a></div>
+						   <!--div class="pointshop"><a href="#"><i><img src="<%=path%>/images/u5.png" /></i>积分商城</a></div-->
 						   <div class="signIn"><a href="#"><i class="am-icon-calendar"></i><em>+5</em>每日签到</a></div>
 						</div>
 						<div class="pointlist am-tabs" data-am-tabs>
@@ -87,7 +87,7 @@
 												<c:choose>
 												<c:when test="${ins.aaa1004 eq '01' }">
 													<tr>
-														<td class="pointType">变化类型: ${ins.aaa1004 }</td>
+														<td class="pointType">${ins.fvalue }</td>
 														<td class="pointNum">${ins.aaa1003 }</td>
 														<td class="pointTime">${ins.aaa1005 }</td>
 													</tr>
