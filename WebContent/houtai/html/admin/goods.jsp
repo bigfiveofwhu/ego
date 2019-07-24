@@ -250,7 +250,6 @@
                         </div>
                     </div>
                     <!-- Ñ¡Ïî¿¨½áÊø -->
-
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateState('02')">
@@ -291,8 +290,19 @@
                     $("#aab204").text(map.cnaab204);
                     $("#aab205").text(map.aab205);
                     $("#aab206").text(map.aab206);
-                    $("#aab207").text(map.aab207);
-                    $("#aab208").text(map.aab208);
+                    var description = map.aab207;
+                    if (description !== '') {
+                        var text = description.split('&')[0];
+                        var pics = description.split('&')[1].split(';');
+                        for (var i = 0; i < pics.length; i++) {
+                            text = text + '<img src="<%=request.getContextPath()%>' + pics[i] + '" alt="" onerror="this.style.display=\'none\'">';
+                        }
+                        $("#aab207").html(text);
+                    } else {
+                        $("#aab207").text('');
+                    }
+
+                    $("#aab208").html('<img src="<%=request.getContextPath()%>' + map.aab208 + '" alt="" onerror="this.style.display=\'none\'">');
                     $("#aab209").text(map.aab209);
                     $("#aab211").text(map.aab211);
                     $("#aab212").text(map.cnaab212);
