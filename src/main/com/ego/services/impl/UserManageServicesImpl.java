@@ -19,14 +19,11 @@
 
 package com.ego.services.impl;
 
-import java.lang.reflect.Method;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpSession;
-
 import com.ego.services.JdbcServicesSupport;
 import com.ego.system.tools.Tools;
+
+import java.lang.reflect.Method;
+import java.util.Map;
 
 public class UserManageServicesImpl extends JdbcServicesSupport 
 {
@@ -49,9 +46,9 @@ public class UserManageServicesImpl extends JdbcServicesSupport
 	    			.append("  from aa01 a")
 	    			.append(" where a.aaa102=?")
 	    			;
-	    	String id =(String) this.get("aaa102");
+	    	String id = String.valueOf(this.get("aaa102"));
 	    	//执行查询
-	    	return this.queryForMap(sql.toString(), this.get("aaa102"));
+	    	return this.queryForMap(sql.toString(), id);
 	    }
 	    
 	//修改用户信息
