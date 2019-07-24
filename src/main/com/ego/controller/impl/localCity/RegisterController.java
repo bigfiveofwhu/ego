@@ -11,14 +11,16 @@ public class RegisterController extends ControllerSupport
 	@Override
 	public String execute() throws Exception 
 	{
-		if(this.get("aaa102")!=null)     //若登录.则查找是否注册过服务商
+		if(this.get("aaa102")==null) //检查用户是否登录
 		{
-			this.setServices(new Ac01ServiceImpl());
-			Map<String,String> ins=this.getServices().findById("login");
-			if(ins!=null)   //已存在服务商id
-			{
-				return "localCity/home";
-			}
+			return "home/login";
+		}
+		//若登录.则查找是否注册过服务商
+		this.setServices(new Ac01ServiceImpl());
+		Map<String,String> ins=this.getServices().findById("login");
+		if(ins!=null)   //已存在服务商id
+		{
+			return "localCity/home";
 		}
 		return "WEB-INF/views/localCity/register";
 	}

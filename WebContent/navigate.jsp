@@ -70,6 +70,7 @@
 				</a>
 			</div>
 		</div>
+		<c:if  test="${aaa102!=null}">
 		<div class="topMessage shop">
 			<div class="menu-hd">
 			<c:choose>
@@ -86,6 +87,7 @@
 				</c:choose>
 				</a>
 			</div>
+		</c:if>
 		</div>
 	</ul>
 </div>
