@@ -130,9 +130,9 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql = new StringBuilder()
 				.append("select x.aab203,x.aab302,x.aab303,x.aab304,x.aab305,")
 				.append("       x.aab306,x.aab307,x.aab309,x.aab310,x.aab313,")
-				.append("       x.aab314,y.aab202")
-				.append("  from ab03 x, ab02 y")
-				.append("  where  x.aab203=y.aab203 ")
+				.append("       x.aab314,y.aab202,y.aab208,z.aab103")
+				.append("  from ab03 x, ab02 y,ab01 z")
+				.append("  where  x.aab203=y.aab203 and y.aab102=z.aab102 ")
 				.append("  and x.aaa102=? and x.aab308='01' ")
 				;
 		
@@ -206,7 +206,7 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		sql = new StringBuilder()
 				.append("select x.aab203,x.aab302,x.aab303,x.aab304,x.aab305,")
 				.append("       x.aab306,x.aab307,x.aab309,x.aab310,x.aab311,")
-				.append("       x.aab313,x.aab314,y.aab202")
+				.append("       x.aab313,x.aab314,y.aab202,y.aab208")
     			.append("  from ab03 x,ab02 y")
     			.append(" where x.aab203=y.aab203 and x.aab302=?")
     			;
@@ -226,7 +226,7 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql =null;
 		sql = new StringBuilder()
 				.append("select y.aab202,x.aab302,x.aab310,x.aab314,x.aab305,")
-				.append("		x.aab313,y.aab102,x.aab203")
+				.append("		x.aab313,y.aab102,x.aab203,y.aab208")
     			.append("  from ab03 x,ab02 y")
     			.append(" where x.aab203=y.aab203")
     			.append(" and x.aab302=?")

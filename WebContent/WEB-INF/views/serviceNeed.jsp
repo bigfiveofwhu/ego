@@ -60,7 +60,8 @@
 						<div class="am-tabs am-tabs-d2 am-margin" data-am-tabs>
 
 							<ul class="am-avg-sm-5 am-tabs-nav am-nav am-nav-tabs">
-								<li class="am-active"><a href="#tab1">我的需求</a></li>
+								<li class="am-active"><a href="#tab1">不定向需求</a></li>
+								<li><a href="#tab2">定向需求</a></li>
 							</ul>
 
 							<div class="am-tabs-bd">
@@ -79,6 +80,8 @@
 										<c:choose>
 											<c:when test="${rows!=null }">
 											<c:forEach items="${rows }" var="ins" varStatus="vs">
+											<c:choose>
+											<c:when test="${ins.aac611 eq '01' }">
 												<div class="order-status5">
 													<div class="order-title">
 														<div class="dd-num">需求编号：<a href="javascript:;">${ins.aac602 }</a></div>
@@ -89,7 +92,127 @@
 														<div class="order-left">
 															<ul class="item-list">
 																<li class="td td-item">
+																	<div class="item-pic">
+																		<a href="#" class="J_MakePoint">
+																			<img src="<%=path %>/images/postneed.jpg" class="itempic J_ItemImg">
+																		</a>
+																	</div>
+																	<div class="item-info">
+																		<div class="item-basic-info">
+																			<a href="#">
+																				<p><span style="color:orange;">服务类型:<br/></span>${ins.type }</p>
+																				<p class="info-little">
+																				<span style="color:orange;">具体服务描述:<br/></span>
+																				${ins.aac605 }
+																				</p>
+																			</a>
+																		</div>
+																	</div>
+																</li>
+																<li class="td td-price">
+																	<div class="item-price">
+																		${ins.method	 }
+																	</div>
+																</li>
+																
+																
+															</ul>
+														</div>
+														<div class="order-right">
+															<li class="td td-status">
+																<div class="item-status">
+																	<c:choose>
+																		<c:when test="${ins.aac609 eq '01' }">
+																			<p class="Mystatus">尚无报价</p>
+																		</c:when>
+																		<c:when test="${ins.aac609 eq '02' }">
+																			<p class="Mystatus">有报价</p>
+																		</c:when>
+																		<c:when test="${ins.aac609 eq '03' }">
+																			<p class="Mystatus">已预约</p>
+																		</c:when>
+																	</c:choose>
+																</div>
+															</li>
+															<div class="move-right">
+																<li class="td td-change">
+																<c:choose>
+																	<c:when test="${ins.aac609 eq '01' }">
+																		<div class="am-btn am-btn-danger anniu" href="javascript:;" onclick="del(${ins.aac602})">
+																			删除需求
+																		</div>
+																	</c:when>
+																	<c:when test="${ins.aac609 eq '02' }">
+																		<div class="am-btn am-btn-danger anniu" href="javascript:;" onclick="selectTarget(${ins.aac602})">
+																			选择报价
+																		</div>
+																		<div class="am-btn am-btn-danger anniu" href="javascript:;" onclick="del(${ins.aac602})">
+																			删除需求
+																		</div>
+																	</c:when>
+																	<c:when test="${ins.aac609 eq '03' }">
+																		<div class="am-btn am-btn-danger anniu" href="javascript:;" onclick="selectTarget(${ins.aac602})">
+																			我的选择
+																		</div>
+																		<div class="am-btn am-btn-danger anniu" href="javascript:;" onclick="del(${ins.aac602})">
+																			删除需求
+																		</div>
+																	</c:when>
+																</c:choose>
+																
+																
 																	
+																</li>
+															</div>
+														</div>
+													</div>
+												</div>
+												<br/><br/>
+											</c:when>
+											</c:choose>
+											</c:forEach>
+											</c:when>
+										</c:choose>
+													
+								
+											
+										</div>
+									</div>
+								</div>
+								
+								
+								<div class="am-tab-panel am-fade am-in am-active" id="tab2">
+									<div class="order-top">
+										<div class="th th-item">
+											<td class="td-inner">需求信息</td>
+										</div>
+										<div class="th th-price">
+											<td class="td-inner">服务方式</td>
+										</div>
+									</div>
+
+									<div class="order-main">
+										<div class="order-list">
+										<c:choose>
+											<c:when test="${rows!=null }">
+											<c:forEach items="${rows }" var="ins" varStatus="vs">
+											<c:choose>
+											<c:when test="${ins.aac611 eq '02' }">
+												<div class="order-status5">
+													<div class="order-title">
+														<div class="dd-num">需求编号：<a href="javascript:;">${ins.aac602 }</a></div>
+														<span>提交时间：${ins.aac608 }</span>
+														<!--    <em>店铺：小桔灯</em>-->
+													</div>
+													<div class="order-content">
+														<div class="order-left">
+															<ul class="item-list">
+																<li class="td td-item">
+																	<div class="item-pic">
+																		<a href="#" class="J_MakePoint">
+																			<img src="<%=path %>/images/postneed.jpg" class="itempic J_ItemImg">
+																		</a>
+																	</div>
 																	<div class="item-info">
 																		<div class="item-basic-info">
 																			<a href="#">
@@ -153,6 +276,8 @@
 													</div>
 												</div>
 												<br/><br/>
+											</c:when>
+											</c:choose>
 											</c:forEach>
 											</c:when>
 										</c:choose>

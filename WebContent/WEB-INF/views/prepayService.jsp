@@ -54,9 +54,9 @@
 								<div class="order-user-info">
 									<div id="holyshit257" class="memo">
 										<label style="font-size:20px;color:orange;">服务类型：</label>
-										<p>${ins.aac603 }</p>	<br/>
+										<p>${ins.type }</p>	<br/>
 										<label style="font-size:20px;color:orange;">服务方式：</label>
-										<p>${ins.aac604 }</p><br/>
+										<p>${ins.method }</p><br/>
 										<label style="font-size:20px;color:orange;">具体服务内容：</label>
 										<p>${ins.aac605 }</p><br/>
 										<label style="font-size:20px;color:orange;">服务商备注：</label>
@@ -95,13 +95,13 @@
 								   					${ins.aac103 }
 												</span>
 												<span class="buy--address-detail">
-								   					400-426-45584781
+								   					${ins.aac111 }
 												</span>
 											</p>
 											<p class="buy-footer-address">
 												<span class="buy-line-title">客户：</span>
 												<span class="buy-address-detail">   
-                                         		<span class="buy-user"><%=session.getAttribute("aaa102") %> </span>
+                                         		<span class="buy-user"><%=session.getAttribute("aaa103") %> </span>
 												<span class="buy-phone">15871145629</span>
 												</span>
 											</p>

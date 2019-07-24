@@ -115,9 +115,12 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql =null;
 		sql = new StringBuilder()
 				.append("select a.aac602,a.aac603,a.aac604,a.aac605,a.aac606,")
-				.append("       a.aac607,b.aac303,b.aac304,c.aac103,c.aac102,b.aac302")
-    			.append("  from ac06 a,ac03 b,ac01 c")
+				.append("       a.aac607,b.aac303,b.aac304,c.aac103,c.aac102,")
+				.append("       b.aac302,e.fvalue type,f.fvalue method,c.aac111")
+    			.append("  from ac06 a,ac03 b,ac01 c,syscode e,syscode f")
     			.append(" where a.aac602=b.aac602 and b.aac102=c.aac102")
+    			.append(" and   a.aac603=e.fcode and a.aac604=f.fcode")
+    			.append(" and   e.fname='aac106' and f.fname='aac205' ")
     			.append(" and   b.aac302=?")
     			;
 		System.out.println("***为服务预付查询单一需求:显示findById()的SQL查询语句****");
@@ -253,7 +256,7 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
 	{
 		//定义SQL主体
 		StringBuilder sql = new StringBuilder()
-				.append("select x.aac602,x.aac603,x.aac604,x.aac608,x.aac609,")
+				.append("select x.aac602,x.aac603,x.aac604,x.aac608,x.aac609,x.aac611,")
 				.append("		x.aac605,y.fvalue type,z.fvalue method")
 				.append("  from ac06 x,syscode y, syscode z ")
 				.append("  where x.aac603=y.fcode and x.aac604=z.fcode ")
@@ -295,7 +298,7 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
 		//定义SQL主体
 		StringBuilder sql = new StringBuilder()
 				.append("select y.aac103,x.aac102,x.aac302,x.aac303,x.aac304,")
-				.append(" 		x.aac305")
+				.append(" 		x.aac305,y.aaa102")
 				.append("  from ac03 x, ac01 y ")
 				.append("  where x.aac102=y.aac102")
 				.append("  and   x.aac602=?")

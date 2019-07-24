@@ -51,22 +51,7 @@ public class Ac05ServicesImpl extends JdbcServicesSupport
 			
 		}
 	}
-	/**
-	 * 计算好评率
-	 * hug
-	 * @return
-	 */
-	private Map<String,String> compute5Comment() throws Exception
-	{
-		StringBuilder sql=new StringBuilder()
-				.append("select count(y.aac507) as A,count(z.aac507)/count(y.aac507) as grade")
-				.append("  from ac04 x,ac05 y,ac05 z")
-				.append(" where (z.aac507>=4 and z.aac402=y.aac402)")
-				.append("   and (x.aac402=y.aac402)")
-				.append("   and (x.aac408='03' and x.aac202='1')")
-				;
-		return this.queryForMap(sql.toString());
-	}
+	
 	
 	/**
 	 * 批量查询操作分支入口
@@ -95,6 +80,23 @@ public class Ac05ServicesImpl extends JdbcServicesSupport
 	//********************************************************************
 	//								具体业务
 	//********************************************************************
+	
+	/**
+	 * 计算好评率
+	 * hug
+	 * @return
+	 */
+	private Map<String,String> compute5Comment() throws Exception
+	{
+		StringBuilder sql=new StringBuilder()
+				.append("select count(y.aac507) as A,count(z.aac507)/count(y.aac507) as grade")
+				.append("  from ac04 x,ac05 y,ac05 z")
+				.append(" where (z.aac507>=4 and z.aac402=y.aac402)")
+				.append("   and (x.aac402=y.aac402)")
+				.append("   and (x.aac408='03' and x.aac202='1')")
+				;
+		return this.queryForMap(sql.toString());
+	}
 	
 	/**
 	 * 生成评价

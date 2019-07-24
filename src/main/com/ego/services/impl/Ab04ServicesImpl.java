@@ -118,7 +118,7 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 	private List<Map<String, String>> queryPoint()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
-				.append("select a.aaa1003,b.fvalue,a.aaa1005")
+				.append("select a.aaa1003,b.fvalue,a.aaa1005,a.aaa1004")
 				.append("  from aa10 a,syscode b")
 				.append("  where b.fname='aaa1004' and b.fcode=a.aaa1004 ")
 				.append("  and a.aaa102=? ")
@@ -178,7 +178,7 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 		sql = new StringBuilder()
 				.append("select a.aab402,a.aab302,b.aab202,a.aab403,a.aab404,")
 				.append("		a.aab405,a.aab406,a.aab407,a.aab408,a.aab409,")
-				.append("       a.aab410,a.aab411,a.aab412,a.aab413,a.aab203")
+				.append("       a.aab410,a.aab411,a.aab412,a.aab413,a.aab203,b.aab208")
     			.append("  from ab04 a, ab02 b")
     			.append(" where a.aab203=b.aab203") 
     			.append(" and a.aab302=?")
@@ -198,7 +198,7 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 		//定义SQL主体
 				StringBuilder sql = new StringBuilder()
 						.append("select x.aab302,z.aab202,x.aab402,x.aab403,x.aab406,")
-						.append("       x.aab410,x.aab412,y.aab303")
+						.append("       x.aab410,x.aab412,y.aab303,z.aab208")
 						.append("  from ab04 x,ab03 y,ab02 z  ")
 						.append("  where x.aab302=y.aab302 ")
 						.append("  and x.aab203=z.aab203 ")

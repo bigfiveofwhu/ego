@@ -67,7 +67,7 @@ public class Aa07ServicesImpl extends JdbcServicesSupport
 		//定义SQL主体
 		StringBuilder sql = new StringBuilder()
 				.append("select a.aaa701,b.aab202,a.aaa702,a.aaa704,b.aab205,")
-				.append("       b.aab212,b.aab203,b.aab204")
+				.append("       b.aab212,b.aab203,b.aab204,b.aab208")
 				.append("  from aa07 a, ab02 b ")
 				.append("  where a.aab203=b.aab203 ")
 				.append("  and a.aaa704='01' ")
