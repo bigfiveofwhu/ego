@@ -16,11 +16,13 @@
 </head>
 <body>
 <div class="list-group justify-content-center">
+    <p class="justify-content-center mt-5 ml-5" style="font-size: large"><b>消息列表</b></p>
     <c:choose>
         <c:when test="${messages!=null}">
             <c:forEach items="${messages}" var="ins" varStatus="vs">
                 <a data-toggle="modal" data-target=".bd-modal-lg-${ins.aae301}" onclick="updateState(${ins.aae301})"
-                   class="list-group-item list-group-item-action mb-4 w-75 shadow rounded p-3">
+                   class="list-group-item list-group-item-action mb-4 w-75 shadow rounded p-3"
+                   style="margin-left: 50px; margin-top: 20px">
                     <div class="d-flex justify-content-between" id="message-${ins.aae301}">
                         <div>
                             <div class="d-flex justify-content-left mt-2">

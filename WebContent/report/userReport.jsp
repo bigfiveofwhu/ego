@@ -1,4 +1,4 @@
-<%@ page pageEncoding="GBK" %>
+<%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
@@ -7,38 +7,38 @@
     <link rel="stylesheet" href="/ego/css/bootstrap.css">
     <link rel="stylesheet" href="/ego/layui/css/layui.css">
     <meta charset="GBK">
-    <title>ÓÃ»§Á÷Ë®±¨±í</title>
+    <title>ç”¨æˆ·æµæ°´æŠ¥è¡¨</title>
 </head>
 <body>
 
 <div class="layui-tab">
     <ul class="layui-tab-title">
-        <li>Á÷Ë®×ÜÀÀ</li>
-        <li>±¾ÔÂÏû·Ñ¼ÇÂ¼</li>
-        <li>ÔÂ¶ÈÁ÷Ë®</li>
-        <li>Äê¶ÈÁ÷Ë®</li>
+        <li>æµæ°´æ€»è§ˆ</li>
+        <li>æœ¬æœˆæ¶ˆè´¹è®°å½•</li>
+        <li>æœˆåº¦æµæ°´</li>
+        <li>å¹´åº¦æµæ°´</li>
     </ul>
     <div class="layui-tab-content">
         <div class="layui-tab-item layui-show">
-            <label>ÔÂ¶ÈÉÌÆ·Ïû·Ñ£º${map.shopSumMonth}</label><br>
-            <label>ÔÂ¶È·şÎñÏû·Ñ£º${map.serviceSumMonth}</label><br>
-            <label>ÔÂ¶È×ÜÏû·Ñ£º${map.sumMonth}</label><br><br>
-            <label>Äê¶ÈÉÌÆ·Ïû·Ñ£º${map.shopSumYear}</label><br>
-            <label>Äê¶È·şÎñÏû·Ñ£º${map.serviceSumYear}</label><br>
-            <label>Äê¶È×ÜÏû·Ñ£º${map.sumYear}</label><br><br>
-            <label>ÉúÑÄÉÌÆ·Ïû·Ñ£º${map.shopSumAll}</label><br>
-            <label>ÉúÑÄ·şÎñÏû·Ñ£º${map.serviceSumAll}</label><br>
-            <label>ÉúÑÄ×ÜÏû·Ñ£º${map.sumAll}</label><br>
+            <label>æœˆåº¦å•†å“æ¶ˆè´¹ï¼š${map.shopSumMonth}</label><br>
+            <label>æœˆåº¦æœåŠ¡æ¶ˆè´¹ï¼š${map.serviceSumMonth}</label><br>
+            <label>æœˆåº¦æ€»æ¶ˆè´¹ï¼š${map.sumMonth}</label><br><br>
+            <label>å¹´åº¦å•†å“æ¶ˆè´¹ï¼š${map.shopSumYear}</label><br>
+            <label>å¹´åº¦æœåŠ¡æ¶ˆè´¹ï¼š${map.serviceSumYear}</label><br>
+            <label>å¹´åº¦æ€»æ¶ˆè´¹ï¼š${map.sumYear}</label><br><br>
+            <label>ç”Ÿæ¶¯å•†å“æ¶ˆè´¹ï¼š${map.shopSumAll}</label><br>
+            <label>ç”Ÿæ¶¯æœåŠ¡æ¶ˆè´¹ï¼š${map.serviceSumAll}</label><br>
+            <label>ç”Ÿæ¶¯æ€»æ¶ˆè´¹ï¼š${map.sumAll}</label><br>
         </div>
         <div class="layui-tab-item">
             <table lay-filter="user-table">
                 <thead>
                 <tr>
-                    <th lay-data="{field:'id', sort: true}">ĞòºÅ</th>
-                    <th lay-data="{field:'time', sort: true}">½»Ò×Ê±¼ä</th>
-                    <th lay-data="{field:'sum', sort: true}">½»Ò×½ğ¶î</th>
-                    <th lay-data="{field:'type', sort: true}">½»Ò×ÀàĞÍ</th>
-                    <th lay-data="{field:'name', sort: true}">½»Ò×¶ÔÏó</th>
+                    <th lay-data="{field:'id', sort: true}">åºå·</th>
+                    <th lay-data="{field:'time', sort: true}">äº¤æ˜“æ—¶é—´</th>
+                    <th lay-data="{field:'sum', sort: true}">äº¤æ˜“é‡‘é¢</th>
+                    <th lay-data="{field:'type', sort: true}">äº¤æ˜“ç±»å‹</th>
+                    <th lay-data="{field:'name', sort: true}">äº¤æ˜“å¯¹è±¡</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,7 +54,7 @@
                 </tbody>
             </table>
             <button class="layui-btn" id="export">
-                <i class="iconfont icon-export"></i> µ¼³ö
+                <i class="iconfont icon-export"></i> å¯¼å‡º
             </button>
         </div>
         <div class="layui-tab-item">
@@ -90,32 +90,48 @@
     });
 
     layui.use('element', function () {
-        //TabµÄÇĞ»»¹¦ÄÜ£¬ÇĞ»»ÊÂ¼ş¼àÌıµÈ£¬ĞèÒªÒÀÀµelementÄ£¿é
+        //Tabçš„åˆ‡æ¢åŠŸèƒ½ï¼Œåˆ‡æ¢äº‹ä»¶ç›‘å¬ç­‰ï¼Œéœ€è¦ä¾èµ–elementæ¨¡å—
         var $ = layui.jquery, element = layui.element;
     });
 
     Highcharts.setOptions({
         lang: {
-            contextButtonTitle: "Í¼±íµ¼³ö²Ëµ¥",
+            contextButtonTitle: "å›¾è¡¨å¯¼å‡ºèœå•",
             decimalPoint: ".",
-            downloadJPEG: "ÏÂÔØJPEGÍ¼Æ¬",
-            downloadPDF: "ÏÂÔØPDFÎÄ¼ş",
-            downloadPNG: "ÏÂÔØPNGÎÄ¼ş",
-            downloadSVG: "ÏÂÔØSVGÎÄ¼ş",
-            drillUpText: "·µ»Ø {series.name}",
-            loading: "¼ÓÔØÖĞ",
-            months: ["Ò»ÔÂ", "¶şÔÂ", "ÈıÔÂ", "ËÄÔÂ", "ÎåÔÂ", "ÁùÔÂ", "ÆßÔÂ", "°ËÔÂ", "¾ÅÔÂ", "Ê®ÔÂ", "Ê®Ò»ÔÂ", "Ê®¶şÔÂ"],
-            noData: "Ã»ÓĞÊı¾İ",
-            numericSymbols: ["Ç§", "Õ×", "G", "T", "P", "E"],
-            printChart: "´òÓ¡Í¼±í",
-            resetZoom: "»Ö¸´Ëõ·Å",
-            resetZoomTitle: "»Ö¸´Í¼±í",
+            downloadJPEG: "ä¸‹è½½JPEGå›¾ç‰‡",
+            downloadPDF: "ä¸‹è½½PDFæ–‡ä»¶",
+            downloadPNG: "ä¸‹è½½PNGæ–‡ä»¶",
+            downloadSVG: "ä¸‹è½½SVGæ–‡ä»¶",
+            drillUpText: "è¿”å› {series.name}",
+            loading: "åŠ è½½ä¸­",
+            months: ["ä¸€æœˆ", "äºŒæœˆ", "ä¸‰æœˆ", "å››æœˆ", "äº”æœˆ", "å…­æœˆ", "ä¸ƒæœˆ", "å…«æœˆ", "ä¹æœˆ", "åæœˆ", "åä¸€æœˆ", "åäºŒæœˆ"],
+            noData: "æ²¡æœ‰æ•°æ®",
+            numericSymbols: ["åƒ", "å…†", "G", "T", "P", "E"],
+            printChart: "æ‰“å°å›¾è¡¨",
+            resetZoom: "æ¢å¤ç¼©æ”¾",
+            resetZoomTitle: "æ¢å¤å›¾è¡¨",
             shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             thousandsSep: ",",
-            weekdays: ["ĞÇÆÚÒ»", "ĞÇÆÚ¶ş", "ĞÇÆÚÈı", "ĞÇÆÚËÄ", "ĞÇÆÚÎå", "ĞÇÆÚÁù", "ĞÇÆÚÌì"]
+            weekdays: ["æ˜ŸæœŸä¸€", "æ˜ŸæœŸäºŒ", "æ˜ŸæœŸä¸‰", "æ˜ŸæœŸå››", "æ˜ŸæœŸäº”", "æ˜ŸæœŸå…­", "æ˜ŸæœŸå¤©"]
         },
         chart: {
-            type: 'line'
+            type: 'line',
+            events: {
+                beforePrint: function () {
+                    var height = this.options.exporting.chartOptions.chart.height;
+                    if (height) {
+                        this.oldhasUserSize = this.hasUserSize;
+                        this.resetParams = [this.chartWidth, this.chartHeight, false];
+                        this.setSize(this.chartWidth, height, false);
+                    }
+                },
+                afterPrint: function () {
+                    if (this.options.exporting.chartOptions.chart.height) {
+                        this.setSize.apply(this, this.resetParams);
+                        this.hasUserSize = this.oldhasUserSize;
+                    }
+                }
+            }
         },
         plotOptions: {
             line: {
@@ -135,6 +151,10 @@
             layout: 'vertical',
             align: 'left',
             verticalAlign: 'middle',
+            maxHeight: 400,
+            labelFormatter: function () {
+                return (this.name + '(ç‚¹å‡»)').replace(/(.{15})/g, '$1<br>');
+            },
             navigation: {
                 activeColor: '#3E576F',
                 animation: true,
@@ -151,7 +171,7 @@
 
     Highcharts.chart('container-1', {
         title: {
-            text: 'ÔÂ¶ÈÏû·ÑÁ÷Ë®'
+            text: 'æœˆåº¦æ¶ˆè´¹æµæ°´'
         },
         xAxis: {
             categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
@@ -161,10 +181,10 @@
 
     Highcharts.chart('container-2', {
         title: {
-            text: 'Äê¶ÈÏû·ÑÁ÷Ë®'
+            text: 'å¹´åº¦æ¶ˆè´¹æµæ°´'
         },
         xAxis: {
-            categories: ["Ò»ÔÂ", "¶şÔÂ", "ÈıÔÂ", "ËÄÔÂ", "ÎåÔÂ", "ÁùÔÂ", "ÆßÔÂ", "°ËÔÂ", "¾ÅÔÂ", "Ê®ÔÂ", "Ê®Ò»ÔÂ", "Ê®¶şÔÂ"]
+            categories: ["ä¸€æœˆ", "äºŒæœˆ", "ä¸‰æœˆ", "å››æœˆ", "äº”æœˆ", "å…­æœˆ", "ä¸ƒæœˆ", "å…«æœˆ", "ä¹æœˆ", "åæœˆ", "åä¸€æœˆ", "åäºŒæœˆ"]
         },
         series: [${yearly}]
     });

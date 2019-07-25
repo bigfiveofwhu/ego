@@ -489,7 +489,7 @@ public class ReportServiceImpl extends JdbcServicesSupport
         StringBuilder sql1=new StringBuilder()
                 .append("SELECT aab203 id,CONCAT(aab202,'_',aab203) name")
                 .append("  FROM ab02")
-                .append(" WHERE aab102=?");
+                .append(" WHERE aab102=? AND aab212='02'");
         List<Map<String, String>> list1=this.queryForList(sql1.toString(),aab102);
 
         StringBuilder sql2=new StringBuilder()
@@ -677,7 +677,7 @@ public class ReportServiceImpl extends JdbcServicesSupport
         StringBuilder sql = new StringBuilder()
                 .append("SELECT CONCAT(aab202,'_',aab203) name")
                 .append("  FROM ab02")
-                .append(" WHERE aab102=?");
+                .append(" WHERE aab102=? AND aab212='02'");
 
         return this.queryForList(sql.toString(), this.get("aab102"));
     }
