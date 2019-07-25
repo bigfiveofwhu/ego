@@ -453,14 +453,17 @@ public class AdvertiseService extends JdbcServicesSupport{
 	 */
 	private List<Map<String, String>> getSameProducts()throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append(" select aad302,aab202,aab203,aab205,aab206,aab208 from ad03 join ab02")
+				.append(" select aad302,aad307,aab202,aab203,aab205,aab206,aab208")
+				.append(" from ad03 join ab02 join syscode join syscode as s")
 				.append(" on ad03.aad306 = ab02.aab203")
-				.append(" where aad305=?")//11
-				.append(" and aad303=?")//00
-				.append(" and aab204=?")
+				.append(" and syscode.fcode=ab02.aab204")
+				.append(" and syscode.pfcode = s.pfcode")
+				.append(" where aad305=? and aad303=?")
+				.append(" and s.fcode=?")
+				.append(" and syscode.fname='aab204'")
 				.append(" order by aad304 DESC ")
 				.append(" limit 8");
-		return this.queryForList(sql.toString(),search,productAd,this.get("productType"));
+		return this.queryForList(sql.toString(),AIads,productAd,this.get("productType"));
 	}
 	
 	/**
@@ -495,7 +498,7 @@ public class AdvertiseService extends JdbcServicesSupport{
 				.append(" and aab204 in (select * from (select aaa902 from aa09")//商品类型满足条件
 				.append(" where aaa102=? limit 3)as t)")
 				.append(" order by aad304 DESC ")
-				.append(" limit 4");
+				.append(" limit 8");
 		return this.queryForList(sql.toString(),AIads,productAd,this.get("aaa102"));
 	}
 }
