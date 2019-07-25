@@ -45,6 +45,7 @@
 				</c:choose>
 			</div>
 		</div>
+		<%-- 
 		<div class="topMessage mini-cart">
 			<div class="menu-hd">
 				<c:choose>
@@ -56,7 +57,7 @@
 				  </a>
 				</c:when>
 				<c:otherwise>
-					<a id="mc-menu-hd" href="${path }/home/shopcart.html" target="_top">
+					<a id="mc-menu-hd" href="${path }/home/shopcCart.html" target="_top">
 					<i class="am-icon-shopping-cart  am-icon-fw"></i>
 					<span>π∫ŒÔ≥µ</span>
 					<strong id="J_MiniCartNum" class="h">${CARTNUM_IN_SESSION}</strong>
@@ -64,7 +65,7 @@
 				</c:otherwise>
 				</c:choose>
 			</div>
-		</div>
+		</div>--%>
 		<div class="topMessage favorite">
 			<div class="menu-hd">
 				<a href="${path}/person/index.jsp?iframe=${path}/person/showCollection.html" target="_top"><i class="am-icon-heart am-icon-fw"></i><span> ’≤ÿº–</span>

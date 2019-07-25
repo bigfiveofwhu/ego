@@ -636,10 +636,21 @@
 																  "		</header>"+
 																  "		<div class='am-comment-bd'>"+
 																  "			<div class='tb-rev-item ' data-id='258040417670'>"+
-																  "				<div class='J_TbcRate_ReviewContent tb-tbcr-content '>"
-																  				+comment.aab403+
+																  "				<div class='J_TbcRate_ReviewContent tb-tbcr-content '>"+
+																  				comment.aab403+
 																  "				</div>"+
-																  "				<div class='tb-r-act-bar'>"+
+																  "             <img class='commentImg' alt='"+comment.aab403+"' src='${path}/images/comments/"+comment.aab402+"'>";
+														if((typeof comment.aab405)!='undefined'&&comment.aab405.trim()!=''){
+															html+="             <div class='J_TbcRate_ReviewContent tb-tbcr-content '>商家回复:&emsp;"+
+																				comment.aab405.trim()+
+																  "             &emsp;&emsp;回复于<time datetime=''>"+comment.aab408+"</time></div>";
+														}
+														if((typeof comment.aab404)!='undefined'&&comment.aab404.trim()!=''){
+															html+="             <div class='J_TbcRate_ReviewContent tb-tbcr-content '>追加评论:&emsp;"+
+																				comment.aab404.trim()+
+																  "             &emsp;&emsp;追评于<time datetime=''>"+comment.aab407+"</time></div>";
+														}
+														   html+="				<div class='tb-r-act-bar'>"+
 																  "					物流评分："+comment.aab409+"&nbsp;&nbsp;商品评分："+comment.aab410+"&nbsp;&nbsp;服务评分："+comment.aab411+
 																  "				</div>"+
 																  "			</div>"+
@@ -651,7 +662,7 @@
 													}
 												},
 												error:function(res,status){
-													
+													console.log("网络异常!");
 												}
 											});
 										});
