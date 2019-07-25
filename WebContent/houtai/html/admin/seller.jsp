@@ -331,7 +331,6 @@
                 alert('²Ù×÷Ê§°Ü£¬ÇëÖØÊÔ')
             }
         });
-        clearDetails();
     }
 
     function clearDetails() {

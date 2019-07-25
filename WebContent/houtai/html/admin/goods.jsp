@@ -339,7 +339,6 @@
                 }
             },
             error: function () {
-                clearDetails();
                 console.log("商品详细信息异步加载错误");
             }
         });
@@ -381,7 +380,6 @@
                 alert('操作失败，请重试')
             }
         });
-        clearDetails();
     }
 
     function clearDetails() {
