@@ -27,10 +27,6 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		{
 			return this.addOrder();
 		}
-		else if(utype.equalsIgnoreCase("addPointForOrder"))
-		{
-			return this.addPointForOrder();
-		}
 		else if(utype.equalsIgnoreCase("delById"))
 		{
 			return this.deleteById();
@@ -149,8 +145,8 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 	}
 	
 	/**
-	 * @author hug
 	 *  通过商品id查找上个月的销量(卖的商品的数量), 01 --代付款,03--已取消,08--已退款,09--已申述等状态除外
+	 *  hg
 	 * @return
 	 * @throws Exception
 	 */
@@ -325,7 +321,7 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 	 */
 	private boolean deleteById()throws Exception
 	{
-		String sql = "delete from ab03 where aab302=?";
+		String sql = "update ab03 set aab308 = '02' where aab302=?";
 		return this.executeUpdate(sql, this.get("aab302"));
 	}
 
@@ -345,12 +341,19 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		Object args[]={
 				this.get("aab302")
 		};
+		boolean b=addPointForOrder();
+		System.out.println("收货修改积分状态:"+b);
 		
 		//System.out.println("***显示编辑更新SQL语句****");
 		//System.out.println(sql.toString());
 		return this.executeUpdate(sql.toString(), args);
 	}
 	
+	/**
+	 * 取消订单
+	 * @return
+	 * @throws Exception
+	 */
 	private boolean cancelOrder()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()

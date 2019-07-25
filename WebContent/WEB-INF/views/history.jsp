@@ -72,11 +72,11 @@
 						<c:forEach items="${rows }" var="ins" varStatus="vs">
 						<c:choose>
 						<c:when test="${ins.aaa702 eq today }">
-							<div class="goods">
+							<div class="goods" style="width:25%;">
 								<div class="goods-date" data-date="${ins.aaa702 }">
 									<%if (dayCount==0){ %>
 									<span><i class="date-desc">今天</i></span>
-									<del class="am-icon-trash"></del>
+									
 									<%} %>
 									<%dayCount++; %>
 									<s class="line"></s>
@@ -89,10 +89,10 @@
 										<% url=(request.getAttribute("url")).toString();
 									  		arr=url.split(";");
 										%>
-											<a class="goods-pic-link" target="_blank" href="<%=path%>/shop/detail.html?productId=${ins.aab203 }" title="${ins.aab202 }">
-												<img src="<%=path%><%=arr[0] %>" class="goods-img"></a>
+										<a class="goods-pic-link" target="_blank" href="<%=path%>/shop/detail.html?productId=${ins.aab203 }" title="${ins.aab202 }">
+											<img src="<%=path%><%=arr[0] %>" class="goods-img"></a>
 										</div>
-										<a class="goods-delete" href="javascript:;" onclick="delHistory(${ins.aaa701})">
+										<a style="visibility:visible;" class="goods-delete" href="javascript:;" onclick="delHistory(${ins.aaa701})">
 											<i class="am-icon-trash"></i>
 										</a>
 										<c:choose>
@@ -112,7 +112,7 @@
 	
 									<div class="goods-attr">
 										<div class="good-title">
-											<a class="title" href="<%=path%>/shop/detail.html?productId=${ins.aab203 }" target="_blank" style="align:center">${ins.aab202 }</a>
+											<a class="title" href="<%=path%>/shop/detail.html?productId=${ins.aab203 }" target="_blank" style="text-align:center">${ins.aab202 }</a>
 										</div>
 										<div class="goods-price">
 											<span class="g_price">                                    
@@ -142,11 +142,11 @@
 						<c:forEach items="${rows }" var="ins" varStatus="vs">
 						<c:choose>
 						<c:when test="${ins.aaa702 eq yesterday }">
-							<div class="goods">
+							<div class="goods" style="width:25%;">
 								<div class="goods-date" data-date="${ins.aaa702 }">
 									<%if(yesterdayCount==0){ %>
 									<span><i class="date-desc">昨天</i></span>
-									<del class="am-icon-trash"></del>
+									
 									<%} %>
 									<%yesterdayCount++; %>
 									<s class="line"></s>
@@ -162,7 +162,7 @@
 											<a class="goods-pic-link" target="_blank" href="<%=path%>/shop/detail.html?productId=${ins.aab203 }" title="${ins.aab202 }">
 												<img src="<%=path%><%=arr[0] %>" class="goods-img"></a>
 										</div>
-										<a class="goods-delete" href="javascript:;" onclick="delHistory(${ins.aaa701})">
+										<a  style="visibility:visible;" class="goods-delete" href="javascript:;" onclick="delHistory(${ins.aaa701})">
 											<i class="am-icon-trash"></i>
 										</a>
 										<c:choose>
@@ -212,11 +212,11 @@
 						<c:forEach items="${rows }" var="ins" varStatus="vs">
 						<c:choose>
 						<c:when test="${(ins.aaa702 ge lastWeek)&&(ins.aaa702 lt yesterday) }">
-							<div class="goods">
+							<div class="goods" style="width:25%;">
 								<div class="goods-date" data-date="${ins.aaa702 }">
 									<%if(weekCount==0){ %>
 									<span><i class="date-desc">一周内</i></span>
-									<del class="am-icon-trash"></del>
+									
 									<%} %>
 									<%weekCount++; %>
 									<s class="line"></s>
@@ -232,7 +232,7 @@
 											<a class="goods-pic-link" target="_blank" href="<%=path%>/shop/detail.html?productId=${ins.aab203 }" title="${ins.aab202 }">
 												<img src="<%=path%><%=arr[0] %>" class="goods-img"></a>
 										</div>
-										<a class="goods-delete" href="javascript:;" onclick="delHistory(${ins.aaa701})">
+										<a style="visibility:visible;" class="goods-delete" href="javascript:;" onclick="delHistory(${ins.aaa701})">
 											<i class="am-icon-trash"></i>
 										</a>
 										<c:choose>
@@ -282,11 +282,11 @@
 						<c:forEach items="${rows }" var="ins" varStatus="vs">
 						<c:choose>
 						<c:when test="${(ins.aaa702 ge lastMonth)&&(ins.aaa702 lt lastWeek)  }">
-							<div class="goods">
+							<div class="goods" style="width:25%;">
 								<div class="goods-date" data-date="${ins.aaa702 }">
 									<%if(monthCount==0){ %>
 									<span><i class="date-desc">一月内</i></span>
-									<del class="am-icon-trash"></del>
+									
 									<%} %>
 									<%monthCount++; %>
 									<s class="line"></s>
@@ -302,7 +302,7 @@
 											<a class="goods-pic-link" target="_blank" href="<%=path%>/shop/detail.html?productId=${ins.aab203 }" title="${ins.aab202 }">
 												<img src="<%=path%><%=arr[0] %>" class="goods-img"></a>
 										</div>
-										<a class="goods-delete" href="javascript:;" onclick="delHistory(${ins.aaa701})">
+										<a style="visibility:visible;" class="goods-delete" href="javascript:;" onclick="delHistory(${ins.aaa701})">
 											<i class="am-icon-trash"></i>
 										</a>
 										<c:choose>

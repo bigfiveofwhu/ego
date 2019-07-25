@@ -23,10 +23,13 @@
 		<script type="text/javascript">
 			function deleteOrder(vaab302)
 			{
-				window.location.href='payOrder.html';
-				var vform = document.getElementById("myform");
-				vform.action="<%=path%>/delOrderById.html?aab302="+vaab302;
-				vform.submit();
+				var message=confirm("确认删除订单吗?")
+				if(message==true){
+					var vform = document.getElementById("myform");
+					vform.action="<%=path%>/delOrderById.html?aab302="+vaab302;
+					vform.submit();
+				}
+				
 			}
 				
 			function goPay(vaab302)
@@ -51,9 +54,22 @@
 			}
 			function recieveOrder(vaab302)
 			{
+				var message=confirm("确认收货吗?收货后订单视为完成!")
+				if(message==true){
+					var vform = document.getElementById("myform");
+					vform.action="<%=path%>/recieveOrder.html?aab302="+vaab302;
+					vform.submit();
+				}
+				
+			}
+			function goRefund(vaab302)
+			{
 				var vform = document.getElementById("myform");
-				vform.action="<%=path%>/recieveOrder.html?aab302="+vaab302;
+				vform.action="<%=path%>/goRefund.html?aab302="+vaab302;
 				vform.submit();
+			}
+			function remind(){
+				alert("已提醒商家发货!");
 			}
 		</script>
 	</head>
@@ -230,8 +246,8 @@
 															<div class="item-basic-info">
 																<a href="#">
 																	<p>商品名称:${ins.aab202 }</p>
-																	<p class="info-little">属性1:还没填
-																		<br/>属性2:还没填 </p>
+																	<p class="info-little">商品ID:${ins.aab203 }
+																		<br/></p>
 																</a>
 															</div>
 														</div>
@@ -309,8 +325,8 @@
 														<div class="item-basic-info">
 															<a href="#">
 																<p>商品名称:${ins.aab202 } </p>
-																<p class="info-little">属性1:尚无
-																	<br/>属性2:尚无</p>
+																<p class="info-little">商品ID:${ins.aab203 }
+																	<br/></p>
 															</a>
 														</div>
 													</div>
@@ -327,7 +343,7 @@
 												</li>
 												<li class="td td-operation">
 													<div class="item-operation">
-														<a href="refund.html">退款</a>
+														<a href="javascript:;" onclick="goRefund(${ins.aab302})">退款</a>
 													</div>
 												</li>
 											</ul>
@@ -386,8 +402,8 @@
 														<div class="item-basic-info">
 															<a href="#">
 																<p>商品名称:${ins.aab202 }</p>
-																<p class="info-little">属性1:尚无
-																	<br/>属性2:尚无</p>
+																<p class="info-little">商品ID:${ins.aab203 }
+																	<br/></p>
 															</a>
 														</div>
 													</div>
@@ -404,7 +420,7 @@
 												</li>
 												<li class="td td-operation">
 													<div class="item-operation">
-														<a href="refund.html">退款/退货</a>
+														<a href="javascript:;" onclick="goRefund(${ins.aab302})">退款/退货</a>
 													</div>
 												</li>
 											</ul>
@@ -465,8 +481,8 @@
 														<div class="item-basic-info">
 															<a href="#">
 																<p>商品名称:${ins.aab202 }</p>
-																<p class="info-little">属性1:尚无
-																	<br/>属性2:尚无 </p>
+																<p class="info-little">商品ID:${ins.aab203 }
+																	<br/></p>
 															</a>
 														</div>
 													</div>
@@ -483,7 +499,7 @@
 												</li>
 												<li class="td td-operation">
 													<div class="item-operation">
-														<a href="refund.html">退款/退货</a>
+														<a href="javascript:;" onclick="goRefund(${ins.aab302})">退款/退货</a>
 													</div>
 												</li>
 											</ul>
@@ -548,8 +564,8 @@
 														<div class="item-basic-info">
 															<a href="#">
 																<p>商品名称:${ins.aab202 }</p>
-																<p class="info-little">属性1:尚无
-																	<br/>属性2:尚无 </p>
+																<p class="info-little">商品ID:${ins.aab203 }
+																	<br/> </p>
 															</a>
 														</div>
 													</div>
@@ -625,8 +641,8 @@
 															<div class="item-basic-info">
 																<a href="#">
 																	<p>商品名称:${ins.aab202 }</p>
-																	<p class="info-little">规格1:还没填
-																					  <br/>规格2:还没填 </p>
+																	<p class="info-little">商品ID:${ins.aab203 }
+																					  <br/> </p>
 																</a>
 															</div>
 														</div>
