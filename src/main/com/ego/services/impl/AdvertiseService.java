@@ -135,7 +135,8 @@ public class AdvertiseService extends JdbcServicesSupport{
 				.append(" select aab202,aab203 ")
 				.append(" from ab02 join ab01")
 				.append(" on ab02.aab102=ab01.aab102")
-				.append(" where ab01.aaa102=?");
+				.append(" where ab01.aaa102=?")
+				.append(" and aab212='02'");
 		return this.queryForList(sql.toString(), this.get("aaa102"));
 	}
 	
@@ -492,9 +493,9 @@ public class AdvertiseService extends JdbcServicesSupport{
 				.append(" where aad305=?")
 				.append(" and aad303=?")
 				.append(" and aab204 in (select * from (select aaa902 from aa09")//商品类型满足条件
-				.append(" where aaa102=? order by aaa903 limit 3)as t)")
+				.append(" where aaa102=? limit 3)as t)")
 				.append(" order by aad304 DESC ")
 				.append(" limit 4");
-		return this.queryForList(sql.toString(),AIads,shoptAd,this.get("aaa102"));
+		return this.queryForList(sql.toString(),AIads,productAd,this.get("aaa102"));
 	}
 }

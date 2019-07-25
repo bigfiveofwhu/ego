@@ -6,6 +6,7 @@ import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.Ac01ServiceImpl;
 import com.ego.services.impl.Ad08ServicesImpl;
 import com.ego.services.impl.T_AreaService;
+import com.ego.system.utils.SetDefaultImg;
 
 public class RegisteredController extends ControllerSupport
 {
@@ -46,6 +47,8 @@ public class RegisteredController extends ControllerSupport
 		this.setServices(new Ad08ServicesImpl());
 		this.getServices().update("insertAd08");
 		this.getSession().setAttribute("aac102", this.get("aac102"));  //已放入dto的服务商id
+		//服务商默认头像设置
+		SetDefaultImg.setDefImg(this.get("aac102").toString(), "service");
 		return "localCity/home";
 	}
 
