@@ -409,8 +409,29 @@
         $(".to_clear").html("");
     }
     
+    function isNumber(val) {
+        var regPos = /^\d+(\.\d+)?$/; //非负浮点数
+        var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; //负浮点数
+        if(regPos.test(val) || regNeg.test(val)) {
+            return true;
+            } else {
+            return false;
+            }
+        }
+    
     function updatePro()
     {
+    	if(isNumber($("#modify_price").val()) == false)
+   		{
+   		   alert("请正确修改商品价格");
+   		   return;
+   		}
+    	
+    	if($("#modify_amount").val() < 0)
+   		{
+   		   alert("请正确修改商品库存");
+   		   return;
+   		}
     	$.ajax({
     		url:"${path}/putOffGoods.ajax",
     		type:"post",
@@ -532,6 +553,9 @@
 		function readFile() {
 			fd = new FormData();
 			var iLen = this.files.length;
+
+			//alert(iLen);
+
 			var index = 0;
 			var currentReViewImgIndex = 0;
 			for(var i = 0; i < iLen; i++) {
@@ -553,6 +577,9 @@
 					for(var j = 0; j < dataArr.length; j++) {
 						currentReViewImgIndex = j
 					}
+
+					//alert(this.result);
+
 					result = '<div class="showdiv"><img class="left" src="${path}/images/Arrow_left.svg" /><img class="center" src="${path}/images/delete.svg" /><img class="right" src="${path}/images/Arrow_right.svg" /></div><img id="img' +currentReViewImgIndex+randomString(1)+randomString(2) +randomString(5) + '" class="showimg" src="' + this.result + '" />';
 					var li = document.createElement('li');
 					li.innerHTML = result;
@@ -594,8 +621,6 @@
 							$("ul#showui li:eq(" + num + ")").remove()
 							dataArr.splice(num, 1)
 						}
-						
-						$.ajax
 
 					}
 				}(i)
@@ -623,8 +648,10 @@
 		showui.addEventListener("click", function() {
 			onclickimg();
 		}, true)
-
+		
+       // var imgcount = 0;
 		function send(type) {
+			
 			for(var j = 0; j < dataArr.length; j++) {
 				dataArr[j].name = "product_"+dataArr[j].name
 				$.ajax({
@@ -640,9 +667,9 @@
 					success:function(res,status){
 						if(res.tag == 1)
 						{
-							dataArr = [];
+							//dataArr = [];
+							alert("上传成功第"+j+"个图片")
 							$("ul#showui").html("");
-							alert("上传图片成功");
 						}
                       
 					},
@@ -652,6 +679,10 @@
 				});
 				console.log(dataArr[j].name);
 			}
+			//alert(imgcount);
+			//if(imgcount == dataArr.length)
+			//	alert("图片上传成功");
+			dataArr = [];
 		}
 
 		oSubmit1.onclick = function() {

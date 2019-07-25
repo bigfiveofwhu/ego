@@ -11,7 +11,10 @@ public class DelCollectionController extends AjaxControllerSupport {
 	public void execute(HttpSession session) throws Exception 
 	{
         this.setService(new Aa03ServiceImpl());
-        this.getService().update("delCollectionById");
+        if(this.getService().update("delCollectionById"))
+            this.put("tag", 1);
+        else
+        	this.put("tag", 2);
 	}
 
 }

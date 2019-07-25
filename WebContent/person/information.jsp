@@ -29,8 +29,10 @@
 						<div class="user-infoPic">
 							<form enctype="multipart/form-data" id="formTag">
 							<div class="filePic">
-								<input id="pop_file" type="file"  class="inputPic" onchange="uploadFile(event)" name="fileTrans" ref="file" value="" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
+							  
+								<input id="pop_file" type="file"  class="inputPic" onchange="uploadFile(event)" name="fileTrans" ref="file" value="" allowexts="jpeg,jpg" accept="image/*">
 								<img id="preview" class="am-circle am-img-thumbnail" src="<%=basePath%>/images/upload/${imgName }.jpg" alt="" />
+								<a>更换头像</a>
 							</div>
 							</form>
 
@@ -89,7 +91,7 @@
 								<div class="am-form-group">
 									<label for="user-phone" class="am-form-label">电话</label>
 									<div class="am-form-content">
-										<input id="user-phone" name="aaa108" value=" ${user.aaa108 }" placeholder="telephonenumber" type="tel">
+										<input id="user-phone" name="aaa108" value="${user.aaa108 }" placeholder="telephonenumber" type="tel">
 
 									</div>
 								</div>
@@ -102,7 +104,7 @@
 								</div>
 						
 								<div class="info-btn">
-								   <input type="submit" class="am-btn am-btn-danger" value="保存修改"></input>
+								   <input type="button" class="am-btn am-btn-danger" onclick="checkSubmit()" value="保存修改"></input>
 								</div>
                              <span>${msg }</span>
 				             </form>
@@ -114,6 +116,29 @@ $(document).ready(function(){
 	 $("input:radio[value='${user.aaa113}']").attr('checked','true');
 });
 
+function ValidatePhone(val){
+    var isPhone = /^([0-9]{3,4}-)?[0-9]{7,8}$/;//手机号码
+    var isMob= /^0?1[3|4|5|8][0-9]\d{8}$/;// 座机格式
+    if(isMob.test(val)||isPhone.test(val)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function checkSubmit()
+{
+  	if(ValidatePhone($("#aaa108").val()) == false)
+  	{
+  		alert("请输入正确格式电话");
+  		$("#aaa108").attr("value","");
+  		return;
+  	}
+  	
+  	$("#sumbithhh").submit();
+  	
+}
 function uploadFile(ev){
     var that = this;
     const file = document.getElementById('pop_file');

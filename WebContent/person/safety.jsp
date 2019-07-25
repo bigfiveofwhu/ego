@@ -57,6 +57,7 @@
 										</a>
 									</div>
 								</li>
+								<!-- 支付密码
 								<li>
 									<i class="i-safety-wallet"></i>
 									<div class="m-left">
@@ -69,6 +70,8 @@
 										</a>
 									</div>
 								</li>
+								 -->
+								 <!-- 手机验证
 								<li>
 									<i class="i-safety-iphone"></i>
 									<div class="m-left">
@@ -81,11 +84,12 @@
 										</a>
 									</div>
 								</li>
+								 -->
 								<li>
 									<i class="i-safety-mail"></i>
 									<div class="m-left">
-										<div class="fore1">邮箱验证</div>
-										<div class="fore2"><small>您验证的邮箱：5831XXX@qq.com 可用于快速找回登录密码</small></div>
+										<div class="fore1">邮箱</div>
+										<div class="fore2"><small>您验证的邮箱若丢失,为了安全可快速换绑。</small></div>
 									</div>
 									<div class="fore3">
 										<a href="<%=path %>/person/email.jsp">
@@ -93,6 +97,7 @@
 										</a>
 									</div>
 								</li>
+								<!-- 实名认证 
 								<li>
 									<i class="i-safety-idcard"></i>
 									<div class="m-left">
@@ -105,6 +110,8 @@
 										</a>
 									</div>
 								</li>
+								-->
+								<!-- 安全问题
 								<li>
 									<i class="i-safety-security"></i>
 									<div class="m-left">
@@ -117,6 +124,7 @@
 										</a>
 									</div>
 								</li>
+								 -->
 							</ul>
 						</div>
 

@@ -32,7 +32,7 @@
                     <c:if test="${aaa102!=null }">
                     <div class="login_btnbox ">
                         <a href="# " class="login_order ">我的订单</a>
-                        <a href="# " class="login_favorite ">我的收藏</a>
+                        <a href="${path}/person/index.jsp?iframe=${path}/person/showCollection.html" class="login_favorite ">我的收藏</a>
                     </div>   
                     </c:if>
                     <c:if test="${aaa102==null }">
@@ -65,7 +65,7 @@
             </div>
 
             <div id="brand " class="item ">
-                <a href="#"> <span class="wdsc "><img
+                <a href="${path}/person/index.jsp?iframe=${path}/person/showCollection.html"> <span class="wdsc "><img
                         src="../images/wdsc.png "/> </span> </a>
                 <div class="mp_tooltip ">
                     我的收藏 <i class="icon_arrow_right_black "></i>
