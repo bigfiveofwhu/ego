@@ -115,7 +115,7 @@ public class ShopDetailController extends ControllerSupport
 				this.getServices().update("click");
 			}
 		}
-		//获取猜你喜欢的广告
+		//获取同类商品的广告
 		this.setServices(new AdvertiseService());
 		dto.put("productType",ins.get("aab204"));
 		List<Map<String, String>> products=this.getServices().query("getSameProducts");
@@ -123,7 +123,11 @@ public class ShopDetailController extends ControllerSupport
 			map.put("path_info", map.get("aab208").split(";")[0] );
 		}
 		saveAttribute("sameProducts",products);
-		
+		//获取猜你喜欢
+		if (this.get("aaa102")!=null&&!this.get("aaa102").equals("")) {
+			List<Map<String, String>> likes=this.getServices().query("getTargetAds");
+			this.saveAttribute("guessProducts", likes);
+		}
 		
 		this.setServices(new Ab03ServicesImpl());
 		//上月销量
