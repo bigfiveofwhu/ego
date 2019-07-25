@@ -56,10 +56,15 @@ public class Ae01ServicesImpl extends JdbcServicesSupport {
         StringBuilder sql = new StringBuilder()
                 .append("   SELECT aae301,aae103,aae302,aae102,aae104,aae303,aae105,aae106")
                 .append("     FROM ae01,ae03")
-                .append("    WHERE ae01.aae101=ae03.aae101 AND aae302=?")
-                .append(" ORDER BY aae104 DESC")
-                ;
+                .append("    WHERE ae01.aae101=ae03.aae101 AND aae302=?");
 
+        //商家/服务商
+        if(this.isNotNull(this.get("ShopOrService")))
+        {
+            sql.append(" AND aae107='2'");
+        }
+
+        sql.append(" ORDER BY aae104 DESC");
         Object[] args = {
                 this.get("aaa102")
         };
@@ -206,7 +211,7 @@ public class Ae01ServicesImpl extends JdbcServicesSupport {
             StringBuilder sql=new StringBuilder()
                     .append("SELECT aab203 id,CONCAT(aab202,'_',aab203,'-粉丝') name,4 type")
                     .append("  FROM ab02")
-                    .append(" WHERE aab102=?");
+                    .append(" WHERE aab102=? AND aab212='02'");
             map.put("id", String.valueOf(aab102));
             map.put("name","商铺-粉丝");
             map.put("type","3");
@@ -220,7 +225,7 @@ public class Ae01ServicesImpl extends JdbcServicesSupport {
             StringBuilder sql=new StringBuilder()
                     .append("SELECT aac202 id,CONCAT(aac203,'_',aac202,'-粉丝') name,6 type")
                     .append("  FROM ac02")
-                    .append(" WHERE aac102=?");
+                    .append(" WHERE aac102=? AND aac208='02'");
             map.put("id", String.valueOf(aac102));
             map.put("name","服务商-粉丝");
             map.put("type","5");

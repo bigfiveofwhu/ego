@@ -78,7 +78,8 @@ html, body {
     width: 250px;
     height: 100%;
     background-color: #f4f4f4;
-    overflow-y: scroll;
+    overflow-x: scroll;
+    /*overflow-y: scroll;*/
 }
 
 .main .box .chat-list .list-box {
@@ -112,7 +113,7 @@ html, body {
 .main .box .chat-list .list-box .chat-rig .title {
     font-weight: 600;
     font-size: 17px;
-    overflow: hidden;
+    /*overflow: hidden;*/
     white-space: nowrap;
     text-overflow: ellipsis;
 }
@@ -238,24 +239,24 @@ html, body {
     font-size: 22px;
     margin-left: -2px;
     width: 732px;
-    height: 80px;
+    height: 75px;
     border-top: 1px solid #000;
 }
 
 .main .box .box-right .sendto .but-text .sendBtn {
     float: right;
-    padding: 0px 15px;
+    padding: 0 15px;
     background-color: #3bb4f2;
     margin-right: 17px;
     height: 23px;
 }
 
 /*空输入提示*/
-.chat-hint {
+.but-text .chat-hint {
     display: none;
-    /*position: absolute;*/
-    top: -15px;
-    left: 20px;
+    position: absolute;
+    /*top: -15px;*/
+    /*left: 20px;*/
     padding: 2px;
     width: 140px;
     height: 18px;
@@ -267,7 +268,7 @@ html, body {
     background-color: #fff;
 }
 
-.chat-hint-icon {
+.but-text .chat-hint-icon {
     display: inline-block;
     width: 18px;
     height: 18px;
@@ -282,7 +283,64 @@ html, body {
     background-color: #5d94f3;
 }
 
-.chat-hint-text {
+.but-text .chat-hint-text {
     display: inline-block;
     vertical-align: middle;
+}
+
+.sendto .zyf-tip {
+    display: inline-block;
+    position: relative;
+}
+
+.sendto .zyf-tip:before, .zyf-tip:after {
+    opacity: 0; /*透明度为完全透明*/
+    position: absolute;
+    z-index: 1000; /*设为最上层*/
+    /*鼠标放上元素上时的动画，鼠标放上后效果在.zyf-tip-*:hover:before, .zyf-tip-*:hover:after中设置;
+    0.3s:规定完成过渡效果需要多少秒或毫秒,ease:规定慢速开始，然后变快，然后慢速结束的过渡效果*/
+    transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+}
+
+.sendto .zyf-tip:before {
+    content: '';
+    border: 6px solid transparent;
+}
+
+.sendto .zyf-tip:after {
+    content: attr(data-zyf-tip); /*后去要提示的文本*/
+    padding: 5px;
+    white-space: nowrap; /*强制不换行*/
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.sendto .zyf-tip:hover:before, .zyf-tip:hover:after {
+    opacity: 1; /*鼠标放上时透明度为完全显示*/
+    z-index: 1000;
+}
+
+.sendto .zyf-tip-left:before {
+    top: 50%;
+    left: 0;
+    border-left-color: rgba(255, 255, 255, 0.8);
+    margin-left: 0;
+    margin-top: -3px;
+}
+
+.sendto .zyf-tip-left:after {
+    top: 50%;
+    right: 100%;
+    margin-right: 0;
+    margin-top: -6px;
+}
+
+.sendto .zyf-tip-left:hover:before {
+    margin-left: -6px;
+}
+
+.sendto .zyf-tip-left:hover:after {
+    margin-right: 6px;
 }
