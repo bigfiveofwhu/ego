@@ -132,7 +132,7 @@
 														<p class="info-little">
 														<span>订单号:<br/>${ins.aab302 }</span> 
 														</p>
-														<p class="info-time">${ins.aab406 }</p>
+														<p class="info-time">初评时间:<br/>${ins.aab406 }</p>
 
 													</div>
 												</div>
@@ -164,7 +164,7 @@
 													</div>
 													<div class="item-info">
 														<div>
-															<p class="info-time">${ins.aab407 }</p>
+															<p class="info-time">追评时间:<br/>${ins.aab407 }</p>
 														</div>
 													</div>
 												</li>

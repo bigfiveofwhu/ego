@@ -5,7 +5,7 @@ public class DelOrderByIdServlet extends OrderControllerSupport {
 	@Override
 	public String execute() throws Exception {
 		this.update("delById", "É¾³ý¶©µ¥");
-		this.savePageDataForDelete("default");
+		this.savePageDataForDelete("allOrder");
 		return "WEB-INF/views/order";
 	}
 

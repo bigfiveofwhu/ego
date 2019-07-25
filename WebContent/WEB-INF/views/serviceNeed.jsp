@@ -27,9 +27,13 @@
 		}
 		function del(vaac602)
 		{
-			var vform = document.getElementById("myform");
-			vform.action="<%=path%>/delNeed.html?aac602="+vaac602;
-			vform.submit();
+			var message=confirm("您确认删除这条需求吗?")
+			if(message==true){
+				var vform = document.getElementById("myform");
+				vform.action="<%=path%>/delNeed.html?aac602="+vaac602;
+				vform.submit();
+			}
+			
 		}
 		</script>
 
