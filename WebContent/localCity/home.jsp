@@ -19,7 +19,7 @@
 <c:if test="${msg!=null }">
 	<script type="text/javascript">
 	$(function(){
-		promptGlobal("${msg}")
+		promptGlobal("${msg}");
 	});
 	</script>
 </c:if>
@@ -181,63 +181,65 @@
 				</div>
 				<script type="text/javascript">
 				$(function(){
-					$.ajax({
-						url:"<%=path%>/service.ajax",
-						type:"post",
-						dataType:"json",
-						timeout:20000,
-						data:{
-							"type":"1",
-							"location":myGeoLocation
-						},
-						success:function(res,status){
-							console.log(res.services.toString());
-							var services=res.services;
-							var n=services.length;
-							var html="";
-							for(var i=0;i<n;i++){
-								var service=services[i]
-								html+=  "<div class='service-body'>"+
-										"	<div class='am-u-sm-3 '>"+
-										"		<div class='icon-sale one'></div>"+
-										"		<h4>优惠</h4>"+
-										"		<div class='activityMain'>"+
-										"			<a href='/ego/localCity/companyDetail.html?id="+service.aac102+"'><img src='/ego/images/service/"+service.aac102+".jpg'></img></a>"+
-										"		</div>"+
-										"		<div class='info'>"+
-										"			<h3>"+service.aac103+"</h3>"+
-										"		</div>"+
-										"	</div>"+
-										"	<div class='service-intro'>"+
-										"		<div class='service-intro-item'>"+
-										"			<p class='title'>服务商名称</p>"+
-										"			<P class='value'>"+service.aac103+"</P>"+
-										"		</div>"+
-										"		<div class='service-intro-item'>"+
-										"			<p class='title'>服务类型</p>"+
-										"			<P class='value'>"+service.aac106+"</P>"+
-										"		</div>"+
-										"		<div class='service-intro-item'>"+
-										"			<p class='title'>公司地址</p>"+
-										"			<P class='value'>"+service.aac104+"</P>"+
-										"		</div>"+
-										"		<div class='service-intro-item'>"+
-										"			<p class='title'>综合评分</p>"+
-										"			<P class='value'>"+service.aac110+"</P>"+
-										"		</div>"+
-										"		<div class='service-intro-item'>"+
-										"			<p class='title'>公司电话</p>"+
-										"			<P class='value'>"+service.aac111+"</P>"+
-										"		</div>"+
-										"	</div>"+
-										"</div>";
+					setTimeout(()=>{
+						$.ajax({
+							url:"<%=path%>/service.ajax",
+							type:"post",
+							dataType:"json",
+							timeout:20000,
+							data:{
+								"type":"1",
+								"location":myGeoLocation
+							},
+							success:function(res,status){
+								console.log(res.services.toString());
+								var services=res.services;
+								var n=services.length;
+								var html="";
+								for(var i=0;i<n;i++){
+									var service=services[i]
+									html+=  "<div class='service-body'>"+
+											"	<div class='am-u-sm-3 '>"+
+											"		<div class='icon-sale one'></div>"+
+											"		<h4>优惠</h4>"+
+											"		<div class='activityMain'>"+
+											"			<a href='/ego/localCity/companyDetail.html?id="+service.aac102+"'><img src='/ego/images/service/"+service.aac102+".jpg'></img></a>"+
+											"		</div>"+
+											"		<div class='info'>"+
+											"			<h3>"+service.aac103+"</h3>"+
+											"		</div>"+
+											"	</div>"+
+											"	<div class='service-intro'>"+
+											"		<div class='service-intro-item'>"+
+											"			<p class='title'>服务商名称</p>"+
+											"			<P class='value'>"+service.aac103+"</P>"+
+											"		</div>"+
+											"		<div class='service-intro-item'>"+
+											"			<p class='title'>服务类型</p>"+
+											"			<P class='value'>"+service.aac106+"</P>"+
+											"		</div>"+
+											"		<div class='service-intro-item'>"+
+											"			<p class='title'>公司地址</p>"+
+											"			<P class='value'>"+service.aac104+"</P>"+
+											"		</div>"+
+											"		<div class='service-intro-item'>"+
+											"			<p class='title'>综合评分</p>"+
+											"			<P class='value'>"+service.aac110+"</P>"+
+											"		</div>"+
+											"		<div class='service-intro-item'>"+
+											"			<p class='title'>公司电话</p>"+
+											"			<P class='value'>"+service.aac111+"</P>"+
+											"		</div>"+
+											"	</div>"+
+											"</div>";
+								}
+								$(".service-101").html(html);
+							},
+							error:function(res,status){
+								console.log("网络故障!");
 							}
-							$(".service-101").html(html);
-						},
-						error:function(res,status){
-							console.log("网络故障!");
-						}
-					});
+						});
+					},500);
 				});
 				</script>
 				<div class="clear "></div>

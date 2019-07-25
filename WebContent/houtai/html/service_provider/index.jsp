@@ -219,7 +219,12 @@
 								</li>
 								<li id="admin-login">
 									<a href="<%=path %>/message/checkMessage.html?type=3" target="iframe">
-										<i class="fa fa-circle-o"></i> 查看消息
+										<i class="fa fa-circle-o"></i> 查看聊天消息
+									</a>
+								</li>
+								<li id="admin-login">
+									<a href="<%=path %>/message/readMessage.html?ShopOrService=true" target="iframe">
+										<i class="fa fa-circle-o"></i> 查看管理员通知
 									</a>
 								</li>
 							</ul>

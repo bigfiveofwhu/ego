@@ -20,7 +20,7 @@
 	<div class="clear"></div>
 	<!--¹ºÎï³µ -->
 	<div class="concent">
-		<div id="cartTable">
+		<div id="cartTable" style="min-height: 600px;">
 			<div class="cart-table-th">
 				<div class="wp">
 					<div class="th th-chk">

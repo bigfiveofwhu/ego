@@ -293,6 +293,7 @@
                     var description = map.aab207;
                     if (description !== '') {
                         var text = description.split('&')[0];
+                        text = text + "<br>";
                         var pics = description.split('&')[1].split(';');
                         for (var i = 0; i < pics.length; i++) {
                             text = text + '<img src="<%=path%>' + pics[i] + '" alt="" onerror="this.style.display=\'none\'"><br>';
@@ -338,7 +339,6 @@
                 }
             },
             error: function () {
-                clearDetails();
                 console.log("商品详细信息异步加载错误");
             }
         });
@@ -372,15 +372,14 @@
                 "aad804": state,
                 "type": '4'
             },
-            success: function () {
+            success: function (res) {
                 $('#tr-' + aab203).find('.status').text(val);
-                alert('操作成功')
+                alert(res.msg);
             },
             error: function () {
                 alert('操作失败，请重试')
             }
         });
-        clearDetails();
     }
 
     function clearDetails() {

@@ -16,6 +16,8 @@ public class ShopCartController extends ControllerSupport
 	{
 		if(this.get("aaa102")==null)  //未登录
 		{
+			this.saveAttribute("msg", "请先登录!");
+			this.saveAttribute("isSendRedirect", false);  //不进行不进行重定向
 			return "home/home";
 		}
 		this.setServices(new Aa02ServiceImpl());

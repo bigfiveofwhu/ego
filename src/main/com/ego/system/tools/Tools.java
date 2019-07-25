@@ -561,7 +561,8 @@ public class Tools
     	     path=t.substring(1,num).replace('/', '\\')+"ego\\WebContent\\";
     	 else
     		 path="./WebContent/";//û�취
-    	 return path;
+    	 //return path;
+    	 return "./WebContent/";
 	}
 	
 	public static String getImgPath()

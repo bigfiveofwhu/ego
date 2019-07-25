@@ -32,7 +32,7 @@ public class AdminReviewController extends AjaxControllerSupport {
 		int type=Integer.valueOf((String) this.dto.get("type"));
 		System.out.println(type);
 		Map<String,String> map=null;
-		String msg;
+		String msg = "查询成功";
 		BaseServices services2=new Ae01ServicesImpl();
 		Map<String, Object> dto2=new HashMap<>();
 		services2.setMapDto(dto2);
@@ -49,7 +49,6 @@ public class AdminReviewController extends AjaxControllerSupport {
 			dto2.put("aae103","0");
 			dto2.put("aae105","商家注册审核");
 			services2.update("insert");
-			this.put("msg",msg);
 			break;
 		case 3:
 			map=services.findById("findAb02ById");
@@ -57,7 +56,6 @@ public class AdminReviewController extends AjaxControllerSupport {
 			break;
 		case 4:
 			msg=services.update("modifyAb02")?"修改成功":"修改失败";
-			this.put("msg",msg);
 			break;
 		case 5:
 			map=services.findById("findAc01ById");
@@ -70,7 +68,6 @@ public class AdminReviewController extends AjaxControllerSupport {
 			dto2.put("aae103","0");
 			dto2.put("aae105","服务商注册审核");
 			services2.update("insert");
-			this.put("msg",msg);
 			break;
 		case 7:
 			map=services.findById("findAc02ById");
@@ -78,7 +75,6 @@ public class AdminReviewController extends AjaxControllerSupport {
 			break;
 		case 8:
 			msg=services.update("modifyAc02")?"修改成功":"修改失败";
-			this.put("msg",msg);
 			break;
 		case 9:
 			List<Map<String, String>> lists=services.query("queryAd08");
@@ -87,6 +83,7 @@ public class AdminReviewController extends AjaxControllerSupport {
 		default:
 			throw new Exception("未支持type: "+type);
 		}
+		this.put("msg",msg);
 		System.out.println(map);
 	}
 }
