@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="GBK"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="/ego/css/bootstrap.css">
 <link rel="stylesheet" href="/ego/layui/css/layui.css">
-<meta charset="GBK">
+<meta charset="UTF-8">
 <title></title>
 </head>
 <body>
@@ -26,23 +26,23 @@
 <script>
 Highcharts.setOptions({
     lang: {
-        contextButtonTitle: "Í¼±íµ¼³ö²Ëµ¥",
+        contextButtonTitle: "å›¾è¡¨å¯¼å‡ºèœå•",
         decimalPoint: ".",
-        downloadJPEG: "ÏÂÔØJPEGÍ¼Æ¬",
-        downloadPDF: "ÏÂÔØPDFÎÄ¼ş",
-        downloadPNG: "ÏÂÔØPNGÎÄ¼ş",
-        downloadSVG: "ÏÂÔØSVGÎÄ¼ş",
-        drillUpText: "·µ»Ø {series.name}",
-        loading: "¼ÓÔØÖĞ",
-        months: ["Ò»ÔÂ", "¶şÔÂ", "ÈıÔÂ", "ËÄÔÂ", "ÎåÔÂ", "ÁùÔÂ", "ÆßÔÂ", "°ËÔÂ", "¾ÅÔÂ", "Ê®ÔÂ", "Ê®Ò»ÔÂ", "Ê®¶şÔÂ"],
-        noData: "Ã»ÓĞÊı¾İ",
-        numericSymbols: ["Ç§", "Õ×", "G", "T", "P", "E"],
-        printChart: "´òÓ¡Í¼±í",
-        resetZoom: "»Ö¸´Ëõ·Å",
-        resetZoomTitle: "»Ö¸´Í¼±í",
+        downloadJPEG: "ä¸‹è½½JPEGå›¾ç‰‡",
+        downloadPDF: "ä¸‹è½½PDFæ–‡ä»¶",
+        downloadPNG: "ä¸‹è½½PNGæ–‡ä»¶",
+        downloadSVG: "ä¸‹è½½SVGæ–‡ä»¶",
+        drillUpText: "è¿”å› {series.name}",
+        loading: "åŠ è½½ä¸­",
+        months: ["ä¸€æœˆ", "äºŒæœˆ", "ä¸‰æœˆ", "å››æœˆ", "äº”æœˆ", "å…­æœˆ", "ä¸ƒæœˆ", "å…«æœˆ", "ä¹æœˆ", "åæœˆ", "åä¸€æœˆ", "åäºŒæœˆ"],
+        noData: "æ²¡æœ‰æ•°æ®",
+        numericSymbols: ["åƒ", "å…†", "G", "T", "P", "E"],
+        printChart: "æ‰“å°å›¾è¡¨",
+        resetZoom: "æ¢å¤ç¼©æ”¾",
+        resetZoomTitle: "æ¢å¤å›¾è¡¨",
         shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         thousandsSep: ",",
-        weekdays: ["ĞÇÆÚÒ»", "ĞÇÆÚ¶ş", "ĞÇÆÚÈı", "ĞÇÆÚËÄ", "ĞÇÆÚÎå", "ĞÇÆÚÁù", "ĞÇÆÚÌì"]
+        weekdays: ["æ˜ŸæœŸä¸€", "æ˜ŸæœŸäºŒ", "æ˜ŸæœŸä¸‰", "æ˜ŸæœŸå››", "æ˜ŸæœŸäº”", "æ˜ŸæœŸå…­", "æ˜ŸæœŸå¤©"]
     },
     chart: {
         type: 'line'
@@ -57,7 +57,7 @@ Highcharts.setOptions({
     },
     yAxis: {
         title: {
-            text: 'Ôª',
+            text: 'å…ƒ',
             rotation: 0
         }
     },
@@ -70,7 +70,7 @@ Highcharts.chart('container-1', {
 			type: 'pie'
 	},
 	title: {
-			text: '¹ã¸æÍ¶×ÊÍ³¼Æ'
+			text: 'å¹¿å‘ŠæŠ•èµ„ç»Ÿè®¡'
 	},
 	tooltip: {
 			pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -103,7 +103,7 @@ Highcharts.chart('container-1', {
 			tooltip: {
 				 headerFormat: '<small>{point.key}</small><table>',
 				    pointFormat: '<tr><td style="color: {series.color}">: </td>' +
-				        '<td style="text-align: right"><b><br>£¤{point.y},{point.percentage}%</b></td></tr>',
+				        '<td style="text-align: right"><b><br>ï¿¥{point.y},{point.percentage}%</b></td></tr>',
 				    footerFormat: '</table>',
 			    valueDecimals: 2
 			}
@@ -118,7 +118,7 @@ Highcharts.chart('container-2', {
 			type: 'pie'
 	},
 	title: {
-			text: '¹ã¸æµã»÷Á¿Í³¼Æ'
+			text: 'å¹¿å‘Šç‚¹å‡»é‡ç»Ÿè®¡'
 	},
 	tooltip: {
 			pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -134,7 +134,7 @@ Highcharts.chart('container-2', {
 			}
 	},
 	series: [{
-			name: 'µã»÷Á¿',
+			name: 'ç‚¹å‡»é‡',
 			colorByPoint: true,
 			data: [
 				<c:forEach items="${clicks}" var="item" varStatus="index">
@@ -152,7 +152,7 @@ Highcharts.chart('container-2', {
 				valueDecimals:2,
 				 headerFormat: '<small>{point.key}</small><table>',
 				    pointFormat: '<tr><td style="color: {series.color}">: </td>' +
-				        '<td style="text-align: right"><b><br>{point.y}´Î,{point.percentage}%</b></td></tr>',
+				        '<td style="text-align: right"><b><br>{point.y}æ¬¡,{point.percentage}%</b></td></tr>',
 				    footerFormat: '</table>',
 			    valueDecimals: 0
 			}

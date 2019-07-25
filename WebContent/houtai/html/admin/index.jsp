@@ -99,12 +99,12 @@
 					<ul class="treeview-menu">
 
 						<li id="admin-login">
-							<a href="queryShop.html" target="iframe">
+							<a href="/ego/houtai/html/admin/queryShop.html" target="iframe">
 								<i class="fa fa-circle-o"></i>商家管理
 							</a>
 						</li>
 						<li id="admin-login">
-							<a href="queryServiceProvider.html" target="iframe">
+							<a href="/ego/houtai/html/admin/queryServiceProvider.html" target="iframe">
 								<i class="fa fa-circle-o"></i>服务商管理
 							</a>
 						</li>
@@ -121,12 +121,12 @@
 					<ul class="treeview-menu">
 
 						<li id="admin-login">
-							<a href="queryGood.html" target="iframe">
+							<a href="/ego/houtai/html/admin/queryGood.html" target="iframe">
 								<i class="fa fa-circle-o"></i>商品审核
 							</a>
 						</li>
 						<li id="admin-login">
-							<a href="queryService.html" target="iframe">
+							<a href="/ego/houtai/html/admin/queryService.html" target="iframe">
 								<i class="fa fa-circle-o"></i>服务审核
 							</a>
 						</li>

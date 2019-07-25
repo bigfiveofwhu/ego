@@ -27,7 +27,8 @@ public class BaseServlet extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-
+    	//回话持续1个小时
+    	request.getSession().setMaxInactiveInterval(60*60);
         System.out.println("base servlet is called");
         String toPath; // 跳转的目标页面
         try
