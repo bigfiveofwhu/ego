@@ -160,9 +160,6 @@
 						</li>
 						
 						<li>
-							<a href="#pic_upload" data-toggle="tab" onclick="hideSave()">商品图片</a>
-						</li>
-						<li>
 							<a href="#pro_para" data-toggle="tab" onclick="hideSave()">产品参数</a>
 						</li>
 						<li>
@@ -208,7 +205,7 @@
 								<div class="col-md-2 title">总库存</div>
 								<div class="col-md-10 data">
 									<div class="input-group">
-										<input type="text" class="form-control" id="gaab206" placeholder="库存" name="aab206" required/>
+										<input type="number" class="form-control" id="gaab206" placeholder="库存" name="aab206" required/>
 									</div>
 								</div>
 
@@ -225,30 +222,7 @@
 						  </form>
 						</div>
  
-                   
-						<!--图片上传-->
-						<div class="tab-pane" id="pic_upload">
-							<div class="row data-type">
-								<!-- 颜色图片 -->
 
-
-								<table class="table table-bordered table-striped table-hover dataTable">
-									<thead>
-										<tr>
-											<th class="sorting">图片</th>
-											<th class="sorting">操作</th>
-									</thead>
-									<tbody>
-										<tr ng-repeat="pojo in entity.goodsDesc.itemImages">
-										
-											<td><img id="preview" alt="图片" src="<%=path%>/images/upload/product_1.jpg" width="100px" height="100px"></td>
-											<td><button type="button" class="btn btn-default" title="删除" ng-click="remove_image_entity($index)"><i class="fa fa-trash-o"></i> 删除</button></td>
-										</tr>
-									</tbody>
-								</table>
-
-							</div>
-						</div>
 
          <!-- 产品参数 -->
                   <div class="tab-pane" id="pro_para">
@@ -354,6 +328,9 @@ function hideSave()
 	$("#goods_savehhh").hide();
 }
 
+
+    
+    
 function saveData()
 {   
 	 if($("#gaab202").val().length == 0 || $("#gaab204").val().length == 0 || $("#gaab205").val().length == 0 || $("#gaab206").val().length == 0)
@@ -362,6 +339,17 @@ function saveData()
 		 return;
 	 }
 	
+	 if(isNumber($("#gaab205").val()) == false)
+     {
+		 alert("请正确输入商品价格");
+		 return;
+     }
+	 
+	 if($("#gaab206").val() < 0)
+	 {
+	     alert("请正确输入商品库存");
+	     return;
+	 }
 	  var proStr = "";
 	  var proTable = document.getElementById("j_tb");
 	  var rows = proTable.rows;
@@ -372,6 +360,11 @@ function saveData()
         	 proStr=proStr + rows[i].cells[0].innerHTML + ":" + rows[i].cells[1].innerHTML + ";";
        }
 	  proStr = proStr;
+	  if(proStr == "")
+     {
+		  alert("请先添加产品参数");
+		  return;
+	 }
 	  console.log(proStr);
 	  
 	  var specStr = "";
@@ -389,6 +382,11 @@ function saveData()
 	     }
 	      specStr = specStr + paraStr;
        }
+	  if(specStr == "")
+		{
+			  alert("请先添加商品规格");
+		      return;
+		}
 	  console.log(specStr);
 		 var vform = document.getElementById("myform");
 		 vform.action="<%=path %>/shop/addProduct.html?aab209="+encodeURI(specStr)+"&aab207="+encodeURI(proStr);
@@ -396,6 +394,16 @@ function saveData()
 		 
 }
 
+function isNumber(val) {
+    var regPos = /^\d+(\.\d+)?$/; //非负浮点数
+    var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; //负浮点数
+    if(regPos.test(val) || regNeg.test(val)) {
+        return true;
+        } else {
+        return false;
+        }
+    }
+    
   $(document).ready(function () {
     $("#j_btnAddData").click(function () {
       $("#j_mask").show();
