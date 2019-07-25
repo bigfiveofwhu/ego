@@ -19,6 +19,7 @@
 </head>
 
 <body class="hold-transition skin-red sidebar-mini" ng-controller="SellerController">
+
 <!-- .box-body -->
 <div class="box box-primary">
     <div class="box-header with-border">
@@ -296,7 +297,7 @@
                         text = text + "<br>";
                         var pics = description.split('&')[1].split(';');
                         for (var i = 0; i < pics.length; i++) {
-                            text = text + '<img src="<%=path%>' + pics[i] + '" alt="" onerror="this.style.display=\'none\'"><br>';
+                            text = text + '<img src="<%=path%>' + pics[i] + '" alt="" onerror="this.style.display=\'none\'" style="max-width: 500px; height: auto"><br>';
                         }
                         $("#aab207").html(text);
                     } else {
@@ -307,7 +308,7 @@
                     if (map.aab208 !== '') {
                         var pics2 = map.aab208.split(';');
                         for (var ii = 0; ii < pics2.length; ii++) {
-                            text2 = text2 + '<img src="<%=path%>' + pics2[ii] + '" alt="" onerror="this.style.display=\'none\'"><br>';
+                            text2 = text2 + '<img src="<%=path%>' + pics2[ii] + '" alt="" onerror="this.style.display=\'none\'" style="max-width: 500px; height: auto"><br>';
                         }
                         $("#aab208").html(text2);
                     } else {

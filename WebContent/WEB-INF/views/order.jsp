@@ -25,6 +25,7 @@
 				var vform = document.getElementById("myform");
 				vform.action="<%=path%>/delOrderById.html?aab302="+vaab302;
 				vform.submit();
+				alert("订单删除成功!")
 			}
 			function remind(){
 				alert("已提醒商家发货!");

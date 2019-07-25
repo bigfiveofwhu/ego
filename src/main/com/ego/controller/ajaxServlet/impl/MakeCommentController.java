@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import com.ego.controller.ajaxServlet.AjaxControllerSupport;
 import com.ego.services.BaseServices;
 import com.ego.services.impl.Ab04ServicesImpl;
+import com.ego.services.impl.ShopManageServicesImpl;
 import com.ego.system.tools.Tools;
 import com.ego.system.utils.FileUpload;
 
@@ -30,6 +31,10 @@ public class MakeCommentController extends AjaxControllerSupport{
 		try {
 			FileUpload.writeFile2("WebContent/images/comments",aab402, (HttpServletRequest)dto.get("request"), dto);
 			service.update("comment");
+			
+			//¸üÐÂÆÀ¼¶
+			this.setService(new ShopManageServicesImpl());
+			this.getService().update("updateRank");
 			this.put("result", true);
 		} catch (Exception e) {
 			// TODO: handle exception

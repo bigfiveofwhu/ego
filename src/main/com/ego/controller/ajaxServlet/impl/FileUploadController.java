@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 
 import com.ego.controller.ajaxServlet.AjaxControllerSupport;
+import com.ego.system.tools.QiniuUpload;
 import com.ego.system.tools.Tools;
 import com.ego.system.utils.FileUpload;
 
@@ -25,6 +26,7 @@ public class FileUploadController extends AjaxControllerSupport {
 		 System.out.println(type);
 		 try {
 			FileUpload.writeFile(fileName, Tools.getImgPath(),request);
+			//QiniuUpload.UploadPic("./WebContent/images/upload/user_8.jpg", fileName);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}

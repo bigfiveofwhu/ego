@@ -193,18 +193,17 @@
 					<input type="hidden" name="pageCount" id="pageCount" value="">
 				</form>
 				<ul class="am-pagination am-pagination-right">
-					<li><a href="javascript:goPage(1)')">&laquo;</a></li>
+					<li><a href="javascript:goPage(1)">&laquo;</a></li>
 					<c:if test="${searchSum==0}">
 					<li class=""><a href="javascript:goPage(1)">1</a></li>
 					</c:if>
 					<c:forEach begin="1" end="${(searchSum-1)/13+1}" varStatus="vs">
 					<li class="${vs.count==pagIndex?'am-active':''}"><a href="javascript:goPage(${vs.count})">${vs.count}</a></li>
 					</c:forEach>
-					<li><a href="javascript:goPage(${(searchSum-1)/20+1})">&raquo;</a></li>
+					<li><a href="javascript:goPage(${(searchSum-1)/13+1})">&raquo;</a></li>
 				</ul>
 				<script type="text/javascript">
 					function goPage(index){
-						alert("ÕýÔÚÌø×ª");
 						$("#pageCount").val(parseInt(index));
 						$("#advanceForm").submit();
 					}

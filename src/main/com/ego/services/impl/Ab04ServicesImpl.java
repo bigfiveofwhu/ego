@@ -146,7 +146,7 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql=new StringBuilder()
 				.append("select y.aaa102,y.aaa103,x.aab402,x.aab403,x.aab404,")
 				.append("       x.aab405,x.aab406,x.aab407,x.aab408,x.aab409,")
-				.append("       x.aab410,x.aab411")
+				.append("       x.aab410,x.aab411,x.aab412")
 				.append("  from ab04 x,aa01 y")
 				.append(" where x.aaa102=y.aaa102")
 				.append("   and x.aab203=?")
@@ -201,7 +201,7 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 						.append("       x.aab410,x.aab412,y.aab303,z.aab208")
 						.append("  from ab04 x,ab03 y,ab02 z  ")
 						.append("  where x.aab302=y.aab302 ")
-						.append("  and x.aab203=z.aab203 ")
+						.append("  and x.aab203=z.aab203 and x.aab414='01' ")
 						.append("  and x.aaa102=?")
 						
 						;
@@ -295,7 +295,7 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 	 */
 	private boolean delComment()throws Exception
 	{
-		String sql = "delete from ab04 where aab302=? and aab203=? ";
+		String sql = "update ab04 set aab414='02' where aab302=? and aab203=? ";
 		Object args[]={
 				this.get("aab302"),
 				this.get("aab203")

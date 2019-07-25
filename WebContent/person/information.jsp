@@ -32,7 +32,7 @@
 							  
 								<input id="pop_file" type="file"  class="inputPic" onchange="uploadFile(event)" name="fileTrans" ref="file" value="" allowexts="jpeg,jpg" accept="image/*">
 								<img id="preview" class="am-circle am-img-thumbnail" src="<%=basePath%>/images/upload/${imgName }.jpg" alt="" />
-								<a>更换头像</a>
+								<button class="am-btn">更换头像</button>
 							</div>
 							</form>
 

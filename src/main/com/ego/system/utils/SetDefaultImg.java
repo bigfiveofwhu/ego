@@ -39,7 +39,6 @@ public class SetDefaultImg
 		int len;
 		while((len=inputStream.read(buff))!=-1)
 		{
-			System.out.println(len);
 			output.write(buff, 0, len);
 		}
 		output.close();

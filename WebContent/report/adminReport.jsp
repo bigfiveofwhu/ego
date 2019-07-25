@@ -1,4 +1,4 @@
-<%@ page pageEncoding="GBK" %>
+<%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
@@ -7,19 +7,19 @@
     <link rel="stylesheet" href="/ego/css/bootstrap.css">
     <link rel="stylesheet" href="/ego/layui/css/layui.css">
     <meta charset="GBK">
-    <title>Æ½Ì¨Á÷Ë®±¨±í</title>
+    <title>å¹³å°æµæ°´æŠ¥è¡¨</title>
 </head>
 <body>
 
 <div class="layui-tab">
     <ul class="layui-tab-title">
-        <li>Æ½Ì¨Ã¿ÔÂÏúÊÛÁ¿</li>
-        <li>Æ½Ì¨Ã¿ÔÂÏúÊÛ¶î</li>
-        <li>ÉÌÆ·ÏúÊÛÁ¿ÅÅĞĞ</li>
-        <li>ÉÌÆ·ÏúÊÛ¶îÅÅĞĞ</li>
-        <li>Æ½Ì¨Ã¿ÔÂµã»÷Á¿</li>
-        <li>ÔÂ¶ÈÁ÷Ë®</li>
-        <li>Äê¶ÈÁ÷Ë®</li>
+        <li>å¹³å°æ¯æœˆé”€å”®é‡</li>
+        <li>å¹³å°æ¯æœˆé”€å”®é¢</li>
+        <li>å•†å“é”€å”®é‡æ’è¡Œ</li>
+        <li>å•†å“é”€å”®é¢æ’è¡Œ</li>
+        <li>å¹³å°æ¯æœˆç‚¹å‡»é‡</li>
+        <li>æœˆåº¦æµæ°´</li>
+        <li>å¹´åº¦æµæ°´</li>
     </ul>
     <div class="layui-tab-content">
         <div class="layui-tab-item layui-show">
@@ -54,32 +54,48 @@
 <script src="../js/export-data.js"></script>
 <script>
     layui.use('element', function () {
-        //TabµÄÇĞ»»¹¦ÄÜ£¬ÇĞ»»ÊÂ¼ş¼àÌıµÈ£¬ĞèÒªÒÀÀµelementÄ£¿é
+        //Tabçš„åˆ‡æ¢åŠŸèƒ½ï¼Œåˆ‡æ¢äº‹ä»¶ç›‘å¬ç­‰ï¼Œéœ€è¦ä¾èµ–elementæ¨¡å—
         var $ = layui.jquery, element = layui.element;
     });
 
     Highcharts.setOptions({
         lang: {
-            contextButtonTitle: "Í¼±íµ¼³ö²Ëµ¥",
+            contextButtonTitle: "å›¾è¡¨å¯¼å‡ºèœå•",
             decimalPoint: ".",
-            downloadJPEG: "ÏÂÔØJPEGÍ¼Æ¬",
-            downloadPDF: "ÏÂÔØPDFÎÄ¼ş",
-            downloadPNG: "ÏÂÔØPNGÎÄ¼ş",
-            downloadSVG: "ÏÂÔØSVGÎÄ¼ş",
-            drillUpText: "·µ»Ø {series.name}",
-            loading: "¼ÓÔØÖĞ",
-            months: ["Ò»ÔÂ", "¶şÔÂ", "ÈıÔÂ", "ËÄÔÂ", "ÎåÔÂ", "ÁùÔÂ", "ÆßÔÂ", "°ËÔÂ", "¾ÅÔÂ", "Ê®ÔÂ", "Ê®Ò»ÔÂ", "Ê®¶şÔÂ"],
-            noData: "Ã»ÓĞÊı¾İ",
-            numericSymbols: ["Ç§", "Õ×", "G", "T", "P", "E"],
-            printChart: "´òÓ¡Í¼±í",
-            resetZoom: "»Ö¸´Ëõ·Å",
-            resetZoomTitle: "»Ö¸´Í¼±í",
+            downloadJPEG: "ä¸‹è½½JPEGå›¾ç‰‡",
+            downloadPDF: "ä¸‹è½½PDFæ–‡ä»¶",
+            downloadPNG: "ä¸‹è½½PNGæ–‡ä»¶",
+            downloadSVG: "ä¸‹è½½SVGæ–‡ä»¶",
+            drillUpText: "è¿”å› {series.name}",
+            loading: "åŠ è½½ä¸­",
+            months: ["ä¸€æœˆ", "äºŒæœˆ", "ä¸‰æœˆ", "å››æœˆ", "äº”æœˆ", "å…­æœˆ", "ä¸ƒæœˆ", "å…«æœˆ", "ä¹æœˆ", "åæœˆ", "åä¸€æœˆ", "åäºŒæœˆ"],
+            noData: "æ²¡æœ‰æ•°æ®",
+            numericSymbols: ["åƒ", "å…†", "G", "T", "P", "E"],
+            printChart: "æ‰“å°å›¾è¡¨",
+            resetZoom: "æ¢å¤ç¼©æ”¾",
+            resetZoomTitle: "æ¢å¤å›¾è¡¨",
             shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             thousandsSep: ",",
-            weekdays: ["ĞÇÆÚÒ»", "ĞÇÆÚ¶ş", "ĞÇÆÚÈı", "ĞÇÆÚËÄ", "ĞÇÆÚÎå", "ĞÇÆÚÁù", "ĞÇÆÚÌì"]
+            weekdays: ["æ˜ŸæœŸä¸€", "æ˜ŸæœŸäºŒ", "æ˜ŸæœŸä¸‰", "æ˜ŸæœŸå››", "æ˜ŸæœŸäº”", "æ˜ŸæœŸå…­", "æ˜ŸæœŸå¤©"]
         },
         chart: {
-            type: 'line'
+            type: 'line',
+            events: {
+                beforePrint: function () {
+                    var height = this.options.exporting.chartOptions.chart.height;
+                    if (height) {
+                        this.oldhasUserSize = this.hasUserSize;
+                        this.resetParams = [this.chartWidth, this.chartHeight, false];
+                        this.setSize(this.chartWidth, height, false);
+                    }
+                },
+                afterPrint: function () {
+                    if (this.options.exporting.chartOptions.chart.height) {
+                        this.setSize.apply(this, this.resetParams);
+                        this.hasUserSize = this.oldhasUserSize;
+                    }
+                }
+            }
         },
         plotOptions: {
             line: {
@@ -99,6 +115,10 @@
             layout: 'vertical',
             align: 'left',
             verticalAlign: 'middle',
+            maxHeight: 400,
+            labelFormatter: function () {
+                return (this.name + '(ç‚¹å‡»)').replace(/(.{15})/g, '$1<br>');
+            },
             navigation: {
                 activeColor: '#3E576F',
                 animation: true,
@@ -113,10 +133,10 @@
         },
     });
 
-    var year_12 = ["Ò»ÔÂ", "¶şÔÂ", "ÈıÔÂ", "ËÄÔÂ", "ÎåÔÂ", "ÁùÔÂ", "ÆßÔÂ", "°ËÔÂ", "¾ÅÔÂ", "Ê®ÔÂ", "Ê®Ò»ÔÂ", "Ê®¶şÔÂ"];
+    var year_12 = ["ä¸€æœˆ", "äºŒæœˆ", "ä¸‰æœˆ", "å››æœˆ", "äº”æœˆ", "å…­æœˆ", "ä¸ƒæœˆ", "å…«æœˆ", "ä¹æœˆ", "åæœˆ", "åä¸€æœˆ", "åäºŒæœˆ"];
     Highcharts.chart('container-1', {
         title: {
-            text: 'ÔÂ¶ÈÏû·ÑÁ÷Ë®'
+            text: 'æœˆåº¦æ¶ˆè´¹æµæ°´'
         },
         xAxis: {
             categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
@@ -126,7 +146,7 @@
 
     Highcharts.chart('container-2', {
         title: {
-            text: 'Äê¶ÈÏû·ÑÁ÷Ë®'
+            text: 'å¹´åº¦æ¶ˆè´¹æµæ°´'
         },
         xAxis: {
             categories: year_12
@@ -136,7 +156,7 @@
 
     Highcharts.chart('container-3', {
         title: {
-            text: 'Æ½Ì¨Ã¿ÔÂÏúÊÛÁ¿'
+            text: 'å¹³å°æ¯æœˆé”€å”®é‡'
         },
         xAxis: {
             categories: year_12
@@ -146,7 +166,7 @@
 
     Highcharts.chart('container-4', {
         title: {
-            text: 'Æ½Ì¨Ã¿ÔÂÏúÊÛ¶î'
+            text: 'å¹³å°æ¯æœˆé”€å”®é¢'
         },
         xAxis: {
             categories: year_12
@@ -156,7 +176,7 @@
 
     Highcharts.chart('container-5', {
         title: {
-            text: 'ÉÌÆ·ÏúÊÛÁ¿ÅÅĞĞ'
+            text: 'å•†å“é”€å”®é‡æ’è¡Œ'
         },
         chart: {
             type: 'column'
@@ -169,7 +189,7 @@
 
     Highcharts.chart('container-6', {
         title: {
-            text: 'ÉÌÆ·ÏúÊÛ¶îÅÅĞĞ'
+            text: 'å•†å“é”€å”®é¢æ’è¡Œ'
         },
         chart: {
             type: 'column'
@@ -182,7 +202,7 @@
 
     Highcharts.chart('container-7', {
         title: {
-            text: 'Æ½Ì¨µã»÷Á¿'
+            text: 'å¹³å°ç‚¹å‡»é‡'
         },
         xAxis: {
             categories: year_12
