@@ -95,7 +95,7 @@
 							<c:forEach items="${headImgs}" var="Img" varStatus="vs">
 								<li class="tb-selected">
 									<div class="tb-pic tb-s40">
-										<a href="#">
+										<a>
 										<img src="<%=path%>${Img}" mid="<%=path%>${Img}" big="<%=path%>${Img}">
 										</a>
 									</div>
@@ -553,7 +553,7 @@
                                     		100
                                     		</c:if>
                                     		<c:if test="${commentSum!=0}">
-                                    		${bestSum/(commentSum*1.0)*100}
+                                    		<fmt:formatNumber value="${bestSum/(commentSum*1.0)*100}" pattern="##.##" minFractionDigits="2"></fmt:formatNumber>
                                     		</c:if>
                                     		<span>%</span></strong><br> <span>好评度</span>            
                                     	</div>
@@ -638,8 +638,10 @@
 																  "			<div class='tb-rev-item ' data-id='258040417670'>"+
 																  "				<div class='J_TbcRate_ReviewContent tb-tbcr-content '>"+
 																  				comment.aab403+
-																  "				</div>"+
-																  "             <img class='commentImg' alt='"+comment.aab403+"' src='${path}/images/comments/"+comment.aab402+"'>";
+																  "				</div>";
+														if(comment.aab412=='01'){
+															html+="             <img class='commentImg' alt='"+comment.aab403+"' src='${path}/images/comments/"+comment.aab402+"'>";
+														}
 														if((typeof comment.aab405)!='undefined'&&comment.aab405.trim()!=''){
 															html+="             <div class='J_TbcRate_ReviewContent tb-tbcr-content '>商家回复:&emsp;"+
 																				comment.aab405.trim()+
