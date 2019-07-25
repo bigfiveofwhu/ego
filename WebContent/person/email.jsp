@@ -114,11 +114,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$(function(){
 		<%-- 验证码的异步发送--%>
 		$(".sendVerifyCode").click(function(){
+			
+			
 			if($("#new_email").val().length == 0)
 			{
 				  alert("邮箱不能为空!");
 				  return;
 			}
+			
+			 var Regex = /^(?:\w+\.?)*\w+@(?:\w+\.)*\w+$/;
+			 
+			 if(!Regex.test($("#new_email").val()))
+			 {
+			     alert("邮箱格式错误");
+			     return;
+			 }
 			$(".sendVerifyCode").attr("disabled",true);
 			$(".sendVerifyCode").text("正在发送...");
 			console.log("发送验证码...");
@@ -156,6 +166,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$(function()
  {
 	$("#savemodify").click(function(){
+		
+		
 		$.ajax({
 			url:"<%=basePath%>/modifyEmail.ajax",
 			type:"post",

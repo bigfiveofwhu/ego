@@ -59,7 +59,7 @@
 		</div>
 		<div class="topMessage favorite">
 			<div class="menu-hd">
-				<a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span> ’≤ÿº–</span>
+				<a href="${path}/person/index.jsp?iframe=${path}/person/showCollection.html" target="_top"><i class="am-icon-heart am-icon-fw"></i><span> ’≤ÿº–</span>
 				</a>
 			</div>
 		</div>

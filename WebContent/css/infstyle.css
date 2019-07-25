@@ -89,7 +89,7 @@ input {text-align: left;}
 .birth .am-selected-icon::before{opacity: 1;margin:5px 0px 5px -10px;}
 .birth .am-selected-status{padding-top:3px;}
 /*头像、安全评分*/
-.user-infoPic{position: relative;margin:20px 5% 50px ;height:130px;border-bottom:1px solid #eee ;}
+.user-infoPic{position: relative;margin:20px 5% 50px ;height:140px;border-bottom:1px solid #eee ;}
 .filePic{width:100px; float:left;margin-left:15px;margin-top:15px ;}	
 .info-m{ display:block;float:left;overflow: hidden;line-height: 24px;position: absolute;left:6%;top:25px;margin-left: 120px;}
 .safeText{display: block;color: #fff;position: relative;text-align:left ;}
