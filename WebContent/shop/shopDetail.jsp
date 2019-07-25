@@ -11,7 +11,6 @@
 		<link type="text/css" href="<%=path%>/css/optstyle.css" rel="stylesheet" />
 		<link type="text/css" href="<%=path%>/css/style.css" rel="stylesheet" />
 		<link type="text/css" href="<%=path%>/css/shop/detail.css" rel="stylesheet" />
-		<link rel="stylesheet" href="/ego/layui/css/layui.css">
 		<script type="text/javascript" src="<%=path%>/basic/js/quick_links.js"></script>
 		<script type="text/javascript" src="<%=path%>/js/jquery.imagezoom.min.js"></script>
 		<script type="text/javascript" src="<%=path%>/js/jquery.flexslider.js"></script>
