@@ -145,7 +145,7 @@
 	         <div class="form-check ">
 	          <input class="form-check-input" type="radio" name="aad305" id="hot" value="11" >
 	          <label class="form-check-label" for="hot">
-	           	热门商品
+	           	热门推介
 	          </label>
 	        </div>
 	      </div>
