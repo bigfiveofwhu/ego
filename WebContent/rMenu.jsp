@@ -11,12 +11,12 @@
                 <div class="ibar_login_box status_login ">
                     <div class="avatar_box ">
                         <p class="avatar_imgbox ">
-                        <c:if test="${aaa102!=null }">
-                            <img src="${path}/images/upload/user_${aaa102}.jpg "/>
-                        </c:if>
-                        <c:if test="${aaa102==null }">
-                            <img src="${path}/images/no-img_mid_.jpg "/>
-                        </c:if>
+                            <c:if test="${aaa102!=null }">
+                                <img src="${path}/images/upload/user_${aaa102}.jpg "/>
+                            </c:if>
+                            <c:if test="${aaa102==null }">
+                                <img src="${path}/images/no-img_mid_.jpg "/>
+                            </c:if>
                         </p>
                         <ul class="user_info ">
                             <c:if test="${aaa102!=null }">
@@ -30,16 +30,17 @@
                         </ul>
                     </div>
                     <c:if test="${aaa102!=null }">
-                    <div class="login_btnbox ">
-                        <a href="# " class="login_order ">我的订单</a>
-                        <a href="${path}/person/index.jsp?iframe=${path}/person/showCollection.html" class="login_favorite ">我的收藏</a>
-                    </div>   
+                        <div class="login_btnbox ">
+                            <a href="# " class="login_order ">我的订单</a>
+                            <a href="${path}/person/index.jsp?iframe=${path}/person/showCollection.html"
+                               class="login_favorite ">我的收藏</a>
+                        </div>
                     </c:if>
                     <c:if test="${aaa102==null }">
-                    <div class="login_btnbox ">
-                        <a href="# " class="login_order ">系统消息</a>
-                        <a href="${path}/home/login.jsp" class="login_favorite ">登录</a>
-                    </div>
+                        <div class="login_btnbox ">
+                            <a href="# " class="login_order ">系统消息</a>
+                            <a href="${path}/home/login.jsp" class="login_favorite ">登录</a>
+                        </div>
                     </c:if>
                     <i class="icon_arrow_white "></i>
                 </div>
@@ -96,7 +97,7 @@
                     </div>
                 </li>
                 <li class="qtitem "><a href="#top " class="return_top ">
-                <span class="top "></span> </a></li>
+                    <span class="top "></span> </a></li>
             </div>
 
             <!--回到顶部 -->
@@ -164,7 +165,8 @@
     <div class="top">
         <div class="top-left">
             <div class="header">
-                <img src="${path}/images/upload/user_${aaa102}.jpg" alt="${aaa103}"
+                <img src="${path}/images/upload/user_${aaa102}.jpg" onerror="this.src='${path}/images/no-img_mid_.jpg';"
+                     alt=""
                      style="border-radius:75px;width: 48px;margin-bottom: 13px;"/>
             </div>
         </div>
@@ -187,7 +189,7 @@
                     </p>
                     <label for="inputTextarea"></label>
                     <textarea id="inputTextarea" class="inputTextarea"></textarea>
-                    <button class="sendBtn">发送</button>
+                    <button class="sendBtn zyf-tip zyf-tip-left" data-zyf-tip="按Enter键发送消息，按Ctrl+Enter键换行">发送</button>
                 </div>
             </div>
         </div>
@@ -195,7 +197,7 @@
 </div>
 <script type="text/javascript" src="${path}/js/message/websocket.js"></script>
 <script>
-    var curr_from = '${aaa102}';//当前用户id
+    var curr_from = 'u${aaa102}';//当前用户id
     var curr_from_name = '${aaa103}';//当前用户名字
     var curr_to = '';//当前选中接收者id
     var curr_list = [];//当前列表中接收者
@@ -211,12 +213,11 @@
     }
 
     function openChart() {
-        var id = '${aaa102}';
-        if (id === '') {
+        if (curr_from === '' || curr_from === 'u') {
             alert("请先登录!");
             return;
         }
-        if (id === '${from_id}') {
+        if (curr_from === '${from_id}') {
             alert("不能和自己聊天!");
             return;
         }
@@ -227,7 +228,7 @@
             dataType: "json",
             data: {
                 "from_id": '${from_id}',
-                "to_id": '${aaa102}',
+                "to_id": curr_from,
                 "datetime": getNowFormatDate(),
                 "content": "${from_name}客服 竭诚为您服务!",
                 "from_name": '${from_name}'
@@ -237,7 +238,7 @@
                     if (ws == null)
                         openWebsocket();
                     setTimeout(() => {
-                        $(".main").css("display", "inline");
+                        $(".main").css("display", "block");
                     }, 100);
                 }
             },
@@ -286,12 +287,28 @@
         var type = 'self';
         var target;
         var list_box_id;
-        var pic_id = curr_from;
         var timeout = null;
+
+        var user_type = from.substr(0, 1);
+        var user_id = from.substr(1);
+        var pic_path, type_name;
+        if (user_type === 'u') {
+            pic_path = '${path}/images/upload/user_' + user_id + '.jpg';
+            type_name = '用户'
+        } else if (user_type === 's') {
+            pic_path = '${path}/images/shop/shop_' + user_id + '.jpg';
+            type_name = '商铺'
+        } else if (user_type === 'S') {
+            pic_path = '${path}/images/service/service_' + user_id + '.jpg';
+            type_name = '服务商'
+        } else {
+            pic_path = '';
+            type_name = '游客';
+        }
+
         //判断是否为当前用户发送的消息
         if (from !== curr_from) {
             type = 'other';
-            pic_id = from;
             //如果发送者不在列表中，则加入列表
             if (curr_list.indexOf(from) === -1) {
                 curr_list.push(from);
@@ -302,9 +319,9 @@
 
                 //左侧头像框
                 var listBox_str = '<div class="list-box" id="list-box-' + from + '">' +
-                    '<img class="chat-head" src="${path}/images/upload/user_' + from + '.jpg" alt="">' +
+                    '<img class="chat-head" src="' + pic_path + '" onerror="this.src=\'${path}/images/no-img_mid_.jpg\';" alt="">' +
                     '<div class="chat-rig">' +
-                    '<p class="title">' + fromName + '(' + from + ')' + '</p>' +
+                    '<p class="title">' + fromName + '(' + type_name + ')' + '</p>' +
                     '<p class="text">' + '你好' + '</p></div></div>';
                 $('.chat-list').prepend(listBox_str);
 
@@ -339,9 +356,11 @@
             target = $('#newsList-' + to);
             list_box_id = to;
         }
+        //将头像框名称更正为最新名称
+        $('#list-box-' + from).find('.title').text(fromName + '(' + type_name + ')');
         //添加消息
         var str = '<li class="' + type + '"><div class="avatar">' +
-            '<img src="${path}/images/upload/user_' + pic_id + '.jpg" alt=""></div>' +
+            '<img src="' + pic_path + '" onerror="this.src=\'${path}/images/no-img_mid_.jpg\';" alt=""></div>' +
             '<div class="msg"><p class="msg-time">' + datetime + '</p>' +
             '<p class="msg-text">' + content + '</p></div></li>';
         target.append(str);
@@ -412,4 +431,15 @@
     function closeChat() {
         $(".main").css("display", "none");
     }
+
+    document.onkeydown = function (event) {
+        var e = event || window.event;
+        //只按回车就发送消息
+        if (e && e.keyCode === 13 && !e.shiftKey) {
+            e.cancelBubble = true;
+            e.preventDefault();
+            e.stopPropagation();
+            $(".sendBtn").click();
+        }
+    };
 </script>
