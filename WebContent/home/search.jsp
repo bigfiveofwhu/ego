@@ -7,14 +7,10 @@
 
 	<title>搜索页面</title>
 
-	<link href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-	<link href="<%=path%>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
-	<link href="<%=path%>/basic/css/demo.css" rel="stylesheet" type="text/css" />
+	<%@include file="/head.jsp" %>
 	<link href="<%=path%>/css/seastyle.css" rel="stylesheet" type="text/css" />
 	<link href="<%=path%>/css/search.css" rel="stylesheet" type="text/css" />
 	<link href="<%=path %>/css/hmstyle.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="<%=path%>/basic/js/jquery-1.7.min.js"></script>
-	<%-- <script type="text/javascript" src="<%=path%>/js/jquery-3.2.0.min.js"></script> --%>
 	<script type="text/javascript" src="<%=path%>/js/script.js"></script>
 	<script type="text/javascript" src="<%=path%>/js/search.js"></script>
 </head>
@@ -197,7 +193,7 @@
 					<input type="hidden" name="pageCount" id="pageCount" value="">
 				</form>
 				<ul class="am-pagination am-pagination-right">
-					<li><a href="location.href='${path}/search.html')">&laquo;</a></li>
+					<li><a href="javascript:goPage(1)')">&laquo;</a></li>
 					<c:if test="${searchSum==0}">
 					<li class=""><a href="javascript:goPage(1)">1</a></li>
 					</c:if>
@@ -209,7 +205,7 @@
 				<script type="text/javascript">
 					function goPage(index){
 						alert("正在跳转");
-						$("#pageCount").val(index);
+						$("#pageCount").val(parseInt(index));
 						$("#advanceForm").submit();
 					}
 				</script>
@@ -225,7 +221,7 @@
 	<script>
 		window.jQuery || document.write('<script src="basic/js/jquery-1.9.min.js"><\/script>');
 	</script>
-		<script type="text/javascript" src="../basic/js/quick_links.js"></script>
+		<script type="text/javascript" src="${path}/basic/js/quick_links.js"></script>
 <div class="theme-popover-mask"></div>
 </body>
 </html>

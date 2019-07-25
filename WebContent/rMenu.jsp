@@ -15,7 +15,7 @@
                             <img src="${path}/images/upload/user_${aaa102}.jpg "/>
                         </c:if>
                         <c:if test="${aaa102==null }">
-                            <img src="../images/no-img_mid_.jpg "/>
+                            <img src="${path}/images/no-img_mid_.jpg "/>
                         </c:if>
                         </p>
                         <ul class="user_info ">
@@ -66,7 +66,7 @@
 
             <div id="brand " class="item ">
                 <a href="${path}/person/index.jsp?iframe=${path}/person/showCollection.html"> <span class="wdsc "><img
-                        src="../images/wdsc.png "/> </span> </a>
+                        src="${path}/images/wdsc.png "/> </span> </a>
                 <div class="mp_tooltip ">
                     我的收藏 <i class="icon_arrow_right_black "></i>
                 </div>
@@ -74,7 +74,7 @@
 
             <div id="broadcast " class="item ">
                 <a href="# "> <span class="chongzhi "><img
-                        src="../images/chongzhi.png "/> </span> </a>
+                        src="${path}/images/chongzhi.png "/> </span> </a>
                 <div class="mp_tooltip ">
                     我要充值 <i class="icon_arrow_right_black "></i>
                 </div>
@@ -91,7 +91,7 @@
                 <li class="qtitem "><a href="#none "><span
                         class="mpbtn_qrcode "></span> </a>
                     <div class="mp_qrcode " style="display:none; ">
-                        <img src="../images/weixin_code_145.png "/><i
+                        <img src="${path}/images/weixin_code_145.png "/><i
                             class="icon_arrow_white "></i>
                     </div>
                 </li>
