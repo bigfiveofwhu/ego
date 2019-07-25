@@ -156,7 +156,7 @@
 						<c:choose>
 						   <c:when test="${aaa102!=null}">
 				   				<div class="m-baseinfo">
-								<a href="<%=path%>/person/index.jsp"> 
+								<a href="<%=path%>/person/entry.html"> 
 								<img src="<%=path%>/images/upload/user_${aaa102 }.jpg"> </a> 
 								<em> Hi,<span class="s-name">${aaa103}</span> <a href="#"><p>点击更多优惠活动</p> </a> </em>
 								</div>
@@ -169,8 +169,8 @@
 									<em> Hi,<span class="s-name">欢迎</span> <a href="#"><p>点击更多优惠活动</p> </a> </em>
 								</div>
 								<div class="member-logout">
-									<a class="am-btn-warning btn" href="login.jsp">登录</a>
-									<a class="am-btn-warning btn" href="register.jsp">注册</a>
+									<a class="am-btn-warning btn" href="${path}/home/login.jsp">登录</a>
+									<a class="am-btn-warning btn" href="${path}/home/register.jsp">注册</a>
 								</div>
 							</c:otherwise>
 						</c:choose>
