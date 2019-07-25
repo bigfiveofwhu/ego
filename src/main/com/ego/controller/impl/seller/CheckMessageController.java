@@ -7,7 +7,7 @@ public class CheckMessageController extends ControllerSupport
     @Override
     public String execute() throws Exception
     {
-        this.saveAttribute("type", this.get("type"));
+        this.saveAttribute("user_type", String.valueOf(this.get("type")));
         return "houtai/html/seller/sellerpage/checkMessage";
     }
 }

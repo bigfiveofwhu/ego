@@ -1,15 +1,14 @@
 package com.ego.controller.impl;
 
-import java.util.Map;
-
-import javax.servlet.http.HttpSession;
-
 import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.Aa01ServiceImpl;
 import com.ego.services.impl.Aa02ServiceImpl;
 import com.ego.services.impl.Ab01ServiceImpl;
 import com.ego.system.tools.Tools;
 import com.ego.system.utils.CodeVerify;
+
+import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 public class LoginController extends ControllerSupport {
 	
@@ -18,7 +17,12 @@ public class LoginController extends ControllerSupport {
 	{
 		HttpSession session=this.getSession();
 		//验证验证码
-		String verifyCode=(String)this.get("verifyCode");
+		String verifyCode=null;
+		try{
+			verifyCode=(String)this.get("verifyCode");
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 		if(verifyCode==null || !CodeVerify.verify(session, verifyCode))
 		{
 			this.saveAttribute("msg", "验证码无效!");
