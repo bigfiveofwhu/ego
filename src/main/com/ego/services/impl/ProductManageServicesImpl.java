@@ -297,11 +297,13 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 		Map<String,String> map = this.queryForMap(sql, this.get("aab203"));
 		String path = (String)this.get("imgPath");
 		String sql1;
+		String str = map.get("aab207").trim();
+		
 		if(map.get("aab207")==null)
 		{
 			sql1="update ab02 set aab207='"+path+"' where aab203 = ?";
 		}
-		else if(map.get("aab207").endsWith("&"))
+		else if(str.substring(str.indexOf("&") + 1).isEmpty())
 		{
 		    sql1 = "update ab02 set aab207=CONCAT(aab207,'"+ path + "') where aab203=?";
 		}
@@ -310,6 +312,7 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 			path = ";"+path;
 		    sql1 = "update ab02 set aab207=CONCAT(aab207,'"+ path + "') where aab203=?";
 		}
+		System.out.println("看看我看看我:"+str.substring(str.indexOf("&") + 1) );
 		System.out.println(sql1);
 		return this.executeUpdate(sql1, this.get("aab203"));
 	}

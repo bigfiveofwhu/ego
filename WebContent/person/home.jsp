@@ -21,7 +21,7 @@
 								<!--个人信息 -->
 
 								<div class="m-userinfo">
-									<a href="news.html">
+									<a href="#">
 										<div class="tipsBox"><i class="am-icon-envelope"></i></div>
 									</a>
 									<div class="m-baseinfo">
