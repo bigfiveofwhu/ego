@@ -49,13 +49,13 @@
 		  满 ${item.aab504}
 		</c:if>
 	  </td>
-	  <td>${item.aab505}</td>
+	  <td>${item.aab505}天</td>
 	  <td>
-	  	<c:if test="${item.aab505<0}">
+	  	<c:if test="${item.aab506<0}">
 		  无限量
 		</c:if>
-		<c:if test="${item.aab505>0}">
-		  ${item.aab505}天
+		<c:if test="${item.aab506>0}">
+		  ${item.aab506}
 		</c:if>
 	  </td>
 	  <td class="p-1">
@@ -81,9 +81,9 @@ layui.use('layer', function(){
 $('#newCoupon').on('click',function(){
 	layer.open({
 		  type: 2,
-		  skin: 'layui-layer-rim', //加上边框
+		  skin: 'layui-layer-lan', //加上边框
 		  title:'添加优惠券 ',
-		  area: ['600px', '400px'], //宽高
+		  area: ['600px', '480px'], //宽高
 		  content: '/ego/discount/addCoupon.html'
 	});
 })
@@ -92,9 +92,9 @@ $("[tag='modify']").click(function(){
 	var a=$(this);
 	layer.open({
 		  type: 2,
-		  skin: 'layui-layer-rim', //加上边框
+		  skin: 'layui-layer-lan', //加上边框
 		  title:'编辑优惠券 ',
-		  area: ['600px', '400px'], //宽高
+		  area: ['600px', '480px'], //宽高
 		  content: '/ego/discount/modifyCoupon.html?aab501='+a.val()
 	});
 })

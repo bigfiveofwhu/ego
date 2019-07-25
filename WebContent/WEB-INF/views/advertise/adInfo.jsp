@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="GBK"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="/ego/css/bootstrap.css">
 <link rel="stylesheet" href="/ego/layui/css/layui.css">
-<meta charset="GBK">
+<meta charset="UTF-8">
 <title></title>
 </head>
 <body>
@@ -17,15 +17,15 @@
 <div class="layui-tab">
   
   <ul class="layui-tab-title">
-    <li class="layui-this">»ù±¾ĞÅÏ¢</li>
-    <li>µã»÷Á¿±¨±í</li>
-    <li>µã»÷ÓÃ»§ÏêÇé</li>
+    <li class="layui-this">åŸºæœ¬ä¿¡æ¯</li>
+    <li>ç‚¹å‡»é‡æŠ¥è¡¨</li>
+    <li>ç‚¹å‡»ç”¨æˆ·è¯¦æƒ…</li>
   </ul>
   
   <div class="layui-tab-content">
     
     <div class="layui-tab-item layui-show">
-      <h1>×Üµã»÷Á¿£º${total}</h1>
+      <h1>æ€»ç‚¹å‡»é‡ï¼š${total}</h1>
     </div>
     <!----------------------------------------------->
     <div class="layui-tab-item">
@@ -33,8 +33,8 @@
     </div>
     <!----------------------------------------------->
     <div class="layui-tab-item">
-    	<div class="layui-inline"> <!-- ×¢Òâ£ºÕâÒ»²ãÔªËØ²¢²»ÊÇ±ØĞëµÄ -->
-    	<label for="test1">ÇëÊäÈëÄúÏë²é¿´µÄÈÕÆÚ</label>
+    	<div class="layui-inline"> <!-- æ³¨æ„ï¼šè¿™ä¸€å±‚å…ƒç´ å¹¶ä¸æ˜¯å¿…é¡»çš„ -->
+    	<label for="test1">è¯·è¾“å…¥æ‚¨æƒ³æŸ¥çœ‹çš„æ—¥æœŸ</label>
 		 <input type="text" class="layui-input" id="test1">
 		</div>
 		 <table id="demo" lay-filter="test"></table>
@@ -54,36 +54,36 @@
 <script>
 layui.use('element', function(){
   var element = layui.element;
-  //¡­
+  //â€¦
 });
 layui.use('table', function(){
 	  table = layui.table;
-	  //µÚÒ»¸öÊµÀı
+	  //ç¬¬ä¸€ä¸ªå®ä¾‹
 	  
 	  
 });
 layui.use('laydate', function(){
   var laydate = layui.laydate;
-  //Ö´ĞĞÒ»¸ölaydateÊµÀı
+  //æ‰§è¡Œä¸€ä¸ªlaydateå®ä¾‹
   laydate.render({
-    elem: '#test1' //Ö¸¶¨ÔªËØ
+    elem: '#test1' //æŒ‡å®šå…ƒç´ 
     ,done:function(value){
     	table.render({
     	    elem: '#demo'
     	    ,height: 312
-    	    ,url: 'getUserClickInfo.ajax?aad502='+value+"&aad302=${aad302}" //Êı¾İ½Ó¿Ú
-   	    	,parseData: function(res){ //res ¼´ÎªÔ­Ê¼·µ»ØµÄÊı¾İ
+    	    ,url: 'getUserClickInfo.ajax?aad502='+value+"&aad302=${aad302}" //æ•°æ®æ¥å£
+   	    	,parseData: function(res){ //res å³ä¸ºåŸå§‹è¿”å›çš„æ•°æ®
    	    	    return {
-   	    	      "code": res.status, //½âÎö½Ó¿Ú×´Ì¬
-   	    	      "msg": res.message, //½âÎöÌáÊ¾ÎÄ±¾
-   	    	      "count": res.count, //½âÎöÊı¾İ³¤¶È
-   	    	      "data": res.data //½âÎöÊı¾İÁĞ±í
+   	    	      "code": res.status, //è§£ææ¥å£çŠ¶æ€
+   	    	      "msg": res.message, //è§£ææç¤ºæ–‡æœ¬
+   	    	      "count": res.count, //è§£ææ•°æ®é•¿åº¦
+   	    	      "data": res.data //è§£ææ•°æ®åˆ—è¡¨
    	    	    };
    	    	  }
-    	    ,page: true //¿ªÆô·ÖÒ³
-    	    ,cols: [[ //±íÍ·
-    	      {field: 'aaa103', title: 'ÓÃ»§Ãû', width:200, sort: true, fixed: 'left'}
-    	      ,{field: 'aad503', title: 'µã»÷´ÎÊı', width:200}
+    	    ,page: true //å¼€å¯åˆ†é¡µ
+    	    ,cols: [[ //è¡¨å¤´
+    	      {field: 'aaa103', title: 'ç”¨æˆ·å', width:200, sort: true, fixed: 'left'}
+    	      ,{field: 'aad503', title: 'ç‚¹å‡»æ¬¡æ•°', width:200}
     	    ]]
     	  });
     }
@@ -92,23 +92,23 @@ layui.use('laydate', function(){
 
 Highcharts.setOptions({
     lang: {
-        contextButtonTitle: "Í¼±íµ¼³ö²Ëµ¥",
+        contextButtonTitle: "å›¾è¡¨å¯¼å‡ºèœå•",
         decimalPoint: ".",
-        downloadJPEG: "ÏÂÔØJPEGÍ¼Æ¬",
-        downloadPDF: "ÏÂÔØPDFÎÄ¼ş",
-        downloadPNG: "ÏÂÔØPNGÎÄ¼ş",
-        downloadSVG: "ÏÂÔØSVGÎÄ¼ş",
-        drillUpText: "·µ»Ø {series.name}",
-        loading: "¼ÓÔØÖĞ",
-        months: ["Ò»ÔÂ", "¶şÔÂ", "ÈıÔÂ", "ËÄÔÂ", "ÎåÔÂ", "ÁùÔÂ", "ÆßÔÂ", "°ËÔÂ", "¾ÅÔÂ", "Ê®ÔÂ", "Ê®Ò»ÔÂ", "Ê®¶şÔÂ"],
-        noData: "Ã»ÓĞÊı¾İ",
-        numericSymbols: ["Ç§", "Õ×", "G", "T", "P", "E"],
-        printChart: "´òÓ¡Í¼±í",
-        resetZoom: "»Ö¸´Ëõ·Å",
-        resetZoomTitle: "»Ö¸´Í¼±í",
+        downloadJPEG: "ä¸‹è½½JPEGå›¾ç‰‡",
+        downloadPDF: "ä¸‹è½½PDFæ–‡ä»¶",
+        downloadPNG: "ä¸‹è½½PNGæ–‡ä»¶",
+        downloadSVG: "ä¸‹è½½SVGæ–‡ä»¶",
+        drillUpText: "è¿”å› {series.name}",
+        loading: "åŠ è½½ä¸­",
+        months: ["ä¸€æœˆ", "äºŒæœˆ", "ä¸‰æœˆ", "å››æœˆ", "äº”æœˆ", "å…­æœˆ", "ä¸ƒæœˆ", "å…«æœˆ", "ä¹æœˆ", "åæœˆ", "åä¸€æœˆ", "åäºŒæœˆ"],
+        noData: "æ²¡æœ‰æ•°æ®",
+        numericSymbols: ["åƒ", "å…†", "G", "T", "P", "E"],
+        printChart: "æ‰“å°å›¾è¡¨",
+        resetZoom: "æ¢å¤ç¼©æ”¾",
+        resetZoomTitle: "æ¢å¤å›¾è¡¨",
         shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         thousandsSep: ",",
-        weekdays: ["ĞÇÆÚÒ»", "ĞÇÆÚ¶ş", "ĞÇÆÚÈı", "ĞÇÆÚËÄ", "ĞÇÆÚÎå", "ĞÇÆÚÁù", "ĞÇÆÚÌì"]
+        weekdays: ["æ˜ŸæœŸä¸€", "æ˜ŸæœŸäºŒ", "æ˜ŸæœŸä¸‰", "æ˜ŸæœŸå››", "æ˜ŸæœŸäº”", "æ˜ŸæœŸå…­", "æ˜ŸæœŸå¤©"]
     },
     chart: {
         type: 'line'
@@ -123,7 +123,7 @@ Highcharts.setOptions({
     },
     yAxis: {
         title: {
-            text: 'Ôª',
+            text: 'å…ƒ',
             rotation: 0
         }
     },
@@ -131,10 +131,10 @@ Highcharts.setOptions({
 
 Highcharts.chart('container-1', {
     title: {
-        text: '¹ã¸æµã»÷Á¿Á÷Ë®'
+        text: 'å¹¿å‘Šç‚¹å‡»é‡æµæ°´'
     },
     subtitle:{
-        text:'×î½ü30Ììµã»÷×ÜÁ¿£º${sum} '
+        text:'æœ€è¿‘30å¤©ç‚¹å‡»æ€»é‡ï¼š${sum} '
     },
     xAxis: {
         tickInterval: 1,
@@ -144,7 +144,7 @@ Highcharts.chart('container-1', {
     },
     series: [
         {
-            name: '×î½ü30Ììµã»÷´ÎÊı¼ÇÂ¼',
+            name: 'æœ€è¿‘30å¤©ç‚¹å‡»æ¬¡æ•°è®°å½•',
             data: [
             	<c:forEach items="${recentInfo}" var="item">${item.sum},</c:forEach>
             ]

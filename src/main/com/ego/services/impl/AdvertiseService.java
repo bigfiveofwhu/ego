@@ -458,12 +458,12 @@ public class AdvertiseService extends JdbcServicesSupport{
 				.append(" on ad03.aad306 = ab02.aab203")
 				.append(" and syscode.fcode=ab02.aab204")
 				.append(" and syscode.pfcode = s.pfcode")
-				.append(" where aad305=? and aad303=?")
+				.append(" where aad303=?")
 				.append(" and s.fcode=?")
 				.append(" and syscode.fname='aab204'")
 				.append(" order by aad304 DESC ")
 				.append(" limit 8");
-		return this.queryForList(sql.toString(),AIads,productAd,this.get("productType"));
+		return this.queryForList(sql.toString(),productAd,this.get("productType"));
 	}
 	
 	/**
@@ -501,4 +501,62 @@ public class AdvertiseService extends JdbcServicesSupport{
 				.append(" limit 8");
 		return this.queryForList(sql.toString(),AIads,productAd,this.get("aaa102"));
 	}
+	
+	
+	public void updateDaily() throws Exception {
+		updateMoney(headLine);
+		updateMoney(search);
+		updateMoney(AIads);
+		updateMoney(homePage);
+	}
+	
+	private  void updateMoney(String type) throws Exception {
+		List<Map<String, String>> rankList=chargeRankInfoByType(type);
+		String sql="update ad03 set aad304=aad304-? where aad302=?";
+		int rank=1;
+		for (Map<String, String> map : rankList) {
+			this.executeUpdate(sql
+					,this.getBill(rank++, Integer.parseInt(map.get("sum")) , getWeight(type) )
+					,map.get("aad302"));
+		}
+	}
+	/**
+	 * 根据类型获得权值
+	 * @param type
+	 * @return
+	 * @throws Exception
+	 */
+	private int  getWeight(String type) throws Exception {
+		switch (type) {
+		case headLine:
+			return 10;
+		case search:
+			return 20;
+		case AIads:
+			return 15;
+		case homePage:
+			return 20;
+		default:
+			throw new Exception("getweight无法识别的广告类型");
+		}
+	}
+	
+	private List<Map<String, String>> chargeRankInfoByType(String type) throws Exception {
+		StringBuilder sql=new StringBuilder()
+				.append(" select aad302,sum(aad503)as sum from ad03 join ad05")
+				.append(" using(aad302)")
+				.append(" where datediff(aad502,now())=0")
+				.append(" and aad305=?")
+				.append(" group by aad302")
+				.append(" order by aad304 DECS");
+		return this.queryForList(sql.toString(), type);
+	}
+	
+	public double getBill(int rank,int click,int weight) {
+		return click/(double)weight*(1+1/(double)rank);
+	}
+	public static void main(String args[]) {
+		System.out.println(6/(double)10*(1+1/(double)3));
+	}
 }
+
