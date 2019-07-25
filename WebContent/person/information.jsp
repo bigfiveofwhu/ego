@@ -48,7 +48,7 @@
 
 						<!--个人信息 -->
 						<div class="info-main">
-							<form class="am-form am-form-horizontal" action="<%=path %>/person/modifyUserInfo.html?imgName=${imgName}" method="post">
+							<form class="am-form am-form-horizontal" id="submithhh" action="<%=path %>/person/modifyUserInfo.html?imgName=${imgName}" method="post">
 
 								<div class="am-form-group">
 									<label for="user-name3" class="am-form-label">用户名</label>
@@ -91,7 +91,7 @@
 								<div class="am-form-group">
 									<label for="user-phone" class="am-form-label">电话</label>
 									<div class="am-form-content">
-										<input id="user-phone" name="aaa108" value="${user.aaa108 }" placeholder="telephonenumber" type="tel">
+										<input id="user-phonehhh" name="aaa108" value="${user.aaa108 }" placeholder="telephonenumber" type="tel">
 
 									</div>
 								</div>
@@ -104,7 +104,7 @@
 								</div>
 						
 								<div class="info-btn">
-								   <input type="button" class="am-btn am-btn-danger" onclick="checkSubmit()" value="保存修改"></input>
+								   <input type="button"  class="am-btn am-btn-danger" onclick="checkSubmit()" value="保存修改"></input>
 								</div>
                              <span>${msg }</span>
 				             </form>
@@ -117,26 +117,22 @@ $(document).ready(function(){
 });
 
 function ValidatePhone(val){
-    var isPhone = "^((13[0-9])|(15[^4,\\D])|(18[0,0-9]))\\d{8}$";//手机号码
-    var isMob= "^0?1[3|4|5|8][0-9]\d{8}$";// 座机格式
-    if(isMob.test(val)||isPhone.test(val)){
-        return true;
-    }
-    else{
-        return false;
-    }
+	if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(val)))
+	{ 
+		  return false; 
+	} 
+	return true;
 }
 
 function checkSubmit()
 {
-  	if(ValidatePhone($("#aaa108").val()) == false)
+  	if(ValidatePhone($("#user-phonehhh").val()) == false)
   	{
   		alert("请输入正确格式电话");
   		$("#aaa108").attr("value","");
   		return;
   	}
-  	
-  	$("#sumbithhh").submit();
+  	$("#submithhh").submit();
   	
 }
 function uploadFile(ev){
