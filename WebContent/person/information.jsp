@@ -117,8 +117,8 @@ $(document).ready(function(){
 });
 
 function ValidatePhone(val){
-    var isPhone = /^([0-9]{3,4}-)?[0-9]{7,8}$/;//手机号码
-    var isMob= /^0?1[3|4|5|8][0-9]\d{8}$/;// 座机格式
+    var isPhone = "^((13[0-9])|(15[^4,\\D])|(18[0,0-9]))\\d{8}$";//手机号码
+    var isMob= "^0?1[3|4|5|8][0-9]\d{8}$";// 座机格式
     if(isMob.test(val)||isPhone.test(val)){
         return true;
     }
