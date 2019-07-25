@@ -25,7 +25,7 @@
 			$('input[name="aab317"]').val(man);
 			$('input[name="aab318"]').val(phone);
 			vform.action="<%=path%>/addOrder.html";
-			if(province.lenth==0){
+			if(province==""){
 				alert("«ÎÃÓ–¥µÿ÷∑£°");
 			}
 			else{

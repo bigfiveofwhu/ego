@@ -51,13 +51,13 @@
 					
 				});
 	    	 })
-// 	    	function sendComment(vaab302)
-// 			{
-// 				var vform = document.getElementById("myform");
-// 				$('input[name="aab403"]').val($("#comment_text").val());
-<%-- 				vform.action="<%=path%>/makeComment.html?aab302="+vaab302; --%>
-// 				vform.submit();
-// 			}
+   	    	function sendComment(vaab302)
+  			{
+ 				var vform = document.getElementById("myform");
+ 				$('input[name="aab403"]').val($("#comment_text").val());
+  				vform.action="<%=path%>/makeComment.html?aab302="+vaab302; 
+ 				vform.submit();
+  			}
 			
 		</script>
 							

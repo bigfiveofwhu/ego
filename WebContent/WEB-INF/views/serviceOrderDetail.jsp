@@ -23,9 +23,13 @@
 			
 			function checkService(vaac402)
 			{
-				var vform = document.getElementById("myform");
-				vform.action="<%=path%>/checkService.html?aac402="+vaac402;
-				vform.submit();
+				var message=confirm("您确认服务完成了吗?")
+				if(message==true){
+					var vform = document.getElementById("myform");
+					vform.action="<%=path%>/checkService.html?aac402="+vaac402;
+					vform.submit();
+				}
+				
 			}
 			function goComment(vaac402)
 			{

@@ -28,27 +28,77 @@
 				var p = $(this).val();
 				$('input[name="aac604"]').val(p);
 			});
-			$("#province").change(function() {	
+			$("#myaddr_1").change(function(){
 				var p = $(this).val();
 				$('input[name="provinceTmp"]').val(p);
+				var A_id=$(this).children("option:selected").attr("A_id");
+				$("#myaddr_2").html("");
+				$("#myaddr_3").html("");
+				loadAddr(A_id,2);
 			});
-			$("#city").change(function() {	
+			$("#myaddr_2").change(function(){
 				var p = $(this).val();
-				$('input[name="cityTmp"]').val(" "+p+" ");
+				$('input[name="cityTmp"]').val(p);
+				var A_id=$(this).children("option:selected").attr("A_id");
+				$("#myaddr_3").html("");
+				loadAddr(A_id,3);
 			});
-			$("#area").change(function() {	
+			$("#myaddr_3").change(function() {	
 				var p = $(this).val();
 				$('input[name="areaTmp"]').val(p);
 			});
+			
 		})
+		
+			
+			
+			<%-- 地址初始化的异步加载--%>
+			function loadAddr(type,index){
+				if(index>3) return;
+				$.ajax({
+					url:"<%=path%>/getAddr.ajax",
+					type:"post",
+					timeout:20000,
+					dataType:"json",
+					data:{
+						"type":type
+					},
+					success:function(res,status){
+						var addrs=res.addrs;
+						var n=addrs.length;
+						var html="";
+						if(n>0){
+							html="<option value='"+addrs[0].areaname+"' A_id='"+addrs[0].areaid+"' selected='selected'>"+addrs[0].areaname+"</option>";
+							for(var i=1;i<n;i++){
+								html+="<option value='"+addrs[i].areaname+"' A_id='"+addrs[i].areaid+"'>"+addrs[i].areaname+"</option>";
+							}
+						}
+						$("#myaddr_"+index).html(html);
+						loadAddr(addrs[0].areaid,++index);
+					},
+					error:function(res,status){
+						console.log("#myaddr_"+index+"地址异步加载错误");
+					}
+				});
+			}
+			loadAddr("-1",1);
 		
 		function sendNeed(vaaa102)
 		{
-			var vform = document.getElementById("myform");
-			$('input[name="aac605"]').val($("#description").val());
-			$('input[name="aac607"]').val($("#address").val());
-			vform.action="<%=path%>/postNeed.html?aaa102="+vaaa102;
-			vform.submit();
+			if($("#address").val()==""){
+				alert("请输入详细地址!");
+			}
+			else if($("#description").val()==""){
+				alert("请输入需求描述!");
+			}
+			else{
+				var vform = document.getElementById("myform");
+				$('input[name="aac605"]').val($("#description").val());
+				$('input[name="aac607"]').val($("#address").val());
+				vform.action="<%=path%>/postNeed.html?aaa102="+vaaa102;
+				vform.submit();
+			}
+			
 			
 		}
 		</script>
@@ -63,9 +113,9 @@
 			<input name="aac604" type="hidden" value="01" />
 			<input name="aac605" type="hidden" value="" />
 			<input name="aac607" type="hidden" value="" />
-			<input name="provinceTmp" type="hidden" value="浙江省" />
-			<input name="cityTmp" type="hidden" value="温州市" />
-			<input name="areaTmp" type="hidden" value="瑞安区" />
+			<input name="provinceTmp" type="hidden" value="北京市" />
+			<input name="cityTmp" type="hidden" value="北京城区" />
+			<input name="areaTmp" type="hidden" value="东城区" />
 		</form>
 		
 
@@ -95,17 +145,14 @@
 										<div class="am-form-group">
 											<label for="user-address" class="am-form-label">所在城市</label>
 											<div class="am-form-content address">
-												<select id="province" data-am-selected>
-													<option value="浙江省" selected>浙江省</option>
-													<option value="湖北省">湖北省</option>
+												<select id="myaddr_1" >
+													
 												</select>
-												<select id="city" data-am-selected>
-													<option value="温州市" selected>温州市</option>
-													<option value="武汉市" >武汉市</option>
+												<select id="myaddr_2" class="childs">
+													
 												</select>
-												<select id="area" data-am-selected>
-													<option value="瑞安区" selected>瑞安区</option>
-													<option value="洪山区">洪山区</option>
+												<select id="myaddr_3" class="childs">
+													
 												</select>
 											</div>
 										</div>

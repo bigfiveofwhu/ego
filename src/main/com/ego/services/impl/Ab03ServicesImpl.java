@@ -325,7 +325,7 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 	 */
 	private boolean deleteById()throws Exception
 	{
-		String sql = "delete from ab03 where aab302=?";
+		String sql = "update ab03 set aab308 = '02' where aab302=?";
 		return this.executeUpdate(sql, this.get("aab302"));
 	}
 
