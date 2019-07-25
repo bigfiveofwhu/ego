@@ -561,7 +561,8 @@ public class Tools
     	     path=t.substring(1,num).replace('/', '\\')+"ego\\WebContent\\";
     	 else
     		 path="./WebContent/";//没办法
-    	 return path;
+    	 //return path;
+    	 return "./WebContent/";
 	}
 	
 	public static String getImgPath()
@@ -569,6 +570,68 @@ public class Tools
 		return Tools.getWebPath()+"images/upload";
 	}
 	
+	/**
+	 * 获取本店商品评级 待调试
+	 * 评价表:ab04
+	 * @return
+	 * @throws Exception
+	 */
+	public static Double getProductAvg(String aab102) throws Exception
+	{
+		String sql = "select avg(aab410) as productAvg from ab04 a,ab02 b where b.aab203= a.aab203 and b.aab102= ?";
+        
+		PreparedStatement pstm = DBUtils.getConnection().prepareStatement(sql);
+		
+		pstm.setObject(1, aab102);
+		
+		ResultSet rs = pstm.executeQuery();
+		 
+		rs.next();
+		 
+		return rs.getDouble("proDuctAvg");
+	}
+	
+	/**
+	 * 服务评级 待调试
+	 * @return
+	 * @throws Exception
+	 */
+	public static Double getServiceAvg(String aab102) throws Exception
+	{
 
+        String sql = "select avg(aab411) as productAvg from ab04 a,ab02 b where b.aab203= a.aab203 and b.aab102= ?";
+        
+		PreparedStatement pstm = DBUtils.getConnection().prepareStatement(sql);
+		
+		pstm.setObject(1, aab102);
+		
+		ResultSet rs = pstm.executeQuery();
+		 
+		rs.next();
+		 
+		return rs.getDouble("proDuctAvg");
+	}
+	
+	/**
+	 * 物流评级 待调试
+	 * @return
+	 * @throws Exception
+	 */
+	public static Double getShipAvg(String aab102) throws Exception
+	{
+
+        String sql = "select avg(aab409) as productAvg from ab04 a,ab02 b where b.aab203= a.aab203 and b.aab102= ?";
+        
+		PreparedStatement pstm = DBUtils.getConnection().prepareStatement(sql);
+		
+		pstm.setObject(1, aab102);
+		
+		ResultSet rs = pstm.executeQuery();
+		 
+		rs.next();
+		 
+		return rs.getDouble("proDuctAvg");
+	}
+	
 
 }

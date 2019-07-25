@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="GBK"%>
+<%@include file="/prompt.jsp" %>
 <!--顶部导航条 -->
 <div class="am-container header">
 	<ul class="message-l">
@@ -47,7 +48,7 @@
 				  </a>
 				</c:when>
 				<c:otherwise>
-					<a id="mc-menu-hd" href="${path }/home/shopcart.jsp" target="_top">
+					<a id="mc-menu-hd" href="${path }/home/shopCart.html" target="_top">
 					<i class="am-icon-shopping-cart  am-icon-fw"></i>
 					<span>购物车</span>
 					<strong id="J_MiniCartNum" class="h">${CARTNUM_IN_SESSION}</strong>
@@ -58,7 +59,7 @@
 		</div>
 		<div class="topMessage favorite">
 			<div class="menu-hd">
-				<a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span>
+				<a href="${path}/person/index.jsp?iframe=${path}/person/showCollection.html" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span>
 				</a>
 			</div>
 		</div>
@@ -92,7 +93,11 @@
 	</ul>
 </div>
 
-	<script type="text/javascript">
+<script src="/ego/layui/layui.js"></script>
+<script>
+layui.use('layer', function(){
+	layer = layui.layer;
+});
 	function checkIn()
 {
 	$.ajax({
@@ -107,7 +112,7 @@
 			if(res.check == 1)
 			location.href="${path}/shop/background.html";
 			else
-				alert("不具备进店资格");
+				layer.msg("你注册的店铺正在审核中...");
 		},
 		error:function(res){
 			 alert("网络错误");

@@ -17,25 +17,46 @@ public class SearchController extends ControllerSupport
 	public String execute() throws Exception 
 	{
 		this.setServices(new Ab02ServiceImpl());
+		if(this.get("pageCount")==null)    //设置默认初始查询id  方便做分页查询
+		{
+			this.dto.put("lastId", 0);
+			this.saveAttribute("pagIndex", 1);
+		}else
+		{
+			int index=Integer.parseInt(this.get("pageCount").toString());
+			this.dto.put("lastId", (index-1)*13);
+			this.saveAttribute("pagIndex", index);
+		}
 		if(this.get("key")!=null)
 		{
+			this.saveAttribute("searchType", "key");   //设置搜索类型
+			this.saveAttribute("searchValue", this.get("key"));   //设置值
+			
 			this.saveAttribute("key", this.get("key"));
 			this.dto.put("key", "%"+this.get("key").toString()+"%");
 			List<Map<String,String>> rows=this.getServices().query("queryByKey");
 			this.saveAttribute("productList", rows);
-			this.saveAttribute("searchSum", rows.size());
+			//计算搜索商品数
+			this.saveAttribute("searchSum", Integer.parseInt(this.getServices().findById("findProCountByKey").get("prosum").toString()));
+			
 			//修改用户偏好
 			dto.put("rows", rows);
 			this.setServices(new PreferenceService());
 			this.getServices().update(PreferenceService.search);
 			//获取搜索广告
 			this.setServices(new AdvertiseService());
-			this.saveAttribute("searceAds", this.getServices().query("getSearchTopByKey"));
+			List<Map<String,String>> rows1=this.getServices().query("getSearchTopByKey");
+			this.saveAttribute("searceAds", rows1);
 		}else if(this.get("type")!=null)
 		{
+			this.saveAttribute("searchType", "type");   //设置搜索类型
+			this.saveAttribute("searchValue", this.get("type"));   //设置值
+			
 			List<Map<String,String>> rows=this.getServices().query("queryBySort");
 			this.saveAttribute("productList", rows);
-			this.saveAttribute("searchSum", rows.size());
+			//计算搜索商品数
+			this.saveAttribute("searchSum", Integer.parseInt(this.getServices().findById("findProCountBySort").get("prosum").toString()));
+			
 			//修改用户偏好
 			dto.put("rows", rows);
 			this.setServices(new PreferenceService());
@@ -43,7 +64,8 @@ public class SearchController extends ControllerSupport
 			//获取搜索广告
 			this.setServices(new AdvertiseService());
 			dto.put("productType", getType(rows));
-			this.saveAttribute("searceAds",this.getServices().query("getSerachTop") );
+			List<Map<String,String>> rows1=this.getServices().query("getSerachTop");
+			this.saveAttribute("searceAds",rows1 );
 		}else
 		{
 			List<Map<String,String>> rows=this.getServices().query("findByUpToDate");

@@ -16,11 +16,13 @@ Name	    Code
 package com.ego.services.impl;
 
 import java.lang.reflect.Method;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import com.ego.services.JdbcServicesSupport;
+import com.ego.system.tools.Tools;
 
 public class ShopManageServicesImpl extends JdbcServicesSupport
 {
@@ -76,64 +78,45 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 	}
 	
 	/**
-	 * 获取本店商品评级 待调试
-	 * 评价表:ab04
+	 * 获取该商铺商品idlist
 	 * @return
 	 * @throws Exception
 	 */
-	public Map<String,String> getProductAvg() throws Exception
+	private List<Object> getProList() throws Exception
 	{
 		//获取该商铺所有商品idlist
-		String sql1 = "select aab203 from ab02 where aab102 = ?";
-		List<Map<String,String>> list = this.queryForList(sql1, this.get("aab102"));
-		List<Object> olist = new ArrayList<>(); 
-		for(Map<String,String> map : list)
-		{
-			olist.add(map.get("aab102"));
-		}
-		
-		String sql2 = "select avg(aab410) as productAvg from ab04 where aab203=?";
-		return this.queryForMap(sql2,olist.toArray());
+			String sql1 = "select aab203 from ab02 where aab102 = ?";
+			List<Map<String,String>> list = this.queryForList(sql1, this.get("aab102"));
+			List<Object> olist = new ArrayList<>(); 
+			for(Map<String,String> map : list)
+			{
+				olist.add(map.get("aab102"));
+			}
+			return olist;
 	}
 	
-	/**
-	 * 服务评级 待调试
-	 * @return
-	 * @throws Exception
-	 */
-	public Map<String,String> getServiceAvg() throws Exception
-	{
-		//获取该商铺所有商品idlist
-		String sql1 = "select aab203 from ab02 where aab102 = ?";
-		List<Map<String,String>> list = this.queryForList(sql1, this.get("aab102"));
-		List<Object> olist = new ArrayList<>(); 
-		for(Map<String,String> map : list)
-		{
-			olist.add(map.get("aab102"));
-		}
-		
-		String sql2 = "select avg(aab411) as productAvg from ab04 where aab203=?";
-		return this.queryForMap(sql2,olist.toArray());
-	}
 	
+
 	/**
-	 * 物流评级 待调试
+	 * 更新商铺评级
 	 * @return
 	 * @throws Exception
 	 */
-	public Map<String,String> getShipAvg() throws Exception
+	public boolean updateRank()  throws Exception
 	{
-		//获取该商铺所有商品idlist
-		String sql1 = "select aab203 from ab02 where aab102 = ?";
-		List<Map<String,String>> list = this.queryForList(sql1, this.get("aab102"));
-		List<Object> olist = new ArrayList<>(); 
-		for(Map<String,String> map : list)
-		{
-			olist.add(map.get("aab102"));
-		}
+		//获得店铺id
+		String sql1 = "select aab102 from ab02 where aab203 = ?";
+		Map<String,String> map = this.queryForMap(sql1, this.get("aab203"));
 		
-		String sql2 = "select avg(aab409) as productAvg from ab04 where aab203=?";
-		return this.queryForMap(sql2,olist.toArray());
+		String sql = "update ab01 set aab109 = ?,aab110 = ?,aab111 = ? where aab102 = ?";
+		
+		DecimalFormat df = new DecimalFormat("0.00");
+		Object args[]= {
+			df.format(Tools.getShipAvg(map.get("aab102"))),
+			df.format(Tools.getServiceAvg(map.get("aab102"))),
+			df.format(Tools.getProductAvg(map.get("aab102")))
+		};
+		return this.batchUpdate(sql, args, map.get("aab102"));
 	}
 	
 	/**

@@ -35,5 +35,9 @@
 	margin-left: 4px;
 	font-size: 10px;
 	background-color: red;
-	height: 13px;
+	height: 18px;
+}
+.commentImg{
+	height: 250px;
+	width: 250px;
 }

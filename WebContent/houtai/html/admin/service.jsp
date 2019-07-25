@@ -329,15 +329,14 @@
                 "aad804": state,
                 "type": '8'
             },
-            success: function () {
+            success: function (res) {
                 $('#tr-' + aac202).find('.status').text(val);
-                alert('操作成功')
+                alert(res.msg);
             },
             error: function () {
                 alert('操作失败，请重试')
             }
         });
-        clearDetails();
     }
 
     function clearDetails() {

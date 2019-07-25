@@ -4,20 +4,13 @@
  */
 package com.ego.controller.impl.shop;
 
+import com.ego.controller.ControllerSupport;
+import com.ego.services.impl.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.ego.controller.ControllerSupport;
-import com.ego.services.impl.Aa07ServiceImpl;
-import com.ego.services.impl.Ab02ServiceImpl;
-import com.ego.services.impl.Ab03ServicesImpl;
-import com.ego.services.impl.Ab04ServicesImpl;
-import com.ego.services.impl.Ab05ServiceImpl;
-import com.ego.services.impl.AdStatistic;
-import com.ego.services.impl.AdvertiseService;
-import com.ego.services.impl.PreferenceService;
 
 public class ShopDetailController extends ControllerSupport 
 {
@@ -41,7 +34,7 @@ public class ShopDetailController extends ControllerSupport
 		//在dto中放入店铺id
 		this.dto.put("aab102", ins.get("aab102"));
 		this.saveAttribute("shopId", ins.get("aab102"));   //在页面存入店铺id
-		this.saveAttribute("from_id", ins.get("aaa102"));  //在页面存入发送者id
+		this.saveAttribute("from_id", "s" + ins.get("aab102"));  //在页面存入发送者id
 		this.saveAttribute("from_name", ins.get("aab103"));  //在页面存入店铺名称
 		//解析规格描述文本
 		String describe=(String)ins.get("aab209");
@@ -155,7 +148,7 @@ public class ShopDetailController extends ControllerSupport
 		this.saveAttribute("commentSum", Integer.parseInt(ins.get("commentsum").toString()));
 //		this.saveAttribute("aab103", "某宝");
 //		Map<String,String> shop=new HashMap<>();
-//		shop.put("url", "/ego/images/shop/shop_12.jpg");
+//		shop.put("url", "/ego/images/shop/shop_1.jpg");
 //		this.saveAttribute("shop", shop);
 //		this.saveAttribute("aab109", "5");
 //		this.saveAttribute("aab110", "5");

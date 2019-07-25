@@ -11,7 +11,6 @@
 		<link type="text/css" href="<%=path%>/css/optstyle.css" rel="stylesheet" />
 		<link type="text/css" href="<%=path%>/css/style.css" rel="stylesheet" />
 		<link type="text/css" href="<%=path%>/css/shop/detail.css" rel="stylesheet" />
-		<link rel="stylesheet" href="/ego/layui/css/layui.css">
 		<script type="text/javascript" src="<%=path%>/basic/js/quick_links.js"></script>
 		<script type="text/javascript" src="<%=path%>/js/jquery.imagezoom.min.js"></script>
 		<script type="text/javascript" src="<%=path%>/js/jquery.flexslider.js"></script>
@@ -29,20 +28,7 @@
 			<div class="listMain">
 				<!--分类-->
 			<div class="nav-table">
-			   <div class="long-title"><span class="all-goods">全部分类</span></div>
-			   <div class="nav-cont">
-					<ul>
-						<li class="index"><a href="#">首页</a></li>
-                              <li class="qc"><a href="#">闪购</a></li>
-                              <li class="qc"><a href="#">限时抢</a></li>
-                              <li class="qc"><a href="#">团购</a></li>
-                              <li class="qc last"><a href="#">大包装</a></li>
-					</ul>
-				    <div class="nav-extra">
-				    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
-				    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
-				    </div>
-				</div>
+			  <%@include file="/navClassify.jsp" %>
 			</div>
 			<ol class="am-breadcrumb am-breadcrumb-slash">
 				<li><a href="#">首页</a></li>
@@ -359,9 +345,13 @@
 						</form>
 						<script type="text/javascript">
 							function purchase(){
+								if('${aaa102}'==''){
+									promptGlobal("请先登录!");
+									return;
+								}
 								var count=parseInt($("#text_box").val());
 								if(isNaN(count)){
-									promptGlobal("格式错误!")
+									promptGlobal("格式错误!");
 									return;
 								}
 								var sum=parseInt('${product.aab206 }');
@@ -402,7 +392,6 @@
 											promptGlobal("加入购物车失败!");
 										}else if(res.status='202'){
 											promptGlobal("请先登录!");
-											location.href="/ego/home/login.jsp";
 										}
 									},
 									error:function(res,status){
@@ -613,7 +602,7 @@
 										</ul>
 									</div>
 									<div class="clear"></div>
-									<ul class="am-comments-list am-comments-list-flip" id="c10010">
+									<ul class="am-comments-list am-comments-list-flip" id="c10010" style="min-height: 800px;">
 									</ul>
 									<script type="text/javascript">
 										$(function(){
@@ -647,10 +636,21 @@
 																  "		</header>"+
 																  "		<div class='am-comment-bd'>"+
 																  "			<div class='tb-rev-item ' data-id='258040417670'>"+
-																  "				<div class='J_TbcRate_ReviewContent tb-tbcr-content '>"
-																  				+comment.aab403+
+																  "				<div class='J_TbcRate_ReviewContent tb-tbcr-content '>"+
+																  				comment.aab403+
 																  "				</div>"+
-																  "				<div class='tb-r-act-bar'>"+
+																  "             <img class='commentImg' alt='"+comment.aab403+"' src='${path}/images/comments/"+comment.aab402+"'>";
+														if((typeof comment.aab405)!='undefined'&&comment.aab405.trim()!=''){
+															html+="             <div class='J_TbcRate_ReviewContent tb-tbcr-content '>商家回复:&emsp;"+
+																				comment.aab405.trim()+
+																  "             &emsp;&emsp;回复于<time datetime=''>"+comment.aab408+"</time></div>";
+														}
+														if((typeof comment.aab404)!='undefined'&&comment.aab404.trim()!=''){
+															html+="             <div class='J_TbcRate_ReviewContent tb-tbcr-content '>追加评论:&emsp;"+
+																				comment.aab404.trim()+
+																  "             &emsp;&emsp;追评于<time datetime=''>"+comment.aab407+"</time></div>";
+														}
+														   html+="				<div class='tb-r-act-bar'>"+
 																  "					物流评分："+comment.aab409+"&nbsp;&nbsp;商品评分："+comment.aab410+"&nbsp;&nbsp;服务评分："+comment.aab411+
 																  "				</div>"+
 																  "			</div>"+
@@ -662,7 +662,7 @@
 													}
 												},
 												error:function(res,status){
-													
+													console.log("网络异常!");
 												}
 											});
 										});
@@ -671,11 +671,19 @@
 									<!--分页 -->
 									<ul class="am-pagination am-pagination-right">
 										<li class="am-disabled"><a href="#">&laquo;</a></li>
+										<c:if test="${commentSum==0}">
 										<li class="am-active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
+										</c:if>
+										<c:if test="${commentSum!=0}">
+											<c:forEach begin="1" end="${(commentSum-1)/15+1}" varStatus="i">
+												<c:if test="${i.count==1}">
+												<li class="am-active"><a href="#">1</a></li>
+												</c:if>
+												<c:if test="${i.count!=1}">
+												<li><a href="#">${i.count}</a></li>
+												</c:if>
+											</c:forEach>
+										</c:if>
 										<li><a href="#">&raquo;</a></li>
 									</ul>
 									<div class="clear"></div>
@@ -685,7 +693,7 @@
 								</div>
 								<div class="am-tab-panel am-fade">
 									<div class="like">
-										<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
+										<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes" style="min-height: 800px;">
 											<!-- 动态展示广告 -->
 											<c:forEach items="${sameProducts }" var="goods" varStatus="vs">
 												<li>
@@ -753,8 +761,8 @@
 			</div>
 			<!--菜单 -->
 			<%@include file="/rMenu.jsp" %>
-			
-	<script src="/ego/layui/layui.js"></script>
+	<%--		
+	<script src="/ego/layui/layui.js"></script> --%>
 	<script>
 	layui.use('layer', function(){
 		layer = layui.layer;

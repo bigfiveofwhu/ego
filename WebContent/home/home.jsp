@@ -16,7 +16,7 @@
 <c:if test="${msg!=null }">
 	<script type="text/javascript">
 	$(function(){
-		alert('${msg}');
+		promptGlobal("${msg}");
 	});
 	</script>
 </c:if>
@@ -157,7 +157,7 @@
 						   <c:when test="${aaa102!=null}">
 				   				<div class="m-baseinfo">
 								<a href="<%=path%>/person/index.jsp"> 
-								<img src="<%=path%>/images/getAvatar.do.jpg"> </a> 
+								<img src="<%=path%>/images/upload/user_${aaa102 }.jpg"> </a> 
 								<em> Hi,<span class="s-name">${aaa103}</span> <a href="#"><p>点击更多优惠活动</p> </a> </em>
 								</div>
 							</c:when>
@@ -166,7 +166,7 @@
 									<a href="#"> 
 									<img src="<%=path%>/images/getAvatar.do.jpg"> 
 									</a> 
-									<em> Hi,<span class="s-name">小叮当</span> <a href="#"><p>点击更多优惠活动</p> </a> </em>
+									<em> Hi,<span class="s-name">欢迎</span> <a href="#"><p>点击更多优惠活动</p> </a> </em>
 								</div>
 								<div class="member-logout">
 									<a class="am-btn-warning btn" href="login.jsp">登录</a>
@@ -315,14 +315,6 @@
 							<h4>热门商品</h4>
 							<h3>今日份热门商品</h3>
 							<div class="today-brands ">
-							<!--
-								<a href="# ">桂花糕</a> 
-								<a href="# ">奶皮酥</a> 
-								<a href="# ">栗子糕</a>
-								<a href="# ">马卡龙</a>
-								<a href="# ">铜锣烧</a>
-								<a href="# ">豌豆黄</a>
-							-->
 							</div>
 							<span class="more ">
 								<a href="# ">更多美味
@@ -334,13 +326,36 @@
 					<div class="am-g am-g-fixed floodFour">
 						<div class="am-u-sm-5 am-u-md-4 text-one list ">
 							<div class="word">
-							<c:forEach begin="0" end="5">
-								<a class="outer" href="#">
+								<a class="outer" href="/ego/search.html?type=1294">
 								    <span class="inner">
-								        <b class="text">核桃</b> 
+								        <b class="text">游戏周边</b> 
 								    </span> 
 								</a>
-							</c:forEach>
+								<a class="outer" href="/ego/search.html?type=1294">
+								    <span class="inner">
+								        <b class="text">游戏周边</b> 
+								    </span> 
+								</a>
+								<a class="outer" href="/ego/search.html?type=1294">
+								    <span class="inner">
+								        <b class="text">游戏周边</b> 
+								    </span> 
+								</a>
+								<a class="outer" href="/ego/search.html?type=1294">
+								    <span class="inner">
+								        <b class="text">游戏周边</b> 
+								    </span> 
+								</a>
+								<a class="outer" href="/ego/search.html?type=1294">
+								    <span class="inner">
+								        <b class="text">游戏周边</b> 
+								    </span> 
+								</a>
+								<a class="outer" href="/ego/search.html?type=1294">
+								    <span class="inner">
+								        <b class="text">游戏周边</b> 
+								    </span> 
+								</a>
 							</div>
 							<a href="# ">
 								<div class="outer-con ">
@@ -353,15 +368,16 @@
 						</div>
 						<c:forEach items="${hotProduct}" var="item1" varStatus="">
 							<div class="am-u-sm-7 am-u-md-4 text-two">
-								<div class="outer-con ">
+							<a href="<%=path %>/shop/detail.html?aId=${item1.aad302 }&productId=${item1.aab203}">
+								<img src="<%=path %>/images/advertise/${item1.aad307 }" alt="${item1.aab202 }" /> 
+								</a>
+								<div class="outer-con">
 									<div class="title ">${item1.aab202 }</div>
 									<div class="sub-title ">&yen;${item1.aab205 }</div>
 									<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 								</div>
 								<!-- 甜品 -->
-								<a href="<%=path %>/shop/detail.html?aId=${item1.aad302 }&productId=${item1.aab203}">
-								<img src="<%=path %>/images/advertise/${item1.aad307 }" alt="${item1.aab202 }" /> 
-								</a>
+								
 							</div>
 						</c:forEach>
 					</div>
@@ -374,12 +390,6 @@
 							<h4>最新商品</h4>
 							<h3>酥酥脆脆，回味无穷</h3>
 							<div class="today-brands ">
-								<a href="# ">腰果</a> 
-								<a href="# ">松子</a> 
-								<a href="# ">夏威夷果</a> 
-								<a href="# ">碧根果</a>
-								<a href="# ">开心果</a> 
-								<a href="# ">核桃仁</a>
 							</div>
 							<span class="more "> 
 							    <a href="# ">更多美味

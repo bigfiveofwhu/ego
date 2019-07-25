@@ -23,6 +23,8 @@ public class AjaxBaseServlet extends HttpServlet
 	{
 		try
 		{
+			//设置sessiong过期时间为一个小时
+			request.getSession().setMaxInactiveInterval(3600);
 			request.setCharacterEncoding("UTF-8");
 			String url=request.getServletPath();
 			

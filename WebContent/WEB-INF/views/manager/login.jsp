@@ -46,7 +46,7 @@ $("#submit").click(function(){
 			,aad103:$("[name='aad103']").val()},
 			function(res){
 		if(res.result==true){
-			  location.href = "/ego/houtai/html/admin/index.jsp";
+			  location.href = "/ego/manager/background.html";
 		}else{
 			layer.msg("ÃÜÂë´íÎó")
 		}

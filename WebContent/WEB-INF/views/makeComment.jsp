@@ -221,6 +221,7 @@
 
 <script src="<%=path%>/js/bootstrap.bundle.js"></script>
 <script>
+var hasImage=false;
 layui.use('upload', function(){
 	  var $ = layui.jquery
 	  ,upload = layui.upload;
@@ -230,6 +231,7 @@ layui.use('upload', function(){
 	    elem: '#test2'
 	    ,url: '/ego/makeComment.ajax'
 	    ,multiple: false
+	    ,number:1
 	    ,data:{
 	    	aab409:function(){return $("[name='aab409']").val()},
 	    	aab410:function(){return $("[name='aab410']").val()},
@@ -240,8 +242,10 @@ layui.use('upload', function(){
 	    }
 	    ,choose: function(obj){
 	      //预读本地文件示例，不支持ie8
+	      hasImage=true;
 	      obj.preview(function(index, file, result){
-	        $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+	    	  $('#demo2').html('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+	    	  //$('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
 	      });
 	    }
 	    ,done: function(res){
@@ -258,6 +262,26 @@ layui.use('upload', function(){
 	    ,bindAction:'#submit_comment'
 	  });
 });
-
+$("#submit_comment").click(function(){
+	if(!hasImage){
+		$.getJSON("/ego/makeComment.ajax",{
+			aab409:$("[name='aab409']").val(),
+	    	aab410:$("[name='aab410']").val(),
+	    	aab411:$("[name='aab411']").val(),
+	    	aab403:$("[name='aab403']").val(),
+	    	aab203:$("[name='aab203']").val(),
+	    	aab302:$("[name='aab302']").val(),
+		},function(res){
+			if(res.result==true){
+	      		location.replace("/ego/showComment.html")
+	      	}else{
+	      		alert(res.reason);
+	      	}
+		})
+		 .fail(function(){
+			 alert("网络错误")
+		})
+	}
+})
 </script>
 </html>

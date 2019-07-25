@@ -3,6 +3,7 @@ package com.ego.controller.impl;
 import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.Ab01ServiceImpl;
 import com.ego.services.impl.Ad08ServicesImpl;
+import com.ego.system.utils.SetDefaultImg;
 
 public class ShopRegisteredController extends ControllerSupport 
 {	
@@ -34,6 +35,8 @@ public class ShopRegisteredController extends ControllerSupport
 		this.dto.put("aad803", "01");   //审核类型 01--店铺注册
 		this.getServices().update("insertAd08");
 		this.getSession().setAttribute("aab102", this.get("aab102"));  //店铺id
+		//店铺默认头像写入
+		SetDefaultImg.setDefImg(this.get("aab102").toString(), "shop");
 		this.saveAttribute("msg", "提交审核成功!请耐心等待,后续会以邮件通知!");
 		return "home/home";
 		//return "WEB-INF/views/shop/register";

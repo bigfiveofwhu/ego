@@ -35,7 +35,7 @@ public class RetractAdController extends AjaxControllerSupport{
 			DBUtils.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
-			put("result", true);
+			put("result", false);
 			put("reason", "Î´Öª´íÎó");
 			DBUtils.rollback();
 			e.printStackTrace();

@@ -3,14 +3,14 @@
  */
 package com.ego.controller.impl.localCity;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.Ac02ServiceImpl;
 import com.ego.services.impl.Ac04ServicesImpl;
 import com.ego.services.impl.Ac05ServicesImpl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class ServiceDetailController extends ControllerSupport
 {
@@ -24,7 +24,7 @@ public class ServiceDetailController extends ControllerSupport
 		this.setServices(new Ac02ServiceImpl());
 		Map<String,String> ins=this.getServices().findById("findByAac202");
 		this.saveAttribute("info", ins);
-		this.saveAttribute("from_id", ins.get("aaa102"));  //在页面存入发送者id
+		this.saveAttribute("from_id", "S" + ins.get("aac102"));  //在页面存入发送者id
 		this.saveAttribute("from_name", ins.get("aac103"));  //在页面存入服务商名称
 		 //服务所有图片路径
 		String imgs=(String)ins.get("aac210");

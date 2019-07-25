@@ -10,8 +10,8 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="Cache-Control" content="no-siteapp" />
-		<%@include file="/head.jsp" %>
 		<link rel="stylesheet" href="<%=path%>/AmazeUI-2.4.2/assets/css/amazeui.min.css" />
+		<%@include file="/head.jsp" %>
 		<link href="<%=path%>/css/dlstyle.css" rel="stylesheet" type="text/css">
         <%@include file="/prompt.jsp" %>
 	</head>
@@ -101,9 +101,7 @@
 									<hr>
 								</div>
 								<script>
-									$(function() {
-									    $('#doc-my-tabs').tabs();
-									  })
+									
 								</script>
 							</div>
 						</div>
@@ -217,7 +215,6 @@
 			}
 		}
 		$(function(){
-			
 			<%-- 验证码的异步发送--%>
 			$(".sendVerifyCode").click(function(){
 				if($("#email").val()===''){

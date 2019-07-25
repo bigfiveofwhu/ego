@@ -20,7 +20,7 @@ public class VerifyController extends AjaxControllerSupport
 	    }
 	    session.setAttribute("isVeriFied", true);//做上标记
 		session.setAttribute("isVerifiedTimeout", new Date().getTime());  //定义起始时间,有效时长一分钟
-		session.setAttribute("internel", 60000L);
+		session.setAttribute("internel", 180000L);
     	this.put("status", "200");
 	}
 }

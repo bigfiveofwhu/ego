@@ -12,6 +12,8 @@
 		<link href="<%=path%>/css/hmstyle.css" rel="stylesheet" type="text/css">
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="<%=path%>/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+		<script src="<%=path%>/js/iframe.js"></script>
+		
 	</head>
 	<body>
 		<!--头 -->
@@ -35,7 +37,7 @@
 				<div class="main-wrap">
 				<!--标题 -->
 				<div class="am-cf am-padding">
-				<iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" src="<%=path %>/person/home.jsp"></iframe>
+				<iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()" frameborder="0" src=""></iframe>
 			    </div>								
 				</div>
 				<!--底部-->
@@ -108,13 +110,16 @@
 		<%@include file="/bottomGuide.jsp" %>
 	</body>
 	<script type="text/javascript">
-	function SetIFrameHeight() {
-		var iframeid = document.getElementById("iframe"); //iframe id
-		if(document.getElementById) {
-			iframeid.height = document.documentElement.clientHeight;
-			//iframeid.width = document.documentElement.clientWidth*0.8;
+	window.onload=function(){
+		var ors = window.location.search.match(/(?:\?|&)iframe=([^&]+)/);
+		if (ors) {
+		    document.getElementById("iframe").src = ors[1];
 		}
-	}
+		else
+			 document.getElementById("iframe").src = "<%=path %>/person/home.jsp";
+		}
+	
+
 	</script>
 
 </html>

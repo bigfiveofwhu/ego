@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.Aa01ServiceImpl;
+import com.ego.system.utils.SetDefaultImg;
 
 public class RegisterController extends ControllerSupport 
 {
@@ -58,6 +59,10 @@ public class RegisterController extends ControllerSupport
 		session.setAttribute("addr_2", addr_2);
 		session.setAttribute("addr_3", addr_3);
 		session.setAttribute("addr_4", addr_4);
+		//写入默认购物车数量
+		session.setAttribute("shopCartCount", "0");
+		//用户默认头像写入
+		SetDefaultImg.setDefImg(this.get("aaa102").toString(), "user");
 		return "home/home";
 	}
 }

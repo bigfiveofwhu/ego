@@ -35,7 +35,7 @@ public class Aa03ServiceImpl extends JdbcServicesSupport
 		if(qtype.equals("product"))//查收藏的商品
 		{
 			StringBuilder sql  = new StringBuilder()
-					   .append(" select  a.aaa301,a.aaa303,b.aab202,b.aab205,b.aab206,b.aab212 ")   
+					   .append(" select  a.aaa301,a.aaa303,b.aab202,b.aab203,b.aab205,b.aab206,b.aab212,b.aab208,b.aab102 ")   
 					   .append(" from aa03 a,ab02 b ")
 					   .append(" where a.aaa303 = b.aab203 and a.aaa302 = ? ")
 					   .append("  and a.aaa102 = '")
@@ -47,7 +47,7 @@ public class Aa03ServiceImpl extends JdbcServicesSupport
 		else if(qtype.equals("shop"))//查收藏的店铺
 		{
 			StringBuilder sql  = new StringBuilder()
-					   .append(" select  a.aaa301,a.aaa303,b.aab103,b.aab107 ")   
+					   .append(" select  a.aaa301,a.aaa303,b.aab103,b.aab107,b.aab102,b.aab104,b.aab111,b.aaa102 ")   
 					   .append(" from aa03 a,ab01 b ")
 					   .append(" where a.aaa303 = b.aab102 and a.aaa302 = ? ")
 					   .append("  and a.aaa102 = '")

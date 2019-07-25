@@ -68,6 +68,8 @@
 		 return;
 	 }
 	 
+	
+	 
 	 var oaaa107 = $("#user-origin-password").val();
 	 var naaa107 = $("#user-now1-password").val();
 	 $.ajax({

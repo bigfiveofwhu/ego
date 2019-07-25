@@ -35,7 +35,8 @@ $(function(){
 		var myCity = new BMap.LocalCity();
 		myCity.get(function(result){
 			myGeoLocation = result.name;
-			alert("当前所在城市:"+result.name);
+			//alert("当前所在城市:"+result.name);
+			promptGlobal("当前所在城市:"+result.name);
 			setCookie("myLocation",myGeoLocation);
 		}); 
 	}else{

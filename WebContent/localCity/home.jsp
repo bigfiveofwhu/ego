@@ -10,19 +10,16 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>eGo同城</title>
-<link href="<%=path %>/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-<link href="<%=path %>/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
-<link href="<%=path %>/basic/css/demo.css" rel="stylesheet" type="text/css" />
+<%@include file="/head.jsp" %>
 <link href="<%=path %>/css/localCity/hmstyle.css" rel="stylesheet" type="text/css" />
 <link href="<%=path %>/css/localCity/skin.css" rel="stylesheet" type="text/css" />
 <link href="<%=path %>/css/localCity/navigate.css" rel="stylesheet" type="text/css" />
 <link href="<%=path %>/css/localCity/home.css" rel="stylesheet" type="text/css" />
-<script src="<%=path %>/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-<script src="<%=path %>/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+<%@include file="/prompt.jsp" %>
 <c:if test="${msg!=null }">
 	<script type="text/javascript">
 	$(function(){
-		alert('${msg}');
+		promptGlobal("${msg}");
 	});
 	</script>
 </c:if>
@@ -68,22 +65,7 @@
 				<li class="banner4">
 				<a><img src="<%=path%>/images/ad4.jpg" /> </a>
 				</li>
-			</ul> 
-			<script type="text/javascript">
-			    $(function (){
-			    	$.ajax({
-			    		url:"",
-			    		data:"",
-			    		dataType:"",
-			    		success:function (){
-			    			
-			    		},
-			    		error:function(){
-			    			
-			    		}
-			    	});
-			    })
-			</script>
+			</ul>
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -199,63 +181,65 @@
 				</div>
 				<script type="text/javascript">
 				$(function(){
-					$.ajax({
-						url:"<%=path%>/service.ajax",
-						type:"post",
-						dataType:"json",
-						timeout:20000,
-						data:{
-							"type":"1",
-							"location":myGeoLocation
-						},
-						success:function(res,status){
-							console.log(res.services.toString());
-							var services=res.services;
-							var n=services.length;
-							var html="";
-							for(var i=0;i<n;i++){
-								var service=services[i]
-								html+=  "<div class='service-body'>"+
-										"	<div class='am-u-sm-3 '>"+
-										"		<div class='icon-sale one'></div>"+
-										"		<h4>优惠</h4>"+
-										"		<div class='activityMain'>"+
-										"			<a href='/ego/localCity/companyDetail.html?id="+service.aac102+"'><img src='/ego/images/service/"+service.aac102+".jpg'></img></a>"+
-										"		</div>"+
-										"		<div class='info'>"+
-										"			<h3>"+service.aac103+"</h3>"+
-										"		</div>"+
-										"	</div>"+
-										"	<div class='service-intro'>"+
-										"		<div class='service-intro-item'>"+
-										"			<p class='title'>服务商名称</p>"+
-										"			<P class='value'>"+service.aac103+"</P>"+
-										"		</div>"+
-										"		<div class='service-intro-item'>"+
-										"			<p class='title'>服务类型</p>"+
-										"			<P class='value'>"+service.aac106+"</P>"+
-										"		</div>"+
-										"		<div class='service-intro-item'>"+
-										"			<p class='title'>公司地址</p>"+
-										"			<P class='value'>"+service.aac104+"</P>"+
-										"		</div>"+
-										"		<div class='service-intro-item'>"+
-										"			<p class='title'>综合评分</p>"+
-										"			<P class='value'>"+service.aac110+"</P>"+
-										"		</div>"+
-										"		<div class='service-intro-item'>"+
-										"			<p class='title'>公司电话</p>"+
-										"			<P class='value'>"+service.aac111+"</P>"+
-										"		</div>"+
-										"	</div>"+
-										"</div>";
+					setTimeout(()=>{
+						$.ajax({
+							url:"<%=path%>/service.ajax",
+							type:"post",
+							dataType:"json",
+							timeout:20000,
+							data:{
+								"type":"1",
+								"location":myGeoLocation
+							},
+							success:function(res,status){
+								console.log(res.services.toString());
+								var services=res.services;
+								var n=services.length;
+								var html="";
+								for(var i=0;i<n;i++){
+									var service=services[i]
+									html+=  "<div class='service-body'>"+
+											"	<div class='am-u-sm-3 '>"+
+											"		<div class='icon-sale one'></div>"+
+											"		<h4>优惠</h4>"+
+											"		<div class='activityMain'>"+
+											"			<a href='/ego/localCity/companyDetail.html?id="+service.aac102+"'><img src='/ego/images/service/"+service.aac102+".jpg'></img></a>"+
+											"		</div>"+
+											"		<div class='info'>"+
+											"			<h3>"+service.aac103+"</h3>"+
+											"		</div>"+
+											"	</div>"+
+											"	<div class='service-intro'>"+
+											"		<div class='service-intro-item'>"+
+											"			<p class='title'>服务商名称</p>"+
+											"			<P class='value'>"+service.aac103+"</P>"+
+											"		</div>"+
+											"		<div class='service-intro-item'>"+
+											"			<p class='title'>服务类型</p>"+
+											"			<P class='value'>"+service.aac106+"</P>"+
+											"		</div>"+
+											"		<div class='service-intro-item'>"+
+											"			<p class='title'>公司地址</p>"+
+											"			<P class='value'>"+service.aac104+"</P>"+
+											"		</div>"+
+											"		<div class='service-intro-item'>"+
+											"			<p class='title'>综合评分</p>"+
+											"			<P class='value'>"+service.aac110+"</P>"+
+											"		</div>"+
+											"		<div class='service-intro-item'>"+
+											"			<p class='title'>公司电话</p>"+
+											"			<P class='value'>"+service.aac111+"</P>"+
+											"		</div>"+
+											"	</div>"+
+											"</div>";
+								}
+								$(".service-101").html(html);
+							},
+							error:function(res,status){
+								console.log("网络故障!");
 							}
-							$(".service-101").html(html);
-						},
-						error:function(res,status){
-							console.log("网络故障!");
-						}
-					});
+						});
+					},500);
 				});
 				</script>
 				<div class="clear "></div>
