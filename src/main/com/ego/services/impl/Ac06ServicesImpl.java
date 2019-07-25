@@ -327,6 +327,7 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
     			.append("                  ?,?,current_timestamp,?)")
     			;
 		//2.编写参数数组
+		System.out.println("***********参数aaa102:"+this.get("aaa102"));
 		Object args[]={
 				this.get("aaa102"),
 				aac602,
