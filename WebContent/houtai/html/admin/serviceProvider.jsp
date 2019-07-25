@@ -333,9 +333,9 @@
                 "aac103": $("#aac103").text(),
                 "val": val
             },
-            success: function () {
+            success: function (res) {
                 $('#tr-' + aac102).find('.status').text(val);
-                alert('操作成功')
+                alert(res.msg);
             },
             error: function () {
                 alert('操作失败，请重试')
