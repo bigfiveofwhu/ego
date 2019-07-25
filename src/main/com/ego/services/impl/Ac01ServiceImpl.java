@@ -61,6 +61,13 @@ public class Ac01ServiceImpl extends JdbcServicesSupport
 		Method method=this.getMethod(qtype);
 		return (Map<String,String>)method.invoke(this);
 	}
+	
+	private Map<String, String> checkService() throws Exception
+	{
+		String sql="select aac108 from ac01 where aac102=?";
+		return this.queryForMap(sql, this.get("aac102"));
+	}
+	
 	/**
 	 * 根据用户id查找相应的服务商id
 	 * @return

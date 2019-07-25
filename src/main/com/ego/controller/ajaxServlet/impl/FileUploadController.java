@@ -25,7 +25,7 @@ public class FileUploadController extends AjaxControllerSupport {
 		 String fileName = type+"_"+id;
 		 System.out.println(type);
 		 try {
-			FileUpload.writeFile(fileName, Tools.getImgPath(),request);
+			FileUpload.writeFile(fileName, Tools.getImgPath(request),request);
 			//QiniuUpload.UploadPic("./WebContent/images/upload/user_8.jpg", fileName);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();

@@ -85,7 +85,7 @@
 			<div class="menu-hd">
 			<c:choose>
 				<c:when test="${aab102!=null}">
-				  <a id="mc-menu-shop" onclick="checkIn();" href="#" target="_top">
+				  <a id="mc-menu-shop" onclick="checkIn();" target="_top">
 				  <span>进入店铺</span>
 				  </a>
 				</c:when>
@@ -102,12 +102,12 @@
 			<div class="menu-hd">
 			<c:choose>
 				<c:when test="${aac102!=null}">
-				  <a id="mc-menu-shop" href="${path}/localCity/service/background.html" target="_top">
+				  <a id="mc-menu-service" onclick="enterService()" target="_top">
 				  <span>服务管理</span>
 				  </a>
 				</c:when>
 				<c:otherwise>
-					<a id="mc-menu-shop" href="${path}/localCity/register.html" target="_top">
+					<a id="mc-menu-service" href="${path}/localCity/register.html" target="_top">
 					<span>申请服务商资格?</span>
 				    </a>
 				</c:otherwise>
@@ -119,13 +119,30 @@
 	</ul>
 </div>
 
-<script src="/ego/layui/layui.js"></script>
 <script>
 layui.use('layer', function(){
 	layer = layui.layer;
 });
+function enterService(){
+	$.ajax({
+		url:"${path}/enterService.ajax",
+		type:"post",
+		dataType:"json",
+		timeout:20000,
+		success:function(res,status){
+			if(res.status=='200'){
+				localtion.href='${path}/localCity/service/background.html';
+			}else{
+				layer.msg("你注册的服务商正在审核中...");
+			}
+		},
+		error:function(res,status){
+			layer.msg("网络故障!");
+		}
+	});
+}
 	function checkIn()
-{
+	{
 	$.ajax({
 		url:"${path}/checkInShop.ajax",
 		type:"post",
@@ -141,7 +158,7 @@ layui.use('layer', function(){
 				layer.msg("你注册的店铺正在审核中...");
 		},
 		error:function(res){
-			 alert("网络错误");
+			layer.msg("网络错误");
 		}
 	});
 }

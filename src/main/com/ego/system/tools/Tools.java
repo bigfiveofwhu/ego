@@ -6,7 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import com.ego.system.db.DBUtils;
 
@@ -565,9 +566,10 @@ public class Tools
     	 return "./WebContent/";
 	}
 	
-	public static String getImgPath()
+	public static String getImgPath(HttpServletRequest request)
 	{
-		return Tools.getWebPath()+"images/upload";
+		//return Tools.getWebPath()+"images/upload";
+		return  request.getServletContext().getRealPath("/upload");
 	}
 	
 	/**
