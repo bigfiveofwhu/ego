@@ -85,12 +85,12 @@ public class Ab02ServiceImpl extends JdbcServicesSupport
 	private List<Map<String,String>> queryBySort() throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-				.append("select x.aab202,x.aab204,x.aab203,x.aab205,x.aab206,x.aab208,s.fcode,y.fcode,z.fcode ")
+				.append("select x.aab202,x.aab204,x.aab203,x.aab205,x.aab206,x.aab208,s.fcode,y.fcode,z.fcode")
 				.append("  from ab02 x, syscode s, syscode y,syscode z")
 				.append(" where ((x.aab204=?       and s.fcode =?       and y.fcode=s.pfcode and z.fcode=y.pfcode)")
 				.append("    or  (x.aab204=s.fcode and s.pfcode=?       and y.fcode=?        and z.fcode=y.pfcode)")
 				.append("    or  (x.aab204=s.fcode and s.pfcode=y.fcode and y.pfcode=?       and z.fcode=?))")
-				.append("   and   x.aab212='02'    and s.fname='aab204' and y.fname='aab204' and z.fname='aab204")
+				.append("   and   x.aab212='02'    and s.fname='aab204' and y.fname='aab204' and z.fname='aab204'")
 				.append(" limit ?,13")
 				;
 		Object args[]= {
@@ -118,7 +118,7 @@ public class Ab02ServiceImpl extends JdbcServicesSupport
 				.append(" where ((x.aab204=?       and s.fcode =?       and y.fcode=s.pfcode and z.fcode=y.pfcode)")
 				.append("    or  (x.aab204=s.fcode and s.pfcode=?       and y.fcode=?        and z.fcode=y.pfcode)")
 				.append("    or  (x.aab204=s.fcode and s.pfcode=y.fcode and y.pfcode=?       and z.fcode=?))")
-				.append("   and   x.aab212='02'    and s.fname='aab204' and y.fname='aab204' and z.fname='aab204")
+				.append("   and   x.aab212='02'    and s.fname='aab204' and y.fname='aab204' and z.fname='aab204'")
 				;
 		Object args[]= {
 			this.get("type"),

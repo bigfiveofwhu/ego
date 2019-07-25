@@ -51,40 +51,44 @@
 		})
 		
 			
-			
-			<%-- 地址初始化的异步加载--%>
-			function loadAddr(type,index){
-				if(index>3) return;
-				$.ajax({
-					url:"<%=path%>/getAddr.ajax",
-					type:"post",
-					timeout:20000,
-					dataType:"json",
-					data:{
-						"type":type
-					},
-					success:function(res,status){
-						var addrs=res.addrs;
-						var n=addrs.length;
-						var html="";
-						if(n>0){
-							html="<option value='"+addrs[0].areaname+"' A_id='"+addrs[0].areaid+"' selected='selected'>"+addrs[0].areaname+"</option>";
-							for(var i=1;i<n;i++){
-								html+="<option value='"+addrs[i].areaname+"' A_id='"+addrs[i].areaid+"'>"+addrs[i].areaname+"</option>";
-							}
-						}
-						$("#myaddr_"+index).html(html);
-						loadAddr(addrs[0].areaid,++index);
-					},
-					error:function(res,status){
-						console.log("#myaddr_"+index+"地址异步加载错误");
-					}
-				});
-			}
-			loadAddr("-1",1);
 		
-		function sendNeed(vaaa102)
+		<%-- 地址初始化的异步加载--%>
+		function loadAddr(type,index){
+			if(index>3) return;
+			$.ajax({
+				url:"<%=path%>/getAddr.ajax",
+				type:"post",
+				timeout:20000,
+				dataType:"json",
+				data:{
+					"type":type
+				},
+				success:function(res,status){
+					var addrs=res.addrs;
+					var n=addrs.length;
+					var html="";
+					if(n>0){
+						html="<option value='"+addrs[0].areaname+"' A_id='"+addrs[0].areaid+"' selected='selected'>"+addrs[0].areaname+"</option>";
+						for(var i=1;i<n;i++){
+							html+="<option value='"+addrs[i].areaname+"' A_id='"+addrs[i].areaid+"'>"+addrs[i].areaname+"</option>";
+						}
+					}
+					$("#myaddr_"+index).html(html);
+					loadAddr(addrs[0].areaid,++index);
+				},
+				error:function(res,status){
+					console.log("#myaddr_"+index+"地址异步加载错误");
+				}
+			});
+		}
+		loadAddr("-1",1);
+		
+		function sendNeed()
 		{
+			var p2 = $("#myaddr_2").val();
+			$('input[name="cityTmp"]').val(p2);
+			var p3 = $("#myaddr_3").val();
+			$('input[name="areaTmp"]').val(p3);
 			if($("#address").val()==""){
 				alert("请输入详细地址!");
 			}
@@ -95,7 +99,7 @@
 				var vform = document.getElementById("myform");
 				$('input[name="aac605"]').val($("#description").val());
 				$('input[name="aac607"]').val($("#address").val());
-				vform.action="<%=path%>/postNeed.html?aaa102="+vaaa102;
+				vform.action="<%=path%>/postNeed.html";
 				vform.submit();
 			}
 			
@@ -210,7 +214,7 @@
 
 										<div class="am-form-group">
 											<div class="am-u-sm-9 am-u-sm-push-3">
-												<a class="am-btn am-btn-danger" onclick="sendNeed(1)">保存</a>
+												<a class="am-btn am-btn-danger" onclick="sendNeed()">保存</a>
 												<a href="javascript:;" class="am-close am-btn am-btn-danger" data-am-modal-close>取消</a>
 											</div>
 										</div>

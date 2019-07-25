@@ -239,7 +239,7 @@
                                     		100
                                     		</c:if>
                                     		<c:if test="${AllComment!=0}">
-                                    		${(goodComment*100.0/AllComment)}
+                                    		<fmt:formatNumber value="${(goodComment*100.0/AllComment)}" pattern="##.##" minFractionDigits="2"></fmt:formatNumber>
                                     		</c:if>
                                     		<span>%</span></strong><br> <span>ºÃÆÀ¶È</span>            
                                     	</div>

@@ -420,7 +420,7 @@
 												</li>
 												<li class="td td-operation">
 													<div class="item-operation">
-														<a href="refund.html">退款/退货</a>
+														<a href="javascript:;" onclick="goRefund(${ins.aab302})">退款/退货</a>
 													</div>
 												</li>
 											</ul>
@@ -499,7 +499,7 @@
 												</li>
 												<li class="td td-operation">
 													<div class="item-operation">
-														<a href="refund.html">退款/退货</a>
+														<a href="javascript:;" onclick="goRefund(${ins.aab302})">退款/退货</a>
 													</div>
 												</li>
 											</ul>

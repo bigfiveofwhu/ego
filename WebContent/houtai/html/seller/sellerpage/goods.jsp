@@ -498,7 +498,7 @@
     			$("#proimghhh").html("");
     			$("#specimghhh").html("");
     			var prodiv = document.getElementById("proimghhh");
-    			alert(res.proimgUrl.length)
+    			//alert(res.proimgUrl.length)
     			if(res.proimgUrl.length > 0)
     			for(var i =0;i<res.proimgUrl.length;i++)
 	    		{
@@ -512,7 +512,7 @@
 	    		}
     			
     			var prodiv = document.getElementById("specimghhh");
-    			alert(res.specimgUrl.length);
+    			//alert(res.specimgUrl.length);
     			if(res.specimgUrl.length > 0)
     			for(var i =0;i<res.specimgUrl.length;i++)
 	    		{
@@ -653,7 +653,7 @@
        // var imgcount = 0;
 		function send(type) {
 			
-			for(var j = 0; j < dataArr.length; j++) {
+			for(var j = dataArr.length -1; j >= 0; j--) {
 				$.ajax({
 					url:"${path}/mulImgUpload.ajax",
 					type:"post",
