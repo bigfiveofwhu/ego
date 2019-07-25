@@ -37,7 +37,7 @@
 					<span class="font-pale">相关搜索：</span>
 					<a title="坚果" href="#">坚果</a>
 					<a title="瓜子" href="#">瓜子</a>
-					<a title="鸡腿" href="#">豆干</a>
+					<a title="豆干" href="#">豆干</a>
 				</div>
 				<ul class="select">
 					<p class="title font-normal">
@@ -54,6 +54,7 @@
 						<input type="hidden" name="gFrom" id="gFromNameInput">
 					</form>
 					<div class="clear"></div>
+					<%--
 					<li class="select-list">
 						<dl id="select1">
 							<dt class="am-badge am-round">品牌</dt>	
@@ -75,7 +76,7 @@
 								</c:forEach> 
 							</div>
 						</dl>
-					</li>
+					</li>--%>
 				</ul>
 				<div class="clear"></div>
                 </div>
@@ -191,20 +192,27 @@
 				</div>
 				<div class="clear"></div>
 				<!--分页 -->
-				<form action="<%=path%>/search" id="advanceForm" method="post">
-					<input type="hidden" name="currentPage" id="currentPageInput">
+				<form action="<%=path%>/search.html" id="advanceForm" method="post">
+					<input type="hidden" name="${searchType}" id="currentPageInput" value="${searchValue}">
+					<input type="hidden" name="pageCount" id="pageCount" value="">
 				</form>
 				<ul class="am-pagination am-pagination-right">
-					 <%-- <li class="am-disabled">
-					 <a href="javascript:goPage(${result.prePage})">&laquo;</a></li> --%>
-					 <li><a href="javascript:goPage(${result.prePage})">&laquo;</a></li>
-					<!--  <li class="am-active"><a href="#">1</a></li> -->
-					<c:forEach begin="${result.index.beginIndex}" end="${result.index.endIndex}" var="index" varStatus="vs">
-					<li class="${vs.count==1?'am-active':''}"><a href="javascript:goPage(${index})">${index}</a></li>
+					<li><a href="location.href='${path}/search.html')">&laquo;</a></li>
+					<c:if test="${searchSum==0}">
+					<li class=""><a href="javascript:goPage(1)">1</a></li>
+					</c:if>
+					<c:forEach begin="1" end="${(searchSum-1)/13+1}" varStatus="vs">
+					<li class="${vs.count==pagIndex?'am-active':''}"><a href="javascript:goPage(${vs.count})">${vs.count}</a></li>
 					</c:forEach>
-					<li><a href="javascript:goPage(${result.nextPage})">&raquo;</a></li>
+					<li><a href="javascript:goPage(${(searchSum-1)/20+1})">&raquo;</a></li>
 				</ul>
-				</form>
+				<script type="text/javascript">
+					function goPage(index){
+						alert("正在跳转");
+						$("#pageCount").val(index);
+						$("#advanceForm").submit();
+					}
+				</script>
 			</div>
 		</div>
 				<%@include file="/footer.jsp" %>

@@ -95,8 +95,8 @@
                             class="icon_arrow_white "></i>
                     </div>
                 </li>
-                <li class="qtitem "><a href="#top " class="return_top "><span
-                        class="top "></span> </a></li>
+                <li class="qtitem "><a href="#top " class="return_top ">
+                <span class="top "></span> </a></li>
             </div>
 
             <!--»Øµ½¶¥²¿ -->

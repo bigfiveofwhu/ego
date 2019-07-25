@@ -48,7 +48,7 @@
 				  </a>
 				</c:when>
 				<c:otherwise>
-					<a id="mc-menu-hd" href="${path }/home/shopcart.jsp" target="_top">
+					<a id="mc-menu-hd" href="${path }/home/shopCart.html" target="_top">
 					<i class="am-icon-shopping-cart  am-icon-fw"></i>
 					<span>¹ºÎï³µ</span>
 					<strong id="J_MiniCartNum" class="h">${CARTNUM_IN_SESSION}</strong>

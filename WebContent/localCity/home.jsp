@@ -19,7 +19,7 @@
 <c:if test="${msg!=null }">
 	<script type="text/javascript">
 	$(function(){
-		promptGlobal("${msg}")
+		promptGlobal("${msg}");
 	});
 	</script>
 </c:if>
