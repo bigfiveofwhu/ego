@@ -498,8 +498,12 @@
     			$("#proimghhh").html("");
     			$("#specimghhh").html("");
     			var prodiv = document.getElementById("proimghhh");
+    			alert(res.proimgUrl.length)
+    			if(res.proimgUrl.length > 0)
     			for(var i =0;i<res.proimgUrl.length;i++)
 	    		{
+    				if(res.proimgUrl[i] == "")
+    					break;
 	    			var div = document.createElement('div');
 	    			var imgurl = '${path}' + res.proimgUrl[i];
 	    			var result = '<img style="width:150px;heigth:150px;float:left;margin-left:30px"  src="' + imgurl + '" />';
@@ -508,8 +512,12 @@
 	    		}
     			
     			var prodiv = document.getElementById("specimghhh");
+    			alert(res.specimgUrl.length);
+    			if(res.specimgUrl.length > 0)
     			for(var i =0;i<res.specimgUrl.length;i++)
 	    		{
+    				if(res.specimgUrl[i] == "")
+    					break;
 	    			var div = document.createElement('div');
 	    			var imgurl = '${path}' + res.specimgUrl[i];
 	    			var result = '<img style="width:150px;heigth:150px;float:left;margin-left:30px"  src="' + imgurl + '" />';
@@ -533,14 +541,7 @@
 		var oSubmit2 = document.getElementById("submit2");
 		var dateli, dateinput;
 		function randomString(len) {
-			len = len || 32;　　
-			var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/ 　　
-			var maxPos = $chars.length;　　
-			var pwd = '';　　
-			for(i = 0; i < len; i++) {　　　　
-				pwd += $chars.charAt(Math.floor(Math.random() * maxPos));　　
-			}
-			return pwd;
+			return "";
 		}
 		console.log()
 		if(typeof FileReader === 'undefined') {
@@ -580,7 +581,7 @@
 
 					//alert(this.result);
 
-					result = '<div class="showdiv"><img class="left" src="${path}/images/Arrow_left.svg" /><img class="center" src="${path}/images/delete.svg" /><img class="right" src="${path}/images/Arrow_right.svg" /></div><img id="img' +currentReViewImgIndex+randomString(1)+randomString(2) +randomString(5) + '" class="showimg" src="' + this.result + '" />';
+					result = '<div class="showdiv"><img class="left" src="${path}/images/Arrow_left.svg" /><img class="center" src="${path}/images/delete.svg" /><img class="right" src="${path}/images/Arrow_right.svg" /></div><img  id="img' +currentReViewImgIndex+randomString(1)+randomString(2) +randomString(5) + '" class="showimg" src="' + this.result + '" />';
 					var li = document.createElement('li');
 					li.innerHTML = result;
 					showui.appendChild(li);
@@ -653,7 +654,6 @@
 		function send(type) {
 			
 			for(var j = 0; j < dataArr.length; j++) {
-				dataArr[j].name = "product_"+dataArr[j].name
 				$.ajax({
 					url:"${path}/mulImgUpload.ajax",
 					type:"post",
@@ -668,8 +668,8 @@
 						if(res.tag == 1)
 						{
 							//dataArr = [];
-							alert("上传成功第"+j+"个图片")
-							$("ul#showui").html("");
+							//alert("上传成功第"+j+"个图片")
+						
 						}
                       
 					},
@@ -681,7 +681,8 @@
 			}
 			//alert(imgcount);
 			//if(imgcount == dataArr.length)
-			//	alert("图片上传成功");
+				alert("图片上传成功");
+			$("ul#showui").html("");
 			dataArr = [];
 		}
 

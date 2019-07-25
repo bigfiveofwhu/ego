@@ -24,8 +24,8 @@
 					<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">我的收藏</strong> / <small>My&nbsp;Collection</small></div>
 				</div>
 				<ul class="am-avg-sm-2 am-tabs-nav am-nav am-nav-tabs">
-					<li class="am-active"><a id="pro"  href="#tab1">收藏商品</a></li>
-					<li class=""><a id="shop" href="#tab2">收藏店铺</a></li>
+					<li id="li1" class="am-active"><a id="pro"  href="#tab1">收藏商品</a></li>
+					<li id="li2" class=""><a id="shop" href="#tab2">收藏店铺</a></li>
 				</ul>
 					<div class="user-collection"  id="tab1" >
 					
@@ -175,12 +175,17 @@
 <script type="text/javascript">
 
 $("#pro").click(function(){
+	$("#li1").attr("class","am-active");
+	$("#li2").attr("class","");
 	$("#tab1").show();
 	$("#tab2").hide();
+	//$("#tabl2").removeClass();
 });
 $("#shop").click(function(){
 	$("#tab1").hide();
 	$("#tab2").show();
+	$("#li1").attr("class","");
+	$("#li2").attr("class","am-active");
 })
 
 

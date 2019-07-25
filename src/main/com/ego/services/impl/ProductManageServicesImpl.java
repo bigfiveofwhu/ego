@@ -201,7 +201,13 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
     	   return this.executeUpdate(sql2.toString(), args2);
        }
        else
+       {
+    	   //删除该商品,添加失败
+    	   String sql = "delete from ab02 where aab203 = ?";
+    	   this.executeUpdate(sql,aab203);
     	   return false;
+       }
+    	   
 	}
 	
 	/**
