@@ -107,8 +107,9 @@ public class Ac01ServiceImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql=new StringBuilder()
 				.append("  select x.aac102,x.aac103,x.aac104,z.fvalue aac106,x.aac110,aac111")
-				.append("    from ac01 x,T_Area y,syscode z")
-				.append("   where x.aac105=y.areaId and y.`level`='2' and y.areaName like ? ")
+				.append("    from ac01 x,T_Area y,syscode z,t_area a")
+				.append("   where x.aac105=a.areaId and a.`level`='3' and a.parentId=y.areaId")
+				.append("		 and y.`level`='2' and y.areaName like ? ")
 				.append("     and x.aac106=z.fcode and z.fname='aac106' ")
 				.append("order by x.aac112 desc limit 8")
 				;

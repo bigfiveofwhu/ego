@@ -33,6 +33,7 @@ public class FileUpload
 
                    InputStream in = null;
 		           OutputStream out = null;
+                   FileOutputStream out1=null;
 		         
 		          try {
 		              // 使用默认配置创建解析器工厂
@@ -87,12 +88,28 @@ public class FileUpload
 		                      }
 		                     
 		                      System.out.println(savePathDir.getAbsolutePath());
+		                      //在eclipse中输出图片
+		                      String ecliPath=SetDefaultImg.getBasePath(savePath.substring(savePath.lastIndexOf("\\")+1));
+		                      if(ecliPath!=null)
+		                      {
+			                      out1 = new FileOutputStream(ecliPath+fileName.substring(fileName.indexOf("_")+1));
+			                      System.out.println(ecliPath+"\\"+fileName.substring(fileName.indexOf("_")+1));
+		                      }
 		                      // 获取输出流
 		                      out = new FileOutputStream(savePath + "\\" + fileName);
 		                      int len = 0;
 		                      byte[] buffer = new byte[1024];
-		                      while((len=in.read(buffer)) > 0) {
-		                          out.write(buffer, 0, len);
+		                      if(out1==null)
+		                      {
+			                      while((len=in.read(buffer)) > 0) {
+			                          out.write(buffer, 0, len);
+			                      }
+		                      }else    //在eclipse中写入图片
+		                      {
+			                      while((len=in.read(buffer)) > 0) {
+			                          out.write(buffer, 0, len);
+			                          out1.write(buffer, 0, len);
+			                      }
 		                      }
 		                  }
 		              }
@@ -106,6 +123,9 @@ public class FileUpload
 		              if (out != null) {
 		                  out.close();
 		             }
+		              if(out1 != null) {
+		            	  out1.close();
+		              }
 		         }		  
 		      }
 

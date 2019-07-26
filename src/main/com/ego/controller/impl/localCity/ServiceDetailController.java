@@ -29,9 +29,11 @@ public class ServiceDetailController extends ControllerSupport
 		 //服务所有图片路径
 		String imgs=(String)ins.get("aac210");
 		List<String> imgList=new ArrayList<>();
-		for(String img:imgs.split(";"))
-		{
-			imgList.add(img);
+		if(imgs!=null) {
+			for(String img:imgs.split(";"))
+			{
+				imgList.add(img);
+			}
 		}
 		this.saveAttribute("imgList", imgList);
 		//计算销量

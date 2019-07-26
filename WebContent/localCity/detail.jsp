@@ -22,7 +22,7 @@
 		<!--主体-->
 		<div class="shopInfo">
 			<div id="shopHeader">
-			   <img alt="${com.aac103 }" src="<%=path %>/images/3.jpg">
+			   <img alt="${com.aac103 }" src="<%=path %>/images/service/service_${com.aac102}.jpg" onerror="this.src='<%=path %>/images/3.jpg'">
 			   <span>${com.aac103 }</span>
 			   <p onclick="location.href='<%=path%>/localCity/companyDetail.html?id=${com.aac102 }'">公司主页</p>
 			</div>

@@ -53,6 +53,7 @@
 						<input type="hidden" name="gFrom" id="gFromNameInput">
 					</form>
 					<div class="clear"></div>
+					<%-- 
 					<li class="select-list">
 						<dl id="select1">
 							<dt class="am-badge am-round">品牌</dt>	
@@ -74,7 +75,7 @@
 								</c:forEach> 
 							</div>
 						</dl>
-					</li>
+					</li>--%>
 				</ul>
 				<div class="clear"></div>
                 </div>
@@ -96,8 +97,8 @@
 							<div class="i-pic limit">
 								<div id="imgsize">
 								<!-- 显示图片详细信息 -->
-							<a href="<%=path%>/localCity/detail.html?serviceId=${service.aac202}"><img id="service${i.count }" src="/ego/images/01_mid.jpg"/></a>
-							<%-- <a href="<%=path%>/intrServlet?goodId=${goods.id}"><img src="E:/tomcat/apache-tomcat-7.0.57-windows-x64/apache-tomcat-7.0.57/webapps/shoppingPro/images/01.jpg"/></a> --%> 
+							<a href="<%=path%>/localCity/detail.html?serviceId=${service.aac202}">
+							<img id="service${i.count }" onerror="this.src='/ego/images/01_mid.jpg'"/></a>
 								</div>										
 								<p class="title fl">【${service.aac203}】</p>
 								<p>服务类型:${service.aac104 }</p>
@@ -107,7 +108,7 @@
 									<strong>${service.aac206}</strong>
 								</p>
 								<p class="number fl">
-									累积订单<span>1110</span>
+									累积订单<span>10</span>
 								</p>
 							</div>
 						</li>
