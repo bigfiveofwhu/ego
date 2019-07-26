@@ -208,7 +208,7 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 		  		//逐一判断查询条件是否录入,拼接AND条件
 		  		if(this.isNotNull(aab202))
 		  		{
-		  			sql.append(" and x.aab202 like ?");
+		  			sql.append(" and y.aab202 like ?");
 		  			paramList.add("%"+aab202+"%");
 		  		}
 		  		if(this.isNotNull(isreply))
@@ -229,7 +229,7 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 		  			sql.append(" and y.aab102 = ?");
 		  			paramList.add(aab102);
 		  		}
-		  		//sql.append(" order by x.aab101");
+		  		sql.append(" order by x.aab402 desc");
 		  		return this.queryForList(sql.toString(), paramList.toArray());
 	}
 	
@@ -278,7 +278,7 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 		//还原页面查询条件
 		Object aaa803=this.get("qaaa803");       //售后状态 01--未处理 02--已处理
   		Object aab202=this.get("qaab202");     //售后商品
-  		Object aab102=this.get("aab102");//商品id
+  		Object aab102=this.get("aab102");//店铺id
   	
 
   		
@@ -299,12 +299,12 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
   		if(this.isNotNull(aaa803))
   		{
   			sql.append(" and x.aaa803 = ?");
-  			paramList.add("%"+aaa803+"%");
+  			paramList.add(aaa803);
   		}
   		if(this.isNotNull(aab202))
   		{
-  			sql.append(" and x.aab202 like ?");
-  			paramList.add(aab202);
+  			sql.append(" and y.aab202 like ?");
+  			paramList.add("%"+aab202+"%");
   		}
   		if(this.isNotNull(aab102))
   		{
@@ -312,8 +312,40 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
   			paramList.add(aab102);
   		}
   		
-  		//sql.append(" order by x.aab101");
+  		sql.append(" order by x.aaa802 desc");
   		return this.queryForList(sql.toString(), paramList.toArray());
+		
+	}
+	
+	/**
+	 * 售后处理:同意;拒绝
+	 * @return
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unused")
+	private boolean dealShouhou() throws Exception
+	{
+		String sql = "";
+		
+		if(this.get("type").equals("agree"))
+		{
+			sql = "update aa08 set aaa803 = '03',aaa808 = current_time,aaa809 = current_time where aaa802 = ? ";//同意
+			String sql1 = "update ab03 set aab303 = '08' where aab302 = ?  ";
+			if(	this.executeUpdate(sql, this.get("aaa802")) && 	this.executeUpdate(sql1, this.get("aab302")))
+			    return true;
+			else
+				return false;
+		}
+		else if(this.get("type").equals("disagree"))
+		{
+			sql = "update aa08 set aaa803 = '04',aaa808 = current_time,aaa809 = current_time where aaa802 = ? ";//拒绝
+			return this.executeUpdate(sql, this.get("aaa802"));
+		}
+		else
+			return false;
+		
+	
+
 		
 	}
 	
@@ -355,7 +387,7 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 		  		
 		  		//定义SQL主体
 		  		StringBuilder sql=new StringBuilder()
-		  				.append(" select x.aab302,x.aab304,x.aab312,x.aab306, ")
+		  				.append(" select x.aab302,x.aab304,x.aab312,x.aab306,x.aab203, ")
 		  				.append("        x.aab314,x.aab310,s.fvalue cnaab303 ")
 		  				.append(" from ab03 x,syscode s,ab02 a")
 		  				.append(" where s.fname='aab303' and s.fcode = x.aab303 ")
@@ -381,7 +413,7 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 		  			paramList.add(aab102);
 		  		}
 		  		
-		  		//sql.append(" order by x.aab101");
+		  		sql.append(" order by x.aab301 desc");
 		  		return this.queryForList(sql.toString(), paramList.toArray());
 	}
 	
@@ -398,7 +430,9 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
     			"04", //04--修改状态已发货
     			this.get("aab309")
     	};
-		return this.batchUpdate(sql, args, this.get("aab302"));
+    	//修改库存
+    	String sql1 = "update ab02 set aab206 = aab206 - 1 where aab203 = ?";
+		return (this.batchUpdate(sql, args, this.get("aab302")) && this.executeUpdate(sql1, this.get("aab203")));
 	}
 	
 	/******分割线  ********/

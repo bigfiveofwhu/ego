@@ -80,9 +80,11 @@
 						状态：
 						<select ng-model="search_domain.auditStatus" name="qaab303">
 							<option value="">全部</option>
+							<option value="01">待付款</option>
 							<option value="02">待发货</option>
 							<option value="04">已发货</option>
-							<option value="05">已完成</option>
+							<option value="05">待初评</option>
+							<option value="08">已退款</option>
 						</select>
 						订单号：<input name="qaab302" ng-model="search_domain.goodsName">
 						<input type="submit"  value="查询"class="btn btn-default"></input>
@@ -118,15 +120,19 @@
 						<td class="text-center">
 						<c:if test="${ins.cnaab303 == '待发货' }">
 								<button type="button" class="btn bg-olive btn-xs" disabled="disabled">删&nbsp除</button>
-								<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aab302}')">
+								<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aab302}','${ins.aab203}')">
 										发货
 								</button>
 					    </c:if>
-					    <c:if test="${ins.aab306 != null }">
+					    <c:if test="${ins.aab306 != null && ins.cnaab303 != '已退款'}">
 					    	<button type="button" class="btn bg-olive btn-xs" >删除</button>
 								<button type="button" class="btn bg-olive btn-xs" disabled="disabled">
 										已发货
 								</button>
+					    </c:if>
+					    
+					    <c:if test="${ins.cnaab303 == '已退款' }">
+					    	<button type="button" class="btn bg-olive btn-xs" >删除</button>
 					    </c:if>
 								
 							</td>
@@ -158,6 +164,7 @@
 			</select>
 			<br>
 			<input type="hidden" id="ddbh" name="aab302"/>
+			<input type="hidden" id="proidhhh" name="aab203"/>
     <input type="submit" class="btn" value="确定"></input>
     </form>
     </div>
@@ -184,10 +191,11 @@
 	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
     <script>
     /*点击弹出按钮*/
-    function popBox(v) {
+    function popBox(aab302,aab203) {
         var popBox = document.getElementById("popBox");
         var popLayer = document.getElementById("popLayer");
-        $("#ddbh").val(v);
+        $("#ddbh").val(aab302);
+        $("#proidhhh").val(aab203);
        // document.getElementById("replyText").value = v;
         popBox.style.display = "block";
         popLayer.style.display = "block";
