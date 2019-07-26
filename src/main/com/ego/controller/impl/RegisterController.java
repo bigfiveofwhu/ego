@@ -2,10 +2,13 @@ package com.ego.controller.impl;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.Aa01ServiceImpl;
+import com.ego.system.tools.Tools;
+import com.ego.system.utils.FileUpload;
 import com.ego.system.utils.SetDefaultImg;
 
 public class RegisterController extends ControllerSupport 
@@ -62,7 +65,8 @@ public class RegisterController extends ControllerSupport
 		//写入默认购物车数量
 		session.setAttribute("shopCartCount", "0");
 		//用户默认头像写入
-		SetDefaultImg.setDefImg(this.get("aaa102").toString(), "user");
+		HttpServletRequest request=(HttpServletRequest)this.get("request");
+		SetDefaultImg.setDefImg(this.get("aaa102").toString(), "user",Tools.getImgPath(request,"upload"));
 		return "home/home";
 	}
 }
