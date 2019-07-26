@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ResourceBundle;
 
+import com.ego.system.tools.Tools;
+
 public class SetDefaultImg
 {
 	private static String userPre="/WebContent/images/upload/user_";
@@ -21,6 +23,7 @@ public class SetDefaultImg
 		userPre=basepath+userPre;
 		shopPre=basepath+shopPre;
 		servicePre=basepath+servicePre;
+		defaultImg=basepath+defaultImg;
 	}
 	
 	public static String getBasePath(String roleName)
@@ -38,7 +41,7 @@ public class SetDefaultImg
 		return null;
 	}
 	
-	public static void setDefImg(String id,String roleName) throws Exception
+	public static void setDefImg(String id,String roleName,String savePath) throws Exception
 	{
 		String path="";
 		switch(roleName)
@@ -54,17 +57,21 @@ public class SetDefaultImg
 			break;
 		}
 		if(path=="") throw new Exception("请选择正确的角色名称");
-		path+=id+".jpg";
+		path=path+id+".jpg";
 		File file=new File(defaultImg);
 		FileInputStream inputStream=new FileInputStream(file);
 		File defImg=new File(path);
-		FileOutputStream output=new FileOutputStream(defImg);
+		FileOutputStream output=new FileOutputStream(defImg),
+				output1=new FileOutputStream(savePath+"\\"+path.substring(path.lastIndexOf("/")+1));
+		System.out.println(savePath+"\\"+path.substring(path.lastIndexOf("/")+1));
 		byte[] buff=new byte[1024];
 		int len;
 		while((len=inputStream.read(buff))!=-1)
 		{
 			output.write(buff, 0, len);
+			output1.write(buff, 0, len);
 		}
+		output1.close();
 		output.close();
 		inputStream.close();
 	}

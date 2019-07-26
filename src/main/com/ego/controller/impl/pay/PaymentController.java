@@ -17,9 +17,13 @@ public class PaymentController extends ControllerSupport{
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		HttpServletRequest request=(HttpServletRequest)dto.get("request");
+		//设置订单号
 		request.setAttribute("WIDout_trade_no", produceTradeNo());
-		request.setAttribute("WIDsubject","ego广告充值" );
+		//设置订单标题
+		request.setAttribute("WIDsubject","Ego Business" );
+		//设置交易额度
 		request.setAttribute("WIDtotal_amount",dto.get("WIDtotal_amount") );
+		//不用管
 		request.setAttribute("WIDbody", "向账户充值"+dto.get("WIDtotal_amount")+"元");
 		return BaseServlet.prefix+"aliPay/wappay/pay";
 	}

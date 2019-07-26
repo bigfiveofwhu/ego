@@ -23,14 +23,11 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import sun.misc.BASE64Decoder;
 
 
-
 public class FileUpload 
 {
    
 	public static void writeFile(String fileName,String savePath,HttpServletRequest request) throws ServletException, IOException 
 	{
-	
-
                    InputStream in = null;
 		           OutputStream out = null;
                    FileOutputStream out1=null;
@@ -234,12 +231,19 @@ public class FileUpload
 			fileDir.setWritable(true);
 			fileDir.mkdirs();
 		}
+		
+		
         //文件名称
 
 		String uploadFileName = UUID.randomUUID().toString() + "."+ext;
 		File targetFile = new File(path, uploadFileName);
 		BASE64Decoder decoder = new BASE64Decoder();
-		try(OutputStream out = new FileOutputStream(targetFile)){
+		//eclipse图片路径
+		 String ecliPath=SetDefaultImg.getBasePath("upload");
+		try(OutputStream out = new FileOutputStream(targetFile);
+			OutputStream out1=new FileOutputStream(ecliPath.substring(0, ecliPath.lastIndexOf("/")+1)+uploadFileName);
+				){
+			System.out.println(ecliPath.substring(0, ecliPath.lastIndexOf("\\")+1)+uploadFileName);
 			byte[] b = decoder.decodeBuffer(BASE64str);
 			for (int i = 0; i <b.length ; i++) {
 				if (b[i] <0) {
@@ -248,12 +252,13 @@ public class FileUpload
 			}
 			out.write(b);
 			out.flush();
+			out1.write(b);
+			out.flush();
 			return  uploadFileName;
 		}catch (Exception e){
 			e.printStackTrace();
 			return null;
 		}
-
     }
 	
 	/**

@@ -6,8 +6,8 @@
 <%@page import="com.alipay.api.DefaultAlipayClient"%>
 <%@page import="com.alipay.api.request.AlipayDataDataserviceBillDownloadurlQueryRequest" %>
 <%@page import="com.alipay.api.response.AlipayDataDataserviceBillDownloadurlQueryResponse" %>
-<% 
-/* *
+<%
+	/* *
  * 功能：支付宝手机网站alipay.data.dataservice.bill.downloadurl.query (查询对账单下载地址)接口调试入口页面
  * 版本：2.0
  * 修改日期：2016-11-01
@@ -15,9 +15,9 @@
  * 以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。
  请确保项目文件有可写权限，不然打印不了日志。
  */
- %>
+%>
 <%
- if(request.getParameter("WIDbill_type")!=null&&request.getParameter("WIDbill_date")!=null){
+	if(request.getParameter("WIDbill_type")!=null&&request.getParameter("WIDbill_date")!=null){
 	// 账单类型，商户通过接口或商户经开放平台授权后其所属服务商通过接口可以获取以下账单类型：trade、signcustomer；
 	// trade指商户基于支付宝交易收单的业务账单；signcustomer是指基于商户支付宝余额收入及支出等资金变动的帐务账单；
 	String bill_type = new String(request.getParameter("WIDbill_type").getBytes("ISO-8859-1"),"UTF-8");
