@@ -1,9 +1,9 @@
-ï»¿package com.alipay.config;
+package com.alipay.config;
 
 public class AlipayConfig {
-	// å•†æˆ·appid
+	// ÉÌ»§appid
 	public static String APPID = "2016100200644692";
-	// ç§é’¥ pkcs8æ ¼å¼çš„
+	// Ë½Ô¿ pkcs8¸ñÊ½µÄ
 	public static String RSA_PRIVATE_KEY = "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCkwUDX1qOpiGwT" + 
 			"F1bgtrLLaXvEEvQz+eptTLJQePrtBMI2OfA1WvexPEI52E+EJlAKz4SicTygPVjA" + 
 			"6LBVhsLNCJn7lksiAx7qEoQ4cxAcEXCb8BxMl/7saDSaKB9IOwdOubRDVxGHTgtK" + 
@@ -11,7 +11,7 @@ public class AlipayConfig {
 			"EtUHgYQRbQI5+q5ixSO1Mz7BbxZCDX+3pYer3C2gjCrbxm7K5At71+APmVtwiPjx" + 
 			"dXLsstWUBclSu5rwzw6qCJo2qgfAceMpvrN8Dzg5G0CgAxhekrChmtJCKi28ftdy" + 
 			"bvFfXXZrAgMBAAECggEAJUGeTDC5acjzx41rk/08iUsdNcWje210WasSV6hD9f0x" + 
-			"fdm0PByKDoY146bKtHOFfixXLfS1ZPb6bwUveueyfXMIfyAJdXOHNh9hzvIWHoLD" + 
+			"fdm0PByKDoY146bKtHOFfixXLfS1ZPb6bwUveueyfXMIfyAJdXOHNh9hzwvIWHoLD" +
 			"GEA/5gIpH4ShAIs6J7dRe7f6z4+M4y/+1a10aWkifBy5Pnaz7oT1za/v3OSZTC/5" + 
 			"szStanh/bba/TZHOD+FT4++wjV1sfyHzkuQ9PAGv/rYlb40F9zBhjE+17B8WK6W5" + 
 			"S909lh5w2K3kHSpVHzwuTWBQ326hqthTybwQRUL+u9feiOBTVi7ozv7rN4XDhpYK" + 
@@ -30,21 +30,21 @@ public class AlipayConfig {
 			"HAntS3Rgx0zNWliNrqq1VYmwcW+gs+9Mm16oh0A51068s0kfBAxKTzY6CL3ipI7h" + 
 			"gdYn8wjFBbyt0UXPrRG/jZ2WshCeDqDTqYsS6+ePfbelsM5iH16nUbKDtHzKdFHy" + 
 			"+HSgLVrBi69IDUxMNqDrlEk=";
-	// æœåŠ¡å™¨å¼‚æ­¥é€šçŸ¥é¡µé¢è·¯å¾„ éœ€http://æˆ–è€…https://æ ¼å¼çš„å®Œæ•´è·¯å¾„ï¼Œä¸èƒ½åŠ ?id=123è¿™ç±»è‡ªå®šä¹‰å‚æ•°ï¼Œå¿…é¡»å¤–ç½‘å¯ä»¥æ­£å¸¸è®¿é—®
+	// ·şÎñÆ÷Òì²½Í¨ÖªÒ³ÃæÂ·¾¶ Ğèhttp://»òÕßhttps://¸ñÊ½µÄÍêÕûÂ·¾¶£¬²»ÄÜ¼Ó?id=123ÕâÀà×Ô¶¨Òå²ÎÊı£¬±ØĞëÍâÍø¿ÉÒÔÕı³£·ÃÎÊ
 	public static String notify_url = "http://localhost:8080/alipay.trade.wap.pay-JAVA-UTF-8/notify_url.jsp";
-	// é¡µé¢è·³è½¬åŒæ­¥é€šçŸ¥é¡µé¢è·¯å¾„ éœ€http://æˆ–è€…https://æ ¼å¼çš„å®Œæ•´è·¯å¾„ï¼Œä¸èƒ½åŠ ?id=123è¿™ç±»è‡ªå®šä¹‰å‚æ•°ï¼Œå¿…é¡»å¤–ç½‘å¯ä»¥æ­£å¸¸è®¿é—® å•†æˆ·å¯ä»¥è‡ªå®šä¹‰åŒæ­¥è·³è½¬åœ°å€
+	// Ò³ÃæÌø×ªÍ¬²½Í¨ÖªÒ³ÃæÂ·¾¶ Ğèhttp://»òÕßhttps://¸ñÊ½µÄÍêÕûÂ·¾¶£¬²»ÄÜ¼Ó?id=123ÕâÀà×Ô¶¨Òå²ÎÊı£¬±ØĞëÍâÍø¿ÉÒÔÕı³£·ÃÎÊ ÉÌ»§¿ÉÒÔ×Ô¶¨ÒåÍ¬²½Ìø×ªµØÖ·
 	public static String return_url = "http://localhost:8080/ego/payFinish.html";
-	// è¯·æ±‚ç½‘å…³åœ°å€
+	// ÇëÇóÍø¹ØµØÖ·
 	 
 	public static String URL = "https://openapi.alipaydev.com/gateway.do";
 	//public static String URL = "https://openapi.alipay.com/gateway.do";
-	// ç¼–ç 
+	// ±àÂë
 	public static String CHARSET = "UTF-8";
-	// è¿”å›æ ¼å¼
+	// ·µ»Ø¸ñÊ½
 	public static String FORMAT = "json";
-	// æ”¯ä»˜å®å…¬é’¥
+	// Ö§¸¶±¦¹«Ô¿
 	public static String ALIPAY_PUBLIC_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjrEVFMOSiNJXaRNKicQuQdsREraftDA9Tua3WNZwcpeXeh8Wrt+V9JilLqSa7N7sVqwpvv8zWChgXhX/A96hEg97Oxe6GKUmzaZRNh0cZZ88vpkn5tlgL4mH/dhSr3Ip00kvM4rHq9PwuT4k7z1DpZAf1eghK8Q5BgxL88d0X07m9X96Ijd0yMkXArzD7jg+noqfbztEKoH3kPMRJC2w4ByVdweWUT2PwrlATpZZtYLmtDvUKG/sOkNAIKEMg3Rut1oKWpjyYanzDgS7Cg3awr1KPTl9rHCazk15aNYowmYtVabKwbGVToCAGK+qQ1gT3ELhkGnf3+h53fukNqRH+wIDAQAB";
-	// æ—¥å¿—è®°å½•ç›®å½•
+	// ÈÕÖ¾¼ÇÂ¼Ä¿Â¼
 	public static String log_path = "/log";
 	// RSA2
 	public static String SIGNTYPE = "RSA2";
