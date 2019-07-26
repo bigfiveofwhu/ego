@@ -23,16 +23,14 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import sun.misc.BASE64Decoder;
 
 
-
 public class FileUpload 
 {
    
 	public static void writeFile(String fileName,String savePath,HttpServletRequest request) throws ServletException, IOException 
 	{
-	
-
                    InputStream in = null;
 		           OutputStream out = null;
+                   FileOutputStream out1=null;
 		         
 		          try {
 		              // 使用默认配置创建解析器工厂
@@ -87,12 +85,28 @@ public class FileUpload
 		                      }
 		                     
 		                      System.out.println(savePathDir.getAbsolutePath());
+		                      //在eclipse中输出图片
+		                      String ecliPath=SetDefaultImg.getBasePath(savePath.substring(savePath.lastIndexOf("\\")+1));
+		                      if(ecliPath!=null)
+		                      {
+			                      out1 = new FileOutputStream(ecliPath+fileName.substring(fileName.indexOf("_")+1));
+			                      System.out.println(ecliPath+"\\"+fileName.substring(fileName.indexOf("_")+1));
+		                      }
 		                      // 获取输出流
 		                      out = new FileOutputStream(savePath + "\\" + fileName);
 		                      int len = 0;
 		                      byte[] buffer = new byte[1024];
-		                      while((len=in.read(buffer)) > 0) {
-		                          out.write(buffer, 0, len);
+		                      if(out1==null)
+		                      {
+			                      while((len=in.read(buffer)) > 0) {
+			                          out.write(buffer, 0, len);
+			                      }
+		                      }else    //在eclipse中写入图片
+		                      {
+			                      while((len=in.read(buffer)) > 0) {
+			                          out.write(buffer, 0, len);
+			                          out1.write(buffer, 0, len);
+			                      }
 		                      }
 		                  }
 		              }
@@ -106,6 +120,9 @@ public class FileUpload
 		              if (out != null) {
 		                  out.close();
 		             }
+		              if(out1 != null) {
+		            	  out1.close();
+		              }
 		         }		  
 		      }
 
@@ -214,12 +231,19 @@ public class FileUpload
 			fileDir.setWritable(true);
 			fileDir.mkdirs();
 		}
+		
+		
         //文件名称
 
 		String uploadFileName = UUID.randomUUID().toString() + "."+ext;
 		File targetFile = new File(path, uploadFileName);
 		BASE64Decoder decoder = new BASE64Decoder();
-		try(OutputStream out = new FileOutputStream(targetFile)){
+		//eclipse图片路径
+		 String ecliPath=SetDefaultImg.getBasePath("upload");
+		try(OutputStream out = new FileOutputStream(targetFile);
+			OutputStream out1=new FileOutputStream(ecliPath.substring(0, ecliPath.lastIndexOf("/")+1)+uploadFileName);
+				){
+			System.out.println(ecliPath.substring(0, ecliPath.lastIndexOf("\\")+1)+uploadFileName);
 			byte[] b = decoder.decodeBuffer(BASE64str);
 			for (int i = 0; i <b.length ; i++) {
 				if (b[i] <0) {
@@ -228,12 +252,13 @@ public class FileUpload
 			}
 			out.write(b);
 			out.flush();
+			out1.write(b);
+			out.flush();
 			return  uploadFileName;
 		}catch (Exception e){
 			e.printStackTrace();
 			return null;
 		}
-
     }
 	
 	/**

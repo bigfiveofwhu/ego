@@ -275,7 +275,7 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 		Map<String,String> map = this.queryForMap(sql, this.get("aab203"));
 		String path = (String)this.get("imgPath");
 		String sql1;
-		if(map.get("aab208") == null)
+		if(map.get("aab208") == null||map.get("aab208").equals(""))
 			sql1="update ab02 set aab208='"+path+"' where aab203 = ?";
 		else
 		{

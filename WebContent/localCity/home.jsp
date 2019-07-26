@@ -203,7 +203,8 @@
 											"		<div class='icon-sale one'></div>"+
 											"		<h4>”≈ª›</h4>"+
 											"		<div class='activityMain'>"+
-											"			<a href='/ego/localCity/companyDetail.html?id="+service.aac102+"'><img src='/ego/images/service/"+service.aac102+".jpg'></img></a>"+
+											"			<a href='${path}/localCity/companyDetail.html?id="+service.aac102+"'>"+
+											"           <img src='${path}/images/service/service_"+service.aac102+".jpg' onerror='this.src=\"${path}/images/service/"+service.aac102+".jpg\"'></img></a>"+
 											"		</div>"+
 											"		<div class='info'>"+
 											"			<h3>"+service.aac103+"</h3>"+
@@ -243,6 +244,7 @@
 				});
 				</script>
 				<div class="clear "></div>
+				<%--
 				<div id="f1">
 					<!-- ≤¬ƒ„œ≤ª∂ -->
 					<div class="am-container ">
@@ -295,23 +297,9 @@
 								</a>
 							</div>
 						</c:forEach>
-						<%--
-						<c:forEach items="${productList}" var="item2" varStatus="">
-							<div class="am-u-sm-4 text-four">
-								<a href="<%=path %>/shop/detail.html?productId=${item2.aab203}">
-								    <img src="${productImg }" />
-									<div class="outer-con ">
-										<div class="title ">${item2.aab202 }</div>
-										<div class="sub-title ">&yen;${item2.aab205 }</div>
-										<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
-									</div>
-								</a>
-							</div>
-						</c:forEach>
-						 --%>
 					</div>
 					<div class="clear "></div>
-				</div>
+				</div>--%>
 				<%@include file="/footer.jsp" %>
 			</div>
 		</div>

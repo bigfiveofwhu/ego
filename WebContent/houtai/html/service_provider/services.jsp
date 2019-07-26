@@ -322,13 +322,13 @@
                 <div class="modal-body">
                     <ul class="nav nav-tabs">
                         <li class="active">
-                            <a href="#proimghhh" data-toggle="tab">服务图片</a>
+                            <a href="#serimghhh" data-toggle="tab">服务图片</a>
                         </li>
                     </ul>
 
                     <!-- 选项卡开始 -->
                     <div id="myTabContent" class="tab-content">
-                        <div class="tab-pane active in" id="proimghhh">
+                        <div class="tab-pane active in" id="serimghhh">
                             <br>
                           <!-- 服务图片 -->
                         
@@ -442,15 +442,17 @@
      			"type":type
      		},
      		success:function(res,status){
-     			$("#proimghhh").html("");
-     			var prodiv = document.getElementById("proimghhh");
+     			$("#serimghhh").html("");
+     			var prodiv = document.getElementById("serimghhh");
      			for(var i =0;i<res.proimgUrl.length;i++)
  	    		{
- 	    			var div = document.createElement('div');
- 	    			var imgurl = '${path}' + res.proimgUrl[i];
- 	    			var result = '<img style="width:150px;heigth:150px;float:left;margin-left:30px"  src="' + imgurl + '" />';
- 	    			div.innerHTML=result;
- 	    			prodiv.appendChild(div);
+     				if(res.proimgUrl[i] == "")
+    					break;
+	    			var div = document.createElement('div');
+	    			var imgurl = '${path}' + res.proimgUrl[i];
+	    			var result = '<img  style="width:150px;heigth:150px;float:left;margin-left:30px"  src="' + imgurl + '" />';
+	    			div.innerHTML=result;
+	    			prodiv.appendChild(div);
  	    		}
      			
      		},
@@ -471,14 +473,7 @@
  		//var oSubmit2 = document.getElementById("submit2");
  		var dateli, dateinput;
  		function randomString(len) {
- 			len = len || 32;　　
- 			var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/ 　　
- 			var maxPos = $chars.length;　　
- 			var pwd = '';　　
- 			for(i = 0; i < len; i++) {　　　　
- 				pwd += $chars.charAt(Math.floor(Math.random() * maxPos));　　
- 			}
- 			return pwd;
+ 			return "";
  		}
  		console.log()
  		if(typeof FileReader === 'undefined') {
@@ -491,7 +486,6 @@
  		function readFile() {
  			fd = new FormData();
  			var iLen = this.files.length;
- 			alert(iLen);
  			var index = 0;
  			var currentReViewImgIndex = 0;
  			for(var i = 0; i < iLen; i++) {
@@ -513,7 +507,6 @@
  					for(var j = 0; j < dataArr.length; j++) {
  						currentReViewImgIndex = j
  					}
- 					alert(this.result);
  					result = '<div class="showdiv"><img class="left" src="${path}/images/Arrow_left.svg" /><img class="center" src="${path}/images/delete.svg" /><img class="right" src="${path}/images/Arrow_right.svg" /></div><img id="img' +currentReViewImgIndex+randomString(1)+randomString(2) +randomString(5) + '" class="showimg" src="' + this.result + '" />';
  					var li = document.createElement('li');
  					li.innerHTML = result;
@@ -580,14 +573,13 @@
  				}(i);
 
  			}
- 		}
+ 		 }
  		showui.addEventListener("click", function() {
  			onclickimg();
  		}, true)
 
  		function send(type) {
- 			for(var j = 0; j < dataArr.length; j++) {
- 				dataArr[j].name = "product_"+dataArr[j].name
+ 			for(var j = dataArr.length - 1; j >= 0; j--) {
  				$.ajax({
  					url:"${path}/mulImgUpload.ajax",
  					type:"post",
@@ -601,9 +593,7 @@
  					success:function(res,status){
  						if(res.tag == 1)
  						{
- 							dataArr = [];
- 							$("ul#showui").html("");
- 							alert("上传图片成功");
+ 							
  						}
                        
  					},
@@ -613,6 +603,9 @@
  				});
  				console.log(dataArr[j].name);
  			}
+ 			    dataArr = [];
+				$("ul#showui").html("");
+				alert("上传图片成功");
  		}
 
  		oSubmit1.onclick = function() {
