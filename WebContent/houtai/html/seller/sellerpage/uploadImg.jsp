@@ -30,8 +30,11 @@
 					<!--tab头-->
 					<ul class="nav nav-tabs">
 
-						<li class="active">
-							<a href="#home" data-toggle="tab">上传头像</a>
+						<li class="active" index_="1">
+							<a href="#home" data-toggle="tab" >上传头像</a>
+						</li>
+						<li class="" index_="2">
+							<a href="#home" data-toggle="tab" >更改主页图片</a>
 						</li>
 					</ul>
 					<!--tab头/-->
@@ -49,6 +52,20 @@
 									<br>
 									<%--
 									<button class="am-btn" onclick="">更换头像</button> --%>
+								</div>
+								</form>
+							</div>
+						</div>
+						<!--表单内容-->
+						<div class="tab-pane" id="homeImg">
+							<div class="row data-type">
+								<form enctype="multipart/form-data" id="formHomeImg">
+								<div class="filePic">
+									<input id="img_pop_file" style="width: 501px;border: 1px solid;" type="file"  class="inputPic" onchange="uploadFileImg(event)" name="fileTrans" ref="file" value="" allowexts="jpeg,jpg" accept="image/*">
+									<img id="img_preview" style="width: 100%;" class="am-circle am-img-thumbnail" src="<%=basePath%>/images/shop/home_${aab102}.jpg" alt="" />
+									<br>
+									<br>
+									<button class="am-btn" onclick="location.href='${path}/shop/home.html?shopId=${aab102}'">查看店铺主页</button>
 								</div>
 								</form>
 							</div>
@@ -100,6 +117,42 @@
     	 });
 
     }
+    function uploadFileImg(event){
+    	 var that = this;
+         const file = document.getElementById('img_pop_file');
+         const fileObj = file.files[0];
+         const windowURL = window.URL || window.webkitURL;
+         const img = document.getElementById('img_preview');
+         if(file && fileObj) {
+             const dataURl = windowURL.createObjectURL(fileObj);
+             console.log(dataURl);
+             img.setAttribute('src',dataURl);
+         }
+         
+        // var ftype = "user_${user.aaa102}";
+         var formdata = new FormData();
+         formdata.append("file",fileObj);
+         
+         $.ajax({
+     		url:"<%=basePath%>/fileUpload.ajax?type=shop&id=${aab102}&remark=home",
+     		type:"post",
+     		dataType:"json",
+     		processData : false,
+     		contentType : false,
+     		timeout : 20000,
+     		data : formdata,
+     		success:function(res,status){
+     			if(res.status=='200'){
+         			promptGlobal("修改主页图片成功");
+     			}else{
+     				promptGlobal("修改主页图片失败");
+     			}
+     		},
+     		error:function(res,status){
+     			promptGlobal("修改主页图片失败");
+     		}
+     	 });
+    }
     </script>
 	<script src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
 	<script src="<%=path%>/houtai/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -109,5 +162,18 @@
 	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseController.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/SellerService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/controller/SellerLoginController.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("ul.nav-tabs li").click(function(){
+				var index=$(this).attr("index_");
+				$(this).addClass("active").siblings(".active").removeClass("active");
+				if(index=='1'){
+					$("#home").addClass("active").siblings(".active").removeClass("active");
+				}else if(index=='2'){
+					$("#homeImg").addClass("active").siblings(".active").removeClass("active");
+				}
+			});
+		});
+	</script>
 
 </html>

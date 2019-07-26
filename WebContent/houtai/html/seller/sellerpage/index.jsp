@@ -109,7 +109,7 @@
 								</li>
 								<li id="admin-login">
 									<a href="<%=path %>/houtai/html/seller/sellerpage/uploadImg.jsp" target="iframe">
-										<i class="fa fa-circle-o"></i> 上传头像
+										<i class="fa fa-circle-o"></i> 更改图片
 									</a>
 								</li>
 							</ul>
