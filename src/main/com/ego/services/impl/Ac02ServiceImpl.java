@@ -84,13 +84,14 @@ public class Ac02ServiceImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql=new StringBuilder()
 				.append("select x.aac202,x.aac203,z.fvalue aac104,a.fvalue aac105,x.aac206,aac210")
-				.append("  from ac02 x, T_Area y,syscode z, syscode a, ac01 b")
+				.append("  from ac02 x, T_Area y,syscode z, syscode a, ac01 b,T_Area c")
 				.append(" where (x.aac205=a.fcode and a.fname='aac205')")
 				.append("   and (x.aac204=z.fcode and z.fname='aac204')")
 				.append("   and (x.aac203 like ?)")    //关键字对服务名称进行模糊匹配
 				.append("	and (x.aac208='02' and x.aac102=b.aac102)")   //服务  02 --审核通过
 				.append("   and (b.aac108='02')")        //服务商  02 --通过审核
-				.append("	and (b.aac105=y.areaId)")
+				.append("	and (b.aac105=c.areaId)")
+				.append("   and  c.`level`='3' and c.parentId=y.areaId ")
 				.append("   and (y.`level`='2' and y.areaName like ?)")   //对地理位置进行模糊匹配
 				;
 		Object args[]= {
@@ -109,12 +110,13 @@ public class Ac02ServiceImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql=new StringBuilder()
 				.append("select x.aac202,x.aac203,z.fvalue aac104,a.fvalue aac105,x.aac206,aac210")
-				.append("  from ac02 x, T_Area y,syscode z, syscode a, ac01 b")
+				.append("  from ac02 x, T_Area y,syscode z, syscode a, ac01 b,T_Area c")
 				.append(" where (x.aac205=a.fcode and a.fname='aac205')")
 				.append("   and (x.aac204=z.fcode and z.fname='aac204')")
 				.append("	and (x.aac208='02' and x.aac102=b.aac102)")   //服务  02 --审核通过
 				.append("   and (b.aac108='02' and b.aac106=?)")     //根据类别对服务商进行筛选   02 --审核通过
-				.append("	and (b.aac105=y.areaId)")
+				.append("	and (b.aac105=c.areaId)")
+				.append("   and  c.`level`='3' and c.parentId=y.areaId ")
 				.append("   and (y.`level`='2' and y.areaName like ?)")   //对地理位置进行模糊匹配
 				;
 		Object args[]= {
