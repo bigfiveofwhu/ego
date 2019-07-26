@@ -259,13 +259,7 @@
 			<!--热门活动 -->
 
 			<div class="am-container activity ">
-				<div class="shopTitle ">
-					<h4>活动</h4>
-					<h3>每期活动 优惠享不停</h3>
-					<span class="more "> 
-						<a href="# ">全部活动<i class="am-icon-angle-right" style="padding-left:10px ;"></i></a> 
-					</span>
-				</div>
+				
 				<div class="am-g am-g-fixed ">
 					<c:forEach items="${activityList}" var="item" varStatus="">
 						<div class="am-u-sm-3 ">
