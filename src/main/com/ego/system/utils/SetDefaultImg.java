@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ResourceBundle;
 
+import com.ego.system.tools.Tools;
+
 public class SetDefaultImg
 {
 	private static String userPre="/WebContent/images/upload/user_";
@@ -38,7 +40,7 @@ public class SetDefaultImg
 		return null;
 	}
 	
-	public static void setDefImg(String id,String roleName) throws Exception
+	public static void setDefImg(String id,String roleName,String savaPath) throws Exception
 	{
 		String path="";
 		switch(roleName)
@@ -58,7 +60,8 @@ public class SetDefaultImg
 		File file=new File(defaultImg);
 		FileInputStream inputStream=new FileInputStream(file);
 		File defImg=new File(path);
-		FileOutputStream output=new FileOutputStream(defImg);
+		FileOutputStream output=new FileOutputStream(defImg),
+				output1=new FileOutputStream(savaPath);
 		byte[] buff=new byte[1024];
 		int len;
 		while((len=inputStream.read(buff))!=-1)

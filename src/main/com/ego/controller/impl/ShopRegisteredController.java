@@ -1,10 +1,13 @@
 package com.ego.controller.impl;
 
 import java.util.ResourceBundle;
+import javax.servlet.http.HttpServletRequest;
+
 
 import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.Ab01ServiceImpl;
 import com.ego.services.impl.Ad08ServicesImpl;
+import com.ego.system.tools.Tools;
 import com.ego.system.utils.SetDefaultImg;
 
 public class ShopRegisteredController extends ControllerSupport 
@@ -38,7 +41,8 @@ public class ShopRegisteredController extends ControllerSupport
 		this.getServices().update("insertAd08");
 		this.getSession().setAttribute("aab102", this.get("aab102"));  //店铺id
 		//店铺默认头像写入
-		SetDefaultImg.setDefImg(this.get("aab102").toString(), "shop");
+		HttpServletRequest request=(HttpServletRequest)this.get("request");
+		SetDefaultImg.setDefImg(this.get("aab102").toString(), "shop",Tools.getImgPath(request,"shop"));
 		this.saveAttribute("msg", "提交审核成功!请耐心等待,后续会以邮件通知!");
 		return "home/home";
 		//return "WEB-INF/views/shop/register";
