@@ -322,33 +322,33 @@
 							<div class="word">
 								<a class="outer" href="/ego/search.html?type=1294">
 								    <span class="inner">
-								        <b class="text">游戏周边</b> 
-								    </span> 
+								        <b class="text">游戏周边</b>
+								    </span>
 								</a>
 								<a class="outer" href="/ego/search.html?type=1294">
 								    <span class="inner">
-								        <b class="text">游戏周边</b> 
-								    </span> 
+								        <b class="text">游戏周边</b>
+								    </span>
 								</a>
 								<a class="outer" href="/ego/search.html?type=1294">
 								    <span class="inner">
-								        <b class="text">游戏周边</b> 
-								    </span> 
+								        <b class="text">游戏周边</b>
+								    </span>
 								</a>
 								<a class="outer" href="/ego/search.html?type=1294">
 								    <span class="inner">
-								        <b class="text">游戏周边</b> 
-								    </span> 
+								        <b class="text">游戏周边</b>
+								    </span>
 								</a>
 								<a class="outer" href="/ego/search.html?type=1294">
 								    <span class="inner">
-								        <b class="text">游戏周边</b> 
-								    </span> 
+								        <b class="text">游戏周边</b>
+								    </span>
 								</a>
 								<a class="outer" href="/ego/search.html?type=1294">
 								    <span class="inner">
-								        <b class="text">游戏周边</b> 
-								    </span> 
+								        <b class="text">游戏周边</b>
+								    </span>
 								</a>
 							</div>
 							<a href="# ">
@@ -396,10 +396,10 @@
 						<div class="am-u-sm-4 text-four list">
 							<div class="word">
 							<c:forEach begin="0" end="5">
-								<a class="outer" href="#">
+								<a class="outer" href="/ego/search.html?type=611">
 								    <span class="inner">
-								        <b class="text">核桃</b> 
-								    </span> 
+								        <b class="text">美食</b>
+								    </span>
 								</a>
 							</c:forEach>
 							</div>
@@ -458,10 +458,10 @@
 						<div class="am-u-sm-4 text-four list">
 							<div class="word">
 							<c:forEach begin="0" end="5">
-								<a class="outer" href="#">
+								<a class="outer" href="/ego/search.html?type=1294">
 								    <span class="inner">
-								        <b class="text">水蜜桃</b> 
-								    </span> 
+								        <b class="text">英雄联盟</b>
+								    </span>
 								</a>
 							</c:forEach>
 							</div>
