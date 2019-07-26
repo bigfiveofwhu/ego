@@ -8,6 +8,8 @@ public class CodeVerify
 	public static boolean verify(HttpSession session,String code)
 	{
 		 String oldCode=(String)session.getAttribute("regVerCode");
+		 if(session.getAttribute("regVerCodeTime")==null)
+		 	return false;
 		 long time=(long)session.getAttribute("regVerCodeTime");
 		 long internal=(long)session.getAttribute("internel");
 		 long now=new Date().getTime();

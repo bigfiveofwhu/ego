@@ -109,7 +109,7 @@
 								</li>
 								<li id="admin-login">
 									<a href="<%=path %>/houtai/html/seller/sellerpage/uploadImg.jsp" target="iframe">
-										<i class="fa fa-circle-o"></i> 上传头像
+										<i class="fa fa-circle-o"></i> 更改图片
 									</a>
 								</li>
 							</ul>
@@ -311,4 +311,12 @@
 	<script type="text/javascript" src="<%=path %>/houtai/js/service/SellerService.js"></script>
 	<script type="text/javascript" src="<%=path %>/houtai/js/common/common.js"></script>
 	<%@include file="/autoImgRefresh.jsp" %>
+	<script type="text/javascript">
+    window.addEventListener('message',function(e){
+        let data = e.data;
+        if(data=='refresh'){
+        	autoRefresh();
+        }
+	},false); 
+	</script>
 </html>

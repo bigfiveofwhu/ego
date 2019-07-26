@@ -21,8 +21,10 @@ public class FileUploadController extends AjaxControllerSupport {
 		 HttpServletRequest request =(HttpServletRequest) this.dto.get("request");
 		 String type = (String) this.dto.get("type");
 		 String id = (String)this.dto.get("id");
+		 String remark=(String)this.get("remark");
 		//文件名命名规则:类型+id
 		 String fileName = type+"_"+id;
+		 if(remark!=null) fileName = remark+"_"+id;
 		 String folder="";
 		 switch(type)
 		 {
