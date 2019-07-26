@@ -90,6 +90,7 @@
     		success:function(res,status){
     			if(res.status=='200'){
         			promptGlobal("修改默认头像成功");
+        			window.parent.postMessage("refresh",'*');   //向父页面发消息
     			}else{
     				promptGlobal("修改默认头像失败");
     			}

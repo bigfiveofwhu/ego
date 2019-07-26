@@ -3,18 +3,44 @@ package com.ego.system.utils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.ResourceBundle;
+
+import com.ego.system.tools.Tools;
 
 public class SetDefaultImg
 {
-	private static String userPre="./WebContent/images/upload/user_";
+	private static String userPre="/WebContent/images/upload/user_";
 	
-	private static String shopPre="./WebContent/images/shop/shop_";
+	private static String shopPre="/WebContent/images/shop/shop_";
 	
-	private static String servicePre="./WebContent/images/service/service_";
+	private static String servicePre="/WebContent/images/service/service_";
 	
-	private static String defaultImg="./WebContent/images/no-img_mid_.jpg";
+	private static String defaultImg="/WebContent/images/no-img_mid_.jpg";
 	
-	public static void setDefImg(String id,String roleName) throws Exception
+	static {
+		ResourceBundle mapping = ResourceBundle.getBundle("urlMapping");
+		String basepath=mapping.getString("basePath");
+		userPre=basepath+userPre;
+		shopPre=basepath+shopPre;
+		servicePre=basepath+servicePre;
+	}
+	
+	public static String getBasePath(String roleName)
+	{
+		switch(roleName)
+		{
+		case "user":
+		case "upload":
+			return userPre;
+		case "shop":
+			return shopPre;
+		case "service":
+			return servicePre;
+		}
+		return null;
+	}
+	
+	public static void setDefImg(String id,String roleName,String savaPath) throws Exception
 	{
 		String path="";
 		switch(roleName)
@@ -30,11 +56,12 @@ public class SetDefaultImg
 			break;
 		}
 		if(path=="") throw new Exception("请选择正确的角色名称");
-		path+=id+".jpg";
+		path=path+id+".jpg";
 		File file=new File(defaultImg);
 		FileInputStream inputStream=new FileInputStream(file);
 		File defImg=new File(path);
-		FileOutputStream output=new FileOutputStream(defImg);
+		FileOutputStream output=new FileOutputStream(defImg),
+				output1=new FileOutputStream(savaPath);
 		byte[] buff=new byte[1024];
 		int len;
 		while((len=inputStream.read(buff))!=-1)

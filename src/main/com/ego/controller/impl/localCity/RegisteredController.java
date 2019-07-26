@@ -1,11 +1,15 @@
 package com.ego.controller.impl.localCity;
 
 import java.util.Map;
+import java.util.ResourceBundle;
+
+import javax.servlet.http.HttpServletRequest;
 
 import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.Ac01ServiceImpl;
 import com.ego.services.impl.Ad08ServicesImpl;
 import com.ego.services.impl.T_AreaService;
+import com.ego.system.tools.Tools;
 import com.ego.system.utils.SetDefaultImg;
 
 public class RegisteredController extends ControllerSupport
@@ -48,7 +52,8 @@ public class RegisteredController extends ControllerSupport
 		this.getServices().update("insertAd08");
 		this.getSession().setAttribute("aac102", this.get("aac102"));  //已放入dto的服务商id
 		//服务商默认头像设置
-		SetDefaultImg.setDefImg(this.get("aac102").toString(), "service");
+		HttpServletRequest request=(HttpServletRequest)this.get("request");
+		SetDefaultImg.setDefImg(this.get("aac102").toString(), "service",Tools.getImgPath(request,"service"));
 		return "localCity/home";
 	}
 

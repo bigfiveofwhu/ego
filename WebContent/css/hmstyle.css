@@ -529,7 +529,12 @@ top: 11px;text-align: right;}
 .floodThree .text-five img,.floodThree .text-four img{position: absolute;margin:0px 0px;width: 120px;top: 10px;right: 50%;margin-right: -60px;}
 .floodThree .list img{position: absolute;top:auto;margin:0px 0px;bottom:10px;right:50%;width:200px;margin-right: -100px;}
 .floodThree .text-four{border-right: none;}
-.floodFour .text-two .outer-con ,.floodFour .text-three .outer-con {top:auto;left:5%;width:90%;bottom:10px ;}
+.floodFour .text-two .outer-con ,.floodFour .text-three .outer-con {
+	top:76%;
+	left:5%;
+	width:90%;
+	bottom:10px ;
+}
 
 /*楼层颜色*/
 #f1 .list {background:#6bdea7;}
@@ -570,7 +575,13 @@ top: 11px;text-align: right;}
 
 .floodFour .list img{position: absolute;top:auto;margin:0px 0px;bottom:10px;right:50%;width:200px;margin-right: -100px;}
 
-.floodThree .text-four .outer-con,.floodThree .text-five .outer-con{top:auto;left: 2%;width:96%;bottom:10px ;text-align: left;}
+.floodThree .text-four .outer-con,.floodThree .text-five .outer-con{
+	top:76%;
+	left: 2%;
+	width:96%;
+	bottom:10px ;
+	text-align: left;
+}
 
 
 /*五楼*/

@@ -132,11 +132,19 @@
 
 								<div class="col-md-10 data">
 							    <select  name="aac204">
-													<option value="01">服务类型1</option>
-													<option value="02">服务类型2</option>
+													<option value="01">搬家</option>
+													<option value="02">保洁</option>
+													<option value="03">维修</option>
+													<option value="04">家庭装修</option>
+													<option value="05">工业装修</option>
+													<option value="06">摄影</option>
+													<option value="07">KTV/酒吧</option>
+													<option value="08">周边</option>
+													<option value="09">美食</option>
+													<option value="10">护照/签证/身份证</option>
+													<option value="11">求值招聘</option>
 						         </select>
 								</div>
-
 								<div class="col-md-2 title">服务名称</div>
 								<div class="col-md-10 data">
 									<input type="text" class="form-control" id="aac203" required="required" placeholder="服务名称"  name="aac203" value=""/>

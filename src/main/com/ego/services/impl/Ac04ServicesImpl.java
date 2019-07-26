@@ -107,8 +107,90 @@ public class Ac04ServicesImpl extends JdbcServicesSupport
 		Object args[]={
 				this.get("aac402")
 		};
+		boolean b= this.addPointForService();
+		System.out.println("服务订单完成增加积分状态:"+b);
 		
 		return this.executeUpdate(sql.toString(), args);
+	}
+	
+	/**
+	 * 服务订单完成增加积分
+	 * @return
+	 * @throws Exception
+	 */
+	private boolean addPointForService()throws Exception
+	{
+		System.out.println("***积分变化值:"+this.getPointValueForService((String)this.get("aac402")));
+		int pointValue=this.getPointValueForService((String)this.get("aac402"));
+		int changeId=Tools.getSequence("aaa1002");
+		
+		if(pointValue>0)
+		{
+			//更新积分历史表
+			StringBuilder sql1 = new StringBuilder()
+					.append("insert into aa10(aaa102,aaa1002,aaa1003,aaa1004,aaa1005)")
+	    			.append("          values (?,?,?,'02',current_timestamp)")
+	    			;
+			
+			Object args1[]={
+					this.get("aaa102"),
+					changeId,
+					pointValue
+			};
+			
+			boolean b1= this.executeUpdate(sql1.toString(), args1);
+			
+			//更新用户积分
+			StringBuilder sql2 = new StringBuilder()
+					.append("update aa01 a set")
+					.append("  a.aaa106=a.aaa106+?")
+					.append("  where a.aaa102=?")
+					;
+			
+			Object args2[]={
+					pointValue,
+					this.get("aaa102")
+			};
+			
+			boolean b2= this.executeUpdate(sql2.toString(), args2);
+			
+			if(b1&&b2)
+			{
+				return true;
+			}
+			else
+			{
+				throw new Exception("***在确认服务修改积分时,两步修改出错***");
+			}
+		}
+			
+		return true;
+	}
+	
+	/**
+	 * 获取服务订单的积分值
+	 * @param orderCode
+	 * @return
+	 * @throws Exception
+	 */
+	private int getPointValueForService(String orderCode)throws Exception
+	{
+		int point =0;
+		String sql = "select aac407 from ac04 where aac402=?";
+		System.out.println("***订单号: "+orderCode);
+		Map<String,String> orderInfo = this.queryForMap(sql,orderCode);
+		System.out.println("**为了积分查出来的服务额:");
+		System.out.println(orderInfo);
+		if(!orderInfo.isEmpty())
+		{
+			point=(int)Math.floor( Double.valueOf(orderInfo.get("aac407"))/10 );
+		}
+		else
+		{
+			throw new Exception("***在收货修改积分时,找不到订单: "+orderCode+"! ***");
+			
+		}
+		return point;
 	}
 	
 	/**

@@ -15,6 +15,11 @@
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/adminLTE/css/skins/_all-skins.min.css">
 		<link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/angularjs/pagination.css">
+		<link rel="stylesheet" type="text/css" href="<%=path%>/houtai/css/preview.css"/>
+		<style type="text/css">
+    	#proimghhh img{vertical-align: top;cursor: pointer;}
+    	#specimghhh img{vertical-align: top;cursor: pointer;}
+        </style>
 		<style>
 			.main {
 				width: 80%;
@@ -234,7 +239,7 @@
                             <a href="#goods" data-toggle="tab">商品详细信息</a>
                         </li>
                         <li>
-                            <a href="#shopimg" data-toggle="tab">上传图片</a>
+                            <a href="#shopimg" onclick="refrshPro()" data-toggle="tab">上传图片</a>
                         </li>
                     </ul>
 
@@ -359,6 +364,7 @@
 	<script src="<%=path%>/houtai/plugins/angularjs/pagination.js" charset="utf-8"></script>
 	-->
 	<!-- 分页组件结束 -->
+	<script src="<%=path%>/houtai/js/pages/preview.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/base/Base_pagination.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseService_Seller.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/base/BaseController.js"></script>
@@ -369,6 +375,14 @@
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/SpecificationService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/BrandService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
+	<script>
+    var preview1 = new Preview({
+        imgWrap: 'proimghhh' // 指定该容器里的图片点击预览
+    })
+    var preview2 = new Preview({
+        imgWrap: 'specimghhh' // 指定该容器里的图片点击预览
+    })
+    </script>
     <script type="text/javascript">
     var pid;
     function getGoodDetail(id,type) {
@@ -407,6 +421,11 @@
     
     function clearDetails() {
         $(".to_clear").html("");
+    }
+    
+    function refreshPro()
+    {
+    	$("ul#showui").html("");
     }
     
     function isNumber(val) {
@@ -506,7 +525,7 @@
     					break;
 	    			var div = document.createElement('div');
 	    			var imgurl = '${path}' + res.proimgUrl[i];
-	    			var result = '<img style="width:150px;heigth:150px;float:left;margin-left:30px"  src="' + imgurl + '" />';
+	    			var result = '<img  style="width:150px;heigth:150px;float:left;margin-left:30px"  src="' + imgurl + '" />';
 	    			div.innerHTML=result;
 	    			prodiv.appendChild(div);
 	    		}
@@ -530,6 +549,10 @@
     		}
     	});
     }
+    $("#clickmeimg").click(function()
+    {
+       $("#imgModal").hide();	
+    		});
     window.onload = function() {
 		var input = document.getElementById("upgteimg");
 		var showui = document.getElementById("showui");

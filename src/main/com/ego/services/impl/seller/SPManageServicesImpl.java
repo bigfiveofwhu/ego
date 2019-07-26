@@ -377,6 +377,7 @@ Name	Code
 	 * @return
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unused")
 	private boolean saveSerImg() throws Exception
 	{
 		//ÅÐ¶Ïaac202ÊÇ·ñÎª¿Õ
@@ -384,7 +385,7 @@ Name	Code
 				Map<String,String> map = this.queryForMap(sql, this.get("aac202"));
 				String path = (String)this.get("imgPath");
 				String sql1;
-				if(map.get("aac210") == null)
+				if(map.get("aac210") == null||map.get("aac210").equals(""))
 					sql1="update ac02 set aac210='"+path+"' where aac202 = ?";
 				else
 				{
