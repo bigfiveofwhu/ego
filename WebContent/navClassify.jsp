@@ -13,7 +13,7 @@
 		</li>
 		<li class="qc"><a href="#">团购</a>
 		</li> -->
-		<li class="qc last"><a href="#">我的足迹</a>
+		<li class="qc last"><a  href="${path}/person/index.jsp?iframe=${path}/showHistory.html">我的足迹</a>
 		</li>
 	</ul>
 	<div class="nav-extra">

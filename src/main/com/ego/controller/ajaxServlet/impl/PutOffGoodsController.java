@@ -67,20 +67,29 @@ public class PutOffGoodsController extends AjaxControllerSupport {
 				Map<String,String> map1 = this.getService().findById("getProImgPath");
 				String proPath = map1.get("aab208");
 				String specPath = map1.get("aab207");
-				String [] proimgs = proPath.split(";");
 				specPath = specPath.substring(specPath.indexOf("&")+1);
 				String[]  specimgs = specPath.split(";");
 				
-				this.put("proimgUrl", proimgs);
+				if(proPath == null)
+					this.put("proimgUrl", "");
+				else
+				{
+					String [] proimgs = proPath.split(";");
+					this.put("proimgUrl", proimgs);
+				}
 				this.put("specimgUrl", specimgs);
 				break;
 			case "serimg"://·þÎñÍ¼Æ¬
 				this.setService(new SPManageServicesImpl());
 				Map<String,String> map3 = this.getService().findById("getProImgPath");
 				String proPath1 = map3.get("aac210");
-				String [] proimgs1 = proPath1.split(";");
-				
-				this.put("proimgUrl", proimgs1);
+				if(proPath1 == null)
+					this.put("proimgUrl", "");
+				else
+				{
+					String [] proimgs1 = proPath1.split(";");
+					this.put("proimgUrl", proimgs1);
+				}
 				break;
 			case "update"://ÐÞ¸Ä
 				if( this.getService().update("updateById"))

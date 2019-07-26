@@ -79,7 +79,7 @@
                                 </span>
 								<span class="
 										<c:choose>
-											<c:when test="${ins.aac408 eq '02' }">
+											<c:when test="${(ins.aac408 eq '02')||(ins.aac408 eq '03') }">
 												step-1 step
 											</c:when>
 											<c:otherwise>

@@ -377,6 +377,7 @@ Name	Code
 	 * @return
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unused")
 	private boolean saveSerImg() throws Exception
 	{
 		//ÅÐ¶Ïaac202ÊÇ·ñÎª¿Õ

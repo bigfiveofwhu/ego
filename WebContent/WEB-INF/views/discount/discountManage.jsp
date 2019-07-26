@@ -78,6 +78,7 @@
 layui.use('layer', function(){
 	layer = layui.layer;
 });
+
 $('#newCoupon').on('click',function(){
 	layer.open({
 		  type: 2,

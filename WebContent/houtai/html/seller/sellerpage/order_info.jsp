@@ -122,20 +122,17 @@
 						<button type="button" id="button_order"  class="btn bg-olive btn-xs" data-toggle="modal"
                                     data-target="#sellerModal" onclick="getOrderDetail('${ins.aab302}','order','${ins.cnaab303}')"> 详情</button>
 						<c:if test="${ins.cnaab303 == '待发货' }">
-								<button type="button" class="btn bg-olive btn-xs" disabled="disabled">删&nbsp除</button>
 								<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aab302}','${ins.aab203}')">
 										发货
 								</button>
 					    </c:if>
 					    <c:if test="${ins.aab306 != null && ins.cnaab303 != '已退款'}">
-					    	<button type="button" class="btn bg-olive btn-xs" >删除</button>
 								<button type="button" class="btn bg-olive btn-xs" disabled="disabled">
 										已发货
 								</button>
 					    </c:if>
 					    
 					    <c:if test="${ins.cnaab303 == '已退款' }">
-					    	<button type="button" class="btn bg-olive btn-xs" >删除</button>
 					    </c:if>
 								
 							</td>

@@ -10,6 +10,7 @@ import com.ego.system.tools.Tools;
 
 public class AdvertiseService extends JdbcServicesSupport{
 
+	
 	public static final String productAd="00";
 	public static final String shoptAd="01";
 	public static final String serviceAd="10";
@@ -76,10 +77,10 @@ public class AdvertiseService extends JdbcServicesSupport{
 		switch (utype) {
 		case "insertAdAccount":
 			return this.insertAdAccount();
-		case "recharge"://给账户充值
-			return this.recharge();
 		case "chargeMoney"://减少账户的钱
 			return this.chargeMoney();
+		case "rechargeMoney":
+			return this.recharge();
 		case "insertAd":
 			return this.insertAd();
 		case "addMoney"://给广告充值
@@ -303,12 +304,13 @@ public class AdvertiseService extends JdbcServicesSupport{
 				.append(" update ad04 set")
 				.append(" aad403 =aad403+?")
 				.append(" where aad402=?");
-		double increse=Tools.changeDouble(this.get("increment"));
-		if (increse<0) {
+		double increment=Double.parseDouble(this.get("increment").toString());
+		if (increment<0) {
 			throw new Exception("非法的数字");
 		}
-		return this.executeUpdate(sql.toString(),increse,this.get("aad402"));
+		return this.executeUpdate(sql.toString(),increment,this.get("aad402"));
 	}
+	
 	/**
 	 * 减少广告账户的钱，需要dto中存放decrement
 	 * @return 
