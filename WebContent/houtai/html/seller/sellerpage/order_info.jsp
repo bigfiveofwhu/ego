@@ -118,6 +118,9 @@
 							<td>${ins.aab312}</td>
 							<td>${ins.aab306}</td>
 						<td class="text-center">
+						
+						<button type="button" id="button_order"  class="btn bg-olive btn-xs" data-toggle="modal"
+                                    data-target="#sellerModal" onclick="getOrderDetail('${ins.aab302}','order','${ins.cnaab303}')"> 详情</button>
 						<c:if test="${ins.cnaab303 == '待发货' }">
 								<button type="button" class="btn bg-olive btn-xs" disabled="disabled">删&nbsp除</button>
 								<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aab302}','${ins.aab203}')">
@@ -148,6 +151,93 @@
 
 		</div>
 		<!-- /.box-body -->
+				    <!-- 商品详情 -->
+   <div class="modal fade" id="sellerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                            >×
+                    </button>
+                    <h3 id="myModalLabel">订单详情</h3>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#order" data-toggle="tab">订单详细信息</a>
+                        </li>
+                    </ul>
+
+                    <!-- 选项卡开始 -->
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane active in" id="order">
+                            <br>
+                            <table class="table table-bordered table-striped" width="800px">
+                                <tr>
+                                    <td>订单号</td>
+                                    <td id="aab302" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>商品名称</td>
+                                    <td id="aab202" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>用户名</td>
+                                    <td id="aaa103" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>创建时间</td>
+                                    <td id="aab304" class="to_clear">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>付款时间</td>
+                                    <td id="aab305" class="to_clear">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>发货时间</td>
+                                    <td id="aab306" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>收货时间</td>
+                                    <td id="aab307" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>物流号</td>
+                                    <td id="aab309" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>收货地址</td>
+                                    <td id="aab311" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>买家留言</td>
+                                    <td id="aab312" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>运费</td>
+                                    <td id="aab313" class="to_clear"></td>
+                                </tr>
+                                <tr>
+                                    <td>状态</td>
+                                    <td id="state_order" class="to_clear"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- 选项卡结束 -->
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" >关闭
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+		
       <div id="popLayer"></div>
      <div id="popBox">
        <div class="close">
@@ -208,5 +298,44 @@
         popBox.style.display = "none";
         popLayer.style.display = "none";
     }
+    
+    function getOrderDetail(id,type,vs) {
+    	//pid = id
+        $.ajax({
+            url: "<%=path%>/putOffGoods.ajax",
+            type: "post",
+            timeout: 20000,
+            dataType: "json",
+            data: {
+                "aab302": id,
+                "type": type
+            },
+            success: function (res) {
+            	if(res.tag == 1)
+	            {
+	                var map = res.map;
+	                if (typeof (map) !== "undefined") {
+	                    $("#aab302").html(map.aab302);
+	                    $("#aab202").html(map.aab202);
+	                    $("#aaa103").html(map.aaa103);
+	                    $("#aab304").html(map.aab304);
+	                    $("#aab305").html(map.aab305);
+	                    $("#aab306").html(map.aab306);
+	                    $("#aab307").html(map.aab307);
+	                    $("#aab309").html(map.aab309);
+	                    $("#aab311").html(map.aab311);
+	                    $("#aab312").html(map.aab312);
+	                    $("#aab313").html(map.aab313);
+	                    $("#state_order").html(vs);
+	                    console.log("获取订单详细信息成功")
+	                }
+	            }
+            },
+            error: function () {
+                console.log("订单详细信息异步加载错误");
+            }
+        });
+    }
+    
     </script>
 </html>
