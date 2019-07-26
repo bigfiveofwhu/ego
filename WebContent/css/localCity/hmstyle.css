@@ -762,16 +762,6 @@ filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#f8c375',endCo
 .category-content .category-list li {
 	height:39px ;
 }
-#mc-menu-shop{
-	text-decoration: underline;
-	color:blue;
-}
-#mc-menu-localCity{
-	color:red;
-}
-.header{
-	color:pink;
-}
 
 .am-active > .am-dropdown-content {
     overflow: auto;

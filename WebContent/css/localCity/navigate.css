@@ -11,3 +11,14 @@
 	color: #000;
 	margin-right: 10px;
 }
+.header{
+	color:pink;
+}
+#mc-menu-shop,#mc-menu-service{
+	text-decoration: underline;
+	color:blue;
+	cursor: pointer;
+}
+#mc-menu-localCity{
+	color:red;
+}
