@@ -172,6 +172,7 @@
 							</ul>
 						</li>
 						<!-- 售后管理 -->
+						<!-- 
 						<li class="treeview">
 							<a href="#" >
 								<i class="fa fa-folder"></i>
@@ -187,6 +188,7 @@
 								</li>
 							</ul>
 						</li>
+						-->
 						<!-- 需求管理 -->
 						<li class="treeview">
 							<a href="#" >

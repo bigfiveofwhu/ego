@@ -407,7 +407,7 @@ public class Ac06ServicesImpl extends JdbcServicesSupport
 				.append("   and b.fcode=y.aac603 and b.fname='aac106'")
 				.append("   and a.aaa102=y.aaa102")
 				.append("   and y.aac603=x.aac106")                   //匹配服务类型相同的需求信息
-				.append("   and y.aac609='02' and y.aac610='01' and y.aac606 like CONCAT('%',z.areaName,'%')")   // 需求状态  02 --已投标(未处理)   可见状态 01 --可见
+				.append("   and y.aac609='01' and y.aac610='01' and y.aac606 like CONCAT('%',z.areaName,'%')")   // 需求状态  02 --已投标(未处理)   可见状态 01 --可见
 				.append("   and (x.aac105=z.areaId and x.aac102=?)")
 				.append(" limit 15")      //限制为15条
 				;
