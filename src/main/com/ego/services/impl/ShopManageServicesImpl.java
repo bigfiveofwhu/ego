@@ -435,6 +435,21 @@ public class ShopManageServicesImpl extends JdbcServicesSupport
 		return (this.batchUpdate(sql, args, this.get("aab302")) && this.executeUpdate(sql1, this.get("aab203")));
 	}
 	
+	/**
+	 * 订单详情
+	 */
+	@Override
+	public Map<String, String> findById() throws Exception {
+        StringBuilder sql = new StringBuilder()
+        		.append("select a.aaa102,a.aab203,a.aab302,a.aab304,a.aab305,a.aab306,a.aab307,a.aab309,a.aab310,a.aab311,a.aab312,")
+        		.append("  a.aab313,a.aab314,a.aab315,a.aab316,b.aaa103,b.aaa108,c.aab202")
+        		.append("  from ab03 a,aa01 b,ab02 c")
+        		.append("  where a.aaa102 = b.aaa102 and a.aab203 = c.aab203")
+        		.append("  and a.aab302 = ?")
+        		;
+		return this.queryForMap(sql.toString(), this.get("aab302"));
+	}
+	
 	/******分割线  ********/
 	
 	/**
