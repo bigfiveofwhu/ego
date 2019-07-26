@@ -44,7 +44,7 @@
   
 </form>
 
-<button id="submit" class="btn btn-primary mx-auto">Ìí¼Ó</button>
+<button id="submit" class="btn btn-primary ml-3">Ìí¼Ó</button>
 <script src="/ego/js/jquery-3.2.0.min.js" ></script>
 <script src="/ego/js/bootstrap.bundle.js"></script>
 

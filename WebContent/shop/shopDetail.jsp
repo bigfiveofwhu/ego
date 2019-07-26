@@ -452,7 +452,7 @@
 					    <div class="mc"> 
 						     <ul>		    
 						     	<div class="mt">
-						            <h2>看了又看</h2>        
+						            <h2>猜你喜欢</h2>        
 					            </div>
 					            
 					            <c:forEach items="${guessProducts}" var="item" varStatus="vs">
