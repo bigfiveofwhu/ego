@@ -121,66 +121,63 @@
 				</div>
 				
 				
-				<div class="search-side">
-					<div class="side-title">
-						经典搭配
-					</div>
-					<li>
-						<div class="i-pic check">
-							<img src="<%=path%>/images/cp.jpg" />
-							<p class="check-title">萨拉米 1+1小鸡腿</p>
-							<p class="price fl">
-								<b>&yen;</b>
-								<strong>29.90</strong>
-							</p>
-							<p class="number fl">
-								销量<span>1110</span>
-							</p>
-						</div>
-					</li>
-					<li>
-						<div class="i-pic check">
-							<img src="<%=path%>/images/cp2.jpg" />
-							<p class="check-title">ZEK 原味海苔</p>
-							<p class="price fl">
-								<b>&yen;</b>
-								<strong>8.90</strong>
-							</p>
-							<p class="number fl">
-								销量<span>1110</span>
-							</p>
-						</div>
-					</li>
-					<li>
-						<div class="i-pic check">
-							<img src="<%=path%>/images/cp.jpg" />
-							<p class="check-title">萨拉米 1+1小鸡腿</p>
-							<p class="price fl">
-								<b>&yen;</b>
-								<strong>29.90</strong>
-							</p>
-							<p class="number fl">
-								销量<span>1110</span>
-							</p>
-						</div>
-					</li> 
-				</div>
+<%--				<div class="search-side">--%>
+<%--					<div class="side-title">--%>
+<%--						经典搭配--%>
+<%--					</div>--%>
+<%--					<li>--%>
+<%--						<div class="i-pic check">--%>
+<%--							<img src="<%=path%>/images/cp.jpg" />--%>
+<%--							<p class="check-title">萨拉米 1+1小鸡腿</p>--%>
+<%--							<p class="price fl">--%>
+<%--								<b>&yen;</b>--%>
+<%--								<strong>29.90</strong>--%>
+<%--							</p>--%>
+<%--							<p class="number fl">--%>
+<%--								销量<span>1110</span>--%>
+<%--							</p>--%>
+<%--						</div>--%>
+<%--					</li>--%>
+<%--					<li>--%>
+<%--						<div class="i-pic check">--%>
+<%--							<img src="<%=path%>/images/cp2.jpg" />--%>
+<%--							<p class="check-title">ZEK 原味海苔</p>--%>
+<%--							<p class="price fl">--%>
+<%--								<b>&yen;</b>--%>
+<%--								<strong>8.90</strong>--%>
+<%--							</p>--%>
+<%--							<p class="number fl">--%>
+<%--								销量<span>1110</span>--%>
+<%--							</p>--%>
+<%--						</div>--%>
+<%--					</li>--%>
+<%--					<li>--%>
+<%--						<div class="i-pic check">--%>
+<%--							<img src="<%=path%>/images/cp.jpg" />--%>
+<%--							<p class="check-title">萨拉米 1+1小鸡腿</p>--%>
+<%--							<p class="price fl">--%>
+<%--								<b>&yen;</b>--%>
+<%--								<strong>29.90</strong>--%>
+<%--							</p>--%>
+<%--							<p class="number fl">--%>
+<%--								销量<span>1110</span>--%>
+<%--							</p>--%>
+<%--						</div>--%>
+<%--					</li> --%>
+<%--				</div>--%>
 				<div class="clear"></div>
 				<!--分页 -->
 				<form action="<%=path%>/search" id="advanceForm" method="post">
 					<input type="hidden" name="currentPage" id="currentPageInput">
 				</form>
+				<%-- 
 				<ul class="am-pagination am-pagination-right">
-					 <%-- <li class="am-disabled">
-					 <a href="javascript:goPage(${result.prePage})">&laquo;</a></li> --%>
 					 <li><a href="javascript:goPage(${result.prePage})">&laquo;</a></li>
-					<!--  <li class="am-active"><a href="#">1</a></li> -->
 					<c:forEach begin="${result.index.beginIndex}" end="${result.index.endIndex}" var="index" varStatus="vs">
 					<li class="${vs.count==1?'am-active':''}"><a href="javascript:goPage(${index})">${index}</a></li>
 					</c:forEach>
 					<li><a href="javascript:goPage(${result.nextPage})">&raquo;</a></li>
-				</ul>
-				</form>
+				</ul>--%>
 			</div>
 		</div>
 				<%@include file="/footer.jsp" %>
