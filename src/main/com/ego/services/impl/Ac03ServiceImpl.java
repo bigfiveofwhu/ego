@@ -57,6 +57,7 @@ public class Ac03ServiceImpl extends JdbcServicesSupport
 	 */
 	private boolean insertAc03() throws Exception
 	{
+		
 		String sql="insert into ac03(aac102,aac602,aac302,aac303,aac304,aac305) values(?,?,?,?,?,'01')";   //01 --正在参与 竞标
 		Object args[]= {
 				this.get("aac102"),
@@ -65,6 +66,9 @@ public class Ac03ServiceImpl extends JdbcServicesSupport
 				this.get("aac303"),
 				this.get("aac304")
 		};
-		return this.executeUpdate(sql, args);
+		this.apppendSql(sql, args);
+		sql="update ac06 set aac609='02' where aac602=?";
+		this.apppendSql(sql, this.get("aac602"));
+		return this.executeTransaction();
 	}
 }

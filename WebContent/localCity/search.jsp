@@ -170,17 +170,14 @@
 				<form action="<%=path%>/search" id="advanceForm" method="post">
 					<input type="hidden" name="currentPage" id="currentPageInput">
 				</form>
+				<%-- 
 				<ul class="am-pagination am-pagination-right">
-					 <%-- <li class="am-disabled">
-					 <a href="javascript:goPage(${result.prePage})">&laquo;</a></li> --%>
 					 <li><a href="javascript:goPage(${result.prePage})">&laquo;</a></li>
-					<!--  <li class="am-active"><a href="#">1</a></li> -->
 					<c:forEach begin="${result.index.beginIndex}" end="${result.index.endIndex}" var="index" varStatus="vs">
 					<li class="${vs.count==1?'am-active':''}"><a href="javascript:goPage(${index})">${index}</a></li>
 					</c:forEach>
 					<li><a href="javascript:goPage(${result.nextPage})">&raquo;</a></li>
-				</ul>
-				</form>
+				</ul>--%>
 			</div>
 		</div>
 				<%@include file="/footer.jsp" %>
