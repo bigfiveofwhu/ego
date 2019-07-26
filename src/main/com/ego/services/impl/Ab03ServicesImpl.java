@@ -130,6 +130,7 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 				.append("  from ab03 x, ab02 y,ab01 z")
 				.append("  where  x.aab203=y.aab203 and y.aab102=z.aab102 ")
 				.append("  and x.aaa102=? and x.aab308='01' ")
+				.append(" order by aab304 DESC")
 				;
 		
 		//设置参数列表

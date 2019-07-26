@@ -51,7 +51,7 @@ public class AdvertiseController extends ControllerSupport{
 				}
 				saveAttribute("shop", service.findById("getShop"));
 				saveAttribute("products", service.query("getProducts"));
-				saveAttribute("services", service.query("getServices"));
+				//saveAttribute("services", service.query("getServices"));
 				saveAttribute("ads", adList);
 				return prefix+"advertiseHome"; 
 			}else {

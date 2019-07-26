@@ -9,7 +9,7 @@
 <%@page import="com.alipay.api.domain.AlipayTradeWapPayModel" %>
 <%@page import="com.alipay.api.domain.AlipayTradeCreateModel"%>
 <%
-/* *
+	/* *
  * 功能：支付宝手机网站支付接口(alipay.trade.wap.pay)接口调试入口页面
  * 版本：2.0
  * 修改日期：2016-11-01
@@ -19,7 +19,7 @@
  */
 %>
 <%
-if(request.getAttribute("WIDout_trade_no")!=null){
+	if(request.getAttribute("WIDout_trade_no")!=null){
 	// 商户订单号，商户网站订单系统中唯一订单号，必填
     String out_trade_no = new String(request.getAttribute("WIDout_trade_no").toString().getBytes("ISO-8859-1"),"UTF-8");
 	// 订单名称，必填

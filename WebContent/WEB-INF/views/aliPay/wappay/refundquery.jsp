@@ -6,8 +6,8 @@
 <%@page import="com.alipay.api.request.AlipayTradeFastpayRefundQueryRequest" %>
 <%@page import="com.alipay.api.response.AlipayTradeFastpayRefundQueryResponse" %>
 <%@page import="com.alipay.api.domain.AlipayTradeFastpayRefundQueryModel"%>
-<% 
-/* *
+<%
+	/* *
  * 功能：支付宝手机网站alipay.trade.fastpay.refund.query (统一收单交易退款查询)调试入口页面
  * 版本：2.0
  * 修改日期：2016-11-28
@@ -15,9 +15,9 @@
  * 以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。
  请确保项目文件有可写权限，不然打印不了日志。
  */
- %>
+%>
 <%
-if(request.getParameter("WIDout_trade_no")!=null||request.getParameter("WIDtrade_no")!=null&&request.getParameter("WIDout_request_no")!=null){
+	if(request.getParameter("WIDout_trade_no")!=null||request.getParameter("WIDtrade_no")!=null&&request.getParameter("WIDout_request_no")!=null){
 	//商户订单号和支付宝交易号不能同时为空。 trade_no、  out_trade_no如果同时存在优先取trade_no
 	//商户订单号，和支付宝交易号二选一
 	String out_trade_no = new String(request.getParameter("WIDout_trade_no").getBytes("ISO-8859-1"),"UTF-8");

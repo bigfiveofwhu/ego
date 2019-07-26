@@ -6,8 +6,8 @@
 <%@page import="com.alipay.api.request.AlipayTradeCloseRequest" %>
 <%@page import="com.alipay.api.response.AlipayTradeCloseResponse" %>
 <%@page import="com.alipay.api.domain.AlipayTradeCloseModel"%>
-<% 
-/* *
+<%
+	/* *
  * 功能：支付宝手机网站alipay.trade.close (统一收单交易关闭接口)调试入口页面
  * 版本：2.0
  * 修改日期：2016-11-01
@@ -17,7 +17,7 @@
  */
 %>
 <%
-if(request.getParameter("WIDout_trade_no")!=null||request.getParameter("WIDtrade_no")!=null){
+	if(request.getParameter("WIDout_trade_no")!=null||request.getParameter("WIDtrade_no")!=null){
 	//商户订单号和支付宝交易号不能同时为空。 trade_no、  out_trade_no如果同时存在优先取trade_no
     //商户订单号，和支付宝交易号二选一
 	String out_trade_no = new String(request.getParameter("WIDout_trade_no").getBytes("ISO-8859-1"),"UTF-8");

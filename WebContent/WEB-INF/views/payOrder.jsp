@@ -64,7 +64,7 @@
 			<div class="clear">
 			
 			<div class="info-btn">
-				<a href="payOrder.html?aab302=${ins.aab302 }"><div class="am-btn am-btn-danger"">支付完成</div></a>
+				<a href="payOrder.html?aab302=${ins.aab302 }&aab316=${ins.aab316}"><div class="am-btn am-btn-danger"">支付完成</div></a>
 			</div>
         </div>
 			
