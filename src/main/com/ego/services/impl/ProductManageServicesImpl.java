@@ -299,7 +299,7 @@ public class ProductManageServicesImpl extends JdbcServicesSupport
 		String sql1;
 		String str = map.get("aab207").trim();
 		
-		if(map.get("aab207")==null)
+		if(map.get("aab207")==null || map.get("aab207").equals(""))
 		{
 			sql1="update ab02 set aab207='"+path+"' where aab203 = ?";
 		}

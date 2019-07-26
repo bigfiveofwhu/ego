@@ -315,7 +315,7 @@
                         $("#aab208").text('');
                     }
                     $("#aab209").text(map.aab209);
-                    $("#aab211").text(map.aab211);
+                    $("#aab211").text(map.cnaab211);
                     $("#aab212").text(map.cnaab212);
 
                     $("#aab102").text(map.aab102);

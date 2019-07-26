@@ -86,15 +86,15 @@ public class Ad08ServicesImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql=new StringBuilder()
 				.append("SELECT a.aab102,aab103,aab104,aab105,aab106,")
-				.append("	    aab108,aab109,aab110,aab111,aab202,")
-				.append("	    aab203,s3.fvalue cnaab204,aab205,aab206,aab207,")
-				.append("	    aab208,aab209,aab211,s1.fvalue cnaab212,aad802,")
-				.append("	    aad801,c.aad102,aad104,s2.fvalue cnaad804,aad806")
-				.append("  FROM ab02 a,ab01 b,ad01 c,ad08 d,syscode s1,syscode s2,syscode s3")
+				.append("	   aab108,aab109,aab110,aab111,aab202,")
+				.append("	   aab203,s3.fvalue cnaab204,aab205,aab206,aab207,")
+				.append("	   aab208,aab209,s4.fvalue cnaab211,s1.fvalue cnaab212,aad802,")
+				.append("	   aad801,c.aad102,aad104,s2.fvalue cnaad804,aad806")
+				.append("  FROM ab02 a,ab01 b,ad01 c,ad08 d,syscode s1,syscode s2,syscode s3,syscode s4")
 				.append(" WHERE a.aab102=b.aab102 AND d.aad803='02' AND d.aad805=a.aab203")
 				.append("   AND c.aad102=d.aad102 AND s1.fcode=aab212 AND s1.fname='aab212'")
 				.append("   AND s2.fcode=aad804 AND s2.fname='aad804' AND s3.fcode=aab204")
-				.append("   AND s3.fname='aab204' AND aab203=?")
+				.append("   AND s3.fname='aab204' AND aab203=? AND s4.fname='aab211' AND s4.fcode=aab211")
 				;
 		Object[] args = { 
 				this.get("aab203")
