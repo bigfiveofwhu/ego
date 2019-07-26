@@ -11,6 +11,7 @@ import com.ego.services.impl.Ab04ServicesImpl;
 import com.ego.services.impl.ShopManageServicesImpl;
 import com.ego.system.tools.Tools;
 import com.ego.system.utils.FileUpload;
+import com.ego.system.utils.SetDefaultImg;
 
 public class MakeCommentController extends AjaxControllerSupport{
 
@@ -29,7 +30,7 @@ public class MakeCommentController extends AjaxControllerSupport{
 		dto.put("aab402", aab402);
 		dto.put("aab412", "02");//默认02无图
 		try {
-			FileUpload.writeFile2("WebContent/images/comments",aab402, (HttpServletRequest)dto.get("request"), dto);
+			FileUpload.writeFile2(SetDefaultImg.getBasePath("comments"),aab402, (HttpServletRequest)dto.get("request"), dto);
 			service.update("comment");
 			
 			//更新评级

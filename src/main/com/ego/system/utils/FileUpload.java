@@ -20,6 +20,8 @@ import org.apache.commons.fileupload.ProgressListener;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.ego.system.tools.Tools;
+
 import sun.misc.BASE64Decoder;
 
 
@@ -140,10 +142,12 @@ public class FileUpload
 	{
        InputStream in = null;
        OutputStream out = null;
+       OutputStream out2=null;
        String realName=null;
        // 获取上传文件目录
        //String savePath = request.getServletContext().getRealPath("/images/advertise");
-       String savePath="WebContent/images/advertise";
+       String savePath=SetDefaultImg.getBasePath("advertise");
+       String savepath2=Tools.getImgPath(request, "advertise");
        System.out.println(savePath);
           try {
               // 使用默认配置创建解析器工厂
@@ -203,12 +207,15 @@ public class FileUpload
   
                       // 获取输出流
                       String outPath=savePath + "\\" + realName;
+                      String outPath2=savepath2 + "\\" + realName;
                       System.out.println(outPath);
                   out = new FileOutputStream(outPath);
+                  out2=new FileOutputStream(outPath2);
                   int len = 0;
                   byte[] buffer = new byte[1024];
                   while((len=in.read(buffer)) > 0) {
                       out.write(buffer, 0, len);
+                      out2.write(buffer, 0, len);
                   }
               }
           }
@@ -273,6 +280,8 @@ public class FileUpload
 	{
        InputStream in = null;
        OutputStream out = null;
+       OutputStream out2=null;
+       String savePath2=Tools.getImgPath(request, "comments");
        String realName=null;
        // 获取上传文件目录
        //String savePath = request.getServletContext().getRealPath("/images/advertise");
@@ -332,8 +341,10 @@ public class FileUpload
                       }
                       // 获取输出流
                       String outPath=savePath + "\\" + realName;
+                      String outPath2=savePath2+"\\"+realName;
                       System.out.println(outPath);
                   out = new FileOutputStream(outPath);
+                  out2=new FileOutputStream(outPath2);
                   int len = 0;
                   byte[] buffer = new byte[1024];
                   while((len=in.read(buffer)) > 0) {

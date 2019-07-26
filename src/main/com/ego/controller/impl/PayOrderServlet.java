@@ -10,7 +10,7 @@ public class PayOrderServlet extends OrderControllerSupport {
 	@Override
 	public String execute() throws Exception {
 //		this.update("payOrder", "Ö§¸¶");
-//		this.savePageInstance("pay");
+		this.savePageInstance("pay");
 //		return "WEB-INF/views/success";
 		orderId=this.get("aab302").toString();
 		

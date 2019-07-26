@@ -15,8 +15,11 @@ public class SetDefaultImg
 	
 	private static String servicePre="/WebContent/images/service/service_";
 	
+	private static String advertiseImg="/WebContent/images/advertise";
+	
 	private static String defaultImg="/WebContent/images/no-img_mid_.jpg";
 	
+	private static String commentImg="/WebContent/images/comments";
 	static {
 		ResourceBundle mapping = ResourceBundle.getBundle("urlMapping");
 		String basepath=mapping.getString("basePath");
@@ -24,6 +27,8 @@ public class SetDefaultImg
 		shopPre=basepath+shopPre;
 		servicePre=basepath+servicePre;
 		defaultImg=basepath+defaultImg;
+		advertiseImg=basepath+advertiseImg;
+		commentImg=basepath+commentImg;
 	}
 	
 	public static String getBasePath(String roleName)
@@ -37,6 +42,10 @@ public class SetDefaultImg
 			return shopPre;
 		case "service":
 			return servicePre;
+		case "advertise":
+			return advertiseImg;
+		case "comments":
+			return commentImg;
 		}
 		return null;
 	}
@@ -59,6 +68,7 @@ public class SetDefaultImg
 		if(path=="") throw new Exception("请选择正确的角色名称");
 		path=path+id+".jpg";
 		File file=new File(defaultImg);
+		System.out.println(defaultImg);
 		FileInputStream inputStream=new FileInputStream(file);
 		File defImg=new File(path);
 		FileOutputStream output=new FileOutputStream(defImg),
