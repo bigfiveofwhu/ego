@@ -15,50 +15,6 @@
 		<link rel="stylesheet" href="<%=path%>/houtai/css/style.css">
 		<link rel="stylesheet" href="<%=path%>/houtai/plugins/angularjs/pagination.css">
 		<script type="text/javascript" src="<%=path%>/houtai/plugins/jQuery/jquery-2.2.3.min.js"></script>
-		<style>
-        /*背景层*/
-        #popLayer {
-            display: none;
-            background-color: #B3B3B3;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 10;
-            -moz-opacity: 0.8;
-            opacity:.80;
-            filter: alpha(opacity=80);/* 只支持IE6、7、8、9 */
-        }
- 
-        /*弹出层*/
-        #popBox {
-            display: none;
-            background-color: #FFFFFF;
-            z-index: 11;
-            width: 400px;
-            height: 400px;
-            position:fixed;
-            top:0;
-            right:0;
-            left:0;
-            bottom:0;
-            margin:auto;
-        }
- 
-        #popBox .close{
-            text-align: right;
-            margin-right: 5px;
-            background-color: #F8F8F8;
-        }
- 
-        /*关闭按钮*/
-        #popBox .close a {
-            text-decoration: none;
-            color: #2D2C3B;
-        }
- 
-    </style>
 	</head>
 
 	<body class="hold-transition skin-red sidebar-mini" ng-app="shopping" ng-controller="GoodsController" ng-init="findItemCatList()">
@@ -88,7 +44,8 @@
 						<select  name="qaaa803">
 							<option value="">全部</option>
 							<option value="01">未处理</option>
-							<option value="02">已处理</option>
+							<option value="03">已同意</option>
+							<option value="04">已拒绝</option>
 						</select>
 						 商品:
 						<input type="text" name="qaab202" value=""/>
@@ -118,14 +75,24 @@
 						<tr>
 							<td>${vs.count}</td>
 							<td>${ins.aaa802}</td>
-							<td>${ins.aaa203}</td>
-							<td>${ins.aaa202}</td>
+							<td>${ins.aab203}</td>
+							<td>${ins.aab202}</td>
 							<td>${ins.aaa103}</td>
 							<td>${ins.aaa805}</td>
 							<td>${ins.cnaaa804}</td>
 							<td>${ins.cnaaa803}</td>
 						<td class="text-center">
-			         		<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('')">处理</button>
+						   <c:if test="${ins.cnaaa803 == '未处理' }">
+					    	<button type="button" name="popBox" class="btn bg-olive btn-xs" onclick="popBox('${ins.aaa802}','${ins.aab302}')">处理</button>
+					        </c:if>
+					        
+					        <c:if test="${ins.cnaaa803 == '已同意' }">
+			         		<button type="button" name="popBox" class="btn bg-olive btn-xs" disabled>已处理</button>
+			         		</c:if>
+			         		
+			         		  <c:if test="${ins.cnaaa803 == '已拒绝' }">
+			         		<button type="button" name="popBox" class="btn bg-olive btn-xs" disabled>已处理</button>
+			         		</c:if>
 						</td>
 						</tr>
 						</c:forEach>
@@ -139,17 +106,7 @@
 
 		</div>
 		<!-- /.box-body -->
-      <div id="popLayer"></div>
-     <div id="popBox">
-       <div class="close">
-        <a href="javascript:void(0)" onclick="closeBox()">×</a>
-     </div>
-    <div class="content">
-    <form action="<%=path %>/shop/reply.html" method="post">
-    <textarea id="replyText" rows="15" cols="48" name="aab405"></textarea>
-    <input type="submit"  value="回复"></input>
-    </form>
-    </div>
+     
     </div>
 
 	</body>
@@ -172,24 +129,65 @@
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/SpecificationService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/service/BrandService.js"></script>
 	<script type="text/javascript" src="<%=path%>/houtai/js/controller/GoodsController.js"></script>
+	<script src="/ego/layui/layui.js"></script>
 	<script>
-    /*点击弹出按钮*/
-    function popBox(v) {
-        var popBox = document.getElementById("popBox");
-        var popLayer = document.getElementById("popLayer");
-        $("#replyText").val(v);
-       // document.getElementById("replyText").value = v;
-        popBox.style.display = "block";
-        popLayer.style.display = "block";
-    };
-    
-    /*点击关闭按钮*/
-    function closeBox() {
-        var popBox = document.getElementById("popBox");
-        var popLayer = document.getElementById("popLayer");
-        popBox.style.display = "none";
-        popLayer.style.display = "none";
-    }
+	layui.use('layer', function(){
+		layer = layui.layer;
+	});
+	
+	function popBox(id1,id2)
+	 {
+		layer.confirm('确认同意售后请求吗?', { btn: ['是','否'],title: "处理售后", btn1:function(){
+	        $.ajax({
+	                  url:"${path}/dealAfterBuy.ajax",
+	                  type:"post",
+	              	  timeout:20000,
+	                  dataType:"json",
+	                  data:{
+	                	  "aaa802":id1,
+	                	  "aab302":id2,
+	                	  "type":"agree"
+	                	  },
+	                  success:function (res,status) {
+	                	  if(res.tag == 1)
+	                	{
+	                      layer.msg("你已同意售后请求");
+	                      setTimeout("location.reload()",1000);
+	                      //location.reload();
+	                	}
+	                  },
+	                  error:function(res,status){
+	                	  console.log("失败");
+	                  }
+	                  
+	                });
+	        },
+	        btn2:function(){
+	        	 $.ajax({
+	                  url:"${path}/dealAfterBuy.ajax",
+	                  type: "post",
+	              	  timeout:20000,
+	                  dataType:"json",
+	                  data:{
+	                	  "aaa802":id1,
+	                	  "aab302":id2,
+	                	  "type":"disagree"
+	                	  },
+	                  success:function (res,status) {
+	                	  {
+		                      layer.msg("你已拒绝售后请求");
+		                      setTimeout("location.reload()",1000);
+		                     // location.reload();
+		                }
+	                  },
+                      error:function(res,status){
+	                	  console.log("失败");
+	                  }
+	                  
+	                });
+	        }
+	    })
+	}
 </script>
 
 </html>

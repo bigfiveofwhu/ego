@@ -208,8 +208,9 @@ function delCollection(id)
 		success:function(res,status){
 			if(res.tag == 1)
 	     {
-				 alert("É¾³ý³É¹¦");
-			    location.href="${path}/person/showCollection.html";
+				 layer.msg("É¾³ý³É¹¦");
+				 setTimeout("location.href='${path}/person/showCollection.html'",1000);
+			    //location.href="${path}/person/showCollection.html";
 		 }
 			else
 				console.log("É¾³ýÊ§°Ü");
