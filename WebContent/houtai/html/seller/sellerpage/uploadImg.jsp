@@ -65,7 +65,7 @@
 									<img id="img_preview" style="width: 100%;" class="am-circle am-img-thumbnail" src="<%=basePath%>/images/shop/home_${aab102}.jpg" alt="" />
 									<br>
 									<br>
-									<button class="am-btn" onclick="location.href='${path}/shop/home.html?shopId=${aab102}'">查看店铺主页</button>
+									<a class="am-btn" style="cursor:pointer;" target="_top" onclick="location.href='${path}/shop/home.html?shopId=${aab102}'">查看店铺主页</a>
 								</div>
 								</form>
 							</div>
@@ -107,6 +107,10 @@
     		success:function(res,status){
     			if(res.status=='200'){
         			promptGlobal("修改默认头像成功");
+        			setTimeout(()=>{
+        				autoRefresh();
+        			},100)
+    				autoRefresh();
     			}else{
     				promptGlobal("修改默认头像失败");
     			}
