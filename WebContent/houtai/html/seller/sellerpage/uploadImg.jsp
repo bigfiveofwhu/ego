@@ -88,7 +88,6 @@
         const img = document.getElementById('preview');
         if(file && fileObj) {
             const dataURl = windowURL.createObjectURL(fileObj);
-            console.log(dataURl);
             img.setAttribute('src',dataURl);
         }
         
@@ -107,10 +106,7 @@
     		success:function(res,status){
     			if(res.status=='200'){
         			promptGlobal("修改默认头像成功");
-        			setTimeout(()=>{
-        				autoRefresh();
-        			},100)
-    				autoRefresh();
+        			window.parent.postMessage("refresh",'*');   //向父页面发消息
     			}else{
     				promptGlobal("修改默认头像失败");
     			}
@@ -129,7 +125,6 @@
          const img = document.getElementById('img_preview');
          if(file && fileObj) {
              const dataURl = windowURL.createObjectURL(fileObj);
-             console.log(dataURl);
              img.setAttribute('src',dataURl);
          }
          
@@ -148,6 +143,7 @@
      		success:function(res,status){
      			if(res.status=='200'){
          			promptGlobal("修改主页图片成功");
+        			window.parent.postMessage("refresh",'*');   //向父页面发消息
      			}else{
      				promptGlobal("修改主页图片失败");
      			}

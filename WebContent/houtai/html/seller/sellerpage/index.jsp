@@ -311,4 +311,12 @@
 	<script type="text/javascript" src="<%=path %>/houtai/js/service/SellerService.js"></script>
 	<script type="text/javascript" src="<%=path %>/houtai/js/common/common.js"></script>
 	<%@include file="/autoImgRefresh.jsp" %>
+	<script type="text/javascript">
+    window.addEventListener('message',function(e){
+        let data = e.data;
+        if(data=='refresh'){
+        	autoRefresh();
+        }
+	},false); 
+	</script>
 </html>
