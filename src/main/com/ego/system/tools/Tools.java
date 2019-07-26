@@ -569,7 +569,13 @@ public class Tools
 	public static String getImgPath(HttpServletRequest request)
 	{
 		//return Tools.getWebPath()+"images/upload";
-		return  request.getServletContext().getRealPath("/upload");
+		//return  request.getServletContext().getRealPath("/upload");
+		return getImgPath(request, "upload");
+	}
+	
+	public static String getImgPath(HttpServletRequest request,String folder)
+	{
+		return  request.getServletContext().getRealPath("/images/"+folder);
 	}
 	
 	/**

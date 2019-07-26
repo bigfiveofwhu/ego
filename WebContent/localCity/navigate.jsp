@@ -131,7 +131,7 @@ function enterService(){
 		timeout:20000,
 		success:function(res,status){
 			if(res.status=='200'){
-				localtion.href='${path}/localCity/service/background.html';
+				location.href='${path}/localCity/service/background.html';
 			}else{
 				layer.msg("你注册的服务商正在审核中...");
 			}

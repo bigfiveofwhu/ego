@@ -23,7 +23,7 @@
 			<!-- 页面头部 -->
 			<header class="main-header">
 				<!-- Logo -->
-				<a href="<%=path %>/houtai/html/seller/sellerpage/home.jsp" class="logo">
+				<a href="<%=path %>/localCity/home.html" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
 					<span class="logo-mini"><b>服务商</b></span>
 					<!-- logo for regular state and mobile devices -->
@@ -41,15 +41,15 @@
 							<!-- User Account: style can be found in dropdown.less -->
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle text-center" data-toggle="dropdown">
-									<img src="<%=path%>/images/upload/user_${aaa102}.jpg" class="user-image" alt="User Image">
-									<span class="hidden-xs">${aaa103 }</span>
+									<img src="<%=path%>/images/service/service_${aac102}.jpg" class="user-image" alt="User Image">
+									<span class="hidden-xs">${aac103 }</span>
 								</a>
 								<ul class="dropdown-menu">
 									<!-- User image -->
 									<li class="user-header">
-										<img src="<%=path %>/images/upload/user_${aaa102}.jpg" class="user-image" alt="User Image">
+										<img src="<%=path %>/images/service/service_${aac102}.jpg" class="user-image" alt="User Image">
 										<p>
-											${aaa103}
+											${aac103}
 										</p>
 									</li>
 
@@ -75,10 +75,10 @@
 					<!-- Sidebar user panel -->
 					<div class="user-panel">
 						<div class="pull-left image">
-							<img src="<%=path%>/images/upload/user_${aaa102}.jpg" class="user-image" alt="User Image">
+							<img src="<%=path%>/images/service/service_${aac102}.jpg" class="user-image" alt="User Image">
 						</div>
 						<div class="pull-left info">
-							<p>${aaa103}</p>
+							<p>${aac103}</p>
 							<a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
 						</div>
 					</div>
@@ -106,6 +106,11 @@
 									<a href="<%=path %>/houtai/html/seller/sellerpage/password.jsp" target="iframe">
 										<i class="fa fa-circle-o"></i> 修改密码
 
+									</a>
+								</li>
+								<li id="admin-login">
+									<a href="<%=path %>/houtai/html/service_provider/uploadImg.jsp" target="iframe">
+										<i class="fa fa-circle-o"></i> 修改头像
 									</a>
 								</li>
 							</ul>
@@ -281,5 +286,6 @@
 	<script type="text/javascript" src="<%=path %>/houtai/js/controller/SellerLoginController.js"></script>
 	<script type="text/javascript" src="<%=path %>/houtai/js/service/SellerService.js"></script>
 	<script type="text/javascript" src="<%=path %>/houtai/js/common/common.js"></script>
+	<%@include file="/autoImgRefresh.jsp" %>
 	
 </html>
