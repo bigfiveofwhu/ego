@@ -57,7 +57,7 @@ public class SetDefaultImg
 			break;
 		}
 		if(path=="") throw new Exception("请选择正确的角色名称");
-		path+=id+".jpg";
+		path=path+id+".jpg";
 		File file=new File(defaultImg);
 		FileInputStream inputStream=new FileInputStream(file);
 		File defImg=new File(path);

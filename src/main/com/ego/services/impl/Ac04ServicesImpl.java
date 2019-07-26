@@ -248,6 +248,7 @@ public class Ac04ServicesImpl extends JdbcServicesSupport
 				.append("  from ac04 x, ac01 y,syscode z")
 				.append("  where x.aac410=z.fcode and z.fname='aac106' ")
 				.append("    and x.aac102=y.aac102 and x.aaa102=? ")
+				.append(" order by aac403 DESC")
 				;
 		
 
