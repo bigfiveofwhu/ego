@@ -10,6 +10,7 @@ import com.ego.system.tools.Tools;
 
 public class AdvertiseService extends JdbcServicesSupport{
 
+	
 	public static final String productAd="00";
 	public static final String shoptAd="01";
 	public static final String serviceAd="10";
@@ -76,10 +77,10 @@ public class AdvertiseService extends JdbcServicesSupport{
 		switch (utype) {
 		case "insertAdAccount":
 			return this.insertAdAccount();
-		case "recharge"://给账户充值
-			return this.recharge();
 		case "chargeMoney"://减少账户的钱
 			return this.chargeMoney();
+		case "rechargeMoney":
+			return this.recharge();
 		case "insertAd":
 			return this.insertAd();
 		case "addMoney"://给广告充值
@@ -303,12 +304,13 @@ public class AdvertiseService extends JdbcServicesSupport{
 				.append(" update ad04 set")
 				.append(" aad403 =aad403+?")
 				.append(" where aad402=?");
-		double increse=Tools.changeDouble(this.get("increment"));
-		if (increse<0) {
+		double increment=Double.parseDouble(this.get("increment").toString());
+		if (increment<0) {
 			throw new Exception("非法的数字");
 		}
-		return this.executeUpdate(sql.toString(),increse,this.get("aad402"));
+		return this.executeUpdate(sql.toString(),increment,this.get("aad402"));
 	}
+	
 	/**
 	 * 减少广告账户的钱，需要dto中存放decrement
 	 * @return 
@@ -453,14 +455,17 @@ public class AdvertiseService extends JdbcServicesSupport{
 	 */
 	private List<Map<String, String>> getSameProducts()throws Exception {
 		StringBuilder sql=new StringBuilder()
-				.append(" select aad302,aab202,aab203,aab205,aab206,aab208 from ad03 join ab02")
+				.append(" select aad302,aad307,aab202,aab203,aab205,aab206,aab208")
+				.append(" from ad03 join ab02 join syscode join syscode as s")
 				.append(" on ad03.aad306 = ab02.aab203")
-				.append(" where aad305=?")//11
-				.append(" and aad303=?")//00
-				.append(" and aab204=?")
+				.append(" and syscode.fcode=ab02.aab204")
+				.append(" and syscode.pfcode = s.pfcode")
+				.append(" where aad303=?")
+				.append(" and s.fcode=?")
+				.append(" and syscode.fname='aab204'")
 				.append(" order by aad304 DESC ")
 				.append(" limit 8");
-		return this.queryForList(sql.toString(),search,productAd,this.get("productType"));
+		return this.queryForList(sql.toString(),productAd,this.get("productType"));
 	}
 	
 	/**
@@ -495,7 +500,65 @@ public class AdvertiseService extends JdbcServicesSupport{
 				.append(" and aab204 in (select * from (select aaa902 from aa09")//商品类型满足条件
 				.append(" where aaa102=? limit 3)as t)")
 				.append(" order by aad304 DESC ")
-				.append(" limit 4");
+				.append(" limit 8");
 		return this.queryForList(sql.toString(),AIads,productAd,this.get("aaa102"));
 	}
+	
+	
+	public void updateDaily() throws Exception {
+		updateMoney(headLine);
+		updateMoney(search);
+		updateMoney(AIads);
+		updateMoney(homePage);
+	}
+	
+	private  void updateMoney(String type) throws Exception {
+		List<Map<String, String>> rankList=chargeRankInfoByType(type);
+		String sql="update ad03 set aad304=aad304-? where aad302=?";
+		int rank=1;
+		for (Map<String, String> map : rankList) {
+			this.executeUpdate(sql
+					,this.getBill(rank++, Integer.parseInt(map.get("sum")) , getWeight(type) )
+					,map.get("aad302"));
+		}
+	}
+	/**
+	 * 根据类型获得权值
+	 * @param type
+	 * @return
+	 * @throws Exception
+	 */
+	private int  getWeight(String type) throws Exception {
+		switch (type) {
+		case headLine:
+			return 10;
+		case search:
+			return 20;
+		case AIads:
+			return 15;
+		case homePage:
+			return 20;
+		default:
+			throw new Exception("getweight无法识别的广告类型");
+		}
+	}
+	
+	private List<Map<String, String>> chargeRankInfoByType(String type) throws Exception {
+		StringBuilder sql=new StringBuilder()
+				.append(" select aad302,sum(aad503)as sum from ad03 join ad05")
+				.append(" using(aad302)")
+				.append(" where datediff(aad502,now())=0")
+				.append(" and aad305=?")
+				.append(" group by aad302")
+				.append(" order by aad304 DECS");
+		return this.queryForList(sql.toString(), type);
+	}
+	
+	public double getBill(int rank,int click,int weight) {
+		return click/(double)weight*(1+1/(double)rank);
+	}
+	public static void main(String args[]) {
+		System.out.println(6/(double)10*(1+1/(double)3));
+	}
 }
+

@@ -39,7 +39,7 @@
 		</script>--%>
 		<div class="shopInfo">
 			<div id="shopHeader">
-			   <img alt="${shop.aab103 }" src="<%=path %>/images/3.jpg">
+			   <img alt="${shop.aab103 }" src="<%=path %>/images/shop/shop_${shop.aab102}.jpg" onerror="this.src='<%=basePath%>/images/no-img_mid_.jpg'">
 			   <span>${shop.aab103 }</span>
 			   <p onclick="location.href='<%=path%>/shop/home.html?shopId=${shop.aab102 }'">Ω¯»ÎµÍ∆Ã</p>
 			</div>
@@ -68,7 +68,9 @@
 			 </div>
 		</div>
 		<div class="clear"></div>
-		<div class="loopShow" id="container"></div>
+		<div class="loopShow" >
+		<img alt="" src="${path}/images/shop/home_${shop.aab102}.jpg" onerror="this.src='<%=basePath%>/images/shop/home_5.jpg'" style="width:100%;height:100%">
+		</div>
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=DD279b2a90afdf0ae7a3796787a0742e"></script>
 		<script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
 		<script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>

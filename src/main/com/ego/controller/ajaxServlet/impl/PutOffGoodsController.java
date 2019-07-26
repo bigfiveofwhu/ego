@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ego.controller.ajaxServlet.AjaxControllerSupport;
 import com.ego.services.impl.ProductManageServicesImpl;
+import com.ego.services.impl.ShopManageServicesImpl;
 import com.ego.services.impl.seller.SPManageServicesImpl;
 import com.ego.system.tools.Tools;
 
@@ -91,6 +92,12 @@ public class PutOffGoodsController extends AjaxControllerSupport {
 				this.setService(new SPManageServicesImpl());
 				Map<String,String> map2 = this.getService().findById("service");
 				this.put("map", map2);
+				this.put("tag", 1);
+				break;
+			case "order"://∂©µ•œÍ«È
+				this.setService(new ShopManageServicesImpl());
+				Map<String,String> map4 = this.getService().findById();
+				this.put("map", map4);
 				this.put("tag", 1);
 				break;
 			default:

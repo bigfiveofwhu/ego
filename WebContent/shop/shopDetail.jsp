@@ -64,7 +64,7 @@
 				</section>
 			</div>
 				<div class="shopDetail" onclick="location.href='<%=path%>/shop/home.html?shopId=${product.aab102}'">
-				<img alt="${product.aab103}" src="<%=path%>/images/02.jpg">
+				<img alt="${product.aab103}" src="<%=path%>/images/shop/shop_${product.aab102}.jpg">
 				<p>${product.aab103}</p>
 				<a>进入店铺</a>
 				</div>
@@ -420,31 +420,31 @@
 					<div class="clear"></div>
 				</div>
 				<!--优惠套装-->
-				<div class="match">
-					<div class="match-title">优惠套装</div>
-					<div class="match-comment">
-						<ul class="like_list">
-							<li>
-								<div class="s_picBox">
-									<a class="s_pic" href="#"><img src="<%=path%>/images/cp.jpg"></a>
-								</div> <a class="txt" target="_blank" href="#">萨拉米 1+1小鸡腿</a>
-								<div class="info-box"> <span class="info-box-price">&yen; 29.90</span> <span class="info-original-price">￥ 199.00</span> </div>
-							</li>
-							<li class="plus_icon"><i>+</i></li>
-							<li>
-								<div class="s_picBox">
-									<a class="s_pic" href="#"><img src="<%=path%>/images/cp2.jpg"></a>
-								</div> <a class="txt" target="_blank" href="#">ZEK 原味海苔</a>
-								<div class="info-box"> <span class="info-box-price">&yen; 8.90</span> <span class="info-original-price">￥ 299.00</span> </div>
-							</li>
-							<li class="plus_icon"><i>=</i></li>
-							<li class="total_price">
-								<p class="combo_price"><span class="c-title">套餐价:</span><span>&yen;35.00</span> </p>
-								<p class="save_all">共省:<span>&yen;463.00</span></p> <a href="#" class="buy_now">立即购买</a> </li>
-							<li class="plus_icon"><i class="am-icon-angle-right"></i></li>
-						</ul>
-					</div>
-				</div>
+<!-- 				<div class="match"> -->
+<!-- 					<div class="match-title">优惠套装</div> -->
+<!-- 					<div class="match-comment"> -->
+<!-- 						<ul class="like_list"> -->
+<!-- 							<li> -->
+<!-- 								<div class="s_picBox"> -->
+<%-- 									<a class="s_pic" href="#"><img src="<%=path%>/images/cp.jpg"></a> --%>
+<!-- 								</div> <a class="txt" target="_blank" href="#">萨拉米 1+1小鸡腿</a> -->
+<!-- 								<div class="info-box"> <span class="info-box-price">&yen; 29.90</span> <span class="info-original-price">￥ 199.00</span> </div> -->
+<!-- 							</li> -->
+<!-- 							<li class="plus_icon"><i>+</i></li> -->
+<!-- 							<li> -->
+<!-- 								<div class="s_picBox"> -->
+<%-- 									<a class="s_pic" href="#"><img src="<%=path%>/images/cp2.jpg"></a> --%>
+<!-- 								</div> <a class="txt" target="_blank" href="#">ZEK 原味海苔</a> -->
+<!-- 								<div class="info-box"> <span class="info-box-price">&yen; 8.90</span> <span class="info-original-price">￥ 299.00</span> </div> -->
+<!-- 							</li> -->
+<!-- 							<li class="plus_icon"><i>=</i></li> -->
+<!-- 							<li class="total_price"> -->
+<!-- 								<p class="combo_price"><span class="c-title">套餐价:</span><span>&yen;35.00</span> </p> -->
+<!-- 								<p class="save_all">共省:<span>&yen;463.00</span></p> <a href="#" class="buy_now">立即购买</a> </li> -->
+<!-- 							<li class="plus_icon"><i class="am-icon-angle-right"></i></li> -->
+<!-- 						</ul> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 				<div class="clear"></div>
 				<!-- introduce-->
 				<div class="introduce">
@@ -452,58 +452,26 @@
 					    <div class="mc"> 
 						     <ul>		    
 						     	<div class="mt">
-						            <h2>看了又看</h2>        
+						            <h2>猜你喜欢</h2>        
 					            </div>
-							      <li class="first">
-							      	<div class="p-img">                    
-							      		<a  href="#"> <img class="" src="<%=path%>/images/browse1.jpg"> </a>               
-							      	</div>
-							      	<div class="p-name"><a href="#">
-							      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
-							      	</a>
-							      	</div>
-							      	<div class="p-price"><strong>￥35.90</strong></div>
-							      </li>
-							      <li>
-							      	<div class="p-img">                 
-							      		<a  href="#"> <img class="" src="<%=path%>/images/browse1.jpg"> </a>               
-							      	</div>
-							      	<div class="p-name"><a href="#">
-							      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
-							      	</a>
-							      	</div>
-							      	<div class="p-price"><strong>￥35.90</strong></div>
-							      </li>
-							      <li>
-							      	<div class="p-img">                    
-							      		<a  href="#"> <img class="" src="<%=path%>/images/browse1.jpg"> </a>               
-							      	</div>
-							      	<div class="p-name"><a href="#">
-							      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
-							      	</a>
-							      	</div>
-							      	<div class="p-price"><strong>￥35.90</strong></div>
-							      </li>							      
-							      <li>
-							      	<div class="p-img">                    
-							      		<a  href="#"> <img class="" src="<%=path%>/images/browse1.jpg"> </a>               
-							      	</div>
-							      	<div class="p-name"><a href="#">
-							      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
-							      	</a>
-							      	</div>
-							      	<div class="p-price"><strong>￥35.90</strong></div>
-							      </li>							      
-							      <li>
-							      	<div class="p-img">                    
-							      		<a  href="#"> <img class="" src="<%=path%>/images/browse1.jpg"> </a>               
-							      	</div>
-							      	<div class="p-name"><a href="#">
-							      		【三只松鼠_开口松子218g】零食坚果特产炒货东北红松子原味
-							      	</a>
-							      	</div>
-							      	<div class="p-price"><strong>￥35.90</strong></div>
-							      </li>
+					            
+					            <c:forEach items="${guessProducts}" var="item" varStatus="vs">
+					            	<c:choose>
+					            		<c:when test="${vs.count==1 }"> <li class="first"></c:when>
+					            		<c:otherwise> <li> </c:otherwise>
+					            	</c:choose>
+					            	
+						            	<div class="p-img">                    
+								      		<a  href="<%=path%>/shop/detail.html?aId=${item.aad302 }&productId=${item.aad306}"> <img class="" src="<%=path%>/images/advertise/${item.aad307}"> </a>               
+								      	</div>
+								      	<div class="p-name"><a href="#">
+								      		${item.aab202 }
+								      	</a>
+								      	</div>
+								      	<div class="p-price"><strong>￥${item.aab205 }</strong></div>
+								      </li>
+					            	
+					            </c:forEach>
 						     </ul>					
 					    </div>
 					</div>
@@ -517,7 +485,7 @@
 									<a href="#"><span class="index-needs-dt-txt">全部评价</span></a>
 								</li>
 								<li>
-									<a href="#"><span class="index-needs-dt-txt">猜你喜欢</span></a>
+									<a href="#"><span class="index-needs-dt-txt">同类商品</span></a>
 								</li>
 							</ul>
 							<div class="am-tabs-bd">
@@ -702,14 +670,10 @@
 													<div class="i-pic limit">
 														<div id="imgsize">
 														<!-- 显示图片详细信息 -->
-													<a href="<%=path%>/shop/detail.html?aId=${goods.aad302 }&productId=${goods.aab203}"><img id="agoods${vs.count}" src="${goods.aab208}"/></a>
+													<a href="<%=path%>/shop/detail.html?aId=${goods.aad302 }&productId=${goods.aab203}">
+														<img id="agoods${vs.count}" src="/ego/images/advertise/${goods.aad307}"/>
+													</a>
 														</div>
-														<script type="text/javascript">
-															$(function(){
-																var  agoods${vs.count}='${goods.aab208}';
-																$("#agoods${vs.count}").attr("src","/ego"+agoods${vs.count}.split(";")[0])
-															 });
-														</script>									
 														<p class="title fl">${goods.aab202}</p>
 														<p class="price fl">
 															<b>&yen;</b>

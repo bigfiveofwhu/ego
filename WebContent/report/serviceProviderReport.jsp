@@ -1,4 +1,4 @@
-<%@ page pageEncoding="GBK" %>
+<%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
@@ -7,31 +7,31 @@
     <link rel="stylesheet" href="/ego/css/bootstrap.css">
     <link rel="stylesheet" href="/ego/layui/css/layui.css">
     <meta charset="GBK">
-    <title>·şÎñÉÌÁ÷Ë®±¨±í</title>
+    <title>æœåŠ¡å•†æµæ°´æŠ¥è¡¨</title>
 </head>
 <body>
 
 <div class="layui-tab">
     <ul class="layui-tab-title">
-        <li>Á÷Ë®×ÜÀÀ</li>
-        <li>±¾ÔÂÏúÊÛ¼ÇÂ¼</li>
-        <li>ÔÂ¶ÈÁ÷Ë®</li>
-        <li>Äê¶ÈÁ÷Ë®</li>
+        <li>æµæ°´æ€»è§ˆ</li>
+        <li>æœ¬æœˆé”€å”®è®°å½•</li>
+        <li>æœˆåº¦æµæ°´</li>
+        <li>å¹´åº¦æµæ°´</li>
     </ul>
     <div class="layui-tab-content">
         <div class="layui-tab-item layui-show">
-            <label>ÔÂ¶È·şÎñÊÕÈë£º${map.serviceSumMonth}</label><br><br>
-            <label>Äê¶È·şÎñÊÕÈë£º${map.serviceSumYear}</label><br><br>
-            <label>ÉúÑÄ·şÎñÊÕÈë£º${map.serviceSumAll}</label><br><br>
+            <label>æœˆåº¦æœåŠ¡æ”¶å…¥ï¼š${map.serviceSumMonth}</label><br><br>
+            <label>å¹´åº¦æœåŠ¡æ”¶å…¥ï¼š${map.serviceSumYear}</label><br><br>
+            <label>ç”Ÿæ¶¯æœåŠ¡æ”¶å…¥ï¼š${map.serviceSumAll}</label><br><br>
         </div>
         <div class="layui-tab-item">
             <table lay-filter="service-table">
                 <thead>
                 <tr>
-                    <th lay-data="{field:'id', sort: true}">ĞòºÅ</th>
-                    <th lay-data="{field:'time', sort: true}">½»Ò×Ê±¼ä</th>
-                    <th lay-data="{field:'name', sort: true}">½»Ò×·şÎñÃû³Æ</th>
-                    <th lay-data="{field:'sum', sort: true}">½»Ò×½ğ¶î</th>
+                    <th lay-data="{field:'id', sort: true}">åºå·</th>
+                    <th lay-data="{field:'time', sort: true}">äº¤æ˜“æ—¶é—´</th>
+                    <th lay-data="{field:'name', sort: true}">äº¤æ˜“æœåŠ¡åç§°</th>
+                    <th lay-data="{field:'sum', sort: true}">äº¤æ˜“é‡‘é¢</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -46,7 +46,7 @@
                 </tbody>
             </table>
             <button class="layui-btn" id="export">
-                <i class="iconfont icon-export"></i> µ¼³ö
+                <i class="iconfont icon-export"></i> å¯¼å‡º
             </button>
         </div>
         <div class="layui-tab-item">
@@ -82,32 +82,48 @@
     });
 
     layui.use('element', function () {
-        //TabµÄÇĞ»»¹¦ÄÜ£¬ÇĞ»»ÊÂ¼ş¼àÌıµÈ£¬ĞèÒªÒÀÀµelementÄ£¿é
+        //Tabçš„åˆ‡æ¢åŠŸèƒ½ï¼Œåˆ‡æ¢äº‹ä»¶ç›‘å¬ç­‰ï¼Œéœ€è¦ä¾èµ–elementæ¨¡å—
         var $ = layui.jquery, element = layui.element;
     });
 
     Highcharts.setOptions({
         lang: {
-            contextButtonTitle: "Í¼±íµ¼³ö²Ëµ¥",
+            contextButtonTitle: "å›¾è¡¨å¯¼å‡ºèœå•",
             decimalPoint: ".",
-            downloadJPEG: "ÏÂÔØJPEGÍ¼Æ¬",
-            downloadPDF: "ÏÂÔØPDFÎÄ¼ş",
-            downloadPNG: "ÏÂÔØPNGÎÄ¼ş",
-            downloadSVG: "ÏÂÔØSVGÎÄ¼ş",
-            drillUpText: "·µ»Ø {series.name}",
-            loading: "¼ÓÔØÖĞ",
-            months: ["Ò»ÔÂ", "¶şÔÂ", "ÈıÔÂ", "ËÄÔÂ", "ÎåÔÂ", "ÁùÔÂ", "ÆßÔÂ", "°ËÔÂ", "¾ÅÔÂ", "Ê®ÔÂ", "Ê®Ò»ÔÂ", "Ê®¶şÔÂ"],
-            noData: "Ã»ÓĞÊı¾İ",
-            numericSymbols: ["Ç§", "Õ×", "G", "T", "P", "E"],
-            printChart: "´òÓ¡Í¼±í",
-            resetZoom: "»Ö¸´Ëõ·Å",
-            resetZoomTitle: "»Ö¸´Í¼±í",
+            downloadJPEG: "ä¸‹è½½JPEGå›¾ç‰‡",
+            downloadPDF: "ä¸‹è½½PDFæ–‡ä»¶",
+            downloadPNG: "ä¸‹è½½PNGæ–‡ä»¶",
+            downloadSVG: "ä¸‹è½½SVGæ–‡ä»¶",
+            drillUpText: "è¿”å› {series.name}",
+            loading: "åŠ è½½ä¸­",
+            months: ["ä¸€æœˆ", "äºŒæœˆ", "ä¸‰æœˆ", "å››æœˆ", "äº”æœˆ", "å…­æœˆ", "ä¸ƒæœˆ", "å…«æœˆ", "ä¹æœˆ", "åæœˆ", "åä¸€æœˆ", "åäºŒæœˆ"],
+            noData: "æ²¡æœ‰æ•°æ®",
+            numericSymbols: ["åƒ", "å…†", "G", "T", "P", "E"],
+            printChart: "æ‰“å°å›¾è¡¨",
+            resetZoom: "æ¢å¤ç¼©æ”¾",
+            resetZoomTitle: "æ¢å¤å›¾è¡¨",
             shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             thousandsSep: ",",
-            weekdays: ["ĞÇÆÚÒ»", "ĞÇÆÚ¶ş", "ĞÇÆÚÈı", "ĞÇÆÚËÄ", "ĞÇÆÚÎå", "ĞÇÆÚÁù", "ĞÇÆÚÌì"]
+            weekdays: ["æ˜ŸæœŸä¸€", "æ˜ŸæœŸäºŒ", "æ˜ŸæœŸä¸‰", "æ˜ŸæœŸå››", "æ˜ŸæœŸäº”", "æ˜ŸæœŸå…­", "æ˜ŸæœŸå¤©"]
         },
         chart: {
-            type: 'line'
+            type: 'line',
+            events: {
+                beforePrint: function () {
+                    var height = this.options.exporting.chartOptions.chart.height;
+                    if (height) {
+                        this.oldhasUserSize = this.hasUserSize;
+                        this.resetParams = [this.chartWidth, this.chartHeight, false];
+                        this.setSize(this.chartWidth, height, false);
+                    }
+                },
+                afterPrint: function () {
+                    if (this.options.exporting.chartOptions.chart.height) {
+                        this.setSize.apply(this, this.resetParams);
+                        this.hasUserSize = this.oldhasUserSize;
+                    }
+                }
+            }
         },
         plotOptions: {
             line: {
@@ -127,6 +143,10 @@
             layout: 'vertical',
             align: 'left',
             verticalAlign: 'middle',
+            maxHeight: 400,
+            labelFormatter: function () {
+                return (this.name + '(ç‚¹å‡»)').replace(/(.{15})/g, '$1<br>');
+            },
             navigation: {
                 activeColor: '#3E576F',
                 animation: true,
@@ -143,7 +163,7 @@
 
     Highcharts.chart('container-1', {
         title: {
-            text: 'ÔÂ¶ÈÏû·ÑÁ÷Ë®'
+            text: 'æœˆåº¦æ¶ˆè´¹æµæ°´'
         },
         xAxis: {
             categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
@@ -153,10 +173,10 @@
 
     Highcharts.chart('container-2', {
         title: {
-            text: 'Äê¶ÈÏû·ÑÁ÷Ë®'
+            text: 'å¹´åº¦æ¶ˆè´¹æµæ°´'
         },
         xAxis: {
-            categories: ["Ò»ÔÂ", "¶şÔÂ", "ÈıÔÂ", "ËÄÔÂ", "ÎåÔÂ", "ÁùÔÂ", "ÆßÔÂ", "°ËÔÂ", "¾ÅÔÂ", "Ê®ÔÂ", "Ê®Ò»ÔÂ", "Ê®¶şÔÂ"]
+            categories: ["ä¸€æœˆ", "äºŒæœˆ", "ä¸‰æœˆ", "å››æœˆ", "äº”æœˆ", "å…­æœˆ", "ä¸ƒæœˆ", "å…«æœˆ", "ä¹æœˆ", "åæœˆ", "åä¸€æœˆ", "åäºŒæœˆ"]
         },
         series: [${yearly}]
     });

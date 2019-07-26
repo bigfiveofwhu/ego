@@ -67,7 +67,7 @@ public class FileUpload
 		                       String name = fileItem.getName();
 		                     
 		                      // input:file没有指定上传文件时, 结束本次循环并继续下一次循环
-		                      if(name == null && name.trim().equals("")) {
+		                      if(name == null || name.trim().equals("")) {
 		                          continue;
 		                      }
 		                      //获得图片类型
@@ -86,7 +86,7 @@ public class FileUpload
 		                          savePathDir.mkdir();
 		                      }
 		                     
-		  
+		                      System.out.println(savePathDir.getAbsolutePath());
 		                      // 获取输出流
 		                      out = new FileOutputStream(savePath + "\\" + fileName);
 		                      int len = 0;

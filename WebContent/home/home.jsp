@@ -438,6 +438,7 @@
 					</div>
 					<div class="clear "></div>
 				</div>
+				<c:if test="${aaa102!=null}">
 				<div id="f3">
 					<!-- ²ÂÄãÏ²»¶ -->
 					<div class="am-container ">
@@ -507,6 +508,7 @@
 					</div>
 					<div class="clear "></div>
 				</div>
+				</c:if>
 				<%@include file="/footer.jsp" %>
 			</div>
 		</div>

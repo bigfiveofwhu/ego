@@ -1,5 +1,6 @@
 package com.ego.controller.ajaxServlet.impl;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.ego.controller.ajaxServlet.AjaxControllerSupport;
@@ -13,12 +14,13 @@ public class MulImgUploadController extends AjaxControllerSupport {
 	@Override
 	public void execute(HttpSession session) throws Exception
 	{
+		HttpServletRequest request =(HttpServletRequest) this.dto.get("request");
 		this.setService(new ProductManageServicesImpl());
 		System.out.println("myDTO:"+this.dto);
 		String type = (String)this.get("type");
 		String base64 = (String)this.get("base64");
 		base64= base64.substring(base64.indexOf(",")+1);//截取
-		String name = FileUpload.BASE64CodeToBeImage(base64, Tools.getImgPath(), "jpg");//解析base64,获得图片名字
+		String name = FileUpload.BASE64CodeToBeImage(base64, Tools.getImgPath(request), "jpg");//解析base64,获得图片名字
 		this.dto.put("imgPath", "/images/upload/"+name);
 		if(this.get("type").equals("shop"))//商品图片
 		{

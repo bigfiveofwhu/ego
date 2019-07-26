@@ -171,10 +171,10 @@ public class Ae01ServicesImpl extends JdbcServicesSupport {
                 rows=this.queryForList("SELECT aaa102 FROM aa01");
                 break;
             case "3":
-                rows=this.queryForList(sql.toString(),"01",to);
+                rows=this.queryForList(sql.toString(),"02",to);
                 break;
             case "4":
-                rows=this.queryForList(sql.toString(),"02",to);
+                rows=this.queryForList(sql.toString(),"01",to);
                 break;
             case "5":
                 rows=this.queryForList(sql.toString(),"03",to);

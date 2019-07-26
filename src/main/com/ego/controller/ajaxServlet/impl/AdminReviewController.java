@@ -27,6 +27,11 @@ public class AdminReviewController extends AjaxControllerSupport {
 	@Override
 	public void execute(HttpSession session) throws Exception
 	{
+		if(this.get("aad102")==null||this.get("aad102").equals(""))
+		{
+			return;
+		}
+
 		BaseServices services=new Ad08ServicesImpl();
 		services.setMapDto(this.dto);
 		int type=Integer.valueOf((String) this.dto.get("type"));

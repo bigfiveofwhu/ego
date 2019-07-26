@@ -1,5 +1,6 @@
 package com.ego.controller.impl;
 
+import com.ego.controller.BaseServlet;
 import com.ego.controller.ControllerSupport;
 import com.ego.services.impl.ManageReviewServicesImpl;
 
@@ -16,11 +17,15 @@ public class BaseReviewServlet extends ControllerSupport
 	@Override
 	public String execute() throws Exception
 	{
-		String path=null;
+		if (getSession().getAttribute("aad102")==null) {
+			return BaseServlet.prefix+"manager/login";
+		}
+
+		String path;
 		String servletPath=((HttpServletRequest)this.dto.get("request")).getServletPath();
 		String mapping=servletPath.substring(servletPath.lastIndexOf('/')+1
 				,servletPath.indexOf('.'));
-		List<Map<String,String>> list=null;
+		List<Map<String,String>> list;
 		switch (mapping) 
 		{
 			case "queryShop":
@@ -51,9 +56,6 @@ public class BaseReviewServlet extends ControllerSupport
 				this.saveAttribute("complainList", list);
 				path="houtai/html/admin/complain";
 				break;
-				
-				
-				
 			default:
 				throw new Exception("BaseReviewServlet无法处理此类请求");
 		}
