@@ -33,7 +33,7 @@
 						<div class="pointsTitle">
 						   <div class="usable">可用积分<span>${ins.aaa106 }</span></div>
 						   <!--div class="pointshop"><a href="#"><i><img src="<%=path%>/images/u5.png" /></i>积分商城</a></div-->
-						   <div class="signIn"><a href="#"><i class="am-icon-calendar"></i><em>+5</em>每日签到</a></div>
+						   <div class="signIn"><a href="#"><i class="am-icon-calendar"></i><em>等级</em>普通会员</a></div>
 						</div>
 						<div class="pointlist am-tabs" data-am-tabs>
 							<ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">

@@ -65,6 +65,8 @@ public class AdvertiseController extends ControllerSupport{
 					return prefix+"application";
 				}
 			}
+		case "chargeAccount":
+			return prefix+"payment";
 		default:
 			throw new Exception("不支持的类型");
 		}

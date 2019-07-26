@@ -48,7 +48,8 @@
 								<form enctype="multipart/form-data" id="formTag">
 								<div class="filePic">
 									<input id="pop_file" style="width: 501px;border: 1px solid;" type="file"  class="inputPic" onchange="uploadFile(event)" name="fileTrans" ref="file" value="" allowexts="jpeg,jpg" accept="image/*">
-									<img id="preview" style="width: 340px;" class="am-circle am-img-thumbnail" src="<%=basePath%>/images/shop/shop_${aab102}.jpg" alt="" />
+									<img id="preview" style="width: 340px;" class="am-circle am-img-thumbnail" src="<%=basePath%>/images/shop/shop_${aab102}.jpg" alt=""
+										onerror="this.src='<%=basePath%>/images/no-img_mid_.jpg'" />
 									<br>
 									<%--
 									<button class="am-btn" onclick="">更换头像</button> --%>
@@ -62,7 +63,8 @@
 								<form enctype="multipart/form-data" id="formHomeImg">
 								<div class="filePic">
 									<input id="img_pop_file" style="width: 501px;border: 1px solid;" type="file"  class="inputPic" onchange="uploadFileImg(event)" name="fileTrans" ref="file" value="" allowexts="jpeg,jpg" accept="image/*">
-									<img id="img_preview" style="width: 100%;" class="am-circle am-img-thumbnail" src="<%=basePath%>/images/shop/home_${aab102}.jpg" alt="" />
+									<img id="img_preview" style="width: 100%;" class="am-circle am-img-thumbnail" src="<%=basePath%>/images/shop/home_${aab102}.jpg" alt="" 
+										onerror="this.src='<%=basePath%>/images/shop/home_5.jpg'" />
 									<br>
 									<br>
 									<a class="am-btn" style="cursor:pointer;" target="_top" onclick="location.href='${path}/shop/home.html?shopId=${aab102}'">查看店铺主页</a>

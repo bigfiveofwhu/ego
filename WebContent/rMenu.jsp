@@ -59,7 +59,7 @@
             </div>
 
             <div id="foot " class="item ">
-                <a href="# "> <span class="zuji "></span> </a>
+                <a  href="${path}/person/index.jsp?iframe=${path}/showHistory.html"> <span class="zuji "></span> </a>
                 <div class="mp_tooltip ">
                     ÎÒµÄ×ã¼£ <i class="icon_arrow_right_black "></i>
                 </div>
