@@ -187,24 +187,35 @@ layui.use('layer',function(){
 	 var $ = layui.jquery, layer = layui.layer;
 	 
 	 //例子1
-	$('#charge').click(function(){
-		layer.prompt({
-			  title: '请输入金额',
-			  area: ['800px', '350px'] //自定义文本域宽高
-			}, function(value, index, elem){
-			  $.getJSON('chargeAccount.ajax',{'increment':value},function(data){
-				  if(data.result==true){
-					  layer.msg('充值成功');
-					  window.location.reload();
-				  }else{
-					  layer.msg('充值失败');
-				  }
-			  }).fail(function() {
-				  layer.msg('充值失败');
-			  })
-			  layer.close(index);
+	 $('#charge').click(function(){
+		 layer.open({
+			  type: 2,
+			  skin: 'layui-layer-lan', //加上边框
+			  title:'账户充值 ',
+			  area: ['600px', '480px'], //宽高
+			  content: '/ego/advertise/chargeAccount.html'
 		});
-	})
+	 })
+	 
+// 	$('#charge').click(function(){
+// 		layer.prompt({
+// 			  title: '请输入金额',
+// 			  area: ['800px', '350px'] //自定义文本域宽高
+// 			}, function(value, index, elem){
+// 				window.open("/ego/payment.html");  
+// 			  $.getJSON('chargeAccount.ajax',{'increment':value},function(data){
+// 				  if(data.result==true){
+// 					  layer.msg('充值成功');
+// 					  window.location.reload();
+// 				  }else{
+// 					  layer.msg('充值失败');
+// 				  }
+// 			  }).fail(function() {
+// 				  layer.msg('充值失败');
+// 			  })
+// 			  layer.close(index);
+// 		});
+// 	})
 	 
 })
 $("#submit").click(register);
