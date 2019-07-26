@@ -64,7 +64,7 @@
 				</section>
 			</div>
 				<div class="shopDetail" onclick="location.href='<%=path%>/shop/home.html?shopId=${product.aab102}'">
-				<img alt="${product.aab103}" src="<%=path%>/images/02.jpg">
+				<img alt="${product.aab103}" src="<%=path%>/images/shop/shop_${product.aab102}.jpg">
 				<p>${product.aab103}</p>
 				<a>Ω¯»ÎµÍ∆Ã</a>
 				</div>

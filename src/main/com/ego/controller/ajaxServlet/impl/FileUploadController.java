@@ -21,14 +21,31 @@ public class FileUploadController extends AjaxControllerSupport {
 		 HttpServletRequest request =(HttpServletRequest) this.dto.get("request");
 		 String type = (String) this.dto.get("type");
 		 String id = (String)this.dto.get("id");
+		 String remark=(String)this.get("remark");
 		//文件名命名规则:类型+id
 		 String fileName = type+"_"+id;
+		 if(remark!=null) fileName = remark+"_"+id;
+		 String folder="";
+		 switch(type)
+		 {
+		 case "user":
+			 folder="upload";
+			 break;
+		 case "shop":
+			 folder="shop";
+			 break;
+		 case "service":
+			 folder="service";
+			 break;
+		 }
 		 System.out.println(type);
 		 try {
-			FileUpload.writeFile(fileName, Tools.getImgPath(),request);
+			FileUpload.writeFile(fileName, Tools.getImgPath(request,folder),request);
+			this.put("status", "200");
 			//QiniuUpload.UploadPic("./WebContent/images/upload/user_8.jpg", fileName);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
+			this.put("status", "201");
 		}
 	}
 }
