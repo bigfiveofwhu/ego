@@ -295,9 +295,11 @@
                     if (description !== '') {
                         var text = description.split('&')[0];
                         text = text + "<br>";
-                        var pics = description.split('&')[1].split(';');
-                        for (var i = 0; i < pics.length; i++) {
-                            text = text + '<img src="<%=path%>' + pics[i] + '" alt="" onerror="this.style.display=\'none\'" style="max-width: 500px; height: auto"><br>';
+                        if (description.split('&').length !== 1 && description.split('&')[1] !== '') {
+                            var pics = description.split('&')[1].split(';');
+                            for (var i = 0; i < pics.length; i++) {
+                                text = text + '<img src="<%=path%>' + pics[i] + '" alt="" onerror="this.style.display=\'none\'" style="max-width: 500px; height: auto"><br>';
+                            }
                         }
                         $("#aab207").html(text);
                     } else {
